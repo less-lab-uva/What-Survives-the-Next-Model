@@ -1,0 +1,14 @@
+{
+  "title": "MGDebugger: Isolating and Resolving Bugs in LLM-Generated Code via Multi-Granularity Debugging",
+  "doi": "10.1145/3744916.3773255",
+  "venue": "ICSE 2026",
+  "dataset": "HumanEval (openai/openai_humaneval, 164 problems)",
+  "metric": "accuracy",
+  "original_result": "",
+  "our_result": {
+    "prompt_A": {"accuracy": 0.9817},
+    "prompt_B": {"accuracy": 0.9634}
+  },
+  "sampled_data_size": 164,
+  "total_cost": "$3.9"
+}
