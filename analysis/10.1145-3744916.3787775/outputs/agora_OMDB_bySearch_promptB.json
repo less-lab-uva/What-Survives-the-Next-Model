@@ -1,0 +1,104 @@
+{
+  "service": "OMDB bySearch",
+  "prompt": "B",
+  "request_info": {
+    "s": "Fly me to the moon",
+    "apikey": "anonymous"
+  },
+  "response_body": {
+    "Search": [
+      {
+        "Title": "Fly Me to the Moon 3D",
+        "Year": "2007",
+        "imdbID": "tt0486321",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTc2NTA5MTA2Ml5BMl5BanBnXkFtZTcwMjU5ODQ3MQ@@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "1988",
+        "imdbID": "tt1215056",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMmVhYjdkMDAtYTMzNS00YTA4LTg3MTctODNhZGEzZDUxOWZkXkEyXkFqcGdeQXVyNDUxNjc5NjY@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "2011",
+        "imdbID": "tt2403428",
+        "Type": "movie",
+        "Poster": "N/A"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "2002",
+        "imdbID": "tt6987950",
+        "Type": "movie",
+        "Poster": "N/A"
+      },
+      {
+        "Title": "Fly Me To The Moon",
+        "Year": "2017",
+        "imdbID": "tt7786572",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BYzIyYmE3NjAtOTc0Yi00MzYwLWE3MWYtZWM4ZGI0NjI5YjM1XkEyXkFqcGdeQXVyODM2NDQ4MzE@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "2010",
+        "imdbID": "tt8506904",
+        "Type": "movie",
+        "Poster": "N/A"
+      },
+      {
+        "Title": "Fly me to the Moon",
+        "Year": "2016",
+        "imdbID": "tt8898464",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNTU1NGUyNDktNzE1OS00ZDI2LWEwMWUtZWUwYmM2YWIyZWI2XkEyXkFqcGdeQXVyNDg2NzY4NzY@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "2019",
+        "imdbID": "tt12392034",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzE4OGQ3MTctZmE2YS00N2UxLTkxOTEtYmFjMmYyNGFmZDhjXkEyXkFqcGdeQXVyMzI0MjIwNTc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "1996",
+        "imdbID": "tt0171325",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTNlODY0NjctNDI5Ny00MzFiLWIyNmUtZDE5NTVmODYzYWIwXkEyXkFqcGdeQXVyNTMzMjQ0Nzg@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Fly Me to the Moon",
+        "Year": "1974",
+        "imdbID": "tt0377925",
+        "Type": "movie",
+        "Poster": "N/A"
+      }
+    ],
+    "totalResults": "11",
+    "Response": "True"
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Response",
+      "description": "The Response field must be a string equal to either 'True' or 'False'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        val = latest_response.get('Response')\n        if val is None:\n            return 0\n        if val in ['True', 'False']:\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Poster",
+      "description": "The Poster field, when present and not 'N/A', should be a valid URI/URL string.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        checked = False\n        for item in items:\n            poster = item.get('Poster')\n            if poster is None or poster == 'N/A':\n                continue\n            checked = True\n            if not pattern.match(str(poster)):\n                return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "request_response_constraints": [],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Response\",\n      \"description\": \"The Response field must be a string equal to either 'True' or 'False'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        val = latest_response.get('Response')\\n        if val is None:\\n            return 0\\n        if val in ['True', 'False']:\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Poster\",\n      \"description\": \"The Poster field, when present and not 'N/A', should be a valid URI/URL string.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('Search', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        checked = False\\n        for item in items:\\n            poster = item.get('Poster')\\n            if poster is None or poster == 'N/A':\\n                continue\\n            checked = True\\n            if not pattern.match(str(poster)):\\n                return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ],\n  \"request_response_constraints\": []\n}"
+}

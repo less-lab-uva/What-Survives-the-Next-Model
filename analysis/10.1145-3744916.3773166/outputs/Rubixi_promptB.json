@@ -1,0 +1,178 @@
+{
+  "totalExecs": 19500,
+  "speed": 65.0,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 4,
+      "instruction distinction": "5a2 6c1 7d3 8e4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "DynamicPyramid",
+              "inputs": []
+            },
+            {
+              "name": "collectAllFees",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "DynamicPyramid",
+              "inputs": []
+            },
+            {
+              "name": "collectFeesInEther",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "DynamicPyramid",
+              "inputs": []
+            },
+            {
+              "name": "collectPercentOfFees",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x32"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 2,
+      "instruction distinction": "4a1 4b2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "collectFeesInEther",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "addPayout",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 1,
+      "instruction distinction": "9f1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "numberOfParticipantsWaitingForPayout",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  },
+  "coverage": 0.88
+}

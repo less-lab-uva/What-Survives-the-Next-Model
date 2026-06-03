@@ -1,0 +1,100 @@
+{
+  "service": "Youtube GetVideos",
+  "prompt": "B",
+  "request_info": {
+    "maxHeight": "328",
+    "videoCategoryId": "22",
+    "part": "topicDetails",
+    "chart": "mostPopular",
+    "maxWidth": "2177"
+  },
+  "response_body": {
+    "kind": "youtube#videoListResponse",
+    "etag": "8pZPcEGdnxIDBndVGzA9suuRvnE",
+    "items": [
+      {
+        "kind": "youtube#video",
+        "etag": "cPy6lb8JXVMkPJAP_urVWAi-oTw",
+        "id": "i7ytY9Onf9o",
+        "topicDetails": {
+          "topicCategories": [
+            "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+          ]
+        }
+      },
+      {
+        "kind": "youtube#video",
+        "etag": "yL8ld9qDGe_rd1VSs-URzVHyFxo",
+        "id": "DFTkVwDEP3I",
+        "topicDetails": {
+          "topicCategories": [
+            "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+          ]
+        }
+      },
+      {
+        "kind": "youtube#video",
+        "etag": "Y_Ez33VJ9BVSq07zczCuiupHr1c",
+        "id": "2SHqifCj_2U",
+        "topicDetails": {
+          "topicCategories": [
+            "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+          ]
+        }
+      },
+      {
+        "kind": "youtube#video",
+        "etag": "cDw5Y2M3iijXxN2iAnG8gEw1vqc",
+        "id": "I2nNNT5ooGU",
+        "topicDetails": {
+          "topicCategories": [
+            "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+          ]
+        }
+      },
+      {
+        "kind": "youtube#video",
+        "etag": "yR16Ik9Ys8Kp2_JAiKOlKrkYJZU",
+        "id": "6Cw3axtV_VA",
+        "topicDetails": {
+          "topicCategories": [
+            "https://en.wikipedia.org/wiki/Lifestyle_(sociology)"
+          ]
+        }
+      }
+    ],
+    "nextPageToken": "CAUQAA",
+    "pageInfo": {
+      "totalResults": 200,
+      "resultsPerPage": 5
+    }
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/youtube/v3/videos",
+      "response_resource": "Video",
+      "attribute": "kind",
+      "description": "Identifies what kind of resource this is. The value must be the fixed string \"youtube#video\".",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            k = item.get('kind')\n            if k is None:\n                continue\n            checked = True\n            if k != 'youtube#video':\n                return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/youtube/v3/videos",
+      "response_resource": "VideoListResponse",
+      "attribute": "kind",
+      "description": "Identifies what kind of resource this is. The value must be the fixed string \"youtube#videoListResponse\".",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        k = latest_response.get('kind')\n        if k is None:\n            return 0\n        if k != 'youtube#videoListResponse':\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/youtube/v3/videos",
+      "response_resource": "VideoTopicDetails",
+      "attribute": "topicCategories",
+      "description": "A list of Wikipedia URLs that provide a high-level description of the video's content. Each entry must be a valid URI/URL string.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            td = item.get('topicDetails')\n            if not td:\n                continue\n            cats = td.get('topicCategories')\n            if not cats:\n                continue\n            for url in cats:\n                checked = True\n                if not pattern.match(str(url)):\n                    return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "request_response_constraints": [],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/youtube/v3/videos\",\n      \"response_resource\": \"Video\",\n      \"attribute\": \"kind\",\n      \"description\": \"Identifies what kind of resource this is. The value must be the fixed string \\\"youtube#video\\\".\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            k = item.get('kind')\\n            if k is None:\\n                continue\\n            checked = True\\n            if k != 'youtube#video':\\n                return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/youtube/v3/videos\",\n      \"response_resource\": \"VideoListResponse\",\n      \"attribute\": \"kind\",\n      \"description\": \"Identifies what kind of resource this is. The value must be the fixed string \\\"youtube#videoListResponse\\\".\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        k = latest_response.get('kind')\\n        if k is None:\\n            return 0\\n        if k != 'youtube#videoListResponse':\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/youtube/v3/videos\",\n      \"response_resource\": \"VideoTopicDetails\",\n      \"attribute\": \"topicCategories\",\n      \"description\": \"A list of Wikipedia URLs that provide a high-level description of the video's content. Each entry must be a valid URI/URL string.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            td = item.get('topicDetails')\\n            if not td:\\n                continue\\n            cats = td.get('topicCategories')\\n            if not cats:\\n                continue\\n            for url in cats:\\n                checked = True\\n                if not pattern.match(str(url)):\\n                    return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ],\n  \"request_response_constraints\": []\n}"
+}

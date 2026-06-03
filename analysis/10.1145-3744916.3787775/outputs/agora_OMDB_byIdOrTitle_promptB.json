@@ -1,0 +1,122 @@
+{
+  "service": "OMDB byIdOrTitle",
+  "prompt": "B",
+  "request_info": {
+    "r": "json",
+    "t": "A tale of two guns",
+    "apikey": "anonymous"
+  },
+  "response_body": {
+    "Title": "A Tale of Two Guns",
+    "Year": "2022",
+    "Rated": "N/A",
+    "Released": "17 Feb 2022",
+    "Runtime": "2 min",
+    "Genre": "Western",
+    "Director": "Justin Lee",
+    "Writer": "Justin Lee",
+    "Actors": "Tom Berenger, Casper Van Dien, Ed Morrone",
+    "Plot": "In the lawless West, The Cowboys a notorious brotherhood of killers and thieves reigned over the land with brutal fists and fast guns. Fate had finally caught up with them - and now the merciless gang has but a single surviving me...",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "N/A",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTBjMWU3OWUtYTE0Yy00YTZkLTllZGEtMDIwNDhiNjIxZmNkXkEyXkFqcGdeQXVyMTQwMDg5NjIw._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "3.8/10"
+      }
+    ],
+    "Metascore": "N/A",
+    "imdbRating": "3.8",
+    "imdbVotes": "204",
+    "imdbID": "tt16513514",
+    "Type": "movie",
+    "DVD": "N/A",
+    "BoxOffice": "N/A",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True"
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Response",
+      "description": "The Response field must be one of the enumerated string values: 'True' or 'False'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        val = latest_response.get('Response')\n        if val is None:\n            return 0\n        if val in ['True', 'False']:\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Poster",
+      "description": "The Poster field, when not 'N/A', must be a valid URI/URL string.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        val = latest_response.get('Poster')\n        if val is None or val == 'N/A':\n            return 0\n        if re.match(r'^https?://', str(val)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "imdbID",
+      "description": "The imdbID field must be a valid IMDb ID following the pattern 'tt' followed by digits (e.g. tt1245492).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        val = latest_response.get('imdbID')\n        if val is None or val == 'N/A':\n            return 0\n        if re.match(r'^tt\\d+$', str(val)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "seriesID",
+      "description": "The seriesID field, when present and not 'N/A', must be a valid IMDb ID following the pattern 'tt' followed by digits (e.g. tt0341939).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        val = latest_response.get('seriesID')\n        if val is None or val == 'N/A':\n            return 0\n        if re.match(r'^tt\\d+$', str(val)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "unknown"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "Response",
+      "attribute": "Title",
+      "description": "When the request parameter 't' (title) is provided, the response Title should correspond to the searched title (case-insensitive match).",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "t",
+      "corresponding_attribute_description": "Title of movie or series",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        t = request_info.get('t')\n        if t is None:\n            return 1\n        title = latest_response.get('Title')\n        if title is None:\n            return 0\n        if str(title).strip().lower() == str(t).strip().lower():\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Type",
+      "description": "When the request parameter 'type' is provided, the response Type field must equal the requested type (movie, series, or episode).",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "type",
+      "corresponding_attribute_description": "Return movie, series or episode",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        rtype = request_info.get('type')\n        if rtype is None:\n            return 1\n        resp_type = latest_response.get('Type')\n        if resp_type is None:\n            return 0\n        if str(resp_type).strip().lower() == str(rtype).strip().lower():\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "imdbID",
+      "description": "When the request parameter 'i' (a valid IMDb ID) is provided, the response imdbID must equal the requested IMDb ID.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "i",
+      "corresponding_attribute_description": "A valid IMDb ID (e.g. tt0000001)",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        i = request_info.get('i')\n        if i is None:\n            return 1\n        imdb_id = latest_response.get('imdbID')\n        if imdb_id is None:\n            return 0\n        if str(imdb_id).strip().lower() == str(i).strip().lower():\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Year",
+      "description": "When the request parameter 'y' (year of release) is provided, the response Year should reflect the requested year.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "y",
+      "corresponding_attribute_description": "Year of release",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        y = request_info.get('y')\n        if y is None:\n            return 1\n        year = latest_response.get('Year')\n        if year is None:\n            return 0\n        if str(y).strip() in str(year):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Response\",\n      \"description\": \"The Response field must be one of the enumerated string values: 'True' or 'False'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        val = latest_response.get('Response')\\n        if val is None:\\n            return 0\\n        if val in ['True', 'False']:\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Poster\",\n      \"description\": \"The Poster field, when not 'N/A', must be a valid URI/URL string.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        val = latest_response.get('Poster')\\n        if val is None or val == 'N/A':\\n            return 0\\n        if re.match(r'^https?://', str(val)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"imdbID\",\n      \"description\": \"The imdbID field must be a valid IMDb ID following the pattern 'tt' followed by digits (e.g. tt1245492).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        val = latest_response.get('imdbID')\\n        if val is None or val == 'N/A':\\n            return 0\\n        if re.match(r'^tt\\\\d+$', str(val)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"seriesID\",\n      \"description\": \"The seriesID field, when present and not 'N/A', must be a valid IMDb ID following the pattern 'tt' followed by digits (e.g. tt0341939).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        val = latest_response.get('seriesID')\\n        if val is None or val == 'N/A':\\n            return 0\\n        if re.match(r'^tt\\\\d+$', str(val)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    }\n  ],\n  \"request_response_constraints\": [\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Title\",\n      \"description\": \"When the request parameter 't' (title) is provided, the response Title should correspond to the searched title (case-insensitive match).\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"t\",\n      \"corresponding_attribute_description\": \"Title of movie or series\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        t = request_info.get('t')\\n        if t is None:\\n            return 1\\n        title = latest_response.get('Title')\\n        if title is None:\\n            return 0\\n        if str(title).strip().lower() == str(t).strip().lower():\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Type\",\n      \"description\": \"When the request parameter 'type' is provided, the response Type field must equal the requested type (movie, series, or episode).\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"type\",\n      \"corresponding_attribute_description\": \"Return movie, series or episode\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        rtype = request_info.get('type')\\n        if rtype is None:\\n            return 1\\n        resp_type = latest_response.get('Type')\\n        if resp_type is None:\\n            return 0\\n        if str(resp_type).strip().lower() == str(rtype).strip().lower():\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"imdbID\",\n      \"description\": \"When the request parameter 'i' (a valid IMDb ID) is provided, the response imdbID must equal the requested IMDb ID.\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"i\",\n      \"corresponding_attribute_description\": \"A valid IMDb ID (e.g. tt0000001)\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        i = request_info.get('i')\\n        if i is None:\\n            return 1\\n        imdb_id = latest_response.get('imdbID')\\n        if imdb_id is None:\\n            return 0\\n        if str(imdb_id).strip().lower() == str(i).strip().lower():\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Year\",\n      \"description\": \"When the request parameter 'y' (year of release) is provided, the response Year should reflect the requested year.\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"y\",\n      \"corresponding_attribute_description\": \"Year of release\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        y = request_info.get('y')\\n        if y is None:\\n            return 1\\n        year = latest_response.get('Year')\\n        if year is None:\\n            return 0\\n        if str(y).strip() in str(year):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ]\n}"
+}

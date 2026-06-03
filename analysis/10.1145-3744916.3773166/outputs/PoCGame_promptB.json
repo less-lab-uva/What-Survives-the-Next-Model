@@ -1,0 +1,229 @@
+{
+  "totalExecs": 19842,
+  "speed": 66.14,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 2,
+      "instruction distinction": "5c1 6a3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x4"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 2,
+      "instruction distinction": "5c1 6a3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x4"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "4d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x4"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "6b4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "2f1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "ethBalance",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

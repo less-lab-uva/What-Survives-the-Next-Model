@@ -1,0 +1,137 @@
+{
+  "totalExecs": 21847,
+  "speed": 72.8,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.91,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "5c8 5d4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Put",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                }
+              ]
+            },
+            {
+              "name": "Collect",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0xde0b6b3a7640000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 1,
+      "instruction distinction": "4a2 5b0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Put",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                }
+              ]
+            },
+            {
+              "name": "Collect",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0xde0b6b3a7640000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "3f8 412",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Put",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdead",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

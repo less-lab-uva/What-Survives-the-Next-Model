@@ -1,0 +1,256 @@
+{
+  "totalExecs": 19560,
+  "speed": 65.2,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.72,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 3,
+      "instruction distinction": "7c1 8a3 9e2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "withdrawBalance",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "giveBirth",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 2,
+      "instruction distinction": "5d4 6b1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "giveBirth",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "surprisePanda",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 2,
+      "instruction distinction": "4a7 4c9",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "giveBirth",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "surprisePanda",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "3f8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "giveBirth",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 1,
+      "instruction distinction": "3d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "giveBirth",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "2a1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "surprisePanda",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 10000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

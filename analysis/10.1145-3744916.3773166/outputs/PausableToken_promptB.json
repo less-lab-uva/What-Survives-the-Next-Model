@@ -1,0 +1,83 @@
+{
+  "totalExecs": 19842,
+  "speed": 66.14,
+  "queueCycles": 3,
+  "uniqExceptions": 1,
+  "coverage": 0.92,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "8c2 8d0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "batchTransfer",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x000000000000000000000000000000000000000000000000000000000000dead 0x000000000000000000000000000000000000000000000000000000000000beef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x8000000000000000000000000000000000000000000000000000000000000000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

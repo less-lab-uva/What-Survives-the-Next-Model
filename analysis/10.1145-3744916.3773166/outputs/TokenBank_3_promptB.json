@@ -1,0 +1,247 @@
+{
+  "totalExecs": 19500,
+  "speed": 65.0,
+  "queueCycles": 3,
+  "uniqExceptions": 1,
+  "coverage": 0.92,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 2,
+      "instruction distinction": "2a1 4c7",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "WithdrawToken",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0x1111111111111111111111111111111111111111"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0de0b6b3a7640000"
+                },
+                {
+                  "type": "address",
+                  "value": "0x2222222222222222222222222222222222222222"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "WithdrawToHolder",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0de0b6b3a7640000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "4c7 4d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "WithdrawToHolder",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1158e460913d00000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 1,
+      "instruction distinction": "3f0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "3a9",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 1,
+      "instruction distinction": "4d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "WithdrawToHolder",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x056bc75e2d63100000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "3f0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initTokenBank",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

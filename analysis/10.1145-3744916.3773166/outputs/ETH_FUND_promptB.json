@@ -1,0 +1,126 @@
+{
+  "totalExecs": 19842,
+  "speed": 66.14,
+  "queueCycles": 3,
+  "uniqExceptions": 1,
+  "coverage": 0.93,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "4c1 4d3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "CashOut",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1bc16d674ec80000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "2a7 4b5",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "CashOut",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x1bc16d674ec80000"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "2c4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "Deposit",
+              "inputs": []
+            },
+            {
+              "name": "Deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

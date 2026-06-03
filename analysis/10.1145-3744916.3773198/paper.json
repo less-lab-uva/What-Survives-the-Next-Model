@@ -1,0 +1,22 @@
+{
+  "title": "One Signature, Multiple Payments: Demystifying and Detecting Signature Replay Vulnerabilities in Smart Contracts",
+  "doi": "10.1145/3744916.3773198",
+  "venue": "ICSE 2026",
+  "dataset": "DB2 — 500 Ethereum smart contracts (72 positive, 428 negative), sampled 17",
+  "metric": "Precision, Recall, F1, Accuracy",
+  "original_result": {
+    "TP": 69,
+    "FP": 15,
+    "TN": 413,
+    "FN": 3,
+    "Precision": 0.8214,
+    "Recall": 0.9583,
+    "F1": 0.8846
+  },
+  "our_result": {
+    "prompt_A": {"Precision": 0.1667, "Recall": 0.6667, "F1": 0.2667, "Accuracy": 0.3529},
+    "prompt_B": {"Precision": 0.0909, "Recall": 0.5, "F1": 0.1538, "Accuracy": 0.2667}
+  },
+  "sampled_data_size": 17,
+  "total_cost": "$15.47"
+}

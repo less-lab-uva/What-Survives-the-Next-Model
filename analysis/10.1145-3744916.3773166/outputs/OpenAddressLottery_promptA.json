@@ -1,0 +1,104 @@
+{
+  "totalExecs": 21567,
+  "speed": 71.89,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 1,
+      "instruction distinction": "1a4 1c8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "participate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "2b0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "participate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "3f2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "participate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

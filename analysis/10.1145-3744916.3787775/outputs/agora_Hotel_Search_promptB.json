@@ -1,0 +1,319 @@
+{
+  "service": "Hotel Search",
+  "prompt": "B",
+  "request_info": {
+    "hotelIds": "SIDXB408",
+    "roomQuantity": "2",
+    "adults": "2",
+    "currency": "MKD",
+    "countryOfResidence": "GB",
+    "priceRange": "300",
+    "paymentPolicy": "GUARANTEE"
+  },
+  "response_body": {
+    "data": [
+      {
+        "type": "hotel-offers",
+        "hotel": {
+          "type": "hotel",
+          "hotelId": "SIDXB408",
+          "chainCode": "SI",
+          "dupeId": "700018805",
+          "name": "Sheraton Dubai Creek Hotel and Towers",
+          "cityCode": "DXB",
+          "latitude": 25.25242,
+          "longitude": 55.32802
+        },
+        "available": true,
+        "offers": [
+          {
+            "id": "W7YTHG0VTK",
+            "roomQuantity": "2",
+            "checkInDate": "2022-09-21",
+            "checkOutDate": "2022-09-22",
+            "rateCode": "S9R",
+            "rateFamilyEstimated": {
+              "code": "SRS",
+              "type": "C"
+            },
+            "room": {
+              "type": "XMI",
+              "typeEstimated": {
+                "category": "DELUXE_ROOM",
+                "beds": 1,
+                "bedType": "KING"
+              },
+              "description": {
+                "text": "Marriott Senior Discount, includes\nDeluxe City View King, 1 King, Mini fridge, 37s\nqm/398sqft, Wireless internet, complimentary, W",
+                "lang": "EN"
+              }
+            },
+            "guests": {
+              "adults": 2
+            },
+            "price": {
+              "currency": "AED",
+              "base": "261.00",
+              "total": "639.45",
+              "variations": {
+                "average": {
+                  "base": "261.00"
+                },
+                "changes": [
+                  {
+                    "startDate": "2022-09-21",
+                    "endDate": "2022-09-22",
+                    "base": "261.00"
+                  }
+                ]
+              }
+            },
+            "policies": {
+              "paymentType": "guarantee",
+              "cancellation": {
+                "amount": "522.00",
+                "deadline": "2022-09-20T23:59:00+04:00"
+              }
+            },
+            "self": "https://test.api.amadeus.com/v3/shopping/hotel-offers/W7YTHG0VTK"
+          }
+        ],
+        "self": "https://test.api.amadeus.com/v3/shopping/hotel-offers?hotelIds=SIDXB408&adults=2&countryOfResidence=GB&currency=MKD&paymentPolicy=GUARANTEE&roomQuantity=2"
+      }
+    ],
+    "dictionaries": {
+      "currencyConversionLookupRates": {
+        "AED": {
+          "rate": "16.7448699999999988",
+          "target": "MKD",
+          "targetDecimalPlaces": 0
+        }
+      }
+    }
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "Hotel",
+      "attribute": "hotelId",
+      "description": "Amadeus Property Code must be exactly 8 characters consisting of uppercase letters A-Z and digits 0-9, matching pattern ^[A-Z0-9]{8}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z0-9]{8}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            hotel = ho.get('hotel')\n            if hotel and hotel.get('hotelId') is not None:\n                found = True\n                if not pattern.match(str(hotel.get('hotelId'))):\n                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "Hotel",
+      "attribute": "chainCode",
+      "description": "Brand or Merchant code must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z]{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            hotel = ho.get('hotel')\n            if hotel and hotel.get('chainCode') is not None:\n                found = True\n                if not pattern.match(str(hotel.get('chainCode'))):\n                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "Hotel",
+      "attribute": "brandCode",
+      "description": "Brand code must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z]{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            hotel = ho.get('hotel')\n            if hotel and hotel.get('brandCode') is not None:\n                found = True\n                if not pattern.match(str(hotel.get('brandCode'))):\n                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "Hotel",
+      "attribute": "cityCode",
+      "description": "The IATA city code must be exactly 3 uppercase letters, matching pattern ^[A-Z]{3}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z]{3}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            hotel = ho.get('hotel')\n            if hotel and hotel.get('cityCode') is not None:\n                found = True\n                if not pattern.match(str(hotel.get('cityCode'))):\n                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelOffer",
+      "attribute": "type",
+      "description": "The data type must be the enumerated value 'hotel-offer'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                if offer.get('type') is not None:\n                    found = True\n                    if offer.get('type') != 'hotel-offer':\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelOffer",
+      "attribute": "id",
+      "description": "Offer id must be 2 to 100 characters long and contain only uppercase letters A-Z and digits 0-9, matching pattern ^[A-Z0-9]*$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z0-9]*$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                if offer.get('id') is not None:\n                    found = True\n                    v = str(offer.get('id'))\n                    if not pattern.match(v):\n                        return -1\n                    if len(v) < 2 or len(v) > 100:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelOffer",
+      "attribute": "checkInDate",
+      "description": "Check-in date must follow the format YYYY-MM-DD.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^\\d{4}-\\d{2}-\\d{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                if offer.get('checkInDate') is not None:\n                    found = True\n                    if not pattern.match(str(offer.get('checkInDate'))):\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelOffer",
+      "attribute": "checkOutDate",
+      "description": "Check-out date must follow the format YYYY-MM-DD and the lowest accepted value is checkInDate+1.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    from datetime import datetime\n    try:\n        pattern = re.compile(r'^\\d{4}-\\d{2}-\\d{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                co = offer.get('checkOutDate')\n                if co is not None:\n                    found = True\n                    if not pattern.match(str(co)):\n                        return -1\n                    ci = offer.get('checkInDate')\n                    if ci and pattern.match(str(ci)):\n                        d_ci = datetime.strptime(ci, '%Y-%m-%d')\n                        d_co = datetime.strptime(co, '%Y-%m-%d')\n                        if d_co <= d_ci:\n                            return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelOffer",
+      "attribute": "rateCode",
+      "description": "Special Rate provider response code must be exactly 3 characters consisting of uppercase letters, digits, or '*', matching pattern ^[A-Z0-9*]{3}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z0-9*]{3}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                if offer.get('rateCode') is not None:\n                    found = True\n                    if not pattern.match(str(offer.get('rateCode'))):\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_RateFamily",
+      "attribute": "code",
+      "description": "The estimated rate family code must match pattern [A-Z0-9]{3} (3 uppercase letters or digits).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'[A-Z0-9]{3}')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                rf = offer.get('rateFamilyEstimated')\n                if rf and rf.get('code') is not None:\n                    found = True\n                    if not pattern.search(str(rf.get('code'))):\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_RateFamily",
+      "attribute": "type",
+      "description": "The rate type must be one of P (public), N (negotiated), or C (conditional), matching pattern [PNC].",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                rf = offer.get('rateFamilyEstimated')\n                if rf and rf.get('type') is not None:\n                    found = True\n                    if str(rf.get('type')) not in ('P', 'N', 'C'):\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_RoomDetails",
+      "attribute": "type",
+      "description": "Room type code must be exactly 3 characters consisting of uppercase letters, digits, or '*', matching pattern ^[A-Z0-9*]{3}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z0-9*]{3}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                room = offer.get('room')\n                if room and room.get('type') is not None:\n                    found = True\n                    if not pattern.match(str(room.get('type'))):\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_Guests",
+      "attribute": "adults",
+      "description": "Number of adult guests per room must be an integer between 1 and 9 inclusive.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                guests = offer.get('guests')\n                if guests and guests.get('adults') is not None:\n                    found = True\n                    v = guests.get('adults')\n                    if not isinstance(v, int) or isinstance(v, bool):\n                        return -1\n                    if v < 1 or v > 9:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_Guests",
+      "attribute": "childAges",
+      "description": "Each child age must be an integer between 0 and 20 inclusive.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                guests = offer.get('guests')\n                if guests and guests.get('childAges') is not None:\n                    for age in guests.get('childAges'):\n                        found = True\n                        if not isinstance(age, int) or isinstance(age, bool):\n                            return -1\n                        if age < 0 or age > 20:\n                            return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_PolicyDetails",
+      "attribute": "paymentType",
+      "description": "Payment type must be one of the enumerated values: GUARANTEE, DEPOSIT, PREPAY, HOLDTIME, guarantee, deposit, prepay, holdtime.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        valid = {'GUARANTEE','DEPOSIT','PREPAY','HOLDTIME','guarantee','deposit','prepay','holdtime'}\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if pol and pol.get('paymentType') is not None:\n                    found = True\n                    if pol.get('paymentType') not in valid:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_CancellationPolicy",
+      "attribute": "type",
+      "description": "Cancellation type must be the enumerated value FULL_STAY.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if pol:\n                    canc = pol.get('cancellation')\n                    if canc and canc.get('type') is not None:\n                        found = True\n                        if canc.get('type') != 'FULL_STAY':\n                            return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_CancellationPolicy",
+      "attribute": "numberOfNights",
+      "description": "Number of nights due as fee in case of cancellation must be a non-negative integer (minimum 0).",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if pol:\n                    canc = pol.get('cancellation')\n                    if canc and canc.get('numberOfNights') is not None:\n                        found = True\n                        v = canc.get('numberOfNights')\n                        if not isinstance(v, int) or isinstance(v, bool):\n                            return -1\n                        if v < 0:\n                            return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_CancellationPolicy",
+      "attribute": "deadline",
+      "description": "Cancellation deadline must be a datetime in ISO 8601 format (e.g. 2010-08-14T12:00:00+01:00 or 2010-08-14T12:00:00Z).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if pol:\n                    canc = pol.get('cancellation')\n                    if canc and canc.get('deadline') is not None:\n                        found = True\n                        if not pattern.match(str(canc.get('deadline'))):\n                            return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_PriceVariation",
+      "attribute": "startDate",
+      "description": "Price variation period begin date must follow format YYYY-MM-DD.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^\\d{4}-\\d{2}-\\d{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                price = offer.get('price')\n                if price:\n                    var = price.get('variations')\n                    if var:\n                        for ch in var.get('changes', []):\n                            if ch.get('startDate') is not None:\n                                found = True\n                                if not pattern.match(str(ch.get('startDate'))):\n                                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_PriceVariation",
+      "attribute": "endDate",
+      "description": "Price variation period end date must follow format YYYY-MM-DD.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^\\d{4}-\\d{2}-\\d{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                price = offer.get('price')\n                if price:\n                    var = price.get('variations')\n                    if var:\n                        for ch in var.get('changes', []):\n                            if ch.get('endDate') is not None:\n                                found = True\n                                if not pattern.match(str(ch.get('endDate'))):\n                                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "Tax",
+      "attribute": "currency",
+      "description": "Tax currency must be a monetary unit code of length between 1 and 3 characters.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                price = offer.get('price')\n                if price:\n                    for tax in price.get('taxes', []):\n                        if tax.get('currency') is not None:\n                            found = True\n                            v = str(tax.get('currency'))\n                            if len(v) < 1 or len(v) > 3:\n                                return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "HotelProduct_PaymentPolicy",
+      "attribute": "creditCards",
+      "description": "Each accepted credit card type must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        pattern = re.compile(r'^[A-Z]{2}$')\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if not pol:\n                    continue\n                for key in ('guarantee', 'deposit', 'prepay'):\n                    sub = pol.get(key)\n                    if sub:\n                        ap = sub.get('acceptedPayments')\n                        if ap and ap.get('creditCards') is not None:\n                            for cc in ap.get('creditCards'):\n                                found = True\n                                if not pattern.match(str(cc)):\n                                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "Hotel",
+      "attribute": "hotelId",
+      "description": "The hotelId of each returned hotel must be one of the Amadeus property codes provided in the 'hotelIds' request parameter.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "hotelIds",
+      "corresponding_attribute_description": "Amadeus property codes on 8 chars. Mandatory parameter for a search by predefined list of hotels.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        raw = request_info.get('hotelIds')\n        if raw is None:\n            return 1\n        if isinstance(raw, list):\n            ids = set(str(x) for x in raw)\n        else:\n            ids = set(s.strip() for s in str(raw).split(',') if s.strip())\n        if not ids:\n            return 1\n        found = False\n        for ho in latest_response.get('data', []):\n            hotel = ho.get('hotel')\n            if hotel and hotel.get('hotelId') is not None:\n                found = True\n                if str(hotel.get('hotelId')) not in ids:\n                    return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "HotelProduct_Guests",
+      "attribute": "adults",
+      "description": "The number of adults in each offer's guests must equal the 'adults' value supplied in the request.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "adults",
+      "corresponding_attribute_description": "Number of adult guests (1-9) per room.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        adults = request_info.get('adults')\n        if adults is None:\n            return 1\n        adults = int(adults)\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                guests = offer.get('guests')\n                if guests and guests.get('adults') is not None:\n                    found = True\n                    if guests.get('adults') != adults:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "HotelOffer",
+      "attribute": "roomQuantity",
+      "description": "The roomQuantity in each offer must equal the 'roomQuantity' value supplied in the request.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "roomQuantity",
+      "corresponding_attribute_description": "Number of rooms requested (1-9).",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        rq = request_info.get('roomQuantity')\n        if rq is None:\n            return 1\n        rq = str(int(rq))\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                if offer.get('roomQuantity') is not None:\n                    found = True\n                    if str(offer.get('roomQuantity')) != rq:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "HotelProduct_PolicyDetails",
+      "attribute": "paymentType",
+      "description": "When the 'paymentPolicy' request parameter is set to a specific value other than NONE (e.g. GUARANTEE), the paymentType of each returned offer's policies must match that value (case-insensitive).",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "paymentPolicy",
+      "corresponding_attribute_description": "Filter the response based on a specific payment type. NONE means all types (default).",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        pp = request_info.get('paymentPolicy')\n        if pp is None or str(pp).upper() == 'NONE':\n            return 1\n        target = str(pp).upper()\n        found = False\n        for ho in latest_response.get('data', []):\n            for offer in ho.get('offers', []):\n                pol = offer.get('policies')\n                if pol and pol.get('paymentType') is not None:\n                    found = True\n                    if str(pol.get('paymentType')).upper() != target:\n                        return -1\n        return 1 if found else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"Hotel\",\n      \"attribute\": \"hotelId\",\n      \"description\": \"Amadeus Property Code must be exactly 8 characters consisting of uppercase letters A-Z and digits 0-9, matching pattern ^[A-Z0-9]{8}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z0-9]{8}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            hotel = ho.get('hotel')\\n            if hotel and hotel.get('hotelId') is not None:\\n                found = True\\n                if not pattern.match(str(hotel.get('hotelId'))):\\n                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"Hotel\",\n      \"attribute\": \"chainCode\",\n      \"description\": \"Brand or Merchant code must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z]{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            hotel = ho.get('hotel')\\n            if hotel and hotel.get('chainCode') is not None:\\n                found = True\\n                if not pattern.match(str(hotel.get('chainCode'))):\\n                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"Hotel\",\n      \"attribute\": \"brandCode\",\n      \"description\": \"Brand code must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z]{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            hotel = ho.get('hotel')\\n            if hotel and hotel.get('brandCode') is not None:\\n                found = True\\n                if not pattern.match(str(hotel.get('brandCode'))):\\n                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"Hotel\",\n      \"attribute\": \"cityCode\",\n      \"description\": \"The IATA city code must be exactly 3 uppercase letters, matching pattern ^[A-Z]{3}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z]{3}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            hotel = ho.get('hotel')\\n            if hotel and hotel.get('cityCode') is not None:\\n                found = True\\n                if not pattern.match(str(hotel.get('cityCode'))):\\n                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"type\",\n      \"description\": \"The data type must be the enumerated value 'hotel-offer'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                if offer.get('type') is not None:\\n                    found = True\\n                    if offer.get('type') != 'hotel-offer':\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"id\",\n      \"description\": \"Offer id must be 2 to 100 characters long and contain only uppercase letters A-Z and digits 0-9, matching pattern ^[A-Z0-9]*$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z0-9]*$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                if offer.get('id') is not None:\\n                    found = True\\n                    v = str(offer.get('id'))\\n                    if not pattern.match(v):\\n                        return -1\\n                    if len(v) < 2 or len(v) > 100:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"checkInDate\",\n      \"description\": \"Check-in date must follow the format YYYY-MM-DD.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^\\\\d{4}-\\\\d{2}-\\\\d{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                if offer.get('checkInDate') is not None:\\n                    found = True\\n                    if not pattern.match(str(offer.get('checkInDate'))):\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"checkOutDate\",\n      \"description\": \"Check-out date must follow the format YYYY-MM-DD and the lowest accepted value is checkInDate+1.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    from datetime import datetime\\n    try:\\n        pattern = re.compile(r'^\\\\d{4}-\\\\d{2}-\\\\d{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                co = offer.get('checkOutDate')\\n                if co is not None:\\n                    found = True\\n                    if not pattern.match(str(co)):\\n                        return -1\\n                    ci = offer.get('checkInDate')\\n                    if ci and pattern.match(str(ci)):\\n                        d_ci = datetime.strptime(ci, '%Y-%m-%d')\\n                        d_co = datetime.strptime(co, '%Y-%m-%d')\\n                        if d_co <= d_ci:\\n                            return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"rateCode\",\n      \"description\": \"Special Rate provider response code must be exactly 3 characters consisting of uppercase letters, digits, or '*', matching pattern ^[A-Z0-9*]{3}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z0-9*]{3}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                if offer.get('rateCode') is not None:\\n                    found = True\\n                    if not pattern.match(str(offer.get('rateCode'))):\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_RateFamily\",\n      \"attribute\": \"code\",\n      \"description\": \"The estimated rate family code must match pattern [A-Z0-9]{3} (3 uppercase letters or digits).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'[A-Z0-9]{3}')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                rf = offer.get('rateFamilyEstimated')\\n                if rf and rf.get('code') is not None:\\n                    found = True\\n                    if not pattern.search(str(rf.get('code'))):\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_RateFamily\",\n      \"attribute\": \"type\",\n      \"description\": \"The rate type must be one of P (public), N (negotiated), or C (conditional), matching pattern [PNC].\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                rf = offer.get('rateFamilyEstimated')\\n                if rf and rf.get('type') is not None:\\n                    found = True\\n                    if str(rf.get('type')) not in ('P', 'N', 'C'):\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_RoomDetails\",\n      \"attribute\": \"type\",\n      \"description\": \"Room type code must be exactly 3 characters consisting of uppercase letters, digits, or '*', matching pattern ^[A-Z0-9*]{3}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z0-9*]{3}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                room = offer.get('room')\\n                if room and room.get('type') is not None:\\n                    found = True\\n                    if not pattern.match(str(room.get('type'))):\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_Guests\",\n      \"attribute\": \"adults\",\n      \"description\": \"Number of adult guests per room must be an integer between 1 and 9 inclusive.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                guests = offer.get('guests')\\n                if guests and guests.get('adults') is not None:\\n                    found = True\\n                    v = guests.get('adults')\\n                    if not isinstance(v, int) or isinstance(v, bool):\\n                        return -1\\n                    if v < 1 or v > 9:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_Guests\",\n      \"attribute\": \"childAges\",\n      \"description\": \"Each child age must be an integer between 0 and 20 inclusive.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                guests = offer.get('guests')\\n                if guests and guests.get('childAges') is not None:\\n                    for age in guests.get('childAges'):\\n                        found = True\\n                        if not isinstance(age, int) or isinstance(age, bool):\\n                            return -1\\n                        if age < 0 or age > 20:\\n                            return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_PolicyDetails\",\n      \"attribute\": \"paymentType\",\n      \"description\": \"Payment type must be one of the enumerated values: GUARANTEE, DEPOSIT, PREPAY, HOLDTIME, guarantee, deposit, prepay, holdtime.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        valid = {'GUARANTEE','DEPOSIT','PREPAY','HOLDTIME','guarantee','deposit','prepay','holdtime'}\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if pol and pol.get('paymentType') is not None:\\n                    found = True\\n                    if pol.get('paymentType') not in valid:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_CancellationPolicy\",\n      \"attribute\": \"type\",\n      \"description\": \"Cancellation type must be the enumerated value FULL_STAY.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if pol:\\n                    canc = pol.get('cancellation')\\n                    if canc and canc.get('type') is not None:\\n                        found = True\\n                        if canc.get('type') != 'FULL_STAY':\\n                            return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_CancellationPolicy\",\n      \"attribute\": \"numberOfNights\",\n      \"description\": \"Number of nights due as fee in case of cancellation must be a non-negative integer (minimum 0).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if pol:\\n                    canc = pol.get('cancellation')\\n                    if canc and canc.get('numberOfNights') is not None:\\n                        found = True\\n                        v = canc.get('numberOfNights')\\n                        if not isinstance(v, int) or isinstance(v, bool):\\n                            return -1\\n                        if v < 0:\\n                            return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_CancellationPolicy\",\n      \"attribute\": \"deadline\",\n      \"description\": \"Cancellation deadline must be a datetime in ISO 8601 format (e.g. 2010-08-14T12:00:00+01:00 or 2010-08-14T12:00:00Z).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(Z|[+-]\\\\d{2}:\\\\d{2})?$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if pol:\\n                    canc = pol.get('cancellation')\\n                    if canc and canc.get('deadline') is not None:\\n                        found = True\\n                        if not pattern.match(str(canc.get('deadline'))):\\n                            return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_PriceVariation\",\n      \"attribute\": \"startDate\",\n      \"description\": \"Price variation period begin date must follow format YYYY-MM-DD.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^\\\\d{4}-\\\\d{2}-\\\\d{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                price = offer.get('price')\\n                if price:\\n                    var = price.get('variations')\\n                    if var:\\n                        for ch in var.get('changes', []):\\n                            if ch.get('startDate') is not None:\\n                                found = True\\n                                if not pattern.match(str(ch.get('startDate'))):\\n                                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_PriceVariation\",\n      \"attribute\": \"endDate\",\n      \"description\": \"Price variation period end date must follow format YYYY-MM-DD.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^\\\\d{4}-\\\\d{2}-\\\\d{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                price = offer.get('price')\\n                if price:\\n                    var = price.get('variations')\\n                    if var:\\n                        for ch in var.get('changes', []):\\n                            if ch.get('endDate') is not None:\\n                                found = True\\n                                if not pattern.match(str(ch.get('endDate'))):\\n                                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"Tax\",\n      \"attribute\": \"currency\",\n      \"description\": \"Tax currency must be a monetary unit code of length between 1 and 3 characters.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                price = offer.get('price')\\n                if price:\\n                    for tax in price.get('taxes', []):\\n                        if tax.get('currency') is not None:\\n                            found = True\\n                            v = str(tax.get('currency'))\\n                            if len(v) < 1 or len(v) > 3:\\n                                return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/shopping/hotel-offers\",\n      \"response_resource\": \"HotelProduct_PaymentPolicy\",\n      \"attribute\": \"creditCards\",\n      \"description\": \"Each accepted credit card type must be exactly 2 uppercase letters, matching pattern ^[A-Z]{2}$.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        pattern = re.compile(r'^[A-Z]{2}$')\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if not pol:\\n                    continue\\n                for key in ('guarantee', 'deposit', 'prepay'):\\n                    sub = pol.get(key)\\n                    if sub:\\n                        ap = sub.get('acceptedPayments')\\n                        if ap and ap.get('creditCards') is not None:\\n                            for cc in ap.get('creditCards'):\\n                                found = True\\n                                if not pattern.match(str(cc)):\\n                                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    }\n  ],\n  \"request_response_constraints\": [\n    {\n      \"response_resource\": \"Hotel\",\n      \"attribute\": \"hotelId\",\n      \"description\": \"The hotelId of each returned hotel must be one of the Amadeus property codes provided in the 'hotelIds' request parameter.\",\n      \"attribute_inferred_from_operation\": \"get-/shopping/hotel-offers\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"hotelIds\",\n      \"corresponding_attribute_description\": \"Amadeus property codes on 8 chars. Mandatory parameter for a search by predefined list of hotels.\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        raw = request_info.get('hotelIds')\\n        if raw is None:\\n            return 1\\n        if isinstance(raw, list):\\n            ids = set(str(x) for x in raw)\\n        else:\\n            ids = set(s.strip() for s in str(raw).split(',') if s.strip())\\n        if not ids:\\n            return 1\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            hotel = ho.get('hotel')\\n            if hotel and hotel.get('hotelId') is not None:\\n                found = True\\n                if str(hotel.get('hotelId')) not in ids:\\n                    return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"HotelProduct_Guests\",\n      \"attribute\": \"adults\",\n      \"description\": \"The number of adults in each offer's guests must equal the 'adults' value supplied in the request.\",\n      \"attribute_inferred_from_operation\": \"get-/shopping/hotel-offers\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"adults\",\n      \"corresponding_attribute_description\": \"Number of adult guests (1-9) per room.\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        adults = request_info.get('adults')\\n        if adults is None:\\n            return 1\\n        adults = int(adults)\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                guests = offer.get('guests')\\n                if guests and guests.get('adults') is not None:\\n                    found = True\\n                    if guests.get('adults') != adults:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"HotelOffer\",\n      \"attribute\": \"roomQuantity\",\n      \"description\": \"The roomQuantity in each offer must equal the 'roomQuantity' value supplied in the request.\",\n      \"attribute_inferred_from_operation\": \"get-/shopping/hotel-offers\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"roomQuantity\",\n      \"corresponding_attribute_description\": \"Number of rooms requested (1-9).\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        rq = request_info.get('roomQuantity')\\n        if rq is None:\\n            return 1\\n        rq = str(int(rq))\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                if offer.get('roomQuantity') is not None:\\n                    found = True\\n                    if str(offer.get('roomQuantity')) != rq:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"HotelProduct_PolicyDetails\",\n      \"attribute\": \"paymentType\",\n      \"description\": \"When the 'paymentPolicy' request parameter is set to a specific value other than NONE (e.g. GUARANTEE), the paymentType of each returned offer's policies must match that value (case-insensitive).\",\n      \"attribute_inferred_from_operation\": \"get-/shopping/hotel-offers\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"paymentPolicy\",\n      \"corresponding_attribute_description\": \"Filter the response based on a specific payment type. NONE means all types (default).\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        pp = request_info.get('paymentPolicy')\\n        if pp is None or str(pp).upper() == 'NONE':\\n            return 1\\n        target = str(pp).upper()\\n        found = False\\n        for ho in latest_response.get('data', []):\\n            for offer in ho.get('offers', []):\\n                pol = offer.get('policies')\\n                if pol and pol.get('paymentType') is not None:\\n                    found = True\\n                    if str(pol.get('paymentType')).upper() != target:\\n                        return -1\\n        return 1 if found else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ]\n}"
+}

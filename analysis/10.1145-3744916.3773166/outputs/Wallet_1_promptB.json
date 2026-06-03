@@ -1,0 +1,315 @@
+{
+  "totalExecs": 19842,
+  "speed": 66.14,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 1,
+      "instruction distinction": "4f8 5a2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "hasConfirmed",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "6c1 6d4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initWallet",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1158e460913d00000"
+                }
+              ]
+            },
+            {
+              "name": "execute",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0xde0b6b3a7640000"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 1,
+      "instruction distinction": "7a3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initWallet",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1158e460913d00000"
+                }
+              ]
+            },
+            {
+              "name": "execute",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0xde0b6b3a7640000"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "6e2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initWallet",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x2"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                }
+              ]
+            },
+            {
+              "name": "execute",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0xde0b6b3a7640000"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0xabcd"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 1,
+      "instruction distinction": "8b1 8b6",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initWallet",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "freezing ether": {
+      "number": 1,
+      "instruction distinction": "8b1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "hasConfirmed",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "9c3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "initWallet",
+              "inputs": [
+                {
+                  "type": "address[]",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x1"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            },
+            {
+              "name": "execute",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

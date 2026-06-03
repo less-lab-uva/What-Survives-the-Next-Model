@@ -1,0 +1,285 @@
+{
+  "totalExecs": 19847,
+  "speed": 66.16,
+  "queueCycles": 3,
+  "uniqExceptions": 4,
+  "coverage": 0.78,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "9c4 9d2 9e8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "createChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "address",
+                  "value": "0x000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                },
+                {
+                  "type": "address",
+                  "value": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x1158e460913d00000"
+                }
+              ]
+            },
+            {
+              "name": "joinChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x0"
+                }
+              ]
+            },
+            {
+              "name": "byzantineCloseChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            },
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 50000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 1,
+      "instruction distinction": "7a2 8b4 9e1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "createChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                },
+                {
+                  "type": "address",
+                  "value": "0x000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                },
+                {
+                  "type": "address",
+                  "value": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x1158e460913d00000"
+                }
+              ]
+            },
+            {
+              "name": "LCOpenTimeout",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "5c1 5c3",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "createChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000002"
+                },
+                {
+                  "type": "address",
+                  "value": "0x000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                },
+                {
+                  "type": "address",
+                  "value": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x1"
+                }
+              ]
+            },
+            {
+              "name": "joinChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000002"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            },
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 50000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 1,
+      "instruction distinction": "6a1 6a5",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "createChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+                },
+                {
+                  "type": "address",
+                  "value": "0x000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint256",
+                  "value": "0x0"
+                },
+                {
+                  "type": "address",
+                  "value": "0x0000000000000000000000000000000000000000"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x1"
+                }
+              ]
+            },
+            {
+              "name": "joinChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+                },
+                {
+                  "type": "uint256[2]",
+                  "value": "0x0"
+                }
+              ]
+            },
+            {
+              "name": "closeVirtualChannel",
+              "inputs": [
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000003"
+                },
+                {
+                  "type": "bytes32",
+                  "value": "0x0000000000000000000000000000000000000000000000000000000000000099"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            },
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 50000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

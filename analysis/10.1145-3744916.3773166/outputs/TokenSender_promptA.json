@@ -1,0 +1,127 @@
+{
+  "totalExecs": 21547,
+  "speed": 71.8,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.83,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 1,
+      "instruction distinction": "1a7",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "execute",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0x000000000000000000000000deadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "uint",
+                  "value": "0x0de0b6b3a7640000"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 1,
+      "instruction distinction": "0e2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "fill",
+              "inputs": [
+                {
+                  "type": "uint[]",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "0c4 0d8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "fill",
+              "inputs": [
+                {
+                  "type": "uint[]",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

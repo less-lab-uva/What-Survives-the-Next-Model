@@ -1,0 +1,197 @@
+{
+  "totalExecs": 21247,
+  "speed": 70.8,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 1,
+      "instruction distinction": "8f2 9a1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 1,
+      "instruction distinction": "9a1 9b4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x2"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "6c3 7d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x2"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "a4f",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            },
+            {
+              "name": "donate",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "b12",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "OpenToThePublic",
+              "inputs": []
+            },
+            {
+              "name": "AdjustDifficulty",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x2"
+                }
+              ]
+            },
+            {
+              "name": "wager",
+              "inputs": []
+            },
+            {
+              "name": "play",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

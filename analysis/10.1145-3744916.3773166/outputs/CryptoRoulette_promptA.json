@@ -1,0 +1,138 @@
+{
+  "totalExecs": 21567,
+  "speed": 71.89,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 1,
+      "instruction distinction": "2f1 3c8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "play",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x05"
+                }
+              ]
+            },
+            {
+              "name": "kill",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "1a4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "play",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x05"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "3d2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "kill",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "4a0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "play",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0x05"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "service": "OMDB byIdOrTitle",
+  "prompt": "A",
+  "request_info": {
+    "r": "json",
+    "apikey": "anonymous",
+    "plot": "short",
+    "i": "tt10234724"
+  },
+  "response_body": {
+    "Title": "Moon Knight",
+    "Year": "2022",
+    "Rated": "TV-14",
+    "Released": "30 Mar 2022",
+    "Runtime": "31S min",
+    "Genre": "Action, Adventure, Fantasy",
+    "Director": "N/A",
+    "Writer": "Doug Moench",
+    "Actors": "Oscar Isaac, Ethan Hawke, May Calamawy",
+    "Plot": "Steven Grant discovers he's been granted the powers of an Egyptian moon god. But he soon finds out that these newfound powers can be both a blessing and a curse to his troubled life.",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "Won 1 Primetime Emmy. 1 win & 17 nominations total",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYTc5OWNhYjktMThlOS00ODUxLTgwNDQtZjdjYjkyM2IwZTZlXkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "7.3/10"
+      }
+    ],
+    "Metascore": "N/A",
+    "imdbRating": "7.3",
+    "imdbVotes": "212,947",
+    "imdbID": "tt10234724",
+    "Type": "series",
+    "totalSeasons": "1",
+    "Response": "True"
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Response",
+      "description": "The 'Response' property must be one of the enumerated string values: 'True' or 'False'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if 'Response' not in latest_response or latest_response.get('Response') is None:\n            return 0\n        if latest_response.get('Response') in ['True', 'False']:\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Poster",
+      "description": "The 'Poster' property, when present and not 'N/A', must be a valid URI string.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        poster = latest_response.get('Poster')\n        if poster is None:\n            return 0\n        if poster == 'N/A':\n            return 1\n        if re.match(r'^https?://', str(poster)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "imdbID",
+      "description": "The 'imdbID' property must be a valid IMDb ID string of the form 'tt' followed by digits.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        imdb_id = latest_response.get('imdbID')\n        if imdb_id is None or imdb_id == 'N/A':\n            return 0\n        if re.match(r'^tt\\d+$', str(imdb_id)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "seriesID",
+      "description": "The 'seriesID' property, when present and not 'N/A', must be a valid IMDb ID string of the form 'tt' followed by digits.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        sid = latest_response.get('seriesID')\n        if sid is None:\n            return 0\n        if sid == 'N/A':\n            return 1\n        if re.match(r'^tt\\d+$', str(sid)):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "unknown"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "Response",
+      "attribute": "imdbID",
+      "description": "When the request parameter 'i' (a valid IMDb ID) is supplied, the response 'imdbID' property must equal the requested IMDb ID.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "i",
+      "corresponding_attribute_description": "A valid IMDb ID (e.g. tt0000001)",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        requested = request_info.get('i')\n        if requested is None:\n            return 0\n        imdb_id = latest_response.get('imdbID')\n        if imdb_id is None:\n            return 0\n        if str(imdb_id) == str(requested):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Type",
+      "description": "When the request parameter 'type' is supplied, the response 'Type' property must equal the requested type value.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "type",
+      "corresponding_attribute_description": "Return movie, series or episode",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        requested = request_info.get('type')\n        if requested is None:\n            return 0\n        rtype = latest_response.get('Type')\n        if rtype is None:\n            return 0\n        if str(rtype) == str(requested):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Year",
+      "description": "When the request parameter 'y' (year of release) is supplied, the response 'Year' property must reflect the requested year.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "y",
+      "corresponding_attribute_description": "Year of release",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        requested = request_info.get('y')\n        if requested is None:\n            return 0\n        year = latest_response.get('Year')\n        if year is None:\n            return 0\n        if str(requested) in str(year):\n            return 1\n        return -1\n    except:\n        return 0",
+      "verdict": "unknown"
+    }
+  ],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Response\",\n      \"description\": \"The 'Response' property must be one of the enumerated string values: 'True' or 'False'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if 'Response' not in latest_response or latest_response.get('Response') is None:\\n            return 0\\n        if latest_response.get('Response') in ['True', 'False']:\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Poster\",\n      \"description\": \"The 'Poster' property, when present and not 'N/A', must be a valid URI string.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        poster = latest_response.get('Poster')\\n        if poster is None:\\n            return 0\\n        if poster == 'N/A':\\n            return 1\\n        if re.match(r'^https?://', str(poster)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"imdbID\",\n      \"description\": \"The 'imdbID' property must be a valid IMDb ID string of the form 'tt' followed by digits.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        imdb_id = latest_response.get('imdbID')\\n        if imdb_id is None or imdb_id == 'N/A':\\n            return 0\\n        if re.match(r'^tt\\\\d+$', str(imdb_id)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/\",\n      \"response_resource\": \"Response\",\n      \"attribute\": \"seriesID\",\n      \"description\": \"The 'seriesID' property, when present and not 'N/A', must be a valid IMDb ID string of the form 'tt' followed by digits.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        sid = latest_response.get('seriesID')\\n        if sid is None:\\n            return 0\\n        if sid == 'N/A':\\n            return 1\\n        if re.match(r'^tt\\\\d+$', str(sid)):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    }\n  ],\n  \"request_response_constraints\": [\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"imdbID\",\n      \"description\": \"When the request parameter 'i' (a valid IMDb ID) is supplied, the response 'imdbID' property must equal the requested IMDb ID.\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"i\",\n      \"corresponding_attribute_description\": \"A valid IMDb ID (e.g. tt0000001)\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        requested = request_info.get('i')\\n        if requested is None:\\n            return 0\\n        imdb_id = latest_response.get('imdbID')\\n        if imdb_id is None:\\n            return 0\\n        if str(imdb_id) == str(requested):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Type\",\n      \"description\": \"When the request parameter 'type' is supplied, the response 'Type' property must equal the requested type value.\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"type\",\n      \"corresponding_attribute_description\": \"Return movie, series or episode\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        requested = request_info.get('type')\\n        if requested is None:\\n            return 0\\n        rtype = latest_response.get('Type')\\n        if rtype is None:\\n            return 0\\n        if str(rtype) == str(requested):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"response_resource\": \"Response\",\n      \"attribute\": \"Year\",\n      \"description\": \"When the request parameter 'y' (year of release) is supplied, the response 'Year' property must reflect the requested year.\",\n      \"attribute_inferred_from_operation\": \"get-/\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"y\",\n      \"corresponding_attribute_description\": \"Year of release\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        requested = request_info.get('y')\\n        if requested is None:\\n            return 0\\n        year = latest_response.get('Year')\\n        if year is None:\\n            return 0\\n        if str(requested) in str(year):\\n            return 1\\n        return -1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    }\n  ]\n}"
+}

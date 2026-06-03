@@ -1,0 +1,278 @@
+{
+  "service": "Marvel getComicById",
+  "prompt": "A",
+  "request_info": {
+    "apikey": "anonymous",
+    "hash": "anonymous",
+    "ts": "1663319737"
+  },
+  "response_body": {
+    "code": 200,
+    "status": "Ok",
+    "copyright": "\u00a9 2022 MARVEL",
+    "attributionText": "Data provided by Marvel. \u00a9 2022 MARVEL",
+    "attributionHTML": "<a href=\"http://marvel.com\">Data provided by Marvel. \u00a9 2022 MARVEL</a>",
+    "etag": "5f6ee02709d9d9fabbd3684a78d5f1ecb80ffd74",
+    "data": {
+      "offset": 0,
+      "limit": 20,
+      "total": 1,
+      "count": 1,
+      "results": [
+        {
+          "id": 68426,
+          "digitalId": 0,
+          "title": "Punisher Invades The 'Nam (Trade Paperback)",
+          "issueNumber": 0,
+          "variantDescription": "",
+          "description": "Collects The 'Nam #52-53, #67-69; Punisher Invades the 'Nam: Final Invasion #1; Punisher War Journal (1988) #52-53; Punisher War Zone (1992) #26-30. Years before he brought his personal war to the mean streets of the Marvel Universe, Marine Sgt. Frank Castle fought in Vietnam \u2014 and the man he would become took shape in those killing fields. Revisit the horrors of the \u2019Nam along with Frank as he battles side-by-side with comrade-in-arms Mike \u201cIce\u201d Phillips and faces down a deadly jungle sniper, and fights alone in his final tour of duty to rescue a crew of downed airmen from a sadistic vivisectionist. Plus: Years later, \u201cIce\u201d comes to the aid of his fellow veteran \u2014 but can the two of them take down the paramilitary group the Sons of Liberty and a Central American drug kingpin?",
+          "modified": "2018-05-10T18:38:47-0400",
+          "isbn": "978-1-302-91177-5",
+          "upc": "",
+          "diamondCode": "FEB180943",
+          "ean": "9781302 911775 53499",
+          "issn": "",
+          "format": "Trade Paperback",
+          "pageCount": 352,
+          "textObjects": [
+            {
+              "type": "issue_solicit_text",
+              "language": "en-us",
+              "text": "Collects The 'Nam #52-53, #67-69; Punisher Invades the 'Nam: Final Invasion #1; Punisher War Journal (1988) #52-53; Punisher War Zone (1992) #26-30. Years before he brought his personal war to the mean streets of the Marvel Universe, Marine Sgt. Frank Castle fought in Vietnam \u2014 and the man he would become took shape in those killing fields. Revisit the horrors of the \u2019Nam along with Frank as he battles side-by-side with comrade-in-arms Mike \u201cIce\u201d Phillips and faces down a deadly jungle sniper, and fights alone in his final tour of duty to rescue a crew of downed airmen from a sadistic vivisectionist. Plus: Years later, \u201cIce\u201d comes to the aid of his fellow veteran \u2014 but can the two of them take down the paramilitary group the Sons of Liberty and a Central American drug kingpin?"
+            }
+          ],
+          "resourceURI": "http://gateway.marvel.com/v1/public/comics/68426",
+          "urls": [
+            {
+              "type": "detail",
+              "url": "http://marvel.com/comics/collection/68426/punisher_invades_the_nam_trade_paperback?utm_campaign=apiRef&utm_source=anonymous"
+            }
+          ],
+          "series": {
+            "resourceURI": "http://gateway.marvel.com/v1/public/series/24834",
+            "name": "Punisher Invades The 'Nam (2018)"
+          },
+          "variants": [],
+          "collections": [],
+          "collectedIssues": [],
+          "dates": [
+            {
+              "type": "onsaleDate",
+              "date": "2018-05-16T00:00:00-0400"
+            },
+            {
+              "type": "focDate",
+              "date": "2018-03-26T00:00:00-0400"
+            }
+          ],
+          "prices": [
+            {
+              "type": "printPrice",
+              "price": 34.99
+            }
+          ],
+          "thumbnail": {
+            "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/20/5af4cb96ea23b",
+            "extension": "jpg"
+          },
+          "images": [
+            {
+              "path": "http://i.annihil.us/u/prod/marvel/i/mg/f/20/5af4cb96ea23b",
+              "extension": "jpg"
+            }
+          ],
+          "creators": {
+            "available": 9,
+            "collectionURI": "http://gateway.marvel.com/v1/public/comics/68426/creators",
+            "items": [
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/1612",
+                "name": "John Buscema",
+                "role": "penciller"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/2059",
+                "name": "Mike Harris",
+                "role": "penciller"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/2488",
+                "name": "Kevin Kobasic",
+                "role": "penciller"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/7997",
+                "name": "Alberto Saichann",
+                "role": "penciller"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/74",
+                "name": "Chuck Dixon",
+                "role": "writer"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/8388",
+                "name": "Don Lomax",
+                "role": "writer"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/3935",
+                "name": "Roger Salick",
+                "role": "writer"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/3900",
+                "name": "Gary Kwapisz",
+                "role": "penciller (cover)"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/creators/4430",
+                "name": "Jeff Youngquist",
+                "role": "editor"
+              }
+            ],
+            "returned": 9
+          },
+          "characters": {
+            "available": 2,
+            "collectionURI": "http://gateway.marvel.com/v1/public/comics/68426/characters",
+            "items": [
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009229",
+                "name": "Frank Castle"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/characters/1009515",
+                "name": "Punisher"
+              }
+            ],
+            "returned": 2
+          },
+          "stories": {
+            "available": 2,
+            "collectionURI": "http://gateway.marvel.com/v1/public/comics/68426/stories",
+            "items": [
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/stories/149414",
+                "name": "cover from PUNISHER INVADES THE 'NAM TPB (2018) #1",
+                "type": "cover"
+              },
+              {
+                "resourceURI": "http://gateway.marvel.com/v1/public/stories/149415",
+                "name": "story from PUNISHER INVADES THE 'NAM TPB (2018) #1",
+                "type": "interiorStory"
+              }
+            ],
+            "returned": 2
+          },
+          "events": {
+            "available": 0,
+            "collectionURI": "http://gateway.marvel.com/v1/public/comics/68426/events",
+            "items": [],
+            "returned": 0
+          }
+        }
+      ]
+    }
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicDataWrapper",
+      "attribute": "code",
+      "description": "The HTTP status code of the returned result. Must be a valid integer HTTP status code.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        code = latest_response.get('code')\n        if code is None:\n            return 0\n        if not isinstance(code, int):\n            return -1\n        if code < 100 or code > 599:\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicDataContainer",
+      "attribute": "count",
+      "description": "The total number of results returned by this call. Must equal the number of items in the results array.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data')\n        if not isinstance(data, dict):\n            return 0\n        count = data.get('count')\n        results = data.get('results')\n        if count is None or results is None:\n            return 0\n        if count != len(results):\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicDataContainer",
+      "attribute": "total",
+      "description": "The total number of resources available given the current filter set. Must be greater than or equal to count.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data')\n        if not isinstance(data, dict):\n            return 0\n        total = data.get('total')\n        count = data.get('count')\n        if total is None or count is None:\n            return 0\n        if total < count:\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "Comic",
+      "attribute": "digitalId",
+      "description": "The ID of the digital comic representation of this comic. Will be 0 if the comic is not available digitally. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            dig = comic.get('digitalId')\n            if dig is None:\n                continue\n            checked = True\n            if not isinstance(dig, int) or dig < 0:\n                return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "Comic",
+      "attribute": "pageCount",
+      "description": "The number of story pages in the comic. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            pc = comic.get('pageCount')\n            if pc is None:\n                continue\n            checked = True\n            if not isinstance(pc, int) or pc < 0:\n                return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "Comic",
+      "attribute": "resourceURI",
+      "description": "The canonical URL identifier for this resource. Must be a valid URL including scheme and domain.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        import re\n        pattern = re.compile(r'^https?://[^\\s]+$')\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            uri = comic.get('resourceURI')\n            if uri is None:\n                continue\n            checked = True\n            if not pattern.match(str(uri)):\n                return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicPrice",
+      "attribute": "price",
+      "description": "The price (all prices in USD). Must be a non-negative number.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            for p in comic.get('prices', []):\n                price = p.get('price')\n                if price is None:\n                    continue\n                checked = True\n                if not isinstance(price, (int, float)) or price < 0:\n                    return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "Image",
+      "attribute": "path",
+      "description": "The directory path of the image. Must be a valid URL including scheme and domain.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        import re\n        pattern = re.compile(r'^https?://[^\\s]+$')\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            thumb = comic.get('thumbnail')\n            if isinstance(thumb, dict) and thumb.get('path') is not None:\n                checked = True\n                if not pattern.match(str(thumb.get('path'))):\n                    return -1\n            for img in comic.get('images', []):\n                if img.get('path') is not None:\n                    checked = True\n                    if not pattern.match(str(img.get('path'))):\n                        return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "Url",
+      "attribute": "url",
+      "description": "A full URL (including scheme, domain, and path). Must be a valid URL.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        import re\n        pattern = re.compile(r'^https?://[^\\s]+$')\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            for u in comic.get('urls', []):\n                url = u.get('url')\n                if url is None:\n                    continue\n                checked = True\n                if not pattern.match(str(url)):\n                    return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicList",
+      "attribute": "available",
+      "description": "The number of total available items in this list. Will always be greater than or equal to the returned value.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        list_keys = ['creators', 'characters', 'stories', 'events']\n        checked = False\n        for comic in results:\n            for k in list_keys:\n                lst = comic.get(k)\n                if isinstance(lst, dict):\n                    avail = lst.get('available')\n                    ret = lst.get('returned')\n                    if avail is None or ret is None:\n                        continue\n                    checked = True\n                    if avail < ret:\n                        return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "ComicList",
+      "attribute": "returned",
+      "description": "The number of items returned in this collection (up to 20). Must equal the length of the items array and not exceed 20.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        list_keys = ['creators', 'characters', 'stories', 'events']\n        checked = False\n        for comic in results:\n            for k in list_keys:\n                lst = comic.get(k)\n                if isinstance(lst, dict):\n                    ret = lst.get('returned')\n                    items = lst.get('items')\n                    if ret is None or items is None:\n                        continue\n                    checked = True\n                    if ret > 20:\n                        return -1\n                    if ret != len(items):\n                        return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/v1/public/comics/{comicId}",
+      "response_resource": "StorySummary",
+      "attribute": "type",
+      "description": "The type of the story (interior or cover).",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        data = latest_response.get('data', {})\n        results = data.get('results', [])\n        checked = False\n        for comic in results:\n            stories = comic.get('stories')\n            if isinstance(stories, dict):\n                for item in stories.get('items', []):\n                    t = item.get('type')\n                    if t is None:\n                        continue\n                    checked = True\n                    if not isinstance(t, str) or t == '':\n                        return -1\n        if not checked:\n            return 0\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "request_response_constraints": [],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicDataWrapper\",\n      \"attribute\": \"code\",\n      \"description\": \"The HTTP status code of the returned result. Must be a valid integer HTTP status code.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        code = latest_response.get('code')\\n        if code is None:\\n            return 0\\n        if not isinstance(code, int):\\n            return -1\\n        if code < 100 or code > 599:\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicDataContainer\",\n      \"attribute\": \"count\",\n      \"description\": \"The total number of results returned by this call. Must equal the number of items in the results array.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data')\\n        if not isinstance(data, dict):\\n            return 0\\n        count = data.get('count')\\n        results = data.get('results')\\n        if count is None or results is None:\\n            return 0\\n        if count != len(results):\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicDataContainer\",\n      \"attribute\": \"total\",\n      \"description\": \"The total number of resources available given the current filter set. Must be greater than or equal to count.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data')\\n        if not isinstance(data, dict):\\n            return 0\\n        total = data.get('total')\\n        count = data.get('count')\\n        if total is None or count is None:\\n            return 0\\n        if total < count:\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"Comic\",\n      \"attribute\": \"digitalId\",\n      \"description\": \"The ID of the digital comic representation of this comic. Will be 0 if the comic is not available digitally. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            dig = comic.get('digitalId')\\n            if dig is None:\\n                continue\\n            checked = True\\n            if not isinstance(dig, int) or dig < 0:\\n                return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"Comic\",\n      \"attribute\": \"pageCount\",\n      \"description\": \"The number of story pages in the comic. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            pc = comic.get('pageCount')\\n            if pc is None:\\n                continue\\n            checked = True\\n            if not isinstance(pc, int) or pc < 0:\\n                return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"Comic\",\n      \"attribute\": \"resourceURI\",\n      \"description\": \"The canonical URL identifier for this resource. Must be a valid URL including scheme and domain.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        import re\\n        pattern = re.compile(r'^https?://[^\\\\s]+$')\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            uri = comic.get('resourceURI')\\n            if uri is None:\\n                continue\\n            checked = True\\n            if not pattern.match(str(uri)):\\n                return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicPrice\",\n      \"attribute\": \"price\",\n      \"description\": \"The price (all prices in USD). Must be a non-negative number.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            for p in comic.get('prices', []):\\n                price = p.get('price')\\n                if price is None:\\n                    continue\\n                checked = True\\n                if not isinstance(price, (int, float)) or price < 0:\\n                    return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"Image\",\n      \"attribute\": \"path\",\n      \"description\": \"The directory path of the image. Must be a valid URL including scheme and domain.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        import re\\n        pattern = re.compile(r'^https?://[^\\\\s]+$')\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            thumb = comic.get('thumbnail')\\n            if isinstance(thumb, dict) and thumb.get('path') is not None:\\n                checked = True\\n                if not pattern.match(str(thumb.get('path'))):\\n                    return -1\\n            for img in comic.get('images', []):\\n                if img.get('path') is not None:\\n                    checked = True\\n                    if not pattern.match(str(img.get('path'))):\\n                        return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"Url\",\n      \"attribute\": \"url\",\n      \"description\": \"A full URL (including scheme, domain, and path). Must be a valid URL.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        import re\\n        pattern = re.compile(r'^https?://[^\\\\s]+$')\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            for u in comic.get('urls', []):\\n                url = u.get('url')\\n                if url is None:\\n                    continue\\n                checked = True\\n                if not pattern.match(str(url)):\\n                    return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicList\",\n      \"attribute\": \"available\",\n      \"description\": \"The number of total available items in this list. Will always be greater than or equal to the returned value.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        list_keys = ['creators', 'characters', 'stories', 'events']\\n        checked = False\\n        for comic in results:\\n            for k in list_keys:\\n                lst = comic.get(k)\\n                if isinstance(lst, dict):\\n                    avail = lst.get('available')\\n                    ret = lst.get('returned')\\n                    if avail is None or ret is None:\\n                        continue\\n                    checked = True\\n                    if avail < ret:\\n                        return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"ComicList\",\n      \"attribute\": \"returned\",\n      \"description\": \"The number of items returned in this collection (up to 20). Must equal the length of the items array and not exceed 20.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        list_keys = ['creators', 'characters', 'stories', 'events']\\n        checked = False\\n        for comic in results:\\n            for k in list_keys:\\n                lst = comic.get(k)\\n                if isinstance(lst, dict):\\n                    ret = lst.get('returned')\\n                    items = lst.get('items')\\n                    if ret is None or items is None:\\n                        continue\\n                    checked = True\\n                    if ret > 20:\\n                        return -1\\n                    if ret != len(items):\\n                        return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/v1/public/comics/{comicId}\",\n      \"response_resource\": \"StorySummary\",\n      \"attribute\": \"type\",\n      \"description\": \"The type of the story (interior or cover).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        data = latest_response.get('data', {})\\n        results = data.get('results', [])\\n        checked = False\\n        for comic in results:\\n            stories = comic.get('stories')\\n            if isinstance(stories, dict):\\n                for item in stories.get('items', []):\\n                    t = item.get('type')\\n                    if t is None:\\n                        continue\\n                    checked = True\\n                    if not isinstance(t, str) or t == '':\\n                        return -1\\n        if not checked:\\n            return 0\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ],\n  \"request_response_constraints\": []\n}"
+}

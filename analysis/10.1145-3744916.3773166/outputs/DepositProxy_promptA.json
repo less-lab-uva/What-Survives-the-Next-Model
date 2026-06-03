@@ -1,0 +1,141 @@
+{
+  "totalExecs": 21746,
+  "speed": 72.5,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 1,
+      "instruction distinction": "1c4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "proxy",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "dangerous delegatecall": {
+      "number": 1,
+      "instruction distinction": "1c4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "proxy",
+              "inputs": [
+                {
+                  "type": "address",
+                  "value": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+                },
+                {
+                  "type": "bytes",
+                  "value": "0x00"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "2f8",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "deposit",
+              "inputs": []
+            },
+            {
+              "name": "deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "0a0",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "deposit",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xbeefbeefbeefbeefbeefbeefbeefbeefbeefbeef",
+              "balance": 100000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "totalExecs": 21476,
+  "speed": 71.6,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.83,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 4,
+      "instruction distinction": "4a1 4b7 5c3 6d9",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "becomePlayer",
+              "inputs": []
+            },
+            {
+              "name": "callFirstTarget",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "becomePlayer",
+              "inputs": []
+            },
+            {
+              "name": "callSecondTarget",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        },
+        {
+          "functions": [
+            {
+              "name": "winPrize",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xcafebabecafebabecafebabecafebabecafebabe",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "7e2",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "becomePlayer",
+              "inputs": []
+            },
+            {
+              "name": "manipulateSecret",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 1,
+      "instruction distinction": "9a4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "becomePlayer",
+              "inputs": []
+            },
+            {
+              "name": "guessSeed",
+              "inputs": [
+                {
+                  "type": "uint256",
+                  "value": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+                }
+              ]
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "integer underflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unexpected ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    }
+  }
+}

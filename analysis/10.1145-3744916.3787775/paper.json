@@ -1,0 +1,26 @@
+{
+  "title": "RBCTest: Leveraging LLMs to Mine and Verify Oracles of API Response Bodies for RESTful API Testing",
+  "doi": "10.1145/3744916.3787775",
+  "venue": "ICSE 2026",
+  "dataset": "AGORA+ benchmark (9 of 11 services, 2 GitHub services excluded due to context size)",
+  "metric": "RQ1: Precision, Recall, F1 (constraint mining); RQ4: matched/mismatched/unknown (mismatch detection)",
+  "original_result": {
+    "note": "5-seed mean from CompareAGORAData.xlsx — per-service values stored in paper_rq1 field of each results row",
+    "OMDB_bySearch":          {"P": 74.3, "R": 86.7, "F1": 80.0},
+    "OMDB_byIdOrTitle":       {"P": 93.7, "R": 78.7, "F1": 85.5},
+    "Yelp_getBusinesses":     {"P": 64.0, "R": 80.0, "F1": 71.1},
+    "Hotel_Search":           {"P": 90.9, "R": 77.9, "F1": 83.9},
+    "Spotify_createPlaylist": {"P": 75.6, "R": 74.4, "F1": 75.0},
+    "Spotify_getAlbumTracks": {"P": 81.7, "R": 80.2, "F1": 80.9},
+    "Spotify_getArtistAlbums":{"P": 81.9, "R": 93.9, "F1": 87.5},
+    "Marvel_getComicById":    {"P": 89.8, "R": 74.1, "F1": 81.2},
+    "Youtube_GetVideos":      {"P": 94.1, "R": 84.5, "F1": 89.1},
+    "RQ4_paper":              {"matched": 361, "mismatched": 9, "unknown": 73, "total": 443}
+  },
+  "our_result": {
+    "prompt_A": {"RQ1_P": 82.3, "RQ1_R": 24.8, "RQ1_F1": 38.2, "RQ4_matched": 52, "RQ4_mismatched": 1, "RQ4_unknown": 20},
+    "prompt_B": {"RQ1_P": 81.1, "RQ1_R": 27.0, "RQ1_F1": 40.6, "RQ4_matched": 49, "RQ4_mismatched": 0, "RQ4_unknown": 4}
+  },
+  "sampled_data_size": 9,
+  "total_cost": "$13.47"
+}

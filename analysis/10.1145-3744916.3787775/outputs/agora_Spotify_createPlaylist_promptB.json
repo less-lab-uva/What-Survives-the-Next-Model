@@ -1,0 +1,160 @@
+{
+  "service": "Spotify createPlaylist",
+  "prompt": "B",
+  "request_info": {},
+  "response_body": {
+    "collaborative": true,
+    "description": "blondie description",
+    "external_urls": {
+      "spotify": "https://open.spotify.com/playlist/1BuuRk3QMEq30VqbOMOFFq"
+    },
+    "followers": {
+      "href": null,
+      "total": 0
+    },
+    "href": "https://api.spotify.com/v1/playlists/1BuuRk3QMEq30VqbOMOFFq",
+    "id": "1BuuRk3QMEq30VqbOMOFFq",
+    "images": [],
+    "name": "latin",
+    "owner": {
+      "display_name": "RESTest Benchmark1",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/user/314p6dat3wsraktwd2tawz6vzr3q"
+      },
+      "href": "https://api.spotify.com/v1/users/314p6dat3wsraktwd2tawz6vzr3q",
+      "id": "314p6dat3wsraktwd2tawz6vzr3q",
+      "type": "user",
+      "uri": "spotify:user:314p6dat3wsraktwd2tawz6vzr3q"
+    },
+    "primary_color": null,
+    "public": false,
+    "snapshot_id": "MSxmNzU4YzI0YWYwMjRlMzQwNTQzNDRhMjE5MGY5NzdhZDUzNjBmOGU5",
+    "tracks": {
+      "href": "https://api.spotify.com/v1/playlists/1BuuRk3QMEq30VqbOMOFFq/tracks",
+      "items": [],
+      "limit": 100,
+      "next": null,
+      "offset": 0,
+      "previous": null,
+      "total": 0
+    },
+    "type": "playlist",
+    "uri": "spotify:playlist:1BuuRk3QMEq30VqbOMOFFq"
+  },
+  "response_property_constraints": [
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "type",
+      "description": "The object type must be the literal string 'playlist'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        if 'type' not in latest_response or latest_response.get('type') is None:\n            return 0\n        return 1 if latest_response.get('type') == 'playlist' else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "uri",
+      "description": "The Spotify URI of the playlist. Must be a Spotify URI string in the format 'spotify:playlist:{id}'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        uri = latest_response.get('uri')\n        if uri is None:\n            return 0\n        return 1 if re.match(r'^spotify:playlist:[A-Za-z0-9]+$', str(uri)) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint providing full details of the playlist. Must be a valid URI.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        href = latest_response.get('href')\n        if href is None:\n            return 0\n        return 1 if re.match(r'^https?://', str(href)) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "collaborative",
+      "description": "True if the owner allows other users to modify the playlist. Must be a boolean value.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        if 'collaborative' not in latest_response or latest_response.get('collaborative') is None:\n            return 0\n        return 1 if isinstance(latest_response.get('collaborative'), bool) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "public",
+      "description": "The playlist's public/private status: true if public, false if private, null if not relevant. Must be a boolean or null.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        if 'public' not in latest_response:\n            return 0\n        val = latest_response.get('public')\n        if val is None:\n            return 1\n        return 1 if isinstance(val, bool) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "external_urls",
+      "description": "Known external URLs for this playlist. The 'spotify' property, when present, must be a valid URI string.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        eu = latest_response.get('external_urls')\n        if not isinstance(eu, dict):\n            return 0\n        if 'spotify' not in eu or eu.get('spotify') is None:\n            return 0\n        return 1 if re.match(r'^https?://', str(eu.get('spotify'))) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "followers",
+      "attribute": "total",
+      "description": "The total number of followers. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        followers = latest_response.get('followers')\n        if not isinstance(followers, dict):\n            return 0\n        if 'total' not in followers or followers.get('total') is None:\n            return 0\n        total = followers.get('total')\n        if isinstance(total, bool) or not isinstance(total, int):\n            return -1\n        return 1 if total >= 0 else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "user-profile",
+      "attribute": "type",
+      "description": "The object type of the owner must be the literal string 'user'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        owner = latest_response.get('owner')\n        if not isinstance(owner, dict):\n            return 0\n        if 'type' not in owner or owner.get('type') is None:\n            return 0\n        return 1 if owner.get('type') == 'user' else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "user-profile",
+      "attribute": "uri",
+      "description": "The Spotify URI for the owner user. Must be in the format 'spotify:user:{id}'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        owner = latest_response.get('owner')\n        if not isinstance(owner, dict):\n            return 0\n        uri = owner.get('uri')\n        if uri is None:\n            return 0\n        return 1 if re.match(r'^spotify:user:[A-Za-z0-9]+$', str(uri)) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "user-profile",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint for the owner user. Must be a valid URI.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        owner = latest_response.get('owner')\n        if not isinstance(owner, dict):\n            return 0\n        href = owner.get('href')\n        if href is None:\n            return 0\n        return 1 if re.match(r'^https?://', str(href)) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist-track-page",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint returning the full result of the tracks request. Must be a valid URI.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        tracks = latest_response.get('tracks')\n        if not isinstance(tracks, dict):\n            return 0\n        href = tracks.get('href')\n        if href is None:\n            return 0\n        return 1 if re.match(r'^https?://', str(href)) else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist-track-page",
+      "attribute": "limit",
+      "description": "The maximum number of items in the tracks response. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        tracks = latest_response.get('tracks')\n        if not isinstance(tracks, dict):\n            return 0\n        if 'limit' not in tracks or tracks.get('limit') is None:\n            return 0\n        limit = tracks.get('limit')\n        if isinstance(limit, bool) or not isinstance(limit, int):\n            return -1\n        return 1 if limit >= 0 else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist-track-page",
+      "attribute": "offset",
+      "description": "The offset of the items returned in the tracks response. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        tracks = latest_response.get('tracks')\n        if not isinstance(tracks, dict):\n            return 0\n        if 'offset' not in tracks or tracks.get('offset') is None:\n            return 0\n        offset = tracks.get('offset')\n        if isinstance(offset, bool) or not isinstance(offset, int):\n            return -1\n        return 1 if offset >= 0 else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist-track-page",
+      "attribute": "total",
+      "description": "The total number of tracks available to return. Must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if not isinstance(latest_response, dict):\n            return 0\n        tracks = latest_response.get('tracks')\n        if not isinstance(tracks, dict):\n            return 0\n        if 'total' not in tracks or tracks.get('total') is None:\n            return 0\n        total = tracks.get('total')\n        if isinstance(total, bool) or not isinstance(total, int):\n            return -1\n        return 1 if total >= 0 else -1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "request_response_constraints": [],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"type\",\n      \"description\": \"The object type must be the literal string 'playlist'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        if 'type' not in latest_response or latest_response.get('type') is None:\\n            return 0\\n        return 1 if latest_response.get('type') == 'playlist' else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"uri\",\n      \"description\": \"The Spotify URI of the playlist. Must be a Spotify URI string in the format 'spotify:playlist:{id}'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        uri = latest_response.get('uri')\\n        if uri is None:\\n            return 0\\n        return 1 if re.match(r'^spotify:playlist:[A-Za-z0-9]+$', str(uri)) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint providing full details of the playlist. Must be a valid URI.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        href = latest_response.get('href')\\n        if href is None:\\n            return 0\\n        return 1 if re.match(r'^https?://', str(href)) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"collaborative\",\n      \"description\": \"True if the owner allows other users to modify the playlist. Must be a boolean value.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        if 'collaborative' not in latest_response or latest_response.get('collaborative') is None:\\n            return 0\\n        return 1 if isinstance(latest_response.get('collaborative'), bool) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"public\",\n      \"description\": \"The playlist's public/private status: true if public, false if private, null if not relevant. Must be a boolean or null.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        if 'public' not in latest_response:\\n            return 0\\n        val = latest_response.get('public')\\n        if val is None:\\n            return 1\\n        return 1 if isinstance(val, bool) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist\",\n      \"attribute\": \"external_urls\",\n      \"description\": \"Known external URLs for this playlist. The 'spotify' property, when present, must be a valid URI string.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        eu = latest_response.get('external_urls')\\n        if not isinstance(eu, dict):\\n            return 0\\n        if 'spotify' not in eu or eu.get('spotify') is None:\\n            return 0\\n        return 1 if re.match(r'^https?://', str(eu.get('spotify'))) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"followers\",\n      \"attribute\": \"total\",\n      \"description\": \"The total number of followers. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        followers = latest_response.get('followers')\\n        if not isinstance(followers, dict):\\n            return 0\\n        if 'total' not in followers or followers.get('total') is None:\\n            return 0\\n        total = followers.get('total')\\n        if isinstance(total, bool) or not isinstance(total, int):\\n            return -1\\n        return 1 if total >= 0 else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"user-profile\",\n      \"attribute\": \"type\",\n      \"description\": \"The object type of the owner must be the literal string 'user'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        owner = latest_response.get('owner')\\n        if not isinstance(owner, dict):\\n            return 0\\n        if 'type' not in owner or owner.get('type') is None:\\n            return 0\\n        return 1 if owner.get('type') == 'user' else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"user-profile\",\n      \"attribute\": \"uri\",\n      \"description\": \"The Spotify URI for the owner user. Must be in the format 'spotify:user:{id}'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        owner = latest_response.get('owner')\\n        if not isinstance(owner, dict):\\n            return 0\\n        uri = owner.get('uri')\\n        if uri is None:\\n            return 0\\n        return 1 if re.match(r'^spotify:user:[A-Za-z0-9]+$', str(uri)) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"user-profile\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint for the owner user. Must be a valid URI.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        owner = latest_response.get('owner')\\n        if not isinstance(owner, dict):\\n            return 0\\n        href = owner.get('href')\\n        if href is None:\\n            return 0\\n        return 1 if re.match(r'^https?://', str(href)) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist-track-page\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint returning the full result of the tracks request. Must be a valid URI.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        tracks = latest_response.get('tracks')\\n        if not isinstance(tracks, dict):\\n            return 0\\n        href = tracks.get('href')\\n        if href is None:\\n            return 0\\n        return 1 if re.match(r'^https?://', str(href)) else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist-track-page\",\n      \"attribute\": \"limit\",\n      \"description\": \"The maximum number of items in the tracks response. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        tracks = latest_response.get('tracks')\\n        if not isinstance(tracks, dict):\\n            return 0\\n        if 'limit' not in tracks or tracks.get('limit') is None:\\n            return 0\\n        limit = tracks.get('limit')\\n        if isinstance(limit, bool) or not isinstance(limit, int):\\n            return -1\\n        return 1 if limit >= 0 else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist-track-page\",\n      \"attribute\": \"offset\",\n      \"description\": \"The offset of the items returned in the tracks response. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        tracks = latest_response.get('tracks')\\n        if not isinstance(tracks, dict):\\n            return 0\\n        if 'offset' not in tracks or tracks.get('offset') is None:\\n            return 0\\n        offset = tracks.get('offset')\\n        if isinstance(offset, bool) or not isinstance(offset, int):\\n            return -1\\n        return 1 if offset >= 0 else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"post-/users/{user_id}/playlists\",\n      \"response_resource\": \"playlist-track-page\",\n      \"attribute\": \"total\",\n      \"description\": \"The total number of tracks available to return. Must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        if not isinstance(latest_response, dict):\\n            return 0\\n        tracks = latest_response.get('tracks')\\n        if not isinstance(tracks, dict):\\n            return 0\\n        if 'total' not in tracks or tracks.get('total') is None:\\n            return 0\\n        total = tracks.get('total')\\n        if isinstance(total, bool) or not isinstance(total, int):\\n            return -1\\n        return 1 if total >= 0 else -1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ],\n  \"request_response_constraints\": []\n}"
+}

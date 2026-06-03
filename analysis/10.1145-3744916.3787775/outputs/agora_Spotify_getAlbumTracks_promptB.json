@@ -1,0 +1,854 @@
+{
+  "service": "Spotify getAlbumTracks",
+  "prompt": "B",
+  "request_info": {
+    "market": "NE",
+    "limit": "26"
+  },
+  "response_body": {
+    "href": "https://api.spotify.com/v1/albums/6t7956yu5zYf5A829XRiHC/tracks?offset=0&limit=26&market=NE",
+    "items": [
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 27866,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/1WopKLOG4Kud0H1r3xrCfT"
+        },
+        "href": "https://api.spotify.com/v1/tracks/1WopKLOG4Kud0H1r3xrCfT",
+        "id": "1WopKLOG4Kud0H1r3xrCfT",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Public Service Announcement 2000",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:1WopKLOG4Kud0H1r3xrCfT"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 264400,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/5eGEc27nnhtmcOh6RC890a"
+        },
+        "href": "https://api.spotify.com/v1/tracks/5eGEc27nnhtmcOh6RC890a",
+        "id": "5eGEc27nnhtmcOh6RC890a",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Kill You",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:5eGEc27nnhtmcOh6RC890a"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2mpeljBig2IXLXRAFO9AAs"
+            },
+            "href": "https://api.spotify.com/v1/artists/2mpeljBig2IXLXRAFO9AAs",
+            "id": "2mpeljBig2IXLXRAFO9AAs",
+            "name": "Dido",
+            "type": "artist",
+            "uri": "spotify:artist:2mpeljBig2IXLXRAFO9AAs"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 404106,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3UmaczJpikHgJFyBTAJVoz"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3UmaczJpikHgJFyBTAJVoz",
+        "id": "3UmaczJpikHgJFyBTAJVoz",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Stan",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 3,
+        "type": "track",
+        "uri": "spotify:track:3UmaczJpikHgJFyBTAJVoz"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/3k00aazgj6dYcmOCtFm3PG"
+            },
+            "href": "https://api.spotify.com/v1/artists/3k00aazgj6dYcmOCtFm3PG",
+            "id": "3k00aazgj6dYcmOCtFm3PG",
+            "name": "Paul \"Bunyan\" Rosenberg",
+            "type": "artist",
+            "uri": "spotify:artist:3k00aazgj6dYcmOCtFm3PG"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 10600,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2vDNkLviUQSxSxulGBFSqJ"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2vDNkLviUQSxSxulGBFSqJ",
+        "id": "2vDNkLviUQSxSxulGBFSqJ",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Paul - Skit",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 4,
+        "type": "track",
+        "uri": "spotify:track:2vDNkLviUQSxSxulGBFSqJ"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 227760,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/15joiMls8SpP1VtGivYh6i"
+        },
+        "href": "https://api.spotify.com/v1/tracks/15joiMls8SpP1VtGivYh6i",
+        "id": "15joiMls8SpP1VtGivYh6i",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Who Knew",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 5,
+        "type": "track",
+        "uri": "spotify:track:15joiMls8SpP1VtGivYh6i"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4XJl0Ba9LUbTemYMEYw794"
+            },
+            "href": "https://api.spotify.com/v1/artists/4XJl0Ba9LUbTemYMEYw794",
+            "id": "4XJl0Ba9LUbTemYMEYw794",
+            "name": "Steve Berman",
+            "type": "artist",
+            "uri": "spotify:artist:4XJl0Ba9LUbTemYMEYw794"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 53573,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0DaZU7iKgXMelfXCkCOgBK"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0DaZU7iKgXMelfXCkCOgBK",
+        "id": "0DaZU7iKgXMelfXCkCOgBK",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Steve Berman",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 6,
+        "type": "track",
+        "uri": "spotify:track:0DaZU7iKgXMelfXCkCOgBK"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 290426,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/23wfXwnsPZYe5A1xXRHb3J"
+        },
+        "href": "https://api.spotify.com/v1/tracks/23wfXwnsPZYe5A1xXRHb3J",
+        "id": "23wfXwnsPZYe5A1xXRHb3J",
+        "is_local": false,
+        "is_playable": false,
+        "name": "The Way I Am",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 7,
+        "type": "track",
+        "uri": "spotify:track:23wfXwnsPZYe5A1xXRHb3J"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 284200,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3yfqSUWxFvZELEM4PmlwIR",
+        "id": "3yfqSUWxFvZELEM4PmlwIR",
+        "is_local": false,
+        "is_playable": false,
+        "name": "The Real Slim Shady",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 8,
+        "type": "track",
+        "uri": "spotify:track:3yfqSUWxFvZELEM4PmlwIR"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7uNtuhVl0QBCpOBG6WB4UE"
+            },
+            "href": "https://api.spotify.com/v1/artists/7uNtuhVl0QBCpOBG6WB4UE",
+            "id": "7uNtuhVl0QBCpOBG6WB4UE",
+            "name": "RBX",
+            "type": "artist",
+            "uri": "spotify:artist:7uNtuhVl0QBCpOBG6WB4UE"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6NFWb2y6S7PH2yvs5xbO2y"
+            },
+            "href": "https://api.spotify.com/v1/artists/6NFWb2y6S7PH2yvs5xbO2y",
+            "id": "6NFWb2y6S7PH2yvs5xbO2y",
+            "name": "Sticky Fingaz",
+            "type": "artist",
+            "uri": "spotify:artist:6NFWb2y6S7PH2yvs5xbO2y"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 218840,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/7996f9NZeypc4jqfc6hJUa"
+        },
+        "href": "https://api.spotify.com/v1/tracks/7996f9NZeypc4jqfc6hJUa",
+        "id": "7996f9NZeypc4jqfc6hJUa",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Remember Me?",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 9,
+        "type": "track",
+        "uri": "spotify:track:7996f9NZeypc4jqfc6hJUa"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 309760,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3xVtc7PB4V3AqAfq4Iahli"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3xVtc7PB4V3AqAfq4Iahli",
+        "id": "3xVtc7PB4V3AqAfq4Iahli",
+        "is_local": false,
+        "is_playable": false,
+        "name": "I'm Back",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 10,
+        "type": "track",
+        "uri": "spotify:track:3xVtc7PB4V3AqAfq4Iahli"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 321266,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3X4Oz9LjhhtgyOhVNlfoYa"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3X4Oz9LjhhtgyOhVNlfoYa",
+        "id": "3X4Oz9LjhhtgyOhVNlfoYa",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Marshall Mathers",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 11,
+        "type": "track",
+        "uri": "spotify:track:3X4Oz9LjhhtgyOhVNlfoYa"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 61800,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/4HsaoezrUA96qMzDK3ZWnq"
+        },
+        "href": "https://api.spotify.com/v1/tracks/4HsaoezrUA96qMzDK3ZWnq",
+        "id": "4HsaoezrUA96qMzDK3ZWnq",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Ken Kaniff - Skit",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 12,
+        "type": "track",
+        "uri": "spotify:track:4HsaoezrUA96qMzDK3ZWnq"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 300266,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/7tEoJKbYdIHBfn7tTIyjHW"
+        },
+        "href": "https://api.spotify.com/v1/tracks/7tEoJKbYdIHBfn7tTIyjHW",
+        "id": "7tEoJKbYdIHBfn7tTIyjHW",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Drug Ballad",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 13,
+        "type": "track",
+        "uri": "spotify:track:7tEoJKbYdIHBfn7tTIyjHW"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2TSvMFHlguDI495vujOAys"
+            },
+            "href": "https://api.spotify.com/v1/artists/2TSvMFHlguDI495vujOAys",
+            "id": "2TSvMFHlguDI495vujOAys",
+            "name": "Bizarre",
+            "type": "artist",
+            "uri": "spotify:artist:2TSvMFHlguDI495vujOAys"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 254773,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0erTM8A9ro5kzcNc962jHd"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0erTM8A9ro5kzcNc962jHd",
+        "id": "0erTM8A9ro5kzcNc962jHd",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Amityville",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 14,
+        "type": "track",
+        "uri": "spotify:track:0erTM8A9ro5kzcNc962jHd"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6DPYiyq5kWVQS4RGwxzPC7"
+            },
+            "href": "https://api.spotify.com/v1/artists/6DPYiyq5kWVQS4RGwxzPC7",
+            "id": "6DPYiyq5kWVQS4RGwxzPC7",
+            "name": "Dr. Dre",
+            "type": "artist",
+            "uri": "spotify:artist:6DPYiyq5kWVQS4RGwxzPC7"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG"
+            },
+            "href": "https://api.spotify.com/v1/artists/7hJcb9fa4alzcOq3EaNPoG",
+            "id": "7hJcb9fa4alzcOq3EaNPoG",
+            "name": "Snoop Dogg",
+            "type": "artist",
+            "uri": "spotify:artist:7hJcb9fa4alzcOq3EaNPoG"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4tujQJicOnuZRLiBFdp3Ou"
+            },
+            "href": "https://api.spotify.com/v1/artists/4tujQJicOnuZRLiBFdp3Ou",
+            "id": "4tujQJicOnuZRLiBFdp3Ou",
+            "name": "Xzibit",
+            "type": "artist",
+            "uri": "spotify:artist:4tujQJicOnuZRLiBFdp3Ou"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1Oa0bMld0A3u5OTYfMzp5h"
+            },
+            "href": "https://api.spotify.com/v1/artists/1Oa0bMld0A3u5OTYfMzp5h",
+            "id": "1Oa0bMld0A3u5OTYfMzp5h",
+            "name": "Nate Dogg",
+            "type": "artist",
+            "uri": "spotify:artist:1Oa0bMld0A3u5OTYfMzp5h"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 288200,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/7lgvU7WnwcNZ8dbGUz8yhP"
+        },
+        "href": "https://api.spotify.com/v1/tracks/7lgvU7WnwcNZ8dbGUz8yhP",
+        "id": "7lgvU7WnwcNZ8dbGUz8yhP",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Bitch Please II",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 15,
+        "type": "track",
+        "uri": "spotify:track:7lgvU7WnwcNZ8dbGUz8yhP"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 377893,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/20oenBXlmwIfK0F3fQIjhM"
+        },
+        "href": "https://api.spotify.com/v1/tracks/20oenBXlmwIfK0F3fQIjhM",
+        "id": "20oenBXlmwIfK0F3fQIjhM",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Kim",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 16,
+        "type": "track",
+        "uri": "spotify:track:20oenBXlmwIfK0F3fQIjhM"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5Qi4Bb7a8C0a00NZcA77L0"
+            },
+            "href": "https://api.spotify.com/v1/artists/5Qi4Bb7a8C0a00NZcA77L0",
+            "id": "5Qi4Bb7a8C0a00NZcA77L0",
+            "name": "D12",
+            "type": "artist",
+            "uri": "spotify:artist:5Qi4Bb7a8C0a00NZcA77L0"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 321666,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/5H3B1WtZYGmyOYOXgQltKU"
+        },
+        "href": "https://api.spotify.com/v1/tracks/5H3B1WtZYGmyOYOXgQltKU",
+        "id": "5H3B1WtZYGmyOYOXgQltKU",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Under The Influence",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 17,
+        "type": "track",
+        "uri": "spotify:track:5H3B1WtZYGmyOYOXgQltKU"
+      },
+      {
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+            "id": "7dGJo4pcD2V6oG8kP0tJRR",
+            "name": "Eminem",
+            "type": "artist",
+            "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 319600,
+        "explicit": true,
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/18ohWhzbMCynq5QJ68ifkW"
+        },
+        "href": "https://api.spotify.com/v1/tracks/18ohWhzbMCynq5QJ68ifkW",
+        "id": "18ohWhzbMCynq5QJ68ifkW",
+        "is_local": false,
+        "is_playable": false,
+        "name": "Criminal",
+        "preview_url": null,
+        "restrictions": {
+          "reason": "explicit"
+        },
+        "track_number": 18,
+        "type": "track",
+        "uri": "spotify:track:18ohWhzbMCynq5QJ68ifkW"
+      }
+    ],
+    "limit": 26,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 18
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "type",
+      "description": "The object type for each track item must be the literal string 'track'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            t = item.get('type')\n            if t is None:\n                continue\n            checked = True\n            if t != 'track':\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "uri",
+      "description": "The Spotify URI for the track must follow the Spotify URI format 'spotify:track:<id>'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^spotify:track:[A-Za-z0-9]+$')\n        checked = False\n        for item in items:\n            uri = item.get('uri')\n            if uri is None:\n                continue\n            checked = True\n            if not pattern.match(str(uri)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint providing full details of the track must be a valid URL (http/https).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        checked = False\n        for item in items:\n            href = item.get('href')\n            if href is None:\n                continue\n            checked = True\n            if not pattern.match(str(href)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "preview_url",
+      "description": "A URL to a 30 second preview (MP3 format) of the track; must be a valid URL when present (it may also be null).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        checked = False\n        for item in items:\n            if 'preview_url' not in item:\n                continue\n            val = item.get('preview_url')\n            if val is None:\n                continue\n            checked = True\n            if not pattern.match(str(val)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "disc_number",
+      "description": "The disc number must be a positive integer (usually 1 unless the album consists of more than one disc).",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('disc_number')\n            if v is None:\n                continue\n            checked = True\n            if not isinstance(v, int) or isinstance(v, bool) or v < 1:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "track_number",
+      "description": "The number of the track must be a positive integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('track_number')\n            if v is None:\n                continue\n            checked = True\n            if not isinstance(v, int) or isinstance(v, bool) or v < 1:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "duration_ms",
+      "description": "The track length in milliseconds must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('duration_ms')\n            if v is None:\n                continue\n            checked = True\n            if not isinstance(v, int) or isinstance(v, bool) or v < 0:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "explicit",
+      "description": "Whether or not the track has explicit lyrics; must be a boolean.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            if 'explicit' not in item:\n                continue\n            v = item.get('explicit')\n            if v is None:\n                continue\n            checked = True\n            if not isinstance(v, bool):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple",
+      "attribute": "is_playable",
+      "description": "Part of the response when Track Relinking is applied; if present must be a boolean.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            if 'is_playable' not in item:\n                continue\n            v = item.get('is_playable')\n            if v is None:\n                continue\n            checked = True\n            if not isinstance(v, bool):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "artist-simple",
+      "attribute": "type",
+      "description": "The object type for each artist must be the literal string 'artist'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            for artist in item.get('artists', []) or []:\n                t = artist.get('type')\n                if t is None:\n                    continue\n                checked = True\n                if t != 'artist':\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "artist-simple",
+      "attribute": "uri",
+      "description": "The Spotify URI for the artist must follow the Spotify URI format 'spotify:artist:<id>'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^spotify:artist:[A-Za-z0-9]+$')\n        checked = False\n        for item in items:\n            for artist in item.get('artists', []) or []:\n                uri = artist.get('uri')\n                if uri is None:\n                    continue\n                checked = True\n                if not pattern.match(str(uri)):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "artist-simple",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint providing full details of the artist must be a valid URL (http/https).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items', [])\n        if not items:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        checked = False\n        for item in items:\n            for artist in item.get('artists', []) or []:\n                href = artist.get('href')\n                if href is None:\n                    continue\n                checked = True\n                if not pattern.match(str(href)):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "href",
+      "description": "A link to the Web API endpoint returning the full result of the request must be a valid URL (http/https).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        href = latest_response.get('href')\n        if href is None:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        if not pattern.match(str(href)):\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "limit",
+      "description": "The maximum number of items in the response must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        v = latest_response.get('limit')\n        if v is None:\n            return 0\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "offset",
+      "description": "The offset of the items returned must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        v = latest_response.get('offset')\n        if v is None:\n            return 0\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "total",
+      "description": "The total number of items available to return must be a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        v = latest_response.get('total')\n        if v is None:\n            return 0\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "next",
+      "description": "URL to the next page of items must be a valid URL (http/https) or null if none.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if 'next' not in latest_response:\n            return 0\n        v = latest_response.get('next')\n        if v is None:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        if not pattern.match(str(v)):\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "unknown"
+    },
+    {
+      "operation": "get-/albums/{id}/tracks",
+      "response_resource": "track-simple-page",
+      "attribute": "previous",
+      "description": "URL to the previous page of items must be a valid URL (http/https) or null if none.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        if 'previous' not in latest_response:\n            return 0\n        v = latest_response.get('previous')\n        if v is None:\n            return 0\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\n        if not pattern.match(str(v)):\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "unknown"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "track-simple-page",
+      "attribute": "limit",
+      "description": "The 'limit' value in the response must equal the 'limit' request parameter value (the maximum number of items to return as set in the query).",
+      "attribute_inferred_from_operation": "get-/albums/{id}/tracks",
+      "part": "parameters",
+      "corresponding_attribute": "limit",
+      "corresponding_attribute_description": "The maximum number of items to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        limit_param = request_info.get('limit')\n        if limit_param is None:\n            return 1\n        resp_limit = latest_response.get('limit')\n        if resp_limit is None:\n            return 0\n        if int(resp_limit) != int(limit_param):\n            return -1\n        return 1\n    except:\n        return 0",
+      "verdict": "matched"
+    }
+  ],
+  "raw_response": "{\n  \"response_property_constraints\": [\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"type\",\n      \"description\": \"The object type for each track item must be the literal string 'track'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            t = item.get('type')\\n            if t is None:\\n                continue\\n            checked = True\\n            if t != 'track':\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"uri\",\n      \"description\": \"The Spotify URI for the track must follow the Spotify URI format 'spotify:track:<id>'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^spotify:track:[A-Za-z0-9]+$')\\n        checked = False\\n        for item in items:\\n            uri = item.get('uri')\\n            if uri is None:\\n                continue\\n            checked = True\\n            if not pattern.match(str(uri)):\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint providing full details of the track must be a valid URL (http/https).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        checked = False\\n        for item in items:\\n            href = item.get('href')\\n            if href is None:\\n                continue\\n            checked = True\\n            if not pattern.match(str(href)):\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"preview_url\",\n      \"description\": \"A URL to a 30 second preview (MP3 format) of the track; must be a valid URL when present (it may also be null).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        checked = False\\n        for item in items:\\n            if 'preview_url' not in item:\\n                continue\\n            val = item.get('preview_url')\\n            if val is None:\\n                continue\\n            checked = True\\n            if not pattern.match(str(val)):\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"disc_number\",\n      \"description\": \"The disc number must be a positive integer (usually 1 unless the album consists of more than one disc).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            v = item.get('disc_number')\\n            if v is None:\\n                continue\\n            checked = True\\n            if not isinstance(v, int) or isinstance(v, bool) or v < 1:\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"track_number\",\n      \"description\": \"The number of the track must be a positive integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            v = item.get('track_number')\\n            if v is None:\\n                continue\\n            checked = True\\n            if not isinstance(v, int) or isinstance(v, bool) or v < 1:\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"duration_ms\",\n      \"description\": \"The track length in milliseconds must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            v = item.get('duration_ms')\\n            if v is None:\\n                continue\\n            checked = True\\n            if not isinstance(v, int) or isinstance(v, bool) or v < 0:\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"explicit\",\n      \"description\": \"Whether or not the track has explicit lyrics; must be a boolean.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            if 'explicit' not in item:\\n                continue\\n            v = item.get('explicit')\\n            if v is None:\\n                continue\\n            checked = True\\n            if not isinstance(v, bool):\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple\",\n      \"attribute\": \"is_playable\",\n      \"description\": \"Part of the response when Track Relinking is applied; if present must be a boolean.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            if 'is_playable' not in item:\\n                continue\\n            v = item.get('is_playable')\\n            if v is None:\\n                continue\\n            checked = True\\n            if not isinstance(v, bool):\\n                return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"artist-simple\",\n      \"attribute\": \"type\",\n      \"description\": \"The object type for each artist must be the literal string 'artist'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        checked = False\\n        for item in items:\\n            for artist in item.get('artists', []) or []:\\n                t = artist.get('type')\\n                if t is None:\\n                    continue\\n                checked = True\\n                if t != 'artist':\\n                    return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"artist-simple\",\n      \"attribute\": \"uri\",\n      \"description\": \"The Spotify URI for the artist must follow the Spotify URI format 'spotify:artist:<id>'.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^spotify:artist:[A-Za-z0-9]+$')\\n        checked = False\\n        for item in items:\\n            for artist in item.get('artists', []) or []:\\n                uri = artist.get('uri')\\n                if uri is None:\\n                    continue\\n                checked = True\\n                if not pattern.match(str(uri)):\\n                    return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"artist-simple\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint providing full details of the artist must be a valid URL (http/https).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        items = latest_response.get('items', [])\\n        if not items:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        checked = False\\n        for item in items:\\n            for artist in item.get('artists', []) or []:\\n                href = artist.get('href')\\n                if href is None:\\n                    continue\\n                checked = True\\n                if not pattern.match(str(href)):\\n                    return -1\\n        return 1 if checked else 0\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"href\",\n      \"description\": \"A link to the Web API endpoint returning the full result of the request must be a valid URL (http/https).\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        href = latest_response.get('href')\\n        if href is None:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        if not pattern.match(str(href)):\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"limit\",\n      \"description\": \"The maximum number of items in the response must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        v = latest_response.get('limit')\\n        if v is None:\\n            return 0\\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"offset\",\n      \"description\": \"The offset of the items returned must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        v = latest_response.get('offset')\\n        if v is None:\\n            return 0\\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"total\",\n      \"description\": \"The total number of items available to return must be a non-negative integer.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    try:\\n        v = latest_response.get('total')\\n        if v is None:\\n            return 0\\n        if not isinstance(v, int) or isinstance(v, bool) or v < 0:\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"next\",\n      \"description\": \"URL to the next page of items must be a valid URL (http/https) or null if none.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if 'next' not in latest_response:\\n            return 0\\n        v = latest_response.get('next')\\n        if v is None:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        if not pattern.match(str(v)):\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    },\n    {\n      \"operation\": \"get-/albums/{id}/tracks\",\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"previous\",\n      \"description\": \"URL to the previous page of items must be a valid URL (http/https) or null if none.\",\n      \"verification_script\": \"def verify_latest_response(latest_response):\\n    import re\\n    try:\\n        if 'previous' not in latest_response:\\n            return 0\\n        v = latest_response.get('previous')\\n        if v is None:\\n            return 0\\n        pattern = re.compile(r'^https?://', re.IGNORECASE)\\n        if not pattern.match(str(v)):\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"unknown\"\n    }\n  ],\n  \"request_response_constraints\": [\n    {\n      \"response_resource\": \"track-simple-page\",\n      \"attribute\": \"limit\",\n      \"description\": \"The 'limit' value in the response must equal the 'limit' request parameter value (the maximum number of items to return as set in the query).\",\n      \"attribute_inferred_from_operation\": \"get-/albums/{id}/tracks\",\n      \"part\": \"parameters\",\n      \"corresponding_attribute\": \"limit\",\n      \"corresponding_attribute_description\": \"The maximum number of items to return\",\n      \"verification_script\": \"def verify_latest_response(latest_response, request_info):\\n    try:\\n        limit_param = request_info.get('limit')\\n        if limit_param is None:\\n            return 1\\n        resp_limit = latest_response.get('limit')\\n        if resp_limit is None:\\n            return 0\\n        if int(resp_limit) != int(limit_param):\\n            return -1\\n        return 1\\n    except:\\n        return 0\",\n      \"verdict\": \"matched\"\n    }\n  ]\n}"
+}

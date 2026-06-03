@@ -1,0 +1,123 @@
+{
+  "totalExecs": 19847,
+  "speed": 66.16,
+  "queueCycles": 3,
+  "uniqExceptions": 2,
+  "coverage": 0.87,
+  "vulnerabilities": {
+    "gasless": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "unchecked call": {
+      "number": 1,
+      "instruction distinction": "5a1 5b3 5c7",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "init",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 2000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "reentrancy": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "timestamp dependency": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "block number dependency": {
+      "number": 1,
+      "instruction distinction": "7a2 7b4",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "init",
+              "inputs": []
+            },
+            {
+              "name": "init",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 4000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "dangerous delegatecall": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "freezing ether": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer overflow": {
+      "number": 0,
+      "instruction distinction": "",
+      "test cases": []
+    },
+    "integer underflow": {
+      "number": 1,
+      "instruction distinction": "6c9",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "init",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 1000000000000000000
+            }
+          ]
+        }
+      ]
+    },
+    "unexpected ether": {
+      "number": 1,
+      "instruction distinction": "8d1",
+      "test cases": [
+        {
+          "functions": [
+            {
+              "name": "init",
+              "inputs": []
+            }
+          ],
+          "accounts": [
+            {
+              "address": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+              "balance": 2000000000000000000
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
