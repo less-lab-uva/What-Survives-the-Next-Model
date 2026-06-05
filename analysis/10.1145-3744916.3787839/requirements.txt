@@ -1,0 +1,2 @@
+anthropic==0.105.2
+pandas==3.0.3

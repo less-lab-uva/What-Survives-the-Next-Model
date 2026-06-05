@@ -1,0 +1,12 @@
+{
+  "title": "Toxicity Ahead: Forecasting Conversational Derailment on GitHub",
+  "doi": "10.1145/3744916.3787839",
+  "pdf": "202500c414.pdf",
+  "venue": "ICSE 2026",
+  "dataset": "inputs/our-dataset.csv",
+  "metric": "precision/recall/F1",
+  "original_result": "0.945/0.862/0.901",
+  "our_result": {"prompt_A": "0.9837/0.761/0.8582", "prompt_B": "0.9783/0.8491/0.9091"},
+  "sampled_data_size": 366,
+  "total_cost": "6.7133"
+}

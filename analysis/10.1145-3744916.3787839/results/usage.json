@@ -1,0 +1,23 @@
+{
+  "price_in_per_mtok": 3.0,
+  "price_out_per_mtok": 15.0,
+  "A": {
+    "file": "log-claude-sonnet-4-6-a-our.csv",
+    "n_calls": 366,
+    "total_seconds": 584.41,
+    "mean_seconds": 1.597,
+    "input_tokens": 800777,
+    "output_tokens": 9135,
+    "cost_usd": 2.5394
+  },
+  "B": {
+    "file": "log-claude-sonnet-4-6-b-our.csv",
+    "n_calls": 366,
+    "total_seconds": 668.388,
+    "mean_seconds": 1.826,
+    "input_tokens": 1332575,
+    "output_tokens": 11742,
+    "cost_usd": 4.1739
+  },
+  "total_cost_usd": 6.7133
+}
