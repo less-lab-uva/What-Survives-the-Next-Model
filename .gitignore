@@ -1,0 +1,5 @@
+# Python virtual environments
+.venv/
+
+# Per-paper recreation checklists (working notes, not committed)
+analysis/**/CHECKLIST.md
