@@ -11,3 +11,4 @@
 | [`10.1145-3744916.3773255`](./10.1145-3744916.3773255) | MGDebugger: Isolating and Resolving Bugs in LLM-Generated Code via Multi-Granularity Debugging |
 | [`10.1145-3744916.3787775`](./10.1145-3744916.3787775) | RBCTest: Leveraging LLMs to Mine and Verify Oracles of API Response Bodies for RESTful API Testing |
 | [`10.1145-3744916.3787839`](./10.1145-3744916.3787839) | Toxicity Ahead: Forecasting Conversational Derailment on GitHub |
+| [`ICSE_66(10.1145-3744916.3773227)`](./ICSE_66(10.1145-3744916.3773227)) | Unlocking LLM Repair Capabilities Through Cross-Language Translation and Multi-Agent Refinement
