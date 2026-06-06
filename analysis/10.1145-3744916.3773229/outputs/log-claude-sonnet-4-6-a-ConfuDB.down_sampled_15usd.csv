@@ -1,0 +1,4016 @@
+package,start_time,end_time,input_tokens,output_tokens,model,raw
+html-components,1780770009.9200032,1780770011.242105,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nforza.cyrus.masstransit,1780770011.242663,1780770013.095934,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-negative-zero,1780770013.09611,1780770014.323669,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+alicloud-fc-helper,1780770014.3238668,1780770015.656273,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-moaqz,1780770015.656472,1780770016.9347048,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nuxt-radash,1780770016.934886,1780770018.8091211,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+modal,1780770018.8093078,1780770021.183567,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+inline-print,1780770021.183816,1780770022.354882,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+keti-datadrift,1780770022.3550642,1780770023.443936,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5Fnzh4r9HEuDxYcSBt7GPhDdbEEYBCSsR2S2CanTTToAV4wq_vgg,1780770023.444107,1780770024.684314,873,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-deprecated-props,1780770024.6844769,1780770025.773686,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+manaxu-ai,1780770025.7738612,1780770028.335775,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+git-cockpit,1780770028.335959,1780770029.575459,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-scroll-area,1780770029.575626,1780770030.707572,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+esbuild-linux-riscv64,1780770030.707746,1780770032.0309298,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nodemailer-mjml,1780770032.0311081,1780770033.265871,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cool-rich-text-editor,1780770033.26605,1780770035.418216,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-turbo,1780770035.4183922,1780770036.64639,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+coomer-downloader,1780770036.646566,1780770037.978985,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+g4.extensions,1780770037.979157,1780770039.511594,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bnppf-font-icons,1780770039.511772,1780770040.8466802,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+secretai,1780770040.846852,1780770042.030182,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ragclip,1780770042.0303638,1780770043.198802,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-delfi,1780770043.198972,1780770044.325119,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+packager,1780770044.325293,1780770045.485724,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770045.485945,1780770047.009842,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+steamcom,1780770047.0100129,1780770048.1134248,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+rjq-api-koa,1780770048.1135979,1780770049.433155,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770049.4333272,1780770050.614037,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-noaaa,1780770050.6142058,1780770051.760811,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+branch-body-web3-feel,1780770051.760981,1780770053.065747,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vec2d,1780770053.0659158,1780770054.566753,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+axios,1780770054.5669289,1780770055.896783,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+types,1780770055.896985,1780770057.228802,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+express-async-context,1780770057.228999,1780770058.661176,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+lk-collection,1780770058.6613472,1780770059.993145,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react,1780770059.9933262,1780770061.7328808,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+brotli-compress-wasm,1780770061.733056,1780770062.963398,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+geniusdevs-types,1780770062.9635909,1780770064.39647,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ivideo-react,1780770064.396647,1780770075.557919,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-redux,1780770075.5580878,1780770076.6848,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+safe-typed-storage,1780770076.684981,1780770077.909941,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+string.prototype.at,1780770077.910114,1780770079.138035,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+due-engineer-being4,1780770079.1382148,1780770080.221523,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+protoc-gen-ts,1780770080.221693,1780770081.2955809,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+EleuterAI/gpt-j-6B,1780770081.295764,1780770083.6463208,832,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+js-data-structures,1780770083.6464949,1780770084.796696,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+object.values,1780770084.797948,1780770086.2072241,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-nando,1780770086.2074041,1780770087.2540102,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+array.prototype.tosorted,1780770087.254177,1780770088.460302,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+scipy-doctest,1780770088.460478,1780770090.097955,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+project-x-ui,1780770090.0981178,1780770091.2242281,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/go-zoox/errors,1780770091.224448,1780770092.350691,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bleujs,1780770092.350865,1780770095.012077,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770095.012251,1780770096.343518,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+icons,1780770096.34368,1780770100.244822,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770100.244998,1780770101.464313,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+lara-mg,1780770101.464488,1780770102.591139,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tooltip,1780770102.5913138,1780770103.859294,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+shopify-cli,1780770103.859469,1780770105.014888,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+carmen,1780770105.0150762,1780770106.176161,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+samaneha-ui,1780770106.176349,1780770107.403699,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nathan_utils,1780770107.403871,1780770108.596406,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fameex-test,1780770108.59658,1780770109.878897,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-base,1780770109.879071,1780770111.353707,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vemp-lib,1780770111.353882,1780770112.727387,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+etherdata-react-ui,1780770112.727561,1780770114.0591822,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770114.05939,1780770115.185837,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+arr-union,1780770115.202755,1780770116.312716,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deep-equal,1780770116.3128982,1780770121.125418,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+react-devtools-inline,1780770121.125601,1780770122.764116,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770122.764277,1780770124.196043,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-acw-base,1780770124.196219,1780770125.528939,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sagemath-categories,1780770125.529116,1780770126.859879,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770126.860054,1780770128.189661,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+safe-logger,1780770128.189821,1780770129.5215418,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+popover,1780770129.5217128,1780770131.347766,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+json-schema-ref-parser,1780770131.347938,1780770132.490808,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bitfinex-dev,1780770132.4909818,1780770133.7197142,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+banner,1780770133.719902,1780770134.9191191,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-styles,1780770134.919289,1780770136.276298,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+npm-pack,1780770136.276463,1780770137.508393,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+morgan,1780770137.5085618,1780770139.0607202,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+card,1780770139.060899,1780770140.423535,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-chai,1780770140.423708,1780770142.014652,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+prop-types-plus,1780770142.014824,1780770143.341534,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-vue,1780770143.34171,1780770144.572502,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770144.57268,1780770145.8007941,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cli,1780770145.800969,1780770147.6455119,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+print-cli,1780770147.645696,1780770148.977203,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fameex-dev,1780770148.977376,1780770150.206194,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pleasejs,1780770150.206369,1780770151.422606,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dropdown-menu,1780770151.4227772,1780770152.766269,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+routers,1780770152.7664452,1780770154.711352,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+preview,1780770154.711529,1780770156.041412,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-tabs,1780770156.0415921,1780770157.169322,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-vue,1780770157.1695051,1780770158.500736,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jsonrpc-serializer,1780770158.500918,1780770160.4458182,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bithumb-main,1780770160.446002,1780770161.573958,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+relayer-utils,1780770161.57424,1780770165.157939,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stablediffusionapi/thinkdiffusionxl,1780770165.158123,1780770166.363864,834,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-script-tags,1780770166.364074,1780770167.613869,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-remote-svg,1780770167.6140401,1780770169.0093381,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-bamboo,1780770169.009512,1780770170.2762969,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-vue,1780770170.27646,1780770171.608313,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+date,1780770171.608472,1780770172.8375108,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deepcoin,1780770172.837688,1780770174.0653021,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+debounce,1780770174.06547,1780770175.2392251,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+abab,1780770175.239378,1780770176.829367,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sanitize,1780770176.829545,1780770178.160477,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tag,1780770178.160646,1780770179.5965052,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-msk,1780770179.596693,1780770180.809087,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+maina-cli,1780770180.809261,1780770181.9511979,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+audiobuffer,1780770181.951381,1780770183.4853618,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+binding-win32-x64-msvc,1780770183.485536,1780770184.71442,830,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typed-array-buffer,1780770184.7145998,1780770185.836329,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+microsoft.framework.caching.distributed,1780770185.851976,1780770187.2752728,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+code,1780770187.275439,1780770188.912292,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770188.9124632,1780770190.14198,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ai-agent-client,1780770190.142147,1780770191.472571,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+scipy-openblas64,1780770191.472733,1780770192.601095,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+util,1780770192.601266,1780770193.82794,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+plugin-config,1780770193.828112,1780770194.9544268,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+types,1780770194.954601,1780770196.285324,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+i18n,1780770196.285505,1780770197.567225,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5GseTsnUzgPzwyTi7N9SXLtMVj2wvfZZVDvxGvMh4reBP8sN_vgg,1780770197.5673978,1780770198.641192,874,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+opentelemetry-instrumentation-bull,1780770198.6413598,1780770199.848026,829,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-tjw-base,1780770199.848216,1780770200.998035,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+obojobo-chunks-question,1780770200.998214,1780770202.5312011,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770202.531378,1780770203.761478,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+enqueue,1780770203.761646,1780770205.090972,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typed-array-byte-length,1780770205.091147,1780770207.2443311,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-utilities,1780770207.244556,1780770208.369226,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+island-mine-web3-beneath,1780770208.36941,1780770209.597187,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-progress,1780770209.597355,1780770211.3385758,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-tidal,1780770211.3387961,1780770212.464443,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+json-web-token,1780770212.464603,1780770213.691019,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mypluralize,1780770213.691173,1780770215.537599,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tencentcloud-sdk-nodejs-tic,1780770215.537759,1780770216.765195,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+string.prototype.includes,1780770216.765366,1780770218.09761,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+util.promisify,1780770218.097769,1780770219.325419,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+getui-sdk,1780770219.3255858,1780770223.160129,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base,1780770223.160285,1780770224.34346,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-yaml,1780770224.343621,1780770225.777246,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ouroboros-hf-text-generation,1780770225.7774038,1780770227.0047412,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+checkbox,1780770227.0049,1780770228.234955,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+modal,1780770228.235113,1780770229.3771179,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-table,1780770229.377275,1780770230.58687,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+skeleton,1780770230.587026,1780770231.919952,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fdf,1780770231.920097,1780770233.046358,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deep-equal,1780770233.046515,1780770235.7088,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-base,1780770235.708962,1780770236.8314939,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/kotyi/kernal,1780770236.83179,1780770237.958892,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vertql,1780770237.959056,1780770239.499032,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-sc-react,1780770239.4991958,1780770240.7262971,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+chi-matches,1780770240.726466,1780770242.031646,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jupybeans,1780770242.031818,1780770243.286625,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint,1780770243.2867908,1780770244.515436,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+harmony-reflect,1780770244.5156128,1780770245.743812,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cspell-dict-golang,1780770245.743973,1780770247.280393,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+rand-omata,1780770247.2805738,1780770249.02088,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-string,1780770249.021059,1780770250.2503822,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+ydb-core-protobuf,1780770250.250559,1780770251.5544262,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5DtHymom4Md2EiPwwN8GJ7ztRHfNQutrHkeyw9WfftgpFnLR_vgg,1780770251.554602,1780770252.707813,871,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770252.7079968,1780770253.9334831,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+use-rest-api,1780770253.933674,1780770254.983762,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+esbuild-plugins-node-modules-polyfill,1780770254.983944,1780770256.188888,829,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api,1780770256.189068,1780770257.4970932,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-country-code-list,1780770257.49729,1780770259.060083,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+solve,1780770259.060249,1780770260.181107,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+path.join,1780770260.181264,1780770261.4654772,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+rollup-plugin-serve-bq,1780770261.4656472,1780770262.775794,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typed-array-length,1780770262.775966,1780770264.0703092,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5FPFcTEy9qQeZViNMAB15NzPMWFYkhDMHxv4dJYKqo73ZNRV_vgg,1780770264.070466,1780770265.303686,873,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hive-exec,1780770265.3038468,1780770266.531028,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cli,1780770266.5312269,1780770267.670385,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+spinjs,1780770267.6705458,1780770269.1934311,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+decoder-validate,1780770269.193592,1780770271.035707,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+runwork-help,1780770271.0358841,1780770272.0690901,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-test-my-app1,1780770272.069262,1780770273.596839,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cli,1780770273.59701,1780770274.8254678,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+kedo-ddtrace,1780770274.8256419,1780770275.952209,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+pyhustler,1780770275.95239,1780770277.387181,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+harder-rear-settle6,1780770277.387348,1780770278.4870489,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+check-path,1780770278.487222,1780770279.639636,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+actml,1780770279.639811,1780770280.764704,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+runtime-core,1780770280.7648761,1780770281.888001,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+api,1780770281.8881788,1780770289.570552,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+demo-model,1780770289.570716,1780770290.800271,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+date,1780770290.800541,1780770292.0287979,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770292.028966,1780770293.257832,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cli,1780770293.258006,1780770294.486033,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+markdown-it-katex,1780770294.486209,1780770295.7120562,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+elasticsearch,1780770295.712229,1780770296.944021,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils-core,1780770296.944222,1780770298.17291,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+array.prototype.foreach,1780770298.1730921,1780770299.40127,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+htmlbuilder,1780770299.4014442,1780770300.629861,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+elasticsearch,1780770300.6300328,1780770301.857517,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+prefixed-api-key,1780770301.8576798,1780770303.08846,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-string,1780770303.088633,1780770304.215585,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+sentry-node,1780770304.215762,1780770305.3403058,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+brotli-fsize,1780770305.34047,1780770306.877494,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+onnx2kerastl,1780770306.8777,1780770308.002788,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+auth,1780770308.002955,1780770309.538822,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770309.5389938,1780770310.66611,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+autocomplete-shared,1780770310.6662872,1780770311.792266,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+string.prototype.trimstart,1780770311.792446,1780770313.634732,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-bud,1780770313.634903,1780770314.761284,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+furious-commander,1780770314.761464,1780770315.887468,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jest,1780770315.8876312,1780770317.135568,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+dacc,1780770317.1358001,1780770318.277893,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ya-retry,1780770318.278066,1780770319.354937,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nodejs-base64-encode,1780770319.355105,1780770320.599757,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+license-checker,1780770320.599926,1780770321.824766,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+aidoku-logcat,1780770321.8249369,1780770323.035871,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pulp-cookbook-client,1780770323.0360389,1780770324.1507468,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+beta9,1780770324.150914,1780770325.2027872,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+uri-template,1780770325.202949,1780770326.357554,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson011016/5D8BVCv5pHnbBkv3K2WBj2eUCy2ERCuU3N8YQuyVu5MqDkSx_vgg,1780770326.35775,1780770327.4145348,876,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+display,1780770327.4147148,1780770328.6909351,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+winston-dashboard-vue,1780770328.6911092,1780770330.021471,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gitget,1780770330.021659,1780770331.248138,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+d8s-ip-addresses,1780770331.2483041,1780770332.883662,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+liquid-glass-vue,1780770332.8838348,1780770334.218668,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-google-static-map,1780770334.2188458,1780770335.343672,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cspell-dict-es-es,1780770335.3438442,1780770336.470967,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bbot,1780770336.471152,1780770337.5704901,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tria-sdk-web-dawn,1780770337.570646,1780770338.8278341,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+qtoml,1780770338.828008,1780770340.77121,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+array.prototype.findlastindex,1780770340.7713852,1780770342.171133,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ts-type-safe,1780770342.1713102,1780770343.434569,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+crack-ux,1780770343.434753,1780770344.604434,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+create-deft,1780770344.6046112,1780770345.993213,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+form,1780770345.993379,1780770347.120378,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+otp-input-react,1780770347.120537,1780770348.190378,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson011016/5CAUJQcv9sYMqXwDE2rQuazZk1NwkLoGSknPBfvMUjocySY7_vgg,1780770348.190538,1780770349.372768,870,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+chip,1780770349.373004,1780770350.601299,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+release,1780770350.6014621,1780770351.72818,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jscore,1780770351.728348,1780770352.751872,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tokenizers-js,1780770352.75204,1780770356.478424,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cspell-dict-software-terms,1780770356.4786172,1780770357.87245,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/go-slash/captcha,1780770357.8726342,1780770359.2038348,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+liusc-utils,1780770359.204007,1780770360.431102,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typenode,1780770360.431276,1780770361.570272,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ip2country,1780770361.570432,1780770362.889133,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-exo,1780770362.8893068,1780770364.118753,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nubomed-ui,1780770364.1189299,1780770365.3469079,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-ow3,1780770365.3470788,1780770366.551532,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stylelint-config-neon-order,1780770366.561027,1780770367.701926,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+extractous,1780770367.702101,1780770369.033233,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+http-request,1780770369.0334148,1780770370.26277,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tanker-ts-i18n,1780770370.26295,1780770371.6989539,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vdkweb-utils,1780770371.699111,1780770373.7263732,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770373.7265532,1780770375.074956,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react,1780770375.075126,1780770376.8156888,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+ui,1780770376.8158689,1780770378.046114,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/farseer-go/redis,1780770378.046278,1780770379.274234,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+kodiak2k,1780770379.2744,1780770380.431882,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+babel-preset-typescript,1780770380.432053,1780770381.5261881,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fell-firm-add,1780770381.526366,1780770382.75807,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api,1780770382.75825,1780770383.983521,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+xastscript,1780770383.983695,1780770385.418808,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-ts,1780770385.418988,1780770386.913034,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+commons-compress,1780770386.913244,1780770388.181294,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-api,1780770388.181507,1780770389.3094232,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mexc-test,1780770389.3095942,1780770390.53807,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gawk,1780770390.538243,1780770392.1386812,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+safe-regex-test,1780770392.138853,1780770393.302871,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pytest-services,1780770393.303048,1780770394.633055,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tsconfig,1780770394.6332748,1780770395.845483,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gith4ck,1780770395.8456361,1780770396.988508,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-utils,1780770396.988657,1780770399.342956,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+snsoft-lib,1780770399.3431108,1780770400.573219,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+serializer,1780770400.573371,1780770402.621894,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+color-plenty-lack9,1780770402.62205,1780770403.845639,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+FL33TW00D/whisper-medium,1780770403.845792,1780770405.013325,830,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+http-i18n,1780770405.013482,1780770406.204093,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-bigint,1780770406.204257,1780770407.4329119,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+subscribe,1780770407.433072,1780770408.6613572,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base,1780770408.6615071,1780770410.197858,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deface,1780770410.1980102,1780770411.254852,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+reflect.ownkeys,1780770411.255009,1780770412.504344,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deffy,1780770412.504499,1780770413.667152,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+use-wallet-beta,1780770413.6673129,1780770414.908458,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fate-cli,1780770414.9086342,1780770416.136611,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+create-arnav-app,1780770416.136815,1780770418.083575,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-ao-legacy,1780770418.0837498,1780770422.6906,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770422.690772,1780770423.9211562,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sp-sdk,1780770423.921323,1780770425.14881,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sgraph,1780770425.149062,1780770426.3765912,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hic-iusto,1780770426.37676,1780770427.50334,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770427.50352,1780770428.73167,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-dom-factories,1780770428.731833,1780770429.8584309,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770429.8586051,1780770430.996574,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+0,1780770430.9967492,1780770432.086762,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+import-sort-style-delicious,1780770432.0869389,1780770433.443668,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sqlite-xsv,1780770433.443845,1780770434.99057,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-generator-function,1780770434.990747,1780770436.207114,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+thales-utils,1780770436.2072861,1780770437.7428322,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api,1780770437.74301,1780770439.102431,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cspell-dict-cpp,1780770439.113898,1780770447.471953,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jsonschema,1780770447.472157,1780770448.700407,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+assert,1780770448.700577,1780770450.953343,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+VladDoc/model,1780770450.953517,1780770452.095606,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+counterfact,1780770452.095835,1780770453.307619,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+json-schema,1780770453.307787,1780770454.5366569,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+oribuild-linux-arm64,1780770454.536829,1780770455.7623549,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+modals,1780770455.76252,1780770457.3021061,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react,1780770457.30227,1780770458.445156,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+row,1780770458.445376,1780770459.707536,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+aws-graph,1780770459.707701,1780770461.397314,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+liftover,1780770461.397483,1780770462.523519,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nekos-js,1780770462.523681,1780770463.548228,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+evaluators,1780770463.5483992,1780770464.8785658,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-prettier,1780770464.8787358,1780770466.41519,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+watcher,1780770466.4155369,1780770467.848611,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+apidi-plugin-hapi,1780770467.848795,1780770469.0772312,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-core-module,1780770469.077407,1780770470.7875142,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+de-cent-ts-linux-x64-gnu,1780770470.787675,1780770472.033695,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+wierdpkg,1780770472.033859,1780770473.2777002,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+snke,1780770473.277921,1780770474.498108,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base112,1780770474.4982789,1780770476.14334,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+codecs,1780770476.143536,1780770477.3719091,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/ipld/go-car,1780770477.372082,1780770478.612958,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+imatrix-mobile-lib,1780770478.613148,1780770479.787246,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typedarray,1780770479.787553,1780770481.0370932,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-executable,1780770481.037268,1780770482.696481,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5D8BVCv5pHnbBkv3K2WBj2eUCy2ERCuU3N8YQuyVu5MqDkSx_vgg,1780770482.696654,1780770483.9249432,876,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hiu_auth,1780770483.925128,1780770485.769587,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+emoji-logger,1780770485.769761,1780770486.922515,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/go-zoox/i18n,1780770486.922679,1780770488.125932,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+execgem,1780770488.1261098,1780770489.454724,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tson-socket-stream,1780770489.4549,1780770490.581507,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+original,1780770490.581671,1780770492.209533,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tower-cli,1780770492.2097301,1780770493.346594,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bootpag,1780770493.3467782,1780770494.576368,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deep-equal,1780770494.5765362,1780770496.007725,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+clearly-fresh-sad-tail,1780770496.0078988,1780770497.171154,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sabil-js-sdk,1780770497.171375,1780770498.465801,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770498.4659698,1780770500.003409,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+discord.js-sound,1780770500.0035782,1780770501.3329659,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-cvsdk-rules,1780770501.333121,1780770503.586644,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-ts,1780770503.5868201,1780770504.8141499,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+data-fns,1780770504.814332,1780770506.0437398,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+breadcrumbs,1780770506.043902,1780770507.375028,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+magnoli-types,1780770507.37522,1780770508.501088,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+icons,1780770508.5013068,1780770509.8302321,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sizeof,1780770509.8303978,1780770511.060521,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base,1780770511.060695,1780770513.1083782,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+zod,1780770513.1085482,1780770514.285853,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-think,1780770514.2860181,1780770515.493047,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+keep-frozen-web3-on,1780770515.49321,1780770516.692425,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+benchmarker,1780770516.692589,1780770517.816542,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-lemon,1780770517.816727,1780770518.945632,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+commitlint-config-angular,1780770518.945809,1780770520.1742039,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+swell-storefront,1780770520.174378,1780770521.298225,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+object-keys,1780770521.2984052,1780770522.5320609,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770522.532243,1780770524.372628,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+string.prototype.trim,1780770524.372807,1780770525.4835699,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fs-routers,1780770525.4837399,1780770526.6262422,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+checkbox,1780770526.626412,1780770527.956363,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core-i18n,1780770527.956535,1780770529.288959,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-ts,1780770529.289126,1780770530.478123,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/stripe/goproxy,1780770530.478289,1780770531.7474508,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+anteros-react,1780770531.747666,1780770532.9830751,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+alscontext,1780770532.98325,1780770534.202694,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+easyme,1780770534.2028658,1780770535.328985,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-mother,1780770535.329155,1780770536.607975,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+radio,1780770536.608186,1780770537.889191,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-react-native-wix,1780770537.889365,1780770539.016918,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gulp-plugin-prettier,1780770539.017097,1780770540.1649659,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vue-data-ui,1780770540.1651762,1780770541.473176,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+toobit-dev,1780770541.473405,1780770543.009127,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ryuu.js,1780770543.009296,1780770544.237996,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+syncopate,1780770544.238165,1780770545.569102,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ui,1780770545.569268,1780770547.002638,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+string.prototype.replaceall,1780770547.002796,1780770548.435871,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+kraken-dev,1780770548.4360461,1780770549.562751,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson010101/5CMfwZ6tMWNYa2VoSdXA5FS5X4sAkWaH3CNjA1rL78tNXNkn_vgg,1780770549.562923,1780770550.9614139,875,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jancok1995,1780770550.96159,1780770552.431103,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+harmony-reflect,1780770552.431266,1780770553.6585112,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pikd-utils,1780770553.6586912,1780770554.785352,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cuirk,1780770554.785505,1780770556.013942,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+editor,1780770556.014099,1780770557.132832,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+has-symbols,1780770557.1330078,1780770558.4727192,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dictop,1780770558.472929,1780770559.903221,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+robocorp-flet-core,1780770559.903384,1780770561.1709309,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+uber,1780770561.1711009,1780770562.253272,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+confluent-schema-registry,1780770562.2534359,1780770563.7978802,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770563.7980402,1780770565.0417511,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+curio,1780770565.041918,1780770566.253711,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+timeparser,1780770566.253921,1780770567.483695,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fill-range,1780770567.4838731,1780770568.711325,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gulp-sass-newer,1780770568.711518,1780770569.838629,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+wgstolest,1780770569.838811,1780770570.9526458,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+find-pkg-dir,1780770570.952808,1780770576.093175,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+wzhuan-utils,1780770576.093338,1780770577.313113,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+acolor,1780770577.3132968,1780770578.849167,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+altek-ui,1780770578.849341,1780770579.9752378,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-ricepo-base,1780770579.975401,1780770581.292164,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+crf-ui,1780770581.29234,1780770582.404785,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+lingora,1780770582.404955,1780770583.664052,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ChrisWilson011016/5DyFEkqTWRoH4zEAQDmmKH5vLYk3u7QFcyfAhWawtx3nc6Gu_vgg,1780770583.664238,1780770584.992714,875,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-vue,1780770584.9928908,1780770586.213467,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gl-react-dom,1780770586.213696,1780770587.349843,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+icons,1780770587.350055,1780770588.474435,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ui,1780770588.474596,1780770589.600672,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cocreate-dnd,1780770589.600821,1780770591.036139,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-webkom,1780770591.036299,1780770592.0881028,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+up-test,1780770592.0882602,1780770593.39042,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mark-back0,1780770593.390578,1780770594.61828,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770594.6184452,1780770595.844755,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api,1780770595.844909,1780770596.989465,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-lwr,1780770596.989681,1780770598.172009,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+custom-error-class,1780770598.172183,1780770599.328993,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+oms-moddle-xml,1780770599.329172,1780770600.8069062,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+autocomplete-core,1780770600.807081,1780770602.175869,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tween.js,1780770602.176034,1780770604.347763,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+in-count-web3-every,1780770604.347938,1780770605.7805529,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+expo,1780770605.78073,1780770607.0087628,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-ate,1780770607.008936,1780770608.340609,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-boolean-object,1780770608.340773,1780770609.6681721,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cap-cli,1780770609.668334,1780770611.8620422,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+breadcrumb,1780770611.8622038,1780770613.050626,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770613.0508,1780770614.1770382,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+merge-options,1780770614.1772108,1780770615.405439,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+log,1780770615.4056058,1780770617.6552541,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+filigran-ui,1780770617.655435,1780770618.888237,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+forms,1780770618.888414,1780770620.117221,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nforza.cyrus.typedids,1780770620.117402,1780770621.345186,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+zafrul-lib,1780770621.345345,1780770622.5730119,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tria-sdk-core,1780770622.5731788,1780770623.9049659,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ng-form-factory,1780770623.905169,1780770625.1326919,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-string,1780770625.132865,1780770626.310335,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ag-bundle,1780770626.3105469,1780770627.793833,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-chameleon,1780770627.794008,1780770629.158821,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+deepseek-client,1780770629.158988,1780770630.2732558,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cornify,1780770630.2734349,1780770631.5844722,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cspell-dict-de-de,1780770631.5846488,1780770632.813466,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+simpli-ai-assistant-ui,1780770632.813648,1780770633.939574,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-checkbox,1780770633.939797,1780770635.0619352,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+oren-v1-pack,1780770635.062102,1780770636.602779,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+beat-earn-web3-duty,1780770636.602946,1780770637.830772,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+assert,1780770637.8309472,1780770639.162268,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+basic,1780770639.162436,1780770640.5965319,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+discord.js-setup,1780770640.596704,1780770642.107594,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+which-typed-array,1780770642.1077602,1780770643.462882,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+web-live-sdk,1780770643.463052,1780770644.687507,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ptipython,1780770644.687676,1780770646.227656,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+tamalw-crack,1780770646.2278268,1780770647.457716,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+acryl-datahub-cloud,1780770647.457889,1780770648.8900201,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+icons,1780770648.8901901,1780770650.118913,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+qimagemagick,1780770650.119096,1780770651.34779,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+object-is,1780770651.347958,1780770652.48454,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-vue,1780770652.484708,1780770653.805847,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+json-schema-to-joi,1780770653.806048,1780770655.035264,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mongodb-paginate,1780770655.03543,1780770657.1841578,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-selectrix,1780770657.184362,1780770658.617814,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+error-utils,1780770658.618003,1780770659.741027,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-shared-array-buffer,1780770659.7412028,1780770660.870548,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base-sdk,1780770660.8707242,1780770662.043194,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gummy-cli,1780770662.0433679,1780770663.433044,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+es-iterator-helpers,1780770663.4332218,1780770664.6603048,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-neon,1780770664.660492,1780770665.7870138,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-seo-breadcrumb,1780770665.787189,1780770667.016095,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dexonlineparser,1780770667.0162728,1780770668.1024919,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-typed-array,1780770668.102678,1780770669.678276,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770669.6784372,1780770671.011032,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vostok-auth-refresh,1780770671.011203,1780770672.40892,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+furechan,1780770672.4090939,1780770674.1791701,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+usaa-wdio-utils,1780770674.179334,1780770675.61702,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jaul,1780770675.617196,1780770676.756236,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+opoa,1780770676.7564008,1780770678.173124,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+js-svg-path,1780770678.1733031,1780770679.549887,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dotignore,1780770679.5501099,1780770681.2309902,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+xoj,1780770681.2312162,1780770682.579775,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ngf-bootstrap,1780770682.579933,1780770683.70364,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+icons,1780770683.703804,1780770684.9313421,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+totology-components,1780770684.9315,1780770686.164074,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+editor,1780770686.164279,1780770687.5814981,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770687.581693,1780770688.9305332,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+environment,1780770688.9307158,1780770690.0551412,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+beam-client,1780770690.05532,1780770691.1814451,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bun,1780770691.1816251,1780770692.8440142,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+skeleton,1780770692.844182,1780770694.048723,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+konami-codes,1780770694.048893,1780770695.3799129,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hic-alias,1780770695.380094,1780770697.734645,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gome-js-beautify,1780770697.734828,1780770698.923841,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+preview,1780770698.924017,1780770700.193975,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+switcher,1780770700.194151,1780770702.231429,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+moose-lib,1780770702.231603,1780770703.8798678,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vue-virtual-collection,1780770703.880061,1780770705.312364,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mongodb,1780770705.312546,1780770706.950461,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770706.950637,1780770708.384537,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-bootstrap-buttons,1780770708.3847098,1780770709.612694,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+inquirer-file-path,1780770709.6128662,1780770710.842249,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+semi-json-viewer-core,1780770710.8424268,1780770712.557247,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+zaide,1780770712.557419,1780770713.809178,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nestjs-base,1780770713.8093498,1780770715.142245,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-udemy,1780770715.1424189,1780770716.475722,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ngx-dropfiles,1780770716.4759989,1780770718.082866,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ngx-mat-timepicker,1780770718.083044,1780770719.238934,831,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+docrepr,1780770719.2391071,1780770720.774192,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pontx-ui,1780770720.774369,1780770721.90131,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+azmusicapi,1780770721.9015958,1780770723.0245912,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+webspec,1780770723.0247521,1780770725.280502,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+flive-ui,1780770725.280685,1780770726.6109319,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-segment-security,1780770726.611104,1780770727.841172,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-twofold,1780770727.841399,1780770730.503097,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+acidy-ui,1780770730.503278,1780770732.4482932,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+opn,1780770732.448458,1780770733.7845068,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pyyaml-env-tag,1780770733.784673,1780770735.213398,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-lisbon,1780770735.213567,1780770736.421557,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cosmi,1780770736.42173,1780770737.713326,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hidden-furniture-money-minute,1780770737.7134972,1780770738.8993468,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-scripts,1780770738.899533,1780770740.127889,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-xo-preact,1780770740.128064,1780770741.3575912,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vm2-process,1780770741.357772,1780770744.019727,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ast-monkey,1780770744.019903,1780770745.351614,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sitecap,1780770745.351773,1780770746.938771,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+object.getownpropertydescriptors,1780770746.939095,1780770748.075625,830,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+warbeast2000,1780770748.0758002,1780770749.2782469,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-utils,1780770749.2784178,1780770750.572913,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770750.573092,1780770751.687349,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+typography,1780770751.687531,1780770752.928479,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+yhl-utils,1780770752.9286542,1780770754.2595358,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-bpmn-io,1780770754.259703,1780770755.4053261,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/jaerk/kernal,1780770755.405501,1780770758.6634932,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+serverless-obsession,1780770758.6636748,1780770760.916252,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+express-oauth2-jwt-bearer,1780770760.916427,1780770762.062301,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+create-dacc,1780770762.062479,1780770764.054889,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770764.055105,1780770765.2337222,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+later-composition-bone-cage,1780770765.2338939,1780770766.72692,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+har-down,1780770766.727099,1780770767.980481,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+node-yaml,1780770767.980659,1780770769.00434,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hooks,1780770769.004513,1780770770.854361,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+oxlint,1780770770.854539,1780770772.1045601,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+node-cidr,1780770772.1047392,1780770774.088021,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+abase,1780770774.088183,1780770775.357464,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+attrdict3,1780770775.3576388,1780770776.581836,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bitcore-payment-protocol-excc,1780770776.5820138,1780770777.810616,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+object.hasown,1780770777.8107882,1780770779.096458,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+babel-helper-annotate-as-pure,1780770779.096663,1780770780.241162,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+slime-view-core,1780770780.24133,1780770781.599382,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+echarts-signlog,1780770781.599543,1780770782.72641,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+set-function-length,1780770782.726572,1780770783.853309,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+pbt-properties,1780770783.853502,1780770785.081824,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+types,1780770785.081978,1780770786.617718,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+minidenticons,1780770786.617878,1780770787.9485362,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+utils,1780770787.948695,1780770789.2763772,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config,1780770789.276536,1780770790.7135072,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/winggao/errors,1780770790.7136698,1780770799.621662,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ui,1780770799.621814,1780770800.850662,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+database,1780770800.850819,1780770802.048966,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tedious-friendly,1780770802.0491278,1780770804.126849,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+notiad-sdk,1780770804.127003,1780770805.576836,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-i18n-lite,1780770805.5769951,1780770807.099361,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-hewx,1780770807.0995321,1780770808.120576,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+brotli,1780770808.1207502,1780770809.75685,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ts-glitter,1780770809.757022,1780770811.296033,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+timeslib,1780770811.296191,1780770812.433745,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-noclip,1780770812.4339159,1780770813.650968,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-deprecate,1780770813.6511528,1780770814.981726,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+intl,1780770814.981903,1780770816.6205618,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hostile,1780770816.620734,1780770817.765864,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hooks,1780770817.766031,1780770818.872776,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+blau,1780770818.87295,1780770820.1016939,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stylelint-config-bod,1780770820.101867,1780770821.536331,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cli-freind,1780770821.536504,1780770823.481269,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-airbe,1780770823.481442,1780770824.69593,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-vegas,1780770824.6961,1780770825.9395971,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+composabl-core-dev,1780770825.9397728,1780770827.269618,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+array.prototype.at,1780770827.2697852,1780770829.010468,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stylished-components,1780770829.0106392,1780770830.228673,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+springuper-winston-daily-rotate-file,1780770830.2288451,1780770831.468343,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-videoplayer,1780770831.468519,1780770833.413711,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770833.4139142,1780770839.250295,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+music-ui,1780770839.250593,1780770840.4799669,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+base,1780770840.480139,1780770841.6853561,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780770841.685533,1780770842.834583,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+general-library-taste,1780770842.8347561,1780770844.1657841,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+is-arguments,1780770844.165963,1780770845.804801,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+regexp.prototype.flags,1780770845.804975,1780770846.930521,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+lib,1780770846.930696,1780770848.159049,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+html-to-pdf-js,1780770848.159225,1780770849.3880699,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+temp-write,1780770849.3882282,1780770850.618902,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api,1780770850.619074,1780770851.7409449,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+wwwtea,1780770851.741118,1780770852.8991702,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+node-redshift,1780770852.8993542,1780770854.0982049,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vite-plugin-imagemin-vv,1780770854.098387,1780770855.407441,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cesiumjs,1780770855.407615,1780770856.7605572,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+github.com/lxmgo/beego,1780770856.760732,1780770857.884556,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+github.com/spfl13/pflag,1780770857.8847291,1780770859.1425211,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+react-native-gifted-charts-sai,1780770859.14276,1780770860.1767879,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+react-search-autocomplete-v3,1780770860.1769679,1780770861.574187,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+buffer-hor,1780770861.574363,1780770862.904656,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-verification-code-input,1780770862.9048278,1780770864.133182,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gnosis-safe,1780770864.133348,1780770869.561911,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+babel-plugin-transform-export-namespace,1780770869.5621061,1780770870.686369,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stream-chat-react-native-core-tyket,1780770870.686534,1780770871.915851,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+qrcode.vue,1780770871.916018,1780770873.0034509,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+rollup-plugin-hotreload,1780770873.003639,1780770874.1686468,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+icons-react,1780770874.168822,1780770875.399627,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+customs-aloud,1780770875.3998652,1780770876.626753,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+keystores-node,1780770876.626925,1780770877.855538,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vue-i18n,1780770877.855721,1780770879.092503,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+v3-core,1780770879.092672,1780770880.722944,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+silvercoder45/Mistral-7b-instruct-v0.2-summ-sft-e2m,1780770880.723105,1780770881.951467,848,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+okxweb3,1780770881.951644,1780770883.2400908,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+babylon-walker,1780770883.240267,1780770884.4097888,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+configpp,1780770884.409964,1780770885.758049,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+alpha-order,1780770885.758213,1780770887.174643,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-pivottable-secondary,1780770887.1748009,1780770888.914677,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+NbAiLabBeta/nb-whisper-medium,1780770888.914855,1780770890.1434371,833,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+node-graceful,1780770890.14365,1780770891.474087,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-recaptcha-v3,1780770891.474265,1780770892.702476,829,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+readline-promises,1780770892.7026508,1780770894.238795,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+http-errors-handler,1780770894.238969,1780770895.706131,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+romanum,1780770895.706303,1780770897.208118,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+boaproject-transactions,1780770897.2082958,1780770898.5400288,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sleap,1780770898.540211,1780770899.768926,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+svg-captcha-hhhhhhhhh,1780770899.769089,1780770900.8945768,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-smart-banner-app,1780770900.8947608,1780770903.659405,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+exif-js,1780770903.659581,1780770904.93537,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+vue-renderer,1780770904.9355369,1780770909.906115,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bimlab.nuke,1780770909.906295,1780770911.341256,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bootstrap-nabtraderedesign,1780770911.341428,1780770912.568266,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+l1b,1780770912.568438,1780770913.692607,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+web3-fruit,1780770913.692787,1780770914.9232361,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eth-method-registry,1780770914.923409,1780770916.015827,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+tsc-watch,1780770916.016006,1780770917.0737238,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+aplus,1780770917.073899,1780770918.302559,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+slash2,1780770918.302739,1780770919.533411,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+weex-dev,1780770919.533571,1780770920.96502,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+blue-jest,1780770920.965207,1780770922.243826,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pop-jinqu-liji1,1780770922.244004,1780770923.633834,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+microsoft.faster,1780770923.6340008,1780770924.853947,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+vue-number-animation,1780770924.854125,1780770926.274923,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+crypto,1780770926.2751071,1780770927.621345,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+github.com/xiu/sftp,1780770927.621512,1780770928.646058,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+vue-dia,1780770928.6462321,1780770929.729633,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+language-babel,1780770929.7298062,1780770930.816865,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+multer2,1780770930.817045,1780770931.923809,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+js-format-money,1780770931.923987,1780770933.150229,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+types,1780770933.150393,1780770934.6863492,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+css-unit-conversion,1780770934.686521,1780770935.916411,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ng2-smart-table,1780770935.9166121,1780770938.065462,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+intersock,1780770938.0656471,1780770939.294836,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vue-slider-component-bw,1780770939.295032,1780770940.6256168,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mpldatacursor,1780770940.6257899,1780770941.985738,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+async-line-reader,1780770941.9859042,1780770943.1855109,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+aether-connector-file,1780770943.185683,1780770944.4149692,830,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/xorm-io/builder,1780770944.415143,1780770945.5412328,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+odderon-knex,1780770945.541423,1780770946.7625148,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-bdd,1780770946.762727,1780770947.8961742,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/shopsprint/decimal,1780770947.8963451,1780770949.172435,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+posthog-js,1780770949.17261,1780770950.4558809,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+serverless-offline,1780770950.4560452,1780770951.686054,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+react-dom-resize-observer,1780770951.6862211,1780770953.220532,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-facebook-login-button,1780770953.220704,1780770954.5526621,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+discord-selfbot-v12,1780770954.5528462,1780770955.6783261,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dusame-fulfillment-manual,1780770955.678499,1780770957.112085,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+azure-arm-servicefabricmesh-samples-ts-beta,1780770957.11227,1780770958.340738,832,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+validdocbr,1780770958.340914,1780770959.507099,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-syntax-highlighter,1780770959.507288,1780770963.6653419,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+vue-app,1780770963.6655009,1780770965.403709,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+perf-ai-form-recognizer,1780770965.403884,1780770966.63631,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+stlintreact,1780770966.636481,1780770967.8441951,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+prettier,1780770967.84437,1780770968.9713228,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+migg-sessionsvc,1780770968.971494,1780770970.5276842,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+photography-pro-gallery,1780770970.527848,1780770971.5842838,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+feast-css,1780770971.584461,1780770972.801326,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bindist,1780770972.801499,1780770974.214088,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+builde,1780770974.214252,1780770975.544111,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+mini-css-extract-plugin-celeste-duplex-rocket,1780770975.5443048,1780770976.861283,831,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-displays,1780770976.861453,1780770978.10516,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mime-helper,1780770978.105365,1780770979.435081,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+axois,1780770979.4352498,1780770980.562093,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+corto-ai/nomic-embed-text-v1,1780770980.5622709,1780770981.7871308,833,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+mersennetwister,1780770981.7873,1780770983.019781,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+angular-ngx-autocomplete,1780770983.019937,1780770984.964601,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+azure-template,1780770984.964758,1780770986.1112058,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+aiohttp-socksx,1780770986.1113741,1780770987.2812958,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+v2-core,1780770987.281471,1780770988.322048,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+chartjs-chart-matrix,1780770988.3222258,1780770989.5748212,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tobo-cordova-plugin-inappbrowser,1780770989.574993,1780770990.6996129,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+github.com/spfl13/cobra,1780770990.6997938,1780770992.103909,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+musky,1780770992.104173,1780770993.36289,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+mini-css-extract-plugin-ursa-zenobia-mira,1780770993.3630662,1780770994.5916429,832,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+snore-log,1780770994.591809,1780770995.921058,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+metascraper-logo-favicon,1780770995.921234,1780770997.048251,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+utils,1780770997.048414,1780770998.380907,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+own-version,1780770998.381089,1780770999.6048791,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+gulp-downloads,1780770999.605061,1780771001.6571121,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tasklogger,1780771001.6572921,1780771002.9874282,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-config-standard-react,1780771002.987603,1780771004.318408,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+av-expo-barcode-scanner,1780771004.318579,1780771005.445188,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+image-editor,1780771005.4453719,1780771006.878273,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+apollo-link-refresh-token,1780771006.878588,1780771008.004949,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bindepend,1780771008.005126,1780771009.746538,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+intl-tel-input,1780771009.74671,1780771011.077523,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+sql-formatter-plush,1780771011.0776918,1780771013.636242,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+unserialize,1780771013.6364229,1780771014.8666828,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+iconsax-reactjs,1780771014.86686,1780771015.991879,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+idex,1780771015.992064,1780771017.216907,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+components-advanced,1780771017.217099,1780771018.654381,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/boltdb-go/bolt,1780771018.6545548,1780771019.882912,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+dzdp,1780771019.8830929,1780771020.9884071,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+itype,1780771020.988586,1780771022.093626,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ts-patch-mongose,1780771022.0938072,1780771023.26295,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+react-native-firebase-messaging,1780771023.263125,1780771024.593693,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+buffer-yor,1780771024.5938728,1780771025.719926,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+discord.js-selfbot-dmall-v13,1780771025.7201002,1780771027.5636082,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+hooks,1780771027.5637949,1780771028.894164,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+discord.js12.5.3,1780771028.89434,1780771030.417526,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+segmented-control-rn,1780771030.4176981,1780771031.758796,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+shared-ini-file-loader,1780771031.758973,1780771032.990206,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+lytekitplugins-pods,1780771032.9903738,1780771034.2187352,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+rspec-parameterized-core,1780771034.2189188,1780771035.447781,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dataeval,1780771035.4479628,1780771039.5965152,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jake-horizon,1780771039.59668,1780771040.7725031,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+solidity-comments-extractors,1780771040.77267,1780771041.899997,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+github.com/pion/webrtc/v3,1780771041.900175,1780771043.193535,829,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-swipeable-lists,1780771043.1936991,1780771046.448433,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+echarts-snack,1780771046.4486148,1780771047.507103,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+buffer-xoz,1780771047.507287,1780771048.7608478,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+cost-led,1780771048.761015,1780771050.0767438,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+next-bundle-analyzer,1780771050.0769138,1780771051.215691,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+better-koa-session,1780771051.215868,1780771052.446323,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+nodmeon,1780771052.4464982,1780771053.797496,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+trialzen-react-pivottable,1780771053.79767,1780771055.005405,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eslint-plugin-diff,1780771055.00558,1780771056.179034,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bowserify,1780771056.179208,1780771057.463828,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+github.com/sofa-security/trivy,1780771057.464006,1780771058.590074,827,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+dotnetcore.natasha.csharpcompiler,1780771058.59026,1780771059.817618,829,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+iron-silence-my5,1780771059.817795,1780771061.047453,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+html2canvas,1780771061.0476449,1780771062.18897,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+node-smtp-mailer,1780771062.189146,1780771063.501812,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ethers,1780771063.5019882,1780771064.7349539,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+iolite,1780771064.735125,1780771065.862089,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+raect,1780771065.862268,1780771067.395634,818,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+reedux,1780771067.3958201,1780771069.342169,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+guru,1780771069.3423529,1780771070.366036,817,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+core,1780771070.36621,1780771071.49248,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-native-cameras,1780771071.4926531,1780771072.618717,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+aws-sdk,1780771072.618894,1780771073.653328,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+babel-eslint-parser,1780771073.653503,1780771074.76946,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+protractor-jasmine2-screenshot-report,1780771074.769655,1780771076.14713,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-html2pdf.js,1780771076.147305,1780771077.432492,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+filtrex,1780771077.4326699,1780771078.7629812,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+chartjs-plugin-crosshair,1780771078.763156,1780771080.093628,828,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+json-viewer-vue3,1780771080.0938082,1780771081.2460291,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+camelcasify,1780771081.246194,1780771082.4504151,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bootstrap-just-css,1780771082.4505742,1780771083.677889,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+donkey-puppeteer-core,1780771083.6780689,1780771084.842418,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+gate-dev,1780771084.84263,1780771086.237938,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+jaqmc,1780771086.238111,1780771087.466269,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+npm-cnof,1780771087.466443,1780771088.672132,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+ngx-infinite-scroll-fixed,1780771088.672309,1780771090.026321,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hardhat-deploy-others,1780771090.026491,1780771091.255739,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+reacta-ollo,1780771091.255913,1780771092.5873878,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+schibsted-ufo,1780771092.587561,1780771094.019969,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+seo-pwa,1780771094.020129,1780771095.147734,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+azure-event-hubs-browser,1780771095.1480541,1780771096.375967,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+dazaar-resolve,1780771096.376141,1780771098.116521,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+api-discord.js-v14,1780771098.116692,1780771099.3459232,824,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+sdm.vendor.lds,1780771099.346161,1780771100.5737002,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+axios-oauth,1780771100.573872,1780771102.202236,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sbb-esta,1780771102.2024078,1780771103.543513,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+zzh-layout,1780771103.543692,1780771104.797201,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bank_cron,1780771104.7974641,1780771106.260245,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+left-pad-browser,1780771106.2604108,1780771107.433738,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+eva.io-core,1780771107.433913,1780771108.663213,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+prettyby6es,1780771108.663384,1780771109.9196858,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+ts-patch-moongoose,1780771109.933067,1780771111.170976,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+schibsted-style,1780771111.1711528,1780771112.452008,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bernie-core,1780771112.45219,1780771113.680631,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+react-data-grid-eppsta,1780771113.680789,1780771114.9093308,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+loaddash,1780771114.909512,1780771116.363327,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+ts-patch-mongoos,1780771116.3635452,1780771117.875911,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+runtlcontribconcat,1780771117.876082,1780771119.1563609,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+graprqltag,1780771119.156524,1780771120.338309,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+aysa-web-core,1780771120.338484,1780771121.454407,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+crossfetkh,1780771121.454586,1780771122.691621,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+middleware-proxy,1780771122.691797,1780771123.8196049,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+runkit-engines,1780771123.819894,1780771124.945271,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sqlmap,1780771124.9455261,1780771126.1517498,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sjcl-extended,1780771126.151925,1780771127.507801,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+pcln-types,1780771127.5079548,1780771129.189961,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+apl-client,1780771129.1901388,1780771130.57895,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+hardhat-gas-optimizer,1780771130.5791261,1780771131.804903,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+js.cookie,1780771131.8050802,1780771133.0336268,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+4keylpress,1780771133.033792,1780771138.461473,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+testepocdep,1780771138.4616551,1780771139.687449,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+sch-frontend-integration,1780771139.687629,1780771141.635186,822,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+fuffer-xor,1780771141.635364,1780771143.06907,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+serverless-yandex-cloud-template,1780771143.0692322,1780771144.7092638,826,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+buffer-xop,1780771144.7094378,1780771146.243242,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+loggi,1780771146.2434182,1780771147.473682,819,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": true
+}
+```"
+eslint-config-frantic1048,1780771147.473854,1780771148.803216,825,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+tlsclient3,1780771148.803383,1780771150.152641,821,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+xia-engine-mysql,1780771150.152815,1780771151.66735,823,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"
+bsc-library,1780771151.6675231,1780771153.2069602,820,22,claude-sonnet-4-6,"```json
+{
+  ""is_typosquat"": false
+}
+```"

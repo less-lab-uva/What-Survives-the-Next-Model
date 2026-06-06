@@ -1,0 +1,12 @@
+{
+  "title": "ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale",
+  "doi": "10.1145/3744916.3773229",
+  "pdf": "202500b992.pdf",
+  "venue": "ICSE 2026",
+  "dataset": "",
+  "metric": "",
+  "original_result": "",
+  "our_result": {"prompt_A": null, "prompt_B": null},
+  "sampled_data_size": null,
+  "total_cost": ""
+}

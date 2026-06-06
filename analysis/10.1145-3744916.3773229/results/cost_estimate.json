@@ -1,0 +1,57 @@
+{
+  "model": "claude-sonnet-4-6",
+  "output_tokens_budget": 30,
+  "price_in_per_mtok": 3.0,
+  "price_out_per_mtok": 15.0,
+  "runs": [
+    {
+      "prompt": "prompt_A.txt",
+      "dataset": "ConfuDB.down_sampled_15usd.csv",
+      "n_rows": 803,
+      "input_tokens": 660380,
+      "output_tokens": 24090,
+      "cost_usd": 2.34
+    },
+    {
+      "prompt": "prompt_B.txt",
+      "dataset": "ConfuDB.down_sampled_15usd.csv",
+      "n_rows": 803,
+      "input_tokens": 1892182,
+      "output_tokens": 24090,
+      "cost_usd": 6.04
+    },
+    {
+      "prompt": "prompt_A.txt",
+      "dataset": "NeupaneDB_real_malware.down_sampled_15usd.csv",
+      "n_rows": 422,
+      "input_tokens": 347516,
+      "output_tokens": 12660,
+      "cost_usd": 1.23
+    },
+    {
+      "prompt": "prompt_B.txt",
+      "dataset": "NeupaneDB_real_malware.down_sampled_15usd.csv",
+      "n_rows": 422,
+      "input_tokens": 994864,
+      "output_tokens": 12660,
+      "cost_usd": 3.17
+    },
+    {
+      "prompt": "prompt_A.txt",
+      "dataset": "NeupaneDB_no_malware.down_sampled_15usd.csv",
+      "n_rows": 213,
+      "input_tokens": 174518,
+      "output_tokens": 6390,
+      "cost_usd": 0.62
+    },
+    {
+      "prompt": "prompt_B.txt",
+      "dataset": "NeupaneDB_no_malware.down_sampled_15usd.csv",
+      "n_rows": 213,
+      "input_tokens": 501260,
+      "output_tokens": 6390,
+      "cost_usd": 1.6
+    }
+  ],
+  "grand_total_usd": 15.0
+}
