@@ -3,10 +3,399 @@
   "doi": "10.1145/3744916.3773229",
   "pdf": "202500b992.pdf",
   "venue": "ICSE 2026",
-  "dataset": "",
-  "metric": "",
-  "original_result": "",
-  "our_result": {"prompt_A": null, "prompt_B": null},
-  "sampled_data_size": null,
-  "total_cost": ""
+  "dataset": "ConfuDB + NeupaneDB, down-sampled to ~$15 (inputs/*.down_sampled_15usd.csv)",
+  "metric": "Table 5 (EQ5): per dataset x {active,stealthy,benign,overall} -> tp/fp/tn/fn + precision/recall/f1/accuracy. Positive class = threat; benign has no positives so P/R/F1 are null ('-' in the paper).",
+  "table_columns": [
+    "pkgs",
+    "tp",
+    "fp",
+    "tn",
+    "fn",
+    "precision",
+    "recall",
+    "f1",
+    "accuracy"
+  ],
+  "original_result": {
+    "ConfuGuard": {
+      "NeupaneDB": {
+        "active": {
+          "pkgs": 1239,
+          "tp": 1103,
+          "fp": 0,
+          "tn": 0,
+          "fn": 131,
+          "precision": 1.0,
+          "recall": 0.89,
+          "f1": 0.94,
+          "accuracy": 0.89
+        },
+        "stealthy": {
+          "pkgs": 121,
+          "tp": 68,
+          "fp": 0,
+          "tn": 0,
+          "fn": 53,
+          "precision": 1.0,
+          "recall": 0.56,
+          "f1": 0.72,
+          "accuracy": 0.56
+        },
+        "benign": {
+          "pkgs": 480,
+          "tp": 0,
+          "fp": 117,
+          "tn": 347,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.72
+        },
+        "overall": {
+          "pkgs": 1840,
+          "tp": 1171,
+          "fp": 117,
+          "tn": 347,
+          "fn": 184,
+          "precision": 0.9,
+          "recall": 0.86,
+          "f1": 0.88,
+          "accuracy": 0.83
+        }
+      },
+      "ConfuDB": {
+        "active": {
+          "pkgs": 133,
+          "tp": 61,
+          "fp": 0,
+          "tn": 0,
+          "fn": 72,
+          "precision": 1.0,
+          "recall": 0.53,
+          "f1": 0.7,
+          "accuracy": 0.53
+        },
+        "stealthy": {
+          "pkgs": 409,
+          "tp": 238,
+          "fp": 0,
+          "tn": 0,
+          "fn": 171,
+          "precision": 1.0,
+          "recall": 0.74,
+          "f1": 0.85,
+          "accuracy": 0.73
+        },
+        "benign": {
+          "pkgs": 1492,
+          "tp": 0,
+          "fp": 414,
+          "tn": 1078,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.72
+        },
+        "overall": {
+          "pkgs": 2034,
+          "tp": 299,
+          "fp": 414,
+          "tn": 1078,
+          "fn": 243,
+          "precision": 0.42,
+          "recall": 0.55,
+          "f1": 0.48,
+          "accuracy": 0.68
+        }
+      }
+    },
+    "Typomind": {
+      "NeupaneDB": {
+        "active": {
+          "pkgs": 1239,
+          "tp": 1000,
+          "fp": 0,
+          "tn": 0,
+          "fn": 239,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.89,
+          "accuracy": 0.81
+        },
+        "stealthy": {
+          "pkgs": 121,
+          "tp": 121,
+          "fp": 0,
+          "tn": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "accuracy": 1.0
+        },
+        "benign": {
+          "pkgs": 480,
+          "tp": 0,
+          "fp": 480,
+          "tn": 0,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.0
+        },
+        "overall": {
+          "pkgs": 1840,
+          "tp": 1121,
+          "fp": 480,
+          "tn": 0,
+          "fn": 239,
+          "precision": 0.7,
+          "recall": 0.82,
+          "f1": 0.76,
+          "accuracy": 0.61
+        }
+      },
+      "ConfuDB": {
+        "active": {
+          "pkgs": 133,
+          "tp": 71,
+          "fp": 0,
+          "tn": 0,
+          "fn": 62,
+          "precision": 1.0,
+          "recall": 0.53,
+          "f1": 0.72,
+          "accuracy": 0.56
+        },
+        "stealthy": {
+          "pkgs": 409,
+          "tp": 219,
+          "fp": 0,
+          "tn": 0,
+          "fn": 190,
+          "precision": 1.0,
+          "recall": 0.64,
+          "f1": 0.78,
+          "accuracy": 0.64
+        },
+        "benign": {
+          "pkgs": 1492,
+          "tp": 0,
+          "fp": 560,
+          "tn": 932,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.61
+        },
+        "overall": {
+          "pkgs": 2034,
+          "tp": 290,
+          "fp": 560,
+          "tn": 932,
+          "fn": 252,
+          "precision": 0.28,
+          "recall": 0.62,
+          "f1": 0.39,
+          "accuracy": 0.62
+        }
+      }
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "NeupaneDB": {
+        "active": {
+          "pkgs": 421,
+          "tp": 77,
+          "fp": 0,
+          "tn": 0,
+          "fn": 344,
+          "precision": 1.0,
+          "recall": 0.1829,
+          "f1": 0.3092,
+          "accuracy": 0.1829
+        },
+        "stealthy": {
+          "pkgs": 55,
+          "tp": 7,
+          "fp": 0,
+          "tn": 0,
+          "fn": 48,
+          "precision": 1.0,
+          "recall": 0.1273,
+          "f1": 0.2258,
+          "accuracy": 0.1273
+        },
+        "benign": {
+          "pkgs": 158,
+          "tp": 0,
+          "fp": 12,
+          "tn": 146,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.9241
+        },
+        "overall": {
+          "pkgs": 634,
+          "tp": 84,
+          "fp": 12,
+          "tn": 146,
+          "fn": 392,
+          "precision": 0.875,
+          "recall": 0.1765,
+          "f1": 0.2937,
+          "accuracy": 0.3628
+        }
+      },
+      "ConfuDB": {
+        "active": {
+          "pkgs": 47,
+          "tp": 11,
+          "fp": 0,
+          "tn": 0,
+          "fn": 36,
+          "precision": 1.0,
+          "recall": 0.234,
+          "f1": 0.3793,
+          "accuracy": 0.234
+        },
+        "stealthy": {
+          "pkgs": 168,
+          "tp": 44,
+          "fp": 0,
+          "tn": 0,
+          "fn": 124,
+          "precision": 1.0,
+          "recall": 0.2619,
+          "f1": 0.4151,
+          "accuracy": 0.2619
+        },
+        "benign": {
+          "pkgs": 512,
+          "tp": 0,
+          "fp": 31,
+          "tn": 481,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.9395
+        },
+        "overall": {
+          "pkgs": 727,
+          "tp": 55,
+          "fp": 31,
+          "tn": 481,
+          "fn": 160,
+          "precision": 0.6395,
+          "recall": 0.2558,
+          "f1": 0.3654,
+          "accuracy": 0.7373
+        }
+      }
+    },
+    "prompt_B": {
+      "NeupaneDB": {
+        "active": {
+          "pkgs": 421,
+          "tp": 61,
+          "fp": 0,
+          "tn": 0,
+          "fn": 360,
+          "precision": 1.0,
+          "recall": 0.1449,
+          "f1": 0.2531,
+          "accuracy": 0.1449
+        },
+        "stealthy": {
+          "pkgs": 55,
+          "tp": 5,
+          "fp": 0,
+          "tn": 0,
+          "fn": 50,
+          "precision": 1.0,
+          "recall": 0.0909,
+          "f1": 0.1667,
+          "accuracy": 0.0909
+        },
+        "benign": {
+          "pkgs": 158,
+          "tp": 0,
+          "fp": 8,
+          "tn": 150,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.9494
+        },
+        "overall": {
+          "pkgs": 634,
+          "tp": 66,
+          "fp": 8,
+          "tn": 150,
+          "fn": 410,
+          "precision": 0.8919,
+          "recall": 0.1387,
+          "f1": 0.24,
+          "accuracy": 0.3407
+        }
+      },
+      "ConfuDB": {
+        "active": {
+          "pkgs": 47,
+          "tp": 8,
+          "fp": 0,
+          "tn": 0,
+          "fn": 39,
+          "precision": 1.0,
+          "recall": 0.1702,
+          "f1": 0.2909,
+          "accuracy": 0.1702
+        },
+        "stealthy": {
+          "pkgs": 168,
+          "tp": 28,
+          "fp": 0,
+          "tn": 0,
+          "fn": 140,
+          "precision": 1.0,
+          "recall": 0.1667,
+          "f1": 0.2857,
+          "accuracy": 0.1667
+        },
+        "benign": {
+          "pkgs": 512,
+          "tp": 0,
+          "fp": 16,
+          "tn": 496,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "f1": null,
+          "accuracy": 0.9688
+        },
+        "overall": {
+          "pkgs": 727,
+          "tp": 36,
+          "fp": 16,
+          "tn": 496,
+          "fn": 179,
+          "precision": 0.6923,
+          "recall": 0.1674,
+          "f1": 0.2697,
+          "accuracy": 0.7318
+        }
+      }
+    }
+  },
+  "sampled_data_size": 1438,
+  "total_cost": "14.5749"
 }
