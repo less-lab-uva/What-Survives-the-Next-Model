@@ -1,0 +1,45 @@
+type bool =
+  | True
+  | False
+
+type nat =
+  | O
+  | S of nat
+  
+type list =
+  | Nil
+  | Cons of nat * list
+  
+let sub =
+  fix (sub : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> O
+        | S n1p -> match n2 with
+                    | O -> n1
+                    | S n2p -> (sub n1p n2p)
+;;
+
+let length =
+	fix (length : list -> nat) =
+	  fun (x:list) ->
+	    match x with
+	    | Nil -> O
+	    | Cons -> S((length (Un_Cons(x)).1))
+;;
+
+synth list -> bool satisfying
+
+[Cons(3, Cons(2, Cons(1, Nil)))] -> True,
+[Cons(1, Cons(2, Cons(3, Nil)))] -> False,
+[Cons(5, Cons(1, Nil))] -> True,
+[Cons(1, Cons(3, Nil))] -> False,
+[Cons(2, Cons(0, Cons(0, Nil)))] -> False,
+[Cons(4, Cons(1, Cons(1, Nil)))] -> False,
+[Cons(3, Cons(2, Cons(1, Cons(0, Nil))))] -> False,
+[Cons(0, Nil)] -> False,
+[Cons(1, Nil)] -> True,
+[Nil] -> True,
+[Cons(5, Cons(1, Cons(2, Cons(3, Nil))))] -> False,
+[Cons(6, Cons(3, Cons(3, Cons(4, Nil))))] -> True,

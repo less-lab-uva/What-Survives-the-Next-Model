@@ -1,0 +1,50 @@
+type bool =
+  | True
+  | False
+
+type nat =
+  | O
+  | S of nat
+
+type tree =
+  | Leaf
+  | Node of nat * tree * tree
+
+let add =
+  fix (add : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> n2
+        | S n1p -> S (add n1p n2)
+;;
+
+let count_nodes =
+  fix (count_nodes : tree -> nat) =
+    fun (t : tree) ->
+        match t with
+        | Leaf -> O
+        | Node (n, l, r) -> S (add (count_nodes l) (count_nodes r))
+;;
+
+let is_odd =
+  fix (is_odd : nat -> bool) =
+    fun (x1 : nat) ->
+      match x1 with
+      | O -> False
+      | S x1p ->
+        (match x1p with
+         | O -> True
+         | S x1pp -> is_odd x1pp)
+;;
+
+synth tree -> nat satisfying
+
+[Leaf] -> 0,
+[Node (2, Leaf, Leaf)] -> 2,
+[Node (1, Leaf, Leaf)] -> 1,
+[Node (1, Node (2, Leaf, Leaf), Leaf)] -> 2,
+[Node (1, Node (1, Leaf, Leaf), Node (2, Leaf, Leaf))] -> 4,
+[Node (1, Node (1, Leaf, Leaf), Node (2, Node (1, Leaf, Leaf), Leaf))] -> 2,
+[Node (1, Node (1, Leaf, Leaf), Node (1, Node (1, Leaf, Leaf), Leaf))] -> 2,
+[Node (1, Node (1, Node (1, Node (1, Leaf, Leaf), Leaf), Leaf), Node (1, Leaf, Node (1, Leaf, Leaf)))] -> 3,

@@ -1,0 +1,81 @@
+{"aggregate": {"solved_pct": 83.75, "solved": 67, "failed": 13, "total": 80, "avg_response_time": 10.42}}
+{"prob": "bool_always_true", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> bool)) = \n  fun (x:bool) -> \n    match x with\n    | True(_) -> \n      True([])\n    | Fals", "score": 1}
+{"prob": "list_append_u", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (list -> list))) = \n  fun (x:(list * list)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 1}
+{"prob": "list_map", "solved": true, "detail": "ai_pgm : let rec (f : ((nat -> nat) -> (list -> list))) = \n  fun (x:((nat -> nat) * list)) -> \n    match (x).1 with\n    ", "score": 1}
+{"prob": "list_league_score", "solved": false, "detail": "ai_pgm : let rec (f : (plist -> nat)) = \n  fun (x:plist) -> \n    match x with\n    | Nil(_) -> \n      O([])\n    | Cons(_)", "score": 0}
+{"prob": "list_pairwise_swap", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_concat", "solved": true, "detail": "ai_pgm : let rec (f : (llist -> list)) = \n  fun (x:llist) -> \n    match x with\n    | LNil(_) -> \n      Nil([])\n    | LCo", "score": 1}
+{"prob": "list_append", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (list -> list))) = \n  fun (x:(list * list)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 1}
+{"prob": "tree_map", "solved": true, "detail": "ai_pgm : let rec (f : ((nat -> nat) -> (tree -> tree))) = \n  fun (x:((nat -> nat) * tree)) -> \n    match (x).1 with\n    ", "score": 1}
+{"prob": "expr_div", "solved": true, "detail": "ai_pgm : let rec (f : (exp -> nat)) = \n  fun (x:exp) -> \n    match x with\n    | INT(_) -> \n      Un_INT(x)\n    | ADD(_) ", "score": 1}
+{"prob": "nat_max", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (nat -> nat))) = \n  fun (x:(nat * nat)) -> \n    match (x).0 with\n    | O(_) -> \n      (x).", "score": 1}
+{"prob": "automata_visited_states", "solved": true, "detail": "ai_pgm : let rec (f : (automata -> (nat -> list))) = \n  fun (x:(automata * nat)) -> \n    match (x).0 with\n    | State(_)", "score": 1}
+{"prob": "bool_always_false", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> bool)) = \n  fun (x:bool) -> \n    match x with\n    | True(_) -> \n      False([])\n    | Fal", "score": 1}
+{"prob": "bool_band", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> (bool -> bool))) = \n  fun (x:(bool * bool)) -> \n    match (x).0 with\n    | True(_) -> \n  ", "score": 1}
+{"prob": "automata_visited_sum", "solved": true, "detail": "ai_pgm : let rec (f : (automata -> (nat -> nat))) = \n  fun (x:(automata * nat)) -> \n    match (x).0 with\n    | State(_) ", "score": 1}
+{"prob": "bool_bor", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> (bool -> bool))) = \n  fun (x:(bool * bool)) -> \n    match (x).0 with\n    | True(_) -> \n  ", "score": 1}
+{"prob": "bool_impl", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> (bool -> bool))) = \n  fun (x:(bool * bool)) -> \n    match (x).0 with\n    | True(_) -> \n  ", "score": 1}
+{"prob": "bool_neg", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> bool)) = \n  fun (x:bool) -> \n    match x with\n    | True(_) -> \n      False([])\n    | Fal", "score": 1}
+{"prob": "bool_xor", "solved": true, "detail": "ai_pgm : let rec (f : (bool -> (bool -> bool))) = \n  fun (x:(bool * bool)) -> \n    match (x).0 with\n    | True(_) -> \n  ", "score": 1}
+{"prob": "expr", "solved": true, "detail": "ai_pgm : let rec (f : (exp -> nat)) = \n  fun (x:exp) -> \n    match x with\n    | INT(_) -> \n      Un_INT(x)\n    | ADD(_) ", "score": 1}
+{"prob": "expr_b", "solved": true, "detail": "ai_pgm : let rec (f : (formula -> bool)) = \n  fun (x:formula) -> \n    match x with\n    | BOOL(_) -> \n      Un_BOOL(x)\n  ", "score": 1}
+{"prob": "expr_sub", "solved": true, "detail": "ai_pgm : let rec (f : (exp -> nat)) = \n  fun (x:exp) -> \n    match x with\n    | INT(_) -> \n      Un_INT(x)\n    | ADD(_) ", "score": 1}
+{"prob": "list_check_nth", "solved": false, "detail": "ai_pgm : let rec (f : (list -> bool)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      True([])\n    | Cons(", "score": 0}
+{"prob": "list_compress", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_drop", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (nat -> list))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n     ", "score": 1}
+{"prob": "list_dropeven", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_filter", "solved": true, "detail": "ai_pgm : let rec (f : ((nat -> bool) -> (list -> list))) = \n  fun (x:((nat -> bool) * list)) -> \n    match (x).1 with\n  ", "score": 1}
+{"prob": "list_hd", "solved": true, "detail": "ai_pgm : let rec (f : (list -> nat)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      O([])\n    | Cons(_) -", "score": 1}
+{"prob": "list_inc", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_even_parity", "solved": true, "detail": "ai_pgm : let rec (f : (list -> bool)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      True([])\n    | Cons(", "score": 1}
+{"prob": "list_fold", "solved": true, "detail": "ai_pgm : let rec (f : ((nat -> (nat -> nat)) -> (nat -> (list -> nat)))) = \n  fun (x:((nat -> (nat -> nat)) * nat * list", "score": 1}
+{"prob": "list_last", "solved": true, "detail": "ai_pgm : let rec (f : (list -> natopt)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      None([])\n    | Con", "score": 1}
+{"prob": "list_length", "solved": true, "detail": "ai_pgm : let rec (f : (list -> nat)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      O([])\n    | Cons(_) -", "score": 1}
+{"prob": "list_make", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> list)) = \n  fun (x:nat) -> \n    match x with\n    | O(_) -> \n      Nil([])\n    | S(_) -> \n ", "score": 1}
+{"prob": "list_last2", "solved": true, "detail": "ai_pgm : let rec (f : (list -> natopt)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      None([])\n    | Con", "score": 1}
+{"prob": "list_last_n", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (nat -> list))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n     ", "score": 1}
+{"prob": "list_nth", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (nat -> nat))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n      ", "score": 1}
+{"prob": "list_nth2", "solved": false, "detail": "ai_pgm : let rec (f : (list -> (nat -> natopt))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 0}
+{"prob": "list_rev_fold", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_range", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (nat -> list))) = \n  fun (x:(nat * nat)) -> \n    match (x).0 with\n    | O(_) -> \n      Con", "score": 1}
+{"prob": "list_nth_occur", "solved": false, "detail": "no function", "score": 0}
+{"prob": "list_rev_snoc", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_rev_append", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_rev_tailcall", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (list -> list))) = \n  fun (x:(list * list)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 1}
+{"prob": "list_snoc", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (nat -> list))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n     ", "score": 1}
+{"prob": "list_seconds", "solved": true, "detail": "ai_pgm : let rec (f : (llist -> list)) = \n  fun (x:llist) -> \n    match x with\n    | LNil(_) -> \n      Nil([])\n    | LCo", "score": 1}
+{"prob": "list_sort_sorted_insert", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_stutter", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "list_sum", "solved": false, "detail": "ai_pgm : let rec (f : (list -> nat)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      O([])\n    | Cons(_) -", "score": 0}
+{"prob": "list_sorted_insert", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (nat -> list))) = \n  fun (x:(list * nat)) -> \n    match (x).0 with\n    | Nil(_) -> \n     ", "score": 1}
+{"prob": "list_take", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (list -> list))) = \n  fun (x:(nat * list)) -> \n    match (x).0 with\n    | O(_) -> \n      N", "score": 1}
+{"prob": "list_sum_larger", "solved": false, "detail": "timeout", "score": 0}
+{"prob": "list_tl", "solved": true, "detail": "ai_pgm : let rec (f : (list -> list)) = \n  fun (x:list) -> \n    match x with\n    | Nil(_) -> \n      Nil([])\n    | Cons(_", "score": 1}
+{"prob": "nat_add", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (nat -> nat))) = \n  fun (x:(nat * nat)) -> \n    match (x).0 with\n    | O(_) -> \n      (x).", "score": 1}
+{"prob": "list_union", "solved": false, "detail": "ai_pgm : let rec (f : (list -> (list -> list))) = \n  fun (x:(list * list)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 0}
+{"prob": "nat_iseven", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> bool)) = \n  fun (x:nat) -> \n    match x with\n    | O(_) -> \n      True([])\n    | S(_) -> \n", "score": 1}
+{"prob": "nat_pred", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> nat)) = \n  fun (x:nat) -> \n    match x with\n    | O(_) -> \n      O([])\n    | S(_) -> \n    ", "score": 1}
+{"prob": "list_zigzag", "solved": true, "detail": "ai_pgm : let rec (f : (list -> (list -> list))) = \n  fun (x:(list * list)) -> \n    match (x).0 with\n    | Nil(_) -> \n   ", "score": 1}
+{"prob": "nat_mul", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (nat -> nat))) = \n  fun (x:(nat * nat)) -> \n    match (x).0 with\n    | O(_) -> \n      O([]", "score": 1}
+{"prob": "nat_sub", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (nat -> nat))) = \n  fun (x:(nat * nat)) -> \n    match (x).1 with\n    | O(_) -> \n      (x).", "score": 1}
+{"prob": "tree_balanced", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> bool)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      True([])\n    | Node", "score": 1}
+{"prob": "tree_binsert", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> (nat -> tree))) = \n  fun (x:(tree * nat)) -> \n    match (x).0 with\n    | Leaf(_) -> \n    ", "score": 1}
+{"prob": "tree_collect_leaves", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> list)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      Nil([])\n    | Node(", "score": 1}
+{"prob": "tree_count_leaves", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      S(O([]))\n    | Node(", "score": 1}
+{"prob": "tree_bonus", "solved": false, "detail": "no function", "score": 0}
+{"prob": "tree_count_nodes", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      O([])\n    | Node(_) ", "score": 1}
+{"prob": "tree_inorder", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> list)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      Nil([])\n    | Node(", "score": 1}
+{"prob": "tree_height", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      O([])\n    | Node(_) ", "score": 1}
+{"prob": "tree_cond_sum", "solved": false, "detail": "no function", "score": 0}
+{"prob": "tree_is_mirror", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> (tree -> bool))) = \n  fun (x:(tree * tree)) -> \n    match (x).0 with\n    | Leaf(_) -> \n  ", "score": 1}
+{"prob": "tree_lastleft", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      O([])\n    | Node(_) ", "score": 1}
+{"prob": "tree_max_in_budget", "solved": false, "detail": "timeout", "score": 0}
+{"prob": "tree_max_path_sum", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      O([])\n    | Node(_) ", "score": 1}
+{"prob": "tree_n_flow", "solved": false, "detail": "timeout", "score": 0}
+{"prob": "tree_nodes_at_level", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> (nat -> nat))) = \n  fun (x:(tree * nat)) -> \n    match (x).0 with\n    | Leaf(_) -> \n     ", "score": 1}
+{"prob": "tree_n_occur_path", "solved": false, "detail": "no function", "score": 0}
+{"prob": "tree_notexist", "solved": true, "detail": "ai_pgm : let rec (f : (nat -> (tree -> bool))) = \n  fun (x:(nat * tree)) -> \n    match (x).1 with\n    | Leaf(_) -> \n    ", "score": 1}
+{"prob": "tree_postorder", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> list)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      Nil([])\n    | Node(", "score": 1}
+{"prob": "tree_preorder", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> list)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      Nil([])\n    | Node(", "score": 1}
+{"prob": "tree_sum", "solved": true, "detail": "ai_pgm : let rec (f : (tree -> nat)) = \n  fun (x:tree) -> \n    match x with\n    | Leaf(_) -> \n      O([])\n    | Node(_) ", "score": 1}
+{"prob": "tree_process", "solved": false, "detail": "timeout", "score": 0}

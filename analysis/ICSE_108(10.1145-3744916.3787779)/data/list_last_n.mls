@@ -1,0 +1,34 @@
+type nat =
+  | O
+  | S of nat
+
+type list =
+  | Nil
+  | Cons of nat * list
+
+
+let length =
+	fix (length : list -> nat) =
+	  fun (x:list) ->
+	    match x with
+	    | Nil -> O
+	    | Cons -> S((length (Un_Cons(x)).1))
+;;
+
+let sub =
+  fix (sub : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> O
+        | S n1p -> match n2 with
+                    | O -> n1
+                    | S n2p -> sub n1p n2p
+;;
+
+synth list -> nat -> list satisfying
+
+[Nil, 1] -> Nil,
+[Cons(1, Cons(2, Cons(3, Cons(4, Cons(5, Nil))))), 3] -> Cons(3, Cons(4, Cons(5, Nil))),
+[Cons(1, Cons(2, Cons(3, Nil))), 1] -> Cons(3, Nil),
+[Cons(3, Cons(2, Cons(1, Nil))), 2] -> Cons(2, Cons(1, Nil))

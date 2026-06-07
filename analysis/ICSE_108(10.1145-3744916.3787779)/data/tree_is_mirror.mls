@@ -1,0 +1,48 @@
+type bool =
+  | True
+  | False
+
+type nat =
+  | O
+  | S of nat
+
+type tree =
+  | Leaf
+  | Node of nat * tree * tree
+
+let equal =
+	fix (equal : nat -> nat -> bool) =
+	fun (v1: nat) ->
+	 fun (v2: nat) ->
+	  match v1 with
+	  | O -> (match v2 with 
+					  | O -> True
+					  | S -> False)
+	  | S -> (match v2 with 
+					  | O -> False
+					  | S -> equal Un_S(v1) Un_S(v2))
+;;
+
+let band =
+ fix (band : bool -> bool -> bool) =
+  fun (x: bool) ->
+   fun (y: bool) ->
+    match x with
+     | False ->
+        x
+     | True ->
+        y
+;;
+
+synth tree -> tree -> bool satisfying
+
+[Node (O, Leaf, Leaf), Node (O, Leaf, Leaf)] -> True,
+[Node (1, Leaf, Leaf), Node (O, Leaf, Leaf)] -> False,
+[Node (O, Node (O, Leaf, Leaf), Leaf), Node (O, Leaf, Node (O, Leaf, Leaf))] -> True,
+[Node (O, Node (O, Leaf, Leaf), Leaf), Node (O, Node (O, Leaf, Leaf), Leaf)] -> False,
+[Node (2, Leaf, Node (O, Leaf, Leaf)), Node (2, Node (O, Leaf, Leaf), Leaf)] -> True,
+[Node (O, Leaf, Node (O, Leaf, Leaf)), Node (O, Node (1, Leaf, Leaf), Leaf)] -> False,
+[Node (O, Leaf, Node (O, Node (O, Leaf, Leaf), Leaf)), Node (O, Node (O, Leaf, Node (O, Leaf, Leaf)), Leaf)] -> True,
+[Leaf, Leaf] -> True,
+[Node (O, Leaf, Leaf), Leaf] -> False,
+[Node (1, Leaf, Leaf), Node (1, Leaf, Node (1, Leaf, Leaf))] -> False,

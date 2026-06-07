@@ -1,0 +1,66 @@
+type nat =
+  | O
+  | S of nat
+
+type bool =
+  | True
+  | False
+
+type list =
+  | Nil
+  | Cons of nat * list
+
+type cmp =
+  | LT
+  | EQ
+  | GT
+
+let compare =
+  fix (compare : nat -> nat -> cmp) =
+    fun (x1 : nat) ->
+      fun (x2 : nat) ->
+        match x1 with
+        | O -> (match x2 with
+                | O -> EQ
+                | S _ -> LT)
+        | S x1 -> (match x2 with
+                | O -> GT
+                | S x2 -> compare x1 x2)
+;;
+
+let mem = 
+ fix (mem : list -> nat -> bool) =
+  fun (l : list) ->
+   fun (n : nat) ->
+      match l with
+      | Nil -> False
+      | Cons (hd, tl) -> match compare hd n with
+                         | LT -> mem tl n
+                         | EQ -> True 
+                         | GT -> mem tl n
+;;
+
+let append =
+  fix (append : list -> list -> list) =
+    fun (l1 : list) ->
+      fun (l2 : list) ->
+        match l1 with
+        | Nil -> l2
+        | Cons (h,t) -> Cons(h,append t l2)
+;;
+
+
+let remove_dup =
+ fix (remov_dup : list -> list) =
+  fun (x : list) ->
+    match x with
+    | Nil -> Nil
+    | Cons (hd,tl) -> match mem tl hd with
+                      | True -> remov_dup tl
+                      | False -> Cons(hd, remov_dup tl)
+;;
+
+synth list -> list -> list satisfying
+
+[Cons (1, Cons (2, Cons (3, Cons(4, Nil)))), Cons (3, Cons (4, Cons (5, Cons(6, Nil))))] -> Cons (1, Cons (2, Cons (3, Cons (4, Cons (5, Cons(6, Nil)))))),
+[Nil, Cons (1, Cons (1, Cons (2, Cons(3, Nil))))] -> Cons (1, Cons (2, Cons (3, Nil))),

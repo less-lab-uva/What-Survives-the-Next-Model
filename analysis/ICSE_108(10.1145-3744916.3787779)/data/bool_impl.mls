@@ -1,0 +1,9 @@
+type bool =
+| True
+| False
+
+synth bool -> bool -> bool satisfying
+
+[True,True] -> True,
+[True,False] -> False,
+[False,False] -> True

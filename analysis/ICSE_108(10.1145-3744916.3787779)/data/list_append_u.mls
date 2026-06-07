@@ -1,0 +1,57 @@
+type bool = 
+  | False
+  | True
+
+type nat =
+  | O
+  | S of nat
+
+type list =
+  | Nil
+  | Cons of nat * list
+  
+type cmp =
+  | LT
+  | EQ
+  | GT
+
+let compare =
+  fix (compare : nat -> nat -> cmp) =
+    fun (x1 : nat) ->
+      fun (x2 : nat) ->
+        match x1 with
+        | O -> (match x2 with
+                | O -> EQ
+                | S _ -> LT)
+        | S x1 -> (match x2 with
+                | O -> GT
+                | S x2 -> compare x1 x2)
+;;
+
+let is_member =
+        fix (is_member : nat -> list -> bool) =
+                fun (n : nat) ->
+                        fun (l : list) ->
+                        match l with
+                        | Nil -> False
+                        | Cons (h,t) -> (match compare n h with
+                                                                                        | LT -> is_member n t
+                                                                                        | EQ -> True
+                                                                                        | GT -> is_member n t)
+;;
+
+let append =
+  fix (append : list -> list -> list) =
+    fun (l1 : list) ->
+      fun (l2 : list) ->
+        match l1 with
+        | Nil -> l2
+        | Cons (h,t) -> Cons(h,append t l2)
+;;
+
+synth list -> list -> list satisfying
+
+[Cons(3, Cons(4, Cons(5, Cons(6, Nil)))), Cons(1, Cons(2, Cons(3, Cons(4, Nil))))] -> Cons(1, Cons(2, Cons(3, Cons(4, Cons(5, Cons(6, Nil)))))),
+[Cons(1, Cons(2, Cons(3, Cons(4, Nil)))), Cons(3, Cons(4, Cons(5, Cons(6, Cons(7, Nil)))))] -> Cons(3, Cons(4, Cons(5, Cons(6, Cons(7, Cons(1, Cons(2, Nil))))))),
+[Cons(4, Cons(5, Cons(6, Cons(7, Nil)))), Cons(1, Cons(2, Cons(3, Cons(4, Nil))))] -> Cons(1, Cons(2, Cons(3, Cons(4, Cons(5, Cons(6, Cons(7, Nil))))))),
+[Nil, Cons(1, Nil)] -> Cons(1, Nil),
