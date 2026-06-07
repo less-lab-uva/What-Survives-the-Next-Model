@@ -45,5 +45,6 @@
         "result_file": "results/results_B_mbpp.json"
       }
     }
-  }
+  },
+  "total_cost": 14.12
 }
