@@ -1,0 +1,33 @@
+{
+  "title": "EnsLLM: Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach",
+  "doi": "10.1145/3744916.3773143",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original EnsLLM pipeline generates multiple code solutions via an ensemble of LLM calls and selects the best candidate using embedding-based similarity scoring, evaluated on HumanEval and LiveCodeBench.",
+    "This reproduction replaces the ensemble selection pipeline with single-call code generation prompts (Prompt A: zero-shot, Prompt B: chain-of-thought) over sampled problems from both benchmarks."
+  ],
+  "dataset": {
+    "name": "HumanEval, LiveCodeBench",
+    "sample_size": 450
+  },
+  "metric": [
+    "Pass@1 "
+  ],
+  "original_result": {
+    "HumanEval": 0.902,
+    "LiveCodeBench": 0.502
+  },
+  "our_result": {
+    "prompt_A": {
+      "HumanEval_pass_at_1": 0.991,
+      "LiveCodeBench_pass_at_1": 0.5251,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "HumanEval_pass_at_1": 0.982,
+      "LiveCodeBench_pass_at_1": 0.528,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 14.22
+}
