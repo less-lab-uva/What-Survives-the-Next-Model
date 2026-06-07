@@ -71,7 +71,6 @@ python main.py --variant both --n 80
 |---|---|---|
 | `--variant` | `both` | Prompt(s) to run: `A`, `B`, or `both` |
 | `--n` | entire dataset (80) | Number of problems to process in total (already-processed ones are skipped), stratified across benchmarks |
-| `--seed` | `42` | Random seed for stratified sampling |
 | `--workers` | `4` | Parallel threads |
 
 Output is saved to `outputs/outputs_A.jsonl` and `outputs/outputs_B.jsonl`. Each line contains the generated program, the raw model response, and response time.
