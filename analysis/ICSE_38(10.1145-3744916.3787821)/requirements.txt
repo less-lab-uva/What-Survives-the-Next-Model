@@ -1,0 +1,4 @@
+anthropic==0.104.1
+pandas==2.3.3
+openpyxl==3.1.5
+# spot (LTL model checker) — install via: conda install -c conda-forge spot

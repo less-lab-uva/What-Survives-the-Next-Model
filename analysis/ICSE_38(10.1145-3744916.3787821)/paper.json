@@ -1,0 +1,39 @@
+{
+  "title": "ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction",
+  "doi": "10.1145/3744916.3787821",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original ADARULE pipeline converts natural-language requirements to LTL formulas via pattern-adaptive rule induction, where an LLM iteratively induces and refines a set of translation rules from examples before applying them to new inputs.",
+    "This reproduction replaces the multi-step rule induction pipeline with a direct NL-to-LTL translation prompt (Prompt A: zero-shot, Prompt B: with pattern examples) over sampled benchmark requirements, evaluated via Spot semantic equivalence."
+  ],
+  "dataset": {
+    "name": "SynthNL, ConfoNL, LangNL, SpecNL",
+    "sample_size": 318
+  },
+  "metric": [
+    "Accuracy (semantic equivalence via Spot)"
+  ],
+  "original_result": {
+    "SynthNL": 0.92,
+    "ConfoNL": 0.83,
+    "LangNL": 0.68,
+    "SpecNL": 0.833
+  },
+  "our_result": {
+    "prompt_A": {
+      "SynthNL": 0.58,
+      "ConfoNL": 0.64,
+      "LangNL": 0.53,
+      "SpecNL": 0.72,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "SynthNL": 0.53,
+      "ConfoNL": 0.63,
+      "LangNL": 0.53,
+      "SpecNL": 0.78,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 4.72
+}
