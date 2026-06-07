@@ -1,0 +1,2270 @@
+[
+    {
+        "index": 1,
+        "task_id": "Mbpp/2",
+        "question": "Write a function to find the shared elements from the given two lists. Your code should satisfy the following assertion:\n    ```python\n    assert set(similar_elements((3, 4, 5, 6),(5, 7, 4, 10))) == set((4, 5))\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 2,
+        "task_id": "Mbpp/3",
+        "question": "Write a python function to identify non-prime numbers. Your code should satisfy the following assertion:\n    ```python\n    assert is_not_prime(2) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 3,
+        "task_id": "Mbpp/4",
+        "question": "Write a function to find the n largest integers from a given list of numbers, returned in descending order. Your code should satisfy the following assertion:\n    ```python\n    assert heap_queue_largest( [25, 35, 22, 85, 14, 65, 75, 22, 58],3)==[85, 75, 65]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 4,
+        "task_id": "Mbpp/6",
+        "question": "Write a python function to check whether the two numbers differ at one bit position only or not. Your code should satisfy the following assertion:\n    ```python\n    assert differ_At_One_Bit_Pos(13,9) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 5,
+        "task_id": "Mbpp/7",
+        "question": "Write a function to find all words which are at least 4 characters long in a string. Your code should satisfy the following assertion:\n    ```python\n    assert set(find_char_long('Please move back to stream')) == set(['Please', 'move', 'back', 'stream'])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 6,
+        "task_id": "Mbpp/8",
+        "question": "Write a function to find squares of individual elements in a list. Your code should satisfy the following assertion:\n    ```python\n    assert square_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 7,
+        "task_id": "Mbpp/9",
+        "question": "Write a python function to find the minimum number of rotations (greater than 0) required to get the same string. Your code should satisfy the following assertion:\n    ```python\n    assert find_Rotations(\"aaaa\") == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 8,
+        "task_id": "Mbpp/11",
+        "question": "Write a python function to remove first and last occurrence of a given character from the string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_Occ(\"hello\",\"l\") == \"heo\"\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 9,
+        "task_id": "Mbpp/12",
+        "question": "Write a function to sort a given matrix in ascending order according to the sum of its rows. Your code should satisfy the following assertion:\n    ```python\n    assert sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]])==[[1, 1, 1], [1, 2, 3], [2, 4, 5]]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 10,
+        "task_id": "Mbpp/14",
+        "question": "Write a python function to find the volume of a triangular prism. Your code should satisfy the following assertion:\n    ```python\n    assert find_Volume(10,8,6) == 240\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 11,
+        "task_id": "Mbpp/16",
+        "question": "Write a function to that returns true if the input string contains sequences of lowercase letters joined with an underscore and false otherwise. Your code should satisfy the following assertion:\n    ```python\n    assert text_lowercase_underscore(\"aab_cbbbc\")==(True)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 12,
+        "task_id": "Mbpp/17",
+        "question": "Write a function that returns the perimeter of a square given its side length as input. Your code should satisfy the following assertion:\n    ```python\n    assert square_perimeter(10)==40\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 13,
+        "task_id": "Mbpp/18",
+        "question": "Write a function to remove characters from the first string which are present in the second string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_dirty_chars(\"probasscurve\", \"pros\") == 'bacuve'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 14,
+        "task_id": "Mbpp/19",
+        "question": "Write a function to find whether a given array of integers contains any duplicate element. Your code should satisfy the following assertion:\n    ```python\n    assert test_duplicate(([1,2,3,4,5]))==False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 15,
+        "task_id": "Mbpp/20",
+        "question": "Write a function to check if the given number is woodball or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_woodall(383) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 16,
+        "task_id": "Mbpp/56",
+        "question": "Write a python function to check if a given number is one less than twice its reverse. Your code should satisfy the following assertion:\n    ```python\n    assert check(70) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 17,
+        "task_id": "Mbpp/57",
+        "question": "Write a python function to find the largest number that can be formed with the given list of digits. Your code should satisfy the following assertion:\n    ```python\n    assert find_Max_Num([1,2,3]) == 321\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 18,
+        "task_id": "Mbpp/58",
+        "question": "Write a python function to check whether the given two integers have opposite sign or not. Your code should satisfy the following assertion:\n    ```python\n    assert opposite_Signs(1,-2) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 19,
+        "task_id": "Mbpp/59",
+        "question": "Write a function to find the nth octagonal number. Your code should satisfy the following assertion:\n    ```python\n    assert is_octagonal(5) == 65\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 20,
+        "task_id": "Mbpp/61",
+        "question": "Write a python function to count the number of substrings with the sum of digits equal to their length. Your code should satisfy the following assertion:\n    ```python\n    assert count_Substrings('112112') == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 21,
+        "task_id": "Mbpp/62",
+        "question": "Write a python function to find smallest number in a list. Your code should satisfy the following assertion:\n    ```python\n    assert smallest_num([10, 20, 1, 45, 99]) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 22,
+        "task_id": "Mbpp/63",
+        "question": "Write a function to find the maximum difference between available pairs in the given tuple list. Your code should satisfy the following assertion:\n    ```python\n    assert max_difference([(3, 5), (1, 7), (10, 3), (1, 2)]) == 7\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 23,
+        "task_id": "Mbpp/64",
+        "question": "Write a function to sort a list of tuples using the second value of each tuple. Your code should satisfy the following assertion:\n    ```python\n    assert subject_marks([('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)])==[('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 24,
+        "task_id": "Mbpp/65",
+        "question": "Write a function to flatten a list and sum all of its elements. Your code should satisfy the following assertion:\n    ```python\n    assert recursive_list_sum(([1, 2, [3,4],[5,6]]))==21\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 25,
+        "task_id": "Mbpp/66",
+        "question": "Write a python function to count the number of positive numbers in a list. Your code should satisfy the following assertion:\n    ```python\n    assert pos_count([1,-2,3,-4]) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 26,
+        "task_id": "Mbpp/67",
+        "question": "Write a function to find the number of ways to partition a set of Bell numbers. Your code should satisfy the following assertion:\n    ```python\n    assert bell_number(2)==2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 27,
+        "task_id": "Mbpp/68",
+        "question": "Write a python function to check whether the given array is monotonic or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_Monotonic([6, 5, 4, 4]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 28,
+        "task_id": "Mbpp/69",
+        "question": "Write a function to check whether a list contains the given sublist or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_sublist([2,4,3,5,7],[3,7])==False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 29,
+        "task_id": "Mbpp/70",
+        "question": "Write a function to find whether all the given tuples have equal length or not. Your code should satisfy the following assertion:\n    ```python\n    assert get_equal([(11, 22, 33), (44, 55, 66)]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 30,
+        "task_id": "Mbpp/71",
+        "question": "Write a function to sort a list of elements. Your code should satisfy the following assertion:\n    ```python\n    assert comb_sort([5, 15, 37, 25, 79]) == [5, 15, 25, 37, 79]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 31,
+        "task_id": "Mbpp/72",
+        "question": "Write a python function to check whether the given number can be represented as the difference of two squares or not. Your code should satisfy the following assertion:\n    ```python\n    assert dif_Square(5) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 32,
+        "task_id": "Mbpp/74",
+        "question": "Write a function to check whether it follows the sequence given in the patterns array. Your code should satisfy the following assertion:\n    ```python\n    assert is_samepatterns([\"red\",\"green\",\"green\"], [\"a\", \"b\", \"b\"])==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 33,
+        "task_id": "Mbpp/75",
+        "question": "Write a function to find tuples which have all elements divisible by k from the given list of tuples. Your code should satisfy the following assertion:\n    ```python\n    assert find_tuples([(6, 24, 12), (7, 9, 6), (12, 18, 21)], 6) == [(6, 24, 12)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 34,
+        "task_id": "Mbpp/77",
+        "question": "Write a python function to find whether a number is divisible by 11. Your code should satisfy the following assertion:\n    ```python\n    assert is_Diff (12345) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 35,
+        "task_id": "Mbpp/79",
+        "question": "Write a python function to check whether the length of the word is odd or not. Your code should satisfy the following assertion:\n    ```python\n    assert word_len(\"Hadoop\") == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 36,
+        "task_id": "Mbpp/80",
+        "question": "Write a function to find the nth tetrahedral number. Your code should satisfy the following assertion:\n    ```python\n    assert tetrahedral_number(5) == 35\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 37,
+        "task_id": "Mbpp/82",
+        "question": "Write a function to find the volume of a sphere. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(volume_sphere(10), 4188.790204786391, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 38,
+        "task_id": "Mbpp/84",
+        "question": "Write a function to find the nth number in the newman conway sequence. Your code should satisfy the following assertion:\n    ```python\n    assert sequence(10) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 39,
+        "task_id": "Mbpp/85",
+        "question": "Write a function to find the surface area of a sphere. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(surfacearea_sphere(10), 1256.6370614359173, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 40,
+        "task_id": "Mbpp/86",
+        "question": "Write a function to find nth centered hexagonal number. Your code should satisfy the following assertion:\n    ```python\n    assert centered_hexagonal_number(10) == 271\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 41,
+        "task_id": "Mbpp/87",
+        "question": "Write a function to merge three dictionaries into a single dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert merge_dictionaries_three({ \"R\": \"Red\", \"B\": \"Black\", \"P\": \"Pink\" }, { \"G\": \"Green\", \"W\": \"White\" },{ \"O\": \"Orange\", \"W\": \"White\", \"B\": \"Black\" })=={'B': 'Black', 'R': 'Red', 'P': 'Pink', 'G': 'Green', 'W': 'White', 'O': 'Orange'}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 42,
+        "task_id": "Mbpp/88",
+        "question": "Write a function to get the frequency of all the elements in a list, returned as a dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert freq_count([10,10,10,10,20,20,20,20,40,40,50,50,30])==({10: 4, 20: 4, 40: 2, 50: 2, 30: 1})\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 43,
+        "task_id": "Mbpp/89",
+        "question": "Write a function to find the closest smaller number than n. Your code should satisfy the following assertion:\n    ```python\n    assert closest_num(11) == 10\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 44,
+        "task_id": "Mbpp/90",
+        "question": "Write a python function to find the length of the longest word. Your code should satisfy the following assertion:\n    ```python\n    assert len_log([\"python\",\"PHP\",\"bigdata\"]) == 7\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 45,
+        "task_id": "Mbpp/91",
+        "question": "Write a function to check if a string is present as a substring in a given list of string values. Your code should satisfy the following assertion:\n    ```python\n    assert find_substring([\"red\", \"black\", \"white\", \"green\", \"orange\"],\"ack\")==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 46,
+        "task_id": "Mbpp/92",
+        "question": "Write a function to check whether the given number is undulating or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_undulating(1212121) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 47,
+        "task_id": "Mbpp/93",
+        "question": "Write a function to calculate the value of 'a' to the power 'b'. Your code should satisfy the following assertion:\n    ```python\n    assert power(3,4) == 81\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 48,
+        "task_id": "Mbpp/94",
+        "question": "Given a list of tuples, write a function that returns the first value of the tuple with the smallest second value. Your code should satisfy the following assertion:\n    ```python\n    assert index_minimum([('Rash', 143), ('Manjeet', 200), ('Varsha', 100)]) == 'Varsha'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 49,
+        "task_id": "Mbpp/95",
+        "question": "Write a python function to find the length of the smallest list in a list of lists. Your code should satisfy the following assertion:\n    ```python\n    assert Find_Min_Length([[1],[1,2]]) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 50,
+        "task_id": "Mbpp/96",
+        "question": "Write a python function to find the number of divisors of a given integer. Your code should satisfy the following assertion:\n    ```python\n    assert divisor(15) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 51,
+        "task_id": "Mbpp/97",
+        "question": "Write a function to find frequency of each element in a flattened list of lists, returned in a dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert frequency_lists([[1, 2, 3, 2], [4, 5, 6, 2], [7, 8, 9, 5]])=={1: 1, 2: 3, 3: 1, 4: 1, 5: 2, 6: 1, 7: 1, 8: 1, 9: 1}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 52,
+        "task_id": "Mbpp/98",
+        "question": "Write a function to multiply all the numbers in a list and divide with the length of the list. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(multiply_num((8, 2, 3, -1, 7)), -67.2, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 53,
+        "task_id": "Mbpp/99",
+        "question": "Write a function to convert the given decimal number to its binary equivalent, represented as a string with no leading zeros. Your code should satisfy the following assertion:\n    ```python\n    assert decimal_to_binary(8) == '1000'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 54,
+        "task_id": "Mbpp/100",
+        "question": "Write a function to find the next smallest palindrome of a specified integer, returned as an integer. Your code should satisfy the following assertion:\n    ```python\n    assert next_smallest_palindrome(99)==101\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 55,
+        "task_id": "Mbpp/101",
+        "question": "Write a function to find the kth element in the given array using 1-based indexing. Your code should satisfy the following assertion:\n    ```python\n    assert kth_element([12,3,5,7,19], 2) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 56,
+        "task_id": "Mbpp/102",
+        "question": "Write a function to convert a snake case string to camel case string. Your code should satisfy the following assertion:\n    ```python\n    assert snake_to_camel('python_program')=='PythonProgram'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 57,
+        "task_id": "Mbpp/103",
+        "question": "Write a function to find the Eulerian number a(n, m). Your code should satisfy the following assertion:\n    ```python\n    assert eulerian_num(3, 1) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 58,
+        "task_id": "Mbpp/104",
+        "question": "Write a function to sort each sublist of strings in a given list of lists. Your code should satisfy the following assertion:\n    ```python\n    assert sort_sublists(([\"green\", \"orange\"], [\"black\", \"white\"], [\"white\", \"black\", \"orange\"]))==[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 59,
+        "task_id": "Mbpp/105",
+        "question": "Write a python function to count true booleans in the given list. Your code should satisfy the following assertion:\n    ```python\n    assert count([True,False,True]) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 60,
+        "task_id": "Mbpp/106",
+        "question": "Write a function to append the given list to the given tuples. Your code should satisfy the following assertion:\n    ```python\n    assert add_lists([5, 6, 7], (9, 10)) == (9, 10, 5, 6, 7)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 61,
+        "task_id": "Mbpp/108",
+        "question": "Write a function to merge three lists into a single sorted list. Your code should satisfy the following assertion:\n    ```python\n    assert merge_sorted_list([25, 24, 15, 4, 5, 29, 110],[19, 20, 11, 56, 25, 233, 154],[24, 26, 54, 48])==[4, 5, 11, 15, 19, 20, 24, 24, 25, 25, 26, 29, 48, 54, 56, 110, 154, 233]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 62,
+        "task_id": "Mbpp/109",
+        "question": "Write a python function to find the number of numbers with an odd value when rotating a binary string the given number of times. Your code should satisfy the following assertion:\n    ```python\n    assert odd_Equivalent(\"011001\",6) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 63,
+        "task_id": "Mbpp/111",
+        "question": "Write a function to find the common elements in given nested lists. Your code should satisfy the following assertion:\n    ```python\n    assert set(common_in_nested_lists([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))==set([18, 12])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 64,
+        "task_id": "Mbpp/113",
+        "question": "Write a function to check if a string represents an integer or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_integer(\"python\")==False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 65,
+        "task_id": "Mbpp/116",
+        "question": "Write a function to convert a given tuple of positive integers into a single integer. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_to_int((1,2,3))==123\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 66,
+        "task_id": "Mbpp/118",
+        "question": "Write a function to convert a string to a list of strings split on the space character. Your code should satisfy the following assertion:\n    ```python\n    assert string_to_list(\"python programming\")==['python','programming']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 67,
+        "task_id": "Mbpp/119",
+        "question": "Write a python function to find the element that appears only once in a sorted array. Your code should satisfy the following assertion:\n    ```python\n    assert search([1,1,2,2,3]) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 68,
+        "task_id": "Mbpp/120",
+        "question": "Write a function to find the maximum absolute product between numbers in pairs of tuples within a given list. Your code should satisfy the following assertion:\n    ```python\n    assert max_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==36\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 69,
+        "task_id": "Mbpp/123",
+        "question": "Write a function to sum all amicable numbers from 1 to a specified number. Your code should satisfy the following assertion:\n    ```python\n    assert amicable_numbers_sum(999)==504\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 70,
+        "task_id": "Mbpp/124",
+        "question": "Write a function to get the angle of a complex number. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(angle_complex(0,1j), 1.5707963267948966, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 71,
+        "task_id": "Mbpp/125",
+        "question": "Write a function to find the maximum difference between the number of 0s and number of 1s in any sub-string of the given binary string. Your code should satisfy the following assertion:\n    ```python\n    assert find_length(\"11000010001\") == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 72,
+        "task_id": "Mbpp/126",
+        "question": "Write a python function to find the sum of common divisors of two given numbers. Your code should satisfy the following assertion:\n    ```python\n    assert sum(10,15) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 73,
+        "task_id": "Mbpp/127",
+        "question": "Write a function to multiply two integers. Your code should satisfy the following assertion:\n    ```python\n    assert multiply_int(10,20)==200\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 74,
+        "task_id": "Mbpp/128",
+        "question": "Write a function to find words that are longer than n characters from a given list of words. Your code should satisfy the following assertion:\n    ```python\n    assert long_words(3,\"python is a programming language\")==['python','programming','language']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 75,
+        "task_id": "Mbpp/129",
+        "question": "Write a function to calculate whether the matrix is a magic square. Your code should satisfy the following assertion:\n    ```python\n    assert magic_square_test([[7, 12, 1, 14], [2, 13, 8, 11], [16, 3, 10, 5], [9, 6, 15, 4]])==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 76,
+        "task_id": "Mbpp/130",
+        "question": "Write a function to find the item with maximum frequency in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert max_occurrences([2,3,8,4,7,9,8,2,6,5,1,6,1,2,3,2,4,6,9,1,2])==2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 77,
+        "task_id": "Mbpp/131",
+        "question": "Write a python function to reverse only the vowels of a given string (where y is not a vowel). Your code should satisfy the following assertion:\n    ```python\n    assert reverse_vowels(\"Python\") == \"Python\"\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 78,
+        "task_id": "Mbpp/132",
+        "question": "Write a function to convert a tuple to a string. Your code should satisfy the following assertion:\n    ```python\n    assert tup_string(('e', 'x', 'e', 'r', 'c', 'i', 's', 'e', 's'))==(\"exercises\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 79,
+        "task_id": "Mbpp/133",
+        "question": "Write a function to calculate the sum of the negative numbers of a given list of numbers. Your code should satisfy the following assertion:\n    ```python\n    assert sum_negativenum([2, 4, -6, -9, 11, -12, 14, -5, 17])==-32\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 80,
+        "task_id": "Mbpp/135",
+        "question": "Write a function to find the nth hexagonal number. Your code should satisfy the following assertion:\n    ```python\n    assert hexagonal_num(10) == 190\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 81,
+        "task_id": "Mbpp/137",
+        "question": "Write a function to find the ratio of zeroes to non-zeroes in an array of integers. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(zero_count([0, 1, 2, -1, -5, 6, 0, -3, -2, 3, 4, 6, 8]), 0.181818, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 82,
+        "task_id": "Mbpp/138",
+        "question": "Write a python function to check whether the given number can be represented as sum of non-zero powers of 2 or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_Sum_Of_Powers_Of_Two(10) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 83,
+        "task_id": "Mbpp/139",
+        "question": "Write a function to find the circumference of a circle. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(circle_circumference(10), 62.830000000000005, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 84,
+        "task_id": "Mbpp/140",
+        "question": "Write a function to flatten the list of lists into a single set of numbers. Your code should satisfy the following assertion:\n    ```python\n    assert set(extract_singly([(3, 4, 5), (4, 5, 7), (1, 4)])) == set([3, 4, 5, 7, 1])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 85,
+        "task_id": "Mbpp/141",
+        "question": "Write a function to sort a list of elements. Your code should satisfy the following assertion:\n    ```python\n    assert pancake_sort([15, 79, 25, 38, 69]) == [15, 25, 38, 69, 79]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 86,
+        "task_id": "Mbpp/142",
+        "question": "Write a function to count number items that are identical in the same position of three given lists. Your code should satisfy the following assertion:\n    ```python\n    assert count_samepair([1,2,3,4,5,6,7,8],[2,2,3,1,2,6,7,9],[2,1,3,1,2,6,7,9])==3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 87,
+        "task_id": "Mbpp/145",
+        "question": "Write a python function to find the maximum difference between any two elements in a given array. Your code should satisfy the following assertion:\n    ```python\n    assert max_Abs_Diff((2,1,5,3)) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 88,
+        "task_id": "Mbpp/160",
+        "question": "Write a function that returns integers x and y that satisfy ax + by = n as a tuple, or return None if no solution exists. Your code should satisfy the following assertion:\n    ```python\n    assert find_solution(2, 3, 7) == (2, 1)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 89,
+        "task_id": "Mbpp/161",
+        "question": "Write a function to remove all elements from a given list present in another list. Your code should satisfy the following assertion:\n    ```python\n    assert remove_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 4, 6, 8]) == [1, 3, 5, 7, 9, 10]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 90,
+        "task_id": "Mbpp/162",
+        "question": "Write a function to calculate the sum (n - 2*i) from i=0 to n // 2, for instance n + (n-2) + (n-4)... (until n-x =< 0). Your code should satisfy the following assertion:\n    ```python\n    assert sum_series(6) == 12\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 91,
+        "task_id": "Mbpp/165",
+        "question": "Write a function to count the number of characters in a string that occur at the same position in the string as in the English alphabet (case insensitive). Your code should satisfy the following assertion:\n    ```python\n    assert count_char_position(\"xbcefg\") == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 92,
+        "task_id": "Mbpp/166",
+        "question": "Write a function that counts the number of pairs of integers in a list that xor to an even number. Your code should satisfy the following assertion:\n    ```python\n    assert find_even_pair([5, 4, 7, 2, 1]) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 93,
+        "task_id": "Mbpp/167",
+        "question": "Write a python function to find the smallest power of 2 greater than or equal to n. Your code should satisfy the following assertion:\n    ```python\n    assert next_power_of_2(0) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 94,
+        "task_id": "Mbpp/168",
+        "question": "Write a function to count the number of occurrences of a number in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert frequency([1,2,3], 4) == 0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 95,
+        "task_id": "Mbpp/170",
+        "question": "Write a function to find the sum of numbers in a list within a range specified by two indices. Your code should satisfy the following assertion:\n    ```python\n    assert sum_range_list([2,1,5,6,8,3,4,9,10,11,8,12], 8, 10) == 29\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 96,
+        "task_id": "Mbpp/171",
+        "question": "Write a function to find the perimeter of a regular pentagon from the length of its sides. Your code should satisfy the following assertion:\n    ```python\n    assert perimeter_pentagon(5) == 25\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 97,
+        "task_id": "Mbpp/172",
+        "question": "Write a function to count the number of occurence of the string 'std' in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert count_occurance(\"letstdlenstdporstd\") == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 98,
+        "task_id": "Mbpp/222",
+        "question": "Write a function to check if all the elements in tuple have same data type or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_type((5, 6, 7, 3, 5, 6) ) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 99,
+        "task_id": "Mbpp/223",
+        "question": "Write a function that takes in a sorted array, its length (n), and an element and returns whether the element is the majority element in the given sorted array. (The majority element is the element that occurs more than n/2 times.). Your code should satisfy the following assertion:\n    ```python\n    assert is_majority([1, 2, 3, 3, 3, 3, 10], 7, 3) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 100,
+        "task_id": "Mbpp/224",
+        "question": "Write a python function to count the number of set bits (binary digits with value 1) in a given number. Your code should satisfy the following assertion:\n    ```python\n    assert count_Set_Bits(2) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 101,
+        "task_id": "Mbpp/226",
+        "question": "Write a python function to remove the characters which have odd index values of a given string. Your code should satisfy the following assertion:\n    ```python\n    assert odd_values_string('abcdef') == 'ace'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 102,
+        "task_id": "Mbpp/227",
+        "question": "Write a function to find minimum of three numbers. Your code should satisfy the following assertion:\n    ```python\n    assert min_of_three(10,20,0)==0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 103,
+        "task_id": "Mbpp/230",
+        "question": "Write a function that takes in a string and character, replaces blank spaces in the string with the character, and returns the string. Your code should satisfy the following assertion:\n    ```python\n    assert replace_blank(\"hello people\",'@')==(\"hello@people\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 104,
+        "task_id": "Mbpp/232",
+        "question": "Write a function that takes in a list and an integer n and returns a list containing the n largest items from the list. Your code should satisfy the following assertion:\n    ```python\n    assert set(larg_nnum([10, 20, 50, 70, 90, 20, 50, 40, 60, 80, 100],2))==set([100,90])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 105,
+        "task_id": "Mbpp/233",
+        "question": "Write a function to find the lateral surface area of a cylinder. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(lateralsuface_cylinder(10,5), 314.15000000000003, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 106,
+        "task_id": "Mbpp/234",
+        "question": "Write a function to find the volume of a cube given its side length. Your code should satisfy the following assertion:\n    ```python\n    assert volume_cube(3)==27\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 107,
+        "task_id": "Mbpp/235",
+        "question": "Write a python function to set all even bits of a given number. Your code should satisfy the following assertion:\n    ```python\n    assert even_bit_set_number(10) == 10\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 108,
+        "task_id": "Mbpp/237",
+        "question": "Write a function that takes in a list of tuples and returns a dictionary mapping each unique tuple to the number of times it occurs in the list. Your code should satisfy the following assertion:\n    ```python\n    assert check_occurences([(3, 1), (1, 3), (2, 5), (5, 2), (6, 3)] ) == {(1, 3): 2, (2, 5): 2, (3, 6): 1}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 109,
+        "task_id": "Mbpp/238",
+        "question": "Write a python function to count the number of non-empty substrings of a given string. Your code should satisfy the following assertion:\n    ```python\n    assert number_of_substrings(\"abc\") == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 110,
+        "task_id": "Mbpp/239",
+        "question": "Write a function that takes in positive integers m and n and finds the number of possible sequences of length n, such that each element is a positive integer and is greater than or equal to twice the previous element but less than or equal to m. Your code should satisfy the following assertion:\n    ```python\n    assert get_total_number_of_sequences(10, 4) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 111,
+        "task_id": "Mbpp/240",
+        "question": "Write a function that takes in two lists and replaces the last element of the first list with the elements of the second list. Your code should satisfy the following assertion:\n    ```python\n    assert replace_list([1, 3, 5, 7, 9, 10],[2, 4, 6, 8])==[1, 3, 5, 7, 9, 2, 4, 6, 8]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 112,
+        "task_id": "Mbpp/242",
+        "question": "Write a function to count the total number of characters in a string. Your code should satisfy the following assertion:\n    ```python\n    assert count_charac(\"python programming\")==18\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 113,
+        "task_id": "Mbpp/244",
+        "question": "Write a python function to find the next perfect square greater than a given number. Your code should satisfy the following assertion:\n    ```python\n    assert next_Perfect_Square(35) == 36\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 114,
+        "task_id": "Mbpp/245",
+        "question": "Write a function that takes an array and finds the maximum sum of a bitonic subsequence for the given array, where a sequence is bitonic if it is first increasing and then decreasing. Your code should satisfy the following assertion:\n    ```python\n    assert max_sum([1, 15, 51, 45, 33, 100, 12, 18, 9]) == 194\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 115,
+        "task_id": "Mbpp/247",
+        "question": "Write a function to find the length of the longest palindromic subsequence in the given string. Your code should satisfy the following assertion:\n    ```python\n    assert lps(\"TENS FOR TENS\") == 5\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 116,
+        "task_id": "Mbpp/250",
+        "question": "Write a python function that takes in a tuple and an element and counts the occcurences of the element in the tuple. Your code should satisfy the following assertion:\n    ```python\n    assert count_X((10, 8, 5, 2, 10, 15, 10, 8, 5, 8, 8, 2),4) == 0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 117,
+        "task_id": "Mbpp/251",
+        "question": "Write a function that takes in a list and an element and inserts the element before each element in the list, and returns the resulting list. Your code should satisfy the following assertion:\n    ```python\n    assert insert_element(['Red', 'Green', 'Black'] ,'c')==['c', 'Red', 'c', 'Green', 'c', 'Black']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 118,
+        "task_id": "Mbpp/252",
+        "question": "Write a python function to convert complex numbers to polar coordinates. Your code should satisfy the following assertion:\n    ```python\n    assert convert(1) == (1.0, 0.0)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 119,
+        "task_id": "Mbpp/253",
+        "question": "Write a python function that returns the number of integer elements in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert count_integer([1,2,'abc',1.2]) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 120,
+        "task_id": "Mbpp/255",
+        "question": "Write a function that takes in a list and length n, and generates all combinations (with repetition) of the elements of the list and returns a list with a tuple for each combination. Your code should satisfy the following assertion:\n    ```python\n    assert combinations_colors( [\"Red\",\"Green\",\"Blue\"],1)==[('Red',), ('Green',), ('Blue',)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 121,
+        "task_id": "Mbpp/256",
+        "question": "Write a python function that takes in a non-negative number and returns the number of prime numbers less than the given non-negative number. Your code should satisfy the following assertion:\n    ```python\n    assert count_Primes_nums(5) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 122,
+        "task_id": "Mbpp/257",
+        "question": "Write a function that takes in two numbers and returns a tuple with the second number and then the first number. Your code should satisfy the following assertion:\n    ```python\n    assert swap_numbers(10,20)==(20,10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 123,
+        "task_id": "Mbpp/259",
+        "question": "Write a function to maximize the given two tuples. Your code should satisfy the following assertion:\n    ```python\n    assert maximize_elements(((1, 3), (4, 5), (2, 9), (1, 10)), ((6, 7), (3, 9), (1, 1), (7, 3))) == ((6, 7), (4, 9), (2, 9), (7, 10))\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 124,
+        "task_id": "Mbpp/260",
+        "question": "Write a function to find the nth newman–shanks–williams prime number. Your code should satisfy the following assertion:\n    ```python\n    assert newman_prime(3) == 7\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 125,
+        "task_id": "Mbpp/261",
+        "question": "Write a function that takes in two tuples and performs mathematical division operation element-wise across the given tuples. Your code should satisfy the following assertion:\n    ```python\n    assert division_elements((10, 4, 6, 9),(5, 2, 3, 3)) == (2, 2, 2, 3)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 126,
+        "task_id": "Mbpp/262",
+        "question": "Write a function that takes in a list and an integer L and splits the given list into two parts where the length of the first part of the list is L, and returns the resulting lists in a tuple. Your code should satisfy the following assertion:\n    ```python\n    assert split_two_parts([1,1,2,3,4,4,5,1],3)==([1, 1, 2], [3, 4, 4, 5, 1])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 127,
+        "task_id": "Mbpp/264",
+        "question": "Write a function to calculate a dog's age in dog's years. Your code should satisfy the following assertion:\n    ```python\n    assert dog_age(12)==61\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 128,
+        "task_id": "Mbpp/265",
+        "question": "Write a function that takes in a list and an integer n and splits a list for every nth element, returning a list of the resulting lists. Your code should satisfy the following assertion:\n    ```python\n    assert list_split(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],3)==[['a', 'd', 'g', 'j', 'm'], ['b', 'e', 'h', 'k', 'n'], ['c', 'f', 'i', 'l']]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 129,
+        "task_id": "Mbpp/266",
+        "question": "Write a function to find the lateral surface area of a cube given its side length. Your code should satisfy the following assertion:\n    ```python\n    assert lateralsurface_cube(5)==100\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 130,
+        "task_id": "Mbpp/267",
+        "question": "Write a python function that takes in an integer n and returns the sum of the squares of the first n odd natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert square_Sum(2) == 10\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 131,
+        "task_id": "Mbpp/268",
+        "question": "Write a function to find the n'th star number. Your code should satisfy the following assertion:\n    ```python\n    assert find_star_num(3) == 37\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 132,
+        "task_id": "Mbpp/269",
+        "question": "Write a function to find the ascii value of a character. Your code should satisfy the following assertion:\n    ```python\n    assert ascii_value('A')==65\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 133,
+        "task_id": "Mbpp/270",
+        "question": "Write a python function to find the sum of even numbers at even positions of a list. Your code should satisfy the following assertion:\n    ```python\n    assert sum_even_and_even_index([5, 6, 12, 1, 18, 8]) == 30\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 134,
+        "task_id": "Mbpp/271",
+        "question": "Write a python function that takes in an integer n and finds the sum of the first n even natural numbers that are raised to the fifth power. Your code should satisfy the following assertion:\n    ```python\n    assert even_Power_Sum(2) == 1056\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 135,
+        "task_id": "Mbpp/272",
+        "question": "Write a function that takes in a list of tuples and returns a list containing the rear element of each tuple. Your code should satisfy the following assertion:\n    ```python\n    assert rear_extract([(1, 'Rash', 21), (2, 'Varsha', 20), (3, 'Kil', 19)]) == [21, 20, 19]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 136,
+        "task_id": "Mbpp/273",
+        "question": "Write a function that takes in two tuples and subtracts the elements of the first tuple by the elements of the second tuple with the same index. Your code should satisfy the following assertion:\n    ```python\n    assert substract_elements((10, 4, 5), (2, 5, 18)) == (8, -1, -13)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 137,
+        "task_id": "Mbpp/274",
+        "question": "Write a python function that takes in a positive integer n and finds the sum of even index binomial coefficients. Your code should satisfy the following assertion:\n    ```python\n    assert even_binomial_Coeff_Sum(4) == 8\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 138,
+        "task_id": "Mbpp/276",
+        "question": "Write a function that takes in the radius and height of a cylinder and returns the the volume. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(volume_cylinder(10,5), 1570.7500000000002, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 139,
+        "task_id": "Mbpp/277",
+        "question": "Write a function that takes in a dictionary and integer n and filters the dictionary to only include entries with values greater than or equal to n. Your code should satisfy the following assertion:\n    ```python\n    assert dict_filter({'Cierra Vega': 175, 'Alden Cantrell': 180, 'Kierra Gentry': 165, 'Pierre Cox': 190},170)=={'Cierra Vega': 175, 'Alden Cantrell': 180, 'Pierre Cox': 190}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 140,
+        "task_id": "Mbpp/278",
+        "question": "Write a function to find the number of elements that occurs before the tuple element in the given tuple. Your code should satisfy the following assertion:\n    ```python\n    assert count_first_elements((1, 5, 7, (4, 6), 10) ) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 141,
+        "task_id": "Mbpp/279",
+        "question": "Write a function to find the nth decagonal number. Your code should satisfy the following assertion:\n    ```python\n    assert is_num_decagonal(3) == 27\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 142,
+        "task_id": "Mbpp/280",
+        "question": "Write a function that takes in an array and element and returns a tuple containing a boolean that indicates if the element is in the array and the index position of the element (or -1 if the element is not found). Your code should satisfy the following assertion:\n    ```python\n    assert sequential_search([11,23,58,31,56,77,43,12,65,19],31) == (True, 3)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 143,
+        "task_id": "Mbpp/281",
+        "question": "Write a python function to check if the elements of a given list are unique or not. Your code should satisfy the following assertion:\n    ```python\n    assert all_unique([1,2,3]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 144,
+        "task_id": "Mbpp/282",
+        "question": "Write a function to subtract two lists element-wise. Your code should satisfy the following assertion:\n    ```python\n    assert sub_list([1, 2, 3],[4,5,6])==[-3,-3,-3]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 145,
+        "task_id": "Mbpp/283",
+        "question": "Write a python function takes in an integer and check whether the frequency of each digit in the integer is less than or equal to the digit itself. Your code should satisfy the following assertion:\n    ```python\n    assert validate(1234) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 146,
+        "task_id": "Mbpp/284",
+        "question": "Write a function that takes in a list and element and checks whether all items in the list are equal to the given element. Your code should satisfy the following assertion:\n    ```python\n    assert check_element([\"green\", \"orange\", \"black\", \"white\"],'blue')==False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 147,
+        "task_id": "Mbpp/285",
+        "question": "Write a function that checks whether a string contains the 'a' character followed by two or three 'b' characters. Your code should satisfy the following assertion:\n    ```python\n    assert text_match_two_three(\"ac\")==(False)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 148,
+        "task_id": "Mbpp/286",
+        "question": "Write a function to find the largest sum of a contiguous array in the modified array which is formed by repeating the given array k times. Your code should satisfy the following assertion:\n    ```python\n    assert max_sub_array_sum_repeated([10, 20, -30, -1], 4, 3) == 30\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 149,
+        "task_id": "Mbpp/287",
+        "question": "Write a python function takes in an integer n and returns the sum of squares of first n even natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert square_Sum(2) == 20\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 150,
+        "task_id": "Mbpp/290",
+        "question": "Write a function to find the list of maximum length in a list of lists. Your code should satisfy the following assertion:\n    ```python\n    assert max_length([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]])==(3, [13, 15, 17])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 151,
+        "task_id": "Mbpp/292",
+        "question": "Write a python function to find quotient of two numbers (rounded down to the nearest integer). Your code should satisfy the following assertion:\n    ```python\n    assert find(10,3) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 152,
+        "task_id": "Mbpp/293",
+        "question": "Write a function to find the third side of a right angled triangle. Your code should satisfy the following assertion:\n    ```python\n    assert otherside_rightangle(7,8)==10.63014581273465\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 153,
+        "task_id": "Mbpp/294",
+        "question": "Write a function to find the maximum value in a given heterogeneous list. Your code should satisfy the following assertion:\n    ```python\n    assert max_val(['Python', 3, 2, 4, 5, 'version'])==5\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 154,
+        "task_id": "Mbpp/296",
+        "question": "Write a python function to count inversions in an array. Your code should satisfy the following assertion:\n    ```python\n    assert get_Inv_Count([1,20,6,4,5]) == 5\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 155,
+        "task_id": "Mbpp/297",
+        "question": "Write a function to flatten a given nested list structure. Your code should satisfy the following assertion:\n    ```python\n    assert flatten_list([0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]])==[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 156,
+        "task_id": "Mbpp/299",
+        "question": "Write a function to calculate the maximum aggregate from the list of tuples. Your code should satisfy the following assertion:\n    ```python\n    assert max_aggregate([('Juan Whelan',90),('Sabah Colley',88),('Peter Nichols',7),('Juan Whelan',122),('Sabah Colley',84)])==('Juan Whelan', 212)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 157,
+        "task_id": "Mbpp/300",
+        "question": "Write a function to find the count of all binary sequences of length 2n such that sum of first n bits is same as sum of last n bits. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(count_binary_seq(1), 2.0, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 158,
+        "task_id": "Mbpp/301",
+        "question": "Write a function to find the depth of a dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert dict_depth({'a':1, 'b': {'c': {'d': {}}}})==4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 159,
+        "task_id": "Mbpp/305",
+        "question": "Write a function to return two words from a list of words starting with letter 'p'. Your code should satisfy the following assertion:\n    ```python\n    assert start_withp([\"Python PHP\", \"Java JavaScript\", \"c c++\"])==('Python', 'PHP')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 160,
+        "task_id": "Mbpp/306",
+        "question": "Write a function to find the maximum sum of increasing subsequence from prefix until ith index and also including a given kth element which is after i, i.e., k > i . Your code should satisfy the following assertion:\n    ```python\n    assert max_sum_increasing_subseq([1, 101, 2, 3, 100, 4, 5 ], 7, 4, 6) == 11\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 161,
+        "task_id": "Mbpp/308",
+        "question": "Write a function to find the specified number of largest products from two given lists, selecting one factor from each list. Your code should satisfy the following assertion:\n    ```python\n    assert large_product([1, 2, 3, 4, 5, 6],[3, 6, 8, 9, 10, 6],3)==[60, 54, 50]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 162,
+        "task_id": "Mbpp/309",
+        "question": "Write a python function to find the maximum of two numbers. Your code should satisfy the following assertion:\n    ```python\n    assert maximum(5,10) == 10\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 163,
+        "task_id": "Mbpp/310",
+        "question": "Write a function to convert a given string to a tuple of characters. Your code should satisfy the following assertion:\n    ```python\n    assert string_to_tuple(\"python 3.0\")==('p', 'y', 't', 'h', 'o', 'n', '3', '.', '0')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 164,
+        "task_id": "Mbpp/311",
+        "question": "Write a python function to set the left most unset bit. Your code should satisfy the following assertion:\n    ```python\n    assert set_left_most_unset_bit(10) == 14\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 165,
+        "task_id": "Mbpp/312",
+        "question": "Write a function to find the volume of a cone. Your code should satisfy the following assertion:\n    ```python\n    assert math.isclose(volume_cone(5,12), 314.15926535897927, rel_tol=0.001)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 166,
+        "task_id": "Mbpp/388",
+        "question": "Write a python function to find the highest power of 2 that is less than or equal to n. Your code should satisfy the following assertion:\n    ```python\n    assert highest_Power_of_2(10) == 8\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 167,
+        "task_id": "Mbpp/389",
+        "question": "Write a function to find the n'th lucas number. Your code should satisfy the following assertion:\n    ```python\n    assert find_lucas(9) == 76\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 168,
+        "task_id": "Mbpp/390",
+        "question": "Write a function to apply a given format string to all of the elements in a list. Your code should satisfy the following assertion:\n    ```python\n    assert add_string([1,2,3,4],'temp{0}')==['temp1', 'temp2', 'temp3', 'temp4']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 169,
+        "task_id": "Mbpp/391",
+        "question": "Write a function to convert more than one list to nested dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert convert_list_dictionary([\"S001\", \"S002\", \"S003\", \"S004\"],[\"Adina Park\", \"Leyton Marsh\", \"Duncan Boyle\", \"Saim Richards\"] ,[85, 98, 89, 92])==[{'S001': {'Adina Park': 85}}, {'S002': {'Leyton Marsh': 98}}, {'S003': {'Duncan Boyle': 89}}, {'S004': {'Saim Richards': 92}}]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 170,
+        "task_id": "Mbpp/392",
+        "question": "Write a function to find the maximum sum possible by using the given equation f(n) = max( (f(n/2) + f(n/3) + f(n/4) + f(n/5)), n). Your code should satisfy the following assertion:\n    ```python\n    assert get_max_sum(60) == 106\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 171,
+        "task_id": "Mbpp/394",
+        "question": "Write a function to check if given tuple contains no duplicates. Your code should satisfy the following assertion:\n    ```python\n    assert check_distinct((1, 4, 5, 6, 1, 4)) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 172,
+        "task_id": "Mbpp/395",
+        "question": "Write a python function to find the first non-repeated character in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert first_non_repeating_character(\"abcabc\") == None\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 173,
+        "task_id": "Mbpp/397",
+        "question": "Write a function to find the median of three numbers. Your code should satisfy the following assertion:\n    ```python\n    assert median_numbers(25,55,65)==55.0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 174,
+        "task_id": "Mbpp/398",
+        "question": "Write a function to compute the sum of digits of each number of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert sum_of_digits([10,2,56])==14\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 175,
+        "task_id": "Mbpp/404",
+        "question": "Write a python function to find the minimum of two numbers. Your code should satisfy the following assertion:\n    ```python\n    assert minimum(1,2) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 176,
+        "task_id": "Mbpp/405",
+        "question": "Write a function to check whether an element exists within a tuple. Your code should satisfy the following assertion:\n    ```python\n    assert check_tuplex((\"w\", 3, \"r\", \"e\", \"s\", \"o\", \"u\", \"r\", \"c\", \"e\"),'r')==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 177,
+        "task_id": "Mbpp/406",
+        "question": "Write a python function to find whether the parity of a given number is odd. Your code should satisfy the following assertion:\n    ```python\n    assert find_Parity(12) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 178,
+        "task_id": "Mbpp/409",
+        "question": "Write a function to find the minimum product from the pairs of tuples within a given list. Your code should satisfy the following assertion:\n    ```python\n    assert min_product_tuple([(2, 7), (2, 6), (1, 8), (4, 9)] )==8\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 179,
+        "task_id": "Mbpp/410",
+        "question": "Write a function to find the minimum value in a given heterogeneous list. Your code should satisfy the following assertion:\n    ```python\n    assert min_val(['Python', 3, 2, 4, 5, 'version'])==2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 180,
+        "task_id": "Mbpp/412",
+        "question": "Write a python function to remove odd numbers from a given list. Your code should satisfy the following assertion:\n    ```python\n    assert remove_odd([1,2,3]) == [2]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 181,
+        "task_id": "Mbpp/413",
+        "question": "Write a function to extract the nth element from a given list of tuples. Your code should satisfy the following assertion:\n    ```python\n    assert extract_nth_element([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)] ,0)==['Greyson Fulton', 'Brady Kent', 'Wyatt Knott', 'Beau Turnbull']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 182,
+        "task_id": "Mbpp/414",
+        "question": "Write a python function to check whether any value in a sequence exists in a sequence or not. Your code should satisfy the following assertion:\n    ```python\n    assert overlapping([1,2,3,4,5],[6,7,8,9]) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 183,
+        "task_id": "Mbpp/415",
+        "question": "Write a python function to find a pair with highest product from a given array of integers. Your code should satisfy the following assertion:\n    ```python\n    assert max_Product([1,2,3,4,7,0,8,4]) == (7,8)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 184,
+        "task_id": "Mbpp/418",
+        "question": "Write a python function to find the element of a list having maximum length. Your code should satisfy the following assertion:\n    ```python\n    assert Find_Max([['A'],['A','B'],['A','B','C']]) == ['A','B','C']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 185,
+        "task_id": "Mbpp/419",
+        "question": "Write a function to round every number of a given list of numbers and print the total sum multiplied by the length of the list. Your code should satisfy the following assertion:\n    ```python\n    assert round_and_sum([22.4, 4.0, -16.22, -9.10, 11.00, -12.22, 14.20, -5.20, 17.50])==243\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 186,
+        "task_id": "Mbpp/420",
+        "question": "Write a python function to find the cube sum of first n even natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert cube_Sum(2) == 72\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 187,
+        "task_id": "Mbpp/421",
+        "question": "Write a function to concatenate each element of tuple by the delimiter. Your code should satisfy the following assertion:\n    ```python\n    assert concatenate_tuple((\"ID\", \"is\", 4, \"UTS\") ) == 'ID-is-4-UTS'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 188,
+        "task_id": "Mbpp/422",
+        "question": "Write a python function to find the average of cubes of first n natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert find_Average_Of_Cube(2) == 4.5\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 189,
+        "task_id": "Mbpp/424",
+        "question": "Write a function to extract only the rear index element of each string in the given tuple. Your code should satisfy the following assertion:\n    ```python\n    assert extract_rear(('Mers', 'for', 'Vers') ) == ['s', 'r', 's']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 190,
+        "task_id": "Mbpp/425",
+        "question": "Write a function to count the number of sublists containing a particular element. Your code should satisfy the following assertion:\n    ```python\n    assert count_element_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]],1)==3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 191,
+        "task_id": "Mbpp/426",
+        "question": "Write a function to filter odd numbers. Your code should satisfy the following assertion:\n    ```python\n    assert filter_oddnumbers([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1,3,5,7,9]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 192,
+        "task_id": "Mbpp/427",
+        "question": "Write a function to convert a date of yyyy-mm-dd format to dd-mm-yyyy format. Your code should satisfy the following assertion:\n    ```python\n    assert change_date_format(\"2026-01-02\") == '02-01-2026'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 193,
+        "task_id": "Mbpp/428",
+        "question": "Write a function to sort the given array by using shell sort. Your code should satisfy the following assertion:\n    ```python\n    assert shell_sort([12, 23, 4, 5, 3, 2, 12, 81, 56, 95]) == [2, 3, 4, 5, 12, 12, 23, 56, 81, 95]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 194,
+        "task_id": "Mbpp/429",
+        "question": "Write a function to extract the elementwise and tuples from the given two tuples. Your code should satisfy the following assertion:\n    ```python\n    assert and_tuples((10, 4, 6, 9), (5, 2, 3, 3)) == (0, 0, 2, 1)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 195,
+        "task_id": "Mbpp/430",
+        "question": "Write a function to find the directrix of a parabola. Your code should satisfy the following assertion:\n    ```python\n    assert parabola_directrix(5,3,2)==-198\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 196,
+        "task_id": "Mbpp/432",
+        "question": "Write a function to find the median length of a trapezium. Your code should satisfy the following assertion:\n    ```python\n    assert median_trapezium(15,25,35)==20\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 197,
+        "task_id": "Mbpp/433",
+        "question": "Write a function to check whether the entered number is greater than the elements of the given array. Your code should satisfy the following assertion:\n    ```python\n    assert check_greater([1, 2, 3, 4, 5], 4) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 198,
+        "task_id": "Mbpp/435",
+        "question": "Write a python function to find the last digit of a given number. Your code should satisfy the following assertion:\n    ```python\n    assert last_Digit(123) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 199,
+        "task_id": "Mbpp/436",
+        "question": "Write a python function to return the negative numbers in a list. Your code should satisfy the following assertion:\n    ```python\n    assert neg_nos([-1,4,5,-6]) == [-1,-6]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 200,
+        "task_id": "Mbpp/437",
+        "question": "Write a function to remove odd characters in a string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_odd(\"python\")==(\"yhn\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 201,
+        "task_id": "Mbpp/439",
+        "question": "Write a function to join a list of multiple integers into a single integer. Your code should satisfy the following assertion:\n    ```python\n    assert multiple_to_single([11, 33, 50])==113350\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 202,
+        "task_id": "Mbpp/440",
+        "question": "Write a function to find the first adverb and their positions in a given sentence. Your code should satisfy the following assertion:\n    ```python\n    assert find_adverb_position(\"clearly!! we can see the sky\")==(0, 7, 'clearly')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 203,
+        "task_id": "Mbpp/441",
+        "question": "Write a function to find the surface area of a cube of a given size. Your code should satisfy the following assertion:\n    ```python\n    assert surfacearea_cube(5)==150\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 204,
+        "task_id": "Mbpp/445",
+        "question": "Write a function to perform index wise multiplication of tuple elements in the given two tuples. Your code should satisfy the following assertion:\n    ```python\n    assert index_multiplication(((1, 3), (4, 5), (2, 9), (1, 10)),((6, 7), (3, 9), (1, 1), (7, 3)) ) == ((6, 21), (12, 45), (2, 9), (7, 30))\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 205,
+        "task_id": "Mbpp/446",
+        "question": "Write a python function to count the occurence of all elements of list in a tuple. Your code should satisfy the following assertion:\n    ```python\n    assert count_Occurrence(('a', 'a', 'c', 'b', 'd'),['a', 'b'] ) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 206,
+        "task_id": "Mbpp/447",
+        "question": "Write a function to find cubes of individual elements in a list. Your code should satisfy the following assertion:\n    ```python\n    assert cube_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])==[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 207,
+        "task_id": "Mbpp/448",
+        "question": "Write a function to calculate the sum of perrin numbers. Your code should satisfy the following assertion:\n    ```python\n    assert cal_sum(9) == 49\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 208,
+        "task_id": "Mbpp/450",
+        "question": "Write a function to extract specified size of strings from a given list of string values. Your code should satisfy the following assertion:\n    ```python\n    assert extract_string(['Python', 'list', 'exercises', 'practice', 'solution'] ,8)==['practice', 'solution']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 209,
+        "task_id": "Mbpp/451",
+        "question": "Write a function to remove all whitespaces from the given string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_whitespaces(' Google    Flutter ') == 'GoogleFlutter'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 210,
+        "task_id": "Mbpp/453",
+        "question": "Write a python function to find the sum of even factors of a number. Your code should satisfy the following assertion:\n    ```python\n    assert sumofFactors(18) == 26\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 211,
+        "task_id": "Mbpp/454",
+        "question": "Write a function that matches a word containing 'z'. Your code should satisfy the following assertion:\n    ```python\n    assert text_match_wordz(\"pythonz.\")==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 212,
+        "task_id": "Mbpp/455",
+        "question": "Write a function to check whether the given month number contains 31 days or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_monthnumb_number(5)==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 213,
+        "task_id": "Mbpp/456",
+        "question": "Write a function to reverse each string in a given list of string values. Your code should satisfy the following assertion:\n    ```python\n    assert reverse_string_list(['Red', 'Green', 'Blue', 'White', 'Black'])==['deR', 'neerG', 'eulB', 'etihW', 'kcalB']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 214,
+        "task_id": "Mbpp/457",
+        "question": "Write a python function to find the sublist having minimum length. Your code should satisfy the following assertion:\n    ```python\n    assert Find_Min([[1],[1,2],[1,2,3]]) == [1]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 215,
+        "task_id": "Mbpp/458",
+        "question": "Write a function to find the area of a rectangle. Your code should satisfy the following assertion:\n    ```python\n    assert rectangle_area(10,20)==200\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 216,
+        "task_id": "Mbpp/459",
+        "question": "Write a function to remove uppercase substrings from a given string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_uppercase('cAstyoUrFavoRitETVshoWs') == 'cstyoravoitshos'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 217,
+        "task_id": "Mbpp/460",
+        "question": "Write a python function to get the first element of each sublist. Your code should satisfy the following assertion:\n    ```python\n    assert Extract([[1, 2], [3, 4, 5], [6, 7, 8, 9]]) == [1, 3, 6]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 218,
+        "task_id": "Mbpp/462",
+        "question": "Write a function to find all possible combinations of the elements of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert combinations_list(['orange', 'red', 'green', 'blue'])==[[], ['orange'], ['red'], ['red', 'orange'], ['green'], ['green', 'orange'], ['green', 'red'], ['green', 'red', 'orange'], ['blue'], ['blue', 'orange'], ['blue', 'red'], ['blue', 'red', 'orange'], ['blue', 'green'], ['blue', 'green', 'orange'], ['blue', 'green', 'red'], ['blue', 'green', 'red', 'orange']]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 219,
+        "task_id": "Mbpp/463",
+        "question": "Write a function to find the maximum product subarray of the given array. Your code should satisfy the following assertion:\n    ```python\n    assert max_subarray_product([1, -2, -3, 0, 7, -8, -2]) == 112\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 220,
+        "task_id": "Mbpp/465",
+        "question": "Write a function to drop empty items from a given dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert drop_empty({'c1': 'Red', 'c2': 'Green', 'c3':None})=={'c1': 'Red', 'c2': 'Green'}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 221,
+        "task_id": "Mbpp/468",
+        "question": "Write a function to find the maximum product formed by multiplying numbers of an increasing subsequence of that array. Your code should satisfy the following assertion:\n    ```python\n    assert max_product([3, 100, 4, 5, 150, 6]) == 3000\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 222,
+        "task_id": "Mbpp/470",
+        "question": "Write a function to find the pairwise addition of the neighboring elements of the given tuple. Your code should satisfy the following assertion:\n    ```python\n    assert add_pairwise((1, 5, 7, 8, 10)) == (6, 12, 15, 18)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 223,
+        "task_id": "Mbpp/471",
+        "question": "Write a python function to find the product of the array multiplication modulo n. Your code should satisfy the following assertion:\n    ```python\n    assert find_remainder([ 100, 10, 5, 25, 35, 14 ],11) ==9\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 224,
+        "task_id": "Mbpp/472",
+        "question": "Write a python function to check whether the given list contains consecutive numbers or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_Consecutive([1,2,3,4,5]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 225,
+        "task_id": "Mbpp/473",
+        "question": "Write a function to find the tuple intersection of elements in the given tuple list irrespective of their order. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_intersection([(3, 4), (5, 6), (9, 10), (4, 5)] , [(5, 4), (3, 4), (6, 5), (9, 11)]) == {(4, 5), (3, 4), (5, 6)}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 226,
+        "task_id": "Mbpp/474",
+        "question": "Write a function to replace characters in a string. Your code should satisfy the following assertion:\n    ```python\n    assert replace_char(\"polygon\",'y','l')==(\"pollgon\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 227,
+        "task_id": "Mbpp/475",
+        "question": "Write a function to sort a dictionary by value. Your code should satisfy the following assertion:\n    ```python\n    assert sort_counter({'Math':81, 'Physics':83, 'Chemistry':87})==[('Chemistry', 87), ('Physics', 83), ('Math', 81)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 228,
+        "task_id": "Mbpp/476",
+        "question": "Write a python function to find the sum of the largest and smallest value in a given array. Your code should satisfy the following assertion:\n    ```python\n    assert big_sum([1,2,3]) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 229,
+        "task_id": "Mbpp/477",
+        "question": "Write a python function to convert the given string to lower case. Your code should satisfy the following assertion:\n    ```python\n    assert is_lower(\"InValid\") == \"invalid\"\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 230,
+        "task_id": "Mbpp/478",
+        "question": "Write a function to remove lowercase substrings from a given string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_lowercase(\"PYTHon\")==('PYTH')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 231,
+        "task_id": "Mbpp/479",
+        "question": "Write a python function to find the first digit of a given number. Your code should satisfy the following assertion:\n    ```python\n    assert first_Digit(123) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 232,
+        "task_id": "Mbpp/554",
+        "question": "Write a python function which takes a list of integers and only returns the odd ones. Your code should satisfy the following assertion:\n    ```python\n    assert Split([1,2,3,4,5,6]) == [1,3,5]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 233,
+        "task_id": "Mbpp/555",
+        "question": "Write a python function to find the difference between the sum of cubes of the first n natural numbers and the sum of the first n natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert difference(3) == 30\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 234,
+        "task_id": "Mbpp/556",
+        "question": "Write a python function to count the number of pairs whose xor value is odd. Your code should satisfy the following assertion:\n    ```python\n    assert find_Odd_Pair([5,4,7,2,1],5) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 235,
+        "task_id": "Mbpp/557",
+        "question": "Write a function to toggle the case of all characters in a string. Your code should satisfy the following assertion:\n    ```python\n    assert toggle_string(\"Python\")==(\"pYTHON\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 236,
+        "task_id": "Mbpp/558",
+        "question": "Write a python function to find the sum of the per-digit difference between two integers. Your code should satisfy the following assertion:\n    ```python\n    assert digit_distance_nums(1,2) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 237,
+        "task_id": "Mbpp/559",
+        "question": "Write a function to find the sum of the largest contiguous sublist in the given list. Your code should satisfy the following assertion:\n    ```python\n    assert max_sub_array_sum([-2, -3, 4, -1, -2, 1, 5, -3], 8) == 7\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 238,
+        "task_id": "Mbpp/560",
+        "question": "Write a function to find the union of the elements of two given tuples and output them in sorted order. Your code should satisfy the following assertion:\n    ```python\n    assert union_elements((3, 4, 5, 6),(5, 7, 4, 10) ) == (3, 4, 5, 6, 7, 10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 239,
+        "task_id": "Mbpp/562",
+        "question": "Write a python function to find the length of the longest sublists. Your code should satisfy the following assertion:\n    ```python\n    assert Find_Max_Length([[1],[1,4],[5,6,7,8]]) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 240,
+        "task_id": "Mbpp/563",
+        "question": "Write a function to extract values between quotation marks from a string. Your code should satisfy the following assertion:\n    ```python\n    assert extract_values('\"Python\", \"PHP\", \"Java\"')==['Python', 'PHP', 'Java']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 241,
+        "task_id": "Mbpp/564",
+        "question": "Write a python function which takes a list of integers and counts the number of possible unordered pairs where both elements are unequal. Your code should satisfy the following assertion:\n    ```python\n    assert count_Pairs([1,2,1],3) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 242,
+        "task_id": "Mbpp/565",
+        "question": "Write a python function to split a string into characters. Your code should satisfy the following assertion:\n    ```python\n    assert split('python') == ['p','y','t','h','o','n']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 243,
+        "task_id": "Mbpp/566",
+        "question": "Write a function to get the sum of the digits of a non-negative integer. Your code should satisfy the following assertion:\n    ```python\n    assert sum_digits(345)==12\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 244,
+        "task_id": "Mbpp/567",
+        "question": "Write a function to check whether a specified list is sorted or not. Your code should satisfy the following assertion:\n    ```python\n    assert issort_list([1,2,4,6,8,10,12,14,16,17])==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 245,
+        "task_id": "Mbpp/568",
+        "question": "Write a function to create a list of N empty dictionaries. Your code should satisfy the following assertion:\n    ```python\n    assert empty_list(5)==[{},{},{},{},{}]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 246,
+        "task_id": "Mbpp/569",
+        "question": "Write a function to sort each sublist of strings in a given list of lists. Your code should satisfy the following assertion:\n    ```python\n    assert sort_sublists([['green', 'orange'], ['black', 'white'], ['white', 'black', 'orange']])==[['green', 'orange'], ['black', 'white'], ['black', 'orange', 'white']]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 247,
+        "task_id": "Mbpp/572",
+        "question": "Write a python function to remove duplicate numbers from a given number of lists. Your code should satisfy the following assertion:\n    ```python\n    assert two_unique_nums([1,2,3,2,3,4,5]) == [1, 4, 5]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 248,
+        "task_id": "Mbpp/573",
+        "question": "Write a python function to calculate the product of the unique numbers in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert unique_product([10, 20, 30, 40, 20, 50, 60, 40]) ==  720000000\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 249,
+        "task_id": "Mbpp/576",
+        "question": "Write a python function to check whether a list is sublist of another or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_Sub_Array([1,4,3,5],[1,2]) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 250,
+        "task_id": "Mbpp/577",
+        "question": "Write a python function to find the last digit in factorial of a given number. Your code should satisfy the following assertion:\n    ```python\n    assert last_Digit_Factorial(4) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 251,
+        "task_id": "Mbpp/578",
+        "question": "Write a function to interleave 3 lists of the same length into a single flat list. Your code should satisfy the following assertion:\n    ```python\n    assert interleave_lists([1,2,3,4,5,6,7],[10,20,30,40,50,60,70],[100,200,300,400,500,600,700])==[1, 10, 100, 2, 20, 200, 3, 30, 300, 4, 40, 400, 5, 50, 500, 6, 60, 600, 7, 70, 700]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 252,
+        "task_id": "Mbpp/579",
+        "question": "Write a function to find the dissimilar elements in the given two tuples. Your code should satisfy the following assertion:\n    ```python\n    assert find_dissimilar((3, 4, 5, 6), (5, 7, 4, 10)) == (3, 6, 7, 10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 253,
+        "task_id": "Mbpp/580",
+        "question": "Write a function to remove uneven elements in the nested mixed tuple. Your code should satisfy the following assertion:\n    ```python\n    assert extract_even((4, 5, (7, 6, (2, 4)), 6, 8)) == (4, (6, (2, 4)), 6, 8)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 254,
+        "task_id": "Mbpp/581",
+        "question": "Write a python function to find the surface area of a square pyramid with a given base edge and height. Your code should satisfy the following assertion:\n    ```python\n    assert surface_Area(3,4) == 33\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 255,
+        "task_id": "Mbpp/583",
+        "question": "Write a function which returns nth catalan number. Your code should satisfy the following assertion:\n    ```python\n    assert catalan_number(10)==16796\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 256,
+        "task_id": "Mbpp/585",
+        "question": "Write a function to find the n most expensive items in a given dataset. Your code should satisfy the following assertion:\n    ```python\n    assert expensive_items([{'name': 'Item-1', 'price': 101.1},{'name': 'Item-2', 'price': 555.22}],1)==[{'name': 'Item-2', 'price': 555.22}]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 257,
+        "task_id": "Mbpp/586",
+        "question": "Write a python function to split a list at the nth eelment and add the first part to the end. Your code should satisfy the following assertion:\n    ```python\n    assert split_Arr([12,10,5,6,52,36],2) == [5,6,52,36,12,10]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 258,
+        "task_id": "Mbpp/587",
+        "question": "Write a function to convert a list to a tuple. Your code should satisfy the following assertion:\n    ```python\n    assert list_tuple([5, 10, 7, 4, 15, 3])==(5, 10, 7, 4, 15, 3)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 259,
+        "task_id": "Mbpp/588",
+        "question": "Write a python function to find the difference between largest and smallest value in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert big_diff([1,2,3,4]) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 260,
+        "task_id": "Mbpp/589",
+        "question": "Write a function to find perfect squares between two given numbers. Your code should satisfy the following assertion:\n    ```python\n    assert perfect_squares(1,30)==[1, 4, 9, 16, 25]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 261,
+        "task_id": "Mbpp/590",
+        "question": "Write a function to convert polar coordinates to rectangular coordinates. Your code should satisfy the following assertion:\n    ```python\n    assert polar_rect(3,4)==((5.0, 0.9272952180016122), (-2+2.4492935982947064e-16j))\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 262,
+        "task_id": "Mbpp/591",
+        "question": "Write a python function to interchange the first and last elements in a list. Your code should satisfy the following assertion:\n    ```python\n    assert swap_List([12, 35, 9, 56, 24]) == [24, 35, 9, 56, 12]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 263,
+        "task_id": "Mbpp/592",
+        "question": "Write a python function to find the sum of the product of consecutive binomial co-efficients. Your code should satisfy the following assertion:\n    ```python\n    assert sum_Of_product(3) == 15\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 264,
+        "task_id": "Mbpp/593",
+        "question": "Write a function to remove leading zeroes from an ip address. Your code should satisfy the following assertion:\n    ```python\n    assert removezero_ip(\"216.08.094.196\")==('216.8.94.196')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 265,
+        "task_id": "Mbpp/594",
+        "question": "Write a function to find the difference of the first even and first odd number of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert diff_even_odd([1,3,5,7,4,1,6,8])==3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 266,
+        "task_id": "Mbpp/596",
+        "question": "Write a function to find the size in bytes of the given tuple. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_size((\"A\", 1, \"B\", 2, \"C\", 3) ) == sys.getsizeof((\"A\", 1, \"B\", 2, \"C\", 3))\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 267,
+        "task_id": "Mbpp/597",
+        "question": "Write a function to find kth element from the given two sorted arrays. Your code should satisfy the following assertion:\n    ```python\n    assert find_kth([2, 3, 6, 7, 9], [1, 4, 8, 10], 5) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 268,
+        "task_id": "Mbpp/598",
+        "question": "Write a function to check whether the given number is armstrong or not. Your code should satisfy the following assertion:\n    ```python\n    assert armstrong_number(153)==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 269,
+        "task_id": "Mbpp/599",
+        "question": "Write a function to find sum and average of first n natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert sum_average(10)==(55, 5.5)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 270,
+        "task_id": "Mbpp/600",
+        "question": "Write a python function to check whether the given number is even or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_Even(1) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 271,
+        "task_id": "Mbpp/602",
+        "question": "Write a python function to find the first repeated character in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert first_repeated_char(\"abcabc\") == \"a\"\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 272,
+        "task_id": "Mbpp/603",
+        "question": "Write a function to get all lucid numbers smaller than or equal to a given integer. Your code should satisfy the following assertion:\n    ```python\n    assert get_ludic(10) == [1, 2, 3, 5, 7]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 273,
+        "task_id": "Mbpp/604",
+        "question": "Write a function to reverse words seperated by spaces in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert reverse_words(\"python program\")==(\"program python\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 274,
+        "task_id": "Mbpp/605",
+        "question": "Write a function to check if the given integer is a prime number. Your code should satisfy the following assertion:\n    ```python\n    assert prime_num(13)==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 275,
+        "task_id": "Mbpp/606",
+        "question": "Write a function to convert degrees to radians. Your code should satisfy the following assertion:\n    ```python\n    assert radian_degree(90)==1.5707963267948966\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 276,
+        "task_id": "Mbpp/607",
+        "question": "Write a function to search a string for a regex pattern. The function should return the matching subtring, a start index and an end index. Your code should satisfy the following assertion:\n    ```python\n    assert find_literals('The quick brown fox jumps over the lazy dog.', 'fox') == ('fox', 16, 19)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 277,
+        "task_id": "Mbpp/608",
+        "question": "Write a python function to find nth bell number. Your code should satisfy the following assertion:\n    ```python\n    assert bell_Number(2) == 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 278,
+        "task_id": "Mbpp/610",
+        "question": "Write a python function which takes a list and returns a list with the same elements, but the k'th element removed. Your code should satisfy the following assertion:\n    ```python\n    assert remove_kth_element([1,1,2,3,4,4,5,1],3)==[1, 1, 3, 4, 4, 5, 1]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 279,
+        "task_id": "Mbpp/611",
+        "question": "Write a function which given a matrix represented as a list of lists returns the max of the n'th column. Your code should satisfy the following assertion:\n    ```python\n    assert max_of_nth([[5, 6, 7], [1, 3, 5], [8, 9, 19]], 2) == 19\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 280,
+        "task_id": "Mbpp/612",
+        "question": "Write a python function which takes a list of lists, where each sublist has two elements, and returns a list of two lists where the first list has the first element of each sublist and the second one has the second. Your code should satisfy the following assertion:\n    ```python\n    assert merge([['x', 'y'], ['a', 'b'], ['m', 'n']]) == [['x', 'a', 'm'], ['y', 'b', 'n']]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 281,
+        "task_id": "Mbpp/614",
+        "question": "Write a function to find the cumulative sum of all the values that are present in the given tuple list. Your code should satisfy the following assertion:\n    ```python\n    assert cummulative_sum([(1, 3), (5, 6, 7), (2, 6)]) == 30\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 282,
+        "task_id": "Mbpp/615",
+        "question": "Write a function which takes a tuple of tuples and returns the average value for each tuple as a list. Your code should satisfy the following assertion:\n    ```python\n    assert average_tuple(((10, 10, 10, 12), (30, 45, 56, 45), (81, 80, 39, 32), (1, 2, 3, 4)))==[30.5, 34.25, 27.0, 23.25]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 283,
+        "task_id": "Mbpp/616",
+        "question": "Write a function which takes two tuples of the same length and performs the element wise modulo. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_modulo((10, 4, 5, 6), (5, 6, 7, 5)) == (0, 4, 5, 1)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 284,
+        "task_id": "Mbpp/618",
+        "question": "Write a function to divide two lists element wise. Your code should satisfy the following assertion:\n    ```python\n    assert div_list([4,5,6],[1, 2, 3])==[4.0,2.5,2.0]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 285,
+        "task_id": "Mbpp/619",
+        "question": "Write a function to move all the numbers to the end of the given string. Your code should satisfy the following assertion:\n    ```python\n    assert move_num('I1love143you55three3000thousand') == 'Iloveyouthreethousand1143553000'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 286,
+        "task_id": "Mbpp/620",
+        "question": "Write a function to find the size of the largest subset of a list of numbers so that every pair is divisible. Your code should satisfy the following assertion:\n    ```python\n    assert largest_subset([ 1, 3, 6, 13, 17, 18 ]) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 287,
+        "task_id": "Mbpp/622",
+        "question": "Write a function to find the median of two sorted lists of same size. Your code should satisfy the following assertion:\n    ```python\n    assert get_median([1, 12, 15, 26, 38], [2, 13, 17, 30, 45], 5) == 16.0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 288,
+        "task_id": "Mbpp/623",
+        "question": "Write a function to compute the n-th power of each number in a list. Your code should satisfy the following assertion:\n    ```python\n    assert nth_nums([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],2)==[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 289,
+        "task_id": "Mbpp/624",
+        "question": "Write a python function to convert a given string to uppercase. Your code should satisfy the following assertion:\n    ```python\n    assert is_upper(\"person\") ==\"PERSON\"\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 290,
+        "task_id": "Mbpp/626",
+        "question": "Write a python function to find the area of the largest triangle that can be inscribed in a semicircle with a given radius. Your code should satisfy the following assertion:\n    ```python\n    assert triangle_area(-1) == None\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 291,
+        "task_id": "Mbpp/628",
+        "question": "Write a function to replace all spaces in the given string with '%20'. Your code should satisfy the following assertion:\n    ```python\n    assert replace_spaces(\"My Name is Dawood\") == 'My%20Name%20is%20Dawood'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 292,
+        "task_id": "Mbpp/629",
+        "question": "Write a python function to find even numbers from a list of numbers. Your code should satisfy the following assertion:\n    ```python\n    assert Split([1,2,3,4,5]) == [2,4]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 293,
+        "task_id": "Mbpp/630",
+        "question": "Write a function to extract all the adjacent coordinates of the given coordinate tuple. Your code should satisfy the following assertion:\n    ```python\n    assert get_coordinates((3, 4)) == [[2, 3], [2, 4], [2, 5], [3, 3], [3, 4], [3, 5], [4, 3], [4, 4], [4, 5]]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 294,
+        "task_id": "Mbpp/631",
+        "question": "Write a function to replace whitespaces with an underscore and vice versa in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert replace_spaces('Jumanji The Jungle') == 'Jumanji_The_Jungle'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 295,
+        "task_id": "Mbpp/632",
+        "question": "Write a python function to move all zeroes to the end of the given list. Your code should satisfy the following assertion:\n    ```python\n    assert move_zero([1,0,2,0,3,4]) == [1,2,3,4,0,0]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 296,
+        "task_id": "Mbpp/633",
+        "question": "Write a python function to find the sum of xor of all pairs of numbers in the given list. Your code should satisfy the following assertion:\n    ```python\n    assert pair_xor_Sum([5,9,7,6],4) == 47\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 297,
+        "task_id": "Mbpp/635",
+        "question": "Write a function to sort the given list. Your code should satisfy the following assertion:\n    ```python\n    assert heap_sort([1, 3, 5, 7, 9, 2, 4, 6, 8, 0])==[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 298,
+        "task_id": "Mbpp/637",
+        "question": "Write a function to check whether the given amount has no profit and no loss. Your code should satisfy the following assertion:\n    ```python\n    assert noprofit_noloss(1500,1200)==False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 299,
+        "task_id": "Mbpp/638",
+        "question": "Write a function to calculate the wind chill index rounded to the next integer given the wind velocity in km/h and a temperature in celsius. Your code should satisfy the following assertion:\n    ```python\n    assert wind_chill(120,35)==40\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 300,
+        "task_id": "Mbpp/639",
+        "question": "Write a function to sum the length of the names of a given list of names after removing the names that start with a lowercase letter. Your code should satisfy the following assertion:\n    ```python\n    assert sample_nam(['sally', 'Dylan', 'rebecca', 'Diana', 'Joanne', 'keith'])==16\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 301,
+        "task_id": "Mbpp/641",
+        "question": "Write a function to find the nth nonagonal number. Your code should satisfy the following assertion:\n    ```python\n    assert is_nonagonal(10) == 325\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 302,
+        "task_id": "Mbpp/643",
+        "question": "Write a function that checks if a strings contains 'z', except at the start and end of the word. Your code should satisfy the following assertion:\n    ```python\n    assert text_match_wordz_middle(\"pythonzabc.\")==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 303,
+        "task_id": "Mbpp/644",
+        "question": "Write a python function to reverse an array upto a given position. Your code should satisfy the following assertion:\n    ```python\n    assert reverse_Array_Upto_K([1, 2, 3, 4, 5, 6],4) == [4, 3, 2, 1, 5, 6]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 304,
+        "task_id": "Mbpp/720",
+        "question": "Write a function to add a dictionary to the tuple. The output should be a tuple. Your code should satisfy the following assertion:\n    ```python\n    assert add_dict_to_tuple((4, 5, 6), {\"MSAM\" : 1, \"is\" : 2, \"best\" : 3} ) == (4, 5, 6, {'MSAM': 1, 'is': 2, 'best': 3})\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 305,
+        "task_id": "Mbpp/721",
+        "question": "Given a square matrix of size N*N given as a list of lists, where each cell is associated with a specific cost. A path is defined as a specific sequence of cells that starts from the top-left cell move only right or down and ends on bottom right cell. We want to find a path with the maximum average over all existing paths. Average is computed as total cost divided by the number of cells visited in the path. Your code should satisfy the following assertion:\n    ```python\n    assert maxAverageOfPath([[1, 2, 3], [6, 5, 4], [7, 3, 9]]) == 5.2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 306,
+        "task_id": "Mbpp/722",
+        "question": "The input is given as - a dictionary with a student name as a key and a tuple of float (student_height, student_weight) as a value, - minimal height, - minimal weight. Write a function to filter students that have height and weight above the minimum. Your code should satisfy the following assertion:\n    ```python\n    assert filter_data({'Cierra Vega': (6.2, 70), 'Alden Cantrell': (5.9, 65), 'Kierra Gentry': (6.0, 68), 'Pierre Cox': (5.8, 66)},6.0,70)=={'Cierra Vega': (6.2, 70)}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 307,
+        "task_id": "Mbpp/723",
+        "question": "The input is defined as two lists of the same length. Write a function to count indices where the lists have the same values. Your code should satisfy the following assertion:\n    ```python\n    assert count_same_pair([1, 2, 3, 4, 5, 6, 7, 8],[2, 2, 3, 1, 2, 6, 7, 9])==4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 308,
+        "task_id": "Mbpp/724",
+        "question": "Write a function that takes base and power as arguments and calculate the sum of all digits of the base to the specified power. Your code should satisfy the following assertion:\n    ```python\n    assert power_base_sum(2,100)==115\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 309,
+        "task_id": "Mbpp/725",
+        "question": "Write a function to extract values between quotation marks \" \" of the given string. Your code should satisfy the following assertion:\n    ```python\n    assert extract_quotation('Cortex \"A53\" Based \"multi\" tasking \"Processor\"') == ['A53', 'multi', 'Processor']\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 310,
+        "task_id": "Mbpp/726",
+        "question": "Write a function that takes as input a tuple of numbers (t_1,...,t_{N+1}) and returns a tuple of length N where the i-th element of the tuple is equal to t_i * t_{i+1}. Your code should satisfy the following assertion:\n    ```python\n    assert multiply_elements((1, 5, 7, 8, 10)) == (5, 35, 56, 80)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 311,
+        "task_id": "Mbpp/728",
+        "question": "Write a function takes as input two lists [a_1,...,a_n], [b_1,...,b_n] and returns [a_1+b_1,...,a_n+b_n]. Your code should satisfy the following assertion:\n    ```python\n    assert sum_list([10,20,30],[15,25,35])==[25,45,65]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 312,
+        "task_id": "Mbpp/730",
+        "question": "Write a function to remove consecutive duplicates of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert consecutive_duplicates([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4 ])==[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 4]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 313,
+        "task_id": "Mbpp/731",
+        "question": "Write a function to find the lateral surface area of a cone given radius r and the height h. Your code should satisfy the following assertion:\n    ```python\n    assert lateralsurface_cone(5,12)==204.20352248333654\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 314,
+        "task_id": "Mbpp/732",
+        "question": "Write a function to replace all occurrences of spaces, commas, or dots with a colon. Your code should satisfy the following assertion:\n    ```python\n    assert replace_specialchar('Python language, Programming language.')==('Python:language::Programming:language:')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 315,
+        "task_id": "Mbpp/733",
+        "question": "Write a function to find the index of the first occurrence of a given number in a sorted array. Your code should satisfy the following assertion:\n    ```python\n    assert find_first_occurrence([2, 5, 5, 5, 6, 6, 8, 9, 9, 9], 5) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 316,
+        "task_id": "Mbpp/734",
+        "question": "Write a python function to find sum of products of all possible sublists of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert sum_Of_Subarray_Prod([1,2,3]) == 20\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 317,
+        "task_id": "Mbpp/735",
+        "question": "Write a python function to toggle bits of the number except the first and the last bit. Your code should satisfy the following assertion:\n    ```python\n    assert toggle_middle_bits(9) == 15\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 318,
+        "task_id": "Mbpp/736",
+        "question": "Write a function to locate the left insertion point for a specified value in sorted order. Your code should satisfy the following assertion:\n    ```python\n    assert left_insertion([1,2,4,5],6)==4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 319,
+        "task_id": "Mbpp/737",
+        "question": "Write a function to check whether the given string is starting with a vowel or not using regex. Your code should satisfy the following assertion:\n    ```python\n    assert check_str(\"annie\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 320,
+        "task_id": "Mbpp/739",
+        "question": "Write a python function to find the index of smallest triangular number with n digits. Your code should satisfy the following assertion:\n    ```python\n    assert find_Index(2) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 321,
+        "task_id": "Mbpp/740",
+        "question": "Write a function to convert the given tuple to a key-value dictionary using adjacent elements. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_to_dict((1, 5, 7, 10, 13, 5)) == {1: 5, 7: 10, 13: 5}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 322,
+        "task_id": "Mbpp/741",
+        "question": "Write a python function to check whether all the characters are same or not. Your code should satisfy the following assertion:\n    ```python\n    assert all_Characters_Same(\"python\") == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 323,
+        "task_id": "Mbpp/742",
+        "question": "Write a function to caluclate the area of a tetrahedron. Your code should satisfy the following assertion:\n    ```python\n    assert area_tetrahedron(3)==15.588457268119894\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 324,
+        "task_id": "Mbpp/743",
+        "question": "Write a function to rotate a given list by specified number of items to the right direction. Your code should satisfy the following assertion:\n    ```python\n    assert rotate_right([1, 2, 3, 4, 5, 6, 7, 8, 9, 10],3)==[8, 9, 10, 1, 2, 3, 4, 5, 6, 7]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 325,
+        "task_id": "Mbpp/744",
+        "question": "Write a function to check if the given tuple has any none value or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_none((10, 4, 5, 6, None)) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 326,
+        "task_id": "Mbpp/745",
+        "question": "Write a function to find numbers within a given range from startnum ti endnum where every number is divisible by every digit it contains. Your code should satisfy the following assertion:\n    ```python\n    assert divisible_by_digits(1,22)==[1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 327,
+        "task_id": "Mbpp/748",
+        "question": "Write a function to put spaces between words starting with capital letters in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert capital_words_spaces(\"Python\") == 'Python'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 328,
+        "task_id": "Mbpp/749",
+        "question": "Write a function to sort a given list of strings of numbers numerically. Your code should satisfy the following assertion:\n    ```python\n    assert sort_numeric_strings( ['4','12','45','7','0','100','200','-12','-500'])==[-500, -12, 0, 4, 7, 12, 45, 100, 200]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 329,
+        "task_id": "Mbpp/750",
+        "question": "Write a function to add the given tuple to the given list. Your code should satisfy the following assertion:\n    ```python\n    assert add_tuple([5, 6, 7], (9, 10)) == [5, 6, 7, 9, 10]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 330,
+        "task_id": "Mbpp/751",
+        "question": "Write a function to check if the given array represents min heap or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_min_heap([1, 2, 3, 4, 5, 6]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 331,
+        "task_id": "Mbpp/752",
+        "question": "Write a function to find the nth jacobsthal number.  0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, ... Your code should satisfy the following assertion:\n    ```python\n    assert jacobsthal_num(5) == 11\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 332,
+        "task_id": "Mbpp/753",
+        "question": "Write a function to find minimum k records from tuple list.  - in this case a verbatim copy of test cases. Your code should satisfy the following assertion:\n    ```python\n    assert min_k([('Manjeet', 10), ('Akshat', 4), ('Akash', 2), ('Nikhil', 8)], 2) == [('Akash', 2), ('Akshat', 4)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 333,
+        "task_id": "Mbpp/754",
+        "question": "We say that an element is common for lists l1, l2, l3 if it appears in all three lists under the same index. Write a function to find common elements from three lists. The function should return a list. Your code should satisfy the following assertion:\n    ```python\n    assert extract_index_list([1, 1, 3, 4, 5, 6, 7],[0, 1, 2, 3, 4, 5, 7],[0, 1, 2, 3, 4, 5, 7])==[1, 7]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 334,
+        "task_id": "Mbpp/755",
+        "question": "Write a function to find the second smallest number in a list. Your code should satisfy the following assertion:\n    ```python\n    assert second_smallest([1, 2, -8, -2, 0, -2])==-2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 335,
+        "task_id": "Mbpp/757",
+        "question": "Write a function to count the pairs of reverse strings in the given string list. Your code should satisfy the following assertion:\n    ```python\n    assert count_reverse_pairs([\"julia\", \"best\", \"tseb\", \"for\", \"ailuj\"])== 2\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 336,
+        "task_id": "Mbpp/758",
+        "question": "Write a function to count lists within a list. The function should return a dictionary where every list is converted to a tuple and the value of such tuple is the number of its occurencies in the original list. Your code should satisfy the following assertion:\n    ```python\n    assert unique_sublists([[1, 3], [5, 7], [1, 3], [13, 15, 17], [5, 7], [9, 11]] )=={(1, 3): 2, (5, 7): 2, (13, 15, 17): 1, (9, 11): 1}\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 337,
+        "task_id": "Mbpp/759",
+        "question": "Write a function to check whether a given string is a decimal number with a precision of 2. Your code should satisfy the following assertion:\n    ```python\n    assert is_decimal('123.11')==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 338,
+        "task_id": "Mbpp/760",
+        "question": "Write a python function to check whether a list of numbers contains only one distinct element or not. Your code should satisfy the following assertion:\n    ```python\n    assert unique_Element([1,1,1]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 339,
+        "task_id": "Mbpp/762",
+        "question": "Write a function to check whether the given month number contains 30 days or not. Months are given as number from 1 to 12. Your code should satisfy the following assertion:\n    ```python\n    assert check_monthnumber_number(6)==True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 340,
+        "task_id": "Mbpp/763",
+        "question": "Write a python function to find the minimum difference between any two elements in a given array. Your code should satisfy the following assertion:\n    ```python\n    assert find_min_diff((1,5,3,19,18,25),6) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 341,
+        "task_id": "Mbpp/764",
+        "question": "Write a python function to count number of digits in a given string. Your code should satisfy the following assertion:\n    ```python\n    assert number_ctr('program2bedone') == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 342,
+        "task_id": "Mbpp/765",
+        "question": "Write a function to find nth polite number. geeksforgeeks.org/n-th-polite-number/. Your code should satisfy the following assertion:\n    ```python\n    assert is_polite(7) == 11\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 343,
+        "task_id": "Mbpp/766",
+        "question": "Write a function to return a list of all pairs of consecutive items in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert pair_wise([1,1,2,3,3,4,4,5])==[(1, 1), (1, 2), (2, 3), (3, 3), (3, 4), (4, 4), (4, 5)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 344,
+        "task_id": "Mbpp/767",
+        "question": "Write a python function to count the number of pairs whose sum is equal to ‘sum’. The funtion gets as input a list of numbers and the sum,. Your code should satisfy the following assertion:\n    ```python\n    assert get_pairs_count([1,1,1,1],2) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 345,
+        "task_id": "Mbpp/769",
+        "question": "Write a python function to get the difference between two lists. Your code should satisfy the following assertion:\n    ```python\n    assert (Diff([10, 15, 20, 25, 30, 35, 40], [25, 40, 35])) == [10, 20, 30, 15]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 346,
+        "task_id": "Mbpp/770",
+        "question": "Write a python function to find the sum of fourth power of first n odd natural numbers. Your code should satisfy the following assertion:\n    ```python\n    assert odd_num_sum(2) == 82\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 347,
+        "task_id": "Mbpp/771",
+        "question": "Write a function to check if the given expression is balanced or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_expression(\"{()}[{}]\") == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 348,
+        "task_id": "Mbpp/772",
+        "question": "Write a function to remove all the words with k length in the given string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_length('The person is most value tet', 3) == 'person is most value'\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 349,
+        "task_id": "Mbpp/773",
+        "question": "Write a function to find the occurrence and position of the substrings within a string. Return None if there is no match. Your code should satisfy the following assertion:\n    ```python\n    assert occurance_substring('python programming, python language','python')==('python', 0, 6)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 350,
+        "task_id": "Mbpp/775",
+        "question": "Write a python function to check whether every odd index contains odd numbers of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert odd_position([2,1,4,3,6,7,6,3]) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 351,
+        "task_id": "Mbpp/777",
+        "question": "Write a python function to find the sum of non-repeated elements in a given list. Your code should satisfy the following assertion:\n    ```python\n    assert find_sum([1,2,3,1,1,4,5,6]) == 21\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 352,
+        "task_id": "Mbpp/778",
+        "question": "Write a function to pack consecutive duplicates of a given list elements into sublists. Your code should satisfy the following assertion:\n    ```python\n    assert pack_consecutive_duplicates([0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4])==[[0, 0], [1], [2], [3], [4, 4], [5], [6, 6, 6], [7], [8], [9], [4, 4]]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 353,
+        "task_id": "Mbpp/780",
+        "question": "Write a function to find the combinations of sums with tuples in the given tuple list. Your code should satisfy the following assertion:\n    ```python\n    assert find_combinations([(2, 4), (6, 7), (5, 1), (6, 10)]) == [(8, 11), (7, 5), (8, 14), (11, 8), (12, 17), (11, 11)]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 354,
+        "task_id": "Mbpp/781",
+        "question": "Write a python function to check whether the count of divisors is even. Your code should satisfy the following assertion:\n    ```python\n    assert count_divisors(10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 355,
+        "task_id": "Mbpp/782",
+        "question": "Write a python function to find the sum of all odd length subarrays. Your code should satisfy the following assertion:\n    ```python\n    assert odd_length_sum([1,2,4]) == 14\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 356,
+        "task_id": "Mbpp/784",
+        "question": "Write a function to find the product of first even and odd number of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert mul_even_odd([1,3,5,7,4,1,6,8])==4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 357,
+        "task_id": "Mbpp/785",
+        "question": "Write a function to convert tuple string to integer tuple. Your code should satisfy the following assertion:\n    ```python\n    assert tuple_str_int(\"(7, 8, 9)\") == (7, 8, 9)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 358,
+        "task_id": "Mbpp/786",
+        "question": "Write a function to locate the right insertion point for a specified value in sorted order. Your code should satisfy the following assertion:\n    ```python\n    assert right_insertion([1,2,4,5],6)==4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 359,
+        "task_id": "Mbpp/787",
+        "question": "Write a function that matches a string that has an a followed by three 'b'. Your code should satisfy the following assertion:\n    ```python\n    assert not text_match_three(\"ac\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 360,
+        "task_id": "Mbpp/788",
+        "question": "Write a function to create a new tuple from the given string and list. Your code should satisfy the following assertion:\n    ```python\n    assert new_tuple([\"WEB\", \"is\"], \"best\") == ('WEB', 'is', 'best')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 361,
+        "task_id": "Mbpp/790",
+        "question": "Write a python function to check whether every even index contains even numbers of a given list. Your code should satisfy the following assertion:\n    ```python\n    assert even_position([3,2,1]) == False\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 362,
+        "task_id": "Mbpp/791",
+        "question": "Write a function to remove tuples from the given tuple. Your code should satisfy the following assertion:\n    ```python\n    assert remove_nested((1, 5, 7, (4, 6), 10)) == (1, 5, 7, 10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 363,
+        "task_id": "Mbpp/792",
+        "question": "Write a python function to count the number of lists in a given number of lists. Your code should satisfy the following assertion:\n    ```python\n    assert count_list([[1, 3], [5, 7], [9, 11], [13, 15, 17]]) == 4\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 364,
+        "task_id": "Mbpp/793",
+        "question": "Write a python function to find the last position of an element in a sorted array. Your code should satisfy the following assertion:\n    ```python\n    assert last([1,2,3],1) == 0\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 365,
+        "task_id": "Mbpp/794",
+        "question": "Write a function that matches a string that has an 'a' followed by anything, ending in 'b'. Your code should satisfy the following assertion:\n    ```python\n    assert text_starta_endb(\"aabbbb\")\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 366,
+        "task_id": "Mbpp/796",
+        "question": "Write function to find the sum of all items in the given dictionary. Your code should satisfy the following assertion:\n    ```python\n    assert return_sum({'a': 100, 'b':200, 'c':300}) == 600\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 367,
+        "task_id": "Mbpp/797",
+        "question": "Write a python function to find the sum of all odd natural numbers within the range l and r. Your code should satisfy the following assertion:\n    ```python\n    assert sum_in_range(2,5) == 8\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 368,
+        "task_id": "Mbpp/798",
+        "question": "Write a python function to find the sum of an array. Your code should satisfy the following assertion:\n    ```python\n    assert _sum([1, 2, 3]) == 6\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 369,
+        "task_id": "Mbpp/799",
+        "question": "Write a function to that rotate left bits by d bits a given number. We assume that the number is 32 bit. Your code should satisfy the following assertion:\n    ```python\n    assert left_rotate(16,2) == 64\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 370,
+        "task_id": "Mbpp/800",
+        "question": "Write a function to remove all whitespaces from a string. Your code should satisfy the following assertion:\n    ```python\n    assert remove_all_spaces('python  program')==('pythonprogram')\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 371,
+        "task_id": "Mbpp/801",
+        "question": "Write a python function to count the number of equal numbers from three given integers. Your code should satisfy the following assertion:\n    ```python\n    assert test_three_equal(1,1,1) == 3\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 372,
+        "task_id": "Mbpp/803",
+        "question": "Write a function to check whether the given number is a perfect square or not. Your code should satisfy the following assertion:\n    ```python\n    assert not is_perfect_square(10)\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 373,
+        "task_id": "Mbpp/804",
+        "question": "Write a function to check whether the product of numbers in a list is even or not. Your code should satisfy the following assertion:\n    ```python\n    assert is_product_even([1,2,3])\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 374,
+        "task_id": "Mbpp/805",
+        "question": "Write a function that returns the list in a list of lists whose sum of elements is the highest. Your code should satisfy the following assertion:\n    ```python\n    assert max_sum_list([[1,2,3], [4,5,6], [10,11,12], [7,8,9]])==[10, 11, 12]\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 375,
+        "task_id": "Mbpp/806",
+        "question": "Write a function to find maximum run of uppercase characters in the given string. Your code should satisfy the following assertion:\n    ```python\n    assert max_run_uppercase('GeMKSForGERksISBESt') == 5\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 376,
+        "task_id": "Mbpp/807",
+        "question": "Write a python function to find the first odd number in a given list of numbers. Your code should satisfy the following assertion:\n    ```python\n    assert first_odd([1,3,5]) == 1\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 377,
+        "task_id": "Mbpp/808",
+        "question": "Write a function to check if the given tuples contain the k or not. Your code should satisfy the following assertion:\n    ```python\n    assert check_K((10, 4, 5, 6, 8), 6) == True\n    ```",
+        "answer": ""
+    },
+    {
+        "index": 378,
+        "task_id": "Mbpp/809",
+        "question": "Write a function to check if each element of second tuple is smaller than its corresponding element in the first tuple. Your code should satisfy the following assertion:\n    ```python\n    assert check_smaller((1, 2, 3), (2, 3, 4)) == False\n    ```",
+        "answer": ""
+    }
+]

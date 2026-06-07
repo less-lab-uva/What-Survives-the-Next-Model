@@ -1,0 +1,36 @@
+{
+  "title": "SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning",
+  "doi": "10.1145/3744916.3773197",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original SEER pipeline enhances code generation by guiding LLMs through self-exploring deep reasoning chains, where the model iteratively elaborates and refines its chain-of-thought before producing the final solution on HumanEval, MBPP, and LiveCodeBench.",
+    "This reproduction replaces the self-exploring reasoning chain with single-call code generation prompts (Prompt A: zero-shot, Prompt B: chain-of-thought) over sampled problems from all three benchmarks."
+  ],
+  "dataset": {
+    "name": "HumanEval, MBPP, LiveCodeBench",
+    "sample_size": 469
+  },
+  "metric": [
+    "Pass@1"
+  ],
+  "original_result": {
+    "HumanEval": 0.909,
+    "MBPP": 0.886,
+    "LCB": 0.367
+  },
+  "our_result": {
+    "prompt_A": {
+      "HumanEval": 1.0,
+      "LiveCodeBench": 0.4868,
+      "MBPP": 0.9787,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "HumanEval": 1.0,
+      "LiveCodeBench": 0.5094,
+      "MBPP": 0.9929,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 14.49
+}
