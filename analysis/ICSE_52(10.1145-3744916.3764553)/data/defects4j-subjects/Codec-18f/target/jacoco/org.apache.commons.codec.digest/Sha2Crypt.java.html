@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Sha2Crypt.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.digest</a> &gt; <span class="el_source">Sha2Crypt.java</span></div><h1>Sha2Crypt.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.codec.digest;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.codec.Charsets;
+
+/**
+ * SHA2-based Unix crypt implementation.
+ * &lt;p&gt;
+ * Based on the C implementation released into the Public Domain by Ulrich Drepper &amp;lt;drepper@redhat.com&amp;gt;
+ * http://www.akkadia.org/drepper/SHA-crypt.txt
+ * &lt;p&gt;
+ * Conversion to Kotlin and from there to Java in 2012 by Christian Hammers &amp;lt;ch@lathspell.de&amp;gt; and likewise put
+ * into the Public Domain.
+ * &lt;p&gt;
+ * This class is immutable and thread-safe.
+ *
+ * @version $Id$
+ * @since 1.7
+ */
+<span class="nc" id="L41">public class Sha2Crypt {</span>
+
+    /** Default number of rounds if not explicitly specified. */
+    private static final int ROUNDS_DEFAULT = 5000;
+
+    /** Maximum number of rounds. */
+    private static final int ROUNDS_MAX = 999999999;
+
+    /** Minimum number of rounds. */
+    private static final int ROUNDS_MIN = 1000;
+
+    /** Prefix for optional rounds specification. */
+    private static final String ROUNDS_PREFIX = &quot;rounds=&quot;;
+
+    /** The number of bytes the final hash value will have (SHA-256 variant). */
+    private static final int SHA256_BLOCKSIZE = 32;
+
+    /** The prefixes that can be used to identify this crypt() variant (SHA-256). */
+    static final String SHA256_PREFIX = &quot;$5$&quot;;
+
+    /** The number of bytes the final hash value will have (SHA-512 variant). */
+    private static final int SHA512_BLOCKSIZE = 64;
+
+    /** The prefixes that can be used to identify this crypt() variant (SHA-512). */
+    static final String SHA512_PREFIX = &quot;$6$&quot;;
+
+    /** The pattern to match valid salt values. */
+<span class="nc" id="L68">    private static final Pattern SALT_PATTERN = Pattern</span>
+<span class="nc" id="L69">            .compile(&quot;^\\$([56])\\$(rounds=(\\d+)\\$)?([\\.\\/a-zA-Z0-9]{1,16}).*&quot;);</span>
+
+    /**
+     * Generates a libc crypt() compatible &quot;$5$&quot; hash value with random salt.
+     * &lt;p&gt;
+     * See {@link Crypt#crypt(String, String)} for details.
+     *
+     * @param keyBytes
+     *            plaintext to hash
+     * @return complete hash value
+     * @throws RuntimeException
+     *             when a {@link java.security.NoSuchAlgorithmException} is caught.
+     */
+    public static String sha256Crypt(final byte[] keyBytes) {
+<span class="nc" id="L83">        return sha256Crypt(keyBytes, null);</span>
+    }
+
+    /**
+     * Generates a libc6 crypt() compatible &quot;$5$&quot; hash value.
+     * &lt;p&gt;
+     * See {@link Crypt#crypt(String, String)} for details.
+     *
+     * @param keyBytes
+     *            plaintext to hash
+     * @param salt
+     *            real salt value without prefix or &quot;rounds=&quot;
+     * @return complete hash value including salt
+     * @throws IllegalArgumentException
+     *             if the salt does not match the allowed pattern
+     * @throws RuntimeException
+     *             when a {@link java.security.NoSuchAlgorithmException} is caught.
+     */
+    public static String sha256Crypt(final byte[] keyBytes, String salt) {
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (salt == null) {</span>
+<span class="nc" id="L103">            salt = SHA256_PREFIX + B64.getRandomSalt(8);</span>
+        }
+<span class="nc" id="L105">        return sha2Crypt(keyBytes, salt, SHA256_PREFIX, SHA256_BLOCKSIZE, MessageDigestAlgorithms.SHA_256);</span>
+    }
+
+    /**
+     * Generates a libc6 crypt() compatible &quot;$5$&quot; or &quot;$6$&quot; SHA2 based hash value.
+     * &lt;p&gt;
+     * This is a nearly line by line conversion of the original C function. The numbered comments are from the algorithm
+     * description, the short C-style ones from the original C code and the ones with &quot;Remark&quot; from me.
+     * &lt;p&gt;
+     * See {@link Crypt#crypt(String, String)} for details.
+     *
+     * @param keyBytes
+     *            plaintext to hash
+     * @param salt
+     *            real salt value without prefix or &quot;rounds=&quot;
+     * @param saltPrefix
+     *            either $5$ or $6$
+     * @param blocksize
+     *            a value that differs between $5$ and $6$
+     * @param algorithm
+     *            {@link MessageDigest} algorithm identifier string
+     * @return complete hash value including prefix and salt
+     * @throws IllegalArgumentException
+     *             if the given salt is &lt;code&gt;null&lt;/code&gt; or does not match the allowed pattern
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught
+     * @see MessageDigestAlgorithms
+     */
+    private static String sha2Crypt(final byte[] keyBytes, final String salt, final String saltPrefix,
+            final int blocksize, final String algorithm) {
+
+<span class="nc" id="L136">        final int keyLen = keyBytes.length;</span>
+
+        // Extracts effective salt and the number of rounds from the given salt.
+<span class="nc" id="L139">        int rounds = ROUNDS_DEFAULT;</span>
+<span class="nc" id="L140">        boolean roundsCustom = false;</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">        if (salt == null) {</span>
+<span class="nc" id="L142">            throw new IllegalArgumentException(&quot;Salt must not be null&quot;);</span>
+        }
+
+<span class="nc" id="L145">        final Matcher m = SALT_PATTERN.matcher(salt);</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">        if (!m.find()) {</span>
+<span class="nc" id="L147">            throw new IllegalArgumentException(&quot;Invalid salt value: &quot; + salt);</span>
+        }
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        if (m.group(3) != null) {</span>
+<span class="nc" id="L150">            rounds = Integer.parseInt(m.group(3));</span>
+<span class="nc" id="L151">            rounds = Math.max(ROUNDS_MIN, Math.min(ROUNDS_MAX, rounds));</span>
+<span class="nc" id="L152">            roundsCustom = true;</span>
+        }
+<span class="nc" id="L154">        final String saltString = m.group(4);</span>
+<span class="nc" id="L155">        final byte[] saltBytes = saltString.getBytes(Charsets.UTF_8);</span>
+<span class="nc" id="L156">        final int saltLen = saltBytes.length;</span>
+
+        // 1. start digest A
+        // Prepare for the real work.
+<span class="nc" id="L160">        MessageDigest ctx = DigestUtils.getDigest(algorithm);</span>
+
+        // 2. the password string is added to digest A
+        /*
+         * Add the key string.
+         */
+<span class="nc" id="L166">        ctx.update(keyBytes);</span>
+
+        // 3. the salt string is added to digest A. This is just the salt string
+        // itself without the enclosing '$', without the magic salt_prefix $5$ and
+        // $6$ respectively and without the rounds=&lt;N&gt; specification.
+        //
+        // NB: the MD5 algorithm did add the $1$ salt_prefix. This is not deemed
+        // necessary since it is a constant string and does not add security
+        // and /possibly/ allows a plain text attack. Since the rounds=&lt;N&gt;
+        // specification should never be added this would also create an
+        // inconsistency.
+        /*
+         * The last part is the salt string. This must be at most 16 characters and it ends at the first `$' character
+         * (for compatibility with existing implementations).
+         */
+<span class="nc" id="L181">        ctx.update(saltBytes);</span>
+
+        // 4. start digest B
+        /*
+         * Compute alternate sha512 sum with input KEY, SALT, and KEY. The final result will be added to the first
+         * context.
+         */
+<span class="nc" id="L188">        MessageDigest altCtx = DigestUtils.getDigest(algorithm);</span>
+
+        // 5. add the password to digest B
+        /*
+         * Add key.
+         */
+<span class="nc" id="L194">        altCtx.update(keyBytes);</span>
+
+        // 6. add the salt string to digest B
+        /*
+         * Add salt.
+         */
+<span class="nc" id="L200">        altCtx.update(saltBytes);</span>
+
+        // 7. add the password again to digest B
+        /*
+         * Add key again.
+         */
+<span class="nc" id="L206">        altCtx.update(keyBytes);</span>
+
+        // 8. finish digest B
+        /*
+         * Now get result of this (32 bytes) and add it to the other context.
+         */
+<span class="nc" id="L212">        byte[] altResult = altCtx.digest();</span>
+
+        // 9. For each block of 32 or 64 bytes in the password string (excluding
+        // the terminating NUL in the C representation), add digest B to digest A
+        /*
+         * Add for any character in the key one byte of the alternate sum.
+         */
+        /*
+         * (Remark: the C code comment seems wrong for key length &gt; 32!)
+         */
+<span class="nc" id="L222">        int cnt = keyBytes.length;</span>
+<span class="nc bnc" id="L223" title="All 2 branches missed.">        while (cnt &gt; blocksize) {</span>
+<span class="nc" id="L224">            ctx.update(altResult, 0, blocksize);</span>
+<span class="nc" id="L225">            cnt -= blocksize;</span>
+        }
+
+        // 10. For the remaining N bytes of the password string add the first
+        // N bytes of digest B to digest A
+<span class="nc" id="L230">        ctx.update(altResult, 0, cnt);</span>
+
+        // 11. For each bit of the binary representation of the length of the
+        // password string up to and including the highest 1-digit, starting
+        // from to lowest bit position (numeric value 1):
+        //
+        // a) for a 1-digit add digest B to digest A
+        //
+        // b) for a 0-digit add the password string
+        //
+        // NB: this step differs significantly from the MD5 algorithm. It
+        // adds more randomness.
+        /*
+         * Take the binary representation of the length of the key and for every 1 add the alternate sum, for every 0
+         * the key.
+         */
+<span class="nc" id="L246">        cnt = keyBytes.length;</span>
+<span class="nc bnc" id="L247" title="All 2 branches missed.">        while (cnt &gt; 0) {</span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">            if ((cnt &amp; 1) != 0) {</span>
+<span class="nc" id="L249">                ctx.update(altResult, 0, blocksize);</span>
+            } else {
+<span class="nc" id="L251">                ctx.update(keyBytes);</span>
+            }
+<span class="nc" id="L253">            cnt &gt;&gt;= 1;</span>
+        }
+
+        // 12. finish digest A
+        /*
+         * Create intermediate result.
+         */
+<span class="nc" id="L260">        altResult = ctx.digest();</span>
+
+        // 13. start digest DP
+        /*
+         * Start computation of P byte sequence.
+         */
+<span class="nc" id="L266">        altCtx = DigestUtils.getDigest(algorithm);</span>
+
+        // 14. for every byte in the password (excluding the terminating NUL byte
+        // in the C representation of the string)
+        //
+        // add the password to digest DP
+        /*
+         * For every character in the password add the entire password.
+         */
+<span class="nc bnc" id="L275" title="All 2 branches missed.">        for (int i = 1; i &lt;= keyLen; i++) {</span>
+<span class="nc" id="L276">            altCtx.update(keyBytes);</span>
+        }
+
+        // 15. finish digest DP
+        /*
+         * Finish the digest.
+         */
+<span class="nc" id="L283">        byte[] tempResult = altCtx.digest();</span>
+
+        // 16. produce byte sequence P of the same length as the password where
+        //
+        // a) for each block of 32 or 64 bytes of length of the password string
+        // the entire digest DP is used
+        //
+        // b) for the remaining N (up to 31 or 63) bytes use the first N
+        // bytes of digest DP
+        /*
+         * Create byte sequence P.
+         */
+<span class="nc" id="L295">        final byte[] pBytes = new byte[keyLen];</span>
+<span class="nc" id="L296">        int cp = 0;</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">        while (cp &lt; keyLen - blocksize) {</span>
+<span class="nc" id="L298">            System.arraycopy(tempResult, 0, pBytes, cp, blocksize);</span>
+<span class="nc" id="L299">            cp += blocksize;</span>
+        }
+<span class="nc" id="L301">        System.arraycopy(tempResult, 0, pBytes, cp, keyLen - cp);</span>
+
+        // 17. start digest DS
+        /*
+         * Start computation of S byte sequence.
+         */
+<span class="nc" id="L307">        altCtx = DigestUtils.getDigest(algorithm);</span>
+
+        // 18. repeast the following 16+A[0] times, where A[0] represents the first
+        // byte in digest A interpreted as an 8-bit unsigned value
+        //
+        // add the salt to digest DS
+        /*
+         * For every character in the password add the entire password.
+         */
+<span class="nc bnc" id="L316" title="All 2 branches missed.">        for (int i = 1; i &lt;= 16 + (altResult[0] &amp; 0xff); i++) {</span>
+<span class="nc" id="L317">            altCtx.update(saltBytes);</span>
+        }
+
+        // 19. finish digest DS
+        /*
+         * Finish the digest.
+         */
+<span class="nc" id="L324">        tempResult = altCtx.digest();</span>
+
+        // 20. produce byte sequence S of the same length as the salt string where
+        //
+        // a) for each block of 32 or 64 bytes of length of the salt string
+        // the entire digest DS is used
+        //
+        // b) for the remaining N (up to 31 or 63) bytes use the first N
+        // bytes of digest DS
+        /*
+         * Create byte sequence S.
+         */
+        // Remark: The salt is limited to 16 chars, how does this make sense?
+<span class="nc" id="L337">        final byte[] sBytes = new byte[saltLen];</span>
+<span class="nc" id="L338">        cp = 0;</span>
+<span class="nc bnc" id="L339" title="All 2 branches missed.">        while (cp &lt; saltLen - blocksize) {</span>
+<span class="nc" id="L340">            System.arraycopy(tempResult, 0, sBytes, cp, blocksize);</span>
+<span class="nc" id="L341">            cp += blocksize;</span>
+        }
+<span class="nc" id="L343">        System.arraycopy(tempResult, 0, sBytes, cp, saltLen - cp);</span>
+
+        // 21. repeat a loop according to the number specified in the rounds=&lt;N&gt;
+        // specification in the salt (or the default value if none is
+        // present). Each round is numbered, starting with 0 and up to N-1.
+        //
+        // The loop uses a digest as input. In the first round it is the
+        // digest produced in step 12. In the latter steps it is the digest
+        // produced in step 21.h. The following text uses the notation
+        // &quot;digest A/C&quot; to describe this behavior.
+        /*
+         * Repeatedly run the collected hash value through sha512 to burn CPU cycles.
+         */
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        for (int i = 0; i &lt;= rounds - 1; i++) {</span>
+            // a) start digest C
+            /*
+             * New context.
+             */
+<span class="nc" id="L361">            ctx = DigestUtils.getDigest(algorithm);</span>
+
+            // b) for odd round numbers add the byte sequense P to digest C
+            // c) for even round numbers add digest A/C
+            /*
+             * Add key or last result.
+             */
+<span class="nc bnc" id="L368" title="All 2 branches missed.">            if ((i &amp; 1) != 0) {</span>
+<span class="nc" id="L369">                ctx.update(pBytes, 0, keyLen);</span>
+            } else {
+<span class="nc" id="L371">                ctx.update(altResult, 0, blocksize);</span>
+            }
+
+            // d) for all round numbers not divisible by 3 add the byte sequence S
+            /*
+             * Add salt for numbers not divisible by 3.
+             */
+<span class="nc bnc" id="L378" title="All 2 branches missed.">            if (i % 3 != 0) {</span>
+<span class="nc" id="L379">                ctx.update(sBytes, 0, saltLen);</span>
+            }
+
+            // e) for all round numbers not divisible by 7 add the byte sequence P
+            /*
+             * Add key for numbers not divisible by 7.
+             */
+<span class="nc bnc" id="L386" title="All 2 branches missed.">            if (i % 7 != 0) {</span>
+<span class="nc" id="L387">                ctx.update(pBytes, 0, keyLen);</span>
+            }
+
+            // f) for odd round numbers add digest A/C
+            // g) for even round numbers add the byte sequence P
+            /*
+             * Add key or last result.
+             */
+<span class="nc bnc" id="L395" title="All 2 branches missed.">            if ((i &amp; 1) != 0) {</span>
+<span class="nc" id="L396">                ctx.update(altResult, 0, blocksize);</span>
+            } else {
+<span class="nc" id="L398">                ctx.update(pBytes, 0, keyLen);</span>
+            }
+
+            // h) finish digest C.
+            /*
+             * Create intermediate result.
+             */
+<span class="nc" id="L405">            altResult = ctx.digest();</span>
+        }
+
+        // 22. Produce the output string. This is an ASCII string of the maximum
+        // size specified above, consisting of multiple pieces:
+        //
+        // a) the salt salt_prefix, $5$ or $6$ respectively
+        //
+        // b) the rounds=&lt;N&gt; specification, if one was present in the input
+        // salt string. A trailing '$' is added in this case to separate
+        // the rounds specification from the following text.
+        //
+        // c) the salt string truncated to 16 characters
+        //
+        // d) a '$' character
+        /*
+         * Now we can construct the result string. It consists of three parts.
+         */
+<span class="nc" id="L423">        final StringBuilder buffer = new StringBuilder(saltPrefix);</span>
+<span class="nc bnc" id="L424" title="All 2 branches missed.">        if (roundsCustom) {</span>
+<span class="nc" id="L425">            buffer.append(ROUNDS_PREFIX);</span>
+<span class="nc" id="L426">            buffer.append(rounds);</span>
+<span class="nc" id="L427">            buffer.append(&quot;$&quot;);</span>
+        }
+<span class="nc" id="L429">        buffer.append(saltString);</span>
+<span class="nc" id="L430">        buffer.append(&quot;$&quot;);</span>
+
+        // e) the base-64 encoded final C digest. The encoding used is as
+        // follows:
+        // [...]
+        //
+        // Each group of three bytes from the digest produces four
+        // characters as output:
+        //
+        // 1. character: the six low bits of the first byte
+        // 2. character: the two high bits of the first byte and the
+        // four low bytes from the second byte
+        // 3. character: the four high bytes from the second byte and
+        // the two low bits from the third byte
+        // 4. character: the six high bits from the third byte
+        //
+        // The groups of three bytes are as follows (in this sequence).
+        // These are the indices into the byte array containing the
+        // digest, starting with index 0. For the last group there are
+        // not enough bytes left in the digest and the value zero is used
+        // in its place. This group also produces only three or two
+        // characters as output for SHA-512 and SHA-512 respectively.
+
+        // This was just a safeguard in the C implementation:
+        // int buflen = salt_prefix.length() - 1 + ROUNDS_PREFIX.length() + 9 + 1 + salt_string.length() + 1 + 86 + 1;
+
+<span class="nc bnc" id="L456" title="All 2 branches missed.">        if (blocksize == 32) {</span>
+<span class="nc" id="L457">            B64.b64from24bit(altResult[0], altResult[10], altResult[20], 4, buffer);</span>
+<span class="nc" id="L458">            B64.b64from24bit(altResult[21], altResult[1], altResult[11], 4, buffer);</span>
+<span class="nc" id="L459">            B64.b64from24bit(altResult[12], altResult[22], altResult[2], 4, buffer);</span>
+<span class="nc" id="L460">            B64.b64from24bit(altResult[3], altResult[13], altResult[23], 4, buffer);</span>
+<span class="nc" id="L461">            B64.b64from24bit(altResult[24], altResult[4], altResult[14], 4, buffer);</span>
+<span class="nc" id="L462">            B64.b64from24bit(altResult[15], altResult[25], altResult[5], 4, buffer);</span>
+<span class="nc" id="L463">            B64.b64from24bit(altResult[6], altResult[16], altResult[26], 4, buffer);</span>
+<span class="nc" id="L464">            B64.b64from24bit(altResult[27], altResult[7], altResult[17], 4, buffer);</span>
+<span class="nc" id="L465">            B64.b64from24bit(altResult[18], altResult[28], altResult[8], 4, buffer);</span>
+<span class="nc" id="L466">            B64.b64from24bit(altResult[9], altResult[19], altResult[29], 4, buffer);</span>
+<span class="nc" id="L467">            B64.b64from24bit((byte) 0, altResult[31], altResult[30], 3, buffer);</span>
+        } else {
+<span class="nc" id="L469">            B64.b64from24bit(altResult[0], altResult[21], altResult[42], 4, buffer);</span>
+<span class="nc" id="L470">            B64.b64from24bit(altResult[22], altResult[43], altResult[1], 4, buffer);</span>
+<span class="nc" id="L471">            B64.b64from24bit(altResult[44], altResult[2], altResult[23], 4, buffer);</span>
+<span class="nc" id="L472">            B64.b64from24bit(altResult[3], altResult[24], altResult[45], 4, buffer);</span>
+<span class="nc" id="L473">            B64.b64from24bit(altResult[25], altResult[46], altResult[4], 4, buffer);</span>
+<span class="nc" id="L474">            B64.b64from24bit(altResult[47], altResult[5], altResult[26], 4, buffer);</span>
+<span class="nc" id="L475">            B64.b64from24bit(altResult[6], altResult[27], altResult[48], 4, buffer);</span>
+<span class="nc" id="L476">            B64.b64from24bit(altResult[28], altResult[49], altResult[7], 4, buffer);</span>
+<span class="nc" id="L477">            B64.b64from24bit(altResult[50], altResult[8], altResult[29], 4, buffer);</span>
+<span class="nc" id="L478">            B64.b64from24bit(altResult[9], altResult[30], altResult[51], 4, buffer);</span>
+<span class="nc" id="L479">            B64.b64from24bit(altResult[31], altResult[52], altResult[10], 4, buffer);</span>
+<span class="nc" id="L480">            B64.b64from24bit(altResult[53], altResult[11], altResult[32], 4, buffer);</span>
+<span class="nc" id="L481">            B64.b64from24bit(altResult[12], altResult[33], altResult[54], 4, buffer);</span>
+<span class="nc" id="L482">            B64.b64from24bit(altResult[34], altResult[55], altResult[13], 4, buffer);</span>
+<span class="nc" id="L483">            B64.b64from24bit(altResult[56], altResult[14], altResult[35], 4, buffer);</span>
+<span class="nc" id="L484">            B64.b64from24bit(altResult[15], altResult[36], altResult[57], 4, buffer);</span>
+<span class="nc" id="L485">            B64.b64from24bit(altResult[37], altResult[58], altResult[16], 4, buffer);</span>
+<span class="nc" id="L486">            B64.b64from24bit(altResult[59], altResult[17], altResult[38], 4, buffer);</span>
+<span class="nc" id="L487">            B64.b64from24bit(altResult[18], altResult[39], altResult[60], 4, buffer);</span>
+<span class="nc" id="L488">            B64.b64from24bit(altResult[40], altResult[61], altResult[19], 4, buffer);</span>
+<span class="nc" id="L489">            B64.b64from24bit(altResult[62], altResult[20], altResult[41], 4, buffer);</span>
+<span class="nc" id="L490">            B64.b64from24bit((byte) 0, (byte) 0, altResult[63], 2, buffer);</span>
+        }
+
+        /*
+         * Clear the buffer for the intermediate result so that people attaching to processes or reading core dumps
+         * cannot get any information.
+         */
+        // Is there a better way to do this with the JVM?
+<span class="nc" id="L498">        Arrays.fill(tempResult, (byte) 0);</span>
+<span class="nc" id="L499">        Arrays.fill(pBytes, (byte) 0);</span>
+<span class="nc" id="L500">        Arrays.fill(sBytes, (byte) 0);</span>
+<span class="nc" id="L501">        ctx.reset();</span>
+<span class="nc" id="L502">        altCtx.reset();</span>
+<span class="nc" id="L503">        Arrays.fill(keyBytes, (byte) 0);</span>
+<span class="nc" id="L504">        Arrays.fill(saltBytes, (byte) 0);</span>
+
+<span class="nc" id="L506">        return buffer.toString();</span>
+    }
+
+    /**
+     * Generates a libc crypt() compatible &quot;$6$&quot; hash value with random salt.
+     * &lt;p&gt;
+     * See {@link Crypt#crypt(String, String)} for details.
+     *
+     * @param keyBytes
+     *            plaintext to hash
+     * @return complete hash value
+     * @throws RuntimeException
+     *             when a {@link java.security.NoSuchAlgorithmException} is caught.
+     */
+    public static String sha512Crypt(final byte[] keyBytes) {
+<span class="nc" id="L521">        return sha512Crypt(keyBytes, null);</span>
+    }
+
+    /**
+     * Generates a libc6 crypt() compatible &quot;$6$&quot; hash value.
+     * &lt;p&gt;
+     * See {@link Crypt#crypt(String, String)} for details.
+     *
+     * @param keyBytes
+     *            plaintext to hash
+     * @param salt
+     *            real salt value without prefix or &quot;rounds=&quot;
+     * @return complete hash value including salt
+     * @throws IllegalArgumentException
+     *             if the salt does not match the allowed pattern
+     * @throws RuntimeException
+     *             when a {@link java.security.NoSuchAlgorithmException} is caught.
+     */
+    public static String sha512Crypt(final byte[] keyBytes, String salt) {
+<span class="nc bnc" id="L540" title="All 2 branches missed.">        if (salt == null) {</span>
+<span class="nc" id="L541">            salt = SHA512_PREFIX + B64.getRandomSalt(8);</span>
+        }
+<span class="nc" id="L543">        return sha2Crypt(keyBytes, salt, SHA512_PREFIX, SHA512_BLOCKSIZE, MessageDigestAlgorithms.SHA_512);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

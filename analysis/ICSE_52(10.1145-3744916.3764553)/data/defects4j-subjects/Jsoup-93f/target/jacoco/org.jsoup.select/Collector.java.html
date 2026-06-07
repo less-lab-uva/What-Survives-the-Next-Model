@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Collector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.select</a> &gt; <span class="el_source">Collector.java</span></div><h1>Collector.java</h1><pre class="source lang-java linenums">package org.jsoup.select;
+
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+
+import static org.jsoup.select.NodeFilter.FilterResult.CONTINUE;
+import static org.jsoup.select.NodeFilter.FilterResult.STOP;
+
+/**
+ * Collects a list of elements that match the supplied criteria.
+ *
+ * @author Jonathan Hedley
+ */
+public class Collector {
+
+    private Collector() {
+    }
+
+    /**
+     Build a list of elements, by visiting root and every descendant of root, and testing it against the evaluator.
+     @param eval Evaluator to test elements against
+     @param root root of tree to descend
+     @return list of matches; empty if none
+     */
+    public static Elements collect (Evaluator eval, Element root) {
+<span class="nc" id="L26">        Elements elements = new Elements();</span>
+<span class="nc" id="L27">        NodeTraversor.traverse(new Accumulator(root, elements, eval), root);</span>
+<span class="nc" id="L28">        return elements;</span>
+    }
+
+    private static class Accumulator implements NodeVisitor {
+        private final Element root;
+        private final Elements elements;
+        private final Evaluator eval;
+
+<span class="nc" id="L36">        Accumulator(Element root, Elements elements, Evaluator eval) {</span>
+<span class="nc" id="L37">            this.root = root;</span>
+<span class="nc" id="L38">            this.elements = elements;</span>
+<span class="nc" id="L39">            this.eval = eval;</span>
+<span class="nc" id="L40">        }</span>
+
+        public void head(Node node, int depth) {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if (node instanceof Element) {</span>
+<span class="nc" id="L44">                Element el = (Element) node;</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                if (eval.matches(root, el))</span>
+<span class="nc" id="L46">                    elements.add(el);</span>
+            }
+<span class="nc" id="L48">        }</span>
+
+        public void tail(Node node, int depth) {
+            // void
+<span class="nc" id="L52">        }</span>
+    }
+
+    public static Element findFirst(Evaluator eval, Element root) {
+<span class="nc" id="L56">        FirstFinder finder = new FirstFinder(root, eval);</span>
+<span class="nc" id="L57">        NodeTraversor.filter(finder, root);</span>
+<span class="nc" id="L58">        return finder.match;</span>
+    }
+
+    private static class FirstFinder implements NodeFilter {
+        private final Element root;
+<span class="nc" id="L63">        private Element match = null;</span>
+        private final Evaluator eval;
+
+<span class="nc" id="L66">        FirstFinder(Element root, Evaluator eval) {</span>
+<span class="nc" id="L67">            this.root = root;</span>
+<span class="nc" id="L68">            this.eval = eval;</span>
+<span class="nc" id="L69">        }</span>
+
+        @Override
+        public FilterResult head(Node node, int depth) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (node instanceof Element) {</span>
+<span class="nc" id="L74">                Element el = (Element) node;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                if (eval.matches(root, el)) {</span>
+<span class="nc" id="L76">                    match = el;</span>
+<span class="nc" id="L77">                    return STOP;</span>
+                }
+            }
+<span class="nc" id="L80">            return CONTINUE;</span>
+        }
+
+        @Override
+        public FilterResult tail(Node node, int depth) {
+<span class="nc" id="L85">            return CONTINUE;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

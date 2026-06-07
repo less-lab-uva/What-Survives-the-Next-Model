@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ColognePhonetic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.language</a> &gt; <span class="el_source">ColognePhonetic.java</span></div><h1>ColognePhonetic.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.language;
+
+import java.util.Locale;
+
+import org.apache.commons.codec.EncoderException;
+import org.apache.commons.codec.StringEncoder;
+
+/**
+ * Encodes a string into a Cologne Phonetic value.
+ * &lt;p&gt;
+ * Implements the &lt;a href=&quot;http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik&quot;&gt;K&amp;ouml;lner Phonetik&lt;/a&gt; (Cologne
+ * Phonetic) algorithm issued by Hans Joachim Postel in 1969.
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * The &lt;i&gt;K&amp;ouml;lner Phonetik&lt;/i&gt; is a phonetic algorithm which is optimized for the German language. It is related to
+ * the well-known soundex algorithm.
+ * &lt;/p&gt;
+ *
+ * &lt;h2&gt;Algorithm&lt;/h2&gt;
+ *
+ * &lt;ul&gt;
+ *
+ * &lt;li&gt;
+ * &lt;h3&gt;Step 1:&lt;/h3&gt;
+ * After preprocessing (conversion to upper case, transcription of &lt;a
+ * href=&quot;http://en.wikipedia.org/wiki/Germanic_umlaut&quot;&gt;germanic umlauts&lt;/a&gt;, removal of non alphabetical characters) the
+ * letters of the supplied text are replaced by their phonetic code according to the following table.
+ * &lt;table border=&quot;1&quot;&gt;
+ * &lt;caption style=&quot;caption-side: bottom&quot;&gt;&lt;small&gt;&lt;i&gt;(Source: &lt;a
+ * href=&quot;http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik#Buchstabencodes&quot;&gt;Wikipedia (de): K&amp;ouml;lner Phonetik --
+ * Buchstabencodes&lt;/a&gt;)&lt;/i&gt;&lt;/small&gt;&lt;/caption&gt; &lt;tbody&gt;
+ * &lt;tr&gt;
+ * &lt;th&gt;Letter&lt;/th&gt;
+ * &lt;th&gt;Context&lt;/th&gt;
+ * &lt;th align=&quot;center&quot;&gt;Code&lt;/th&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;A, E, I, J, O, U, Y&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;0&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ *
+ * &lt;td&gt;H&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;-&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;B&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;1&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;P&lt;/td&gt;
+ * &lt;td&gt;not before H&lt;/td&gt;
+ *
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;D, T&lt;/td&gt;
+ * &lt;td&gt;not before C, S, Z&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;2&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;F, V, W&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td rowspan=&quot;2&quot; align=&quot;center&quot;&gt;3&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ *
+ * &lt;td&gt;P&lt;/td&gt;
+ * &lt;td&gt;before H&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;G, K, Q&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td rowspan=&quot;3&quot; align=&quot;center&quot;&gt;4&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td rowspan=&quot;2&quot;&gt;C&lt;/td&gt;
+ * &lt;td&gt;at onset before A, H, K, L, O, Q, R, U, X&lt;/td&gt;
+ *
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;before A, H, K, O, Q, U, X except after S, Z&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;X&lt;/td&gt;
+ * &lt;td&gt;not after C, K, Q&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;48&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;L&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ *
+ * &lt;td align=&quot;center&quot;&gt;5&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;M, N&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;6&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;R&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td align=&quot;center&quot;&gt;7&lt;/td&gt;
+ * &lt;/tr&gt;
+ *
+ * &lt;tr&gt;
+ * &lt;td&gt;S, Z&lt;/td&gt;
+ * &lt;td&gt;&lt;/td&gt;
+ * &lt;td rowspan=&quot;6&quot; align=&quot;center&quot;&gt;8&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td rowspan=&quot;3&quot;&gt;C&lt;/td&gt;
+ * &lt;td&gt;after S, Z&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;at onset except before A, H, K, L, O, Q, R, U, X&lt;/td&gt;
+ * &lt;/tr&gt;
+ *
+ * &lt;tr&gt;
+ * &lt;td&gt;not before A, H, K, O, Q, U, X&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;D, T&lt;/td&gt;
+ * &lt;td&gt;before C, S, Z&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;tr&gt;
+ * &lt;td&gt;X&lt;/td&gt;
+ * &lt;td&gt;after C, K, Q&lt;/td&gt;
+ * &lt;/tr&gt;
+ * &lt;/tbody&gt;
+ * &lt;/table&gt;
+ *
+ * &lt;h4&gt;Example:&lt;/h4&gt;
+ *
+ * &lt;code&gt;&quot;M&lt;/code&gt;&amp;uuml;&lt;code&gt;ller-L&lt;/code&gt;&amp;uuml;
+ * &lt;code&gt;denscheidt&quot; =&amp;gt; &quot;MULLERLUDENSCHEIDT&quot; =&amp;gt; &quot;6005507500206880022&quot;&lt;/code&gt;
+ *
+ * &lt;/li&gt;
+ *
+ * &lt;li&gt;
+ * &lt;h3&gt;Step 2:&lt;/h3&gt;
+ * Collapse of all multiple consecutive code digits.
+ * &lt;h4&gt;Example:&lt;/h4&gt;
+ * &lt;code&gt;&quot;6005507500206880022&quot; =&amp;gt; &quot;6050750206802&quot;&lt;/code&gt;&lt;/li&gt;
+ *
+ * &lt;li&gt;
+ * &lt;h3&gt;Step 3:&lt;/h3&gt;
+ * Removal of all codes &quot;0&quot; except at the beginning. This means that two or more identical consecutive digits can occur
+ * if they occur after removing the &quot;0&quot; digits.
+ *
+ * &lt;h4&gt;Example:&lt;/h4&gt;
+ * &lt;code&gt;&quot;6050750206802&quot; =&amp;gt; &quot;65752682&quot;&lt;/code&gt;&lt;/li&gt;
+ *
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;
+ * This class is thread-safe.
+ * &lt;/p&gt;
+ *
+ * @see &lt;a href=&quot;http://de.wikipedia.org/wiki/K%C3%B6lner_Phonetik&quot;&gt;Wikipedia (de): K&amp;ouml;lner Phonetik (in German)&lt;/a&gt;
+ * @since 1.5
+ */
+<span class="nc" id="L182">public class ColognePhonetic implements StringEncoder {</span>
+
+    // Predefined char arrays for better performance and less GC load
+<span class="nc" id="L185">    private static final char[] AEIJOUY = new char[] { 'A', 'E', 'I', 'J', 'O', 'U', 'Y' };</span>
+<span class="nc" id="L186">    private static final char[] SCZ = new char[] { 'S', 'C', 'Z' };</span>
+<span class="nc" id="L187">    private static final char[] WFPV = new char[] { 'W', 'F', 'P', 'V' };</span>
+<span class="nc" id="L188">    private static final char[] GKQ = new char[] { 'G', 'K', 'Q' };</span>
+<span class="nc" id="L189">    private static final char[] CKQ = new char[] { 'C', 'K', 'Q' };</span>
+<span class="nc" id="L190">    private static final char[] AHKLOQRUX = new char[] { 'A', 'H', 'K', 'L', 'O', 'Q', 'R', 'U', 'X' };</span>
+<span class="nc" id="L191">    private static final char[] SZ = new char[] { 'S', 'Z' };</span>
+<span class="nc" id="L192">    private static final char[] AHOUKQX = new char[] { 'A', 'H', 'O', 'U', 'K', 'Q', 'X' };</span>
+<span class="nc" id="L193">    private static final char[] TDX = new char[] { 'T', 'D', 'X' };</span>
+
+    /**
+     * This class is not thread-safe; the field {@link #length} is mutable.
+     * However, it is not shared between threads, as it is constructed on demand
+     * by the method {@link ColognePhonetic#colognePhonetic(String)}
+     */
+    private abstract class CologneBuffer {
+
+        protected final char[] data;
+
+<span class="nc" id="L204">        protected int length = 0;</span>
+
+<span class="nc" id="L206">        public CologneBuffer(final char[] data) {</span>
+<span class="nc" id="L207">            this.data = data;</span>
+<span class="nc" id="L208">            this.length = data.length;</span>
+<span class="nc" id="L209">        }</span>
+
+<span class="nc" id="L211">        public CologneBuffer(final int buffSize) {</span>
+<span class="nc" id="L212">            this.data = new char[buffSize];</span>
+<span class="nc" id="L213">            this.length = 0;</span>
+<span class="nc" id="L214">        }</span>
+
+        protected abstract char[] copyData(int start, final int length);
+
+        public int length() {
+<span class="nc" id="L219">            return length;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L224">            return new String(copyData(0, length));</span>
+        }
+    }
+
+    private class CologneOutputBuffer extends CologneBuffer {
+
+<span class="nc" id="L230">        public CologneOutputBuffer(final int buffSize) {</span>
+<span class="nc" id="L231">            super(buffSize);</span>
+<span class="nc" id="L232">        }</span>
+
+        public void addRight(final char chr) {
+<span class="nc" id="L235">            data[length] = chr;</span>
+<span class="nc" id="L236">            length++;</span>
+<span class="nc" id="L237">        }</span>
+
+        @Override
+        protected char[] copyData(final int start, final int length) {
+<span class="nc" id="L241">            final char[] newData = new char[length];</span>
+<span class="nc" id="L242">            System.arraycopy(data, start, newData, 0, length);</span>
+<span class="nc" id="L243">            return newData;</span>
+        }
+    }
+
+    private class CologneInputBuffer extends CologneBuffer {
+
+<span class="nc" id="L249">        public CologneInputBuffer(final char[] data) {</span>
+<span class="nc" id="L250">            super(data);</span>
+<span class="nc" id="L251">        }</span>
+
+        public void addLeft(final char ch) {
+<span class="nc" id="L254">            length++;</span>
+<span class="nc" id="L255">            data[getNextPos()] = ch;</span>
+<span class="nc" id="L256">        }</span>
+
+        @Override
+        protected char[] copyData(final int start, final int length) {
+<span class="nc" id="L260">            final char[] newData = new char[length];</span>
+<span class="nc" id="L261">            System.arraycopy(data, data.length - this.length + start, newData, 0, length);</span>
+<span class="nc" id="L262">            return newData;</span>
+        }
+
+        public char getNextChar() {
+<span class="nc" id="L266">            return data[getNextPos()];</span>
+        }
+
+        protected int getNextPos() {
+<span class="nc" id="L270">            return data.length - length;</span>
+        }
+
+        public char removeNext() {
+<span class="nc" id="L274">            final char ch = getNextChar();</span>
+<span class="nc" id="L275">            length--;</span>
+<span class="nc" id="L276">            return ch;</span>
+        }
+    }
+
+    /**
+     * Maps some Germanic characters to plain for internal processing. The following characters are mapped:
+     * &lt;ul&gt;
+     * &lt;li&gt;capital a, umlaut mark&lt;/li&gt;
+     * &lt;li&gt;capital u, umlaut mark&lt;/li&gt;
+     * &lt;li&gt;capital o, umlaut mark&lt;/li&gt;
+     * &lt;li&gt;small sharp s, German&lt;/li&gt;
+     * &lt;/ul&gt;
+     */
+<span class="nc" id="L289">    private static final char[][] PREPROCESS_MAP = new char[][]{</span>
+        {'\u00C4', 'A'}, // capital a, umlaut mark
+        {'\u00DC', 'U'}, // capital u, umlaut mark
+        {'\u00D6', 'O'}, // capital o, umlaut mark
+        {'\u00DF', 'S'} // small sharp s, German
+    };
+
+    /*
+     * Returns whether the array contains the key, or not.
+     */
+    private static boolean arrayContains(final char[] arr, final char key) {
+<span class="nc bnc" id="L300" title="All 2 branches missed.">        for (final char element : arr) {</span>
+<span class="nc bnc" id="L301" title="All 2 branches missed.">            if (element == key) {</span>
+<span class="nc" id="L302">                return true;</span>
+            }
+        }
+<span class="nc" id="L305">        return false;</span>
+    }
+
+    /**
+     * &lt;p&gt;
+     * Implements the &lt;i&gt;K&amp;ouml;lner Phonetik&lt;/i&gt; algorithm.
+     * &lt;/p&gt;
+     * &lt;p&gt;
+     * In contrast to the initial description of the algorithm, this implementation does the encoding in one pass.
+     * &lt;/p&gt;
+     *
+     * @param text The source text to encode
+     * @return the corresponding encoding according to the &lt;i&gt;K&amp;ouml;lner Phonetik&lt;/i&gt; algorithm
+     */
+    public String colognePhonetic(String text) {
+<span class="nc bnc" id="L320" title="All 2 branches missed.">        if (text == null) {</span>
+<span class="nc" id="L321">            return null;</span>
+        }
+
+<span class="nc" id="L324">        text = preprocess(text);</span>
+
+<span class="nc" id="L326">        final CologneOutputBuffer output = new CologneOutputBuffer(text.length() * 2);</span>
+<span class="nc" id="L327">        final CologneInputBuffer input = new CologneInputBuffer(text.toCharArray());</span>
+
+        char nextChar;
+
+<span class="nc" id="L331">        char lastChar = '-';</span>
+<span class="nc" id="L332">        char lastCode = '/';</span>
+        char code;
+        char chr;
+
+<span class="nc" id="L336">        int rightLength = input.length();</span>
+
+<span class="nc bnc" id="L338" title="All 2 branches missed.">        while (rightLength &gt; 0) {</span>
+<span class="nc" id="L339">            chr = input.removeNext();</span>
+
+<span class="nc bnc" id="L341" title="All 2 branches missed.">            if ((rightLength = input.length()) &gt; 0) {</span>
+<span class="nc" id="L342">                nextChar = input.getNextChar();</span>
+            } else {
+<span class="nc" id="L344">                nextChar = '-';</span>
+            }
+
+<span class="nc bnc" id="L347" title="All 2 branches missed.">            if (arrayContains(AEIJOUY, chr)) {</span>
+<span class="nc" id="L348">                code = '0';</span>
+<span class="nc bnc" id="L349" title="All 6 branches missed.">            } else if (chr == 'H' || chr &lt; 'A' || chr &gt; 'Z') {</span>
+<span class="nc bnc" id="L350" title="All 2 branches missed.">                if (lastCode == '/') {</span>
+<span class="nc" id="L351">                    continue;</span>
+                }
+<span class="nc" id="L353">                code = '-';</span>
+<span class="nc bnc" id="L354" title="All 6 branches missed.">            } else if (chr == 'B' || (chr == 'P' &amp;&amp; nextChar != 'H')) {</span>
+<span class="nc" id="L355">                code = '1';</span>
+<span class="nc bnc" id="L356" title="All 6 branches missed.">            } else if ((chr == 'D' || chr == 'T') &amp;&amp; !arrayContains(SCZ, nextChar)) {</span>
+<span class="nc" id="L357">                code = '2';</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">            } else if (arrayContains(WFPV, chr)) {</span>
+<span class="nc" id="L359">                code = '3';</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">            } else if (arrayContains(GKQ, chr)) {</span>
+<span class="nc" id="L361">                code = '4';</span>
+<span class="nc bnc" id="L362" title="All 4 branches missed.">            } else if (chr == 'X' &amp;&amp; !arrayContains(CKQ, lastChar)) {</span>
+<span class="nc" id="L363">                code = '4';</span>
+<span class="nc" id="L364">                input.addLeft('S');</span>
+<span class="nc" id="L365">                rightLength++;</span>
+<span class="nc bnc" id="L366" title="All 4 branches missed.">            } else if (chr == 'S' || chr == 'Z') {</span>
+<span class="nc" id="L367">                code = '8';</span>
+<span class="nc bnc" id="L368" title="All 2 branches missed.">            } else if (chr == 'C') {</span>
+<span class="nc bnc" id="L369" title="All 2 branches missed.">                if (lastCode == '/') {</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">                    if (arrayContains(AHKLOQRUX, nextChar)) {</span>
+<span class="nc" id="L371">                        code = '4';</span>
+                    } else {
+<span class="nc" id="L373">                        code = '8';</span>
+                    }
+                } else {
+<span class="nc bnc" id="L376" title="All 4 branches missed.">                    if (arrayContains(SZ, lastChar) || !arrayContains(AHOUKQX, nextChar)) {</span>
+<span class="nc" id="L377">                        code = '8';</span>
+                    } else {
+<span class="nc" id="L379">                        code = '4';</span>
+                    }
+                }
+<span class="nc bnc" id="L382" title="All 2 branches missed.">            } else if (arrayContains(TDX, chr)) {</span>
+<span class="nc" id="L383">                code = '8';</span>
+<span class="nc bnc" id="L384" title="All 2 branches missed.">            } else if (chr == 'R') {</span>
+<span class="nc" id="L385">                code = '7';</span>
+<span class="nc bnc" id="L386" title="All 2 branches missed.">            } else if (chr == 'L') {</span>
+<span class="nc" id="L387">                code = '5';</span>
+<span class="nc bnc" id="L388" title="All 4 branches missed.">            } else if (chr == 'M' || chr == 'N') {</span>
+<span class="nc" id="L389">                code = '6';</span>
+            } else {
+<span class="nc" id="L391">                code = chr;</span>
+            }
+
+<span class="nc bnc" id="L394" title="All 12 branches missed.">            if (code != '-' &amp;&amp; (lastCode != code &amp;&amp; (code != '0' || lastCode == '/') || code &lt; '0' || code &gt; '8')) {</span>
+<span class="nc" id="L395">                output.addRight(code);</span>
+            }
+
+<span class="nc" id="L398">            lastChar = chr;</span>
+<span class="nc" id="L399">            lastCode = code;</span>
+        }
+<span class="nc" id="L401">        return output.toString();</span>
+    }
+
+    @Override
+    public Object encode(final Object object) throws EncoderException {
+<span class="nc bnc" id="L406" title="All 2 branches missed.">        if (!(object instanceof String)) {</span>
+<span class="nc" id="L407">            throw new EncoderException(&quot;This method's parameter was expected to be of the type &quot; +</span>
+<span class="nc" id="L408">                String.class.getName() +</span>
+                &quot;. But actually it was of the type &quot; +
+<span class="nc" id="L410">                object.getClass().getName() +</span>
+                &quot;.&quot;);
+        }
+<span class="nc" id="L413">        return encode((String) object);</span>
+    }
+
+    @Override
+    public String encode(final String text) {
+<span class="nc" id="L418">        return colognePhonetic(text);</span>
+    }
+
+    public boolean isEncodeEqual(final String text1, final String text2) {
+<span class="nc" id="L422">        return colognePhonetic(text1).equals(colognePhonetic(text2));</span>
+    }
+
+    /**
+     * Converts the string to upper case and replaces germanic characters as defined in {@link #PREPROCESS_MAP}.
+     */
+    private String preprocess(String text) {
+<span class="nc" id="L429">        text = text.toUpperCase(Locale.GERMAN);</span>
+
+<span class="nc" id="L431">        final char[] chrs = text.toCharArray();</span>
+
+<span class="nc bnc" id="L433" title="All 2 branches missed.">        for (int index = 0; index &lt; chrs.length; index++) {</span>
+<span class="nc bnc" id="L434" title="All 2 branches missed.">            if (chrs[index] &gt; 'Z') {</span>
+<span class="nc bnc" id="L435" title="All 2 branches missed.">                for (final char[] element : PREPROCESS_MAP) {</span>
+<span class="nc bnc" id="L436" title="All 2 branches missed.">                    if (chrs[index] == element[0]) {</span>
+<span class="nc" id="L437">                        chrs[index] = element[1];</span>
+<span class="nc" id="L438">                        break;</span>
+                    }
+                }
+            }
+        }
+<span class="nc" id="L443">        return new String(chrs);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

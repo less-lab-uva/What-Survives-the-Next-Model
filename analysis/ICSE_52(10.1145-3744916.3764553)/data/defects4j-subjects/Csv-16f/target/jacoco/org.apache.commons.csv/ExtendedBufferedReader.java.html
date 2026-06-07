@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExtendedBufferedReader.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons CSV</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.csv</a> &gt; <span class="el_source">ExtendedBufferedReader.java</span></div><h1>ExtendedBufferedReader.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.csv;
+
+import static org.apache.commons.csv.Constants.CR;
+import static org.apache.commons.csv.Constants.END_OF_STREAM;
+import static org.apache.commons.csv.Constants.LF;
+import static org.apache.commons.csv.Constants.UNDEFINED;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.Reader;
+
+/**
+ * A special buffered reader which supports sophisticated read access.
+ * &lt;p&gt;
+ * In particular the reader supports a look-ahead option, which allows you to see the next char returned by
+ * {@link #read()}. This reader also tracks how many characters have been read with {@link #getPosition()}.
+ * &lt;/p&gt;
+ */
+final class ExtendedBufferedReader extends BufferedReader {
+
+    /** The last char returned */
+<span class="fc" id="L39">    private int lastChar = UNDEFINED;</span>
+
+    /** The count of EOLs (CR/LF/CRLF) seen so far */
+    private long eolCounter;
+
+    /** The position, which is number of characters read so far */
+    private long position;
+
+    private boolean closed;
+
+    /**
+     * Created extended buffered reader using default buffer-size
+     */
+    ExtendedBufferedReader(final Reader reader) {
+<span class="fc" id="L53">        super(reader);</span>
+<span class="fc" id="L54">    }</span>
+
+    @Override
+    public int read() throws IOException {
+<span class="fc" id="L58">        final int current = super.read();</span>
+<span class="fc bfc" id="L59" title="All 6 branches covered.">        if (current == CR || current == LF &amp;&amp; lastChar != CR) {</span>
+<span class="fc" id="L60">            eolCounter++;</span>
+        }
+<span class="fc" id="L62">        lastChar = current;</span>
+<span class="fc" id="L63">        this.position++;</span>
+<span class="fc" id="L64">        return lastChar;</span>
+    }
+
+    /**
+     * Returns the last character that was read as an integer (0 to 65535). This will be the last character returned by
+     * any of the read methods. This will not include a character read using the {@link #lookAhead()} method. If no
+     * character has been read then this will return {@link Constants#UNDEFINED}. If the end of the stream was reached
+     * on the last read then this will return {@link Constants#END_OF_STREAM}.
+     *
+     * @return the last character that was read
+     */
+    int getLastChar() {
+<span class="fc" id="L76">        return lastChar;</span>
+    }
+
+    @Override
+    public int read(final char[] buf, final int offset, final int length) throws IOException {
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (length == 0) {</span>
+<span class="nc" id="L82">            return 0;</span>
+        }
+
+<span class="nc" id="L85">        final int len = super.read(buf, offset, length);</span>
+
+<span class="nc bnc" id="L87" title="All 2 branches missed.">        if (len &gt; 0) {</span>
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            for (int i = offset; i &lt; offset + len; i++) {</span>
+<span class="nc" id="L90">                final char ch = buf[i];</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                if (ch == LF) {</span>
+<span class="nc bnc" id="L92" title="All 4 branches missed.">                    if (CR != (i &gt; 0 ? buf[i - 1] : lastChar)) {</span>
+<span class="nc" id="L93">                        eolCounter++;</span>
+                    }
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                } else if (ch == CR) {</span>
+<span class="nc" id="L96">                    eolCounter++;</span>
+                }
+            }
+
+<span class="nc" id="L100">            lastChar = buf[offset + len - 1];</span>
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        } else if (len == -1) {</span>
+<span class="nc" id="L103">            lastChar = END_OF_STREAM;</span>
+        }
+
+<span class="nc" id="L106">        position += len;</span>
+<span class="nc" id="L107">        return len;</span>
+    }
+
+    /**
+     * Calls {@link BufferedReader#readLine()} which drops the line terminator(s). This method should only be called
+     * when processing a comment, otherwise information can be lost.
+     * &lt;p&gt;
+     * Increments {@link #eolCounter}
+     * &lt;p&gt;
+     * Sets {@link #lastChar} to {@link Constants#END_OF_STREAM} at EOF, otherwise to LF
+     *
+     * @return the line that was read, or null if reached EOF.
+     */
+    @Override
+    public String readLine() throws IOException {
+<span class="fc" id="L122">        final String line = super.readLine();</span>
+
+<span class="fc bfc" id="L124" title="All 2 branches covered.">        if (line != null) {</span>
+<span class="fc" id="L125">            lastChar = LF; // needed for detecting start of line</span>
+<span class="fc" id="L126">            eolCounter++;</span>
+        } else {
+<span class="fc" id="L128">            lastChar = END_OF_STREAM;</span>
+        }
+
+<span class="fc" id="L131">        return line;</span>
+    }
+
+    /**
+     * Returns the next character in the current reader without consuming it. So the next call to {@link #read()} will
+     * still return this value. Does not affect line number or last character.
+     *
+     * @return the next character
+     *
+     * @throws IOException
+     *             if there is an error in reading
+     */
+    int lookAhead() throws IOException {
+<span class="fc" id="L144">        super.mark(1);</span>
+<span class="fc" id="L145">        final int c = super.read();</span>
+<span class="fc" id="L146">        super.reset();</span>
+
+<span class="fc" id="L148">        return c;</span>
+    }
+
+    /**
+     * Returns the current line number
+     *
+     * @return the current line number
+     */
+    long getCurrentLineNumber() {
+        // Check if we are at EOL or EOF or just starting
+<span class="pc bpc" id="L158" title="3 of 8 branches missed.">        if (lastChar == CR || lastChar == LF || lastChar == UNDEFINED || lastChar == END_OF_STREAM) {</span>
+<span class="fc" id="L159">            return eolCounter; // counter is accurate</span>
+        }
+<span class="fc" id="L161">        return eolCounter + 1; // Allow for counter being incremented only at EOL</span>
+    }
+
+    /**
+     * Gets the character position in the reader.
+     *
+     * @return the current position in the reader (counting characters, not bytes since this is a Reader)
+     */
+    long getPosition() {
+<span class="nc" id="L170">        return this.position;</span>
+    }
+
+    public boolean isClosed() {
+<span class="fc" id="L174">        return closed;</span>
+    }
+
+    /**
+     * Closes the stream.
+     *
+     * @throws IOException
+     *             If an I/O error occurs
+     */
+    @Override
+    public void close() throws IOException {
+        // Set ivars before calling super close() in case close() throws an IOException.
+<span class="fc" id="L186">        closed = true;</span>
+<span class="fc" id="L187">        lastChar = END_OF_STREAM;</span>
+<span class="fc" id="L188">        super.close();</span>
+<span class="fc" id="L189">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

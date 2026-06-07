@@ -1,0 +1,1143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DigestUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.digest</a> &gt; <span class="el_source">DigestUtils.java</span></div><h1>DigestUtils.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.digest;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.codec.binary.StringUtils;
+
+/**
+ * Operations to simplify common {@link java.security.MessageDigest} tasks.
+ * This class is immutable and thread-safe.
+ * However the MessageDigest instances it creates generally won't be.
+ * &lt;p&gt;
+ * The {@link MessageDigestAlgorithms} class provides constants for standard
+ * digest algorithms that can be used with the {@link #getDigest(String)} method
+ * and other methods that require the Digest algorithm name.
+ * &lt;p&gt;
+ * Note: the class has short-hand methods for all the algorithms present as standard in Java 6.
+ * This approach requires lots of methods for each algorithm, and quickly becomes unwieldy.
+ * The following code works with all algorithms:
+ * &lt;pre&gt;
+ * import static org.apache.commons.codec.digest.MessageDigestAlgorithms.SHA_224;
+ * ...
+ * byte [] digest = new DigestUtils(SHA_224).digest(dataToDigest);
+ * String hdigest = new DigestUtils(SHA_224).digestAsHex(new File(&quot;pom.xml&quot;));
+ * &lt;/pre&gt;
+ * @see MessageDigestAlgorithms
+ * @version $Id$
+ */
+public class DigestUtils {
+
+    private static final int STREAM_BUFFER_LENGTH = 1024;
+
+    /**
+     * Reads through a byte array and returns the digest for the data. Provided for symmetry with other methods.
+     *
+     * @param messageDigest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @since 1.11
+     */
+    public static byte[] digest(final MessageDigest messageDigest, final byte[] data) {
+<span class="nc" id="L68">        return messageDigest.digest(data);</span>
+    }
+
+    /**
+     * Reads through a ByteBuffer and returns the digest for the data
+     *
+     * @param messageDigest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     *
+     * @since 1.11
+     */
+    public static byte[] digest(final MessageDigest messageDigest, final ByteBuffer data) {
+<span class="nc" id="L83">        messageDigest.update(data);</span>
+<span class="nc" id="L84">        return messageDigest.digest();</span>
+    }
+
+    /**
+     * Reads through a File and returns the digest for the data
+     *
+     * @param messageDigest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public static byte[] digest(final MessageDigest messageDigest, final File data) throws IOException {
+<span class="nc" id="L100">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through an InputStream and returns the digest for the data
+     *
+     * @param messageDigest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11 (was private)
+     */
+    public static byte[] digest(final MessageDigest messageDigest, final InputStream data) throws IOException {
+<span class="nc" id="L116">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Returns a &lt;code&gt;MessageDigest&lt;/code&gt; for the given &lt;code&gt;algorithm&lt;/code&gt;.
+     *
+     * @param algorithm
+     *            the name of the algorithm requested. See &lt;a
+     *            href=&quot;http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#AppA&quot;
+     *            &gt;Appendix A in the Java Cryptography Architecture Reference Guide&lt;/a&gt; for information about standard
+     *            algorithm names.
+     * @return A digest instance.
+     * @see MessageDigest#getInstance(String)
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught.
+     */
+    public static MessageDigest getDigest(final String algorithm) {
+        try {
+<span class="nc" id="L134">            return MessageDigest.getInstance(algorithm);</span>
+<span class="nc" id="L135">        } catch (final NoSuchAlgorithmException e) {</span>
+<span class="nc" id="L136">            throw new IllegalArgumentException(e);</span>
+        }
+    }
+
+    /**
+     * Returns a &lt;code&gt;MessageDigest&lt;/code&gt; for the given &lt;code&gt;algorithm&lt;/code&gt; or a default if there is a problem
+     * getting the algorithm.
+     *
+     * @param algorithm
+     *            the name of the algorithm requested. See
+     *            &lt;a href=&quot;http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html#AppA&quot; &gt;
+     *            Appendix A in the Java Cryptography Architecture Reference Guide&lt;/a&gt; for information about standard
+     *            algorithm names.
+     * @param defaultMessageDigest
+     *            The default MessageDigest.
+     * @return A digest instance.
+     * @see MessageDigest#getInstance(String)
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught.
+     * @since 1.11
+     */
+    public static MessageDigest getDigest(final String algorithm, MessageDigest defaultMessageDigest) {
+        try {
+<span class="nc" id="L159">            return MessageDigest.getInstance(algorithm);</span>
+<span class="nc" id="L160">        } catch (final Exception e) {</span>
+<span class="nc" id="L161">            return defaultMessageDigest;</span>
+        }
+    }
+
+    /**
+     * Returns an MD2 MessageDigest.
+     *
+     * @return An MD2 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because MD2 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#MD2
+     * @since 1.7
+     */
+    public static MessageDigest getMd2Digest() {
+<span class="nc" id="L176">        return getDigest(MessageDigestAlgorithms.MD2);</span>
+    }
+
+    /**
+     * Returns an MD5 MessageDigest.
+     *
+     * @return An MD5 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because MD5 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#MD5
+     */
+    public static MessageDigest getMd5Digest() {
+<span class="nc" id="L189">        return getDigest(MessageDigestAlgorithms.MD5);</span>
+    }
+
+    /**
+     * Returns an SHA-1 digest.
+     *
+     * @return An SHA-1 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because SHA-1 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#SHA_1
+     * @since 1.7
+     */
+    public static MessageDigest getSha1Digest() {
+<span class="nc" id="L203">        return getDigest(MessageDigestAlgorithms.SHA_1);</span>
+    }
+
+    /**
+     * Returns an SHA-256 digest.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @return An SHA-256 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because SHA-256 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#SHA_256
+     */
+    public static MessageDigest getSha256Digest() {
+<span class="nc" id="L219">        return getDigest(MessageDigestAlgorithms.SHA_256);</span>
+    }
+
+    /**
+     * Returns an SHA-384 digest.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @return An SHA-384 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because SHA-384 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#SHA_384
+     */
+    public static MessageDigest getSha384Digest() {
+<span class="nc" id="L235">        return getDigest(MessageDigestAlgorithms.SHA_384);</span>
+    }
+
+    /**
+     * Returns an SHA-512 digest.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @return An SHA-512 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught, which should never happen because SHA-512 is a
+     *             built-in algorithm
+     * @see MessageDigestAlgorithms#SHA_512
+     */
+    public static MessageDigest getSha512Digest() {
+<span class="nc" id="L251">        return getDigest(MessageDigestAlgorithms.SHA_512);</span>
+    }
+
+    /**
+     * Returns an SHA-1 digest.
+     *
+     * @return An SHA-1 digest instance.
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught
+     * @deprecated Use {@link #getSha1Digest()}
+     */
+    @Deprecated
+    public static MessageDigest getShaDigest() {
+<span class="nc" id="L264">        return getSha1Digest();</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD2 digest
+     * @since 1.7
+     */
+    public static byte[] md2(final byte[] data) {
+<span class="nc" id="L276">        return getMd2Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD2 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.7
+     */
+    public static byte[] md2(final InputStream data) throws IOException {
+<span class="nc" id="L290">        return digest(getMd2Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return MD2 digest
+     * @since 1.7
+     */
+    public static byte[] md2(final String data) {
+<span class="nc" id="L302">        return md2(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD2 digest as a hex string
+     * @since 1.7
+     */
+    public static String md2Hex(final byte[] data) {
+<span class="nc" id="L314">        return Hex.encodeHexString(md2(data));</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD2 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.7
+     */
+    public static String md2Hex(final InputStream data) throws IOException {
+<span class="nc" id="L328">        return Hex.encodeHexString(md2(data));</span>
+    }
+
+    /**
+     * Calculates the MD2 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD2 digest as a hex string
+     * @since 1.7
+     */
+    public static String md2Hex(final String data) {
+<span class="nc" id="L340">        return Hex.encodeHexString(md2(data));</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD5 digest
+     */
+    public static byte[] md5(final byte[] data) {
+<span class="nc" id="L351">        return getMd5Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD5 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static byte[] md5(final InputStream data) throws IOException {
+<span class="nc" id="L365">        return digest(getMd5Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 16 element &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return MD5 digest
+     */
+    public static byte[] md5(final String data) {
+<span class="nc" id="L376">        return md5(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD5 digest as a hex string
+     */
+    public static String md5Hex(final byte[] data) {
+<span class="nc" id="L387">        return Hex.encodeHexString(md5(data));</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD5 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static String md5Hex(final InputStream data) throws IOException {
+<span class="nc" id="L401">        return Hex.encodeHexString(md5(data));</span>
+    }
+
+    /**
+     * Calculates the MD5 digest and returns the value as a 32 character hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return MD5 digest as a hex string
+     */
+    public static String md5Hex(final String data) {
+<span class="nc" id="L412">        return Hex.encodeHexString(md5(data));</span>
+    }
+
+    /**
+ * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+ *
+ * @param data
+ *            Data to digest
+ * @return SHA-1 digest
+ * @deprecated Use {@link #sha1(byte[])}
+ */
+@Deprecated
+public static byte[] sha(final byte[] data) {
+<span class="nc" id="L425">    return sha1(data);</span>
+}
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     * @deprecated Use {@link #sha1(InputStream)}
+     */
+    @Deprecated
+    public static byte[] sha(final InputStream data) throws IOException {
+<span class="nc" id="L441">        return sha1(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest
+     * @deprecated Use {@link #sha1(String)}
+     */
+    @Deprecated
+    public static byte[] sha(final String data) {
+<span class="nc" id="L454">        return sha1(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest
+     * @since 1.7
+     */
+    public static byte[] sha1(final byte[] data) {
+<span class="nc" id="L466">        return getSha1Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.7
+     */
+    public static byte[] sha1(final InputStream data) throws IOException {
+<span class="nc" id="L480">        return digest(getSha1Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return SHA-1 digest
+     */
+    public static byte[] sha1(final String data) {
+<span class="nc" id="L491">        return sha1(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @since 1.7
+     */
+    public static String sha1Hex(final byte[] data) {
+<span class="nc" id="L503">        return Hex.encodeHexString(sha1(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.7
+     */
+    public static String sha1Hex(final InputStream data) throws IOException {
+<span class="nc" id="L517">        return Hex.encodeHexString(sha1(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @since 1.7
+     */
+    public static String sha1Hex(final String data) {
+<span class="nc" id="L529">        return Hex.encodeHexString(sha1(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-256 digest
+     * @since 1.4
+     */
+    public static byte[] sha256(final byte[] data) {
+<span class="nc" id="L544">        return getSha256Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-256 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static byte[] sha256(final InputStream data) throws IOException {
+<span class="nc" id="L561">        return digest(getSha256Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return SHA-256 digest
+     * @since 1.4
+     */
+    public static byte[] sha256(final String data) {
+<span class="nc" id="L576">        return sha256(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-256 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha256Hex(final byte[] data) {
+<span class="nc" id="L591">        return Hex.encodeHexString(sha256(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-256 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static String sha256Hex(final InputStream data) throws IOException {
+<span class="nc" id="L608">        return Hex.encodeHexString(sha256(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-256 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-256 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha256Hex(final String data) {
+<span class="nc" id="L623">        return Hex.encodeHexString(sha256(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-384 digest
+     * @since 1.4
+     */
+    public static byte[] sha384(final byte[] data) {
+<span class="nc" id="L638">        return getSha384Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-384 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static byte[] sha384(final InputStream data) throws IOException {
+<span class="nc" id="L655">        return digest(getSha384Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return SHA-384 digest
+     * @since 1.4
+     */
+    public static byte[] sha384(final String data) {
+<span class="nc" id="L670">        return sha384(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-384 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha384Hex(final byte[] data) {
+<span class="nc" id="L685">        return Hex.encodeHexString(sha384(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-384 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static String sha384Hex(final InputStream data) throws IOException {
+<span class="nc" id="L702">        return Hex.encodeHexString(sha384(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-384 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-384 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha384Hex(final String data) {
+<span class="nc" id="L717">        return Hex.encodeHexString(sha384(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-512 digest
+     * @since 1.4
+     */
+    public static byte[] sha512(final byte[] data) {
+<span class="nc" id="L732">        return getSha512Digest().digest(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-512 digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static byte[] sha512(final InputStream data) throws IOException {
+<span class="nc" id="L749">        return digest(getSha512Digest(), data);</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a &lt;code&gt;byte[]&lt;/code&gt;.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest; converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return SHA-512 digest
+     * @since 1.4
+     */
+    public static byte[] sha512(final String data) {
+<span class="nc" id="L764">        return sha512(StringUtils.getBytesUtf8(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-512 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha512Hex(final byte[] data) {
+<span class="nc" id="L779">        return Hex.encodeHexString(sha512(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-512 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     */
+    public static String sha512Hex(final InputStream data) throws IOException {
+<span class="nc" id="L796">        return Hex.encodeHexString(sha512(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-512 digest and returns the value as a hex string.
+     * &lt;p&gt;
+     * Throws a &lt;code&gt;RuntimeException&lt;/code&gt; on JRE versions prior to 1.4.0.
+     * &lt;/p&gt;
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-512 digest as a hex string
+     * @since 1.4
+     */
+    public static String sha512Hex(final String data) {
+<span class="nc" id="L811">        return Hex.encodeHexString(sha512(data));</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @deprecated Use {@link #sha1Hex(byte[])}
+     */
+    @Deprecated
+    public static String shaHex(final byte[] data) {
+<span class="nc" id="L824">        return sha1Hex(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.4
+     * @deprecated Use {@link #sha1Hex(InputStream)}
+     */
+    @Deprecated
+    public static String shaHex(final InputStream data) throws IOException {
+<span class="nc" id="L840">        return sha1Hex(data);</span>
+    }
+
+    /**
+     * Calculates the SHA-1 digest and returns the value as a hex string.
+     *
+     * @param data
+     *            Data to digest
+     * @return SHA-1 digest as a hex string
+     * @deprecated Use {@link #sha1Hex(String)}
+     */
+    @Deprecated
+    public static String shaHex(final String data) {
+<span class="nc" id="L853">        return sha1Hex(data);</span>
+    }
+
+    /**
+     * Updates the given {@link MessageDigest}.
+     *
+     * @param messageDigest
+     *            the {@link MessageDigest} to update
+     * @param valueToDigest
+     *            the value to update the {@link MessageDigest} with
+     * @return the updated {@link MessageDigest}
+     * @since 1.7
+     */
+    public static MessageDigest updateDigest(final MessageDigest messageDigest, final byte[] valueToDigest) {
+<span class="nc" id="L867">        messageDigest.update(valueToDigest);</span>
+<span class="nc" id="L868">        return messageDigest;</span>
+    }
+
+    /**
+     * Updates the given {@link MessageDigest}.
+     *
+     * @param messageDigest
+     *            the {@link MessageDigest} to update
+     * @param valueToDigest
+     *            the value to update the {@link MessageDigest} with
+     * @return the updated {@link MessageDigest}
+     * @since 1.11
+     */
+    public static MessageDigest updateDigest(final MessageDigest messageDigest, final ByteBuffer valueToDigest) {
+<span class="nc" id="L882">        messageDigest.update(valueToDigest);</span>
+<span class="nc" id="L883">        return messageDigest;</span>
+    }
+
+    /**
+     * Reads through a File and updates the digest for the data
+     *
+     * @param digest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public static MessageDigest updateDigest(final MessageDigest digest, final File data) throws IOException {
+<span class="nc" id="L899">        final BufferedInputStream stream = new BufferedInputStream(new FileInputStream(data));</span>
+        try {
+<span class="nc" id="L901">            return updateDigest(digest, stream);</span>
+        } finally {
+<span class="nc" id="L903">            stream.close();</span>
+        }
+    }
+
+    /**
+     * Reads through an InputStream and updates the digest for the data
+     *
+     * @param digest
+     *            The MessageDigest to use (e.g. MD5)
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.8
+     */
+    public static MessageDigest updateDigest(final MessageDigest digest, final InputStream data) throws IOException {
+<span class="nc" id="L920">        final byte[] buffer = new byte[STREAM_BUFFER_LENGTH];</span>
+<span class="nc" id="L921">        int read = data.read(buffer, 0, STREAM_BUFFER_LENGTH);</span>
+
+<span class="nc bnc" id="L923" title="All 2 branches missed.">        while (read &gt; -1) {</span>
+<span class="nc" id="L924">            digest.update(buffer, 0, read);</span>
+<span class="nc" id="L925">            read = data.read(buffer, 0, STREAM_BUFFER_LENGTH);</span>
+        }
+
+<span class="nc" id="L928">        return digest;</span>
+    }
+
+    /**
+     * Updates the given {@link MessageDigest} from a String (converted to bytes using UTF-8).
+     * &lt;p&gt;
+     * To update the digest using a different charset for the conversion,
+     * convert the String to a byte array using
+     * {@link String#getBytes(java.nio.charset.Charset)} and pass that
+     * to the {@link DigestUtils#updateDigest(MessageDigest, byte[])} method
+     *
+     * @param messageDigest
+     *            the {@link MessageDigest} to update
+     * @param valueToDigest
+     *            the value to update the {@link MessageDigest} with;
+     *            converted to bytes using {@link StringUtils#getBytesUtf8(String)}
+     * @return the updated {@link MessageDigest}
+     * @since 1.7
+     */
+    public static MessageDigest updateDigest(final MessageDigest messageDigest, final String valueToDigest) {
+<span class="nc" id="L948">        messageDigest.update(StringUtils.getBytesUtf8(valueToDigest));</span>
+<span class="nc" id="L949">        return messageDigest;</span>
+    }
+
+    /**
+     * Test whether the algorithm is supported.
+     * @param messageDigestAlgorithm the algorithm name
+     * @return {@code true} if the algorithm can be found
+     * @since 1.11
+     */
+    public static boolean isAvailable(String messageDigestAlgorithm) {
+<span class="nc bnc" id="L959" title="All 2 branches missed.">        return getDigest(messageDigestAlgorithm, null) != null;</span>
+    }
+
+    private final MessageDigest messageDigest;
+
+   /**
+    * Preserves binary compatibity only.
+    * As for previous versions does not provide useful behaviour
+    * @deprecated since 1.11; only useful to preserve binary compatibility
+    */
+   @Deprecated
+<span class="nc" id="L970">    public DigestUtils() {</span>
+<span class="nc" id="L971">        this.messageDigest = null;</span>
+<span class="nc" id="L972">    }</span>
+
+    /**
+     * Creates an instance using the provided {@link MessageDigest} parameter.
+     *
+     * This can then be used to create digests using methods such as
+     * {@link #digest(byte[])} and {@link #digestAsHex(File)}.
+     *
+     * @param digest the {@link MessageDigest} to use
+     * @since 1.11
+     */
+<span class="nc" id="L983">    public DigestUtils(MessageDigest digest) {</span>
+<span class="nc" id="L984">        this.messageDigest = digest;</span>
+<span class="nc" id="L985">    }</span>
+
+    /**
+     * Creates an instance using the provided {@link MessageDigest} parameter.
+     *
+     * This can then be used to create digests using methods such as
+     * {@link #digest(byte[])} and {@link #digestAsHex(File)}.
+     *
+     * @param name the name of the {@link MessageDigest} to use
+     * @see #getDigest(String)
+     * @throws IllegalArgumentException
+     *             when a {@link NoSuchAlgorithmException} is caught.
+     * @since 1.11
+     */
+    public DigestUtils(String name) {
+<span class="nc" id="L1000">        this(getDigest(name));</span>
+<span class="nc" id="L1001">    }</span>
+
+    /**
+     * Returns the message digest instance.
+     * @return the message digest instance
+     * @since 1.11
+     */
+    public MessageDigest getMessageDigest() {
+<span class="nc" id="L1009">        return messageDigest;</span>
+    }
+
+    /**
+     * Reads through a byte array and returns the digest for the data.
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @since 1.11
+     */
+    public byte[] digest(final byte[] data) {
+<span class="nc" id="L1021">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through a byte array and returns the digest for the data.
+     *
+     * @param data
+     *            Data to digest treated as UTF-8 string
+     * @return the digest
+     * @since 1.11
+     */
+    public byte[] digest(final String data) {
+<span class="nc" id="L1033">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through a ByteBuffer and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest
+     *
+     * @since 1.11
+     */
+    public byte[] digest(final ByteBuffer data) {
+<span class="nc" id="L1046">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through a File and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public byte[] digest(final File data) throws IOException {
+<span class="nc" id="L1060">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through an InputStream and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public byte[] digest(final InputStream data) throws IOException {
+<span class="nc" id="L1074">        return updateDigest(messageDigest, data).digest();</span>
+    }
+
+    /**
+     * Reads through a byte array and returns the digest for the data.
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest as a hex string
+     * @since 1.11
+     */
+    public String digestAsHex(final byte[] data) {
+<span class="nc" id="L1086">        return Hex.encodeHexString(digest(data));</span>
+    }
+
+    /**
+     * Reads through a byte array and returns the digest for the data.
+     *
+     * @param data
+     *            Data to digest treated as UTF-8 string
+     * @return the digest as a hex string
+     * @since 1.11
+     */
+    public String digestAsHex(final String data) {
+<span class="nc" id="L1098">        return Hex.encodeHexString(digest(data));</span>
+    }
+
+    /**
+     * Reads through a ByteBuffer and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest as a hex string
+     *
+     * @since 1.11
+     */
+    public String digestAsHex(final ByteBuffer data) {
+<span class="nc" id="L1111">        return Hex.encodeHexString(digest(data));</span>
+    }
+
+    /**
+     * Reads through a File and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public String digestAsHex(final File data) throws IOException {
+<span class="nc" id="L1125">        return Hex.encodeHexString(digest(data));</span>
+    }
+
+    /**
+     * Reads through an InputStream and returns the digest for the data
+     *
+     * @param data
+     *            Data to digest
+     * @return the digest as a hex string
+     * @throws IOException
+     *             On error reading from the stream
+     * @since 1.11
+     */
+    public String digestAsHex(final InputStream data) throws IOException {
+<span class="nc" id="L1139">        return Hex.encodeHexString(digest(data));</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Elements.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.select</a> &gt; <span class="el_source">Elements.java</span></div><h1>Elements.java</h1><pre class="source lang-java linenums">package org.jsoup.select;
+
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.FormElement;
+import org.jsoup.nodes.Node;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+
+/**
+ A list of {@link Element}s, with methods that act on every element in the list.
+ &lt;p&gt;
+ To get an {@code Elements} object, use the {@link Element#select(String)} method.
+ &lt;/p&gt;
+
+ @author Jonathan Hedley, jonathan@hedley.net */
+public class Elements extends ArrayList&lt;Element&gt; {
+<span class="nc" id="L24">    public Elements() {</span>
+<span class="nc" id="L25">    }</span>
+
+    public Elements(int initialCapacity) {
+<span class="nc" id="L28">        super(initialCapacity);</span>
+<span class="nc" id="L29">    }</span>
+
+    public Elements(Collection&lt;Element&gt; elements) {
+<span class="nc" id="L32">        super(elements);</span>
+<span class="nc" id="L33">    }</span>
+    
+    public Elements(List&lt;Element&gt; elements) {
+<span class="nc" id="L36">        super(elements);</span>
+<span class="nc" id="L37">    }</span>
+    
+    public Elements(Element... elements) {
+<span class="nc" id="L40">    	super(Arrays.asList(elements));</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Creates a deep copy of these elements.
+     * @return a deep copy
+     */
+    @Override
+	public Elements clone() {
+<span class="nc" id="L49">        Elements clone = new Elements(size());</span>
+
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        for(Element e : this)</span>
+<span class="nc" id="L52">    		clone.add(e.clone());</span>
+    	
+<span class="nc" id="L54">    	return clone;</span>
+	}
+
+	// attribute methods
+    /**
+     Get an attribute value from the first matched element that has the attribute.
+     @param attributeKey The attribute key.
+     @return The attribute value from the first matched element that has the attribute.. If no elements were matched (isEmpty() == true),
+     or if the no elements have the attribute, returns empty string.
+     @see #hasAttr(String)
+     */
+    public String attr(String attributeKey) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (element.hasAttr(attributeKey))</span>
+<span class="nc" id="L68">                return element.attr(attributeKey);</span>
+<span class="nc" id="L69">        }</span>
+<span class="nc" id="L70">        return &quot;&quot;;</span>
+    }
+
+    /**
+     Checks if any of the matched elements have this attribute defined.
+     @param attributeKey attribute key
+     @return true if any of the elements have the attribute; false if none do.
+     */
+    public boolean hasAttr(String attributeKey) {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (element.hasAttr(attributeKey))</span>
+<span class="nc" id="L81">                return true;</span>
+<span class="nc" id="L82">        }</span>
+<span class="nc" id="L83">        return false;</span>
+    }
+
+    /**
+     * Get the attribute value for each of the matched elements. If an element does not have this attribute, no value is
+     * included in the result set for that element.
+     * @param attributeKey the attribute name to return values for. You can add the {@code abs:} prefix to the key to
+     * get absolute URLs from relative URLs, e.g.: {@code doc.select(&quot;a&quot;).eachAttr(&quot;abs:href&quot;)} .
+     * @return a list of each element's attribute value for the attribute
+     */
+    public List&lt;String&gt; eachAttr(String attributeKey) {
+<span class="nc" id="L94">        List&lt;String&gt; attrs = new ArrayList&lt;&gt;(size());</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">            if (element.hasAttr(attributeKey))</span>
+<span class="nc" id="L97">                attrs.add(element.attr(attributeKey));</span>
+<span class="nc" id="L98">        }</span>
+<span class="nc" id="L99">        return attrs;</span>
+    }
+
+    /**
+     * Set an attribute on all matched elements.
+     * @param attributeKey attribute key
+     * @param attributeValue attribute value
+     * @return this
+     */
+    public Elements attr(String attributeKey, String attributeValue) {
+<span class="nc bnc" id="L109" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L110">            element.attr(attributeKey, attributeValue);</span>
+<span class="nc" id="L111">        }</span>
+<span class="nc" id="L112">        return this;</span>
+    }
+
+    /**
+     * Remove an attribute from every matched element.
+     * @param attributeKey The attribute to remove.
+     * @return this (for chaining)
+     */
+    public Elements removeAttr(String attributeKey) {
+<span class="nc bnc" id="L121" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L122">            element.removeAttr(attributeKey);</span>
+<span class="nc" id="L123">        }</span>
+<span class="nc" id="L124">        return this;</span>
+    }
+
+    /**
+     Add the class name to every matched element's {@code class} attribute.
+     @param className class name to add
+     @return this
+     */
+    public Elements addClass(String className) {
+<span class="nc bnc" id="L133" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L134">            element.addClass(className);</span>
+<span class="nc" id="L135">        }</span>
+<span class="nc" id="L136">        return this;</span>
+    }
+
+    /**
+     Remove the class name from every matched element's {@code class} attribute, if present.
+     @param className class name to remove
+     @return this
+     */
+    public Elements removeClass(String className) {
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L146">            element.removeClass(className);</span>
+<span class="nc" id="L147">        }</span>
+<span class="nc" id="L148">        return this;</span>
+    }
+
+    /**
+     Toggle the class name on every matched element's {@code class} attribute.
+     @param className class name to add if missing, or remove if present, from every element.
+     @return this
+     */
+    public Elements toggleClass(String className) {
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L158">            element.toggleClass(className);</span>
+<span class="nc" id="L159">        }</span>
+<span class="nc" id="L160">        return this;</span>
+    }
+
+    /**
+     Determine if any of the matched elements have this class name set in their {@code class} attribute.
+     @param className class name to check for
+     @return true if any do, false if none do
+     */
+    public boolean hasClass(String className) {
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            if (element.hasClass(className))</span>
+<span class="nc" id="L171">                return true;</span>
+<span class="nc" id="L172">        }</span>
+<span class="nc" id="L173">        return false;</span>
+    }
+    
+    /**
+     * Get the form element's value of the first matched element.
+     * @return The form element's value, or empty if not set.
+     * @see Element#val()
+     */
+    public String val() {
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        if (size() &gt; 0)</span>
+<span class="nc" id="L183">            return first().val();</span>
+        else
+<span class="nc" id="L185">            return &quot;&quot;;</span>
+    }
+    
+    /**
+     * Set the form element's value in each of the matched elements.
+     * @param value The value to set into each matched element
+     * @return this (for chaining)
+     */
+    public Elements val(String value) {
+<span class="nc bnc" id="L194" title="All 2 branches missed.">        for (Element element : this)</span>
+<span class="nc" id="L195">            element.val(value);</span>
+<span class="nc" id="L196">        return this;</span>
+    }
+    
+    /**
+     * Get the combined text of all the matched elements.
+     * &lt;p&gt;
+     * Note that it is possible to get repeats if the matched elements contain both parent elements and their own
+     * children, as the Element.text() method returns the combined text of a parent and all its children.
+     * @return string of all text: unescaped and no HTML.
+     * @see Element#text()
+     * @see #eachText()
+     */
+    public String text() {
+<span class="nc" id="L209">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+<span class="nc bnc" id="L210" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">            if (sb.length() != 0)</span>
+<span class="nc" id="L212">                sb.append(&quot; &quot;);</span>
+<span class="nc" id="L213">            sb.append(element.text());</span>
+<span class="nc" id="L214">        }</span>
+<span class="nc" id="L215">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    /**
+     Test if any matched Element has any text content, that is not just whitespace.
+     @return true if any element has non-blank text content.
+     @see Element#hasText()
+     */
+    public boolean hasText() {
+<span class="nc bnc" id="L224" title="All 2 branches missed.">        for (Element element: this) {</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">            if (element.hasText())</span>
+<span class="nc" id="L226">                return true;</span>
+<span class="nc" id="L227">        }</span>
+<span class="nc" id="L228">        return false;</span>
+    }
+
+    /**
+     * Get the text content of each of the matched elements. If an element has no text, then it is not included in the
+     * result.
+     * @return A list of each matched element's text content.
+     * @see Element#text()
+     * @see Element#hasText()
+     * @see #text()
+     */
+    public List&lt;String&gt; eachText() {
+<span class="nc" id="L240">        ArrayList&lt;String&gt; texts = new ArrayList&lt;&gt;(size());</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        for (Element el: this) {</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">            if (el.hasText())</span>
+<span class="nc" id="L243">                texts.add(el.text());</span>
+<span class="nc" id="L244">        }</span>
+<span class="nc" id="L245">        return texts;</span>
+    }
+    
+    /**
+     * Get the combined inner HTML of all matched elements.
+     * @return string of all element's inner HTML.
+     * @see #text()
+     * @see #outerHtml()
+     */
+    public String html() {
+<span class="nc" id="L255">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">            if (sb.length() != 0)</span>
+<span class="nc" id="L258">                sb.append(&quot;\n&quot;);</span>
+<span class="nc" id="L259">            sb.append(element.html());</span>
+<span class="nc" id="L260">        }</span>
+<span class="nc" id="L261">        return StringUtil.releaseBuilder(sb);</span>
+    }
+    
+    /**
+     * Get the combined outer HTML of all matched elements.
+     * @return string of all element's outer HTML.
+     * @see #text()
+     * @see #html()
+     */
+    public String outerHtml() {
+<span class="nc" id="L271">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">            if (sb.length() != 0)</span>
+<span class="nc" id="L274">                sb.append(&quot;\n&quot;);</span>
+<span class="nc" id="L275">            sb.append(element.outerHtml());</span>
+<span class="nc" id="L276">        }</span>
+<span class="nc" id="L277">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    /**
+     * Get the combined outer HTML of all matched elements. Alias of {@link #outerHtml()}.
+     * @return string of all element's outer HTML.
+     * @see #text()
+     * @see #html()
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L288">        return outerHtml();</span>
+    }
+
+    /**
+     * Update the tag name of each matched element. For example, to change each {@code &lt;i&gt;} to a {@code &lt;em&gt;}, do
+     * {@code doc.select(&quot;i&quot;).tagName(&quot;em&quot;);}
+     * @param tagName the new tag name
+     * @return this, for chaining
+     * @see Element#tagName(String)
+     */
+    public Elements tagName(String tagName) {
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L300">            element.tagName(tagName);</span>
+<span class="nc" id="L301">        }</span>
+<span class="nc" id="L302">        return this;</span>
+    }
+    
+    /**
+     * Set the inner HTML of each matched element.
+     * @param html HTML to parse and set into each matched element.
+     * @return this, for chaining
+     * @see Element#html(String)
+     */
+    public Elements html(String html) {
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L313">            element.html(html);</span>
+<span class="nc" id="L314">        }</span>
+<span class="nc" id="L315">        return this;</span>
+    }
+    
+    /**
+     * Add the supplied HTML to the start of each matched element's inner HTML.
+     * @param html HTML to add inside each element, before the existing HTML
+     * @return this, for chaining
+     * @see Element#prepend(String)
+     */
+    public Elements prepend(String html) {
+<span class="nc bnc" id="L325" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L326">            element.prepend(html);</span>
+<span class="nc" id="L327">        }</span>
+<span class="nc" id="L328">        return this;</span>
+    }
+    
+    /**
+     * Add the supplied HTML to the end of each matched element's inner HTML.
+     * @param html HTML to add inside each element, after the existing HTML
+     * @return this, for chaining
+     * @see Element#append(String)
+     */
+    public Elements append(String html) {
+<span class="nc bnc" id="L338" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L339">            element.append(html);</span>
+<span class="nc" id="L340">        }</span>
+<span class="nc" id="L341">        return this;</span>
+    }
+    
+    /**
+     * Insert the supplied HTML before each matched element's outer HTML.
+     * @param html HTML to insert before each element
+     * @return this, for chaining
+     * @see Element#before(String)
+     */
+    public Elements before(String html) {
+<span class="nc bnc" id="L351" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L352">            element.before(html);</span>
+<span class="nc" id="L353">        }</span>
+<span class="nc" id="L354">        return this;</span>
+    }
+    
+    /**
+     * Insert the supplied HTML after each matched element's outer HTML.
+     * @param html HTML to insert after each element
+     * @return this, for chaining
+     * @see Element#after(String)
+     */
+    public Elements after(String html) {
+<span class="nc bnc" id="L364" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L365">            element.after(html);</span>
+<span class="nc" id="L366">        }</span>
+<span class="nc" id="L367">        return this;</span>
+    }
+
+    /**
+     Wrap the supplied HTML around each matched elements. For example, with HTML
+     {@code &lt;p&gt;&lt;b&gt;This&lt;/b&gt; is &lt;b&gt;Jsoup&lt;/b&gt;&lt;/p&gt;},
+     &lt;code&gt;doc.select(&quot;b&quot;).wrap(&quot;&amp;lt;i&amp;gt;&amp;lt;/i&amp;gt;&quot;);&lt;/code&gt;
+     becomes {@code &lt;p&gt;&lt;i&gt;&lt;b&gt;This&lt;/b&gt;&lt;/i&gt; is &lt;i&gt;&lt;b&gt;jsoup&lt;/b&gt;&lt;/i&gt;&lt;/p&gt;}
+     @param html HTML to wrap around each element, e.g. {@code &lt;div class=&quot;head&quot;&gt;&lt;/div&gt;}. Can be arbitrarily deep.
+     @return this (for chaining)
+     @see Element#wrap
+     */
+    public Elements wrap(String html) {
+<span class="nc" id="L380">        Validate.notEmpty(html);</span>
+<span class="nc bnc" id="L381" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L382">            element.wrap(html);</span>
+<span class="nc" id="L383">        }</span>
+<span class="nc" id="L384">        return this;</span>
+    }
+
+    /**
+     * Removes the matched elements from the DOM, and moves their children up into their parents. This has the effect of
+     * dropping the elements but keeping their children.
+     * &lt;p&gt;
+     * This is useful for e.g removing unwanted formatting elements but keeping their contents.
+     * &lt;/p&gt;
+     * 
+     * E.g. with HTML: &lt;p&gt;{@code &lt;div&gt;&lt;font&gt;One&lt;/font&gt; &lt;font&gt;&lt;a href=&quot;/&quot;&gt;Two&lt;/a&gt;&lt;/font&gt;&lt;/div&gt;}&lt;/p&gt;
+     * &lt;p&gt;{@code doc.select(&quot;font&quot;).unwrap();}&lt;/p&gt;
+     * &lt;p&gt;HTML = {@code &lt;div&gt;One &lt;a href=&quot;/&quot;&gt;Two&lt;/a&gt;&lt;/div&gt;}&lt;/p&gt;
+     *
+     * @return this (for chaining)
+     * @see Node#unwrap
+     */
+    public Elements unwrap() {
+<span class="nc bnc" id="L402" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L403">            element.unwrap();</span>
+<span class="nc" id="L404">        }</span>
+<span class="nc" id="L405">        return this;</span>
+    }
+
+    /**
+     * Empty (remove all child nodes from) each matched element. This is similar to setting the inner HTML of each
+     * element to nothing.
+     * &lt;p&gt;
+     * E.g. HTML: {@code &lt;div&gt;&lt;p&gt;Hello &lt;b&gt;there&lt;/b&gt;&lt;/p&gt; &lt;p&gt;now&lt;/p&gt;&lt;/div&gt;}&lt;br&gt;
+     * &lt;code&gt;doc.select(&quot;p&quot;).empty();&lt;/code&gt;&lt;br&gt;
+     * HTML = {@code &lt;div&gt;&lt;p&gt;&lt;/p&gt; &lt;p&gt;&lt;/p&gt;&lt;/div&gt;}
+     * @return this, for chaining
+     * @see Element#empty()
+     * @see #remove()
+     */
+    public Elements empty() {
+<span class="nc bnc" id="L420" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L421">            element.empty();</span>
+<span class="nc" id="L422">        }</span>
+<span class="nc" id="L423">        return this;</span>
+    }
+
+    /**
+     * Remove each matched element from the DOM. This is similar to setting the outer HTML of each element to nothing.
+     * &lt;p&gt;
+     * E.g. HTML: {@code &lt;div&gt;&lt;p&gt;Hello&lt;/p&gt; &lt;p&gt;there&lt;/p&gt; &lt;img /&gt;&lt;/div&gt;}&lt;br&gt;
+     * &lt;code&gt;doc.select(&quot;p&quot;).remove();&lt;/code&gt;&lt;br&gt;
+     * HTML = {@code &lt;div&gt; &lt;img /&gt;&lt;/div&gt;}
+     * &lt;p&gt;
+     * Note that this method should not be used to clean user-submitted HTML; rather, use {@link org.jsoup.safety.Cleaner} to clean HTML.
+     * @return this, for chaining
+     * @see Element#empty()
+     * @see #empty()
+     */
+    public Elements remove() {
+<span class="nc bnc" id="L439" title="All 2 branches missed.">        for (Element element : this) {</span>
+<span class="nc" id="L440">            element.remove();</span>
+<span class="nc" id="L441">        }</span>
+<span class="nc" id="L442">        return this;</span>
+    }
+    
+    // filters
+    
+    /**
+     * Find matching elements within this element list.
+     * @param query A {@link Selector} query
+     * @return the filtered list of elements, or an empty list if none match.
+     */
+    public Elements select(String query) {
+<span class="nc" id="L453">        return Selector.select(query, this);</span>
+    }
+
+    /**
+     * Remove elements from this list that match the {@link Selector} query.
+     * &lt;p&gt;
+     * E.g. HTML: {@code &lt;div class=logo&gt;One&lt;/div&gt; &lt;div&gt;Two&lt;/div&gt;}&lt;br&gt;
+     * &lt;code&gt;Elements divs = doc.select(&quot;div&quot;).not(&quot;.logo&quot;);&lt;/code&gt;&lt;br&gt;
+     * Result: {@code divs: [&lt;div&gt;Two&lt;/div&gt;]}
+     * &lt;p&gt;
+     * @param query the selector query whose results should be removed from these elements
+     * @return a new elements list that contains only the filtered results
+     */
+    public Elements not(String query) {
+<span class="nc" id="L467">        Elements out = Selector.select(query, this);</span>
+<span class="nc" id="L468">        return Selector.filterOut(this, out);</span>
+    }
+    
+    /**
+     * Get the &lt;i&gt;nth&lt;/i&gt; matched element as an Elements object.
+     * &lt;p&gt;
+     * See also {@link #get(int)} to retrieve an Element.
+     * @param index the (zero-based) index of the element in the list to retain
+     * @return Elements containing only the specified element, or, if that element did not exist, an empty list.
+     */
+    public Elements eq(int index) {
+<span class="nc bnc" id="L479" title="All 2 branches missed.">        return size() &gt; index ? new Elements(get(index)) : new Elements();</span>
+    }
+    
+    /**
+     * Test if any of the matched elements match the supplied query.
+     * @param query A selector
+     * @return true if at least one element in the list matches the query.
+     */
+    public boolean is(String query) {
+<span class="nc" id="L488">        Evaluator eval = QueryParser.parse(query);</span>
+<span class="nc bnc" id="L489" title="All 2 branches missed.">        for (Element e : this) {</span>
+<span class="nc bnc" id="L490" title="All 2 branches missed.">            if (e.is(eval))</span>
+<span class="nc" id="L491">                return true;</span>
+<span class="nc" id="L492">        }</span>
+<span class="nc" id="L493">        return false;</span>
+    }
+
+    /**
+     * Get the immediate next element sibling of each element in this list.
+     * @return next element siblings.
+     */
+    public Elements next() {
+<span class="nc" id="L501">        return siblings(null, true, false);</span>
+    }
+
+    /**
+     * Get the immediate next element sibling of each element in this list, filtered by the query.
+     * @param query CSS query to match siblings against
+     * @return next element siblings.
+     */
+    public Elements next(String query) {
+<span class="nc" id="L510">        return siblings(query, true, false);</span>
+    }
+
+    /**
+     * Get each of the following element siblings of each element in this list.
+     * @return all following element siblings.
+     */
+    public Elements nextAll() {
+<span class="nc" id="L518">        return siblings(null, true, true);</span>
+    }
+
+    /**
+     * Get each of the following element siblings of each element in this list, that match the query.
+     * @param query CSS query to match siblings against
+     * @return all following element siblings.
+     */
+    public Elements nextAll(String query) {
+<span class="nc" id="L527">        return siblings(query, true, true);</span>
+    }
+
+    /**
+     * Get the immediate previous element sibling of each element in this list.
+     * @return previous element siblings.
+     */
+    public Elements prev() {
+<span class="nc" id="L535">        return siblings(null, false, false);</span>
+    }
+
+    /**
+     * Get the immediate previous element sibling of each element in this list, filtered by the query.
+     * @param query CSS query to match siblings against
+     * @return previous element siblings.
+     */
+    public Elements prev(String query) {
+<span class="nc" id="L544">        return siblings(query, false, false);</span>
+    }
+
+    /**
+     * Get each of the previous element siblings of each element in this list.
+     * @return all previous element siblings.
+     */
+    public Elements prevAll() {
+<span class="nc" id="L552">        return siblings(null, false, true);</span>
+    }
+
+    /**
+     * Get each of the previous element siblings of each element in this list, that match the query.
+     * @param query CSS query to match siblings against
+     * @return all previous element siblings.
+     */
+    public Elements prevAll(String query) {
+<span class="nc" id="L561">        return siblings(query, false, true);</span>
+    }
+
+    private Elements siblings(String query, boolean next, boolean all) {
+<span class="nc" id="L565">        Elements els = new Elements();</span>
+<span class="nc bnc" id="L566" title="All 2 branches missed.">        Evaluator eval = query != null? QueryParser.parse(query) : null;</span>
+<span class="nc bnc" id="L567" title="All 2 branches missed.">        for (Element e : this) {</span>
+            do {
+<span class="nc bnc" id="L569" title="All 2 branches missed.">                Element sib = next ? e.nextElementSibling() : e.previousElementSibling();</span>
+<span class="nc bnc" id="L570" title="All 2 branches missed.">                if (sib == null) break;</span>
+<span class="nc bnc" id="L571" title="All 2 branches missed.">                if (eval == null)</span>
+<span class="nc" id="L572">                    els.add(sib);</span>
+<span class="nc bnc" id="L573" title="All 2 branches missed.">                else if (sib.is(eval))</span>
+<span class="nc" id="L574">                    els.add(sib);</span>
+<span class="nc" id="L575">                e = sib;</span>
+<span class="nc bnc" id="L576" title="All 2 branches missed.">            } while (all);</span>
+<span class="nc" id="L577">        }</span>
+<span class="nc" id="L578">        return els;</span>
+    }
+
+    /**
+     * Get all of the parents and ancestor elements of the matched elements.
+     * @return all of the parents and ancestor elements of the matched elements
+     */
+    public Elements parents() {
+<span class="nc" id="L586">        HashSet&lt;Element&gt; combo = new LinkedHashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L587" title="All 2 branches missed.">        for (Element e: this) {</span>
+<span class="nc" id="L588">            combo.addAll(e.parents());</span>
+<span class="nc" id="L589">        }</span>
+<span class="nc" id="L590">        return new Elements(combo);</span>
+    }
+
+    // list-like methods
+    /**
+     Get the first matched element.
+     @return The first matched element, or &lt;code&gt;null&lt;/code&gt; if contents is empty.
+     */
+    public Element first() {
+<span class="nc bnc" id="L599" title="All 2 branches missed.">        return isEmpty() ? null : get(0);</span>
+    }
+
+    /**
+     Get the last matched element.
+     @return The last matched element, or &lt;code&gt;null&lt;/code&gt; if contents is empty.
+     */
+    public Element last() {
+<span class="nc bnc" id="L607" title="All 2 branches missed.">        return isEmpty() ? null : get(size() - 1);</span>
+    }
+
+    /**
+     * Perform a depth-first traversal on each of the selected elements.
+     * @param nodeVisitor the visitor callbacks to perform on each node
+     * @return this, for chaining
+     */
+    public Elements traverse(NodeVisitor nodeVisitor) {
+<span class="nc" id="L616">        NodeTraversor.traverse(nodeVisitor, this);</span>
+<span class="nc" id="L617">        return this;</span>
+    }
+
+    /**
+     * Perform a depth-first filtering on each of the selected elements.
+     * @param nodeFilter the filter callbacks to perform on each node
+     * @return this, for chaining
+     */
+    public Elements filter(NodeFilter nodeFilter) {
+<span class="nc" id="L626">        NodeTraversor.filter(nodeFilter, this);</span>
+<span class="nc" id="L627">        return this;</span>
+    }
+
+    /**
+     * Get the {@link FormElement} forms from the selected elements, if any.
+     * @return a list of {@link FormElement}s pulled from the matched elements. The list will be empty if the elements contain
+     * no forms.
+     */
+    public List&lt;FormElement&gt; forms() {
+<span class="nc" id="L636">        ArrayList&lt;FormElement&gt; forms = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L637" title="All 2 branches missed.">        for (Element el: this)</span>
+<span class="nc bnc" id="L638" title="All 2 branches missed.">            if (el instanceof FormElement)</span>
+<span class="nc" id="L639">                forms.add((FormElement) el);</span>
+<span class="nc" id="L640">        return forms;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

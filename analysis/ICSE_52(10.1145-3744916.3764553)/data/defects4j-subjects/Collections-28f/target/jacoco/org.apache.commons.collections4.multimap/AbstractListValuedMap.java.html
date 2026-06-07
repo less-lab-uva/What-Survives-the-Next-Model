@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractListValuedMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Collections</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.collections4.multimap</a> &gt; <span class="el_source">AbstractListValuedMap.java</span></div><h1>AbstractListValuedMap.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.collections4.multimap;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+
+import org.apache.commons.collections4.ListUtils;
+import org.apache.commons.collections4.ListValuedMap;
+
+/**
+ * Abstract implementation of the {@link ListValuedMap} interface to simplify
+ * the creation of subclass implementations.
+ * &lt;p&gt;
+ * Subclasses specify a Map implementation to use as the internal storage and
+ * the List implementation to use as values.
+ *
+ * @since 4.1
+ * @version $Id$
+ */
+public abstract class AbstractListValuedMap&lt;K, V&gt; extends AbstractMultiValuedMap&lt;K, V&gt;
+        implements ListValuedMap&lt;K, V&gt; {
+
+    /**
+     * Constructor needed for subclass serialisation.
+     */
+    protected AbstractListValuedMap() {
+<span class="nc" id="L45">        super();</span>
+<span class="nc" id="L46">    }</span>
+
+    /**
+     * A constructor that wraps, not copies
+     *
+     * @param map  the map to wrap, must not be null
+     * @throws NullPointerException if the map is null
+     */
+    protected AbstractListValuedMap(final Map&lt;K, ? extends List&lt;V&gt;&gt; map) {
+<span class="nc" id="L55">        super(map);</span>
+<span class="nc" id="L56">    }</span>
+
+    // -----------------------------------------------------------------------
+    @Override
+    @SuppressWarnings(&quot;unchecked&quot;)
+    protected Map&lt;K, List&lt;V&gt;&gt; getMap() {
+<span class="nc" id="L62">        return (Map&lt;K, List&lt;V&gt;&gt;) super.getMap();</span>
+    }
+
+    /**
+     * Creates a new value collection using the provided factory.
+     * @return a new list
+     */
+    @Override
+    protected abstract List&lt;V&gt; createCollection();
+
+    // -----------------------------------------------------------------------
+    /**
+     * Gets the list of values associated with the specified key. This would
+     * return an empty list in case the mapping is not present
+     *
+     * @param key  the key to retrieve
+     * @return the {@code List} of values, will return an empty {@link List} for no mapping
+     */
+    @Override
+    public List&lt;V&gt; get(final K key) {
+<span class="nc" id="L82">        return wrappedCollection(key);</span>
+    }
+
+    @Override
+    List&lt;V&gt; wrappedCollection(final K key) {
+<span class="nc" id="L87">        return new WrappedList(key);</span>
+    }
+
+    /**
+     * Removes all values associated with the specified key.
+     * &lt;p&gt;
+     * A subsequent &lt;code&gt;get(Object)&lt;/code&gt; would return an empty list.
+     *
+     * @param key  the key to remove values from
+     * @return the &lt;code&gt;List&lt;/code&gt; of values removed, will return an empty,
+     *   unmodifiable list for no mapping found.
+     */
+    @Override
+    public List&lt;V&gt; remove(Object key) {
+<span class="nc" id="L101">        return ListUtils.emptyIfNull(getMap().remove(key));</span>
+    }
+
+    // -----------------------------------------------------------------------
+    /**
+     * Wrapped list to handle add and remove on the list returned by get(object)
+     */
+    private class WrappedList extends WrappedCollection implements List&lt;V&gt; {
+
+<span class="nc" id="L110">        public WrappedList(final K key) {</span>
+<span class="nc" id="L111">            super(key);</span>
+<span class="nc" id="L112">        }</span>
+
+        @Override
+        protected List&lt;V&gt; getMapping() {
+<span class="nc" id="L116">            return getMap().get(key);</span>
+        }
+
+        @Override
+        public void add(int index, V value) {
+<span class="nc" id="L121">            List&lt;V&gt; list = getMapping();</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">            if (list == null) {</span>
+<span class="nc" id="L123">                list = createCollection();</span>
+<span class="nc" id="L124">                getMap().put(key, list);</span>
+            }
+<span class="nc" id="L126">            list.add(index, value);</span>
+<span class="nc" id="L127">        }</span>
+
+        @Override
+        public boolean addAll(int index, Collection&lt;? extends V&gt; c) {
+<span class="nc" id="L131">            List&lt;V&gt; list = getMapping();</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            if (list == null) {</span>
+<span class="nc" id="L133">                list = createCollection();</span>
+<span class="nc" id="L134">                boolean changed = list.addAll(index, c);</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">                if (changed) {</span>
+<span class="nc" id="L136">                    getMap().put(key, list);</span>
+                }
+<span class="nc" id="L138">                return changed;</span>
+            }
+<span class="nc" id="L140">            return list.addAll(index, c);</span>
+        }
+
+        @Override
+        public V get(int index) {
+<span class="nc" id="L145">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L146">            return list.get(index);</span>
+        }
+
+        @Override
+        public int indexOf(Object o) {
+<span class="nc" id="L151">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L152">            return list.indexOf(o);</span>
+        }
+
+        @Override
+        public int lastIndexOf(Object o) {
+<span class="nc" id="L157">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L158">            return list.lastIndexOf(o);</span>
+        }
+
+        @Override
+        public ListIterator&lt;V&gt; listIterator() {
+<span class="nc" id="L163">            return new ValuesListIterator(key);</span>
+        }
+
+        @Override
+        public ListIterator&lt;V&gt; listIterator(int index) {
+<span class="nc" id="L168">            return new ValuesListIterator(key, index);</span>
+        }
+
+        @Override
+        public V remove(int index) {
+<span class="nc" id="L173">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L174">            V value = list.remove(index);</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">            if (list.isEmpty()) {</span>
+<span class="nc" id="L176">                AbstractListValuedMap.this.remove(key);</span>
+            }
+<span class="nc" id="L178">            return value;</span>
+        }
+
+        @Override
+        public V set(int index, V value) {
+<span class="nc" id="L183">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L184">            return list.set(index, value);</span>
+        }
+
+        @Override
+        public List&lt;V&gt; subList(int fromIndex, int toIndex) {
+<span class="nc" id="L189">            final List&lt;V&gt; list = ListUtils.emptyIfNull(getMapping());</span>
+<span class="nc" id="L190">            return list.subList(fromIndex, toIndex);</span>
+        }
+
+        @Override
+        public boolean equals(Object other) {
+<span class="nc" id="L195">            final List&lt;V&gt; list = getMapping();</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            if (list == null) {</span>
+<span class="nc" id="L197">                return Collections.emptyList().equals(other);</span>
+            }
+<span class="nc bnc" id="L199" title="All 2 branches missed.">            if (!(other instanceof List)) {</span>
+<span class="nc" id="L200">                return false;</span>
+            }
+<span class="nc" id="L202">            List&lt;?&gt; otherList = (List&lt;?&gt;) other;</span>
+<span class="nc" id="L203">            return ListUtils.isEqualList(list, otherList);</span>
+        }
+
+        @Override
+        public int hashCode() {
+<span class="nc" id="L208">            final List&lt;V&gt; list = getMapping();</span>
+<span class="nc" id="L209">            return ListUtils.hashCodeForList(list);</span>
+        }
+
+    }
+
+    /** Values ListIterator */
+    private class ValuesListIterator implements ListIterator&lt;V&gt; {
+
+        private final K key;
+        private List&lt;V&gt; values;
+        private ListIterator&lt;V&gt; iterator;
+
+<span class="nc" id="L221">        public ValuesListIterator(final K key) {</span>
+<span class="nc" id="L222">            this.key = key;</span>
+<span class="nc" id="L223">            this.values = ListUtils.emptyIfNull(getMap().get(key));</span>
+<span class="nc" id="L224">            this.iterator = values.listIterator();</span>
+<span class="nc" id="L225">        }</span>
+
+<span class="nc" id="L227">        public ValuesListIterator(final K key, int index) {</span>
+<span class="nc" id="L228">            this.key = key;</span>
+<span class="nc" id="L229">            this.values = ListUtils.emptyIfNull(getMap().get(key));</span>
+<span class="nc" id="L230">            this.iterator = values.listIterator(index);</span>
+<span class="nc" id="L231">        }</span>
+
+        @Override
+        public void add(V value) {
+<span class="nc bnc" id="L235" title="All 2 branches missed.">            if (getMap().get(key) == null) {</span>
+<span class="nc" id="L236">                List&lt;V&gt; list = createCollection();</span>
+<span class="nc" id="L237">                getMap().put(key, list);</span>
+<span class="nc" id="L238">                this.values = list;</span>
+<span class="nc" id="L239">                this.iterator = list.listIterator();</span>
+            }
+<span class="nc" id="L241">            this.iterator.add(value);</span>
+<span class="nc" id="L242">        }</span>
+
+        @Override
+        public boolean hasNext() {
+<span class="nc" id="L246">            return iterator.hasNext();</span>
+        }
+
+        @Override
+        public boolean hasPrevious() {
+<span class="nc" id="L251">            return iterator.hasPrevious();</span>
+        }
+
+        @Override
+        public V next() {
+<span class="nc" id="L256">            return iterator.next();</span>
+        }
+
+        @Override
+        public int nextIndex() {
+<span class="nc" id="L261">            return iterator.nextIndex();</span>
+        }
+
+        @Override
+        public V previous() {
+<span class="nc" id="L266">            return iterator.previous();</span>
+        }
+
+        @Override
+        public int previousIndex() {
+<span class="nc" id="L271">            return iterator.previousIndex();</span>
+        }
+
+        @Override
+        public void remove() {
+<span class="nc" id="L276">            iterator.remove();</span>
+<span class="nc bnc" id="L277" title="All 2 branches missed.">            if (values.isEmpty()) {</span>
+<span class="nc" id="L278">                getMap().remove(key);</span>
+            }
+<span class="nc" id="L280">        }</span>
+
+        @Override
+        public void set(V value) {
+<span class="nc" id="L284">            iterator.set(value);</span>
+<span class="nc" id="L285">        }</span>
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

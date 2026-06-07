@@ -1,0 +1,710 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "Assertions",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/Assertions.java",
+      "class_declaration": "final class Assertions ",
+      "methods_under_test": {
+        "=1": {
+          "Assertions.notNull(final, Object, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/AssertionsTest.java"
+    },
+    {
+      "src_name": "ExtendedBufferedReader",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/ExtendedBufferedReader.java",
+      "class_declaration": "final class ExtendedBufferedReader extends BufferedReader ",
+      "methods_under_test": {
+        "=1": {
+          "ExtendedBufferedReader.lookAhead()": [
+            1,
+            1,
+            1
+          ],
+          "ExtendedBufferedReader.close()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ExtendedBufferedReader.read()": [
+            2,
+            2,
+            2
+          ],
+          "ExtendedBufferedReader.read(final, char[], final, int, final, int)": [
+            8,
+            8,
+            8
+          ],
+          "ExtendedBufferedReader.readLine()": [
+            2,
+            2,
+            2
+          ],
+          "ExtendedBufferedReader.getCurrentLineNumber()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/ExtendedBufferedReaderTest.java"
+    },
+    {
+      "src_name": "CSVPrinter",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/CSVPrinter.java",
+      "class_declaration": "public final class CSVPrinter implements Flushable, Closeable ",
+      "methods_under_test": {
+        "=1": {
+          "CSVPrinter.close()": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.print(final, Object)": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.println()": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.printRecord()": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.printRecords(final, Iterable<?>)": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.printRecords()": [
+            1,
+            1,
+            1
+          ],
+          "CSVPrinter.printRecords(final, ResultSet)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CSVPrinter.close(final, boolean)": [
+            4,
+            4,
+            4
+          ],
+          "CSVPrinter.flush()": [
+            2,
+            2,
+            2
+          ],
+          "CSVPrinter.printComment(final, String)": [
+            7,
+            7,
+            7
+          ],
+          "CSVPrinter.printRecord(final, Iterable<?>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVPrinterTest.java"
+    },
+    {
+      "src_name": "CSVParser",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/CSVParser.java",
+      "class_declaration": "public final class CSVParser implements Iterable<CSVRecord>, Closeable ",
+      "methods_under_test": {
+        "=1": {
+          "CSVParser.parse(final, File, final, Charset, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.parse(final, InputStream, final, Charset, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.parse(final, Path, final, Charset, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.parse(final, Reader, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.parse(final, String, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.parse(final, URL, final, Charset, final, CSVFormat)": [
+            1,
+            1,
+            1
+          ],
+          "CSVParser.iterator()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecordIterator.remove()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CSVParser.close()": [
+            2,
+            2,
+            2
+          ],
+          "CSVParser.getRecords()": [
+            2,
+            2,
+            2
+          ],
+          "CSVRecordIterator.hasNext()": [
+            3,
+            3,
+            3
+          ],
+          "CSVRecordIterator.next()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "CSVParser.nextRecord()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVParserTest.java"
+    },
+    {
+      "src_name": "CSVFormat",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/CSVFormat.java",
+      "class_declaration": "public final class CSVFormat implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "CSVFormat.newFormat(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.valueOf(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.parse(final, Reader)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.print(final, Appendable)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.print(final, File, final, Charset)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.print(final, Path, final, Charset)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.printer()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withAllowMissingColumnNames()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withAllowMissingColumnNames(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withAutoFlush(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withCommentMarker(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withEscape(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withFirstRecordAsHeader()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withHeader(final, ResultSet)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withHeader()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withHeaderComments()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreEmptyLines()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreEmptyLines(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreHeaderCase()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreHeaderCase(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreSurroundingSpaces()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withIgnoreSurroundingSpaces(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withNullString(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withQuote(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withQuoteMode(final, QuoteMode)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withRecordSeparator(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withRecordSeparator(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withSkipHeaderRecord()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withSkipHeaderRecord(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withSystemRecordSeparator()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withTrailingDelimiter()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withTrailingDelimiter(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withTrim()": [
+            1,
+            1,
+            1
+          ],
+          "CSVFormat.withTrim(final, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CSVFormat.format()": [
+            2,
+            2,
+            2
+          ],
+          "CSVFormat.print(final, Object, final, Appendable, final, boolean)": [
+            4,
+            4,
+            4
+          ],
+          "CSVFormat.println(final, Appendable)": [
+            3,
+            3,
+            3
+          ],
+          "CSVFormat.printRecord(final, Appendable)": [
+            2,
+            2,
+            2
+          ],
+          "CSVFormat.withCommentMarker(final, Character)": [
+            2,
+            2,
+            2
+          ],
+          "CSVFormat.withDelimiter(final, char)": [
+            2,
+            2,
+            2
+          ],
+          "CSVFormat.withEscape(final, Character)": [
+            2,
+            2,
+            2
+          ],
+          "CSVFormat.withHeader(final, Class<? extends Enum<?>>)": [
+            3,
+            3,
+            3
+          ],
+          "CSVFormat.withHeader(final, ResultSetMetaData)": [
+            3,
+            3,
+            3
+          ],
+          "CSVFormat.withQuote(final, Character)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "CSVFormat.toString()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {
+          "CSVFormat.equals(final, Object)": [
+            25,
+            25,
+            25
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVFormatTest.java"
+    },
+    {
+      "src_name": "Lexer",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/Lexer.java",
+      "class_declaration": "final class Lexer implements Closeable ",
+      "methods_under_test": {
+        "=1": {
+          "Lexer.isWhitespace(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isStartOfLine(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isEndOfFile(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isDelimiter(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isEscape(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isQuoteChar(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.isCommentStart(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Lexer.close()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Lexer.trimTrailingSpaces(final, StringBuilder)": [
+            3,
+            3,
+            3
+          ],
+          "Lexer.readEndOfLine(int)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {
+          "Lexer.nextToken(final, Token)": [
+            14,
+            14,
+            14
+          ],
+          "Lexer.readEscape()": [
+            14,
+            14,
+            14
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/LexerTest.java"
+    },
+    {
+      "src_name": "CSVRecord",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/CSVRecord.java",
+      "class_declaration": "public final class CSVRecord implements Serializable, Iterable<String> ",
+      "methods_under_test": {
+        "=1": {
+          "CSVRecord.get(final, Enum<?>)": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.get(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.hasComment()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.isMapped(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.isSet(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.iterator()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.size()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.toMap()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.toString()": [
+            1,
+            1,
+            1
+          ],
+          "CSVRecord.values()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CSVRecord.get(final, String)": [
+            4,
+            4,
+            4
+          ],
+          "CSVRecord.putIn(final, M)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVRecordTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [
+    {
+      "src_name": "Token",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/Token.java",
+      "class_declaration": "final class Token ",
+      "methods_under_test": {
+        "=1": {
+          "Token.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Token.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/TokenMatchersTest.java"
+    }
+  ],
+  "src_without_tests": [
+    {
+      "src_name": "QuoteMode",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/QuoteMode.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Constants",
+      "src_path": "../../defects4j-subjects/Csv-16f/src/main/java/org/apache/commons/csv/Constants.java",
+      "class_declaration": "final class Constants ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "JiraCsv203Test": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/issues/JiraCsv203Test.java"
+    },
+    {
+      "CSVBenchmark": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVBenchmark.java"
+    },
+    {
+      "JiraCsv198Test": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/issues/JiraCsv198Test.java"
+    },
+    {
+      "PerformanceTest": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/PerformanceTest.java"
+    },
+    {
+      "CSVFileParserTest": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVFileParserTest.java"
+    },
+    {
+      "Utils": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/Utils.java"
+    },
+    {
+      "JiraCsv167Test": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/issues/JiraCsv167Test.java"
+    },
+    {
+      "JiraCsv164Test": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/issues/JiraCsv164Test.java"
+    },
+    {
+      "TokenMatchers": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/TokenMatchers.java"
+    },
+    {
+      "CSVFormatPredefinedTest": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/CSVFormatPredefinedTest.java"
+    },
+    {
+      "JiraCsv213Test": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/issues/JiraCsv213Test.java"
+    },
+    {
+      "PerformanceTest": "../../defects4j-subjects/Csv-16f/src/test/java/org/apache/commons/csv/perf/PerformanceTest.java"
+    }
+  ]
+}

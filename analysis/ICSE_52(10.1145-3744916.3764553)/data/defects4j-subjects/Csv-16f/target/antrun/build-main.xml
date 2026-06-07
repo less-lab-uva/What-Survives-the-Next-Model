@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <copy todir="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/apidocs/META-INF">
+    <fileset dir="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f">
+      <include name="LICENSE.txt"/>
+      <include name="NOTICE.txt"/>
+    </fileset>
+  </copy>
+</target>
+</project>

@@ -1,0 +1,86 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Apache Commons Codec,org.apache.commons.codec.language,MatchRatingApproachEncoder,649,0,76,0,114,0,51,0,13,0
+Apache Commons Codec,org.apache.commons.codec.language,ColognePhonetic,590,0,86,0,86,0,51,0,8,0
+Apache Commons Codec,org.apache.commons.codec.language,ColognePhonetic.CologneBuffer,44,0,0,0,11,0,4,0,4,0
+Apache Commons Codec,org.apache.commons.codec.language,Metaphone,717,0,160,0,168,0,101,0,12,0
+Apache Commons Codec,org.apache.commons.codec.language,DaitchMokotoffSoundex.new Comparator() {...},9,0,0,0,2,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language,SoundexUtils,92,0,18,0,21,0,13,0,4,0
+Apache Commons Codec,org.apache.commons.codec.language,DoubleMetaphone,556,2568,146,292,72,344,109,160,1,38
+Apache Commons Codec,org.apache.commons.codec.language,DaitchMokotoffSoundex.Branch,123,0,20,0,30,0,17,0,7,0
+Apache Commons Codec,org.apache.commons.codec.language,Soundex,193,0,20,0,43,0,22,0,12,0
+Apache Commons Codec,org.apache.commons.codec.language,Caverphone,38,0,2,0,9,0,6,0,5,0
+Apache Commons Codec,org.apache.commons.codec.language,AbstractCaverphone,24,0,2,0,6,0,4,0,3,0
+Apache Commons Codec,org.apache.commons.codec.language,DoubleMetaphone.DoubleMetaphoneResult,0,153,1,11,0,37,1,17,0,12
+Apache Commons Codec,org.apache.commons.codec.language,Caverphone2,316,0,4,0,64,0,4,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language,ColognePhonetic.CologneInputBuffer,64,0,0,0,14,0,6,0,6,0
+Apache Commons Codec,org.apache.commons.codec.language,DaitchMokotoffSoundex,634,0,90,0,135,0,55,0,10,0
+Apache Commons Codec,org.apache.commons.codec.language,Caverphone1,301,0,4,0,61,0,4,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language,DaitchMokotoffSoundex.Rule,105,0,16,0,18,0,14,0,6,0
+Apache Commons Codec,org.apache.commons.codec.language,Nysiis,464,0,74,0,86,0,46,0,9,0
+Apache Commons Codec,org.apache.commons.codec.language,RefinedSoundex,125,0,14,0,36,0,16,0,9,0
+Apache Commons Codec,org.apache.commons.codec.language,ColognePhonetic.CologneOutputBuffer,33,0,0,0,9,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.cli,Digest,279,0,32,0,53,0,26,0,10,0
+Apache Commons Codec,org.apache.commons.codec.digest,HmacUtils,476,0,6,0,96,0,61,0,58,0
+Apache Commons Codec,org.apache.commons.codec.digest,Sha2Crypt,787,0,38,0,128,0,26,0,7,0
+Apache Commons Codec,org.apache.commons.codec.digest,PureJavaCrc32,8509,0,10,0,27,0,15,0,7,0
+Apache Commons Codec,org.apache.commons.codec.digest,Crypt,50,0,8,0,13,0,9,0,5,0
+Apache Commons Codec,org.apache.commons.codec.digest,PureJavaCrc32C,8501,0,10,0,35,0,14,0,6,0
+Apache Commons Codec,org.apache.commons.codec.digest,Md5Crypt,340,0,26,0,66,0,21,0,8,0
+Apache Commons Codec,org.apache.commons.codec.digest,B64,63,0,4,0,11,0,5,0,3,0
+Apache Commons Codec,org.apache.commons.codec.digest,UnixCrypt,5957,0,28,0,151,0,28,0,14,0
+Apache Commons Codec,org.apache.commons.codec.digest,MessageDigestAlgorithms,47,0,0,0,1,0,1,0,1,0
+Apache Commons Codec,org.apache.commons.codec.digest,HmacAlgorithms,84,0,0,0,12,0,4,0,4,0
+Apache Commons Codec,org.apache.commons.codec.digest,DigestUtils,358,0,4,0,95,0,77,0,75,0
+Apache Commons Codec,org.apache.commons.codec.binary,BaseNCodec.Context,62,0,0,0,5,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.binary,Base32OutputStream,24,0,0,0,6,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.binary,StringUtils,146,17,19,5,35,4,32,1,20,1
+Apache Commons Codec,org.apache.commons.codec.binary,Base64InputStream,24,0,0,0,6,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.binary,Base32,2409,0,75,0,165,0,54,0,12,0
+Apache Commons Codec,org.apache.commons.codec.binary,BinaryCodec,338,0,50,0,57,0,38,0,13,0
+Apache Commons Codec,org.apache.commons.codec.binary,BaseNCodec,419,0,62,0,82,0,52,0,21,0
+Apache Commons Codec,org.apache.commons.codec.binary,Hex,460,0,22,0,67,0,37,0,26,0
+Apache Commons Codec,org.apache.commons.codec.binary,BaseNCodecOutputStream,155,0,22,0,40,0,18,0,7,0
+Apache Commons Codec,org.apache.commons.codec.binary,Base64OutputStream,24,0,0,0,6,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.binary,BaseNCodecInputStream,208,0,34,0,47,0,25,0,8,0
+Apache Commons Codec,org.apache.commons.codec.binary,Base64,1940,0,102,0,148,0,80,0,27,0
+Apache Commons Codec,org.apache.commons.codec.binary,CharSequenceUtils,61,0,14,0,18,0,9,0,2,0
+Apache Commons Codec,org.apache.commons.codec.binary,Base32InputStream,24,0,0,0,6,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec,StringEncoderComparator,36,0,0,0,14,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec,CharEncoding,3,0,0,0,1,0,1,0,1,0
+Apache Commons Codec,org.apache.commons.codec,DecoderException,16,0,0,0,8,0,4,0,4,0
+Apache Commons Codec,org.apache.commons.codec,EncoderException,12,4,0,0,6,2,3,1,3,1
+Apache Commons Codec,org.apache.commons.codec,Charsets,35,0,4,0,9,0,6,0,4,0
+Apache Commons Codec,org.apache.commons.codec.net,BCodec,146,0,20,0,44,0,24,0,14,0
+Apache Commons Codec,org.apache.commons.codec.net,QCodec,362,0,42,0,104,0,38,0,17,0
+Apache Commons Codec,org.apache.commons.codec.net,Utils,25,0,2,0,5,0,3,0,2,0
+Apache Commons Codec,org.apache.commons.codec.net,QuotedPrintableCodec,535,0,82,0,123,0,66,0,25,0
+Apache Commons Codec,org.apache.commons.codec.net,URLCodec,353,0,46,0,88,0,38,0,15,0
+Apache Commons Codec,org.apache.commons.codec.net,RFC1522Codec,177,0,18,0,40,0,13,0,4,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,PhoneticEngine,700,0,44,0,113,0,35,0,12,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Languages.SomeLanguages,133,0,16,0,30,0,17,0,9,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Languages.new Languages.LanguageSet() {...},20,0,0,0,8,0,8,0,8,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Languages.new Languages.LanguageSet() {...},20,0,0,0,8,0,8,0,8,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,RuleType,48,0,0,0,8,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,PhoneticEngine.RulesApplication,103,0,10,0,28,0,10,0,5,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,NameType,48,0,0,0,8,0,3,0,3,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},19,0,0,0,4,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.Phoneme,106,0,0,0,20,0,11,0,11,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,BeiderMorseEncoder,109,0,4,0,28,0,12,0,10,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.PhonemeList,9,0,0,0,4,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,ResourceConstants,3,0,0,0,1,0,1,0,1,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Lang.LangRule,18,0,0,0,6,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Languages.LanguageSet,14,0,2,0,2,0,3,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.Phoneme.new Comparator() {...},44,0,8,0,10,0,6,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,PhoneticEngine.PhonemeBuilder,146,0,16,0,35,0,15,0,7,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},28,0,4,0,3,0,4,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Languages,131,0,14,0,29,0,13,0,6,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},11,0,0,0,2,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},11,0,0,0,2,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},25,0,4,0,2,0,4,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},26,0,4,0,2,0,4,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule() {...},88,0,0,0,12,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Lang,249,0,28,0,51,0,20,0,6,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},5,0,0,0,2,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},11,0,0,0,2,0,2,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule.new Rule.RPattern() {...},10,0,2,0,2,0,3,0,2,0
+Apache Commons Codec,org.apache.commons.codec.language.bm,Rule,980,0,120,0,187,0,82,0,22,0

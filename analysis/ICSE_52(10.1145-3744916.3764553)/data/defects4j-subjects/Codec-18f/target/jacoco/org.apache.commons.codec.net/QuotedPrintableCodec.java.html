@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QuotedPrintableCodec.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.net</a> &gt; <span class="el_source">QuotedPrintableCodec.java</span></div><h1>QuotedPrintableCodec.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.net;
+
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.IllegalCharsetNameException;
+import java.nio.charset.UnsupportedCharsetException;
+import java.util.BitSet;
+
+import org.apache.commons.codec.BinaryDecoder;
+import org.apache.commons.codec.BinaryEncoder;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.EncoderException;
+import org.apache.commons.codec.StringDecoder;
+import org.apache.commons.codec.StringEncoder;
+import org.apache.commons.codec.binary.StringUtils;
+
+/**
+ * Codec for the Quoted-Printable section of &lt;a href=&quot;http://www.ietf.org/rfc/rfc1521.txt&quot;&gt;RFC 1521&lt;/a&gt;.
+ * &lt;p&gt;
+ * The Quoted-Printable encoding is intended to represent data that largely consists of octets that correspond to
+ * printable characters in the ASCII character set. It encodes the data in such a way that the resulting octets are
+ * unlikely to be modified by mail transport. If the data being encoded are mostly ASCII text, the encoded form of the
+ * data remains largely recognizable by humans. A body which is entirely ASCII may also be encoded in Quoted-Printable
+ * to ensure the integrity of the data should the message pass through a character- translating, and/or line-wrapping
+ * gateway.
+ * &lt;p&gt;
+ * Note:
+ * &lt;p&gt;
+ * Depending on the selected {@code strict} parameter, this class will implement a different set of rules of the
+ * quoted-printable spec:
+ * &lt;ul&gt;
+ *   &lt;li&gt;{@code strict=false}: only rules #1 and #2 are implemented
+ *   &lt;li&gt;{@code strict=true}: all rules #1 through #5 are implemented
+ * &lt;/ul&gt;
+ * Originally, this class only supported the non-strict mode, but the codec in this partial form could already be used
+ * for certain applications that do not require quoted-printable line formatting (rules #3, #4, #5), for instance
+ * Q codec. The strict mode has been added in 1.10.
+ * &lt;p&gt;
+ * This class is immutable and thread-safe.
+ *
+ * @see &lt;a href=&quot;http://www.ietf.org/rfc/rfc1521.txt&quot;&gt;RFC 1521 MIME (Multipurpose Internet Mail Extensions) Part One:
+ *          Mechanisms for Specifying and Describing the Format of Internet Message Bodies &lt;/a&gt;
+ *
+ * @since 1.3
+ * @version $Id$
+ */
+public class QuotedPrintableCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, StringDecoder {
+    /**
+     * The default charset used for string decoding and encoding.
+     */
+    private final Charset charset;
+
+    /**
+     * Indicates whether soft line breaks shall be used during encoding (rule #3-5).
+     */
+    private final boolean strict;
+
+    /**
+     * BitSet of printable characters as defined in RFC 1521.
+     */
+<span class="nc" id="L80">    private static final BitSet PRINTABLE_CHARS = new BitSet(256);</span>
+
+    private static final byte ESCAPE_CHAR = '=';
+
+    private static final byte TAB = 9;
+
+    private static final byte SPACE = 32;
+
+    private static final byte CR = 13;
+
+    private static final byte LF = 10;
+
+    /**
+     * Safe line length for quoted printable encoded text.
+     */
+    private static final int SAFE_LENGTH = 73;
+
+    // Static initializer for printable chars collection
+    static {
+        // alpha characters
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        for (int i = 33; i &lt;= 60; i++) {</span>
+<span class="nc" id="L101">            PRINTABLE_CHARS.set(i);</span>
+        }
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for (int i = 62; i &lt;= 126; i++) {</span>
+<span class="nc" id="L104">            PRINTABLE_CHARS.set(i);</span>
+        }
+<span class="nc" id="L106">        PRINTABLE_CHARS.set(TAB);</span>
+<span class="nc" id="L107">        PRINTABLE_CHARS.set(SPACE);</span>
+<span class="nc" id="L108">    }</span>
+
+    /**
+     * Default constructor, assumes default charset of {@link Charsets#UTF_8}
+     */
+    public QuotedPrintableCodec() {
+<span class="nc" id="L114">        this(Charsets.UTF_8, false);</span>
+<span class="nc" id="L115">    }</span>
+
+    /**
+     * Constructor which allows for the selection of the strict mode.
+     *
+     * @param strict
+     *            if {@code true}, soft line breaks will be used
+     * @since 1.10
+     */
+    public QuotedPrintableCodec(final boolean strict) {
+<span class="nc" id="L125">        this(Charsets.UTF_8, strict);</span>
+<span class="nc" id="L126">    }</span>
+
+    /**
+     * Constructor which allows for the selection of a default charset.
+     *
+     * @param charset
+     *            the default string charset to use.
+     * @since 1.7
+     */
+    public QuotedPrintableCodec(final Charset charset) {
+<span class="nc" id="L136">        this(charset, false);</span>
+<span class="nc" id="L137">    }</span>
+
+    /**
+     * Constructor which allows for the selection of a default charset and strict mode.
+     *
+     * @param charset
+     *            the default string charset to use.
+     * @param strict
+     *            if {@code true}, soft line breaks will be used
+     * @since 1.10
+     */
+<span class="nc" id="L148">    public QuotedPrintableCodec(final Charset charset, final boolean strict) {</span>
+<span class="nc" id="L149">        this.charset = charset;</span>
+<span class="nc" id="L150">        this.strict = strict;</span>
+<span class="nc" id="L151">    }</span>
+
+    /**
+     * Constructor which allows for the selection of a default charset.
+     *
+     * @param charsetName
+     *            the default string charset to use.
+     * @throws UnsupportedCharsetException
+     *             If no support for the named charset is available
+     *             in this instance of the Java virtual machine
+     * @throws IllegalArgumentException
+     *             If the given charsetName is null
+     * @throws IllegalCharsetNameException
+     *             If the given charset name is illegal
+     *
+     * @since 1.7 throws UnsupportedCharsetException if the named charset is unavailable
+     */
+    public QuotedPrintableCodec(final String charsetName)
+            throws IllegalCharsetNameException, IllegalArgumentException, UnsupportedCharsetException {
+<span class="nc" id="L170">        this(Charset.forName(charsetName), false);</span>
+<span class="nc" id="L171">    }</span>
+
+    /**
+     * Encodes byte into its quoted-printable representation.
+     *
+     * @param b
+     *            byte to encode
+     * @param buffer
+     *            the buffer to write to
+     * @return The number of bytes written to the &lt;code&gt;buffer&lt;/code&gt;
+     */
+    private static final int encodeQuotedPrintable(final int b, final ByteArrayOutputStream buffer) {
+<span class="nc" id="L183">        buffer.write(ESCAPE_CHAR);</span>
+<span class="nc" id="L184">        final char hex1 = Character.toUpperCase(Character.forDigit((b &gt;&gt; 4) &amp; 0xF, 16));</span>
+<span class="nc" id="L185">        final char hex2 = Character.toUpperCase(Character.forDigit(b &amp; 0xF, 16));</span>
+<span class="nc" id="L186">        buffer.write(hex1);</span>
+<span class="nc" id="L187">        buffer.write(hex2);</span>
+<span class="nc" id="L188">        return 3;</span>
+    }
+
+    /**
+     * Return the byte at position &lt;code&gt;index&lt;/code&gt; of the byte array and
+     * make sure it is unsigned.
+     *
+     * @param index
+     *            position in the array
+     * @param bytes
+     *            the byte array
+     * @return the unsigned octet at position &lt;code&gt;index&lt;/code&gt; from the array
+     */
+    private static int getUnsignedOctet(final int index, final byte[] bytes) {
+<span class="nc" id="L202">        int b = bytes[index];</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">        if (b &lt; 0) {</span>
+<span class="nc" id="L204">            b = 256 + b;</span>
+        }
+<span class="nc" id="L206">        return b;</span>
+    }
+
+    /**
+     * Write a byte to the buffer.
+     *
+     * @param b
+     *            byte to write
+     * @param encode
+     *            indicates whether the octet shall be encoded
+     * @param buffer
+     *            the buffer to write to
+     * @return the number of bytes that have been written to the buffer
+     */
+    private static int encodeByte(final int b, final boolean encode,
+                                  final ByteArrayOutputStream buffer) {
+<span class="nc bnc" id="L222" title="All 2 branches missed.">        if (encode) {</span>
+<span class="nc" id="L223">            return encodeQuotedPrintable(b, buffer);</span>
+        }
+<span class="nc" id="L225">        buffer.write(b);</span>
+<span class="nc" id="L226">        return 1;</span>
+    }
+
+    /**
+     * Checks whether the given byte is whitespace.
+     *
+     * @param b
+     *            byte to be checked
+     * @return &lt;code&gt;true&lt;/code&gt; if the byte is either a space or tab character
+     */
+    private static boolean isWhitespace(final int b) {
+<span class="nc bnc" id="L237" title="All 4 branches missed.">        return b == SPACE || b == TAB;</span>
+    }
+
+    /**
+     * Encodes an array of bytes into an array of quoted-printable 7-bit characters. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * This function implements a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param printable
+     *            bitset of characters deemed quoted-printable
+     * @param bytes
+     *            array of bytes to be encoded
+     * @return array of bytes containing quoted-printable data
+     */
+    public static final byte[] encodeQuotedPrintable(final BitSet printable, final byte[] bytes) {
+<span class="nc" id="L253">        return encodeQuotedPrintable(printable, bytes, false);</span>
+    }
+
+    /**
+     * Encodes an array of bytes into an array of quoted-printable 7-bit characters. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * Depending on the selection of the {@code strict} parameter, this function either implements the full ruleset
+     * or only a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param printable
+     *            bitset of characters deemed quoted-printable
+     * @param bytes
+     *            array of bytes to be encoded
+     * @param strict
+     *            if {@code true} the full ruleset is used, otherwise only rule #1 and rule #2
+     * @return array of bytes containing quoted-printable data
+     * @since 1.10
+     */
+    public static final byte[] encodeQuotedPrintable(BitSet printable, final byte[] bytes, final boolean strict) {
+<span class="nc bnc" id="L273" title="All 2 branches missed.">        if (bytes == null) {</span>
+<span class="nc" id="L274">            return null;</span>
+        }
+<span class="nc bnc" id="L276" title="All 2 branches missed.">        if (printable == null) {</span>
+<span class="nc" id="L277">            printable = PRINTABLE_CHARS;</span>
+        }
+<span class="nc" id="L279">        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();</span>
+
+<span class="nc bnc" id="L281" title="All 2 branches missed.">        if (strict) {</span>
+<span class="nc" id="L282">            int pos = 1;</span>
+            // encode up to buffer.length - 3, the last three octets will be treated
+            // separately for simplification of note #3
+<span class="nc bnc" id="L285" title="All 2 branches missed.">            for (int i = 0; i &lt; bytes.length - 3; i++) {</span>
+<span class="nc" id="L286">                final int b = getUnsignedOctet(i, bytes);</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">                if (pos &lt; SAFE_LENGTH) {</span>
+                    // up to this length it is safe to add any byte, encoded or not
+<span class="nc bnc" id="L289" title="All 2 branches missed.">                    pos += encodeByte(b, !printable.get(b), buffer);</span>
+                } else {
+                    // rule #3: whitespace at the end of a line *must* be encoded
+<span class="nc bnc" id="L292" title="All 4 branches missed.">                    encodeByte(b, !printable.get(b) || isWhitespace(b), buffer);</span>
+
+                    // rule #5: soft line break
+<span class="nc" id="L295">                    buffer.write(ESCAPE_CHAR);</span>
+<span class="nc" id="L296">                    buffer.write(CR);</span>
+<span class="nc" id="L297">                    buffer.write(LF);</span>
+<span class="nc" id="L298">                    pos = 1;</span>
+                }
+            }
+
+            // rule #3: whitespace at the end of a line *must* be encoded
+            // if we would do a soft break line after this octet, encode whitespace
+<span class="nc" id="L304">            int b = getUnsignedOctet(bytes.length - 3, bytes);</span>
+<span class="nc bnc" id="L305" title="All 6 branches missed.">            boolean encode = !printable.get(b) || (isWhitespace(b) &amp;&amp; pos &gt; SAFE_LENGTH - 5);</span>
+<span class="nc" id="L306">            pos += encodeByte(b, encode, buffer);</span>
+
+            // note #3: '=' *must not* be the ultimate or penultimate character
+            // simplification: if &lt; 6 bytes left, do a soft line break as we may need
+            //                 exactly 6 bytes space for the last 2 bytes
+<span class="nc bnc" id="L311" title="All 2 branches missed.">            if (pos &gt; SAFE_LENGTH - 2) {</span>
+<span class="nc" id="L312">                buffer.write(ESCAPE_CHAR);</span>
+<span class="nc" id="L313">                buffer.write(CR);</span>
+<span class="nc" id="L314">                buffer.write(LF);</span>
+            }
+<span class="nc bnc" id="L316" title="All 2 branches missed.">            for (int i = bytes.length - 2; i &lt; bytes.length; i++) {</span>
+<span class="nc" id="L317">                b = getUnsignedOctet(i, bytes);</span>
+                // rule #3: trailing whitespace shall be encoded
+<span class="nc bnc" id="L319" title="All 6 branches missed.">                encode = !printable.get(b) || (i &gt; bytes.length - 2 &amp;&amp; isWhitespace(b));</span>
+<span class="nc" id="L320">                encodeByte(b, encode, buffer);</span>
+            }
+<span class="nc" id="L322">        } else {</span>
+<span class="nc bnc" id="L323" title="All 2 branches missed.">            for (final byte c : bytes) {</span>
+<span class="nc" id="L324">                int b = c;</span>
+<span class="nc bnc" id="L325" title="All 2 branches missed.">                if (b &lt; 0) {</span>
+<span class="nc" id="L326">                    b = 256 + b;</span>
+                }
+<span class="nc bnc" id="L328" title="All 2 branches missed.">                if (printable.get(b)) {</span>
+<span class="nc" id="L329">                    buffer.write(b);</span>
+                } else {
+<span class="nc" id="L331">                    encodeQuotedPrintable(b, buffer);</span>
+                }
+            }
+        }
+<span class="nc" id="L335">        return buffer.toByteArray();</span>
+    }
+
+    /**
+     * Decodes an array quoted-printable characters into an array of original bytes. Escaped characters are converted
+     * back to their original representation.
+     * &lt;p&gt;
+     * This function fully implements the quoted-printable encoding specification (rule #1 through rule #5) as
+     * defined in RFC 1521.
+     *
+     * @param bytes
+     *            array of quoted-printable characters
+     * @return array of original bytes
+     * @throws DecoderException
+     *             Thrown if quoted-printable decoding is unsuccessful
+     */
+    public static final byte[] decodeQuotedPrintable(final byte[] bytes) throws DecoderException {
+<span class="nc bnc" id="L352" title="All 2 branches missed.">        if (bytes == null) {</span>
+<span class="nc" id="L353">            return null;</span>
+        }
+<span class="nc" id="L355">        final ByteArrayOutputStream buffer = new ByteArrayOutputStream();</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        for (int i = 0; i &lt; bytes.length; i++) {</span>
+<span class="nc" id="L357">            final int b = bytes[i];</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">            if (b == ESCAPE_CHAR) {</span>
+                try {
+                    // if the next octet is a CR we have found a soft line break
+<span class="nc bnc" id="L361" title="All 2 branches missed.">                    if (bytes[++i] == CR) {</span>
+<span class="nc" id="L362">                        continue;</span>
+                    }
+<span class="nc" id="L364">                    final int u = Utils.digit16(bytes[i]);</span>
+<span class="nc" id="L365">                    final int l = Utils.digit16(bytes[++i]);</span>
+<span class="nc" id="L366">                    buffer.write((char) ((u &lt;&lt; 4) + l));</span>
+<span class="nc" id="L367">                } catch (final ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L368">                    throw new DecoderException(&quot;Invalid quoted-printable encoding&quot;, e);</span>
+<span class="nc" id="L369">                }</span>
+<span class="nc bnc" id="L370" title="All 4 branches missed.">            } else if (b != CR &amp;&amp; b != LF) {</span>
+                // every other octet is appended except for CR &amp; LF
+<span class="nc" id="L372">                buffer.write(b);</span>
+            }
+        }
+<span class="nc" id="L375">        return buffer.toByteArray();</span>
+    }
+
+    /**
+     * Encodes an array of bytes into an array of quoted-printable 7-bit characters. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * Depending on the selection of the {@code strict} parameter, this function either implements the full ruleset
+     * or only a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param bytes
+     *            array of bytes to be encoded
+     * @return array of bytes containing quoted-printable data
+     */
+    @Override
+    public byte[] encode(final byte[] bytes) {
+<span class="nc" id="L391">        return encodeQuotedPrintable(PRINTABLE_CHARS, bytes, strict);</span>
+    }
+
+    /**
+     * Decodes an array of quoted-printable characters into an array of original bytes. Escaped characters are converted
+     * back to their original representation.
+     * &lt;p&gt;
+     * This function fully implements the quoted-printable encoding specification (rule #1 through rule #5) as
+     * defined in RFC 1521.
+     *
+     * @param bytes
+     *            array of quoted-printable characters
+     * @return array of original bytes
+     * @throws DecoderException
+     *             Thrown if quoted-printable decoding is unsuccessful
+     */
+    @Override
+    public byte[] decode(final byte[] bytes) throws DecoderException {
+<span class="nc" id="L409">        return decodeQuotedPrintable(bytes);</span>
+    }
+
+    /**
+     * Encodes a string into its quoted-printable form using the default string charset. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * Depending on the selection of the {@code strict} parameter, this function either implements the full ruleset
+     * or only a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param str
+     *            string to convert to quoted-printable form
+     * @return quoted-printable string
+     * @throws EncoderException
+     *             Thrown if quoted-printable encoding is unsuccessful
+     *
+     * @see #getCharset()
+     */
+    @Override
+    public String encode(final String str) throws EncoderException {
+<span class="nc" id="L429">        return this.encode(str, getCharset());</span>
+    }
+
+    /**
+     * Decodes a quoted-printable string into its original form using the specified string charset. Escaped characters
+     * are converted back to their original representation.
+     *
+     * @param str
+     *            quoted-printable string to convert into its original form
+     * @param charset
+     *            the original string charset
+     * @return original string
+     * @throws DecoderException
+     *             Thrown if quoted-printable decoding is unsuccessful
+     * @since 1.7
+     */
+    public String decode(final String str, final Charset charset) throws DecoderException {
+<span class="nc bnc" id="L446" title="All 2 branches missed.">        if (str == null) {</span>
+<span class="nc" id="L447">            return null;</span>
+        }
+<span class="nc" id="L449">        return new String(this.decode(StringUtils.getBytesUsAscii(str)), charset);</span>
+    }
+
+    /**
+     * Decodes a quoted-printable string into its original form using the specified string charset. Escaped characters
+     * are converted back to their original representation.
+     *
+     * @param str
+     *            quoted-printable string to convert into its original form
+     * @param charset
+     *            the original string charset
+     * @return original string
+     * @throws DecoderException
+     *             Thrown if quoted-printable decoding is unsuccessful
+     * @throws UnsupportedEncodingException
+     *             Thrown if charset is not supported
+     */
+    public String decode(final String str, final String charset) throws DecoderException, UnsupportedEncodingException {
+<span class="nc bnc" id="L467" title="All 2 branches missed.">        if (str == null) {</span>
+<span class="nc" id="L468">            return null;</span>
+        }
+<span class="nc" id="L470">        return new String(decode(StringUtils.getBytesUsAscii(str)), charset);</span>
+    }
+
+    /**
+     * Decodes a quoted-printable string into its original form using the default string charset. Escaped characters are
+     * converted back to their original representation.
+     *
+     * @param str
+     *            quoted-printable string to convert into its original form
+     * @return original string
+     * @throws DecoderException
+     *             Thrown if quoted-printable decoding is unsuccessful. Thrown if charset is not supported.
+     * @see #getCharset()
+     */
+    @Override
+    public String decode(final String str) throws DecoderException {
+<span class="nc" id="L486">        return this.decode(str, this.getCharset());</span>
+    }
+
+    /**
+     * Encodes an object into its quoted-printable safe form. Unsafe characters are escaped.
+     *
+     * @param obj
+     *            string to convert to a quoted-printable form
+     * @return quoted-printable object
+     * @throws EncoderException
+     *             Thrown if quoted-printable encoding is not applicable to objects of this type or if encoding is
+     *             unsuccessful
+     */
+    @Override
+    public Object encode(final Object obj) throws EncoderException {
+<span class="nc bnc" id="L501" title="All 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L502">            return null;</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">        } else if (obj instanceof byte[]) {</span>
+<span class="nc" id="L504">            return encode((byte[]) obj);</span>
+<span class="nc bnc" id="L505" title="All 2 branches missed.">        } else if (obj instanceof String) {</span>
+<span class="nc" id="L506">            return encode((String) obj);</span>
+        } else {
+<span class="nc" id="L508">            throw new EncoderException(&quot;Objects of type &quot; +</span>
+<span class="nc" id="L509">                  obj.getClass().getName() +</span>
+                  &quot; cannot be quoted-printable encoded&quot;);
+        }
+    }
+
+    /**
+     * Decodes a quoted-printable object into its original form. Escaped characters are converted back to their original
+     * representation.
+     *
+     * @param obj
+     *            quoted-printable object to convert into its original form
+     * @return original object
+     * @throws DecoderException
+     *             Thrown if the argument is not a &lt;code&gt;String&lt;/code&gt; or &lt;code&gt;byte[]&lt;/code&gt;. Thrown if a failure
+     *             condition is encountered during the decode process.
+     */
+    @Override
+    public Object decode(final Object obj) throws DecoderException {
+<span class="nc bnc" id="L527" title="All 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L528">            return null;</span>
+<span class="nc bnc" id="L529" title="All 2 branches missed.">        } else if (obj instanceof byte[]) {</span>
+<span class="nc" id="L530">            return decode((byte[]) obj);</span>
+<span class="nc bnc" id="L531" title="All 2 branches missed.">        } else if (obj instanceof String) {</span>
+<span class="nc" id="L532">            return decode((String) obj);</span>
+        } else {
+<span class="nc" id="L534">            throw new DecoderException(&quot;Objects of type &quot; +</span>
+<span class="nc" id="L535">                  obj.getClass().getName() +</span>
+                  &quot; cannot be quoted-printable decoded&quot;);
+        }
+    }
+
+    /**
+     * Gets the default charset name used for string decoding and encoding.
+     *
+     * @return the default charset name
+     * @since 1.7
+     */
+    public Charset getCharset() {
+<span class="nc" id="L547">        return this.charset;</span>
+    }
+
+    /**
+     * Gets the default charset name used for string decoding and encoding.
+     *
+     * @return the default charset name
+     */
+    public String getDefaultCharset() {
+<span class="nc" id="L556">        return this.charset.name();</span>
+    }
+
+    /**
+     * Encodes a string into its quoted-printable form using the specified charset. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * Depending on the selection of the {@code strict} parameter, this function either implements the full ruleset
+     * or only a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param str
+     *            string to convert to quoted-printable form
+     * @param charset
+     *            the charset for str
+     * @return quoted-printable string
+     * @since 1.7
+     */
+    public String encode(final String str, final Charset charset) {
+<span class="nc bnc" id="L574" title="All 2 branches missed.">        if (str == null) {</span>
+<span class="nc" id="L575">            return null;</span>
+        }
+<span class="nc" id="L577">        return StringUtils.newStringUsAscii(this.encode(str.getBytes(charset)));</span>
+    }
+
+    /**
+     * Encodes a string into its quoted-printable form using the specified charset. Unsafe characters are escaped.
+     * &lt;p&gt;
+     * Depending on the selection of the {@code strict} parameter, this function either implements the full ruleset
+     * or only a subset of quoted-printable encoding specification (rule #1 and rule #2) as defined in
+     * RFC 1521 and is suitable for encoding binary data and unformatted text.
+     *
+     * @param str
+     *            string to convert to quoted-printable form
+     * @param charset
+     *            the charset for str
+     * @return quoted-printable string
+     * @throws UnsupportedEncodingException
+     *             Thrown if the charset is not supported
+     */
+    public String encode(final String str, final String charset) throws UnsupportedEncodingException {
+<span class="nc bnc" id="L596" title="All 2 branches missed.">        if (str == null) {</span>
+<span class="nc" id="L597">            return null;</span>
+        }
+<span class="nc" id="L599">        return StringUtils.newStringUsAscii(encode(str.getBytes(charset)));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

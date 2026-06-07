@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.internal</a> &gt; <span class="el_source">StringUtil.java</span></div><h1>StringUtil.java</h1><pre class="source lang-java linenums">package org.jsoup.internal;
+
+import org.jsoup.helper.Validate;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Stack;
+
+/**
+ * A minimal String utility class. Designed for internal jsoup use only.
+ */
+<span class="nc" id="L15">public final class StringUtil {</span>
+    // memoised padding up to 21
+<span class="fc" id="L17">    static final String[] padding = {&quot;&quot;, &quot; &quot;, &quot;  &quot;, &quot;   &quot;, &quot;    &quot;, &quot;     &quot;, &quot;      &quot;, &quot;       &quot;, &quot;        &quot;,</span>
+        &quot;         &quot;, &quot;          &quot;, &quot;           &quot;, &quot;            &quot;, &quot;             &quot;, &quot;              &quot;, &quot;               &quot;,
+        &quot;                &quot;, &quot;                 &quot;, &quot;                  &quot;, &quot;                   &quot;, &quot;                    &quot;};
+
+    /**
+     * Join a collection of strings by a separator
+     * @param strings collection of string objects
+     * @param sep string to place between strings
+     * @return joined string
+     */
+    public static String join(Collection strings, String sep) {
+<span class="nc" id="L28">        return join(strings.iterator(), sep);</span>
+    }
+
+    /**
+     * Join a collection of strings by a separator
+     * @param strings iterator of string objects
+     * @param sep string to place between strings
+     * @return joined string
+     */
+    public static String join(Iterator strings, String sep) {
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (!strings.hasNext())</span>
+<span class="nc" id="L39">            return &quot;&quot;;</span>
+
+<span class="nc" id="L41">        String start = strings.next().toString();</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (!strings.hasNext()) // only one, avoid builder</span>
+<span class="nc" id="L43">            return start;</span>
+
+<span class="nc" id="L45">        StringBuilder sb = StringUtil.borrowBuilder().append(start);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        while (strings.hasNext()) {</span>
+<span class="nc" id="L47">            sb.append(sep);</span>
+<span class="nc" id="L48">            sb.append(strings.next());</span>
+        }
+<span class="nc" id="L50">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    /**
+     * Join an array of strings by a separator
+     * @param strings collection of string objects
+     * @param sep string to place between strings
+     * @return joined string
+     */
+    public static String join(String[] strings, String sep) {
+<span class="nc" id="L60">        return join(Arrays.asList(strings), sep);</span>
+    }
+
+    /**
+     * Returns space padding
+     * @param width amount of padding desired
+     * @return string of spaces * width
+     */
+    public static String padding(int width) {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (width &lt; 0)</span>
+<span class="nc" id="L70">            throw new IllegalArgumentException(&quot;width must be &gt; 0&quot;);</span>
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (width &lt; padding.length)</span>
+<span class="nc" id="L73">            return padding[width];</span>
+<span class="nc" id="L74">        char[] out = new char[width];</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        for (int i = 0; i &lt; width; i++)</span>
+<span class="nc" id="L76">            out[i] = ' ';</span>
+<span class="nc" id="L77">        return String.valueOf(out);</span>
+    }
+
+    /**
+     * Tests if a string is blank: null, empty, or only whitespace (&quot; &quot;, \r\n, \t, etc)
+     * @param string string to test
+     * @return if string is blank
+     */
+    public static boolean isBlank(String string) {
+<span class="nc bnc" id="L86" title="All 4 branches missed.">        if (string == null || string.length() == 0)</span>
+<span class="nc" id="L87">            return true;</span>
+
+<span class="nc" id="L89">        int l = string.length();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        for (int i = 0; i &lt; l; i++) {</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if (!StringUtil.isWhitespace(string.codePointAt(i)))</span>
+<span class="nc" id="L92">                return false;</span>
+        }
+<span class="nc" id="L94">        return true;</span>
+    }
+
+    /**
+     * Tests if a string is numeric, i.e. contains only digit characters
+     * @param string string to test
+     * @return true if only digit chars, false if empty or null or contains non-digit chars
+     */
+    public static boolean isNumeric(String string) {
+<span class="nc bnc" id="L103" title="All 4 branches missed.">        if (string == null || string.length() == 0)</span>
+<span class="nc" id="L104">            return false;</span>
+
+<span class="nc" id="L106">        int l = string.length();</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">        for (int i = 0; i &lt; l; i++) {</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">            if (!Character.isDigit(string.codePointAt(i)))</span>
+<span class="nc" id="L109">                return false;</span>
+        }
+<span class="nc" id="L111">        return true;</span>
+    }
+
+    /**
+     * Tests if a code point is &quot;whitespace&quot; as defined in the HTML spec. Used for output HTML.
+     * @param c code point to test
+     * @return true if code point is whitespace, false otherwise
+     * @see #isActuallyWhitespace(int)
+     */
+    public static boolean isWhitespace(int c){
+<span class="nc bnc" id="L121" title="All 10 branches missed.">        return c == ' ' || c == '\t' || c == '\n' || c == '\f' || c == '\r';</span>
+    }
+
+    /**
+     * Tests if a code point is &quot;whitespace&quot; as defined by what it looks like. Used for Element.text etc.
+     * @param c code point to test
+     * @return true if code point is whitespace, false otherwise
+     */
+    public static boolean isActuallyWhitespace(int c){
+<span class="nc bnc" id="L130" title="All 12 branches missed.">        return c == ' ' || c == '\t' || c == '\n' || c == '\f' || c == '\r' || c == 160;</span>
+        // 160 is &amp;nbsp; (non-breaking space). Not in the spec but expected.
+    }
+
+    public static boolean isInvisibleChar(int c) {
+<span class="nc bnc" id="L135" title="All 10 branches missed.">        return Character.getType(c) == 16 &amp;&amp; (c == 8203 || c == 8204 || c == 8205 || c == 173);</span>
+        // zero width sp, zw non join, zw join, soft hyphen
+    }
+
+    /**
+     * Normalise the whitespace within this string; multiple spaces collapse to a single, and all whitespace characters
+     * (e.g. newline, tab) convert to a simple space
+     * @param string content to normalise
+     * @return normalised string
+     */
+    public static String normaliseWhitespace(String string) {
+<span class="nc" id="L146">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+<span class="nc" id="L147">        appendNormalisedWhitespace(sb, string, false);</span>
+<span class="nc" id="L148">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    /**
+     * After normalizing the whitespace within a string, appends it to a string builder.
+     * @param accum builder to append to
+     * @param string string to normalize whitespace within
+     * @param stripLeading set to true if you wish to remove any leading whitespace
+     */
+    public static void appendNormalisedWhitespace(StringBuilder accum, String string, boolean stripLeading) {
+<span class="nc" id="L158">        boolean lastWasWhite = false;</span>
+<span class="nc" id="L159">        boolean reachedNonWhite = false;</span>
+
+<span class="nc" id="L161">        int len = string.length();</span>
+        int c;
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        for (int i = 0; i &lt; len; i+= Character.charCount(c)) {</span>
+<span class="nc" id="L164">            c = string.codePointAt(i);</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">            if (isActuallyWhitespace(c)) {</span>
+<span class="nc bnc" id="L166" title="All 6 branches missed.">                if ((stripLeading &amp;&amp; !reachedNonWhite) || lastWasWhite)</span>
+<span class="nc" id="L167">                    continue;</span>
+<span class="nc" id="L168">                accum.append(' ');</span>
+<span class="nc" id="L169">                lastWasWhite = true;</span>
+            }
+<span class="nc bnc" id="L171" title="All 2 branches missed.">            else if (!isInvisibleChar(c)) {</span>
+<span class="nc" id="L172">                accum.appendCodePoint(c);</span>
+<span class="nc" id="L173">                lastWasWhite = false;</span>
+<span class="nc" id="L174">                reachedNonWhite = true;</span>
+            }
+        }
+<span class="nc" id="L177">    }</span>
+
+    public static boolean in(final String needle, final String... haystack) {
+<span class="nc" id="L180">        final int len = haystack.length;</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">            if (haystack[i].equals(needle))</span>
+<span class="nc" id="L183">            return true;</span>
+        }
+<span class="nc" id="L185">        return false;</span>
+    }
+
+    public static boolean inSorted(String needle, String[] haystack) {
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        return Arrays.binarySearch(haystack, needle) &gt;= 0;</span>
+    }
+
+    /**
+     * Create a new absolute URL, from a provided existing absolute URL and a relative URL component.
+     * @param base the existing absolute base URL
+     * @param relUrl the relative URL to resolve. (If it's already absolute, it will be returned)
+     * @return the resolved absolute URL
+     * @throws MalformedURLException if an error occurred generating the URL
+     */
+    public static URL resolve(URL base, String relUrl) throws MalformedURLException {
+        // workaround: java resolves '//path/file + ?foo' to '//path/?foo', not '//path/file?foo' as desired
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        if (relUrl.startsWith(&quot;?&quot;))</span>
+<span class="nc" id="L202">            relUrl = base.getPath() + relUrl;</span>
+        // workaround: //example.com + ./foo = //example.com/./foo, not //example.com/foo
+<span class="nc bnc" id="L204" title="All 4 branches missed.">        if (relUrl.indexOf('.') == 0 &amp;&amp; base.getFile().indexOf('/') != 0) {</span>
+<span class="nc" id="L205">            base = new URL(base.getProtocol(), base.getHost(), base.getPort(), &quot;/&quot; + base.getFile());</span>
+        }
+<span class="nc" id="L207">        return new URL(base, relUrl);</span>
+    }
+
+    /**
+     * Create a new absolute URL, from a provided existing absolute URL and a relative URL component.
+     * @param baseUrl the existing absolute base URL
+     * @param relUrl the relative URL to resolve. (If it's already absolute, it will be returned)
+     * @return an absolute URL if one was able to be generated, or the empty string if not
+     */
+    public static String resolve(final String baseUrl, final String relUrl) {
+        URL base;
+        try {
+            try {
+<span class="nc" id="L220">                base = new URL(baseUrl);</span>
+<span class="nc" id="L221">            } catch (MalformedURLException e) {</span>
+                // the base is unsuitable, but the attribute/rel may be abs on its own, so try that
+<span class="nc" id="L223">                URL abs = new URL(relUrl);</span>
+<span class="nc" id="L224">                return abs.toExternalForm();</span>
+<span class="nc" id="L225">            }</span>
+<span class="nc" id="L226">            return resolve(base, relUrl).toExternalForm();</span>
+<span class="nc" id="L227">        } catch (MalformedURLException e) {</span>
+<span class="nc" id="L228">            return &quot;&quot;;</span>
+        }
+    }
+
+<span class="fc" id="L232">    private static final Stack&lt;StringBuilder&gt; builders = new Stack&lt;&gt;();</span>
+
+    /**
+     * Maintains cached StringBuilders in a flyweight pattern, to minimize new StringBuilder GCs. The StringBuilder is
+     * prevented from growing too large.
+     * &lt;p&gt;
+     * Care must be taken to release the builder once its work has been completed, with {@link #releaseBuilder}
+     * @return an empty StringBuilder
+     * @
+     */
+    public static StringBuilder borrowBuilder() {
+<span class="fc" id="L243">        synchronized (builders) {</span>
+<span class="fc bfc" id="L244" title="All 2 branches covered.">            return builders.empty() ?</span>
+                new StringBuilder(MaxCachedBuilderSize) :
+<span class="fc" id="L246">                builders.pop();</span>
+        }
+    }
+
+    /**
+     * Release a borrowed builder. Care must be taken not to use the builder after it has been returned, as its
+     * contents may be changed by this method, or by a concurrent thread.
+     * @param sb the StringBuilder to release.
+     * @return the string value of the released String Builder (as an incentive to release it!).
+     */
+    public static String releaseBuilder(StringBuilder sb) {
+<span class="fc" id="L257">        Validate.notNull(sb);</span>
+<span class="fc" id="L258">        String string = sb.toString();</span>
+
+<span class="pc bpc" id="L260" title="1 of 2 branches missed.">        if (sb.length() &gt; MaxCachedBuilderSize)</span>
+<span class="nc" id="L261">            sb = new StringBuilder(MaxCachedBuilderSize); // make sure it hasn't grown too big</span>
+        else
+<span class="fc" id="L263">            sb.delete(0, sb.length()); // make sure it's emptied on release</span>
+
+<span class="fc" id="L265">        synchronized (builders) {</span>
+<span class="fc" id="L266">            builders.push(sb);</span>
+
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">            while (builders.size() &gt; MaxIdleBuilders) {</span>
+<span class="nc" id="L269">                builders.pop();</span>
+            }
+<span class="fc" id="L271">        }</span>
+<span class="fc" id="L272">        return string;</span>
+    }
+
+    private static final int MaxCachedBuilderSize = 8 * 1024;
+    private static final int MaxIdleBuilders = 8;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

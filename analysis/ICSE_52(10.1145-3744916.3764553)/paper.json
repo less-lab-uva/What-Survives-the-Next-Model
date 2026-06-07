@@ -1,0 +1,38 @@
+{
+  "title": "LLM Test Generation via Iterative Hybrid Program Analysis",
+  "doi": "10.1145/3744916.3764553",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original Panta pipeline generates unit tests via iterative hybrid program analysis, combining static control-flow analysis with LLM calls to progressively target uncovered branches across Defects4J Java classes, measuring line and branch coverage via JaCoCo.",
+    "This reproduction replaces the iterative hybrid analysis loop with a direct test generation prompt over sampled Defects4J classes."
+  ],
+  "dataset": {
+    "name": "Defects4J",
+    "sample_size": 23
+  },
+  "metric": [
+    "Line coverage",
+    "Branch coverage",
+    "Pass Rate"
+  ],
+  "original_result": {
+   "Line Coverage": 0.7862,
+   "Branch Coverage": 0.6925,
+   "Pass Rate": 0.6921
+  },
+  "our_result": {
+    "prompt_A": {
+      "Line Coverage": 0.893,
+      "Branch Coverage": 0.803,
+      "Pass Rate": 0.989,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "Line Coverage": 0.917,
+      "Branch Coverage": 0.829,
+      "Pass Rate": 0.984,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 5.31
+}

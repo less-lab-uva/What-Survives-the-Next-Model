@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NodeTraversor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.select</a> &gt; <span class="el_source">NodeTraversor.java</span></div><h1>NodeTraversor.java</h1><pre class="source lang-java linenums">package org.jsoup.select;
+
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.select.NodeFilter.FilterResult;
+
+/**
+ * Depth-first node traversor. Use to iterate through all nodes under and including the specified root node.
+ * &lt;p&gt;
+ * This implementation does not use recursion, so a deep DOM does not risk blowing the stack.
+ * &lt;/p&gt;
+ */
+public class NodeTraversor {
+    private NodeVisitor visitor;
+
+    /**
+     * Create a new traversor.
+     * @param visitor a class implementing the {@link NodeVisitor} interface, to be called when visiting each node.
+     * @deprecated Just use the static {@link NodeTraversor#filter(NodeFilter, Node)} method.
+     */
+<span class="nc" id="L22">    public NodeTraversor(NodeVisitor visitor) {</span>
+<span class="nc" id="L23">        this.visitor = visitor;</span>
+<span class="nc" id="L24">    }</span>
+
+    /**
+     * Start a depth-first traverse of the root and all of its descendants.
+     * @param root the root node point to traverse.
+     * @deprecated Just use the static {@link NodeTraversor#filter(NodeFilter, Node)} method.
+     */
+    public void traverse(Node root) {
+<span class="nc" id="L32">        traverse(visitor, root);</span>
+<span class="nc" id="L33">    }</span>
+
+    /**
+     * Start a depth-first traverse of the root and all of its descendants.
+     * @param visitor Node visitor.
+     * @param root the root node point to traverse.
+     */
+    public static void traverse(NodeVisitor visitor, Node root) {
+<span class="nc" id="L41">        Node node = root;</span>
+<span class="nc" id="L42">        int depth = 0;</span>
+        
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        while (node != null) {</span>
+<span class="nc" id="L45">            visitor.head(node, depth);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            if (node.childNodeSize() &gt; 0) {</span>
+<span class="nc" id="L47">                node = node.childNode(0);</span>
+<span class="nc" id="L48">                depth++;</span>
+            } else {
+<span class="nc bnc" id="L50" title="All 4 branches missed.">                while (node.nextSibling() == null &amp;&amp; depth &gt; 0) {</span>
+<span class="nc" id="L51">                    visitor.tail(node, depth);</span>
+<span class="nc" id="L52">                    node = node.parentNode();</span>
+<span class="nc" id="L53">                    depth--;</span>
+                }
+<span class="nc" id="L55">                visitor.tail(node, depth);</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if (node == root)</span>
+<span class="nc" id="L57">                    break;</span>
+<span class="nc" id="L58">                node = node.nextSibling();</span>
+            }
+        }
+<span class="nc" id="L61">    }</span>
+
+    /**
+     * Start a depth-first traverse of all elements.
+     * @param visitor Node visitor.
+     * @param elements Elements to filter.
+     */
+    public static void traverse(NodeVisitor visitor, Elements elements) {
+<span class="nc" id="L69">        Validate.notNull(visitor);</span>
+<span class="nc" id="L70">        Validate.notNull(elements);</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        for (Element el : elements)</span>
+<span class="nc" id="L72">            traverse(visitor, el);</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     * Start a depth-first filtering of the root and all of its descendants.
+     * @param filter Node visitor.
+     * @param root the root node point to traverse.
+     * @return The filter result of the root node, or {@link FilterResult#STOP}.
+     */
+    public static FilterResult filter(NodeFilter filter, Node root) {
+<span class="nc" id="L82">        Node node = root;</span>
+<span class="nc" id="L83">        int depth = 0;</span>
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        while (node != null) {</span>
+<span class="nc" id="L86">            FilterResult result = filter.head(node, depth);</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">            if (result == FilterResult.STOP)</span>
+<span class="nc" id="L88">                return result;</span>
+            // Descend into child nodes:
+<span class="nc bnc" id="L90" title="All 4 branches missed.">            if (result == FilterResult.CONTINUE &amp;&amp; node.childNodeSize() &gt; 0) {</span>
+<span class="nc" id="L91">                node = node.childNode(0);</span>
+<span class="nc" id="L92">                ++depth;</span>
+<span class="nc" id="L93">                continue;</span>
+            }
+            // No siblings, move upwards:
+<span class="nc bnc" id="L96" title="All 4 branches missed.">            while (node.nextSibling() == null &amp;&amp; depth &gt; 0) {</span>
+                // 'tail' current node:
+<span class="nc bnc" id="L98" title="All 4 branches missed.">                if (result == FilterResult.CONTINUE || result == FilterResult.SKIP_CHILDREN) {</span>
+<span class="nc" id="L99">                    result = filter.tail(node, depth);</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">                    if (result == FilterResult.STOP)</span>
+<span class="nc" id="L101">                        return result;</span>
+                }
+<span class="nc" id="L103">                Node prev = node; // In case we need to remove it below.</span>
+<span class="nc" id="L104">                node = node.parentNode();</span>
+<span class="nc" id="L105">                depth--;</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                if (result == FilterResult.REMOVE)</span>
+<span class="nc" id="L107">                    prev.remove(); // Remove AFTER finding parent.</span>
+<span class="nc" id="L108">                result = FilterResult.CONTINUE; // Parent was not pruned.</span>
+<span class="nc" id="L109">            }</span>
+            // 'tail' current node, then proceed with siblings:
+<span class="nc bnc" id="L111" title="All 4 branches missed.">            if (result == FilterResult.CONTINUE || result == FilterResult.SKIP_CHILDREN) {</span>
+<span class="nc" id="L112">                result = filter.tail(node, depth);</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">                if (result == FilterResult.STOP)</span>
+<span class="nc" id="L114">                    return result;</span>
+            }
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            if (node == root)</span>
+<span class="nc" id="L117">                return result;</span>
+<span class="nc" id="L118">            Node prev = node; // In case we need to remove it below.</span>
+<span class="nc" id="L119">            node = node.nextSibling();</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">            if (result == FilterResult.REMOVE)</span>
+<span class="nc" id="L121">                prev.remove(); // Remove AFTER finding sibling.</span>
+<span class="nc" id="L122">        }</span>
+        // root == null?
+<span class="nc" id="L124">        return FilterResult.CONTINUE;</span>
+    }
+
+    /**
+     * Start a depth-first filtering of all elements.
+     * @param filter Node filter.
+     * @param elements Elements to filter.
+     */
+    public static void filter(NodeFilter filter, Elements elements) {
+<span class="nc" id="L133">        Validate.notNull(filter);</span>
+<span class="nc" id="L134">        Validate.notNull(elements);</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        for (Element el : elements)</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if (filter(filter, el) == FilterResult.STOP)</span>
+<span class="nc" id="L137">                break;</span>
+<span class="nc" id="L138">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

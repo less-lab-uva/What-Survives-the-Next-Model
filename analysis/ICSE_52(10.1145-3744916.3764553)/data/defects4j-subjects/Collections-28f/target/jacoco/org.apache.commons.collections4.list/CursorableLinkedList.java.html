@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CursorableLinkedList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Collections</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.collections4.list</a> &gt; <span class="el_source">CursorableLinkedList.java</span></div><h1>CursorableLinkedList.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.collections4.list;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
+/**
+ * A &lt;code&gt;List&lt;/code&gt; implementation with a &lt;code&gt;ListIterator&lt;/code&gt; that
+ * allows concurrent modifications to the underlying list.
+ * &lt;p&gt;
+ * This implementation supports all of the optional {@link List} operations.
+ * It extends &lt;code&gt;AbstractLinkedList&lt;/code&gt; and thus provides the
+ * stack/queue/dequeue operations available in {@link java.util.LinkedList}.
+ * &lt;p&gt;
+ * The main feature of this class is the ability to modify the list and the
+ * iterator at the same time. Both the {@link #listIterator()} and {@link #cursor()}
+ * methods provides access to a &lt;code&gt;Cursor&lt;/code&gt; instance which extends
+ * &lt;code&gt;ListIterator&lt;/code&gt;. The cursor allows changes to the list concurrent
+ * with changes to the iterator. Note that the {@link #iterator()} method and
+ * sublists do &lt;b&gt;not&lt;/b&gt; provide this cursor behaviour.
+ * &lt;p&gt;
+ * The &lt;code&gt;Cursor&lt;/code&gt; class is provided partly for backwards compatibility
+ * and partly because it allows the cursor to be directly closed. Closing the
+ * cursor is optional because references are held via a &lt;code&gt;WeakReference&lt;/code&gt;.
+ * For most purposes, simply modify the iterator and list at will, and then let
+ * the garbage collector to the rest.
+ * &lt;p&gt;
+ * &lt;b&gt;Note that this implementation is not synchronized.&lt;/b&gt;
+ *
+ * @see java.util.LinkedList
+ * @since 1.0
+ * @version $Id$
+ */
+public class CursorableLinkedList&lt;E&gt; extends AbstractLinkedList&lt;E&gt; implements Serializable {
+
+    /** Ensure serialization compatibility */
+    private static final long serialVersionUID = 8836393098519411393L;
+
+    /** A list of the cursor currently open on this list */
+    private transient List&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; cursors;
+
+    //-----------------------------------------------------------------------
+    /**
+     * Constructor that creates.
+     */
+    public CursorableLinkedList() {
+<span class="nc" id="L71">        super();</span>
+<span class="nc" id="L72">        init(); // must call init() as use super();</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     * Constructor that copies the specified collection
+     *
+     * @param coll  the collection to copy
+     */
+    public CursorableLinkedList(final Collection&lt;? extends E&gt; coll) {
+<span class="nc" id="L81">        super(coll);</span>
+<span class="nc" id="L82">    }</span>
+
+    /**
+     * The equivalent of a default constructor called
+     * by any constructor and by &lt;code&gt;readObject&lt;/code&gt;.
+     */
+    @Override
+    protected void init() {
+<span class="nc" id="L90">        super.init();</span>
+<span class="nc" id="L91">        cursors = new ArrayList&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt;();</span>
+<span class="nc" id="L92">    }</span>
+
+    //-----------------------------------------------------------------------
+    /**
+     * Returns an iterator that does &lt;b&gt;not&lt;/b&gt; support concurrent modification.
+     * &lt;p&gt;
+     * If the underlying list is modified while iterating using this iterator
+     * a ConcurrentModificationException will occur.
+     * The cursor behaviour is available via {@link #listIterator()}.
+     *
+     * @return a new iterator that does &lt;b&gt;not&lt;/b&gt; support concurrent modification
+     */
+    @Override
+    public Iterator&lt;E&gt; iterator() {
+<span class="nc" id="L106">        return super.listIterator(0);</span>
+    }
+
+    /**
+     * Returns a cursor iterator that allows changes to the underlying list in parallel.
+     * &lt;p&gt;
+     * The cursor enables iteration and list changes to occur in any order without
+     * invalidating the iterator (from one thread). When elements are added to the
+     * list, an event is fired to all active cursors enabling them to adjust to the
+     * change in the list.
+     * &lt;p&gt;
+     * When the &quot;current&quot; (i.e., last returned by {@link ListIterator#next}
+     * or {@link ListIterator#previous}) element of the list is removed,
+     * the cursor automatically adjusts to the change (invalidating the
+     * last returned value such that it cannot be removed).
+     *
+     * @return a new cursor iterator
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator() {
+<span class="nc" id="L126">        return cursor(0);</span>
+    }
+
+    /**
+     * Returns a cursor iterator that allows changes to the underlying list in parallel.
+     * &lt;p&gt;
+     * The cursor enables iteration and list changes to occur in any order without
+     * invalidating the iterator (from one thread). When elements are added to the
+     * list, an event is fired to all active cursors enabling them to adjust to the
+     * change in the list.
+     * &lt;p&gt;
+     * When the &quot;current&quot; (i.e., last returned by {@link ListIterator#next}
+     * or {@link ListIterator#previous}) element of the list is removed,
+     * the cursor automatically adjusts to the change (invalidating the
+     * last returned value such that it cannot be removed).
+     *
+     * @param fromIndex  the index to start from
+     * @return a new cursor iterator
+     */
+    @Override
+    public ListIterator&lt;E&gt; listIterator(final int fromIndex) {
+<span class="nc" id="L147">        return cursor(fromIndex);</span>
+    }
+
+    /**
+     * Returns a {@link Cursor} for iterating through the elements of this list.
+     * &lt;p&gt;
+     * A &lt;code&gt;Cursor&lt;/code&gt; is a &lt;code&gt;ListIterator&lt;/code&gt; with an additional
+     * &lt;code&gt;close()&lt;/code&gt; method. Calling this method immediately discards the
+     * references to the cursor. If it is not called, then the garbage collector
+     * will still remove the reference as it is held via a &lt;code&gt;WeakReference&lt;/code&gt;.
+     * &lt;p&gt;
+     * The cursor enables iteration and list changes to occur in any order without
+     * invalidating the iterator (from one thread). When elements are added to the
+     * list, an event is fired to all active cursors enabling them to adjust to the
+     * change in the list.
+     * &lt;p&gt;
+     * When the &quot;current&quot; (i.e., last returned by {@link ListIterator#next}
+     * or {@link ListIterator#previous}) element of the list is removed,
+     * the cursor automatically adjusts to the change (invalidating the
+     * last returned value such that it cannot be removed).
+     * &lt;p&gt;
+     * The {@link #listIterator()} method returns the same as this method, and can
+     * be cast to a &lt;code&gt;Cursor&lt;/code&gt; if the &lt;code&gt;close&lt;/code&gt; method is required.
+     *
+     * @return a new cursor iterator
+     */
+    public CursorableLinkedList.Cursor&lt;E&gt; cursor() {
+<span class="nc" id="L174">        return cursor(0);</span>
+    }
+
+    /**
+     * Returns a {@link Cursor} for iterating through the elements of this list
+     * starting from a specified index.
+     * &lt;p&gt;
+     * A &lt;code&gt;Cursor&lt;/code&gt; is a &lt;code&gt;ListIterator&lt;/code&gt; with an additional
+     * &lt;code&gt;close()&lt;/code&gt; method. Calling this method immediately discards the
+     * references to the cursor. If it is not called, then the garbage collector
+     * will still remove the reference as it is held via a &lt;code&gt;WeakReference&lt;/code&gt;.
+     * &lt;p&gt;
+     * The cursor enables iteration and list changes to occur in any order without
+     * invalidating the iterator (from one thread). When elements are added to the
+     * list, an event is fired to all active cursors enabling them to adjust to the
+     * change in the list.
+     * &lt;p&gt;
+     * When the &quot;current&quot; (i.e., last returned by {@link ListIterator#next}
+     * or {@link ListIterator#previous}) element of the list is removed,
+     * the cursor automatically adjusts to the change (invalidating the
+     * last returned value such that it cannot be removed).
+     * &lt;p&gt;
+     * The {@link #listIterator(int)} method returns the same as this method, and can
+     * be cast to a &lt;code&gt;Cursor&lt;/code&gt; if the &lt;code&gt;close&lt;/code&gt; method is required.
+     *
+     * @param fromIndex  the index to start from
+     * @return a new cursor iterator
+     * @throws IndexOutOfBoundsException if the index is out of range
+     *      (index &amp;lt; 0 || index &amp;gt; size()).
+     */
+    public CursorableLinkedList.Cursor&lt;E&gt; cursor(final int fromIndex) {
+<span class="nc" id="L205">        final Cursor&lt;E&gt; cursor = new Cursor&lt;E&gt;(this, fromIndex);</span>
+<span class="nc" id="L206">        registerCursor(cursor);</span>
+<span class="nc" id="L207">        return cursor;</span>
+    }
+
+    //-----------------------------------------------------------------------
+    /**
+     * Updates the node with a new value.
+     * This implementation sets the value on the node.
+     * Subclasses can override this to record the change.
+     *
+     * @param node  node to update
+     * @param value  new value of the node
+     */
+    @Override
+    protected void updateNode(final Node&lt;E&gt; node, final E value) {
+<span class="nc" id="L221">        super.updateNode(node, value);</span>
+<span class="nc" id="L222">        broadcastNodeChanged(node);</span>
+<span class="nc" id="L223">    }</span>
+
+    /**
+     * Inserts a new node into the list.
+     *
+     * @param nodeToInsert  new node to insert
+     * @param insertBeforeNode  node to insert before
+     * @throws NullPointerException if either node is null
+     */
+    @Override
+    protected void addNode(final Node&lt;E&gt; nodeToInsert, final Node&lt;E&gt; insertBeforeNode) {
+<span class="nc" id="L234">        super.addNode(nodeToInsert, insertBeforeNode);</span>
+<span class="nc" id="L235">        broadcastNodeInserted(nodeToInsert);</span>
+<span class="nc" id="L236">    }</span>
+
+    /**
+     * Removes the specified node from the list.
+     *
+     * @param node  the node to remove
+     * @throws NullPointerException if &lt;code&gt;node&lt;/code&gt; is null
+     */
+    @Override
+    protected void removeNode(final Node&lt;E&gt; node) {
+<span class="nc" id="L246">        super.removeNode(node);</span>
+<span class="nc" id="L247">        broadcastNodeRemoved(node);</span>
+<span class="nc" id="L248">    }</span>
+
+    /**
+     * Removes all nodes by iteration.
+     */
+    @Override
+    protected void removeAllNodes() {
+<span class="nc bnc" id="L255" title="All 2 branches missed.">        if (size() &gt; 0) {</span>
+            // superclass implementation would break all the iterators
+<span class="nc" id="L257">            final Iterator&lt;E&gt; it = iterator();</span>
+<span class="nc bnc" id="L258" title="All 2 branches missed.">            while (it.hasNext()) {</span>
+<span class="nc" id="L259">                it.next();</span>
+<span class="nc" id="L260">                it.remove();</span>
+            }
+        }
+<span class="nc" id="L263">    }</span>
+
+    //-----------------------------------------------------------------------
+    /**
+     * Registers a cursor to be notified of changes to this list.
+     *
+     * @param cursor  the cursor to register
+     */
+    protected void registerCursor(final Cursor&lt;E&gt; cursor) {
+        // We take this opportunity to clean the cursors list
+        // of WeakReference objects to garbage-collected cursors.
+<span class="nc bnc" id="L274" title="All 2 branches missed.">        for (final Iterator&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; it = cursors.iterator(); it.hasNext();) {</span>
+<span class="nc" id="L275">            final WeakReference&lt;Cursor&lt;E&gt;&gt; ref = it.next();</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">            if (ref.get() == null) {</span>
+<span class="nc" id="L277">                it.remove();</span>
+            }
+<span class="nc" id="L279">        }</span>
+<span class="nc" id="L280">        cursors.add(new WeakReference&lt;Cursor&lt;E&gt;&gt;(cursor));</span>
+<span class="nc" id="L281">    }</span>
+
+    /**
+     * Deregisters a cursor from the list to be notified of changes.
+     *
+     * @param cursor  the cursor to deregister
+     */
+    protected void unregisterCursor(final Cursor&lt;E&gt; cursor) {
+<span class="nc bnc" id="L289" title="All 2 branches missed.">        for (final Iterator&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; it = cursors.iterator(); it.hasNext();) {</span>
+<span class="nc" id="L290">            final WeakReference&lt;Cursor&lt;E&gt;&gt; ref = it.next();</span>
+<span class="nc" id="L291">            final Cursor&lt;E&gt; cur = ref.get();</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">            if (cur == null) {</span>
+                // some other unrelated cursor object has been
+                // garbage-collected; let's take the opportunity to
+                // clean up the cursors list anyway..
+<span class="nc" id="L296">                it.remove();</span>
+<span class="nc bnc" id="L297" title="All 2 branches missed.">            } else if (cur == cursor) {</span>
+<span class="nc" id="L298">                ref.clear();</span>
+<span class="nc" id="L299">                it.remove();</span>
+<span class="nc" id="L300">                break;</span>
+            }
+<span class="nc" id="L302">        }</span>
+<span class="nc" id="L303">    }</span>
+
+    //-----------------------------------------------------------------------
+    /**
+     * Informs all of my registered cursors that the specified
+     * element was changed.
+     *
+     * @param node  the node that was changed
+     */
+    protected void broadcastNodeChanged(final Node&lt;E&gt; node) {
+<span class="nc" id="L313">        final Iterator&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; it = cursors.iterator();</span>
+<span class="nc bnc" id="L314" title="All 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L315">            final WeakReference&lt;Cursor&lt;E&gt;&gt; ref = it.next();</span>
+<span class="nc" id="L316">            final Cursor&lt;E&gt; cursor = ref.get();</span>
+<span class="nc bnc" id="L317" title="All 2 branches missed.">            if (cursor == null) {</span>
+<span class="nc" id="L318">                it.remove(); // clean up list</span>
+            } else {
+<span class="nc" id="L320">                cursor.nodeChanged(node);</span>
+            }
+<span class="nc" id="L322">        }</span>
+<span class="nc" id="L323">    }</span>
+
+    /**
+     * Informs all of my registered cursors that the specified
+     * element was just removed from my list.
+     *
+     * @param node  the node that was changed
+     */
+    protected void broadcastNodeRemoved(final Node&lt;E&gt; node) {
+<span class="nc" id="L332">        final Iterator&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; it = cursors.iterator();</span>
+<span class="nc bnc" id="L333" title="All 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L334">            final WeakReference&lt;Cursor&lt;E&gt;&gt; ref = it.next();</span>
+<span class="nc" id="L335">            final Cursor&lt;E&gt; cursor = ref.get();</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">            if (cursor == null) {</span>
+<span class="nc" id="L337">                it.remove(); // clean up list</span>
+            } else {
+<span class="nc" id="L339">                cursor.nodeRemoved(node);</span>
+            }
+<span class="nc" id="L341">        }</span>
+<span class="nc" id="L342">    }</span>
+
+    /**
+     * Informs all of my registered cursors that the specified
+     * element was just added to my list.
+     *
+     * @param node  the node that was changed
+     */
+    protected void broadcastNodeInserted(final Node&lt;E&gt; node) {
+<span class="nc" id="L351">        final Iterator&lt;WeakReference&lt;Cursor&lt;E&gt;&gt;&gt; it = cursors.iterator();</span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">        while (it.hasNext()) {</span>
+<span class="nc" id="L353">            final WeakReference&lt;Cursor&lt;E&gt;&gt; ref = it.next();</span>
+<span class="nc" id="L354">            final Cursor&lt;E&gt; cursor = ref.get();</span>
+<span class="nc bnc" id="L355" title="All 2 branches missed.">            if (cursor == null) {</span>
+<span class="nc" id="L356">                it.remove(); // clean up list</span>
+            } else {
+<span class="nc" id="L358">                cursor.nodeInserted(node);</span>
+            }
+<span class="nc" id="L360">        }</span>
+<span class="nc" id="L361">    }</span>
+
+    //-----------------------------------------------------------------------
+    /**
+     * Serializes the data held in this object to the stream specified.
+     */
+    private void writeObject(final ObjectOutputStream out) throws IOException {
+<span class="nc" id="L368">        out.defaultWriteObject();</span>
+<span class="nc" id="L369">        doWriteObject(out);</span>
+<span class="nc" id="L370">    }</span>
+
+    /**
+     * Deserializes the data held in this object to the stream specified.
+     */
+    private void readObject(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+<span class="nc" id="L376">        in.defaultReadObject();</span>
+<span class="nc" id="L377">        doReadObject(in);</span>
+<span class="nc" id="L378">    }</span>
+
+    //-----------------------------------------------------------------------
+    /**
+     * Creates a list iterator for the sublist.
+     *
+     * @param subList  the sublist to get an iterator for
+     * @param fromIndex  the index to start from, relative to the sublist
+     * @return the list iterator for the sublist
+     */
+    @Override
+    protected ListIterator&lt;E&gt; createSubListListIterator(final LinkedSubList&lt;E&gt; subList, final int fromIndex) {
+<span class="nc" id="L390">        final SubCursor&lt;E&gt; cursor = new SubCursor&lt;E&gt;(subList, fromIndex);</span>
+<span class="nc" id="L391">        registerCursor(cursor);</span>
+<span class="nc" id="L392">        return cursor;</span>
+    }
+
+    //-----------------------------------------------------------------------
+    /**
+     * An extended &lt;code&gt;ListIterator&lt;/code&gt; that allows concurrent changes to
+     * the underlying list.
+     */
+    public static class Cursor&lt;E&gt; extends AbstractLinkedList.LinkedListIterator&lt;E&gt; {
+        /** Is the cursor valid (not closed) */
+<span class="nc" id="L402">        boolean valid = true;</span>
+        /** Is the next index valid */
+<span class="nc" id="L404">        boolean nextIndexValid = true;</span>
+        /** Flag to indicate if the current element was removed by another object. */
+<span class="nc" id="L406">        boolean currentRemovedByAnother = false;</span>
+
+        /**
+         * Constructs a new cursor.
+         *
+         * @param parent  the parent list
+         * @param index  the index to start from
+         */
+        protected Cursor(final CursorableLinkedList&lt;E&gt; parent, final int index) {
+<span class="nc" id="L415">            super(parent, index);</span>
+<span class="nc" id="L416">            valid = true;</span>
+<span class="nc" id="L417">        }</span>
+
+        /**
+         * Removes the item last returned by this iterator.
+         * &lt;p&gt;
+         * There may have been subsequent alterations to the list
+         * since you obtained this item, however you can still remove it.
+         * You can even remove it if the item is no longer in the main list.
+         * However, you can't call this method on the same iterator more
+         * than once without calling next() or previous().
+         *
+         * @throws IllegalStateException if there is no item to remove
+         */
+        @Override
+        public void remove() {
+            // overridden, as the nodeRemoved() method updates the iterator
+            // state in the parent.removeNode() call below
+<span class="nc bnc" id="L434" title="All 4 branches missed.">            if (current == null &amp;&amp; currentRemovedByAnother) { // NOPMD</span>
+                // quietly ignore, as the last returned node was removed
+                // by the list or some other iterator
+                // by ignoring it, we keep this iterator independent from
+                // other changes as much as possible
+            } else {
+<span class="nc" id="L440">                checkModCount();</span>
+<span class="nc" id="L441">                parent.removeNode(getLastNodeReturned());</span>
+            }
+<span class="nc" id="L443">            currentRemovedByAnother = false;</span>
+<span class="nc" id="L444">        }</span>
+
+        /**
+         * Adds an object to the list.
+         * The object added here will be the new 'previous' in the iterator.
+         *
+         * @param obj  the object to add
+         */
+        @Override
+        public void add(final E obj) {
+            // overridden, as the nodeInserted() method updates the iterator state
+<span class="nc" id="L455">            super.add(obj);</span>
+            // matches the (next.previous == node) clause in nodeInserted()
+            // thus next gets changed - reset it again here
+<span class="nc" id="L458">            next = next.next;</span>
+<span class="nc" id="L459">        }</span>
+
+        // set is not overridden, as it works ok
+        // note that we want it to throw an exception if the element being
+        // set has been removed from the real list (compare this with the
+        // remove method where we silently ignore this case)
+
+        /**
+         * Gets the index of the next element to be returned.
+         *
+         * @return the next index
+         */
+        @Override
+        public int nextIndex() {
+<span class="nc bnc" id="L473" title="All 2 branches missed.">            if (nextIndexValid == false) {</span>
+<span class="nc bnc" id="L474" title="All 2 branches missed.">                if (next == parent.header) {</span>
+<span class="nc" id="L475">                    nextIndex = parent.size();</span>
+                } else {
+<span class="nc" id="L477">                    int pos = 0;</span>
+<span class="nc" id="L478">                    Node&lt;E&gt; temp = parent.header.next;</span>
+<span class="nc bnc" id="L479" title="All 2 branches missed.">                    while (temp != next) {</span>
+<span class="nc" id="L480">                        pos++;</span>
+<span class="nc" id="L481">                        temp = temp.next;</span>
+                    }
+<span class="nc" id="L483">                    nextIndex = pos;</span>
+                }
+<span class="nc" id="L485">                nextIndexValid = true;</span>
+            }
+<span class="nc" id="L487">            return nextIndex;</span>
+        }
+
+        /**
+         * Handle event from the list when a node has changed.
+         *
+         * @param node  the node that changed
+         */
+        protected void nodeChanged(final Node&lt;E&gt; node) {
+            // do nothing
+<span class="nc" id="L497">        }</span>
+
+        /**
+         * Handle event from the list when a node has been removed.
+         *
+         * @param node  the node that was removed
+         */
+        protected void nodeRemoved(final Node&lt;E&gt; node) {
+<span class="nc bnc" id="L505" title="All 4 branches missed.">            if (node == next &amp;&amp; node == current) {</span>
+                // state where next() followed by previous()
+<span class="nc" id="L507">                next = node.next;</span>
+<span class="nc" id="L508">                current = null;</span>
+<span class="nc" id="L509">                currentRemovedByAnother = true;</span>
+<span class="nc bnc" id="L510" title="All 2 branches missed.">            } else if (node == next) {</span>
+                // state where next() not followed by previous()
+                // and we are matching next node
+<span class="nc" id="L513">                next = node.next;</span>
+<span class="nc" id="L514">                currentRemovedByAnother = false;</span>
+<span class="nc bnc" id="L515" title="All 2 branches missed.">            } else if (node == current) {</span>
+                // state where next() not followed by previous()
+                // and we are matching current (last returned) node
+<span class="nc" id="L518">                current = null;</span>
+<span class="nc" id="L519">                currentRemovedByAnother = true;</span>
+<span class="nc" id="L520">                nextIndex--;</span>
+            } else {
+<span class="nc" id="L522">                nextIndexValid = false;</span>
+<span class="nc" id="L523">                currentRemovedByAnother = false;</span>
+            }
+<span class="nc" id="L525">        }</span>
+
+        /**
+         * Handle event from the list when a node has been added.
+         *
+         * @param node  the node that was added
+         */
+        protected void nodeInserted(final Node&lt;E&gt; node) {
+<span class="nc bnc" id="L533" title="All 2 branches missed.">            if (node.previous == current) {</span>
+<span class="nc" id="L534">                next = node;</span>
+<span class="nc bnc" id="L535" title="All 2 branches missed.">            } else if (next.previous == node) {</span>
+<span class="nc" id="L536">                next = node;</span>
+            } else {
+<span class="nc" id="L538">                nextIndexValid = false;</span>
+            }
+<span class="nc" id="L540">        }</span>
+
+        /**
+         * Override superclass modCount check, and replace it with our valid flag.
+         */
+        @Override
+        protected void checkModCount() {
+<span class="nc bnc" id="L547" title="All 2 branches missed.">            if (!valid) {</span>
+<span class="nc" id="L548">                throw new ConcurrentModificationException(&quot;Cursor closed&quot;);</span>
+            }
+<span class="nc" id="L550">        }</span>
+
+        /**
+         * Mark this cursor as no longer being needed. Any resources
+         * associated with this cursor are immediately released.
+         * In previous versions of this class, it was mandatory to close
+         * all cursor objects to avoid memory leaks. It is &lt;i&gt;no longer&lt;/i&gt;
+         * necessary to call this close method; an instance of this class
+         * can now be treated exactly like a normal iterator.
+         */
+        public void close() {
+<span class="nc bnc" id="L561" title="All 2 branches missed.">            if (valid) {</span>
+<span class="nc" id="L562">                ((CursorableLinkedList&lt;E&gt;) parent).unregisterCursor(this);</span>
+<span class="nc" id="L563">                valid = false;</span>
+            }
+<span class="nc" id="L565">        }</span>
+    }
+
+    //-----------------------------------------------------------------------
+    /**
+     * A cursor for the sublist based on LinkedSubListIterator.
+     *
+     * @since 3.2
+     */
+    protected static class SubCursor&lt;E&gt; extends Cursor&lt;E&gt; {
+
+        /** The parent list */
+        protected final LinkedSubList&lt;E&gt; sub;
+
+        /**
+         * Constructs a new cursor.
+         *
+         * @param sub  the sub list
+         * @param index  the index to start from
+         */
+        protected SubCursor(final LinkedSubList&lt;E&gt; sub, final int index) {
+<span class="nc" id="L586">            super((CursorableLinkedList&lt;E&gt;) sub.parent, index + sub.offset);</span>
+<span class="nc" id="L587">            this.sub = sub;</span>
+<span class="nc" id="L588">        }</span>
+
+        @Override
+        public boolean hasNext() {
+<span class="nc bnc" id="L592" title="All 2 branches missed.">            return nextIndex() &lt; sub.size;</span>
+        }
+
+        @Override
+        public boolean hasPrevious() {
+<span class="nc bnc" id="L597" title="All 2 branches missed.">            return previousIndex() &gt;= 0;</span>
+        }
+
+        @Override
+        public int nextIndex() {
+<span class="nc" id="L602">            return super.nextIndex() - sub.offset;</span>
+        }
+
+        @Override
+        public void add(final E obj) {
+<span class="nc" id="L607">            super.add(obj);</span>
+<span class="nc" id="L608">            sub.expectedModCount = parent.modCount;</span>
+<span class="nc" id="L609">            sub.size++;</span>
+<span class="nc" id="L610">        }</span>
+
+        @Override
+        public void remove() {
+<span class="nc" id="L614">            super.remove();</span>
+<span class="nc" id="L615">            sub.expectedModCount = parent.modCount;</span>
+<span class="nc" id="L616">            sub.size--;</span>
+<span class="nc" id="L617">        }</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

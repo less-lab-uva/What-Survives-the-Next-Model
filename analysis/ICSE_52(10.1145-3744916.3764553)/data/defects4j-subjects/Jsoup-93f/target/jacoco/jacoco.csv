@@ -1,0 +1,238 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.Constants,671,0,0,0,22,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},126,0,12,0,23,0,8,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},181,0,22,0,25,0,13,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},121,0,19,0,33,0,15,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},242,0,25,0,41,0,17,0,4,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},235,0,24,0,44,0,16,0,4,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},141,0,24,0,39,0,16,0,4,0
+jsoup Java HTML Parser,org.jsoup.parser,Token.Doctype,18,45,0,0,5,14,5,2,5,2
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},270,0,47,0,65,0,30,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},125,0,10,0,12,0,7,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},81,0,18,0,20,0,11,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},128,0,27,0,33,0,17,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,Token.TokenType,0,64,0,0,0,7,0,1,0,1
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},82,0,20,0,18,0,12,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},50,0,12,0,10,0,8,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},59,0,16,0,11,0,10,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},8,0,0,0,2,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,Parser,223,0,8,0,43,0,24,0,20,0
+jsoup Java HTML Parser,org.jsoup.parser,Token.EndTag,12,6,0,0,1,3,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState,280,0,2,0,40,0,6,0,5,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},5,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},25,6,3,0,11,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},5,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,Token.Comment,16,23,0,0,2,8,2,2,2,2
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},68,0,8,0,18,0,6,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},224,0,31,0,48,0,20,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},148,0,28,0,20,0,17,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},102,0,16,0,21,0,11,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},114,0,20,0,23,0,12,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},43,0,6,0,12,0,5,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},17,6,2,0,6,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},379,0,46,0,78,0,26,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},82,6,12,0,26,1,9,1,2,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},29,6,2,0,8,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},196,0,22,0,39,0,14,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilderState.new HtmlTreeBuilderState() {...},1613,0,298,0,407,0,154,0,3,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},51,6,8,0,11,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},48,6,7,0,20,1,7,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},62,6,9,0,21,1,7,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},62,6,9,0,21,1,7,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},66,6,9,0,29,1,9,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState,189,813,26,0,63,73,20,1,5,1
+jsoup Java HTML Parser,org.jsoup.parser,Token.StartTag,50,21,4,0,7,7,4,2,2,2
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},61,6,8,0,26,1,8,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},59,6,8,0,24,1,8,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},63,6,8,0,27,1,8,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},17,6,2,0,6,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},47,6,6,0,20,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},43,6,5,0,18,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},56,6,5,0,18,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},5,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},29,6,2,0,8,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,ParseErrorList,3,28,0,2,1,6,1,5,1,4
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},43,6,4,0,11,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},47,6,7,0,20,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},43,6,6,0,18,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},54,6,6,0,17,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},15,6,2,0,5,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,Tokeniser,96,734,20,74,19,138,21,53,5,22
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},15,6,2,0,5,1,2,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},53,6,6,0,22,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},57,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,Token.CData,19,0,0,0,4,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},52,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},52,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},51,6,6,0,21,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},60,6,6,0,24,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},89,6,10,0,21,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},58,6,7,0,21,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,Tag,1280,0,66,0,102,0,56,0,23,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},57,6,6,0,22,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},34,6,4,0,14,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokenQueue,776,0,130,0,141,0,97,0,32,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},67,6,6,0,23,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},45,6,4,0,15,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TreeBuilder,198,0,12,0,42,0,15,0,9,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},48,6,4,0,14,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},50,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},50,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},35,6,6,0,11,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},23,6,0,0,7,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},31,6,3,0,13,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},35,6,5,0,16,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},72,6,11,0,26,1,9,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},59,6,6,0,24,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},50,6,6,0,21,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},28,6,4,0,6,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},18,6,3,0,9,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},32,6,4,0,14,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},52,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},52,6,5,0,19,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},51,6,6,0,21,1,6,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,HtmlTreeBuilder,2004,0,210,0,385,0,183,0,78,0
+jsoup Java HTML Parser,org.jsoup.parser,ParseError,19,20,0,0,3,8,3,2,3,2
+jsoup Java HTML Parser,org.jsoup.parser,XmlTreeBuilder,284,0,29,0,67,0,31,0,14,0
+jsoup Java HTML Parser,org.jsoup.parser,Token.EOF,2,7,0,0,1,3,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,CharacterReader,356,848,84,116,69,185,66,75,10,31
+jsoup Java HTML Parser,org.jsoup.parser,ParseSettings,57,0,6,0,20,0,10,0,7,0
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},42,6,6,0,13,1,4,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},36,6,6,0,14,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},26,6,3,0,10,1,3,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},6,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},4,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},47,6,5,0,14,1,5,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,Token.Character,8,15,0,0,3,6,2,3,2,3
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},4,6,0,0,2,1,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.parser,TokeniserState.new TokeniserState() {...},16,22,3,2,7,7,3,3,0,2
+jsoup Java HTML Parser,org.jsoup.parser,Token.Tag,163,103,22,6,43,31,27,6,13,6
+jsoup Java HTML Parser,org.jsoup.parser,Token,70,9,13,1,13,3,20,1,13,1
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValueContaining,38,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.CssNthEvaluator,120,0,16,0,16,0,12,0,4,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.TagEndsWith,22,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.Tag,22,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator,3,0,0,0,1,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsOnlyOfType,45,0,10,0,10,0,8,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsNthLastChild,15,0,0,0,4,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.ContainsData,24,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.Parent,42,0,6,0,13,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValue,38,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValueMatching,44,0,4,0,6,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsOnlyChild,21,0,6,0,4,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValueEnding,38,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Selector,124,0,14,0,33,0,12,0,5,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.ImmediateParent,36,0,6,0,8,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.Class,21,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsNthChild,12,0,0,0,4,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IndexGreaterThan,24,0,2,0,4,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsEmpty,32,0,8,0,7,0,7,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.ContainsText,24,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,CombiningEvaluator.And,37,0,4,0,10,0,6,0,4,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IndexLessThan,27,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeStarting,45,0,4,0,11,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.Matches,25,0,0,0,6,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Collector.FirstFinder,34,0,4,0,12,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Collector,27,0,0,0,6,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.select,NodeTraversor,195,0,46,0,66,0,29,0,6,0
+jsoup Java HTML Parser,org.jsoup.select,CombiningEvaluator.Or,67,0,6,0,18,0,9,0,6,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsNthOfType,37,0,6,0,10,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AllElements,7,0,0,0,3,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.ContainsOwnText,24,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValueNot,32,0,2,0,4,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator,3,0,0,0,2,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsFirstOfType,7,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsNthLastOfType,34,0,4,0,8,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.Not,26,0,2,0,5,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.Root,10,0,2,0,2,0,3,0,2,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.PreviousSibling,40,0,6,0,12,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,CombiningEvaluator,51,0,2,0,13,0,6,0,5,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.Id,22,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeWithValueStarting,38,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsLastOfType,7,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.select,NodeFilter.FilterResult,54,0,0,0,6,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.Has,41,0,6,0,9,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,StructuralEvaluator.ImmediatePreviousSibling,36,0,6,0,8,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.AttributeKeyPair,39,0,8,0,9,0,5,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsLastChild,25,0,6,0,4,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsRoot,21,0,4,0,4,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Selector.SelectorParseException,6,0,0,0,2,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.Attribute,21,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.MatchesOwn,25,0,0,0,6,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IsFirstChild,20,0,6,0,4,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Elements,784,0,102,0,182,0,103,0,52,0
+jsoup Java HTML Parser,org.jsoup.select,QueryParser,1285,0,142,0,233,0,93,0,22,0
+jsoup Java HTML Parser,org.jsoup.select,Collector.Accumulator,32,0,4,0,11,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IndexEquals,24,0,2,0,4,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.IndexEvaluator,6,0,0,0,3,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.select,Evaluator.MatchText,44,0,4,0,12,0,5,0,3,0
+jsoup Java HTML Parser,org.jsoup,UncheckedIOException,15,0,0,0,5,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup,UnsupportedMimeTypeException,34,0,0,0,7,0,4,0,4,0
+jsoup Java HTML Parser,org.jsoup,HttpStatusException,34,0,0,0,7,0,4,0,4,0
+jsoup Java HTML Parser,org.jsoup,SerializationException,16,0,0,0,8,0,4,0,4,0
+jsoup Java HTML Parser,org.jsoup,Connection.Method,103,0,0,0,6,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup,Jsoup,106,0,0,0,24,0,15,0,15,0
+jsoup Java HTML Parser,org.jsoup.internal,Normalizer,8,7,1,1,2,1,3,1,2,1
+jsoup Java HTML Parser,org.jsoup.internal,ConstrainableInputStream,204,0,38,0,49,0,26,0,7,0
+jsoup Java HTML Parser,org.jsoup.internal,StringUtil,361,142,86,4,77,14,60,4,16,3
+jsoup Java HTML Parser,org.jsoup.examples,HtmlToPlainText,86,0,10,0,19,0,8,0,3,0
+jsoup Java HTML Parser,org.jsoup.examples,Wikipedia,50,0,2,0,10,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.examples,ListLinks,224,0,12,0,30,0,10,0,4,0
+jsoup Java HTML Parser,org.jsoup.examples,HtmlToPlainText.FormattingVisitor,270,0,30,0,41,0,20,0,5,0
+jsoup Java HTML Parser,org.jsoup.nodes,Document,503,0,48,0,128,0,51,0,27,0
+jsoup Java HTML Parser,org.jsoup.nodes,Element.new NodeVisitor() {...},23,0,2,0,6,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Element.new NodeVisitor() {...},72,0,20,0,16,0,13,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Document.QuirksMode,34,0,0,0,2,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.nodes,FormElement,191,0,30,0,42,0,21,0,6,0
+jsoup Java HTML Parser,org.jsoup.nodes,Attributes.Dataset.EntrySet,29,0,2,0,7,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Attributes,688,16,86,0,141,5,75,2,32,2
+jsoup Java HTML Parser,org.jsoup.nodes,DocumentType,183,0,24,0,43,0,20,0,8,0
+jsoup Java HTML Parser,org.jsoup.nodes,Document.OutputSettings.Syntax,0,24,0,0,0,1,0,1,0,1
+jsoup Java HTML Parser,org.jsoup.nodes,Node.new NodeVisitor() {...},15,0,0,0,4,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,BooleanAttribute,7,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.nodes,PseudoTextElement,8,0,0,0,4,0,3,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Entities.EscapeMode,40,63,6,2,5,9,5,4,2,3
+jsoup Java HTML Parser,org.jsoup.nodes,Attributes.Dataset,35,0,2,0,8,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Comment,110,0,10,0,26,0,14,0,9,0
+jsoup Java HTML Parser,org.jsoup.nodes,Element.NodeList,11,0,0,0,5,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.nodes,Entities,288,179,51,12,79,40,39,9,9,5
+jsoup Java HTML Parser,org.jsoup.nodes,TextNode,186,0,32,0,37,0,32,0,16,0
+jsoup Java HTML Parser,org.jsoup.nodes,EntitiesData,3,7,0,0,1,4,1,1,1,1
+jsoup Java HTML Parser,org.jsoup.nodes,Document.OutputSettings,109,33,4,0,32,11,17,2,15,2
+jsoup Java HTML Parser,org.jsoup.nodes,NodeUtils,35,0,6,0,5,0,6,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,Node,836,0,80,0,209,0,92,0,52,0
+jsoup Java HTML Parser,org.jsoup.nodes,Attributes.Dataset.DatasetIterator,51,0,4,0,9,0,6,0,4,0
+jsoup Java HTML Parser,org.jsoup.nodes,LeafNode,124,0,14,0,34,0,23,0,16,0
+jsoup Java HTML Parser,org.jsoup.nodes,Node.OuterHtmlVisitor,47,0,2,0,16,0,4,0,3,0
+jsoup Java HTML Parser,org.jsoup.nodes,CDataNode,29,0,0,0,13,0,5,0,5,0
+jsoup Java HTML Parser,org.jsoup.nodes,Attributes.new Iterator() {...},56,0,2,0,8,0,5,0,4,0
+jsoup Java HTML Parser,org.jsoup.nodes,Entities.CoreCharset,48,0,4,0,7,0,4,0,2,0
+jsoup Java HTML Parser,org.jsoup.nodes,DataNode,38,0,0,0,15,0,9,0,9,0
+jsoup Java HTML Parser,org.jsoup.nodes,XmlDeclaration,101,0,8,0,32,0,13,0,9,0
+jsoup Java HTML Parser,org.jsoup.nodes,Element,1781,0,200,0,397,0,215,0,115,0
+jsoup Java HTML Parser,org.jsoup.nodes,Attribute,433,0,50,0,66,0,46,0,21,0
+jsoup Java HTML Parser,org.jsoup.helper,DataUtil.BomCharset,9,0,0,0,4,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.helper,HttpConnection.Request,180,0,6,0,56,0,27,0,24,0
+jsoup Java HTML Parser,org.jsoup.helper,W3CDom,82,0,2,0,24,0,5,0,4,0
+jsoup Java HTML Parser,org.jsoup.helper,W3CDom.W3CBuilder,248,0,30,0,53,0,20,0,5,0
+jsoup Java HTML Parser,org.jsoup.helper,ChangeNotifyingArrayList,73,0,0,0,27,0,12,0,12,0
+jsoup Java HTML Parser,org.jsoup.helper,Validate,88,15,19,5,21,10,18,5,6,5
+jsoup Java HTML Parser,org.jsoup.helper,HttpConnection,506,0,22,0,125,0,52,0,41,0
+jsoup Java HTML Parser,org.jsoup.helper,HttpConnection.Base,427,0,54,0,107,0,50,0,23,0
+jsoup Java HTML Parser,org.jsoup.helper,HttpConnection.Response,1180,0,152,0,283,0,101,0,25,0
+jsoup Java HTML Parser,org.jsoup.helper,HttpConnection.KeyVal,82,0,2,0,20,0,13,0,12,0
+jsoup Java HTML Parser,org.jsoup.helper,DataUtil,484,0,100,0,112,0,62,0,12,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist.TypedValue,65,0,12,0,16,0,10,0,4,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist,1409,0,86,0,191,0,63,0,20,0
+jsoup Java HTML Parser,org.jsoup.safety,Cleaner.ElementMeta,9,0,0,0,4,0,1,0,1,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist.TagName,9,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist.AttributeValue,9,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.safety,Cleaner,161,0,14,0,37,0,13,0,6,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist.Protocol,9,0,0,0,3,0,2,0,2,0
+jsoup Java HTML Parser,org.jsoup.safety,Cleaner.CleaningVisitor,130,0,16,0,29,0,11,0,3,0
+jsoup Java HTML Parser,org.jsoup.safety,Whitelist.AttributeKey,9,0,0,0,3,0,2,0,2,0

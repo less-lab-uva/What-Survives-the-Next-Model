@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseNCodecInputStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.binary</a> &gt; <span class="el_source">BaseNCodecInputStream.java</span></div><h1>BaseNCodecInputStream.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.binary;
+
+import static org.apache.commons.codec.binary.BaseNCodec.EOF;
+
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.commons.codec.binary.BaseNCodec.Context;
+
+/**
+ * Abstract superclass for Base-N input streams.
+ *
+ * @since 1.5
+ * @version $Id$
+ */
+public class BaseNCodecInputStream extends FilterInputStream {
+
+    private final BaseNCodec baseNCodec;
+
+    private final boolean doEncode;
+
+<span class="nc" id="L40">    private final byte[] singleByte = new byte[1];</span>
+
+<span class="nc" id="L42">    private final Context context = new Context();</span>
+
+    protected BaseNCodecInputStream(final InputStream in, final BaseNCodec baseNCodec, final boolean doEncode) {
+<span class="nc" id="L45">        super(in);</span>
+<span class="nc" id="L46">        this.doEncode = doEncode;</span>
+<span class="nc" id="L47">        this.baseNCodec = baseNCodec;</span>
+<span class="nc" id="L48">    }</span>
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return &lt;code&gt;0&lt;/code&gt; if the {@link InputStream} has reached &lt;code&gt;EOF&lt;/code&gt;,
+     * &lt;code&gt;1&lt;/code&gt; otherwise
+     * @since 1.7
+     */
+    @Override
+    public int available() throws IOException {
+        // Note: the logic is similar to the InflaterInputStream:
+        //       as long as we have not reached EOF, indicate that there is more
+        //       data available. As we do not know for sure how much data is left,
+        //       just return 1 as a safe guess.
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        return context.eof ? 0 : 1;</span>
+    }
+
+    /**
+     * Marks the current position in this input stream.
+     * &lt;p&gt;The {@link #mark} method of {@link BaseNCodecInputStream} does nothing.&lt;/p&gt;
+     *
+     * @param readLimit the maximum limit of bytes that can be read before the mark position becomes invalid.
+     * @since 1.7
+     */
+    @Override
+    public synchronized void mark(final int readLimit) {
+<span class="nc" id="L76">    }</span>
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return always returns &lt;code&gt;false&lt;/code&gt;
+     */
+    @Override
+    public boolean markSupported() {
+<span class="nc" id="L85">        return false; // not an easy job to support marks</span>
+    }
+
+    /**
+     * Reads one &lt;code&gt;byte&lt;/code&gt; from this input stream.
+     *
+     * @return the byte as an integer in the range 0 to 255. Returns -1 if EOF has been reached.
+     * @throws IOException
+     *             if an I/O error occurs.
+     */
+    @Override
+    public int read() throws IOException {
+<span class="nc" id="L97">        int r = read(singleByte, 0, 1);</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        while (r == 0) {</span>
+<span class="nc" id="L99">            r = read(singleByte, 0, 1);</span>
+        }
+<span class="nc bnc" id="L101" title="All 2 branches missed.">        if (r &gt; 0) {</span>
+<span class="nc" id="L102">            final byte b = singleByte[0];</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            return b &lt; 0 ? 256 + b : b;</span>
+        }
+<span class="nc" id="L105">        return EOF;</span>
+    }
+
+    /**
+     * Attempts to read &lt;code&gt;len&lt;/code&gt; bytes into the specified &lt;code&gt;b&lt;/code&gt; array starting at &lt;code&gt;offset&lt;/code&gt;
+     * from this InputStream.
+     *
+     * @param b
+     *            destination byte array
+     * @param offset
+     *            where to start writing the bytes
+     * @param len
+     *            maximum number of bytes to read
+     *
+     * @return number of bytes read
+     * @throws IOException
+     *             if an I/O error occurs.
+     * @throws NullPointerException
+     *             if the byte array parameter is null
+     * @throws IndexOutOfBoundsException
+     *             if offset, len or buffer size are invalid
+     */
+    @Override
+    public int read(final byte b[], final int offset, final int len) throws IOException {
+<span class="nc bnc" id="L129" title="All 2 branches missed.">        if (b == null) {</span>
+<span class="nc" id="L130">            throw new NullPointerException();</span>
+<span class="nc bnc" id="L131" title="All 4 branches missed.">        } else if (offset &lt; 0 || len &lt; 0) {</span>
+<span class="nc" id="L132">            throw new IndexOutOfBoundsException();</span>
+<span class="nc bnc" id="L133" title="All 4 branches missed.">        } else if (offset &gt; b.length || offset + len &gt; b.length) {</span>
+<span class="nc" id="L134">            throw new IndexOutOfBoundsException();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        } else if (len == 0) {</span>
+<span class="nc" id="L136">            return 0;</span>
+        } else {
+<span class="nc" id="L138">            int readLen = 0;</span>
+            /*
+             Rationale for while-loop on (readLen == 0):
+             -----
+             Base32.readResults() usually returns &gt; 0 or EOF (-1).  In the
+             rare case where it returns 0, we just keep trying.
+
+             This is essentially an undocumented contract for InputStream
+             implementors that want their code to work properly with
+             java.io.InputStreamReader, since the latter hates it when
+             InputStream.read(byte[]) returns a zero.  Unfortunately our
+             readResults() call must return 0 if a large amount of the data
+             being decoded was non-base32, so this while-loop enables proper
+             interop with InputStreamReader for that scenario.
+             -----
+             This is a fix for CODEC-101
+            */
+<span class="nc bnc" id="L155" title="All 2 branches missed.">            while (readLen == 0) {</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">                if (!baseNCodec.hasData(context)) {</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">                    final byte[] buf = new byte[doEncode ? 4096 : 8192];</span>
+<span class="nc" id="L158">                    final int c = in.read(buf);</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">                    if (doEncode) {</span>
+<span class="nc" id="L160">                        baseNCodec.encode(buf, 0, c, context);</span>
+                    } else {
+<span class="nc" id="L162">                        baseNCodec.decode(buf, 0, c, context);</span>
+                    }
+                }
+<span class="nc" id="L165">                readLen = baseNCodec.readResults(b, offset, len, context);</span>
+            }
+<span class="nc" id="L167">            return readLen;</span>
+        }
+    }
+
+    /**
+     * Repositions this stream to the position at the time the mark method was last called on this input stream.
+     * &lt;p&gt;
+     * The {@link #reset} method of {@link BaseNCodecInputStream} does nothing except throw an {@link IOException}.
+     *
+     * @throws IOException if this method is invoked
+     * @since 1.7
+     */
+    @Override
+    public synchronized void reset() throws IOException {
+<span class="nc" id="L181">        throw new IOException(&quot;mark/reset not supported&quot;);</span>
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws IllegalArgumentException if the provided skip length is negative
+     * @since 1.7
+     */
+    @Override
+    public long skip(final long n) throws IOException {
+<span class="nc bnc" id="L192" title="All 2 branches missed.">        if (n &lt; 0) {</span>
+<span class="nc" id="L193">            throw new IllegalArgumentException(&quot;Negative skip length: &quot; + n);</span>
+        }
+
+        // skip in chunks of 512 bytes
+<span class="nc" id="L197">        final byte[] b = new byte[512];</span>
+<span class="nc" id="L198">        long todo = n;</span>
+
+<span class="nc bnc" id="L200" title="All 2 branches missed.">        while (todo &gt; 0) {</span>
+<span class="nc" id="L201">            int len = (int) Math.min(b.length, todo);</span>
+<span class="nc" id="L202">            len = this.read(b, 0, len);</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">            if (len == EOF) {</span>
+<span class="nc" id="L204">                break;</span>
+            }
+<span class="nc" id="L206">            todo -= len;</span>
+<span class="nc" id="L207">        }</span>
+
+<span class="nc" id="L209">        return n - todo;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

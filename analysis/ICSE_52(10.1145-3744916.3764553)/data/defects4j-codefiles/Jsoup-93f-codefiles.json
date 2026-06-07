@@ -1,0 +1,4874 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "Selector",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/Selector.java",
+      "class_declaration": "public class Selector ",
+      "methods_under_test": {
+        "=1": {
+          "Selector.select(String, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Selector.select(Evaluator, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Selector.selectFirst(String, Element)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Selector.select(String, Iterable<Element>)": [
+            4,
+            4,
+            4
+          ],
+          "Selector.filterOut(Collection<Element>, Collection<Element>)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/select/SelectorTest.java"
+    },
+    {
+      "src_name": "Attribute",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Attribute.java",
+      "class_declaration": "public class Attribute implements Map.Entry<String, String>, Cloneable ",
+      "methods_under_test": {
+        "=1": {
+          "Attribute.html(Appendable, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.createFromEncoded(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.isDataAttribute(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.shouldCollapseAttribute(Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.shouldCollapseAttribute(final, String, final, String, final, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.isBooleanAttribute(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Attribute.setKey(String)": [
+            3,
+            3,
+            3
+          ],
+          "Attribute.setValue(String)": [
+            3,
+            3,
+            3
+          ],
+          "Attribute.html()": [
+            2,
+            2,
+            2
+          ],
+          "Attribute.html(String, String, Appendable, Document.OutputSettings)": [
+            2,
+            2,
+            2
+          ],
+          "Attribute.equals(Object)": [
+            4,
+            4,
+            4
+          ],
+          "Attribute.clone()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/AttributeTest.java"
+    },
+    {
+      "src_name": "ConstrainableInputStream",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/internal/ConstrainableInputStream.java",
+      "class_declaration": "public final class ConstrainableInputStream extends BufferedInputStream ",
+      "methods_under_test": {
+        "=1": {
+          "ConstrainableInputStream.wrap(InputStream, int, int)": [
+            1,
+            1,
+            1
+          ],
+          "ConstrainableInputStream.reset()": [
+            1,
+            1,
+            1
+          ],
+          "ConstrainableInputStream.timeout(long, long)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ConstrainableInputStream.read(byte[], int, int)": [
+            9,
+            9,
+            9
+          ],
+          "ConstrainableInputStream.readToByteBuffer(int)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/internal/ConstrainableInputStreamTest.java"
+    },
+    {
+      "src_name": "Entities",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Entities.java",
+      "class_declaration": "public class Entities ",
+      "methods_under_test": {
+        "=1": {
+          "Entities.codepointForName(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.isNamedEntity(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.isBaseNamedEntity(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.getCharacterByName(String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.escape(String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.escape(Appendable, String, Document.OutputSettings, boolean, boolean, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.unescape(String)": [
+            1,
+            1,
+            1
+          ],
+          "Entities.unescape(String, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Entities.nameForCodepoint(final, int)": [
+            2,
+            2,
+            2
+          ],
+          "Entities.getByName(String)": [
+            3,
+            3,
+            3
+          ],
+          "Entities.codepointsForName(final, String, final, int[])": [
+            3,
+            3,
+            3
+          ],
+          "Entities.escape(String, Document.OutputSettings)": [
+            3,
+            3,
+            3
+          ],
+          "Entities.byName(final, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/EntitiesTest.java"
+    },
+    {
+      "src_name": "Document",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Document.java",
+      "class_declaration": "public class Document extends Element ",
+      "methods_under_test": {
+        "=1": {
+          "Document.createShell(String)": [
+            1,
+            1,
+            1
+          ],
+          "Document.location()": [
+            1,
+            1,
+            1
+          ],
+          "Document.head()": [
+            1,
+            1,
+            1
+          ],
+          "Document.body()": [
+            1,
+            1,
+            1
+          ],
+          "Document.title()": [
+            1,
+            1,
+            1
+          ],
+          "Document.createElement(String)": [
+            1,
+            1,
+            1
+          ],
+          "Document.outerHtml()": [
+            1,
+            1,
+            1
+          ],
+          "Document.text(String)": [
+            1,
+            1,
+            1
+          ],
+          "Document.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "Document.charset(Charset)": [
+            1,
+            1,
+            1
+          ],
+          "Document.charset()": [
+            1,
+            1,
+            1
+          ],
+          "Document.updateMetaCharsetElement(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Document.updateMetaCharsetElement()": [
+            1,
+            1,
+            1
+          ],
+          "Document.clone()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.escapeMode()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.escapeMode(Entities.EscapeMode)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.charset()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.charset(Charset)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.charset(String)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.prepareEncoder()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.encoder()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.syntax()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.syntax(Syntax)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.prettyPrint()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.prettyPrint(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.outline()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.outline(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.indentAmount()": [
+            1,
+            1,
+            1
+          ],
+          "OutputSettings.indentAmount(int)": [
+            1,
+            1,
+            1
+          ],
+          "Document.outputSettings()": [
+            1,
+            1,
+            1
+          ],
+          "Document.outputSettings(OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Document.quirksMode()": [
+            1,
+            1,
+            1
+          ],
+          "Document.quirksMode(QuirksMode)": [
+            1,
+            1,
+            1
+          ],
+          "Document.parser()": [
+            1,
+            1,
+            1
+          ],
+          "Document.parser(Parser)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Document.title(String)": [
+            3,
+            3,
+            3
+          ],
+          "Document.normalise()": [
+            4,
+            4,
+            4
+          ],
+          "OutputSettings.clone()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/DocumentTest.java"
+    },
+    {
+      "src_name": "HtmlTreeBuilder",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/HtmlTreeBuilder.java",
+      "class_declaration": "public class HtmlTreeBuilder extends TreeBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "HtmlTreeBuilder.defaultSettings()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.initialiseParse(Reader, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.process(Token)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.process(Token, HtmlTreeBuilderState)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.transition(HtmlTreeBuilderState)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.state()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.markInsertionMode()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.originalState()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.framesetOk(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.framesetOk()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.insertStartTag(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.insert(Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.insert(Token.Comment)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.pop()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.push(Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.onStack(Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.clearStackToTableContext()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.clearStackToTableBodyContext()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.clearStackToTableRowContext()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.insertOnStackAfter(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.replaceOnStack(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inScope(String[])": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inScope(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inScope(String, String[])": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inListItemScope(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inButtonScope(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.inTableScope(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.newPendingTableCharacters()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.generateImpliedEndTags(String)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.generateImpliedEndTags()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.isSpecial(Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.lastFormattingElement()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.isInActiveFormattingElements(Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.replaceActiveFormattingElement(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.insertMarkerToFormattingElements()": [
+            1,
+            1,
+            1
+          ],
+          "HtmlTreeBuilder.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "HtmlTreeBuilder.maybeSetBaseUri(Element)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.error(HtmlTreeBuilderState)": [
+            2,
+            2,
+            2
+          ],
+          "HtmlTreeBuilder.insert(final, Token.StartTag)": [
+            4,
+            4,
+            4
+          ],
+          "HtmlTreeBuilder.insertEmpty(Token.StartTag)": [
+            4,
+            4,
+            4
+          ],
+          "HtmlTreeBuilder.insertForm(Token.StartTag, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "HtmlTreeBuilder.insert(Token.Character)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.getFromStack(String)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.removeFromStack(Element)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.popStackToClose(String)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.popStackToClose()": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.popStackToBefore(String)": [
+            2,
+            2,
+            2
+          ],
+          "HtmlTreeBuilder.aboveOnStack(Element)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.inSelectScope(String)": [
+            4,
+            4,
+            4
+          ],
+          "HtmlTreeBuilder.removeLastFormattingElement()": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.pushActiveFormattingElements(Element)": [
+            5,
+            5,
+            5
+          ],
+          "HtmlTreeBuilder.reconstructFormattingElements()": [
+            8,
+            8,
+            8
+          ],
+          "HtmlTreeBuilder.clearFormattingElementsToLastMarker()": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.removeFromActiveFormattingElements(Element)": [
+            3,
+            3,
+            3
+          ],
+          "HtmlTreeBuilder.getActiveFormattingElement(String)": [
+            4,
+            4,
+            4
+          ],
+          "HtmlTreeBuilder.insertInFosterParent(Node)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {
+          "HtmlTreeBuilder.parseFragment(String, Element, String, Parser)": [
+            12,
+            12,
+            12
+          ],
+          "HtmlTreeBuilder.resetInsertionMode()": [
+            15,
+            15,
+            15
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/HtmlTreeBuilderTest.java"
+    },
+    {
+      "src_name": "Elements",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/Elements.java",
+      "class_declaration": "public class Elements extends ArrayList<Element> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/select/ElementsTest.java"
+    },
+    {
+      "src_name": "DataUtil",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/helper/DataUtil.java",
+      "class_declaration": "public final class DataUtil ",
+      "methods_under_test": {
+        "=1": {
+          "DataUtil.load(File, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "DataUtil.load(InputStream, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "DataUtil.load(InputStream, String, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "DataUtil.crossStreams(final, InputStream, final, OutputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DataUtil.readToByteBuffer(InputStream, int)": [
+            1,
+            1,
+            1
+          ],
+          "DataUtil.emptyByteBuffer()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DataUtil.getCharsetFromContentType(String)": [
+            3,
+            3,
+            3
+          ],
+          "DataUtil.mimeBoundary()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "DataUtil.parseInputStream(InputStream, String, String, Parser)": [
+            22,
+            22,
+            22
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/helper/DataUtilTest.java"
+    },
+    {
+      "src_name": "Cleaner",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/safety/Cleaner.java",
+      "class_declaration": "public class Cleaner ",
+      "methods_under_test": {
+        "=1": {
+          "Cleaner.isValid(Document)": [
+            1,
+            1,
+            1
+          ],
+          "Cleaner.isValidBodyHtml(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Cleaner.clean(Document)": [
+            2,
+            2,
+            2
+          ],
+          "CleaningVisitor.head(Node, int)": [
+            7,
+            7,
+            7
+          ],
+          "CleaningVisitor.tail(Node, int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/safety/CleanerTest.java"
+    },
+    {
+      "src_name": "TextNode",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/TextNode.java",
+      "class_declaration": "public class TextNode extends LeafNode ",
+      "methods_under_test": {
+        "=1": {
+          "TextNode.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.text()": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.text(String)": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.toString()": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.createFromEncoded(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.createFromEncoded(String)": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.normaliseWhitespace(String)": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.stripLeadingWhitespace(String)": [
+            1,
+            1,
+            1
+          ],
+          "TextNode.lastCharIsWhitespace(StringBuilder)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TextNode.splitText(int)": [
+            2,
+            2,
+            2
+          ],
+          "TextNode.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/TextNodeTest.java"
+    },
+    {
+      "src_name": "StringUtil",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/internal/StringUtil.java",
+      "class_declaration": "public final class StringUtil ",
+      "methods_under_test": {
+        "=1": {
+          "StringUtil.join(Collection, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.join(String[], String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.isWhitespace(int)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.isActuallyWhitespace(int)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.isInvisibleChar(int)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.normaliseWhitespace(String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.appendNormalisedWhitespace(StringBuilder, String, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtil.inSorted(String, String[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "StringUtil.join(Iterator, String)": [
+            4,
+            4,
+            4
+          ],
+          "StringUtil.padding(int)": [
+            4,
+            4,
+            4
+          ],
+          "StringUtil.isBlank(String)": [
+            4,
+            4,
+            4
+          ],
+          "StringUtil.isNumeric(String)": [
+            4,
+            4,
+            4
+          ],
+          "StringUtil.in(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "StringUtil.resolve(URL, String)": [
+            3,
+            3,
+            3
+          ],
+          "StringUtil.resolve(final, String, final, String)": [
+            8,
+            8,
+            8
+          ],
+          "StringUtil.borrowBuilder()": [
+            2,
+            2,
+            2
+          ],
+          "StringUtil.releaseBuilder(StringBuilder)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/internal/StringUtilTest.java"
+    },
+    {
+      "src_name": "Parser",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/Parser.java",
+      "class_declaration": "public class Parser ",
+      "methods_under_test": {
+        "=1": {
+          "Parser.parseInput(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseInput(Reader, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseFragmentInput(String, Element, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.setTreeBuilder(TreeBuilder)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.setTrackErrors(int)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.settings(ParseSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.settings()": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parse(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseFragment(String, Element, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseFragment(String, Element, String, ParseErrorList)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseXmlFragment(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.unescapeEntities(String, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parseBodyFragmentRelaxed(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.htmlParser()": [
+            1,
+            1,
+            1
+          ],
+          "Parser.xmlParser()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Parser.parseBodyFragment(String, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/ParserTest.java"
+    },
+    {
+      "src_name": "Tokeniser",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/Tokeniser.java",
+      "class_declaration": "final class Tokeniser ",
+      "methods_under_test": {
+        "=1": {
+          "Tokeniser.emit(char[])": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.emit(int[])": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.emit(char)": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.transition(TokeniserState)": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.advanceTransition(TokeniserState)": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.createTagPending(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.emitTagPending()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.createCommentPending()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.emitCommentPending()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.createDoctypePending()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.emitDoctypePending()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.createTempBuffer()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.appropriateEndTagName()": [
+            1,
+            1,
+            1
+          ],
+          "Tokeniser.currentNodeInHtmlNS()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Tokeniser.read()": [
+            5,
+            5,
+            5
+          ],
+          "Tokeniser.emit(Token)": [
+            5,
+            5,
+            5
+          ],
+          "Tokeniser.emit(final, String)": [
+            4,
+            4,
+            4
+          ],
+          "Tokeniser.error(TokeniserState)": [
+            2,
+            2,
+            2
+          ],
+          "Tokeniser.eofError(TokeniserState)": [
+            2,
+            2,
+            2
+          ],
+          "Tokeniser.error(String)": [
+            2,
+            2,
+            2
+          ],
+          "Tokeniser.unescapeEntities(boolean)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {
+          "Tokeniser.consumeCharacterReference(Character, boolean)": [
+            18,
+            18,
+            18
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/TokeniserTest.java"
+    },
+    {
+      "src_name": "QueryParser",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/QueryParser.java",
+      "class_declaration": "public class QueryParser ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "QueryParser.parse(String)": [
+            2,
+            2,
+            2
+          ],
+          "QueryParser.parse()": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/select/QueryParserTest.java"
+    },
+    {
+      "src_name": "FormElement",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/FormElement.java",
+      "class_declaration": "public class FormElement extends Element ",
+      "methods_under_test": {
+        "=1": {
+          "FormElement.elements()": [
+            1,
+            1,
+            1
+          ],
+          "FormElement.addElement(Element)": [
+            1,
+            1,
+            1
+          ],
+          "FormElement.removeChild(Node)": [
+            1,
+            1,
+            1
+          ],
+          "FormElement.submit()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {
+          "FormElement.formData()": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/FormElementTest.java"
+    },
+    {
+      "src_name": "Tag",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/Tag.java",
+      "class_declaration": "public class Tag ",
+      "methods_under_test": {
+        "=1": {
+          "Tag.normalName()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.valueOf(String)": [
+            1,
+            1,
+            1
+          ],
+          "Tag.formatAsBlock()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.canContainBlock()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.isKnownTag(String)": [
+            1,
+            1,
+            1
+          ],
+          "Tag.preserveWhitespace()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.setSelfClosing()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Tag.valueOf(String, ParseSettings)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "Tag.equals(Object)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/TagTest.java"
+    },
+    {
+      "src_name": "HttpConnection",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/helper/HttpConnection.java",
+      "class_declaration": "public class HttpConnection implements Connection ",
+      "methods_under_test": {
+        "=1": {
+          "HttpConnection.connect(String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.connect(URL)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.url(URL)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.proxy(Proxy)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.proxy(String, int)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.userAgent(String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.timeout(int)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.maxBodySize(int)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.followRedirects(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.referrer(String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.method(Method)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.ignoreHttpErrors(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.ignoreContentType(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.data(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.sslSocketFactory(SSLSocketFactory)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.data(String, String, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.data(String, String, InputStream, String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.requestBody(String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.header(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.cookie(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.parser(Parser)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.get()": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.post()": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.execute()": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.request()": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.request(Connection.Request)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.response()": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.response(Connection.Response)": [
+            1,
+            1,
+            1
+          ],
+          "HttpConnection.postDataCharset(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.url()": [
+            1,
+            1,
+            1
+          ],
+          "Base.url(URL)": [
+            1,
+            1,
+            1
+          ],
+          "Base.method()": [
+            1,
+            1,
+            1
+          ],
+          "Base.method(Method)": [
+            1,
+            1,
+            1
+          ],
+          "Base.headers(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.header(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.hasHeader(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.multiHeaders()": [
+            1,
+            1,
+            1
+          ],
+          "Base.cookie(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.cookie(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.hasCookie(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.removeCookie(String)": [
+            1,
+            1,
+            1
+          ],
+          "Base.cookies()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.create(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.create(String, String, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.key(String)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.key()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.value(String)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.value()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.inputStream(InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.inputStream()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.hasInputStream()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.contentType(String)": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.contentType()": [
+            1,
+            1,
+            1
+          ],
+          "KeyVal.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "HttpConnection.encodeUrl(URL)": [
+            6,
+            6,
+            6
+          ],
+          "HttpConnection.url(String)": [
+            2,
+            2,
+            2
+          ],
+          "HttpConnection.data(Map<String, String>)": [
+            2,
+            2,
+            2
+          ],
+          "HttpConnection.data()": [
+            2,
+            2,
+            2
+          ],
+          "HttpConnection.data(Collection<Connection.KeyVal>)": [
+            2,
+            2,
+            2
+          ],
+          "HttpConnection.data(String)": [
+            3,
+            3,
+            3
+          ],
+          "HttpConnection.headers(Map<String,String>)": [
+            2,
+            2,
+            2
+          ],
+          "HttpConnection.cookies(Map<String, String>)": [
+            2,
+            2,
+            2
+          ],
+          "Base.header(String)": [
+            2,
+            2,
+            2
+          ],
+          "Base.addHeader(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "Base.hasHeaderWithValue(String, String)": [
+            3,
+            3,
+            3
+          ],
+          "Base.removeHeader(String)": [
+            2,
+            2,
+            2
+          ],
+          "Base.headers()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/helper/HttpConnectionTest.java"
+    },
+    {
+      "src_name": "XmlTreeBuilder",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/XmlTreeBuilder.java",
+      "class_declaration": "public class XmlTreeBuilder extends TreeBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "XmlTreeBuilder.defaultSettings()": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.initialiseParse(Reader, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.parse(Reader, String)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.parse(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.insert(Token.Character)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.insert(Token.Doctype)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.parseFragment(String, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTreeBuilder.parseFragment(String, Element, String, Parser)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlTreeBuilder.process(Token)": [
+            7,
+            7,
+            7
+          ],
+          "XmlTreeBuilder.insert(Token.StartTag)": [
+            3,
+            3,
+            3
+          ],
+          "XmlTreeBuilder.insert(Token.Comment)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/XmlTreeBuilderTest.java"
+    },
+    {
+      "src_name": "W3CDom",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/helper/W3CDom.java",
+      "class_declaration": "public class W3CDom ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "W3CDom.fromJsoup(org.jsoup.nodes.Document)": [
+            2,
+            2,
+            2
+          ],
+          "W3CDom.convert(org.jsoup.nodes.Document, Document)": [
+            2,
+            2,
+            2
+          ],
+          "W3CBuilder.head(org.jsoup.nodes.Node, int)": [
+            6,
+            6,
+            6
+          ],
+          "W3CBuilder.tail(org.jsoup.nodes.Node, int)": [
+            2,
+            2,
+            2
+          ],
+          "W3CDom.asString(Document)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/helper/W3CDomTest.java"
+    },
+    {
+      "src_name": "HtmlTreeBuilderState",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/HtmlTreeBuilderState.java",
+      "error": "local variable 'class_name' referenced before assignment",
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/HtmlTreeBuilderStateTest.java"
+    },
+    {
+      "src_name": "DocumentType",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/DocumentType.java",
+      "class_declaration": "public class DocumentType extends LeafNode ",
+      "methods_under_test": {
+        "=1": {
+          "DocumentType.nodeName()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DocumentType.setPubSysKey(String)": [
+            2,
+            2,
+            2
+          ],
+          "DocumentType.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/DocumentTypeTest.java"
+    },
+    {
+      "src_name": "Element",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Element.java",
+      "class_declaration": "public class Element extends Node ",
+      "methods_under_test": {
+        "=1": {
+          "Element.hasAttributes()": [
+            1,
+            1,
+            1
+          ],
+          "Element.baseUri()": [
+            1,
+            1,
+            1
+          ],
+          "Element.doSetBaseUri(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.childNodeSize()": [
+            1,
+            1,
+            1
+          ],
+          "Element.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "Element.tagName()": [
+            1,
+            1,
+            1
+          ],
+          "Element.normalName()": [
+            1,
+            1,
+            1
+          ],
+          "Element.tagName(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.tag()": [
+            1,
+            1,
+            1
+          ],
+          "Element.id()": [
+            1,
+            1,
+            1
+          ],
+          "Element.attr(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.attr(String, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Element.dataset()": [
+            1,
+            1,
+            1
+          ],
+          "Element.parent()": [
+            1,
+            1,
+            1
+          ],
+          "Element.parents()": [
+            1,
+            1,
+            1
+          ],
+          "Element.child(int)": [
+            1,
+            1,
+            1
+          ],
+          "Element.children()": [
+            1,
+            1,
+            1
+          ],
+          "Element.nodelistChanged()": [
+            1,
+            1,
+            1
+          ],
+          "Element.select(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.selectFirst(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.is(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.is(Evaluator)": [
+            1,
+            1,
+            1
+          ],
+          "Element.appendChild(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Element.appendTo(Element)": [
+            1,
+            1,
+            1
+          ],
+          "Element.prependChild(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Element.appendElement(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.prependElement(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.appendText(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.prependText(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.append(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.prepend(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.before(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.before(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Element.after(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.after(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Element.empty()": [
+            1,
+            1,
+            1
+          ],
+          "Element.wrap(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.nextElementSiblings()": [
+            1,
+            1,
+            1
+          ],
+          "Element.previousElementSiblings()": [
+            1,
+            1,
+            1
+          ],
+          "Element.firstElementSibling()": [
+            1,
+            1,
+            1
+          ],
+          "Element.lastElementSibling()": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByTag(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByClass(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttribute(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeStarting(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValue(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValueNot(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValueStarting(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValueEnding(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValueContaining(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByAttributeValueMatching(String, Pattern)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByIndexLessThan(int)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByIndexGreaterThan(int)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsByIndexEquals(int)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsContainingText(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsContainingOwnText(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsMatchingText(Pattern)": [
+            1,
+            1,
+            1
+          ],
+          "Element.getElementsMatchingOwnText(Pattern)": [
+            1,
+            1,
+            1
+          ],
+          "Element.text()": [
+            1,
+            1,
+            1
+          ],
+          "Element.wholeText()": [
+            1,
+            1,
+            1
+          ],
+          "Element.ownText()": [
+            1,
+            1,
+            1
+          ],
+          "Element.text(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.className()": [
+            1,
+            1,
+            1
+          ],
+          "Element.classNames()": [
+            1,
+            1,
+            1
+          ],
+          "Element.addClass(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.removeClass(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.html()": [
+            1,
+            1,
+            1
+          ],
+          "Element.html(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.clone()": [
+            1,
+            1,
+            1
+          ],
+          "Element.shallowClone()": [
+            1,
+            1,
+            1
+          ],
+          "Element.doClone(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Element.clearAttributes()": [
+            1,
+            1,
+            1
+          ],
+          "Element.removeAttr(String)": [
+            1,
+            1,
+            1
+          ],
+          "Element.root()": [
+            1,
+            1,
+            1
+          ],
+          "Element.traverse(NodeVisitor)": [
+            1,
+            1,
+            1
+          ],
+          "Element.filter(NodeFilter)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Element.ensureChildNodes()": [
+            2,
+            2,
+            2
+          ],
+          "Element.attributes()": [
+            2,
+            2,
+            2
+          ],
+          "Element.textNodes()": [
+            3,
+            3,
+            3
+          ],
+          "Element.dataNodes()": [
+            3,
+            3,
+            3
+          ],
+          "Element.insertChildren(int, Collection<? extends Node>)": [
+            2,
+            2,
+            2
+          ],
+          "Element.insertChildren(int)": [
+            2,
+            2,
+            2
+          ],
+          "Element.cssSelector()": [
+            5,
+            5,
+            5
+          ],
+          "Element.siblingElements()": [
+            4,
+            4,
+            4
+          ],
+          "Element.nextElementSibling()": [
+            4,
+            4,
+            4
+          ],
+          "Element.previousElementSibling()": [
+            4,
+            4,
+            4
+          ],
+          "Element.elementSiblingIndex()": [
+            2,
+            2,
+            2
+          ],
+          "Element.getElementById(String)": [
+            3,
+            3,
+            3
+          ],
+          "Element.getElementsByAttributeValueMatching(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "Element.getElementsMatchingText(String)": [
+            2,
+            2,
+            2
+          ],
+          "Element.getElementsMatchingOwnText(String)": [
+            2,
+            2,
+            2
+          ],
+          "Element.preserveWhitespace(Node)": [
+            4,
+            4,
+            4
+          ],
+          "Element.hasText()": [
+            10,
+            10,
+            10
+          ],
+          "Element.data()": [
+            8,
+            8,
+            8
+          ],
+          "Element.classNames(Set<String>)": [
+            2,
+            2,
+            2
+          ],
+          "Element.hasClass(String)": [
+            9,
+            9,
+            9
+          ],
+          "Element.toggleClass(String)": [
+            2,
+            2,
+            2
+          ],
+          "Element.val()": [
+            3,
+            3,
+            3
+          ],
+          "Element.val(String)": [
+            2,
+            2,
+            2
+          ],
+          "Element.outerHtmlHead(final, Appendable, int, final, Document.OutputSettings)": [
+            8,
+            8,
+            8
+          ],
+          "Element.outerHtmlTail(Appendable, int, Document.OutputSettings)": [
+            3,
+            3,
+            3
+          ],
+          "Element.html(T)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/ElementTest.java"
+    },
+    {
+      "src_name": "Node",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Node.java",
+      "class_declaration": "public abstract class Node implements Cloneable ",
+      "methods_under_test": {
+        "=1": {
+          "Node.hasParent()": [
+            1,
+            1,
+            1
+          ],
+          "Node.attr(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Node.removeAttr(String)": [
+            1,
+            1,
+            1
+          ],
+          "Node.setBaseUri(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Node.childNode(int)": [
+            1,
+            1,
+            1
+          ],
+          "Node.childNodes()": [
+            1,
+            1,
+            1
+          ],
+          "Node.childNodesAsArray()": [
+            1,
+            1,
+            1
+          ],
+          "Node.parent()": [
+            1,
+            1,
+            1
+          ],
+          "Node.parentNode()": [
+            1,
+            1,
+            1
+          ],
+          "Node.ownerDocument()": [
+            1,
+            1,
+            1
+          ],
+          "Node.remove()": [
+            1,
+            1,
+            1
+          ],
+          "Node.before(String)": [
+            1,
+            1,
+            1
+          ],
+          "Node.before(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Node.after(String)": [
+            1,
+            1,
+            1
+          ],
+          "Node.after(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Node.unwrap()": [
+            1,
+            1,
+            1
+          ],
+          "Node.replaceWith(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Node.removeChild(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Node.addChildren()": [
+            1,
+            1,
+            1
+          ],
+          "Node.reparentChild(Node)": [
+            1,
+            1,
+            1
+          ],
+          "Node.siblingIndex()": [
+            1,
+            1,
+            1
+          ],
+          "Node.traverse(NodeVisitor)": [
+            1,
+            1,
+            1
+          ],
+          "Node.filter(NodeFilter)": [
+            1,
+            1,
+            1
+          ],
+          "Node.outerHtml()": [
+            1,
+            1,
+            1
+          ],
+          "Node.outerHtml(Appendable)": [
+            1,
+            1,
+            1
+          ],
+          "Node.html(T)": [
+            1,
+            1,
+            1
+          ],
+          "Node.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Node.indent(Appendable, int, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Node.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "Node.shallowClone()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Node.attr(String)": [
+            5,
+            5,
+            5
+          ],
+          "Node.hasAttr(String)": [
+            3,
+            3,
+            3
+          ],
+          "Node.clearAttributes()": [
+            2,
+            2,
+            2
+          ],
+          "Node.absUrl(String)": [
+            3,
+            3,
+            3
+          ],
+          "Node.childNodesCopy()": [
+            2,
+            2,
+            2
+          ],
+          "Node.root()": [
+            2,
+            2,
+            2
+          ],
+          "Node.wrap(String)": [
+            4,
+            4,
+            4
+          ],
+          "Node.setParentNode(Node)": [
+            2,
+            2,
+            2
+          ],
+          "Node.replaceChild(Node, Node)": [
+            2,
+            2,
+            2
+          ],
+          "Node.addChildren(int)": [
+            2,
+            2,
+            2
+          ],
+          "Node.siblingNodes()": [
+            4,
+            4,
+            4
+          ],
+          "Node.nextSibling()": [
+            4,
+            4,
+            4
+          ],
+          "Node.previousSibling()": [
+            4,
+            4,
+            4
+          ],
+          "Node.hasSameValue(Object)": [
+            3,
+            3,
+            3
+          ],
+          "Node.clone()": [
+            3,
+            3,
+            3
+          ],
+          "Node.doClone(Node)": [
+            2,
+            2,
+            2
+          ],
+          "OuterHtmlVisitor.head(Node, int)": [
+            2,
+            2,
+            2
+          ],
+          "OuterHtmlVisitor.tail(Node, int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/NodeTest.java"
+    },
+    {
+      "src_name": "Attributes",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Attributes.java",
+      "class_declaration": "public class Attributes implements Iterable<Attribute>, Cloneable ",
+      "methods_under_test": {
+        "=1": {
+          "Attributes.checkNotNull(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.get(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.getIgnoreCase(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.add(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.put(Attribute)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.hasKey(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.hasKeyIgnoreCase(String)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.size()": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.iterator()": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.dataset()": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.html(final, Appendable, final, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Attributes.normalize()": [
+            1,
+            1,
+            1
+          ],
+          "DatasetIterator.next()": [
+            1,
+            1,
+            1
+          ],
+          "DatasetIterator.remove()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Attributes.indexOfKey(String)": [
+            3,
+            3,
+            3
+          ],
+          "Attributes.put(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.putIgnoreCase(String, String)": [
+            4,
+            4,
+            4
+          ],
+          "Attributes.put(String, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.remove(String)": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.removeIgnoreCase(String)": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.addAll(Attributes)": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.asList()": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.html()": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.equals(Object)": [
+            5,
+            5,
+            5
+          ],
+          "Attributes.clone()": [
+            2,
+            2,
+            2
+          ],
+          "Attributes.deduplicate(ParseSettings)": [
+            6,
+            6,
+            6
+          ],
+          "DatasetIterator.hasNext()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/AttributesTest.java"
+    },
+    {
+      "src_name": "TokenQueue",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/TokenQueue.java",
+      "class_declaration": "public class TokenQueue ",
+      "methods_under_test": {
+        "=1": {
+          "TokenQueue.peek()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.addFirst(Character)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.addFirst(String)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.matches(String)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.matchesCS(String)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.matchesStartTag()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.matchesWhitespace()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.matchesWord()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.consume()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.chompTo(String)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.chompToIgnoreCase(String)": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.remainder()": [
+            1,
+            1,
+            1
+          ],
+          "TokenQueue.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TokenQueue.matchesAny()": [
+            4,
+            4,
+            4
+          ],
+          "TokenQueue.matchChomp(String)": [
+            3,
+            3,
+            3
+          ],
+          "TokenQueue.advance()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consume(String)": [
+            3,
+            3,
+            3
+          ],
+          "TokenQueue.consumeTo(String)": [
+            3,
+            3,
+            3
+          ],
+          "TokenQueue.consumeToIgnoreCase(String)": [
+            6,
+            6,
+            6
+          ],
+          "TokenQueue.consumeToAny()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.unescape(String)": [
+            4,
+            4,
+            4
+          ],
+          "TokenQueue.consumeWhitespace()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consumeWord()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consumeTagName()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consumeElementSelector()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consumeCssIdentifier()": [
+            2,
+            2,
+            2
+          ],
+          "TokenQueue.consumeAttributeKey()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "TokenQueue.chompBalanced(char, char)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/TokenQueueTest.java"
+    },
+    {
+      "src_name": "CharacterReader",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/CharacterReader.java",
+      "class_declaration": "public final class CharacterReader ",
+      "methods_under_test": {
+        "=1": {
+          "CharacterReader.pos()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.current()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.consume()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.advance()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.mark()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.consumeToEnd()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.matches(char)": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.matchesAnySorted(char[])": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.containsIgnoreCase(String)": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.toString()": [
+            1,
+            1,
+            1
+          ],
+          "CharacterReader.rangeEquals(final, int, final, int, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CharacterReader.unconsume()": [
+            2,
+            2,
+            2
+          ],
+          "CharacterReader.rewindToMark()": [
+            2,
+            2,
+            2
+          ],
+          "CharacterReader.nextIndexOf(char)": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.nextIndexOf(CharSequence)": [
+            5,
+            5,
+            5
+          ],
+          "CharacterReader.consumeTo(char)": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.consumeTo(String)": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.consumeToAny()": [
+            3,
+            0,
+            0
+          ],
+          "CharacterReader.consumeToAnySorted()": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.consumeData()": [
+            4,
+            0,
+            0
+          ],
+          "CharacterReader.consumeLetterSequence()": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.consumeLetterThenDigitSequence()": [
+            5,
+            5,
+            5
+          ],
+          "CharacterReader.consumeHexSequence()": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.consumeDigitSequence()": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.matches(String)": [
+            4,
+            4,
+            4
+          ],
+          "CharacterReader.matchesIgnoreCase(String)": [
+            4,
+            4,
+            4
+          ],
+          "CharacterReader.matchesAny()": [
+            4,
+            4,
+            4
+          ],
+          "CharacterReader.matchesLetter()": [
+            2,
+            2,
+            2
+          ],
+          "CharacterReader.matchesDigit()": [
+            2,
+            2,
+            2
+          ],
+          "CharacterReader.matchConsume(String)": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.matchConsumeIgnoreCase(String)": [
+            3,
+            3,
+            3
+          ],
+          "CharacterReader.rangeEquals(final, char[], final, int, int, final, String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "CharacterReader.consumeTagName()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/CharacterReaderTest.java"
+    },
+    {
+      "src_name": "TokeniserState",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/TokeniserState.java",
+      "error": "local variable 'class_name' referenced before assignment",
+      "test_path": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/TokeniserStateTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [],
+  "src_without_tests": [
+    {
+      "src_name": "UncheckedIOException",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/UncheckedIOException.java",
+      "class_declaration": "public class UncheckedIOException extends RuntimeException ",
+      "methods_under_test": {
+        "=1": {
+          "UncheckedIOException.ioException()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TreeBuilder",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/TreeBuilder.java",
+      "class_declaration": "abstract class TreeBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "TreeBuilder.initialiseParse(Reader, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "TreeBuilder.parse(Reader, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "TreeBuilder.currentElement()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TreeBuilder.runParser()": [
+            3,
+            3,
+            3
+          ],
+          "TreeBuilder.processStartTag(String)": [
+            2,
+            2,
+            2
+          ],
+          "TreeBuilder.processStartTag(String, Attributes)": [
+            2,
+            2,
+            2
+          ],
+          "TreeBuilder.processEndTag(String)": [
+            2,
+            2,
+            2
+          ],
+          "TreeBuilder.error(String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "SerializationException",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/SerializationException.java",
+      "class_declaration": "public final class SerializationException extends RuntimeException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseError",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/ParseError.java",
+      "class_declaration": "public class ParseError ",
+      "methods_under_test": {
+        "=1": {
+          "ParseError.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Whitelist",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/safety/Whitelist.java",
+      "class_declaration": "public class Whitelist ",
+      "methods_under_test": {
+        "=1": {
+          "Whitelist.none()": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.simpleText()": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.basic()": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.basicWithImages()": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.relaxed()": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.preserveRelativeLinks(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Whitelist.isSafeTag(String)": [
+            1,
+            1,
+            1
+          ],
+          "TagName.valueOf(String)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeKey.valueOf(String)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeValue.valueOf(String)": [
+            1,
+            1,
+            1
+          ],
+          "Protocol.valueOf(String)": [
+            1,
+            1,
+            1
+          ],
+          "TypedValue.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "TypedValue.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Whitelist.addTags()": [
+            2,
+            2,
+            2
+          ],
+          "Whitelist.removeTags()": [
+            3,
+            3,
+            3
+          ],
+          "Whitelist.addAttributes(String)": [
+            3,
+            3,
+            3
+          ],
+          "Whitelist.removeAttributes(String)": [
+            7,
+            7,
+            7
+          ],
+          "Whitelist.addEnforcedAttribute(String, String, String)": [
+            2,
+            2,
+            2
+          ],
+          "Whitelist.removeEnforcedAttribute(String, String)": [
+            3,
+            3,
+            3
+          ],
+          "Whitelist.addProtocols(String, String)": [
+            4,
+            4,
+            4
+          ],
+          "Whitelist.removeProtocols(String, String)": [
+            4,
+            4,
+            4
+          ],
+          "Whitelist.isSafeAttribute(String, Element, Attribute)": [
+            9,
+            9,
+            9
+          ],
+          "Whitelist.getEnforcedAttributes(String)": [
+            3,
+            3,
+            3
+          ],
+          "TypedValue.equals(Object)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Wikipedia",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/examples/Wikipedia.java",
+      "class_declaration": "public class Wikipedia ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ChangeNotifyingArrayList",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/helper/ChangeNotifyingArrayList.java",
+      "class_declaration": "public abstract class ChangeNotifyingArrayList <E> extends ArrayList<E> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CombiningEvaluator",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/CombiningEvaluator.java",
+      "class_declaration": "abstract class CombiningEvaluator extends Evaluator ",
+      "methods_under_test": {
+        "=1": {
+          "CombiningEvaluator.rightMostEvaluator()": [
+            1,
+            1,
+            1
+          ],
+          "CombiningEvaluator.replaceRightMostEvaluator(Evaluator)": [
+            1,
+            1,
+            1
+          ],
+          "CombiningEvaluator.updateNumEvaluators()": [
+            1,
+            1,
+            1
+          ],
+          "And.toString()": [
+            1,
+            1,
+            1
+          ],
+          "CombiningEvaluator.add(Evaluator)": [
+            1,
+            1,
+            1
+          ],
+          "Or.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "And.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "Or.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DataNode",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/DataNode.java",
+      "class_declaration": "public class DataNode extends LeafNode ",
+      "methods_under_test": {
+        "=1": {
+          "DataNode.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "DataNode.setWholeData(String)": [
+            1,
+            1,
+            1
+          ],
+          "DataNode.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "DataNode.toString()": [
+            1,
+            1,
+            1
+          ],
+          "DataNode.createFromEncoded(String, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "NodeVisitor",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/NodeVisitor.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ListLinks",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/examples/ListLinks.java",
+      "class_declaration": "public class ListLinks ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Evaluator",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/Evaluator.java",
+      "class_declaration": "public abstract class Evaluator ",
+      "methods_under_test": {
+        "=1": {
+          "Tag.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Tag.toString()": [
+            1,
+            1,
+            1
+          ],
+          "TagEndsWith.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "TagEndsWith.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Id.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Id.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Class.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Class.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Attribute.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeStarting.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValue.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValue.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueNot.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueNot.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueStarting.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueStarting.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueEnding.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueEnding.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueContaining.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueContaining.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueMatching.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AttributeWithValueMatching.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AllElements.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "AllElements.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IndexLessThan.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IndexLessThan.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IndexGreaterThan.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IndexGreaterThan.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IndexEquals.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IndexEquals.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsLastChild.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsLastChild.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsNthOfType.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsNthLastOfType.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsNthChild.calculatePosition(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsNthLastChild.calculatePosition(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsFirstChild.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsFirstChild.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsRoot.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsRoot.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsOnlyChild.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "IsOnlyChild.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsOnlyOfType.toString()": [
+            1,
+            1,
+            1
+          ],
+          "IsEmpty.toString()": [
+            1,
+            1,
+            1
+          ],
+          "ContainsText.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "ContainsText.toString()": [
+            1,
+            1,
+            1
+          ],
+          "ContainsData.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "ContainsData.toString()": [
+            1,
+            1,
+            1
+          ],
+          "ContainsOwnText.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "ContainsOwnText.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Matches.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Matches.toString()": [
+            1,
+            1,
+            1
+          ],
+          "MatchesOwn.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "MatchesOwn.toString()": [
+            1,
+            1,
+            1
+          ],
+          "MatchText.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "AttributeStarting.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "CssNthEvaluator.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "CssNthEvaluator.toString()": [
+            3,
+            3,
+            3
+          ],
+          "IsNthOfType.calculatePosition(Element, Element)": [
+            4,
+            4,
+            4
+          ],
+          "IsNthLastOfType.calculatePosition(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "IsOnlyOfType.matches(Element, Element)": [
+            4,
+            4,
+            4
+          ],
+          "IsEmpty.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "MatchText.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Collector",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/Collector.java",
+      "class_declaration": "public class Collector ",
+      "methods_under_test": {
+        "=1": {
+          "Collector.collect(Evaluator, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Collector.findFirst(Evaluator, Element)": [
+            1,
+            1,
+            1
+          ],
+          "FirstFinder.tail(Node, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Accumulator.head(Node, int)": [
+            3,
+            3,
+            3
+          ],
+          "FirstFinder.head(Node, int)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "PseudoTextElement",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/PseudoTextElement.java",
+      "class_declaration": "public class PseudoTextElement extends Element ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseErrorList",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/ParseErrorList.java",
+      "class_declaration": "public class ParseErrorList extends ArrayList<ParseError> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Jsoup",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/Jsoup.java",
+      "class_declaration": "public class Jsoup ",
+      "methods_under_test": {
+        "=1": {
+          "Jsoup.parse(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(String, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.connect(String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(File, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(File, String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(InputStream, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(InputStream, String, String, Parser)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parseBodyFragment(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parseBodyFragment(String)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.parse(URL, int)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.clean(String, String, Whitelist)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.clean(String, Whitelist)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.clean(String, String, Whitelist, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "Jsoup.isValid(String, Whitelist)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Validate",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/helper/Validate.java",
+      "class_declaration": "public final class Validate ",
+      "methods_under_test": {
+        "=1": {
+          "Validate.notNull(Object)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.notNull(Object, String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.isTrue(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.isTrue(boolean, String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.isFalse(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.isFalse(boolean, String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.noNullElements(Object[])": [
+            1,
+            1,
+            1
+          ],
+          "Validate.noNullElements(Object[], String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.notEmpty(String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.notEmpty(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "Validate.fail(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/safety/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Connection",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/Connection.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "XmlDeclaration",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/XmlDeclaration.java",
+      "class_declaration": "public class XmlDeclaration extends LeafNode ",
+      "methods_under_test": {
+        "=1": {
+          "XmlDeclaration.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "XmlDeclaration.name()": [
+            1,
+            1,
+            1
+          ],
+          "XmlDeclaration.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ],
+          "XmlDeclaration.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlDeclaration.getWholeDeclaration()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseSettings",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/ParseSettings.java",
+      "class_declaration": "public class ParseSettings ",
+      "methods_under_test": {
+        "=1": {
+          "ParseSettings.preserveTagCase()": [
+            1,
+            1,
+            1
+          ],
+          "ParseSettings.preserveAttributeCase()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ParseSettings.normalizeTag(String)": [
+            2,
+            2,
+            2
+          ],
+          "ParseSettings.normalizeAttribute(String)": [
+            2,
+            2,
+            2
+          ],
+          "ParseSettings.normalizeAttributes(Attributes)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/internal/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "HtmlToPlainText",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/examples/HtmlToPlainText.java",
+      "class_declaration": "public class HtmlToPlainText ",
+      "methods_under_test": {
+        "=1": {
+          "HtmlToPlainText.getPlainText(Element)": [
+            1,
+            1,
+            1
+          ],
+          "FormattingVisitor.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "FormattingVisitor.head(Node, int)": [
+            6,
+            6,
+            6
+          ],
+          "FormattingVisitor.tail(Node, int)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Normalizer",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/internal/Normalizer.java",
+      "class_declaration": "public final class Normalizer ",
+      "methods_under_test": {
+        "=1": {
+          "Normalizer.lowerCase(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Normalizer.normalize(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CDataNode",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/CDataNode.java",
+      "class_declaration": "public class CDataNode extends TextNode ",
+      "methods_under_test": {
+        "=1": {
+          "CDataNode.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "CDataNode.text()": [
+            1,
+            1,
+            1
+          ],
+          "CDataNode.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CDataNode.outerHtmlTail(Appendable, int, Document.OutputSettings)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "EntitiesData",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/EntitiesData.java",
+      "class_declaration": "class EntitiesData ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "LeafNode",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/LeafNode.java",
+      "class_declaration": "abstract class LeafNode extends Node ",
+      "methods_under_test": {
+        "=1": {
+          "LeafNode.hasAttributes()": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.attributes()": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.coreValue()": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.coreValue(String)": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.hasAttr(String)": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.removeAttr(String)": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.absUrl(String)": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.baseUri()": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.childNodeSize()": [
+            1,
+            1,
+            1
+          ],
+          "LeafNode.ensureChildNodes()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "LeafNode.attr(String)": [
+            2,
+            2,
+            2
+          ],
+          "LeafNode.attr(String, String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/examples/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "BooleanAttribute",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/BooleanAttribute.java",
+      "class_declaration": "public class BooleanAttribute extends Attribute ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Token",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/parser/Token.java",
+      "class_declaration": "abstract class Token ",
+      "methods_under_test": {
+        "=1": {
+          "Token.tokenType()": [
+            1,
+            1,
+            1
+          ],
+          "Doctype.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Token.name()": [
+            1,
+            1,
+            1
+          ],
+          "Token.normalName()": [
+            1,
+            1,
+            1
+          ],
+          "Token.name(String)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendTagName(String)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendTagName(char)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendAttributeName(String)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendAttributeName(char)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendAttributeValue(char)": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendAttributeValue(char[])": [
+            1,
+            1,
+            1
+          ],
+          "Token.appendAttributeValue(int[])": [
+            1,
+            1,
+            1
+          ],
+          "Token.setEmptyAttributeValue()": [
+            1,
+            1,
+            1
+          ],
+          "StartTag.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Tag.nameAttr(String, Attributes)": [
+            1,
+            1,
+            1
+          ],
+          "EndTag.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Comment.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Comment.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Character.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Token.data(String)": [
+            1,
+            1,
+            1
+          ],
+          "Token.toString()": [
+            1,
+            1,
+            1
+          ],
+          "CData.toString()": [
+            1,
+            1,
+            1
+          ],
+          "EOF.reset()": [
+            1,
+            1,
+            1
+          ],
+          "Token.asDoctype()": [
+            1,
+            1,
+            1
+          ],
+          "Token.asStartTag()": [
+            1,
+            1,
+            1
+          ],
+          "Token.asEndTag()": [
+            1,
+            1,
+            1
+          ],
+          "Token.asComment()": [
+            1,
+            1,
+            1
+          ],
+          "Token.asCharacter()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Token.reset(StringBuilder)": [
+            2,
+            2,
+            2
+          ],
+          "Token.newAttribute()": [
+            6,
+            6,
+            6
+          ],
+          "Token.finaliseTag()": [
+            2,
+            2,
+            2
+          ],
+          "Token.appendAttributeValue(String)": [
+            3,
+            3,
+            3
+          ],
+          "StartTag.toString()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeFilter",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/NodeFilter.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Comment",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/Comment.java",
+      "class_declaration": "public class Comment extends LeafNode ",
+      "methods_under_test": {
+        "=1": {
+          "Comment.nodeName()": [
+            1,
+            1,
+            1
+          ],
+          "Comment.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Comment.outerHtmlHead(Appendable, int, Document.OutputSettings)": [
+            2,
+            2,
+            2
+          ],
+          "Comment.asXmlDeclaration()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeUtils",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/NodeUtils.java",
+      "class_declaration": "final class NodeUtils ",
+      "methods_under_test": {
+        "=1": {
+          "NodeUtils.outputSettings(Node)": [
+            1,
+            1,
+            1
+          ],
+          "NodeUtils.parser(Node)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "StructuralEvaluator",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/StructuralEvaluator.java",
+      "class_declaration": "abstract class StructuralEvaluator extends Evaluator ",
+      "methods_under_test": {
+        "=1": {
+          "Root.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Has.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Not.matches(Element, Element)": [
+            1,
+            1,
+            1
+          ],
+          "Not.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Parent.toString()": [
+            1,
+            1,
+            1
+          ],
+          "ImmediateParent.toString()": [
+            1,
+            1,
+            1
+          ],
+          "PreviousSibling.toString()": [
+            1,
+            1,
+            1
+          ],
+          "ImmediatePreviousSibling.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Has.matches(Element, Element)": [
+            3,
+            3,
+            3
+          ],
+          "Parent.matches(Element, Element)": [
+            5,
+            5,
+            5
+          ],
+          "ImmediateParent.matches(Element, Element)": [
+            2,
+            2,
+            2
+          ],
+          "PreviousSibling.matches(Element, Element)": [
+            4,
+            4,
+            4
+          ],
+          "ImmediatePreviousSibling.matches(Element, Element)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "UnsupportedMimeTypeException",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/UnsupportedMimeTypeException.java",
+      "class_declaration": "public class UnsupportedMimeTypeException extends IOException ",
+      "methods_under_test": {
+        "=1": {
+          "UnsupportedMimeTypeException.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeTraversor",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/select/NodeTraversor.java",
+      "class_declaration": "public class NodeTraversor ",
+      "methods_under_test": {
+        "=1": {
+          "NodeTraversor.traverse(Node)": [
+            1,
+            1,
+            1
+          ],
+          "NodeTraversor.traverse(NodeVisitor, Elements)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NodeTraversor.traverse(NodeVisitor, Node)": [
+            4,
+            4,
+            4
+          ],
+          "NodeTraversor.filter(NodeFilter, Elements)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "NodeTraversor.filter(NodeFilter, Node)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/nodes/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "HttpStatusException",
+      "src_path": "../../defects4j-subjects/Jsoup-93f/src/main/java/org/jsoup/HttpStatusException.java",
+      "class_declaration": "public class HttpStatusException extends IOException ",
+      "methods_under_test": {
+        "=1": {
+          "HttpStatusException.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "InterruptedServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/InterruptedServlet.java"
+    },
+    {
+      "MultiLocaleRule": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/MultiLocaleRule.java"
+    },
+    {
+      "TestServer": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/TestServer.java"
+    },
+    {
+      "CssTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/select/CssTest.java"
+    },
+    {
+      "FileServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/FileServlet.java"
+    },
+    {
+      "ConnectIT": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/ConnectIT.java"
+    },
+    {
+      "TraversorTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/select/TraversorTest.java"
+    },
+    {
+      "ParserSettingsTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/ParserSettingsTest.java"
+    },
+    {
+      "EchoServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/EchoServlet.java"
+    },
+    {
+      "ConnectTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/ConnectTest.java"
+    },
+    {
+      "HtmlParserTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/HtmlParserTest.java"
+    },
+    {
+      "Benchmark": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/Benchmark.java"
+    },
+    {
+      "SlowRider": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/SlowRider.java"
+    },
+    {
+      "BuildEntities": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/nodes/BuildEntities.java"
+    },
+    {
+      "UrlConnectTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/UrlConnectTest.java"
+    },
+    {
+      "TextUtil": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/TextUtil.java"
+    },
+    {
+      "RedirectServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/RedirectServlet.java"
+    },
+    {
+      "HelloServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/HelloServlet.java"
+    },
+    {
+      "Deflateservlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/Deflateservlet.java"
+    },
+    {
+      "BaseServlet": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/servlets/BaseServlet.java"
+    },
+    {
+      "AttributeParseTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/parser/AttributeParseTest.java"
+    },
+    {
+      "ParseTest": "../../defects4j-subjects/Jsoup-93f/src/test/java/org/jsoup/integration/ParseTest.java"
+    }
+  ]
+}

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Token.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.parser</a> &gt; <span class="el_source">Token.java</span></div><h1>Token.java</h1><pre class="source lang-java linenums">package org.jsoup.parser;
+
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Attributes;
+
+import static org.jsoup.internal.Normalizer.lowerCase;
+
+/**
+ * Parse tokens for the Tokeniser.
+ */
+abstract class Token {
+    TokenType type;
+
+    private Token() {
+    }
+    
+    String tokenType() {
+<span class="nc" id="L18">        return this.getClass().getSimpleName();</span>
+    }
+
+    /**
+     * Reset the data represent by this token, for reuse. Prevents the need to create transfer objects for every
+     * piece of data, which immediately get GCed.
+     */
+    abstract Token reset();
+
+    static void reset(StringBuilder sb) {
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if (sb != null) {</span>
+<span class="fc" id="L29">            sb.delete(0, sb.length());</span>
+        }
+<span class="fc" id="L31">    }</span>
+
+    static final class Doctype extends Token {
+<span class="fc" id="L34">        final StringBuilder name = new StringBuilder();</span>
+<span class="fc" id="L35">        String pubSysKey = null;</span>
+<span class="fc" id="L36">        final StringBuilder publicIdentifier = new StringBuilder();</span>
+<span class="fc" id="L37">        final StringBuilder systemIdentifier = new StringBuilder();</span>
+<span class="fc" id="L38">        boolean forceQuirks = false;</span>
+
+<span class="fc" id="L40">        Doctype() {</span>
+<span class="fc" id="L41">            type = TokenType.Doctype;</span>
+<span class="fc" id="L42">        }</span>
+
+        @Override
+        Token reset() {
+<span class="fc" id="L46">            reset(name);</span>
+<span class="fc" id="L47">            pubSysKey = null;</span>
+<span class="fc" id="L48">            reset(publicIdentifier);</span>
+<span class="fc" id="L49">            reset(systemIdentifier);</span>
+<span class="fc" id="L50">            forceQuirks = false;</span>
+<span class="fc" id="L51">            return this;</span>
+        }
+
+        String getName() {
+<span class="nc" id="L55">            return name.toString();</span>
+        }
+
+        String getPubSysKey() {
+<span class="nc" id="L59">            return pubSysKey;</span>
+        }
+
+        String getPublicIdentifier() {
+<span class="nc" id="L63">            return publicIdentifier.toString();</span>
+        }
+
+        public String getSystemIdentifier() {
+<span class="nc" id="L67">            return systemIdentifier.toString();</span>
+        }
+
+        public boolean isForceQuirks() {
+<span class="nc" id="L71">            return forceQuirks;</span>
+        }
+    }
+
+<span class="fc" id="L75">    static abstract class Tag extends Token {</span>
+        protected String tagName;
+        protected String normalName; // lc version of tag name, for case insensitive tree build
+        private String pendingAttributeName; // attribute names are generally caught in one hop, not accumulated
+<span class="fc" id="L79">        private StringBuilder pendingAttributeValue = new StringBuilder(); // but values are accumulated, from e.g. &amp; in hrefs</span>
+        private String pendingAttributeValueS; // try to get attr vals in one shot, vs Builder
+<span class="fc" id="L81">        private boolean hasEmptyAttributeValue = false; // distinguish boolean attribute from empty string value</span>
+<span class="fc" id="L82">        private boolean hasPendingAttributeValue = false;</span>
+<span class="fc" id="L83">        boolean selfClosing = false;</span>
+        Attributes attributes; // start tags get attributes on construction. End tags get attributes on first new attribute (but only for parser convenience, not used).
+
+        @Override
+        Tag reset() {
+<span class="fc" id="L88">            tagName = null;</span>
+<span class="fc" id="L89">            normalName = null;</span>
+<span class="fc" id="L90">            pendingAttributeName = null;</span>
+<span class="fc" id="L91">            reset(pendingAttributeValue);</span>
+<span class="fc" id="L92">            pendingAttributeValueS = null;</span>
+<span class="fc" id="L93">            hasEmptyAttributeValue = false;</span>
+<span class="fc" id="L94">            hasPendingAttributeValue = false;</span>
+<span class="fc" id="L95">            selfClosing = false;</span>
+<span class="fc" id="L96">            attributes = null;</span>
+<span class="fc" id="L97">            return this;</span>
+        }
+
+        final void newAttribute() {
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">            if (attributes == null)</span>
+<span class="fc" id="L102">                attributes = new Attributes();</span>
+
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">            if (pendingAttributeName != null) {</span>
+                // the tokeniser has skipped whitespace control chars, but trimming could collapse to empty for other control codes, so verify here
+<span class="nc" id="L106">                pendingAttributeName = pendingAttributeName.trim();</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                if (pendingAttributeName.length() &gt; 0) {</span>
+                    String value;
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                    if (hasPendingAttributeValue)</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">                        value = pendingAttributeValue.length() &gt; 0 ? pendingAttributeValue.toString() : pendingAttributeValueS;</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                    else if (hasEmptyAttributeValue)</span>
+<span class="nc" id="L112">                        value = &quot;&quot;;</span>
+                    else
+<span class="nc" id="L114">                        value = null;</span>
+                    // note that we add, not put. So that the first is kept, and rest are deduped, once in a context where case sensitivity is known (the appropriate tree builder).
+<span class="nc" id="L116">                    attributes.add(pendingAttributeName, value);</span>
+                }
+            }
+<span class="fc" id="L119">            pendingAttributeName = null;</span>
+<span class="fc" id="L120">            hasEmptyAttributeValue = false;</span>
+<span class="fc" id="L121">            hasPendingAttributeValue = false;</span>
+<span class="fc" id="L122">            reset(pendingAttributeValue);</span>
+<span class="fc" id="L123">            pendingAttributeValueS = null;</span>
+<span class="fc" id="L124">        }</span>
+
+        final void finaliseTag() {
+            // finalises for emit
+<span class="pc bpc" id="L128" title="1 of 2 branches missed.">            if (pendingAttributeName != null) {</span>
+<span class="nc" id="L129">                newAttribute();</span>
+            }
+<span class="fc" id="L131">        }</span>
+
+        /** Preserves case */
+        final String name() { // preserves case, for input into Tag.valueOf (which may drop case)
+<span class="pc bpc" id="L135" title="2 of 4 branches missed.">            Validate.isFalse(tagName == null || tagName.length() == 0);</span>
+<span class="fc" id="L136">            return tagName;</span>
+        }
+
+        /** Lower case */
+        final String normalName() { // lower case, used in tree building for working out where in tree it should go
+<span class="nc" id="L141">            return normalName;</span>
+        }
+
+        final Tag name(String name) {
+<span class="nc" id="L145">            tagName = name;</span>
+<span class="nc" id="L146">            normalName = lowerCase(name);</span>
+<span class="nc" id="L147">            return this;</span>
+        }
+
+        final boolean isSelfClosing() {
+<span class="nc" id="L151">            return selfClosing;</span>
+        }
+
+        @SuppressWarnings({&quot;TypeMayBeWeakened&quot;})
+        final Attributes getAttributes() {
+<span class="nc" id="L156">            return attributes;</span>
+        }
+
+        // these appenders are rarely hit in not null state-- caused by null chars.
+        final void appendTagName(String append) {
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">            tagName = tagName == null ? append : tagName.concat(append);</span>
+<span class="fc" id="L162">            normalName = lowerCase(tagName);</span>
+<span class="fc" id="L163">        }</span>
+
+        final void appendTagName(char append) {
+<span class="nc" id="L166">            appendTagName(String.valueOf(append));</span>
+<span class="nc" id="L167">        }</span>
+
+        final void appendAttributeName(String append) {
+<span class="nc bnc" id="L170" title="All 2 branches missed.">            pendingAttributeName = pendingAttributeName == null ? append : pendingAttributeName.concat(append);</span>
+<span class="nc" id="L171">        }</span>
+
+        final void appendAttributeName(char append) {
+<span class="nc" id="L174">            appendAttributeName(String.valueOf(append));</span>
+<span class="nc" id="L175">        }</span>
+
+        final void appendAttributeValue(String append) {
+<span class="nc" id="L178">            ensureAttributeValue();</span>
+<span class="nc bnc" id="L179" title="All 2 branches missed.">            if (pendingAttributeValue.length() == 0) {</span>
+<span class="nc" id="L180">                pendingAttributeValueS = append;</span>
+            } else {
+<span class="nc" id="L182">                pendingAttributeValue.append(append);</span>
+            }
+<span class="nc" id="L184">        }</span>
+
+        final void appendAttributeValue(char append) {
+<span class="nc" id="L187">            ensureAttributeValue();</span>
+<span class="nc" id="L188">            pendingAttributeValue.append(append);</span>
+<span class="nc" id="L189">        }</span>
+
+        final void appendAttributeValue(char[] append) {
+<span class="nc" id="L192">            ensureAttributeValue();</span>
+<span class="nc" id="L193">            pendingAttributeValue.append(append);</span>
+<span class="nc" id="L194">        }</span>
+
+        final void appendAttributeValue(int[] appendCodepoints) {
+<span class="nc" id="L197">            ensureAttributeValue();</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">            for (int codepoint : appendCodepoints) {</span>
+<span class="nc" id="L199">                pendingAttributeValue.appendCodePoint(codepoint);</span>
+            }
+<span class="nc" id="L201">        }</span>
+        
+        final void setEmptyAttributeValue() {
+<span class="nc" id="L204">            hasEmptyAttributeValue = true;</span>
+<span class="nc" id="L205">        }</span>
+
+        private void ensureAttributeValue() {
+<span class="nc" id="L208">            hasPendingAttributeValue = true;</span>
+            // if on second hit, we'll need to move to the builder
+<span class="nc bnc" id="L210" title="All 2 branches missed.">            if (pendingAttributeValueS != null) {</span>
+<span class="nc" id="L211">                pendingAttributeValue.append(pendingAttributeValueS);</span>
+<span class="nc" id="L212">                pendingAttributeValueS = null;</span>
+            }
+<span class="nc" id="L214">        }</span>
+    }
+
+    final static class StartTag extends Tag {
+        StartTag() {
+<span class="fc" id="L219">            super();</span>
+<span class="fc" id="L220">            attributes = new Attributes();</span>
+<span class="fc" id="L221">            type = TokenType.StartTag;</span>
+<span class="fc" id="L222">        }</span>
+
+        @Override
+        Tag reset() {
+<span class="fc" id="L226">            super.reset();</span>
+<span class="fc" id="L227">            attributes = new Attributes();</span>
+            // todo - would prefer these to be null, but need to check Element assertions
+<span class="fc" id="L229">            return this;</span>
+        }
+
+        StartTag nameAttr(String name, Attributes attributes) {
+<span class="nc" id="L233">            this.tagName = name;</span>
+<span class="nc" id="L234">            this.attributes = attributes;</span>
+<span class="nc" id="L235">            normalName = lowerCase(tagName);</span>
+<span class="nc" id="L236">            return this;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc bnc" id="L241" title="All 4 branches missed.">            if (attributes != null &amp;&amp; attributes.size() &gt; 0)</span>
+<span class="nc" id="L242">                return &quot;&lt;&quot; + name() + &quot; &quot; + attributes.toString() + &quot;&gt;&quot;;</span>
+            else
+<span class="nc" id="L244">                return &quot;&lt;&quot; + name() + &quot;&gt;&quot;;</span>
+        }
+    }
+
+    final static class EndTag extends Tag{
+        EndTag() {
+<span class="fc" id="L250">            super();</span>
+<span class="fc" id="L251">            type = TokenType.EndTag;</span>
+<span class="fc" id="L252">        }</span>
+
+        @Override
+        public String toString() {
+<span class="nc" id="L256">            return &quot;&lt;/&quot; + name() + &quot;&gt;&quot;;</span>
+        }
+    }
+
+    final static class Comment extends Token {
+<span class="fc" id="L261">        final StringBuilder data = new StringBuilder();</span>
+<span class="fc" id="L262">        boolean bogus = false;</span>
+
+        @Override
+        Token reset() {
+<span class="fc" id="L266">            reset(data);</span>
+<span class="fc" id="L267">            bogus = false;</span>
+<span class="fc" id="L268">            return this;</span>
+        }
+
+<span class="fc" id="L271">        Comment() {</span>
+<span class="fc" id="L272">            type = TokenType.Comment;</span>
+<span class="fc" id="L273">        }</span>
+
+        String getData() {
+<span class="nc" id="L276">            return data.toString();</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L281">            return &quot;&lt;!--&quot; + getData() + &quot;--&gt;&quot;;</span>
+        }
+    }
+
+    static class Character extends Token {
+        private String data;
+
+        Character() {
+<span class="fc" id="L289">            super();</span>
+<span class="fc" id="L290">            type = TokenType.Character;</span>
+<span class="fc" id="L291">        }</span>
+
+        @Override
+        Token reset() {
+<span class="nc" id="L295">            data = null;</span>
+<span class="nc" id="L296">            return this;</span>
+        }
+
+        Character data(String data) {
+<span class="fc" id="L300">            this.data = data;</span>
+<span class="fc" id="L301">            return this;</span>
+        }
+
+        String getData() {
+<span class="fc" id="L305">            return data;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L310">            return getData();</span>
+        }
+    }
+
+    final static class CData extends Character {
+        CData(String data) {
+<span class="nc" id="L316">            super();</span>
+<span class="nc" id="L317">            this.data(data);</span>
+<span class="nc" id="L318">        }</span>
+
+        @Override
+        public String toString() {
+<span class="nc" id="L322">            return &quot;&lt;![CDATA[&quot; + getData() + &quot;]]&gt;&quot;;</span>
+        }
+
+    }
+
+    final static class EOF extends Token {
+<span class="fc" id="L328">        EOF() {</span>
+<span class="fc" id="L329">            type = Token.TokenType.EOF;</span>
+<span class="fc" id="L330">        }</span>
+
+        @Override
+        Token reset() {
+<span class="nc" id="L334">            return this;</span>
+        }
+    }
+
+    final boolean isDoctype() {
+<span class="nc bnc" id="L339" title="All 2 branches missed.">        return type == TokenType.Doctype;</span>
+    }
+
+    final Doctype asDoctype() {
+<span class="nc" id="L343">        return (Doctype) this;</span>
+    }
+
+    final boolean isStartTag() {
+<span class="nc bnc" id="L347" title="All 2 branches missed.">        return type == TokenType.StartTag;</span>
+    }
+
+    final StartTag asStartTag() {
+<span class="nc" id="L351">        return (StartTag) this;</span>
+    }
+
+    final boolean isEndTag() {
+<span class="nc bnc" id="L355" title="All 2 branches missed.">        return type == TokenType.EndTag;</span>
+    }
+
+    final EndTag asEndTag() {
+<span class="nc" id="L359">        return (EndTag) this;</span>
+    }
+
+    final boolean isComment() {
+<span class="nc bnc" id="L363" title="All 2 branches missed.">        return type == TokenType.Comment;</span>
+    }
+
+    final Comment asComment() {
+<span class="nc" id="L367">        return (Comment) this;</span>
+    }
+
+    final boolean isCharacter() {
+<span class="nc bnc" id="L371" title="All 2 branches missed.">        return type == TokenType.Character;</span>
+    }
+
+    final boolean isCData() {
+<span class="nc" id="L375">        return this instanceof CData;</span>
+    }
+
+    final Character asCharacter() {
+<span class="nc" id="L379">        return (Character) this;</span>
+    }
+
+    final boolean isEOF() {
+<span class="nc bnc" id="L383" title="All 2 branches missed.">        return type == TokenType.EOF;</span>
+    }
+
+<span class="fc" id="L386">    public enum TokenType {</span>
+<span class="fc" id="L387">        Doctype,</span>
+<span class="fc" id="L388">        StartTag,</span>
+<span class="fc" id="L389">        EndTag,</span>
+<span class="fc" id="L390">        Comment,</span>
+<span class="fc" id="L391">        Character, // note no CData - treated in builder as an extension of Character</span>
+<span class="fc" id="L392">        EOF</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

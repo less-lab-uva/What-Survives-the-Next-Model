@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlDeclaration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.nodes</a> &gt; <span class="el_source">XmlDeclaration.java</span></div><h1>XmlDeclaration.java</h1><pre class="source lang-java linenums">package org.jsoup.nodes;
+
+import org.jsoup.SerializationException;
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+
+import java.io.IOException;
+
+/**
+ * An XML Declaration.
+ */
+public class XmlDeclaration extends LeafNode {
+    // todo this impl isn't really right, the data shouldn't be attributes, just a run of text after the name
+    private final boolean isProcessingInstruction; // &lt;! if true, &lt;? if false, declaration (and last data char should be ?)
+
+    /**
+     * Create a new XML declaration
+     * @param name of declaration
+     * @param isProcessingInstruction is processing instruction
+     */
+<span class="nc" id="L21">    public XmlDeclaration(String name, boolean isProcessingInstruction) {</span>
+<span class="nc" id="L22">        Validate.notNull(name);</span>
+<span class="nc" id="L23">        value = name;</span>
+<span class="nc" id="L24">        this.isProcessingInstruction = isProcessingInstruction;</span>
+<span class="nc" id="L25">    }</span>
+
+    /**
+     * Create a new XML declaration
+     * @param name of declaration
+     * @param baseUri Leaf Nodes don't have base URIs; they inherit from their Element
+     * @param isProcessingInstruction is processing instruction
+     * @see XmlDeclaration#XmlDeclaration(String, boolean)
+     * @deprecated
+     */
+    public XmlDeclaration(String name, String baseUri, boolean isProcessingInstruction) {
+<span class="nc" id="L36">        this(name, isProcessingInstruction);</span>
+<span class="nc" id="L37">    }</span>
+
+    public String nodeName() {
+<span class="nc" id="L40">        return &quot;#declaration&quot;;</span>
+    }
+
+    /**
+     * Get the name of this declaration.
+     * @return name of this declaration.
+     */
+    public String name() {
+<span class="nc" id="L48">        return coreValue();</span>
+    }
+
+    /**
+     * Get the unencoded XML declaration.
+     * @return XML declaration
+     */
+    public String getWholeDeclaration() {
+<span class="nc" id="L56">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+        try {
+<span class="nc" id="L58">            getWholeDeclaration(sb, new Document.OutputSettings());</span>
+<span class="nc" id="L59">        } catch (IOException e) {</span>
+<span class="nc" id="L60">            throw new SerializationException(e);</span>
+<span class="nc" id="L61">        }</span>
+<span class="nc" id="L62">        return StringUtil.releaseBuilder(sb).trim();</span>
+    }
+
+    private void getWholeDeclaration(Appendable accum, Document.OutputSettings out) throws IOException {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for (Attribute attribute : attributes()) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if (!attribute.getKey().equals(nodeName())) { // skips coreValue (name)</span>
+<span class="nc" id="L68">                accum.append(' ');</span>
+<span class="nc" id="L69">                attribute.html(accum, out);</span>
+            }
+<span class="nc" id="L71">        }</span>
+<span class="nc" id="L72">    }</span>
+
+    void outerHtmlHead(Appendable accum, int depth, Document.OutputSettings out) throws IOException {
+<span class="nc" id="L75">        accum</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">            .append(&quot;&lt;&quot;)</span>
+<span class="nc" id="L77">            .append(isProcessingInstruction ? &quot;!&quot; : &quot;?&quot;)</span>
+<span class="nc" id="L78">            .append(coreValue());</span>
+<span class="nc" id="L79">        getWholeDeclaration(accum, out);</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">        accum</span>
+<span class="nc" id="L81">            .append(isProcessingInstruction ? &quot;!&quot; : &quot;?&quot;)</span>
+<span class="nc" id="L82">            .append(&quot;&gt;&quot;);</span>
+<span class="nc" id="L83">    }</span>
+
+    void outerHtmlTail(Appendable accum, int depth, Document.OutputSettings out) {
+<span class="nc" id="L86">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L90">        return outerHtml();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
