@@ -1,0 +1,83 @@
+{
+  "price_in_per_mtok": 3.0,
+  "price_out_per_mtok": 15.0,
+  "A": {
+    "ConfuDB": {
+      "file": "log-claude-sonnet-4-6-a-ConfuDB.down_sampled_15usd.csv",
+      "n_calls": 803,
+      "total_seconds": 1143.077,
+      "mean_seconds": 1.424,
+      "input_tokens": 660380,
+      "output_tokens": 17666,
+      "cost_usd": 2.2461
+    },
+    "real_malware": {
+      "file": "log-claude-sonnet-4-6-a-NeupaneDB_real_malware.down_sampled_15usd.csv",
+      "n_calls": 422,
+      "total_seconds": 630.577,
+      "mean_seconds": 1.494,
+      "input_tokens": 347516,
+      "output_tokens": 9284,
+      "cost_usd": 1.1818
+    },
+    "no_malware": {
+      "file": "log-claude-sonnet-4-6-a-NeupaneDB_no_malware.down_sampled_15usd.csv",
+      "n_calls": 213,
+      "total_seconds": 308.375,
+      "mean_seconds": 1.448,
+      "input_tokens": 174518,
+      "output_tokens": 4686,
+      "cost_usd": 0.5938
+    },
+    "total": {
+      "n_calls": 1438,
+      "total_seconds": 2082.029,
+      "input_tokens": 1182414,
+      "output_tokens": 31636,
+      "cost_usd": 4.0217
+    }
+  },
+  "B": {
+    "ConfuDB": {
+      "file": "log-claude-sonnet-4-6-b-ConfuDB.down_sampled_15usd.csv",
+      "n_calls": 803,
+      "total_seconds": 1290.839,
+      "mean_seconds": 1.608,
+      "input_tokens": 1892182,
+      "output_tokens": 14454,
+      "cost_usd": 5.8934
+    },
+    "real_malware": {
+      "file": "log-claude-sonnet-4-6-b-NeupaneDB_real_malware.down_sampled_15usd.csv",
+      "n_calls": 422,
+      "total_seconds": 660.467,
+      "mean_seconds": 1.565,
+      "input_tokens": 994864,
+      "output_tokens": 7596,
+      "cost_usd": 3.0985
+    },
+    "no_malware": {
+      "file": "log-claude-sonnet-4-6-b-NeupaneDB_no_malware.down_sampled_15usd.csv",
+      "n_calls": 213,
+      "total_seconds": 349.744,
+      "mean_seconds": 1.642,
+      "input_tokens": 501260,
+      "output_tokens": 3834,
+      "cost_usd": 1.5613
+    },
+    "total": {
+      "n_calls": 1438,
+      "total_seconds": 2301.05,
+      "input_tokens": 3388306,
+      "output_tokens": 25884,
+      "cost_usd": 10.5532
+    }
+  },
+  "grand_total": {
+    "n_calls": 2876,
+    "total_seconds": 4383.079,
+    "input_tokens": 4570720,
+    "output_tokens": 57520,
+    "cost_usd": 14.5749
+  }
+}

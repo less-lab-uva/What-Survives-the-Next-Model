@@ -8,7 +8,9 @@ Writes results/usage.json.
 There is no pricing API, so the rates below are Anthropic's published pricing for
 claude-sonnet-4-6 (applied here, at analysis time, not during the run).
 
-Like main.py: fixed paths, prerequisites checked up front, hard-abort, no overwrite.
+Run from the analysis directory:  python3 utils/usage.py
+Paths are FIXED relative to that directory (not computed). Like main.py: prerequisites
+checked up front, hard-abort, no overwrite.
 """
 
 import os
@@ -16,8 +18,11 @@ import sys
 import json
 import pandas as pd
 
-PRICE_IN_PER_M = 3.0    # claude-sonnet-4-6 input  $ per 1M tokens
-PRICE_OUT_PER_M = 15.0  # claude-sonnet-4-6 output $ per 1M tokens
+# claude-sonnet-4-6 published pricing, USD per 1M tokens.
+# Source (Wayback snapshot, archived 2026-06-06):
+# https://web.archive.org/web/20260606180643/https://platform.claude.com/docs/en/about-claude/pricing
+PRICE_IN_PER_M = 3.0
+PRICE_OUT_PER_M = 15.0
 
 LOG_A = "outputs/log-claude-sonnet-4-6-a-our.csv"
 LOG_B = "outputs/log-claude-sonnet-4-6-b-our.csv"
