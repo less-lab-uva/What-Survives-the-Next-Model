@@ -1,0 +1,46 @@
+{
+  "title": "HoarePrompt: Structural Reasoning About Program Correctness in Natural Language",
+  "doi": "10.1145/3744916.3773206",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original HoarePrompt system adapts Hoare-style program reasoning to natural-language requirements by asking an LLM to derive natural-language program states and then judge whether code satisfies the problem description.",
+    "This reproduction replaces the full structural HoarePrompt pipeline with direct single-LLM correctness-classification prompts over sampled CoCoClaNeL instances."
+  ],
+  "dataset": {
+    "name": "CoCoClaNeL",
+    "sample_size": 623
+  },
+  "metric": [
+    "Accuracy",
+    "Balanced Accuracy",
+    "True Positive Rate",
+    "True Negative Rate",
+    "False Negative Rate",
+    "False Positive Rate",
+    "MCC"
+  ],
+  "original_result": {
+    "mcc": 0.259,
+    "balanced_accuracy": 0.629,
+    "true_positive_rate": 0.667,
+    "false_negative_rate": 0.333,
+    "false_positive_rate": 0.409
+  },
+  "our_result": {
+    "prompt_A": {
+      "mcc": 0.6572,
+      "balanced_accuracy": 0.8281,
+      "true_positive_rate": 0.853,
+      "false_negative_rate": 0.147,
+      "false_positive_rate": 0.1968
+    },
+    "prompt_B": {
+      "mcc": 0.6541,
+      "balanced_accuracy": 0.8266,
+      "true_positive_rate": 0.8526,
+      "false_negative_rate": 0.1474,
+      "false_positive_rate": 0.1994
+    }
+  },
+  "total_cost": 40
+}
