@@ -1,0 +1,51 @@
+{
+  "title": "What to Retrieve for Effective Retrieval-Augmented Code Generation? An Empirical Study and Beyond",
+  "doi": "10.1145/3744916.3773224",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original AllianceCoder pipeline performs repository-level code generation through three stages: repository API processing (LLM generates natural-language descriptions for all APIs, encoded as vectors), query processing (LLM decomposes the user query into implementation steps and retrieves candidate APIs via semantic matching), and context-integrated code generation (retrieved APIs plus current-file context fed to LLM for final generation).",
+    "This reproduction replaces that multi-stage RAG pipeline with a single Claude Sonnet 4.6 call per task using two prompt strategies: a black-box prompt (Prompt A) that requests 5 distinct implementations with no methodology guidance, and an informed prompt (Prompt B) that provides a 6-step methodology covering symbol cataloguing, spec decomposition, API matching, candidate expansion, implementation, and output formatting."
+  ],
+  "dataset": {
+    "name": "CoderEval (Python)",
+    "sample_size": 23,
+    "full_size": 230,
+    "sample_fraction": 0.1
+  },
+  "metric": [
+    "Pass@1",
+    "Pass@3",
+    "Pass@5"
+  ],
+  "original_result": {
+    "AllianceCoderGPT": {
+      "pass_at_1": 0.3652,
+      "pass_at_3": 0.4,
+      "pass_at_5": 0.413,
+      "tasks": 230
+    },
+    "AllianceCoderGemini": {
+      "pass_at_1": 0.2478,
+      "pass_at_3": 0.4652,
+      "pass_at_5": 0.2782,
+      "tasks": 230
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "pass_at_1": 0.6,
+      "pass_at_3": 0.608696,
+      "pass_at_5": 0.608696,
+      "tasks": 23,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "pass_at_1": 0.608696,
+      "pass_at_3": 0.608696,
+      "pass_at_5": 0.608696,
+      "tasks": 23,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 1.51
+}
