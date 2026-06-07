@@ -1,0 +1,29 @@
+{
+  "title": "LLM-based API Argument Completion with Knowledge-Augmented Prompts",
+  "doi": "10.1145/3744916.3773158",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original APICopilot pipeline builds an input knowledge graph from preceding code, retrieves similar examples, constructs target/example knowledge graphs, performs graph matching, injects selected subgraphs into the prompt, and then asks the LLM to recommend arguments.",
+    "This reproduction replaces that multi-stage KG-RAG workflow with a simplified single-LLM prompt over sampled PY150 instances."
+  ],
+  "dataset": {
+      "name": "PY150",
+      "sample_size": 400
+    },
+  "metric": [
+    "precision"
+  ],
+  "original_result": {
+      "precision": 0.731
+  },
+  "our_result": {
+    "prompt_A": {
+      "precision": 0.7188,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "precision": 0.7627,
+      "result_file": "results/results_B.jsonl"
+    }
+  }
+}

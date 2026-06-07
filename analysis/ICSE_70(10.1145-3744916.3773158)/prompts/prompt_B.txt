@@ -1,0 +1,84 @@
+### Role
+You are an expert software engineer specializing in API usage analysis and code completion, with deep knowledge of how variables, types, and data flow patterns are used in method invocations.
+
+### Task
+You receive a code snippet with one or more missing API method arguments, indicated by a `/* missing */` placeholder or similar comment. Your task is to analyze the preceding code context and produce the most appropriate argument values for each missing position in the method call.
+
+### Input
+- `preceding_code`: A string containing the full code snippet up to and including the incomplete method call. The call contains one or more missing arguments marked with a placeholder such as `/* missing */`.
+- `call_line`: A string identifying the specific line or expression containing the incomplete method call, showing where arguments are missing.
+
+### Output
+A JSON object with a single key `"arguments"`, whose value is an array of objects. Each object represents one argument to be filled in and contains:
+- `"position"`: integer (0-based index of the argument in the method call)
+- `"value"`: string (the concrete argument value or expression to supply at that position)
+
+```json
+{
+  "arguments": [
+    {"position": 0, "value": "<argument at position 0>"},
+    {"position": 1, "value": "<argument at position 1>"}
+  ]
+}
+```
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "preceding_code": "# Django settings for example project.\nimport os.path as path\nPROJECT_ROOT = path.realpath(path.dirname(__file__))\n\nDEBUG = True\nTEMPLATE_DEBUG = DEBUG\n\nADMINS = (\n    # ('Your Name', 'your_email@example.com'),\n)\n\nMANAGERS = ADMINS\n\nDATABASES = {\n    'default': {\n        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.\n        'NAME': path.join(PROJECT_ROOT, 'example.db'), # Or path to database file if using sqlite3.\n        'USER': '',                      # Not used with sqlite3.\n        'PASSWORD': '',                  # Not used with sqlite3.\n        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.\n        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.\n    }\n}\n\n# Hosts/domain names that are valid for this site; required if DEBUG is False\n# See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts\nALLOWED_HOSTS = []\n\n# Local time zone for this installation. Choices can be found here:\n# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name\n# although not all choices may be available on all operating systems.\n# In a Windows environment this must be set to your system time zone.\nTIME_ZONE = 'America/Chicago'\n\n# Language code for this installation. All choices can be found here:\n# http://www.i18nguy.com/unicode/language-identifiers.html\nLANGUAGE_CODE = 'en-us'\n\nSITE_ID = 1\n\n# If you set this to False, Django will make some optimizations so as not\n# to load the internationalization machinery.\nUSE_I18N = True\n\n# If you set this to False, Django will not format dates, numbers and\n# calendars according to the current locale.\nUSE_L10N = True\n\n# If you set this to False, Django will not use timezone-aware datetimes.\nUSE_TZ = True\n\n# Absolute filesystem path to the directory that will hold user-uploaded files.\n# Example: \"/home/media/media.lawrence.com/media/\"\nMEDIA_ROOT = path.join(/* missing */)",
+        "call_line": "MEDIA_ROOT = path.join(/* missing */)"
+      },
+      "outputs": {
+        "arguments": [
+          {"position": 0, "value": "PROJECT_ROOT"},
+          {"position": 1, "value": "'media'"}
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Steps
+
+1. **Identify the incomplete method call.**
+   Parse `call_line` to determine the method being called and count the number of missing argument positions (each `/* missing */` or equivalent placeholder marks one missing argument).
+
+2. **Extract variable definitions and their types from `preceding_code`.**
+   Scan all variable assignments and declarations in `preceding_code`. For each variable, record:
+   - Its name
+   - Its inferred type or class (from constructor calls, type annotations, or right-hand-side expressions)
+   - Its value if it is a literal or a simple expression
+   - How it is derived (e.g., return value of another call, path join, user input, constant)
+
+3. **Build an internal data-flow map for the method call.**
+   Trace which variables or values are candidates for each argument position by reasoning about:
+   - The semantic purpose of the method being called (inferred from its name and the assignment target)
+   - Conventions visible in the surrounding code (e.g., a `path.join` pattern that pairs a root path variable with a subdirectory string literal)
+   - Prior calls to the same or similar methods in `preceding_code` that establish argument-order patterns
+   - Type compatibility: prefer variables whose type matches the expected role of each argument position
+
+4. **Reason about each missing argument position independently.**
+   For each position (0-based), select the best candidate value using this priority order:
+   - A variable in scope whose name, type, and role directly match the expected argument (e.g., a root-path variable for position 0 of a path-joining call)
+   - A string or numeric literal derivable from context or convention (e.g., a subdirectory name implied by a preceding comment or similar call nearby)
+   - A default value appropriate to the type (`""` for strings, `0` for integers, `null`/`None` for objects) only when no more specific candidate is available
+   - If argument order is ambiguous, prefer the order established by analogous complete calls visible in `preceding_code`
+
+5. **Verify internal consistency.**
+   Check that the chosen set of arguments collectively forms a valid, meaningful call: no duplicate variables used where distinct values are expected, correct positional ordering, and syntactically valid expressions for the language of the snippet.
+
+6. **Compile and format the output** according to the schema defined in the Output section: a JSON object with key `"arguments"` containing one entry per missing position, each with `"position"` (integer, 0-based) and `"value"` (string holding the concrete argument expression).
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Provide a concrete value for every missing argument position; do not leave any position unfilled or use placeholder text.
+- Infer argument values by tracing variable definitions, types, and usage patterns visible in `preceding_code`.
+- If a method call has multiple missing arguments, supply all of them in the output array, one entry per position.
+- Argument values must be syntactically valid expressions in the language of the code snippet (e.g., variable names, string literals, integer literals, or expressions).
+- Output only valid JSON matching the schema above. Do not include explanation, commentary, or any text outside the JSON object.
+- Follow the Steps above in order as your internal reasoning process.
