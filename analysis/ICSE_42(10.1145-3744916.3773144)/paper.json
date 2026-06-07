@@ -1,0 +1,35 @@
+{
+  "title": "AdapTrack: Constrained Decoding without Distorting LLM's Output Intent",
+  "doi": "10.1145/3744916.3773144",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original AdapTrack pipeline uses constrained decoding to enforce API-usage constraints at decode time, guiding the LLM toward valid TensorFlow API completions without distorting its output intent on real-world completion samples.",
+    "This reproduction replaces the constrained decoding pipeline with unconstrained LLM API completion prompts over sampled TFv1 benchmark problems, evaluated in two prompt-configuration variants (v1, v2)."
+  ],
+  "dataset": {
+    "name": "TFv1-Synthetic (TensorFlow API completion samples)",
+    "sample_size": 419
+  },
+  "metric": [
+    "EM@1 (exact match)"
+  ],
+  "original_result": {
+   "v1_em_at_1": 0.8353,
+    "v2_em_at_1": 0.6086
+  },
+  "our_result": {
+    "prompt_A": {
+      "v1_em_at_1": 0.7136,
+      "v2_em_at_1": 0.3652,
+      "result_file_v1": "results/results_A_v1.jsonl",
+      "result_file_v2": "results/results_A_v2.jsonl"
+    },
+    "prompt_B": {
+      "v1_em_at_1": 0.7088,
+      "v2_em_at_1": 0.3628,
+      "result_file_v1": "results/results_B_v1.jsonl",
+      "result_file_v2": "results/results_B_v2.jsonl"
+    }
+  },
+  "total_cost": 3.2
+}
