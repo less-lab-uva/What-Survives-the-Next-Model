@@ -1,0 +1,93 @@
+{
+  "title": "FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking",
+  "doi": "10.1145/3744916.3787814",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original FoundRoot method trains an RL-enhanced RCA foundation model with a structured deep-thinking workflow for zero-shot root-cause localization across unseen microservice systems.",
+    "This reproduction uses simplified single-LLM ranking prompts over sampled FoundRoot datasets A-D and evaluates Top-1, Top-3, and MRR."
+  ],
+  "dataset": {
+    "name": "FoundRoot Datasets A-D",
+    "sample_size": 93
+  },
+  "metric": [
+    "Top-1 Accuracy",
+    "Top-3 Accuracy",
+    "MRR"
+  ],
+  "original_result": {
+    "by_dataset": {
+      "A": {
+        "top1": 0.429,
+        "top3": 0.619,
+        "mrr": 0.569
+      },
+      "B": {
+        "top1": 0.433,
+        "top3": 0.744,
+        "mrr": 0.61
+      },
+      "C": {
+        "top1": 0.8,
+        "top3": 0.9,
+        "mrr": 0.858
+      },
+      "D": {
+        "top1": 0.886,
+        "top3": 0.984,
+        "mrr": 0.931
+      }
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "by_dataset": {
+        "A": {
+          "top1": 0.4444,
+          "top3": 0.6667,
+          "mrr": 0.6133
+        },
+        "B": {
+          "top1": 0.4231,
+          "top3": 0.6538,
+          "mrr": 0.5745
+        },
+        "C": {
+          "top1": 0.8,
+          "top3": 0.9,
+          "mrr": 0.8444
+        },
+        "D": {
+          "top1": 0.8718,
+          "top3": 0.9744,
+          "mrr": 0.9252
+        }
+      }
+    },
+    "prompt_B": {
+      "by_dataset": {
+        "A": {
+          "top1": 0.3333,
+          "top3": 0.4444,
+          "mrr": 0.3997
+        },
+        "B": {
+          "top1": 0.3077,
+          "top3": 0.5,
+          "mrr": 0.4163
+        },
+        "C": {
+          "top1": 0.7,
+          "top3": 0.7,
+          "mrr": 0.73
+        },
+        "D": {
+          "top1": 0.8205,
+          "top3": 1.0,
+          "mrr": 0.906
+        }
+      }
+    }
+  },
+  "total_cost": "$14.80"
+}
