@@ -1,0 +1,63 @@
+{
+  "title": "Unlocking LLM Repair Capabilities Through Cross-Language Translation and Multi-Agent Refinement",
+  "doi": "10.1145/3744916.3773227",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original LANTERN pipeline performs direct repair, selects target languages with LLM-based reasoning, translates buggy code across languages, repairs in the target language, back-translates successful fixes, and iteratively refines using historical feedback.",
+    "This reproduction replaces that multi-agent cross-language translation and refinement workflow with a simplified single-LLM repair prompt over sampled xCodeEval instances."
+  ],
+  "dataset": {
+      "name": "xCodeEval Compact Set",
+      "sample_size": 200
+    },
+  "metric": [
+    "Pass@1"
+  ],
+  "original_result": {
+    "C": 0.8609,
+    "C#": 0.7992,
+    "C++": 0.7526,
+    "Go": 0.8511,
+    "Java": 0.7689,
+    "Javascript": 0.883,
+    "Kotlin": 0.8821,
+    "PHP": 0.9322,
+    "Python": 0.8837,
+    "Ruby": 0.8669,
+    "Rust": 0.72
+  },
+  "our_result": {
+    "prompt_A": {
+      "per_language_pass_at_1": {
+        "C": 0.8056,
+        "C#": 0.6944,
+        "C++": 0.625,
+        "Go": 0.9286,
+        "Java": 0.4857,
+        "Javascript": 1.0,
+        "Kotlin": 0.7333,
+        "PHP": 1.0,
+        "Python": 0.7143,
+        "Ruby": 0.8824,
+        "Rust": 1.0
+      },
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "per_language_pass_at_1": {
+        "C": 0.8356,
+        "C#": 0.726,
+        "C++": 0.6562,
+        "Go": 0.8276,
+        "Java": 0.4789,
+        "Javascript": 0.7778,
+        "Kotlin": 0.8387,
+        "PHP": 0.6842,
+        "Python": 0.662,
+        "Ruby": 0.7941,
+        "Rust": 0.75
+      },
+      "result_file": "results/results_B.jsonl"
+    }
+  }
+}
