@@ -1,6 +1,6 @@
 # Experiment Setup
 
-**VulTrial: LLM-Based Vulnerability Detection via Prosecution-Defense Reasoning**  
+**Let the Trial Begin: A Mock-Court Approach to Vulnerability Detection using LLM-Based Agents**  
 ICSE 2026 · DOI: 10.1145/3744916.3773256
 
 Given a C/C++ function, the LLM predicts whether it contains a security vulnerability using Prompt A and Prompt B, evaluated on accuracy, F1, and pair-level metrics.
