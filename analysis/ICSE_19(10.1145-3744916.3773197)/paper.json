@@ -4,7 +4,7 @@
   "venue": "ICSE 2026",
   "summary": [
     "The original SEER pipeline enhances code generation by guiding LLMs through self-exploring deep reasoning chains, where the model iteratively elaborates and refines its chain-of-thought before producing the final solution on HumanEval, MBPP, and LiveCodeBench.",
-    "This reproduction replaces the self-exploring reasoning chain with single-call code generation prompts (Prompt A: zero-shot, Prompt B: chain-of-thought) over sampled problems from all three benchmarks."
+    "This reproduction replaces the self-exploring reasoning chain with single-call code generation over sampled problems from all three benchmarks."
   ],
   "dataset": {
     "name": "HumanEval, MBPP, LiveCodeBench",
