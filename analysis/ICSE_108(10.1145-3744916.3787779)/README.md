@@ -28,13 +28,7 @@ The `trio` binary is included in this repository (pre-built Linux x86_64 ELF exe
 trio    # pre-built Linux x86_64 — run as ./trio
 ```
 
-> **Non-Linux platforms:** `trio` will not run on macOS or Windows. To evaluate on a non-Linux machine, build Trio from source for your platform, then replace the `trio` binary in this directory with your build:
-> ```bash
-> git clone https://github.com/jmct/trio
-> cd trio
-> # follow the build instructions in the repo, then copy the binary here
-> cp trio /path/to/this/repo/trio
-> ```
+> To build Trio from scratch, follow the instructions at https://github.com/pslhy/trio, then copy the resulting binary here.
 
 The binary is already marked executable. If needed:
 ```bash
@@ -45,7 +39,7 @@ chmod +x trio
 
 ## Datasets
 
-The benchmark problems are included in this repository under `data/` (80 `.mls` files, ~320 KB total):
+The benchmark problems are included in this repository under `data/` (80 `.mls` files):
 
 ```
 data/
