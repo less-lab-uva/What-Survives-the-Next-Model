@@ -1,0 +1,32 @@
+Given the following Python program and the function '{func_name}' within the class '{class_name}', your task is to write a test case that executes the specific line of code: {code_linene}.
+
+You are provided with a closely related test case that nearly covers line {code_linene}:  
+
+{test}
+
+Additionally, here is a *cheatsheet* containing the gold execution trace for the above example test case. You may use this information to inform your reasoning, but present your analysis as if you derived it independently.
+{code}
+
+<instructions>
+Using the provided closest test case, please:
+1. Find the place of {code_linene} in the code above (almost the last line of code)
+2. Analyze and explain **why** the given test case does **not** execute line `{code_linene}`.
+3. Based on your analysis, outline a **step-by-step strategy** to ensure that line is executed.
+4. Finally, write a **new test case** that successfully triggers the execution of line `{code_linene}`.
+
+Your generated test case should begin with the following template:
+
+```python
+def test_{class_name}():
+    solution = 
+    assert solution.
+```
+
+Please structure your response in two distinct sections:
+- Enclose your **step-by-step reasoning** within `<thinking>` tags.
+- Enclose your final **Python test case** within `<answer>` tags, using backticks for code formatting.
+
+Important:
+- If the class under test is abstract (i.e., it contains abstract methods), do **not** instantiate it directly in your test. Instead, create a concrete subclass that implements all abstract methods before instantiation, or only test static/class methods without instantiating the abstract class.
+
+</instructions>
