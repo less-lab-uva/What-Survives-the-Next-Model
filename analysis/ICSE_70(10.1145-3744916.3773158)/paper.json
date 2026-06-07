@@ -25,5 +25,6 @@
       "precision": 0.7627,
       "result_file": "results/results_B.jsonl"
     }
-  }
+  },
+  "total_cost": 12.59
 }

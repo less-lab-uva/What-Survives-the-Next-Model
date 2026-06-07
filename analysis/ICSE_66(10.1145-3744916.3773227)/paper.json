@@ -59,5 +59,6 @@
       },
       "result_file": "results/results_B.jsonl"
     }
-  }
+  },
+  "total_cost": 17.05
 }
