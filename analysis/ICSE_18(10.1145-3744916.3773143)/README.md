@@ -2,7 +2,7 @@
 
 This project generates code solutions for HumanEval and LiveCodeBench problems using Prompt A or Prompt B, then evaluates the generated code by running test cases.
 
-**Paper:** EnsLLM: Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach  
+**Paper:** Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach 
 **Venue:** ICSE 2026  
 **DOI:** 10.1145/3744916.3773143
 

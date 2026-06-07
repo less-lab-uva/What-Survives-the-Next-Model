@@ -2,7 +2,7 @@
 
 This project generates code solutions for HumanEval, MBPP, and LiveCodeBench problems using Prompt A or Prompt B, then evaluates the generated code by running test cases.
 
-**Paper:** SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning  
+**Paper:** SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning 
 **Venue:** ICSE 2026  
 **DOI:** 10.1145/3744916.3773197
 
