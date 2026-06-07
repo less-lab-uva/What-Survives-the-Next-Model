@@ -1,0 +1,49 @@
+{
+  "prompt_type": "B",
+  "datasets": [
+    "bp",
+    "fsd",
+    "lmc",
+    "pure",
+    "rac",
+    "us"
+  ],
+  "averaging": "macro_average_over_datasets",
+  "aggregate": {
+    "R-F1": 0.3728,
+    "N-F1": 0.3821,
+    "pass_rate": 0.9393
+  },
+  "per_dataset": {
+    "bp": {
+      "R-F1": 0.2869,
+      "N-F1": 0.3345,
+      "pass_rate": 1.0
+    },
+    "fsd": {
+      "R-F1": 0.3888,
+      "N-F1": 0.5067,
+      "pass_rate": 0.8448
+    },
+    "lmc": {
+      "R-F1": 0.3367,
+      "N-F1": 0.2279,
+      "pass_rate": 1.0
+    },
+    "pure": {
+      "R-F1": 0.3951,
+      "N-F1": 0.4153,
+      "pass_rate": 0.95
+    },
+    "rac": {
+      "R-F1": 0.4901,
+      "N-F1": 0.4934,
+      "pass_rate": 0.85
+    },
+    "us": {
+      "R-F1": 0.3394,
+      "N-F1": 0.3145,
+      "pass_rate": 0.9909
+    }
+  }
+}

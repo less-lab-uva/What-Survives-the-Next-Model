@@ -1,0 +1,11 @@
+Prompt type      : A
+Dataset          : bp
+Model             : claude-sonnet-4-6
+Dataset rows     : 30
+Instances run    : 30
+Cached instances : 3
+New LLM calls    : 27
+Sampling fraction: 1
+Random seed      : 42
+Total input tok  : 31925
+Total output tok : 7134
