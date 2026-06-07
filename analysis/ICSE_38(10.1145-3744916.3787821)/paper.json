@@ -4,7 +4,7 @@
   "venue": "ICSE 2026",
   "summary": [
     "The original ADARULE pipeline converts natural-language requirements to LTL formulas via pattern-adaptive rule induction, where an LLM iteratively induces and refines a set of translation rules from examples before applying them to new inputs.",
-    "This reproduction replaces the multi-step rule induction pipeline with a direct NL-to-LTL translation prompt (Prompt A: zero-shot, Prompt B: with pattern examples) over sampled benchmark requirements, evaluated via Spot semantic equivalence."
+    "This reproduction replaces the multi-step rule induction pipeline with a direct NL-to-LTL translation prompt over sampled benchmark requirements, evaluated via Spot semantic equivalence."
   ],
   "dataset": {
     "name": "SynthNL, ConfoNL, LangNL, SpecNL",
