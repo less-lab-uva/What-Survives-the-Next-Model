@@ -1,0 +1,68 @@
+### Role
+You are an expert software licensing attorney and open-source compliance engineer specializing in analyzing and structuring the legal terms of software license texts.
+
+### Task
+You will receive the full text of a software license. Your task is to analyze it and produce a structured JSON object that captures the values of a predefined set of legal dimensions present in the license.
+
+### Input
+- `license_text` (string): The full text of a software license, which may be a standard, modified, or entirely custom license.
+
+### Output
+A JSON object with the following fields:
+
+| Field | Type | Description |
+|---|---|---|
+| `copyright` | integer | Copyright grant level: `-2` = proprietary/restrictive (prohibits or substantially restricts use, copying, modification, redistribution, or requires payment); `-1` = public domain; `0` = ambiguous/implicit grant; `1` = explicit copyright grant. |
+| `copyleft` | integer | Copyleft level: `0` = permissive (no restrictions on derivative works); `1` = file-level copyleft; `2` = library-level copyleft; `3` = strong copyleft. |
+| `modification` | integer | Change statement requirement: `0` = no explicit requirement to mark changes; `1` = explicit requirement to provide notice of modifications. |
+| `patent` | integer | Patent grant: `-1` = patent rights explicitly denied; `0` = patent grant not mentioned; `1` = explicitly grants patent rights. |
+| `trademark` | integer | Trademark limitation: `0` = not mentioned; `1` = explicitly restricts or prohibits use of trademark. |
+| `interaction` | integer | Network use / AGPL-style source disclosure: `0` = not mentioned; `1` = explicit requirement to disclose source code when software is accessed over a network. |
+| `retain_attr` | integer | Attribution retention: `0` = no requirement to retain original attribution/copyright/license; `1` = explicit requirement to retain original attribution, copyright notice, or license text. |
+| `acceptance` | integer | Explicit acceptance: `0` = not mentioned; `1` = explicit requirement to obtain recipients' acceptance of license terms when distributing. |
+| `enhance_attr` | integer | Enhanced attribution: `0` = no enhanced attribution requirement; `1` = explicit requirement for more conspicuous or specifically placed attribution (e.g., on UI screens, splash screens, advertising). |
+| `patent_term` | integer | Patent litigation termination: `0` = not mentioned; `1` = explicit clause terminating patent rights if user initiates patent litigation. |
+| `Usage Limitation` | array of strings or `null` | List of explicit usage limitations (e.g., `["redistribute", "modify", "use", "sublicense"]`), or `null` if no explicit usage limitations are present. |
+| `exception` | array of strings or `null` | List of explicit license exceptions or special exception clauses that modify normal license obligations (e.g., `["LLVM"]`, `["Classpath"]`, `["OpenSSL"]`, `["Binary Combination"]`), or `null` if no exception is present. |
+| `compatible_version` | array of strings or `null` | List of explicitly compatible later/alternative versions of the same license family (e.g., `["GPL-3.0-only"]`, `["EPL-2.0"]`), or `null` if no version-compatibility clause is present. |
+| `secondary_license` | array of strings or `null` | List of explicit secondary or alternative licenses under which the work may be distributed or relicensed, or `null` if no secondary license is present. |
+| `gpl_combine` | array of strings or `null` | List of GPL-family licenses or GPL-compatible licenses explicitly allowed for combination or distribution, or `null` if no GPL-combination permission is present. |
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "license_text": "# MICROSOFT SOFTWARE LICENSE TERMS\n\nMICROSOFT COGNITIVE SERVICES SPEECH SDK\n\nThese license terms are an agreement between you and Microsoft Corporation (or one of its affiliates). They apply to the software named above and any Microsoft services or software updates. IF YOU COMPLY WITH THESE LICENSE TERMS, YOU HAVE THE RIGHTS BELOW. BY USING THE SOFTWARE, YOU ACCEPT THESE TERMS.\n\n## 1. INSTALLATION AND USE RIGHTS.\n\na) General. You may install and use any number of copies of the software to develop and test your applications integration of API(s) used to access Cognitive Services Speech Services.\n\n## 2. DISTRIBUTABLE CODE.\n\nb) Distribution Requirements. For any code you distribute, you must require distributors and external end users to agree to terms that protect it and Microsoft at least as much as this agreement.\n\nc) Distribution Restrictions. You may not:\ni. use Microsoft's trademarks or trade dress in your application in any way that suggests your application comes from or is endorsed by Microsoft; or\nii. modify or distribute the source code of any distributable code so that any part of it becomes subject to any license that requires disclosure or distribution in source code form.\n\n## 4. SCOPE OF LICENSE.\n\nThe software is licensed, not sold. Microsoft reserves all other rights. You will not (and have no right to):\na) work around any technical limitations in the software;\nb) reverse engineer, decompile, or disassemble the software;\nc) remove, minimize, block, or modify any notices of Microsoft or its suppliers in the software;\nd) share, publish, distribute, or lend the software, provide the software as a stand-alone hosted solution for others to use, or transfer the software or this agreement to any third party.\n\n## 13. DISCLAIMER OF WARRANTY.\n\nTHE SOFTWARE IS LICENSED \"AS IS.\" YOU BEAR THE RISK OF USING IT. MICROSOFT GIVES NO EXPRESS WARRANTIES, GUARANTEES, OR CONDITIONS."
+      },
+      "outputs": {
+        "copyright": -2,
+        "copyleft": 0,
+        "modification": 0,
+        "patent": 0,
+        "trademark": 1,
+        "interaction": 0,
+        "retain_attr": 0,
+        "acceptance": 1,
+        "enhance_attr": 0,
+        "patent_term": 0,
+        "Usage Limitation": ["redistribute", "modify", "use", "sublicense"],
+        "exception": null,
+        "compatible_version": null,
+        "secondary_license": null,
+        "gpl_combine": null
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Assign a value to every field in the output schema. Do not leave any field empty or null unless `null` is an explicitly valid value for that field (as is the case for `Usage Limitation` when no restrictions are present).
+- For `Usage Limitation`, return a list of short lowercase strings identifying each restricted action (e.g., `"redistribute"`, `"modify"`, `"use"`, `"sublicense"`, `"commercial"`, `"patent use"`, etc.), or `null` if there are no explicit usage limitations.
+- For `exception`, `compatible_version`, `secondary_license`, and `gpl_combine`, return a list of explicit license names, version names, or exception names found in the text, or `null` if the field is not mentioned.
+- When a clause is ambiguous, apply the more restrictive interpretation.
+- Output only the JSON object described in the Output section. Do not include any explanation, preamble, or commentary.

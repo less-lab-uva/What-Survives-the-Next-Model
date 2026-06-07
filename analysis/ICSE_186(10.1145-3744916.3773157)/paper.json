@@ -1,0 +1,30 @@
+{
+  "title": "Small Changes, Big Trouble: Demystifying and Parsing License Variants for Incompatibility Detection in the PyPI Ecosystem",
+  "doi": "10.1145/3744916.3773157",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original pipeline studies license variants in PyPI, parses license terms with LV-Parser using diff-based analysis, standard-license knowledge, similar examples, and LLM prompting, then uses LV-Compat to detect dependency license incompatibilities.",
+    "This reproduction replaces the full LV-Parser workflow with a simplified single-LLM prompt that directly parses each license text into the paper's license-term schema."
+  ],
+  "dataset": {
+      "name": "LV-Parser evaluation licenses",
+      "sample_size": 74
+  },
+  "metric": [
+    "Overall mean"
+  ],
+  "original_result": {
+    "overall_mean": 0.936
+  },
+  "our_result": {
+    "prompt_A": {
+      "overall_mean": 0.8262,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "overall_mean": 0.8658,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 4.65
+}
