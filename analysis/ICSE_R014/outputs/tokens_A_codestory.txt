@@ -1,0 +1,13 @@
+Prompt type          : A
+Tool                 : codestory
+Model                : claude-sonnet-4-6
+Dataset rows         : 454
+Instances run        : 45
+Cached instances     : 0
+New LLM calls        : 45
+Requested sample size: 45
+Random seed          : 42
+Total input tokens   : 169862
+Total output tokens  : 39541
+Total LLM time (s)   : 686.876
+Avg LLM time/call (s): 15.264
