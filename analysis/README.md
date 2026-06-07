@@ -16,6 +16,7 @@
 | [`ICSE_70(10.1145-3744916.3773158)`](./ICSE_70(10.1145-3744916.3773158)/) | LLM-based API Argument Completion with Knowledge-Augmented Prompts |
 | [`ICSE_73(10.1145-3744916.3773255)`](./ICSE_73(10.1145-3744916.3773255)/) | From Code to Correctness: Closing the Last Mile of Code Generation with Hierarchical Debugging |
 | [`ICSE_82(10.1145-3744916.3773256)`](./ICSE_82(10.1145-3744916.3773256)) | Let the Trial Begin: A Mock-Court Approach to Vulnerability Detection using LLM-Based Agents |
+| [`ICSE_86(10.1145-3744916.3773187)`](./ICSE_86(10.1145-3744916.3773187)/) | TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code |
 | [`ICSE_88(10.1145-3744916.3787760)`](./ICSE_88(10.1145-3744916.3787760)) | Input Reduction Enhanced LLM-based Program Repair |
 | [`ICSE_97(10.1145-3744916.3787814)`](./ICSE_97(10.1145-3744916.3787814)) | FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking |
 | [`ICSE_102(10.1145-3744916.3787805)`](./ICSE_102(10.1145-3744916.3787805)) | TestWeaver: Execution-aware, Feedback-driven Regression Testing Generation with Large Language Models |
