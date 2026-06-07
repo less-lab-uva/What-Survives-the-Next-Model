@@ -1,0 +1,79 @@
+{
+  "title": "Let the Trial Begin: A Mock-Court Approach to Vulnerability Detection using LLM-Based Agents",
+  "doi": "10.1145/3744916.3773256",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original VulTrial framework uses a mock-court multi-agent workflow with prosecutor, defense, judge, and review-board roles to debate whether paired PrimeVul functions contain vulnerabilities.",
+    "This reproduction uses simplified single-LLM vulnerability-detection prompts over sampled PrimeVul paired C/C++ functions."
+  ],
+  "dataset": {
+    "name": "PrimeVul Paired Functions",
+    "sample_size": 406
+  },
+  "metric": [
+    "Accuracy",
+    "Precision",
+    "Recall",
+    "F1",
+    "MCC",
+    "PC",
+    "PV",
+    "PB",
+    "PR",
+    "FPR"
+  ],
+  "original_result": {
+    "PC": 81,
+    "PV": 179,
+    "PB": 125,
+    "PR": 50,
+    "Error": 354,
+    "precision": 0.53,
+    "recall": 0.6,
+    "FPR": 0.52,
+    "percentage": {
+      "PC": 18.62,
+      "PV": 41.14,
+      "PB": 28.74,
+      "PR": 11.49,
+      "Error": 81.38
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "PC": 27,
+      "PV": 66,
+      "PB": 94,
+      "PR": 15,
+      "Error": 175,
+      "precision": 0.5371,
+      "recall": 0.4608,
+      "FPR": 0.401,
+      "percentage": {
+        "PC": 13.37,
+        "PV": 32.67,
+        "PB": 46.53,
+        "PR": 7.43,
+        "Error": 86.63
+      }
+    },
+    "prompt_B": {
+      "PC": 45,
+      "PV": 62,
+      "PB": 80,
+      "PR": 16,
+      "Error": 158,
+      "precision": 0.5784,
+      "recall": 0.5271,
+      "FPR": 0.3842,
+      "percentage": {
+        "PC": 22.17,
+        "PV": 30.54,
+        "PB": 39.41,
+        "PR": 7.88,
+        "Error": 77.83
+      }
+    }
+  },
+  "total_cost": "$14.71"
+}

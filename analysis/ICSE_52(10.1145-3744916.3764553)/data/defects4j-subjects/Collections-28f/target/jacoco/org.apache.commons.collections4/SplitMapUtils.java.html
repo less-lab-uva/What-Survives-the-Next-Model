@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SplitMapUtils.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Collections</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.collections4</a> &gt; <span class="el_source">SplitMapUtils.java</span></div><h1>SplitMapUtils.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.collections4;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.collections4.collection.UnmodifiableCollection;
+import org.apache.commons.collections4.iterators.UnmodifiableMapIterator;
+import org.apache.commons.collections4.map.EntrySetToMapIteratorAdapter;
+import org.apache.commons.collections4.map.UnmodifiableEntrySet;
+import org.apache.commons.collections4.set.UnmodifiableSet;
+
+/**
+ * Utilities for working with &quot;split maps:&quot; objects that implement {@link Put}
+ * and/or {@link Get} but not {@link Map}.
+ *
+ * @since 4.0
+ * @version $Id$
+ *
+ * @see Get
+ * @see Put
+ */
+public class SplitMapUtils {
+
+    /**
+     * &lt;code&gt;SplitMapUtils&lt;/code&gt; should not normally be instantiated.
+     */
+    private SplitMapUtils() {}
+
+    //-----------------------------------------------------------------------
+
+    private static class WrappedGet&lt;K, V&gt; implements IterableMap&lt;K, V&gt;, Unmodifiable {
+        private final Get&lt;K, V&gt; get;
+
+<span class="nc" id="L51">        private WrappedGet(final Get&lt;K, V&gt; get) {</span>
+<span class="nc" id="L52">            this.get = get;</span>
+<span class="nc" id="L53">        }</span>
+
+        @Override
+        public void clear() {
+<span class="nc" id="L57">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public boolean containsKey(final Object key) {
+<span class="nc" id="L62">            return get.containsKey(key);</span>
+        }
+
+        @Override
+        public boolean containsValue(final Object value) {
+<span class="nc" id="L67">            return get.containsValue(value);</span>
+        }
+
+        @Override
+        public Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet() {
+<span class="nc" id="L72">            return UnmodifiableEntrySet.unmodifiableEntrySet(get.entrySet());</span>
+        }
+
+        @Override
+        public boolean equals(final Object arg0) {
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            if (arg0 == this) {</span>
+<span class="nc" id="L78">                return true;</span>
+            }
+<span class="nc bnc" id="L80" title="All 4 branches missed.">            return arg0 instanceof WrappedGet &amp;&amp; ((WrappedGet&lt;?, ?&gt;) arg0).get.equals(this.get);</span>
+        }
+
+        @Override
+        public V get(final Object key) {
+<span class="nc" id="L85">            return get.get(key);</span>
+        }
+
+        @Override
+        public int hashCode() {
+<span class="nc" id="L90">            return (&quot;WrappedGet&quot;.hashCode() &lt;&lt; 4) | get.hashCode();</span>
+        }
+
+        @Override
+        public boolean isEmpty() {
+<span class="nc" id="L95">            return get.isEmpty();</span>
+        }
+
+        @Override
+        public Set&lt;K&gt; keySet() {
+<span class="nc" id="L100">            return UnmodifiableSet.unmodifiableSet(get.keySet());</span>
+        }
+
+        @Override
+        public V put(final K key, final V value) {
+<span class="nc" id="L105">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public void putAll(final Map&lt;? extends K, ? extends V&gt; t) {
+<span class="nc" id="L110">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public V remove(final Object key) {
+<span class="nc" id="L115">            return get.remove(key);</span>
+        }
+
+        @Override
+        public int size() {
+<span class="nc" id="L120">            return get.size();</span>
+        }
+
+        @Override
+        public Collection&lt;V&gt; values() {
+<span class="nc" id="L125">            return UnmodifiableCollection.unmodifiableCollection(get.values());</span>
+        }
+
+        @Override
+        public MapIterator&lt;K, V&gt; mapIterator() {
+            MapIterator&lt;K, V&gt; it;
+<span class="nc bnc" id="L131" title="All 2 branches missed.">            if (get instanceof IterableGet) {</span>
+<span class="nc" id="L132">                it = ((IterableGet&lt;K, V&gt;) get).mapIterator();</span>
+            } else {
+<span class="nc" id="L134">                it = new EntrySetToMapIteratorAdapter&lt;K, V&gt;(get.entrySet());</span>
+            }
+<span class="nc" id="L136">            return UnmodifiableMapIterator.unmodifiableMapIterator(it);</span>
+        }
+    }
+
+    private static class WrappedPut&lt;K, V&gt; implements Map&lt;K, V&gt;, Put&lt;K, V&gt; {
+        private final Put&lt;K, V&gt; put;
+
+<span class="nc" id="L143">        private WrappedPut(final Put&lt;K, V&gt; put) {</span>
+<span class="nc" id="L144">            this.put = put;</span>
+<span class="nc" id="L145">        }</span>
+
+        @Override
+        public void clear() {
+<span class="nc" id="L149">            put.clear();</span>
+<span class="nc" id="L150">        }</span>
+
+        @Override
+        public boolean containsKey(final Object key) {
+<span class="nc" id="L154">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public boolean containsValue(final Object value) {
+<span class="nc" id="L159">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet() {
+<span class="nc" id="L164">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public boolean equals(final Object obj) {
+<span class="nc bnc" id="L169" title="All 2 branches missed.">            if (obj == this) {</span>
+<span class="nc" id="L170">                return true;</span>
+            }
+<span class="nc bnc" id="L172" title="All 4 branches missed.">            return obj instanceof WrappedPut &amp;&amp; ((WrappedPut&lt;?, ?&gt;) obj).put.equals(this.put);</span>
+        }
+
+        @Override
+        public V get(final Object key) {
+<span class="nc" id="L177">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public int hashCode() {
+<span class="nc" id="L182">            return (&quot;WrappedPut&quot;.hashCode() &lt;&lt; 4) | put.hashCode();</span>
+        }
+
+        @Override
+        public boolean isEmpty() {
+<span class="nc" id="L187">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public Set&lt;K&gt; keySet() {
+<span class="nc" id="L192">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        @SuppressWarnings(&quot;unchecked&quot;)
+        public V put(final K key, final V value) {
+<span class="nc" id="L198">            return (V) put.put(key, value);</span>
+        }
+
+        @Override
+        public void putAll(final Map&lt;? extends K, ? extends V&gt; t) {
+<span class="nc" id="L203">            put.putAll(t);</span>
+<span class="nc" id="L204">        }</span>
+
+        @Override
+        public V remove(final Object key) {
+<span class="nc" id="L208">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public int size() {
+<span class="nc" id="L213">            throw new UnsupportedOperationException();</span>
+        }
+
+        @Override
+        public Collection&lt;V&gt; values() {
+<span class="nc" id="L218">            throw new UnsupportedOperationException();</span>
+        }
+    }
+
+    //-----------------------------------------------------------------------
+
+    /**
+     * Get the specified {@link Get} as an instance of {@link IterableMap}.
+     * If &lt;code&gt;get&lt;/code&gt; implements {@link IterableMap} directly, no conversion will take place.
+     * If &lt;code&gt;get&lt;/code&gt; implements {@link Map} but not {@link IterableMap} it will be decorated.
+     * Otherwise an {@link Unmodifiable} {@link IterableMap} will be returned.
+     * @param &lt;K&gt; the key type
+     * @param &lt;V&gt; the value type
+     * @param get to wrap, must not be null
+     * @return {@link IterableMap}
+     * @throws NullPointerException if the argument is null
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;K, V&gt; IterableMap&lt;K, V&gt; readableMap(final Get&lt;K, V&gt; get) {
+<span class="nc bnc" id="L237" title="All 2 branches missed.">        if (get == null) {</span>
+<span class="nc" id="L238">            throw new NullPointerException(&quot;Get must not be null&quot;);</span>
+        }
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        if (get instanceof Map) {</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">            return get instanceof IterableMap ?</span>
+                    ((IterableMap&lt;K, V&gt;) get) :
+<span class="nc" id="L243">                    MapUtils.iterableMap((Map&lt;K, V&gt;) get);</span>
+        }
+<span class="nc" id="L245">        return new WrappedGet&lt;K, V&gt;(get);</span>
+    }
+
+    /**
+     * Get the specified {@link Put} as an instanceof {@link Map}.
+     * If &lt;code&gt;put&lt;/code&gt; implements {@link Map} directly, no conversion will take place.
+     * Otherwise a &lt;em&gt;write-only&lt;/em&gt; {@link Map} will be returned.  On such a {@link Map}
+     * it is recommended that the result of #put(K, V) be discarded as it likely will not
+     * match &lt;code&gt;V&lt;/code&gt; at runtime.
+     *
+     * @param &lt;K&gt; the key type
+     * @param &lt;V&gt; the element type
+     * @param put to wrap, must not be null
+     * @return {@link Map}
+     * @throws NullPointerException if the argument is null
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;K, V&gt; Map&lt;K, V&gt; writableMap(final Put&lt;K, V&gt; put) {
+<span class="nc bnc" id="L263" title="All 2 branches missed.">        if (put == null) {</span>
+<span class="nc" id="L264">            throw new NullPointerException(&quot;Put must not be null&quot;);</span>
+        }
+<span class="nc bnc" id="L266" title="All 2 branches missed.">        if (put instanceof Map) {</span>
+<span class="nc" id="L267">            return (Map&lt;K, V&gt;) put;</span>
+        }
+<span class="nc" id="L269">        return new WrappedPut&lt;K, V&gt;(put);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

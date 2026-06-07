@@ -1,0 +1,48 @@
+{
+  "title": "SecureReviewer: Enhancing Large Language Models for Secure Code Review through Secure-Aware Fine-Tuning",
+  "doi": "10.1145/3744916.3773191",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original SecureReviewer builds a security-focused review dataset, fine-tunes LLMs with a secure-aware objective, augments generation with retrieval, and evaluates both security issue detection and comment quality.",
+    "This reproduction uses simplified single-LLM prompts to classify security type and generate structured review comments over the SecureReviewer test set."
+  ],
+  "dataset": {
+    "name": "SecureReviewer Test Set",
+    "sample_size": 300
+  },
+  "metric": [
+    "Accuracy",
+    "Precision Macro",
+    "Recall Macro",
+    "F1 Macro",
+    "BLEU-4",
+    "SecureBLEU"
+  ],
+  "original_result": {
+    "precision": 73.28,
+    "recall": 71.48,
+    "f1": 71.98,
+    "accuracy": 71.91,
+    "bleu4": 11.34,
+    "securebleu": 29.31
+  },
+  "our_result": {
+    "prompt_A": {
+      "precision": 43.92,
+      "recall": 39.02,
+      "f1": 36.62,
+      "accuracy": 44.67,
+      "bleu4": 4.71,
+      "securebleu": 18.59
+    },
+    "prompt_B": {
+      "precision": 42.63,
+      "recall": 34.58,
+      "f1": 32.97,
+      "accuracy": 40.33,
+      "bleu4": 3.66,
+      "securebleu": 16.59
+    }
+  },
+  "total_cost": "$5.33"
+}

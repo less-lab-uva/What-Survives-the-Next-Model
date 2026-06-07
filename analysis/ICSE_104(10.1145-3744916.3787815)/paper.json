@@ -1,0 +1,45 @@
+{
+  "title": "Automating Requirements Formalization: Using LLMs and Low-Complexity Distinguishing Traces for Semantic Validation",
+  "doi": "10.1145/3744916.3787815",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original ARTEMIS pipeline translates natural-language requirements into FRETish structured NL using an LLM, then maps them to LTL formulas, with semantic validation performed via low-complexity distinguishing traces using the Spot model checker.",
+    "This reproduction replaces the multi-step structured-NL translation pipeline with a direct LTL formula generation prompt over FRETish benchmark requirements, evaluated with pass@10 via Spot automaton equivalence."
+  ],
+  "dataset": {
+    "name": "FRETish benchmarks (deepstl-test, FSM-AP, FSM-S, REG, RobotExplain, Ventilator)",
+    "sample_size": 50
+  },
+  "metric": [
+    "pass@10 (semantic LTL equivalence via Spot)"
+  ],
+  "original_result": {
+    "FSM-AP": 1.0,
+    "FSM-S": 1.0,
+    "REG": 1.0,
+    "RobotExplain": 0.717,
+    "Ventilator": 0.612,
+    "deepstl-test": 1.0
+  },
+  "our_result": {
+    "prompt_A": {
+      "FSM-AP": 1.0,
+      "FSM-S": 0.667,
+      "REG": 1.0,
+      "RobotExplain": 0.0,
+      "Ventilator": 0.207,
+      "deepstl-test": 0.25,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "FSM-AP": 1.0,
+      "FSM-S": 1.0,
+      "REG": 1.0,
+      "RobotExplain": 0.2,
+      "Ventilator": 0.2759,
+      "deepstl-test": 1.0,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 16.138
+}

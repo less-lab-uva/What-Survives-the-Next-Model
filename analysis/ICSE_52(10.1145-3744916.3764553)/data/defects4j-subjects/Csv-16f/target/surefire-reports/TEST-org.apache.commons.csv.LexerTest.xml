@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.apache.commons.csv.LexerTest" time="0.087" tests="50" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/test-classes:/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/classes:/home/nwc8gr/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/nwc8gr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/nwc8gr/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar:/home/nwc8gr/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/nwc8gr/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/nwc8gr/.m2/repository/com/h2database/h2/1.4.196/h2-1.4.196.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/surefire/surefirebooter-20260606153953535_3.jar /sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/surefire 2026-06-06T15-39-53_358-jvmRun1 surefire-20260606153953535_1tmp surefire_0-20260606153953535_2tmp"/>
+    <property name="test" value="LexerTest"/>
+    <property name="surefire.test.class.path" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/test-classes:/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/classes:/home/nwc8gr/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/nwc8gr/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/nwc8gr/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar:/home/nwc8gr/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/nwc8gr/.m2/repository/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar:/home/nwc8gr/.m2/repository/com/h2database/h2/1.4.196/h2-1.4.196.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/nwc8gr"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre"/>
+    <property name="basedir" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f/target/surefire/surefirebooter-20260606153953535_3.jar:/home/nwc8gr/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/resources.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/rt.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/sunrsasign.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jsse.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jce.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/charsets.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jfr.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_171-b11"/>
+    <property name="user.name" value="nwc8gr"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.18.0-553.124.1.el8_10.x86_64"/>
+    <property name="java.endorsed.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/nwc8gr/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_171"/>
+    <property name="user.dir" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Csv-16f"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/apps/software/standard/core/java/8/lib:/apps/software/standard/core/maven/3.9.0/lib:/opt/slurm/current/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.171-b11"/>
+    <property name="java.ext.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="maven.test.failure.ignore" value="true"/>
+  </properties>
+  <testcase name="testIsEscapeDisabled" classname="org.apache.commons.csv.LexerTest" time="0.009"/>
+  <testcase name="testNextTokenCommentWithNullLine" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testTrimTrailingSpacesAllSpaces" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenWithEscape" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testCloseAndIsClosed" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenIgnoreEmptyLinesWithContent" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenWithComment" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testTrimTrailingSpacesNoTrailing" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsStartOfLine" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testTrimTrailingSpacesEmpty" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsCommentStart" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEOF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsWhitespaceTrueForSpace" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedEORecord" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenSimpleEOF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsQuoteChar" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testTrimTrailingSpacesWithTrailing" classname="org.apache.commons.csv.LexerTest" time="0.001"/>
+  <testcase name="testNextTokenIgnoreEmptyLines" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeEOFThrows" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedDoubleQuote" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenSimpleToken" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEndOfLineFirstEolNotOverwritten" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeQuoteChar" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeDefaultReturnsEndOfStream" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsEscape" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsDelimiter" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedEOF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testGetCurrentLineNumber" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsWhitespaceReturnsFalseForDelimiter" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenLastCharIsEOFReturnsEOF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEndOfLineCR" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEndOfLineLF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenWithIgnoreSurroundingSpaces" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEndOfLineCRLF" classname="org.apache.commons.csv.LexerTest" time="0.001"/>
+  <testcase name="testNextTokenEscapeInSimpleTokenUnexpected" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedUnterminatedThrows" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEndOfLineOther" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeMetaChar" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedInvalidCharAfterQuote" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeB" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeF" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeN" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeR" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testReadEscapeT" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulatedWithWhitespaceThenEOL" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEORecord" classname="org.apache.commons.csv.LexerTest" time="0.007">
+    <failure message="expected:&lt;TOKEN&gt; but was:&lt;EORECORD&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<TOKEN> but was:<EORECORD>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:118)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at org.apache.commons.csv.LexerTest.testNextTokenEORecord(LexerTest.java:214)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+]]></failure>
+  </testcase>
+  <testcase name="testNextTokenEncapsulatedEscapeInside" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenEncapsulated" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testIsEndOfFile" classname="org.apache.commons.csv.LexerTest" time="0"/>
+  <testcase name="testNextTokenWithIgnoreSurroundingSpacesEOL" classname="org.apache.commons.csv.LexerTest" time="0"/>
+</testsuite>

@@ -1,0 +1,30 @@
+{
+  "title": "Distance-Guided Search in Program Synthesis with Imperfect LLM Solutions",
+  "doi": "10.1145/3744916.3787779",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original GuideSyn pipeline uses distance-guided search seeded by LLM-generated programs, iteratively refining imperfect solutions through a type-directed program synthesis engine (Trio) to solve ML-like functional benchmark problems.",
+    "This reproduction replaces the distance-guided synthesis loop with a direct functional program generation prompt, evaluating correctness via Trio on the full benchmark set."
+  ],
+  "dataset": {
+    "name": "80 .mls benchmark files",
+    "sample_size": 80
+  },
+  "metric": [
+    "% solved (LLM output passes Trio correctness check)"
+  ],
+  "original_result": {
+    "solved_pct": 0.78
+  },
+  "our_result": {
+    "prompt_A": {
+      "solved_pct": 0.8125,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "solved_pct": 0.8375,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 3.1
+}

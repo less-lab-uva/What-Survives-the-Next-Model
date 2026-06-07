@@ -1,0 +1,117 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert software security engineer specializing in fuzzing and crash analysis", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or clustering algorithm), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "source_code": "package org.jsoup.nodes;\n\nimport org.jsoup.Connection;\nimport org.jsoup.Jsoup;\nimport org.jsoup.helper.HttpConnection;\nimport org.jsoup.helper.Validate;\nimport org.jsoup.parser.Tag;\nimport org.jsoup.select.Elements;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n/**\n * A HTML Form Element provides ready access to the form fields/controls that are associated with it. It also allows a\n * form to easily be submitted.\n */\npublic class FormElement extends Element {\n    private final Elements elements = new Elements();\n\n    /**\n     * Create a new, standalone form element.\n     *\n     * @param tag        tag of this element\n     * @param baseUri    the base URI\n     * @param attributes initial attributes\n     */\n    public FormElement(Tag tag, String baseUri, Attributes attributes) {\n        super(tag, baseUri, attributes);\n    }\n\n    /**\n     * Get the list of form control elements associated with this form.\n     * @return form controls associated with this element.\n     */\n    public Elements elements() {\n        return elements;\n    }\n\n    /**\n     * Add a form control element to this form.\n     * @param element form control to add\n     * @return this form element, for chaining\n     */\n    public FormElement addElement(Element element) {\n        elements.add(element);\n        return this;\n    }\n\n    @Override\n    protected void removeChild(Node out) {\n        super.removeChild(out);\n        elements.remove(out);\n    }\n\n    /**\n     * Prepare to submit this form. A Connection object is created with the request set up from the form values. You\n     * can then set up other options (like user-agent, timeout, cookies), then execute it.\n     * @return a connection prepared from the values of this form.\n     * @throws IllegalArgumentException if the form's absolute action URL cannot be determined. Make sure you pass the\n     * document's base URI when parsing.\n     */\n    public Connection submit() {\n        String action = hasAttr(\"action\") ? absUrl(\"action\") : baseUri();\n        Validate.notEmpty(action, \"Could not determine a form action URL for submit. Ensure you set a base URI when parsing.\");\n        Connection.Method method = attr(\"method\").toUpperCase().equals(\"POST\") ?\n                Connection.Method.POST : Connection.Method.GET;\n\n        return Jsoup.connect(action)\n                .data(formData())\n                .method(method);\n    }\n\n    /**\n     * Get the data that this form submits. The returned list is a copy of the data, and changes to the contents of the\n     * list will not be reflected in the DOM.\n     * @return a list of key vals\n     */\n    public List<Connection.KeyVal> formData() {\n        ArrayList<Connection.KeyVal> data = new ArrayList<>();\n\n        // iterate the form control elements and accumulate their values\n        for (Element el: elements) {\n            if (!el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable\n            if (el.hasAttr(\"disabled\")) continue; // skip disabled form inputs\n            String name = el.attr(\"name\");\n            if (name.length() == 0) continue;\n            String type = el.attr(\"type\");\n\n            if (type.equalsIgnoreCase(\"button\")) continue; // browsers don't submit these\n\n            if (\"select\".equals(el.normalName())) {\n                Elements options = el.select(\"option[selected]\");\n                boolean set = false;\n                for (Element option: options) {\n                    data.add(HttpConnection.KeyVal.create(name, option.val()));\n                    set = true;\n                }\n                if (!set) {\n                    Element option = el.select(\"option\").first();\n                    if (option != null)\n                        data.add(HttpConnection.KeyVal.create(name, option.val()));\n                }\n            } else if (\"checkbox\".equalsIgnoreCase(type) || \"radio\".equalsIgnoreCase(type)) {\n                // only add checkbox or radio if they have the checked attribute\n                if (el.hasAttr(\"checked\")) {\n                    final String val = el.val().length() >  0 ? el.val() : \"on\";\n                    data.add(HttpConnection.KeyVal.create(name, val));\n                }\n            } else {\n                data.add(HttpConnection.KeyVal.create(name, el.val()));\n            }\n        }\n        return data;\n    }\n}\n",
+        "test_file": "package org.jsoup.nodes;\n\nimport org.jsoup.parser.Tag;\nimport org.junit.Test;\nimport static org.junit.Assert.*;\n\npublic class FormElementTest {\n\n    @Test\n    public void testElementsInitiallyEmpty() {\n        FormElement form = new FormElement(Tag.valueOf(\"form\"), \"\", new Attributes());\n        assertTrue(form.elements().isEmpty());\n    }\n\n    @Test\n    public void testAddElementReturnsForm() {\n        FormElement form = new FormElement(Tag.valueOf(\"form\"), \"\", new Attributes());\n        Element input = new Element(Tag.valueOf(\"input\"), \"\");\n        assertSame(form, form.addElement(input));\n    }\n}"
+      },
+      "outputs": {
+        "generated_tests": "@Test\npublic void testAddElementIncreasesCount() {\n    FormElement form = new FormElement(Tag.valueOf(\"form\"), \"\", new Attributes());\n    Element input = new Element(Tag.valueOf(\"input\"), \"\").attr(\"name\", \"testInput\");\n    form.addElement(input);\n    assertEquals(1, form.elements().size());\n}\n\n@Test(expected = IllegalArgumentException.class)\npublic void testSubmitWithoutActionThrowsException() {\n    FormElement form = new FormElement(Tag.valueOf(\"form\"), \"\", new Attributes());\n    form.submit();\n}"
+      }
+    },
+    {
+      "inputs": {
+        "source_code": "package org.jsoup.select;\n\nimport org.jsoup.helper.Validate;\nimport org.jsoup.nodes.Element;\nimport org.jsoup.nodes.Node;\nimport org.jsoup.select.NodeFilter.FilterResult;\n\n/**\n * Depth-first node traversor. Use to iterate through all nodes under and including the specified root node.\n * <p>\n * This implementation does not use recursion, so a deep DOM does not risk blowing the stack.\n * </p>\n */\npublic class NodeTraversor {\n    private NodeVisitor visitor;\n\n    /**\n     * Create a new traversor.\n     * @param visitor a class implementing the {@link NodeVisitor} interface, to be called when visiting each node.\n     * @deprecated Just use the static {@link NodeTraversor#filter(NodeFilter, Node)} method.\n     */\n    public NodeTraversor(NodeVisitor visitor) {\n        this.visitor = visitor;\n    }\n\n    /**\n     * Start a depth-first traverse of the root and all of its descendants.\n     * @param root the root node point to traverse.\n     * @deprecated Just use the static {@link NodeTraversor#filter(NodeFilter, Node)} method.\n     */\n    public void traverse(Node root) {\n        traverse(visitor, root);\n    }\n\n    /**\n     * Start a depth-first traverse of the root and all of its descendants.\n     * @param visitor Node visitor.\n     * @param root the root node point to traverse.\n     */\n    public static void traverse(NodeVisitor visitor, Node root) {\n        Node node = root;\n        int depth = 0;\n        \n        while (node != null) {\n            visitor.head(node, depth);\n            if (node.childNodeSize() > 0) {\n                node = node.childNode(0);\n                depth++;\n            } else {\n                while (node.nextSibling() == null && depth > 0) {\n                    visitor.tail(node, depth);\n                    node = node.parentNode();\n                    depth--;\n                }\n                visitor.tail(node, depth);\n                if (node == root)\n                    break;\n                node = node.nextSibling();\n            }\n        }\n    }\n\n    /**\n     * Start a depth-first traverse of all elements.\n     * @param visitor Node visitor.\n     * @param elements Elements to filter.\n     */\n    public static void traverse(NodeVisitor visitor, Elements elements) {\n        Validate.notNull(visitor);\n        Validate.notNull(elements);\n        for (Element el : elements)\n            traverse(visitor, el);\n    }\n\n    /**\n     * Start a depth-first filtering of the root and all of its descendants.\n     * @param filter Node visitor.\n     * @param root the root node point to traverse.\n     * @return The filter result of the root node, or {@link FilterResult#STOP}.\n     */\n    public static FilterResult filter(NodeFilter filter, Node root) {\n        Node node = root;\n        int depth = 0;\n\n        while (node != null) {\n            FilterResult result = filter.head(node, depth);\n            if (result == FilterResult.STOP)\n                return result;\n            // Descend into child nodes:\n            if (result == FilterResult.CONTINUE && node.childNodeSize() > 0) {\n                node = node.childNode(0);\n                ++depth;\n                continue;\n            }\n            // No siblings, move upwards:\n            while (node.nextSibling() == null && depth > 0) {\n                // 'tail' current node:\n                if (result == FilterResult.CONTINUE || result == FilterResult.SKIP_CHILDREN) {\n                    result = filter.tail(node, depth);\n                    if (result == FilterResult.STOP)\n                        return result;\n                }\n                Node prev = node; // In case we need to remove it below.\n                node = node.parentNode();\n                depth--;\n                if (result == FilterResult.REMOVE)\n                    prev.remove(); // Remove AFTER finding parent.\n                result = FilterResult.CONTINUE; // Parent was not pruned.\n            }\n            // 'tail' current node, then proceed with siblings:\n            if (result == FilterResult.CONTINUE || result == FilterResult.SKIP_CHILDREN) {\n                result = filter.tail(node, depth);\n                if (result == FilterResult.STOP)\n                    return result;\n            }\n            if (node == root)\n                return result;\n            Node prev = node; // In case we need to remove it below.\n            node = node.nextSibling();\n            if (result == FilterResult.REMOVE)\n                prev.remove(); // Remove AFTER finding sibling.\n        }\n        // root == null?\n        return FilterResult.CONTINUE;\n    }\n\n    /**\n     * Start a depth-first filtering of all elements.\n     * @param filter Node filter.\n     * @param elements Elements to filter.\n     */\n    public static void filter(NodeFilter filter, Elements elements) {\n        Validate.notNull(filter);\n        Validate.notNull(elements);\n        for (Element el : elements)\n            if (filter(filter, el) == FilterResult.STOP)\n                break;\n    }\n}\n",
+        "test_file": "package org.jsoup.select;\n\nimport org.jsoup.nodes.Node;\nimport org.junit.Before;\nimport org.junit.After;\nimport org.junit.Test;\nimport static org.junit.Assert.*;\n\npublic class NodeTraversorTest {\n\n    @Test\n    public void testPlaceHolder() {\n        assertTrue(true);\n    }\n}"
+      },
+      "outputs": {
+        "generated_tests": "@Test\npublic void testTraverseSimpleTree() {\n    Node root = new Node(\"root\");\n    Node child1 = new Node(\"child1\");\n    Node child2 = new Node(\"child2\");\n    root.appendChild(child1);\n    root.appendChild(child2);\n    final int[] count = {0};\n    NodeVisitor visitor = new NodeVisitor() {\n        @Override public void head(Node node, int depth) { count[0]++; }\n        @Override public void tail(Node node, int depth) {}\n    };\n    NodeTraversor.traverse(visitor, root);\n    assertEquals(3, count[0]);\n}\n\n@Test\npublic void testFilterStopCondition() {\n    Node root = new Node(\"root\");\n    Node child1 = new Node(\"child1\");\n    root.appendChild(child1);\n    NodeFilter filter = new NodeFilter() {\n        @Override public FilterResult head(Node node, int depth) { return FilterResult.STOP; }\n        @Override public FilterResult tail(Node node, int depth) { return FilterResult.CONTINUE; }\n    };\n    FilterResult result = NodeTraversor.filter(filter, root);\n    assertEquals(FilterResult.STOP, result);\n}"
+      }
+    }
+  ]
+}
+```

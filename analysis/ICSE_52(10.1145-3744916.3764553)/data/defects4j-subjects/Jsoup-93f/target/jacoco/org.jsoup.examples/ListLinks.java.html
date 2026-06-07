@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ListLinks.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.examples</a> &gt; <span class="el_source">ListLinks.java</span></div><h1>ListLinks.java</h1><pre class="source lang-java linenums">package org.jsoup.examples;
+
+import org.jsoup.Jsoup;
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+
+/**
+ * Example program to list links from a URL.
+ */
+<span class="nc" id="L14">public class ListLinks {</span>
+    public static void main(String[] args) throws IOException {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        Validate.isTrue(args.length == 1, &quot;usage: supply url to fetch&quot;);</span>
+<span class="nc" id="L17">        String url = args[0];</span>
+<span class="nc" id="L18">        print(&quot;Fetching %s...&quot;, url);</span>
+
+<span class="nc" id="L20">        Document doc = Jsoup.connect(url).get();</span>
+<span class="nc" id="L21">        Elements links = doc.select(&quot;a[href]&quot;);</span>
+<span class="nc" id="L22">        Elements media = doc.select(&quot;[src]&quot;);</span>
+<span class="nc" id="L23">        Elements imports = doc.select(&quot;link[href]&quot;);</span>
+
+<span class="nc" id="L25">        print(&quot;\nMedia: (%d)&quot;, media.size());</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        for (Element src : media) {</span>
+<span class="nc bnc" id="L27" title="All 2 branches missed.">            if (src.tagName().equals(&quot;img&quot;))</span>
+<span class="nc" id="L28">                print(&quot; * %s: &lt;%s&gt; %sx%s (%s)&quot;,</span>
+<span class="nc" id="L29">                        src.tagName(), src.attr(&quot;abs:src&quot;), src.attr(&quot;width&quot;), src.attr(&quot;height&quot;),</span>
+<span class="nc" id="L30">                        trim(src.attr(&quot;alt&quot;), 20));</span>
+            else
+<span class="nc" id="L32">                print(&quot; * %s: &lt;%s&gt;&quot;, src.tagName(), src.attr(&quot;abs:src&quot;));</span>
+<span class="nc" id="L33">        }</span>
+
+<span class="nc" id="L35">        print(&quot;\nImports: (%d)&quot;, imports.size());</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        for (Element link : imports) {</span>
+<span class="nc" id="L37">            print(&quot; * %s &lt;%s&gt; (%s)&quot;, link.tagName(),link.attr(&quot;abs:href&quot;), link.attr(&quot;rel&quot;));</span>
+<span class="nc" id="L38">        }</span>
+
+<span class="nc" id="L40">        print(&quot;\nLinks: (%d)&quot;, links.size());</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">        for (Element link : links) {</span>
+<span class="nc" id="L42">            print(&quot; * a: &lt;%s&gt;  (%s)&quot;, link.attr(&quot;abs:href&quot;), trim(link.text(), 35));</span>
+<span class="nc" id="L43">        }</span>
+<span class="nc" id="L44">    }</span>
+
+    private static void print(String msg, Object... args) {
+<span class="nc" id="L47">        System.out.println(String.format(msg, args));</span>
+<span class="nc" id="L48">    }</span>
+
+    private static String trim(String s, int width) {
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if (s.length() &gt; width)</span>
+<span class="nc" id="L52">            return s.substring(0, width-1) + &quot;.&quot;;</span>
+        else
+<span class="nc" id="L54">            return s;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConstrainableInputStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.internal</a> &gt; <span class="el_source">ConstrainableInputStream.java</span></div><h1>ConstrainableInputStream.java</h1><pre class="source lang-java linenums">package org.jsoup.internal;
+
+import org.jsoup.helper.Validate;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.SocketTimeoutException;
+import java.nio.ByteBuffer;
+
+/**
+ * A jsoup internal class (so don't use it as there is no contract API) that enables constraints on an Input Stream,
+ * namely a maximum read size, and the ability to Thread.interrupt() the read.
+ */
+public final class ConstrainableInputStream extends BufferedInputStream {
+    private static final int DefaultSize = 1024 * 32;
+
+    private final boolean capped;
+    private final int maxSize;
+    private long startTime;
+<span class="nc" id="L22">    private long timeout = 0; // optional max time of request</span>
+    private int remaining;
+    private boolean interrupted;
+
+    private ConstrainableInputStream(InputStream in, int bufferSize, int maxSize) {
+<span class="nc" id="L27">        super(in, bufferSize);</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        Validate.isTrue(maxSize &gt;= 0);</span>
+<span class="nc" id="L29">        this.maxSize = maxSize;</span>
+<span class="nc" id="L30">        remaining = maxSize;</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        capped = maxSize != 0;</span>
+<span class="nc" id="L32">        startTime = System.nanoTime();</span>
+<span class="nc" id="L33">    }</span>
+
+    /**
+     * If this InputStream is not already a ConstrainableInputStream, let it be one.
+     * @param in the input stream to (maybe) wrap
+     * @param bufferSize the buffer size to use when reading
+     * @param maxSize the maximum size to allow to be read. 0 == infinite.
+     * @return a constrainable input stream
+     */
+    public static ConstrainableInputStream wrap(InputStream in, int bufferSize, int maxSize) {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        return in instanceof ConstrainableInputStream</span>
+            ? (ConstrainableInputStream) in
+            : new ConstrainableInputStream(in, bufferSize, maxSize);
+    }
+
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+<span class="nc bnc" id="L50" title="All 6 branches missed.">        if (interrupted || capped &amp;&amp; remaining &lt;= 0)</span>
+<span class="nc" id="L51">            return -1;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if (Thread.interrupted()) {</span>
+            // interrupted latches, because parse() may call twice (and we still want the thread interupt to clear)
+<span class="nc" id="L54">            interrupted = true;</span>
+<span class="nc" id="L55">            return -1;</span>
+        }
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (expired())</span>
+<span class="nc" id="L58">            throw new SocketTimeoutException(&quot;Read timeout&quot;);</span>
+
+<span class="nc bnc" id="L60" title="All 4 branches missed.">        if (capped &amp;&amp; len &gt; remaining)</span>
+<span class="nc" id="L61">            len = remaining; // don't read more than desired, even if available</span>
+
+        try {
+<span class="nc" id="L64">            final int read = super.read(b, off, len);</span>
+<span class="nc" id="L65">            remaining -= read;</span>
+<span class="nc" id="L66">            return read;</span>
+<span class="nc" id="L67">        } catch (SocketTimeoutException e) {</span>
+<span class="nc" id="L68">            return 0;</span>
+        }
+    }
+
+    /**
+     * Reads this inputstream to a ByteBuffer. The supplied max may be less than the inputstream's max, to support
+     * reading just the first bytes.
+     */
+    public ByteBuffer readToByteBuffer(int max) throws IOException {
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        Validate.isTrue(max &gt;= 0, &quot;maxSize must be 0 (unlimited) or larger&quot;);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        final boolean localCapped = max &gt; 0; // still possibly capped in total stream</span>
+<span class="nc bnc" id="L79" title="All 4 branches missed.">        final int bufferSize = localCapped &amp;&amp; max &lt; DefaultSize ? max : DefaultSize;</span>
+<span class="nc" id="L80">        final byte[] readBuffer = new byte[bufferSize];</span>
+<span class="nc" id="L81">        final ByteArrayOutputStream outStream = new ByteArrayOutputStream(bufferSize);</span>
+
+        int read;
+<span class="nc" id="L84">        int remaining = max;</span>
+
+        while (true) {
+<span class="nc" id="L87">            read = read(readBuffer);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">            if (read == -1) break;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            if (localCapped) { // this local byteBuffer cap may be smaller than the overall maxSize (like when reading first bytes)</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                if (read &gt;= remaining) {</span>
+<span class="nc" id="L91">                    outStream.write(readBuffer, 0, remaining);</span>
+<span class="nc" id="L92">                    break;</span>
+                }
+<span class="nc" id="L94">                remaining -= read;</span>
+            }
+<span class="nc" id="L96">            outStream.write(readBuffer, 0, read);</span>
+        }
+<span class="nc" id="L98">        return ByteBuffer.wrap(outStream.toByteArray());</span>
+    }
+
+    @Override
+    public void reset() throws IOException {
+<span class="nc" id="L103">        super.reset();</span>
+<span class="nc" id="L104">        remaining = maxSize - markpos;</span>
+<span class="nc" id="L105">    }</span>
+
+    public ConstrainableInputStream timeout(long startTimeNanos, long timeoutMillis) {
+<span class="nc" id="L108">        this.startTime = startTimeNanos;</span>
+<span class="nc" id="L109">        this.timeout = timeoutMillis * 1000000;</span>
+<span class="nc" id="L110">        return this;</span>
+    }
+
+    private boolean expired() {
+<span class="nc bnc" id="L114" title="All 2 branches missed.">        if (timeout == 0)</span>
+<span class="nc" id="L115">            return false;</span>
+
+<span class="nc" id="L117">        final long now = System.nanoTime();</span>
+<span class="nc" id="L118">        final long dur = now - startTime;</span>
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        return (dur &gt; timeout);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,173 @@
+﻿### Role
+You are an expert in formal methods and requirements engineering specializing in Linear Temporal Logic (LTL) specification generation from natural language system requirements.
+
+
+### Task
+Given a natural language system requirement and a set of named atomic propositions with their definitions, translate the requirement into a well-formed LTL formula that precisely captures its intended temporal semantics.
+
+
+### Input
+- `input_natural_language`: A plain English sentence describing a behavioral requirement for a safety-critical system.
+- `atomic_propositions`: A dictionary mapping proposition names (strings) to their plain-English definitions. These are the only Boolean variables available for use in the output formula.
+
+
+### Output
+A JSON object with the following field:
+- `output_LTL`: A string containing a well-formed LTL formula built exclusively from the provided atomic propositions, their negations, Boolean connectives (`&`, `|`, `!`, `->`), and standard LTL temporal operators (`G`, `F`, `X`, `U`, `R`, `W`, `M`, `G[a,b]`, `F[a,b]`). Parentheses must be used to make operator precedence explicit.
+
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "input_natural_language": "Exceeding sensor limits shall latch an autopilot pullup when the pilot is not in control (not standby) and the system is supported without failures (not apfail).",
+        "atomic_propositions": {
+          "standby": "True when the pilot is in control of the vehicle",
+          "apfail": "Failure indication from an external source",
+          "supported": "Indication of general health of system, must be True to enable operation",
+          "limits": "External indication to sensor on faulty condition impeding safe operation.",
+          "good": "Prior sensor output. When false indicates a detected fault.",
+          "MODE": "Autopilot internal moding discrete indicating not in transition state",
+          "REQUEST": "Autopilot internal moding discrete indicating transition to a nominal operation",
+          "pullup": "True when the autopilot is in the MANEUVER state",
+          "state_is_TRANSITION": "indicates current state is TRANSITION",
+          "state_is_STANDBY": "indicates current state is STANDBY",
+          "state_is_NOMINAL": "indicates current state is NOMINAL",
+          "state_is_MANEUVER": "indicates current state is MANEUVER",
+          "state_is_PULLUP": "indicates current state is PULLUP"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G (((! (((!standby) & supported & (!apfail)) & limits)) & (X (((!standby) & supported & (!apfail)) & limits))) -> (X pullup))) & ((((!standby) & supported & (!apfail)) & limits) -> pullup))"
+      }
+    },
+    {
+      "inputs": {
+        "input_natural_language": "Between 0 and 20 time units, the value of signal RWs_angular_momentum shall be less than 0.35.",
+        "atomic_propositions": {
+          "RWs_angular_momentum_lessThan_0.35": "True when the angular momentum of the reaction wheels is less than 0.35"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G[0,20] (RWs_angular_momentum_lessThan_0.35)) | (G (RWs_angular_momentum_lessThan_0.35)))"
+      }
+    }
+  ]
+}
+```
+
+
+### Steps
+
+
+**Step 1 — Identify the scope layer (decision1):**
+Determine whether the main property applies unconditionally over all time, within a bounded time window, or only during an interval governed by a Boolean condition drawn from the atomic propositions.
+
+
+- If the requirement specifies a bounded numeric interval (e.g., "between T1 and T2 time units," "within N ticks of start"), mark the scope as timed and record the interval `[T1, T2]` or `[0, N]` for use with bounded operators (`G[a,b]`, `F[a,b]`).
+  - If the interval bound is ambiguous (could also be read as unbounded), plan to emit both a bounded and an unbounded reading joined with `|`.
+- If the requirement states a conditional scope (e.g., "while `<condition>`," "before `<event>`," "after `<event>`"), identify the Boolean expression `bool_exp1` formed from the available atomic propositions that captures that condition.
+- If no scope restriction is present, treat the scope as globally unconditional; use `G` over the entire trace with no additional guard.
+- Do not yet write any LTL; record your scope decision and `bool_exp1` (if applicable) as an internal note.
+
+
+**Step 2 — Identify the trigger layer (decision2):**
+Within the resolved scope from Step 1, determine how the property is activated.
+
+
+- If the requirement implies the property fires on the **rising edge** of a condition — that is, at the first moment a Boolean expression transitions from false to true (keywords such as "upon," "when first," "as soon as") — record the trigger mode as **upon** and identify `bool_exp2`. The rising-edge pattern is: `((!bool_exp2) & (X bool_exp2))` as the antecedent that activates the consequent.
+- If the requirement implies the property fires **every time** a Boolean condition holds (keywords such as "whenever," "every time," "at each point that") — record the trigger mode as **whenever** and identify `bool_exp2`. The pattern antecedent is simply `bool_exp2`.
+- If the requirement applies unconditionally without any trigger condition, record trigger mode as **unconditional** and set `bool_exp2` to the Boolean constant `true` (no antecedent needed; the property holds globally).
+- Tie-breaking rule: if both "upon" and "whenever" readings are plausible with equal weight, prefer **upon** (rising-edge), as latching semantics are more common in safety-critical contexts.
+- Record your trigger decision and `bool_exp2` as an internal note.
+
+
+**Step 3 — Identify the timing/property layer (decision3):**
+Express what must hold and when, relative to the trigger from Step 2. Identify `bool_exp3` (the response proposition or expression) and any numeric duration `N_DURATION` if applicable.
+
+
+Choose the timing template that best matches the natural language:
+
+
+| Natural language cue | LTL timing pattern (applied to `bool_exp3`) |
+|---|---|
+| "immediately," "at that point," "at the same time" | `bool_exp3` (no temporal operator; holds at current state) |
+| "at the next point," "at next tick," "latch" (one step later) | `X bool_exp3` |
+| "eventually," "at some future point" | `F bool_exp3` |
+| "always," "forever," "at all times" | `G bool_exp3` |
+| "never" | `G (!bool_exp3)` |
+| "within N ticks/steps" | `F[0,N] bool_exp3` |
+| "after N ticks/steps" | `X^N bool_exp3` (chain N applications of `X`) |
+| "for N ticks/steps" | `bool_exp3 & X bool_exp3 & X X bool_exp3 ...` (N conjuncts) |
+| "until `<condition>`" | `bool_exp3 U bool_exp4` |
+| "before `<condition>`" | `bool_exp3 U (!bool_exp4)` or `(!bool_exp4) U bool_exp3` depending on reading |
+
+
+- "Latch" semantics (common in safety-critical requirements): if the requirement says the property must "latch" (i.e., hold from trigger point onward), use both `bool_exp3` at the trigger instant and `X bool_exp3` for the next step. Check whether the requirement implies the property must also hold at the very first trigger occurrence in addition to subsequent ones.
+- Identify `bool_exp3` (and `bool_exp4` if a second Boolean is needed) by matching phrases in the requirement to the provided atomic propositions and their definitions.
+- Record your timing decision, `bool_exp3`, `bool_exp4` (if used), and `N_DURATION` (if used).
+
+
+**Step 4 — Compose the structured natural language:**
+Combine the three layers by substituting inner layers into the placeholder of outer layers, working from the innermost (timing) outward to scope. Produce a single flat structured NL string of the form:
+
+
+`<scope_phrase> <trigger_phrase> <timing_phrase>`
+
+
+For example: `"while (!standby & supported & !apfail), upon limits, at next point pullup."`
+
+
+This step serves as a legibility check — confirm the composed string faithfully represents the original requirement before proceeding to LTL derivation.
+
+
+**Step 5 — Derive the LTL formula:**
+Translate the composed structured NL from Step 4 into a well-formed LTL formula by applying the following construction rules:
+
+
+- **Unconditional scope + unconditional trigger + timing T(bool_exp3):**
+  `G (T(bool_exp3))`
+
+
+- **Unconditional scope + whenever bool_exp2 + timing T(bool_exp3):**
+  `G (bool_exp2 -> T(bool_exp3))`
+
+
+- **Unconditional scope + upon bool_exp2 (rising edge) + timing T(bool_exp3):**
+  Emit **two conjuncts**:
+  1. Rising-edge implication globally: `G (((!bool_exp2) & (X bool_exp2)) -> X T(bool_exp3))`
+  2. Immediate-hold at time 0 if `bool_exp2` is already true at the first state: `(bool_exp2 -> T(bool_exp3))`
+  Combine: `(G (((!bool_exp2) & (X bool_exp2)) -> X T(bool_exp3))) & (bool_exp2 -> T(bool_exp3))`
+
+
+- **Timed scope [a,b] + unconditional trigger + timing T(bool_exp3):**
+  Emit a bounded reading and an unbounded reading joined by `|`:
+  `(G[a,b] (T(bool_exp3))) | (G (T(bool_exp3)))`
+
+
+- **Conditional scope bool_exp1 + trigger/timing as above:**
+  Wrap the entire inner formula within a `G (bool_exp1 -> (...))` guard, or use the appropriate bounded operator if the scope is timed.
+
+
+- Apply parentheses exhaustively to make all precedence explicit.
+- Use only atomic proposition names exactly as given in the input; do not introduce new variables.
+- Validate mentally that the formula is syntactically complete (every operator has the correct number of arguments, all parentheses are balanced).
+
+
+**Step 6 — Compile and format output:**
+Produce a JSON object with exactly one field, `output_LTL`, whose value is the LTL formula string derived in Step 5. Do not include any explanation, reasoning, intermediate steps, or additional fields in the output.
+
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Use only the atomic proposition names exactly as given in `atomic_propositions` — do not invent, rename, or abbreviate any proposition.
+- Every atomic proposition used in `output_LTL` must appear in the provided `atomic_propositions` dictionary.
+- Do not leave any field empty or use placeholder text; the `output_LTL` field must contain a complete, concrete LTL formula.
+- The formula must be syntactically valid LTL: all operators must be applied to well-formed subformulas, and parentheses must fully disambiguate precedence.
+- If the requirement mentions a bounded time interval (e.g., "between 0 and N time units"), use bounded temporal operators (e.g., `G[0,N]`, `F[0,N]`) where appropriate.
+- If the requirement is ambiguous between a bounded and an unbounded reading, capture both interpretations joined with a disjunction (`|`), as shown in the examples.
+- Do not output any explanation, reasoning, or additional fields — output only the JSON object containing `output_LTL`.
+- Follow the Steps above in order as your internal reasoning process.

@@ -1,0 +1,104 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content - no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- Steps: The methodology - what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- Instructions: Hard behavioural constraints - what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A - The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed.]
+
+### Task
+[One or two sentences describing the task.]
+
+### Input
+[Describe only the raw dataset fields shown in the reference examples.]
+
+### Output
+[Describe the exact final output fields and structure shown in the reference examples.]
+
+### Example
+[Reproduce the reference examples verbatim.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints.]
+
+---
+
+## PROMPT B - The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "problem_description": "Score : 475 points\n\n### Problem Statement\n\nThe manufacturing of a certain product requires N processes numbered\n1,2,\\dots,N.\n\nFor each process i, there are two types of machines S_i and T_i available for\npurchase to handle it.\n\n  * Machine S_i: Can process A_i products per day per unit, and costs P_i yen per unit.\n  * Machine T_i: Can process B_i products per day per unit, and costs Q_i yen per unit.\n\nYou can purchase any number of each machine, possibly zero.\n\nSuppose that process i can handle W_i products per day as a result of\nintroducing machines.  \nHere, we define the production capacity as the minimum of W, that is,\n\\displaystyle \\min^{N}_{i=1} W_i.\n\nGiven a total budget of X yen, find the maximum achievable production\ncapacity.\n\n### Constraints\n\n  * All input values are integers.\n  * 1 \\le N \\le 100\n  * 1 \\le A_i,B_i \\le 100\n  * 1 \\le P_i,Q_i,X \\le 10^7\n\n### Input\n\nThe input is given from Standard Input in the following format:\n\nN X\nA_1 P_1 B_1 Q_1\nA_2 P_2 B_2 Q_2\n\\vdots\nA_N P_N B_N Q_N\n\n### Output\n\nPrint the answer as an integer.",
+        "wa_code": "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\nconst int N=105;\nint n;\nint x;\nint a[N],b[N],p[N],q[N];\n\nint c[N];\nbool check(int mid)\n{\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tc[i]=INT_MAX;\n\t\tfor(int j=0;j<=b[i];j++)\n\t\t{\n\t\t\tc[i]=min(c[i],j*p[i]+q[i]*(mid-j*a[i]+b[i]-1)/b[i]);\n\t\t}\n\t\tfor(int j=0;j<=b[i];j++)\n\t\t{\n\t\t\tc[i]=min(c[i],j*q[i]+p[i]*(mid-j*b[i]+a[i]-1)/a[i]);\n\t\t}\n\t}\n\tint ans=0;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tans+=c[i];\n\t}\n\tif(ans>x) return false;\n\treturn true;\n}\nsigned main(){\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\tcout.tie(0);\n\tcin>>n;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tcin>>a[i]>>p[i]>>b[i]>>q[i];\n\t}\n\tint l=1,r=n;\n\twhile(l<=r)\n\t{\n\t\tint mid=(l+r)/2;\n\t\tif(check(mid))\n\t\t{\n\t\t\tl=mid+1;\n\t\t}\n\t\telse \n\t\t{\n\t\t\tr=mid-1;\n\t\t}\n\t}\n\t\n\tcout<<l;\n\treturn 0;\n}",
+        "failing_input": "100 10000000\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n"
+      },
+      "outputs": {
+        "fixed_code": "#include<bits/stdc++.h>\nusing namespace std;\n#define int long long\nconst int N=2e5+5;\nint n,m,k,sum,cnt,a[N],b[N],c[N],d[N];\nbool check(int mid)\n{\n\tsum=0;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tcnt=INT_MAX;\n\t\tfor(int j=mid/a[i]+1;j>=max(mid/a[i]-100,0ll);j--)\n\t\t\tcnt=min(cnt,j*c[i]+max(0ll,mid-j*a[i]+b[i]-1)/b[i]*d[i]);\n\t\tfor(int j=mid/b[i]+1;j>=max(mid/b[i]-100,0ll);j--)\n\t\t\tcnt=min(cnt,j*d[i]+max(0ll,mid-j*b[i]+a[i]-1)/a[i]*c[i]);\n\t\tsum+=cnt;\n\t}\n\treturn sum<=m;\n}\nsigned main()\n{\n\tios::sync_with_stdio(0),cin.tie(0),cout.tie(0);\n\tint i,j,x,y,z,t;\n\tcin>>n>>m;\n\tfor(i=1;i<=n;i++)\n\t\tcin>>a[i]>>c[i]>>b[i]>>d[i];\n\tint l=0,r=INT_MAX;\n\twhile(l<=r)\n\t{\n\t\tint mid=(l+r)/2;\n\t\tif(check(mid))\n\t\t\tk=mid,l=mid+1;\n\t\telse\n\t\t\tr=mid-1;\n\t}\n\tcout<<k;\n\treturn 0;\n}"
+      }
+    }
+  ]
+}
+```

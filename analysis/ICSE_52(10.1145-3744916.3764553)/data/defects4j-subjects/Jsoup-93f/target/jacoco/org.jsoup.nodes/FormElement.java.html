@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FormElement.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.nodes</a> &gt; <span class="el_source">FormElement.java</span></div><h1>FormElement.java</h1><pre class="source lang-java linenums">package org.jsoup.nodes;
+
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.helper.HttpConnection;
+import org.jsoup.helper.Validate;
+import org.jsoup.parser.Tag;
+import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A HTML Form Element provides ready access to the form fields/controls that are associated with it. It also allows a
+ * form to easily be submitted.
+ */
+public class FormElement extends Element {
+<span class="nc" id="L18">    private final Elements elements = new Elements();</span>
+
+    /**
+     * Create a new, standalone form element.
+     *
+     * @param tag        tag of this element
+     * @param baseUri    the base URI
+     * @param attributes initial attributes
+     */
+    public FormElement(Tag tag, String baseUri, Attributes attributes) {
+<span class="nc" id="L28">        super(tag, baseUri, attributes);</span>
+<span class="nc" id="L29">    }</span>
+
+    /**
+     * Get the list of form control elements associated with this form.
+     * @return form controls associated with this element.
+     */
+    public Elements elements() {
+<span class="nc" id="L36">        return elements;</span>
+    }
+
+    /**
+     * Add a form control element to this form.
+     * @param element form control to add
+     * @return this form element, for chaining
+     */
+    public FormElement addElement(Element element) {
+<span class="nc" id="L45">        elements.add(element);</span>
+<span class="nc" id="L46">        return this;</span>
+    }
+
+    @Override
+    protected void removeChild(Node out) {
+<span class="nc" id="L51">        super.removeChild(out);</span>
+<span class="nc" id="L52">        elements.remove(out);</span>
+<span class="nc" id="L53">    }</span>
+
+    /**
+     * Prepare to submit this form. A Connection object is created with the request set up from the form values. You
+     * can then set up other options (like user-agent, timeout, cookies), then execute it.
+     * @return a connection prepared from the values of this form.
+     * @throws IllegalArgumentException if the form's absolute action URL cannot be determined. Make sure you pass the
+     * document's base URI when parsing.
+     */
+    public Connection submit() {
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        String action = hasAttr(&quot;action&quot;) ? absUrl(&quot;action&quot;) : baseUri();</span>
+<span class="nc" id="L64">        Validate.notEmpty(action, &quot;Could not determine a form action URL for submit. Ensure you set a base URI when parsing.&quot;);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        Connection.Method method = attr(&quot;method&quot;).toUpperCase().equals(&quot;POST&quot;) ?</span>
+                Connection.Method.POST : Connection.Method.GET;
+
+<span class="nc" id="L68">        return Jsoup.connect(action)</span>
+<span class="nc" id="L69">                .data(formData())</span>
+<span class="nc" id="L70">                .method(method);</span>
+    }
+
+    /**
+     * Get the data that this form submits. The returned list is a copy of the data, and changes to the contents of the
+     * list will not be reflected in the DOM.
+     * @return a list of key vals
+     */
+    public List&lt;Connection.KeyVal&gt; formData() {
+<span class="nc" id="L79">        ArrayList&lt;Connection.KeyVal&gt; data = new ArrayList&lt;&gt;();</span>
+
+        // iterate the form control elements and accumulate their values
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for (Element el: elements) {</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            if (!el.tag().isFormSubmittable()) continue; // contents are form listable, superset of submitable</span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">            if (el.hasAttr(&quot;disabled&quot;)) continue; // skip disabled form inputs</span>
+<span class="nc" id="L85">            String name = el.attr(&quot;name&quot;);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">            if (name.length() == 0) continue;</span>
+<span class="nc" id="L87">            String type = el.attr(&quot;type&quot;);</span>
+
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            if (type.equalsIgnoreCase(&quot;button&quot;)) continue; // browsers don't submit these</span>
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">            if (&quot;select&quot;.equals(el.normalName())) {</span>
+<span class="nc" id="L92">                Elements options = el.select(&quot;option[selected]&quot;);</span>
+<span class="nc" id="L93">                boolean set = false;</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                for (Element option: options) {</span>
+<span class="nc" id="L95">                    data.add(HttpConnection.KeyVal.create(name, option.val()));</span>
+<span class="nc" id="L96">                    set = true;</span>
+<span class="nc" id="L97">                }</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                if (!set) {</span>
+<span class="nc" id="L99">                    Element option = el.select(&quot;option&quot;).first();</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">                    if (option != null)</span>
+<span class="nc" id="L101">                        data.add(HttpConnection.KeyVal.create(name, option.val()));</span>
+                }
+<span class="nc bnc" id="L103" title="All 4 branches missed.">            } else if (&quot;checkbox&quot;.equalsIgnoreCase(type) || &quot;radio&quot;.equalsIgnoreCase(type)) {</span>
+                // only add checkbox or radio if they have the checked attribute
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                if (el.hasAttr(&quot;checked&quot;)) {</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                    final String val = el.val().length() &gt;  0 ? el.val() : &quot;on&quot;;</span>
+<span class="nc" id="L107">                    data.add(HttpConnection.KeyVal.create(name, val));</span>
+<span class="nc" id="L108">                }</span>
+            } else {
+<span class="nc" id="L110">                data.add(HttpConnection.KeyVal.create(name, el.val()));</span>
+            }
+<span class="nc" id="L112">        }</span>
+<span class="nc" id="L113">        return data;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

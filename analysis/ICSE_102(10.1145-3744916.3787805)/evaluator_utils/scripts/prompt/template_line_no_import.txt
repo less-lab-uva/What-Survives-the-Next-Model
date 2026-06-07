@@ -1,0 +1,34 @@
+Please write a test method for the class '{class_name}' given the following program under test. Your answer should contain only one test input.
+
+You are provided with the program under test:
+----
+{program}
+----
+
+The code above fails to reach the line {lineno}, which is marked by the tag <TARGET LINE> ... </TARGET LINE>.
+
+<instructions>
+
+1. Analyze **why** the provided test case does **not** reach line `{lineno}`  (marked by the tag <TARGET LINE> ... </TARGET LINE>).
+2. Based on your analysis, describe a **step-by-step strategy** to reach that line.
+3. Then, generate a **new test case** that triggers the execution of line `{lineno}`.
+
+Your generated test case should start with the following template:
+
+```python
+def test_{class_name}():
+    solution = 
+    assert solution.
+```
+
+Please structure your response in two parts:
+- Wrap your **step-by-step reasoning** inside `<thinking>` tags.
+- Wrap the final **Python test case** inside `<answer>` tags, using backticks.
+
+Note: If the class under test is an abstract class (i.e., it has abstract methods), do NOT instantiate it directly in your test. Instead, create a subclass that implements all abstract methods before instantiating, or only test static/class methods without instantiation.
+
+</instructions>
+
+
+
+

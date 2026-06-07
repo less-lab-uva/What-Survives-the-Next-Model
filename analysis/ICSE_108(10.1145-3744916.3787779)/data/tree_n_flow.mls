@@ -1,0 +1,39 @@
+type nat =
+  | O
+  | S of nat
+
+type tree = 
+  | Leaf of nat
+  | Node of nat * tree * tree
+
+let add =
+  fix (add : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> n2
+        | S n1p -> S (add n1p n2)
+;;
+
+let sub =
+  fix (sub : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> O
+        | S n1p -> match n2 with
+                    | O -> n1
+                    | S n2p -> (sub n1p n2p)
+;;
+
+synth tree -> nat -> nat satisfying
+
+[Leaf (3), 0] -> 0,
+[Leaf (2), 2] -> 0,
+[Leaf (2), 1] -> 0,
+[Leaf (2), 3] -> 1,
+[Node (2, Leaf(3), Leaf(2)), 4] -> 0,
+[Node (2, Leaf(3), Leaf(2)), 8] -> 1,
+[Node (1, Leaf(3), Leaf(0)), 5] -> 2,
+[Node (3, Leaf(3), Leaf(0)), 7] -> 2,
+[Node (2, Node(1, Leaf(4), Leaf(0)), Leaf(2)), 8] -> 2

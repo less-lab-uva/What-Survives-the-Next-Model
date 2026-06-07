@@ -1,0 +1,72 @@
+type nat =
+  | O
+  | S of nat
+
+
+type tree = 
+  | Leaf of nat
+  | Node of nat * nat * tree * tree
+
+type cmp =
+  | LT
+  | EQ
+  | GT
+
+let compare =
+  fix (compare : nat -> nat -> cmp) =
+    fun (x1 : nat) ->
+      fun (x2 : nat) ->
+        match x1 with
+        | O -> (match x2 with
+                | O -> EQ
+                | S _ -> LT)
+        | S x1p -> (match x2 with
+                | O -> GT
+                | S x2p -> compare x1p x2p)
+;;
+
+let max =
+  fix (max : nat -> nat -> nat) =
+    fun (x:nat) ->
+     fun (y:nat) ->
+      match (compare x y) with
+        | LT _ -> y
+        | EQ _ -> x
+        | GT _ -> x
+;;
+
+let add =
+  fix (add : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> n2
+        | S n1p -> S (add n1p n2)
+;;
+
+let sub =
+  fix (sub : nat -> nat -> nat) =
+    fun (n1 : nat) ->
+      fun (n2 : nat) ->
+        match n1 with
+        | O -> O
+        | S n1p -> match n2 with
+                    | O -> n1
+                    | S n2p -> (sub n1p n2p)
+;;
+
+synth tree -> nat -> nat satisfying
+
+[Leaf (3), 0] -> 3,
+[Leaf (2), 1] -> 2,
+[Node(1,2, Leaf(4), Leaf(3)),4] -> 4,
+[Node(1,2, Leaf(4), Leaf(3)),1] -> 1,
+[Node(1,4,Leaf(4), Leaf(3)), 3] -> 1,
+[Node(1,4,Leaf(4), Leaf(3)), 0] -> 1,
+[Node(1,4,Leaf(4), Leaf(3)), 4] -> 4,
+[Node(5,2,Leaf(4),Leaf(3)), 1] -> 5,
+[Node(5,2,Leaf(4),Leaf(3)), 5] -> 5,
+[Node(2,1,Node(3,3,Leaf(6),Leaf(4)), Node(4,2,Leaf(4),Leaf(5))), 1] -> 4,
+[Node(2,1,Node(3,3,Leaf(6),Leaf(4)), Node(4,2,Leaf(4),Leaf(5))), 3] -> 5,
+[Node(2,1,Node(3,3,Leaf(6),Leaf(4)), Node(4,2,Leaf(4),Leaf(5))), 2] -> 4,
+[Node(2,1,Node(3,3,Leaf(6),Leaf(4)), Node(4,2,Leaf(4),Leaf(5))), 5] -> 6

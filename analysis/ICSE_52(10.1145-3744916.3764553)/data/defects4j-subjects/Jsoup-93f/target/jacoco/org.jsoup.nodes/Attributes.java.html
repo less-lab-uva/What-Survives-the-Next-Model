@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Attributes.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.nodes</a> &gt; <span class="el_source">Attributes.java</span></div><h1>Attributes.java</h1><pre class="source lang-java linenums">package org.jsoup.nodes;
+
+import org.jsoup.SerializationException;
+import org.jsoup.helper.Validate;
+import org.jsoup.internal.StringUtil;
+import org.jsoup.parser.ParseSettings;
+
+import java.io.IOException;
+import java.util.AbstractMap;
+import java.util.AbstractSet;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.jsoup.internal.Normalizer.lowerCase;
+
+/**
+ * The attributes of an Element.
+ * &lt;p&gt;
+ * Attributes are treated as a map: there can be only one value associated with an attribute key/name.
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * Attribute name and value comparisons are  generally &lt;b&gt;case sensitive&lt;/b&gt;. By default for HTML, attribute names are
+ * normalized to lower-case on parsing. That means you should use lower-case strings when referring to attributes by
+ * name.
+ * &lt;/p&gt;
+ *
+ * @author Jonathan Hedley, jonathan@hedley.net
+ */
+<span class="fc" id="L34">public class Attributes implements Iterable&lt;Attribute&gt;, Cloneable {</span>
+    protected static final String dataPrefix = &quot;data-&quot;;
+    private static final int InitialCapacity = 4; // todo - analyze Alexa 1MM sites, determine best setting
+
+    // manages the key/val arrays
+    private static final int GrowthFactor = 2;
+<span class="fc" id="L40">    private static final String[] Empty = {};</span>
+    static final int NotFound = -1;
+    private static final String EmptyString = &quot;&quot;;
+
+<span class="fc" id="L44">    private int size = 0; // number of slots used (not capacity, which is keys.length</span>
+<span class="fc" id="L45">    String[] keys = Empty;</span>
+<span class="fc" id="L46">    String[] vals = Empty;</span>
+
+    // check there's room for more
+    private void checkCapacity(int minNewSize) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        Validate.isTrue(minNewSize &gt;= size);</span>
+<span class="nc" id="L51">        int curSize = keys.length;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">        if (curSize &gt;= minNewSize)</span>
+<span class="nc" id="L53">            return;</span>
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        int newSize = curSize &gt;= InitialCapacity ? size * GrowthFactor : InitialCapacity;</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">        if (minNewSize &gt; newSize)</span>
+<span class="nc" id="L57">            newSize = minNewSize;</span>
+
+<span class="nc" id="L59">        keys = copyOf(keys, newSize);</span>
+<span class="nc" id="L60">        vals = copyOf(vals, newSize);</span>
+<span class="nc" id="L61">    }</span>
+
+    // simple implementation of Arrays.copy, for support of Android API 8.
+    private static String[] copyOf(String[] orig, int size) {
+<span class="nc" id="L65">        final String[] copy = new String[size];</span>
+<span class="nc" id="L66">        System.arraycopy(orig, 0, copy, 0,</span>
+<span class="nc" id="L67">                Math.min(orig.length, size));</span>
+<span class="nc" id="L68">        return copy;</span>
+    }
+
+    int indexOfKey(String key) {
+<span class="nc" id="L72">        Validate.notNull(key);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">            if (key.equals(keys[i]))</span>
+<span class="nc" id="L75">                return i;</span>
+        }
+<span class="nc" id="L77">        return NotFound;</span>
+    }
+
+    private int indexOfKeyIgnoreCase(String key) {
+<span class="nc" id="L81">        Validate.notNull(key);</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            if (key.equalsIgnoreCase(keys[i]))</span>
+<span class="nc" id="L84">                return i;</span>
+        }
+<span class="nc" id="L86">        return NotFound;</span>
+    }
+
+    // we track boolean attributes as null in values - they're just keys. so returns empty for consumers
+    static String checkNotNull(String val) {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        return val == null ? EmptyString : val;</span>
+    }
+
+    /**
+     Get an attribute value by key.
+     @param key the (case-sensitive) attribute key
+     @return the attribute value if set; or empty string if not set (or a boolean attribute).
+     @see #hasKey(String)
+     */
+    public String get(String key) {
+<span class="nc" id="L101">        int i = indexOfKey(key);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        return i == NotFound ? EmptyString : checkNotNull(vals[i]);</span>
+    }
+
+    /**
+     * Get an attribute's value by case-insensitive key
+     * @param key the attribute name
+     * @return the first matching attribute value if set; or empty string if not set (ora boolean attribute).
+     */
+    public String getIgnoreCase(String key) {
+<span class="nc" id="L111">        int i = indexOfKeyIgnoreCase(key);</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        return i == NotFound ? EmptyString : checkNotNull(vals[i]);</span>
+    }
+
+    /**
+     * Adds a new attribute. Will produce duplicates if the key already exists.
+     * @see Attributes#put(String, String)
+     */
+    public Attributes add(String key, String value) {
+<span class="nc" id="L120">        checkCapacity(size + 1);</span>
+<span class="nc" id="L121">        keys[size] = key;</span>
+<span class="nc" id="L122">        vals[size] = value;</span>
+<span class="nc" id="L123">        size++;</span>
+<span class="nc" id="L124">        return this;</span>
+    }
+
+    /**
+     * Set a new attribute, or replace an existing one by key.
+     * @param key case sensitive attribute key
+     * @param value attribute value
+     * @return these attributes, for chaining
+     */
+    public Attributes put(String key, String value) {
+<span class="nc" id="L134">        int i = indexOfKey(key);</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (i != NotFound)</span>
+<span class="nc" id="L136">            vals[i] = value;</span>
+        else
+<span class="nc" id="L138">            add(key, value);</span>
+<span class="nc" id="L139">        return this;</span>
+    }
+
+    void putIgnoreCase(String key, String value) {
+<span class="nc" id="L143">        int i = indexOfKeyIgnoreCase(key);</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (i != NotFound) {</span>
+<span class="nc" id="L145">            vals[i] = value;</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (!keys[i].equals(key)) // case changed, update</span>
+<span class="nc" id="L147">                keys[i] = key;</span>
+        }
+        else
+<span class="nc" id="L150">            add(key, value);</span>
+<span class="nc" id="L151">    }</span>
+
+    /**
+     * Set a new boolean attribute, remove attribute if value is false.
+     * @param key case &lt;b&gt;insensitive&lt;/b&gt; attribute key
+     * @param value attribute value
+     * @return these attributes, for chaining
+     */
+    public Attributes put(String key, boolean value) {
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        if (value)</span>
+<span class="nc" id="L161">            putIgnoreCase(key, null);</span>
+        else
+<span class="nc" id="L163">            remove(key);</span>
+<span class="nc" id="L164">        return this;</span>
+    }
+
+    /**
+     Set a new attribute, or replace an existing one by key.
+     @param attribute attribute with case sensitive key
+     @return these attributes, for chaining
+     */
+    public Attributes put(Attribute attribute) {
+<span class="nc" id="L173">        Validate.notNull(attribute);</span>
+<span class="nc" id="L174">        put(attribute.getKey(), attribute.getValue());</span>
+<span class="nc" id="L175">        attribute.parent = this;</span>
+<span class="nc" id="L176">        return this;</span>
+    }
+
+    // removes and shifts up
+    private void remove(int index) {
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        Validate.isFalse(index &gt;= size);</span>
+<span class="nc" id="L182">        int shifted = size - index - 1;</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        if (shifted &gt; 0) {</span>
+<span class="nc" id="L184">            System.arraycopy(keys, index + 1, keys, index, shifted);</span>
+<span class="nc" id="L185">            System.arraycopy(vals, index + 1, vals, index, shifted);</span>
+        }
+<span class="nc" id="L187">        size--;</span>
+<span class="nc" id="L188">        keys[size] = null; // release hold</span>
+<span class="nc" id="L189">        vals[size] = null;</span>
+<span class="nc" id="L190">    }</span>
+
+    /**
+     Remove an attribute by key. &lt;b&gt;Case sensitive.&lt;/b&gt;
+     @param key attribute key to remove
+     */
+    public void remove(String key) {
+<span class="nc" id="L197">        int i = indexOfKey(key);</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">        if (i != NotFound)</span>
+<span class="nc" id="L199">            remove(i);</span>
+<span class="nc" id="L200">    }</span>
+
+    /**
+     Remove an attribute by key. &lt;b&gt;Case insensitive.&lt;/b&gt;
+     @param key attribute key to remove
+     */
+    public void removeIgnoreCase(String key) {
+<span class="nc" id="L207">        int i = indexOfKeyIgnoreCase(key);</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">        if (i != NotFound)</span>
+<span class="nc" id="L209">            remove(i);</span>
+<span class="nc" id="L210">    }</span>
+
+    /**
+     Tests if these attributes contain an attribute with this key.
+     @param key case-sensitive key to check for
+     @return true if key exists, false otherwise
+     */
+    public boolean hasKey(String key) {
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        return indexOfKey(key) != NotFound;</span>
+    }
+
+    /**
+     Tests if these attributes contain an attribute with this key.
+     @param key key to check for
+     @return true if key exists, false otherwise
+     */
+    public boolean hasKeyIgnoreCase(String key) {
+<span class="nc bnc" id="L227" title="All 2 branches missed.">        return indexOfKeyIgnoreCase(key) != NotFound;</span>
+    }
+
+    /**
+     Get the number of attributes in this set.
+     @return size
+     */
+    public int size() {
+<span class="nc" id="L235">        return size;</span>
+    }
+
+    /**
+     * Test if this Attributes list is empty (size==0).
+     */
+    public boolean isEmpty() {
+<span class="nc bnc" id="L242" title="All 2 branches missed.">        return size == 0;</span>
+    }
+
+    /**
+     Add all the attributes from the incoming set to this set.
+     @param incoming attributes to add to these attributes.
+     */
+    public void addAll(Attributes incoming) {
+<span class="nc bnc" id="L250" title="All 2 branches missed.">        if (incoming.size() == 0)</span>
+<span class="nc" id="L251">            return;</span>
+<span class="nc" id="L252">        checkCapacity(size + incoming.size);</span>
+
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        for (Attribute attr : incoming) {</span>
+            // todo - should this be case insensitive?
+<span class="nc" id="L256">            put(attr);</span>
+<span class="nc" id="L257">        }</span>
+
+<span class="nc" id="L259">    }</span>
+
+    public Iterator&lt;Attribute&gt; iterator() {
+<span class="nc" id="L262">        return new Iterator&lt;Attribute&gt;() {</span>
+<span class="nc" id="L263">            int i = 0;</span>
+
+            @Override
+            public boolean hasNext() {
+<span class="nc bnc" id="L267" title="All 2 branches missed.">                return i &lt; size;</span>
+            }
+
+            @Override
+            public Attribute next() {
+<span class="nc" id="L272">                final Attribute attr = new Attribute(keys[i], vals[i], Attributes.this);</span>
+<span class="nc" id="L273">                i++;</span>
+<span class="nc" id="L274">                return attr;</span>
+            }
+
+            @Override
+            public void remove() {
+<span class="nc" id="L279">                Attributes.this.remove(--i); // next() advanced, so rewind</span>
+<span class="nc" id="L280">            }</span>
+        };
+    }
+
+    /**
+     Get the attributes as a List, for iteration.
+     @return an view of the attributes as an unmodifialbe List.
+     */
+    public List&lt;Attribute&gt; asList() {
+<span class="nc" id="L289">        ArrayList&lt;Attribute&gt; list = new ArrayList&lt;&gt;(size);</span>
+<span class="nc bnc" id="L290" title="All 2 branches missed.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc bnc" id="L291" title="All 2 branches missed.">            Attribute attr = vals[i] == null ?</span>
+                new BooleanAttribute(keys[i]) : // deprecated class, but maybe someone still wants it
+                new Attribute(keys[i], vals[i], Attributes.this);
+<span class="nc" id="L294">            list.add(attr);</span>
+        }
+<span class="nc" id="L296">        return Collections.unmodifiableList(list);</span>
+    }
+
+    /**
+     * Retrieves a filtered view of attributes that are HTML5 custom data attributes; that is, attributes with keys
+     * starting with {@code data-}.
+     * @return map of custom data attributes.
+     */
+    public Map&lt;String, String&gt; dataset() {
+<span class="nc" id="L305">        return new Dataset(this);</span>
+    }
+
+    /**
+     Get the HTML representation of these attributes.
+     @return HTML
+     @throws SerializationException if the HTML representation of the attributes cannot be constructed.
+     */
+    public String html() {
+<span class="nc" id="L314">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+        try {
+<span class="nc" id="L316">            html(sb, (new Document(&quot;&quot;)).outputSettings()); // output settings a bit funky, but this html() seldom used</span>
+<span class="nc" id="L317">        } catch (IOException e) { // ought never happen</span>
+<span class="nc" id="L318">            throw new SerializationException(e);</span>
+<span class="nc" id="L319">        }</span>
+<span class="nc" id="L320">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    final void html(final Appendable accum, final Document.OutputSettings out) throws IOException {
+<span class="nc" id="L324">        final int sz = size;</span>
+<span class="nc bnc" id="L325" title="All 2 branches missed.">        for (int i = 0; i &lt; sz; i++) {</span>
+            // inlined from Attribute.html()
+<span class="nc" id="L327">            final String key = keys[i];</span>
+<span class="nc" id="L328">            final String val = vals[i];</span>
+<span class="nc" id="L329">            accum.append(' ').append(key);</span>
+
+            // collapse checked=null, checked=&quot;&quot;, checked=checked; write out others
+<span class="nc bnc" id="L332" title="All 2 branches missed.">            if (!Attribute.shouldCollapseAttribute(key, val, out)) {</span>
+<span class="nc" id="L333">                accum.append(&quot;=\&quot;&quot;);</span>
+<span class="nc bnc" id="L334" title="All 2 branches missed.">                Entities.escape(accum, val == null ? EmptyString : val, out, true, false, false);</span>
+<span class="nc" id="L335">                accum.append('&quot;');</span>
+            }
+        }
+<span class="nc" id="L338">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L342">        return html();</span>
+    }
+
+    /**
+     * Checks if these attributes are equal to another set of attributes, by comparing the two sets
+     * @param o attributes to compare with
+     * @return if both sets of attributes have the same content
+     */
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L352" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L353" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="nc" id="L355">        Attributes that = (Attributes) o;</span>
+
+<span class="nc bnc" id="L357" title="All 2 branches missed.">        if (size != that.size) return false;</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">        if (!Arrays.equals(keys, that.keys)) return false;</span>
+<span class="nc" id="L359">        return Arrays.equals(vals, that.vals);</span>
+    }
+
+    /**
+     * Calculates the hashcode of these attributes, by iterating all attributes and summing their hashcodes.
+     * @return calculated hashcode
+     */
+    @Override
+    public int hashCode() {
+<span class="nc" id="L368">        int result = size;</span>
+<span class="nc" id="L369">        result = 31 * result + Arrays.hashCode(keys);</span>
+<span class="nc" id="L370">        result = 31 * result + Arrays.hashCode(vals);</span>
+<span class="nc" id="L371">        return result;</span>
+    }
+
+    @Override
+    public Attributes clone() {
+        Attributes clone;
+        try {
+<span class="nc" id="L378">            clone = (Attributes) super.clone();</span>
+<span class="nc" id="L379">        } catch (CloneNotSupportedException e) {</span>
+<span class="nc" id="L380">            throw new RuntimeException(e);</span>
+<span class="nc" id="L381">        }</span>
+<span class="nc" id="L382">        clone.size = size;</span>
+<span class="nc" id="L383">        keys = copyOf(keys, size);</span>
+<span class="nc" id="L384">        vals = copyOf(vals, size);</span>
+<span class="nc" id="L385">        return clone;</span>
+    }
+
+    /**
+     * Internal method. Lowercases all keys.
+     */
+    public void normalize() {
+<span class="nc bnc" id="L392" title="All 2 branches missed.">        for (int i = 0; i &lt; size; i++) {</span>
+<span class="nc" id="L393">            keys[i] = lowerCase(keys[i]);</span>
+        }
+<span class="nc" id="L395">    }</span>
+
+    /**
+     * Internal method. Removes duplicate attribute by name. Settings for case sensitivity of key names.
+     * @param settings case sensitivity
+     * @return number of removed dupes
+     */
+    public int deduplicate(ParseSettings settings) {
+<span class="nc bnc" id="L403" title="All 2 branches missed.">        if (isEmpty())</span>
+<span class="nc" id="L404">            return 0;</span>
+<span class="nc" id="L405">        boolean preserve = settings.preserveAttributeCase();</span>
+<span class="nc" id="L406">        int dupes = 0;</span>
+<span class="nc bnc" id="L407" title="All 2 branches missed.">        OUTER: for (int i = 0; i &lt; keys.length; i++) {</span>
+<span class="nc bnc" id="L408" title="All 2 branches missed.">            for (int j = i + 1; j &lt; keys.length; j++) {</span>
+<span class="nc bnc" id="L409" title="All 2 branches missed.">                if (keys[j] == null)</span>
+<span class="nc" id="L410">                    continue OUTER; // keys.length doesn't shrink when removing, so re-test</span>
+<span class="nc bnc" id="L411" title="All 8 branches missed.">                if ((preserve &amp;&amp; keys[i].equals(keys[j])) || (!preserve &amp;&amp; keys[i].equalsIgnoreCase(keys[j]))) {</span>
+<span class="nc" id="L412">                    dupes++;</span>
+<span class="nc" id="L413">                    remove(j);</span>
+<span class="nc" id="L414">                    j--;</span>
+                }
+            }
+        }
+<span class="nc" id="L418">        return dupes;</span>
+    }
+
+    private static class Dataset extends AbstractMap&lt;String, String&gt; {
+        private final Attributes attributes;
+
+<span class="nc" id="L424">        private Dataset(Attributes attributes) {</span>
+<span class="nc" id="L425">            this.attributes = attributes;</span>
+<span class="nc" id="L426">        }</span>
+
+        @Override
+        public Set&lt;Entry&lt;String, String&gt;&gt; entrySet() {
+<span class="nc" id="L430">            return new EntrySet();</span>
+        }
+
+        @Override
+        public String put(String key, String value) {
+<span class="nc" id="L435">            String dataKey = dataKey(key);</span>
+<span class="nc bnc" id="L436" title="All 2 branches missed.">            String oldValue = attributes.hasKey(dataKey) ? attributes.get(dataKey) : null;</span>
+<span class="nc" id="L437">            attributes.put(dataKey, value);</span>
+<span class="nc" id="L438">            return oldValue;</span>
+        }
+
+<span class="nc" id="L441">        private class EntrySet extends AbstractSet&lt;Map.Entry&lt;String, String&gt;&gt; {</span>
+
+            @Override
+            public Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iterator() {
+<span class="nc" id="L445">                return new DatasetIterator();</span>
+            }
+
+            @Override
+            public int size() {
+<span class="nc" id="L450">                int count = 0;</span>
+<span class="nc" id="L451">                Iterator iter = new DatasetIterator();</span>
+<span class="nc bnc" id="L452" title="All 2 branches missed.">                while (iter.hasNext())</span>
+<span class="nc" id="L453">                    count++;</span>
+<span class="nc" id="L454">                return count;</span>
+            }
+        }
+
+<span class="nc" id="L458">        private class DatasetIterator implements Iterator&lt;Map.Entry&lt;String, String&gt;&gt; {</span>
+<span class="nc" id="L459">            private Iterator&lt;Attribute&gt; attrIter = attributes.iterator();</span>
+            private Attribute attr;
+            public boolean hasNext() {
+<span class="nc bnc" id="L462" title="All 2 branches missed.">                while (attrIter.hasNext()) {</span>
+<span class="nc" id="L463">                    attr = attrIter.next();</span>
+<span class="nc bnc" id="L464" title="All 2 branches missed.">                    if (attr.isDataAttribute()) return true;</span>
+                }
+<span class="nc" id="L466">                return false;</span>
+            }
+
+            public Entry&lt;String, String&gt; next() {
+<span class="nc" id="L470">                return new Attribute(attr.getKey().substring(dataPrefix.length()), attr.getValue());</span>
+            }
+
+            public void remove() {
+<span class="nc" id="L474">                attributes.remove(attr.getKey());</span>
+<span class="nc" id="L475">            }</span>
+        }
+    }
+
+    private static String dataKey(String key) {
+<span class="nc" id="L480">        return dataPrefix + key;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

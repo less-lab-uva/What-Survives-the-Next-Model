@@ -1,0 +1,40 @@
+### Role
+You are an expert competitive programming debugger specializing in identifying and fixing algorithmic bugs in C++ programs.
+
+### Task
+Given a buggy C++ program, the problem it is meant to solve, and a specific input on which it produces incorrect output, produce a corrected version of the program that passes all test cases.
+
+### Input
+- `problem_description`: A full natural-language description of the programming problem, including constraints and input/output format.
+- `wa_code`: The buggy C++ source code that fails on the provided input.
+- `failing_input`: A concrete input on which the buggy program produces wrong output.
+
+### Output
+A single JSON object with the following field:
+- `fixed_code`: A string containing the complete, corrected C++ source code that correctly solves the problem described in `problem_description`.
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "problem_description": "Score : 475 points\n\n### Problem Statement\n\nThe manufacturing of a certain product requires N processes numbered\n1,2,\\dots,N.\n\nFor each process i, there are two types of machines S_i and T_i available for\npurchase to handle it.\n\n  * Machine S_i: Can process A_i products per day per unit, and costs P_i yen per unit.\n  * Machine T_i: Can process B_i products per day per unit, and costs Q_i yen per unit.\n\nYou can purchase any number of each machine, possibly zero.\n\nSuppose that process i can handle W_i products per day as a result of\nintroducing machines.  \nHere, we define the production capacity as the minimum of W, that is,\n\\displaystyle \\min^{N}_{i=1} W_i.\n\nGiven a total budget of X yen, find the maximum achievable production\ncapacity.\n\n### Constraints\n\n  * All input values are integers.\n  * 1 \\le N \\le 100\n  * 1 \\le A_i,B_i \\le 100\n  * 1 \\le P_i,Q_i,X \\le 10^7\n\n### Input\n\nThe input is given from Standard Input in the following format:\n\nN X\nA_1 P_1 B_1 Q_1\nA_2 P_2 B_2 Q_2\n\\vdots\nA_N P_N B_N Q_N\n\n### Output\n\nPrint the answer as an integer.",
+        "wa_code": "#include <bits/stdc++.h>\nusing namespace std;\n#define int long long\nconst int N=105;\nint n;\nint x;\nint a[N],b[N],p[N],q[N];\n\nint c[N];\nbool check(int mid)\n{\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tc[i]=INT_MAX;\n\t\tfor(int j=0;j<=b[i];j++)\n\t\t{\n\t\t\tc[i]=min(c[i],j*p[i]+q[i]*(mid-j*a[i]+b[i]-1)/b[i]);\n\t\t}\n\t\tfor(int j=0;j<=b[i];j++)\n\t\t{\n\t\t\tc[i]=min(c[i],j*q[i]+p[i]*(mid-j*b[i]+a[i]-1)/a[i]);\n\t\t}\n\t}\n\tint ans=0;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tans+=c[i];\n\t}\n\tif(ans>x) return false;\n\treturn true;\n}\nsigned main(){\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\tcout.tie(0);\n\tcin>>n;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tcin>>a[i]>>p[i]>>b[i]>>q[i];\n\t}\n\tint l=1,r=n;\n\twhile(l<=r)\n\t{\n\t\tint mid=(l+r)/2;\n\t\tif(check(mid))\n\t\t{\n\t\t\tl=mid+1;\n\t\t}\n\t\telse \n\t\t{\n\t\t\tr=mid-1;\n\t\t}\n\t}\n\t\n\tcout<<l;\n\treturn 0;\n}",
+        "failing_input": "100 10000000\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n100 1 100 1\n"
+      },
+      "outputs": {
+        "fixed_code": "#include<bits/stdc++.h>\nusing namespace std;\n#define int long long\nconst int N=2e5+5;\nint n,m,k,sum,cnt,a[N],b[N],c[N],d[N];\nbool check(int mid)\n{\n\tsum=0;\n\tfor(int i=1;i<=n;i++)\n\t{\n\t\tcnt=INT_MAX;\n\t\tfor(int j=mid/a[i]+1;j>=max(mid/a[i]-100,0ll);j--)\n\t\t\tcnt=min(cnt,j*c[i]+max(0ll,mid-j*a[i]+b[i]-1)/b[i]*d[i]);\n\t\tfor(int j=mid/b[i]+1;j>=max(mid/b[i]-100,0ll);j--)\n\t\t\tcnt=min(cnt,j*d[i]+max(0ll,mid-j*b[i]+a[i]-1)/a[i]*c[i]);\n\t\tsum+=cnt;\n\t}\n\treturn sum<=m;\n}\nsigned main()\n{\n\tios::sync_with_stdio(0),cin.tie(0),cout.tie(0);\n\tint i,j,x,y,z,t;\n\tcin>>n>>m;\n\tfor(i=1;i<=n;i++)\n\t\tcin>>a[i]>>c[i]>>b[i]>>d[i];\n\tint l=0,r=INT_MAX;\n\twhile(l<=r)\n\t{\n\t\tint mid=(l+r)/2;\n\t\tif(check(mid))\n\t\t\tk=mid,l=mid+1;\n\t\telse\n\t\t\tr=mid-1;\n\t}\n\tcout<<k;\n\treturn 0;\n}"
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Analyze the `failing_input` carefully to understand what behaviour the buggy program exhibits and why it diverges from the correct answer.
+- Output only valid JSON matching the schema above. Do not include explanation, commentary, or markdown outside the JSON.
+- The `fixed_code` must be complete, self-contained, compilable C++ that correctly solves the problem for all valid inputs within the stated constraints, not just the provided `failing_input`.
+- Do not truncate or omit any part of the source code in `fixed_code`.

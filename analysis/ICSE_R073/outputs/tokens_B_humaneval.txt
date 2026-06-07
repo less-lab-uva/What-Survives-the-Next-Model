@@ -1,0 +1,5 @@
+Prompt          : B
+Dataset         : humaneval
+Instances run   : 164
+Total input tok : 275431
+Total output tok: 96548

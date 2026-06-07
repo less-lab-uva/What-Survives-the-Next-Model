@@ -1,0 +1,5 @@
+anthropic==0.104.1
+pandas
+openpyxl
+tqdm
+pydantic

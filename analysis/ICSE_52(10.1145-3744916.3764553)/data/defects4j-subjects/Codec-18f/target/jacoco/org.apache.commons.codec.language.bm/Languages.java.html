@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Languages.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.language.bm</a> &gt; <span class="el_source">Languages.java</span></div><h1>Languages.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.language.bm;
+
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+import java.util.Set;
+
+/**
+ * Language codes.
+ * &lt;p&gt;
+ * Language codes are typically loaded from resource files. These are UTF-8 encoded text files. They are
+ * systematically named following the pattern:
+ * &lt;blockquote&gt;org/apache/commons/codec/language/bm/${{@link NameType#getName()} languages.txt&lt;/blockquote&gt;
+ * &lt;p&gt;
+ * The format of these resources is the following:
+ * &lt;ul&gt;
+ * &lt;li&gt;&lt;b&gt;Language:&lt;/b&gt; a single string containing no whitespace&lt;/li&gt;
+ * &lt;li&gt;&lt;b&gt;End-of-line comments:&lt;/b&gt; Any occurrence of '//' will cause all text following on that line to be
+ * discarded as a comment.&lt;/li&gt;
+ * &lt;li&gt;&lt;b&gt;Multi-line comments:&lt;/b&gt; Any line starting with '/*' will start multi-line commenting mode.
+ * This will skip all content until a line ending in '*' and '/' is found.&lt;/li&gt;
+ * &lt;li&gt;&lt;b&gt;Blank lines:&lt;/b&gt; All blank lines will be skipped.&lt;/li&gt;
+ * &lt;/ul&gt;
+ * &lt;p&gt;
+ * Ported from language.php
+ * &lt;p&gt;
+ * This class is immutable and thread-safe.
+ *
+ * @since 1.6
+ * @version $Id$
+ */
+public class Languages {
+    // Implementation note: This class is divided into two sections. The first part is a static factory interface that
+    // exposes org/apache/commons/codec/language/bm/%s_languages.txt for %s in NameType.* as a list of supported
+    // languages, and a second part that provides instance methods for accessing this set for supported languages.
+
+    /**
+     * A set of languages.
+     */
+<span class="nc" id="L61">    public static abstract class LanguageSet {</span>
+
+        public static LanguageSet from(final Set&lt;String&gt; langs) {
+<span class="nc bnc" id="L64" title="All 2 branches missed.">            return langs.isEmpty() ? NO_LANGUAGES : new SomeLanguages(langs);</span>
+        }
+
+        public abstract boolean contains(String language);
+
+        public abstract String getAny();
+
+        public abstract boolean isEmpty();
+
+        public abstract boolean isSingleton();
+
+        public abstract LanguageSet restrictTo(LanguageSet other);
+
+        abstract LanguageSet merge(LanguageSet other);
+    }
+
+    /**
+     * Some languages, explicitly enumerated.
+     */
+    public static final class SomeLanguages extends LanguageSet {
+        private final Set&lt;String&gt; languages;
+
+<span class="nc" id="L86">        private SomeLanguages(final Set&lt;String&gt; languages) {</span>
+<span class="nc" id="L87">            this.languages = Collections.unmodifiableSet(languages);</span>
+<span class="nc" id="L88">        }</span>
+
+        @Override
+        public boolean contains(final String language) {
+<span class="nc" id="L92">            return this.languages.contains(language);</span>
+        }
+
+        @Override
+        public String getAny() {
+<span class="nc" id="L97">            return this.languages.iterator().next();</span>
+        }
+
+        public Set&lt;String&gt; getLanguages() {
+<span class="nc" id="L101">            return this.languages;</span>
+        }
+
+        @Override
+        public boolean isEmpty() {
+<span class="nc" id="L106">            return this.languages.isEmpty();</span>
+        }
+
+        @Override
+        public boolean isSingleton() {
+<span class="nc bnc" id="L111" title="All 2 branches missed.">            return this.languages.size() == 1;</span>
+        }
+
+        @Override
+        public LanguageSet restrictTo(final LanguageSet other) {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">            if (other == NO_LANGUAGES) {</span>
+<span class="nc" id="L117">                return other;</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            } else if (other == ANY_LANGUAGE) {</span>
+<span class="nc" id="L119">                return this;</span>
+            } else {
+<span class="nc" id="L121">                final SomeLanguages sl = (SomeLanguages) other;</span>
+<span class="nc" id="L122">                final Set&lt;String&gt; ls = new HashSet&lt;String&gt;(Math.min(languages.size(), sl.languages.size()));</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">                for (final String lang : languages) {</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                    if (sl.languages.contains(lang)) {</span>
+<span class="nc" id="L125">                        ls.add(lang);</span>
+                    }
+<span class="nc" id="L127">                }</span>
+<span class="nc" id="L128">                return from(ls);</span>
+            }
+        }
+
+        @Override
+        public LanguageSet merge(final LanguageSet other) {
+<span class="nc bnc" id="L134" title="All 2 branches missed.">            if (other == NO_LANGUAGES) {</span>
+<span class="nc" id="L135">                return this;</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            } else if (other == ANY_LANGUAGE) {</span>
+<span class="nc" id="L137">                return other;</span>
+            } else {
+<span class="nc" id="L139">                final SomeLanguages sl = (SomeLanguages) other;</span>
+<span class="nc" id="L140">                final Set&lt;String&gt; ls = new HashSet&lt;String&gt;(languages);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                for (final String lang : sl.languages) {</span>
+<span class="nc" id="L142">                  ls.add(lang);</span>
+<span class="nc" id="L143">                }</span>
+<span class="nc" id="L144">                return from(ls);</span>
+            }
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L150">            return &quot;Languages(&quot; + languages.toString() + &quot;)&quot;;</span>
+        }
+
+    }
+
+    public static final String ANY = &quot;any&quot;;
+
+<span class="nc" id="L157">    private static final Map&lt;NameType, Languages&gt; LANGUAGES = new EnumMap&lt;NameType, Languages&gt;(NameType.class);</span>
+
+    static {
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for (final NameType s : NameType.values()) {</span>
+<span class="nc" id="L161">            LANGUAGES.put(s, getInstance(langResourceName(s)));</span>
+        }
+    }
+
+    public static Languages getInstance(final NameType nameType) {
+<span class="nc" id="L166">        return LANGUAGES.get(nameType);</span>
+    }
+
+    public static Languages getInstance(final String languagesResourceName) {
+        // read languages list
+<span class="nc" id="L171">        final Set&lt;String&gt; ls = new HashSet&lt;String&gt;();</span>
+<span class="nc" id="L172">        final InputStream langIS = Languages.class.getClassLoader().getResourceAsStream(languagesResourceName);</span>
+
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        if (langIS == null) {</span>
+<span class="nc" id="L175">            throw new IllegalArgumentException(&quot;Unable to resolve required resource: &quot; + languagesResourceName);</span>
+        }
+
+<span class="nc" id="L178">        final Scanner lsScanner = new Scanner(langIS, ResourceConstants.ENCODING);</span>
+        try {
+<span class="nc" id="L180">            boolean inExtendedComment = false;</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            while (lsScanner.hasNextLine()) {</span>
+<span class="nc" id="L182">                final String line = lsScanner.nextLine().trim();</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                if (inExtendedComment) {</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">                    if (line.endsWith(ResourceConstants.EXT_CMT_END)) {</span>
+<span class="nc" id="L185">                        inExtendedComment = false;</span>
+                    }
+                } else {
+<span class="nc bnc" id="L188" title="All 2 branches missed.">                    if (line.startsWith(ResourceConstants.EXT_CMT_START)) {</span>
+<span class="nc" id="L189">                        inExtendedComment = true;</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">                    } else if (line.length() &gt; 0) {</span>
+<span class="nc" id="L191">                        ls.add(line);</span>
+                    }
+                }
+<span class="nc" id="L194">            }</span>
+        } finally {
+<span class="nc" id="L196">            lsScanner.close();</span>
+        }
+
+<span class="nc" id="L199">        return new Languages(Collections.unmodifiableSet(ls));</span>
+    }
+
+    private static String langResourceName(final NameType nameType) {
+<span class="nc" id="L203">        return String.format(&quot;org/apache/commons/codec/language/bm/%s_languages.txt&quot;, nameType.getName());</span>
+    }
+
+    private final Set&lt;String&gt; languages;
+
+    /**
+     * No languages at all.
+     */
+<span class="nc" id="L211">    public static final LanguageSet NO_LANGUAGES = new LanguageSet() {</span>
+        @Override
+        public boolean contains(final String language) {
+<span class="nc" id="L214">            return false;</span>
+        }
+
+        @Override
+        public String getAny() {
+<span class="nc" id="L219">            throw new NoSuchElementException(&quot;Can't fetch any language from the empty language set.&quot;);</span>
+        }
+
+        @Override
+        public boolean isEmpty() {
+<span class="nc" id="L224">            return true;</span>
+        }
+
+        @Override
+        public boolean isSingleton() {
+<span class="nc" id="L229">            return false;</span>
+        }
+
+        @Override
+        public LanguageSet restrictTo(final LanguageSet other) {
+<span class="nc" id="L234">            return this;</span>
+        }
+
+        @Override
+        public LanguageSet merge(final LanguageSet other) {
+<span class="nc" id="L239">            return other;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L244">            return &quot;NO_LANGUAGES&quot;;</span>
+        }
+    };
+
+    /**
+     * Any/all languages.
+     */
+<span class="nc" id="L251">    public static final LanguageSet ANY_LANGUAGE = new LanguageSet() {</span>
+        @Override
+        public boolean contains(final String language) {
+<span class="nc" id="L254">            return true;</span>
+        }
+
+        @Override
+        public String getAny() {
+<span class="nc" id="L259">            throw new NoSuchElementException(&quot;Can't fetch any language from the any language set.&quot;);</span>
+        }
+
+        @Override
+        public boolean isEmpty() {
+<span class="nc" id="L264">            return false;</span>
+        }
+
+        @Override
+        public boolean isSingleton() {
+<span class="nc" id="L269">            return false;</span>
+        }
+
+        @Override
+        public LanguageSet restrictTo(final LanguageSet other) {
+<span class="nc" id="L274">            return other;</span>
+        }
+
+        @Override
+        public LanguageSet merge(final LanguageSet other) {
+<span class="nc" id="L279">            return other;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L284">            return &quot;ANY_LANGUAGE&quot;;</span>
+        }
+    };
+
+<span class="nc" id="L288">    private Languages(final Set&lt;String&gt; languages) {</span>
+<span class="nc" id="L289">        this.languages = languages;</span>
+<span class="nc" id="L290">    }</span>
+
+    public Set&lt;String&gt; getLanguages() {
+<span class="nc" id="L293">        return this.languages;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

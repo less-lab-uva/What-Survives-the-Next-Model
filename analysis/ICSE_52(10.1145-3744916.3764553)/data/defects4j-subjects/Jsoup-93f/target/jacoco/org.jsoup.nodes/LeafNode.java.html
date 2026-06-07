@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LeafNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.nodes</a> &gt; <span class="el_source">LeafNode.java</span></div><h1>LeafNode.java</h1><pre class="source lang-java linenums">package org.jsoup.nodes;
+
+import org.jsoup.helper.Validate;
+
+import java.util.Collections;
+import java.util.List;
+
+<span class="nc" id="L8">abstract class LeafNode extends Node {</span>
+<span class="nc" id="L9">    private static final List&lt;Node&gt; EmptyNodes = Collections.emptyList();</span>
+
+    Object value; // either a string value, or an attribute map (in the rare case multiple attributes are set)
+
+    protected final boolean hasAttributes() {
+<span class="nc" id="L14">        return value instanceof Attributes;</span>
+    }
+
+    @Override
+    public final Attributes attributes() {
+<span class="nc" id="L19">        ensureAttributes();</span>
+<span class="nc" id="L20">        return (Attributes) value;</span>
+    }
+
+    private void ensureAttributes() {
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (!hasAttributes()) {</span>
+<span class="nc" id="L25">            Object coreValue = value;</span>
+<span class="nc" id="L26">            Attributes attributes = new Attributes();</span>
+<span class="nc" id="L27">            value = attributes;</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">            if (coreValue != null)</span>
+<span class="nc" id="L29">                attributes.put(nodeName(), (String) coreValue);</span>
+        }
+<span class="nc" id="L31">    }</span>
+
+    String coreValue() {
+<span class="nc" id="L34">        return attr(nodeName());</span>
+    }
+
+    void coreValue(String value) {
+<span class="nc" id="L38">        attr(nodeName(), value);</span>
+<span class="nc" id="L39">    }</span>
+
+    @Override
+    public String attr(String key) {
+<span class="nc" id="L43">        Validate.notNull(key);</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (!hasAttributes()) {</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            return key.equals(nodeName()) ? (String) value : EmptyString;</span>
+        }
+<span class="nc" id="L47">        return super.attr(key);</span>
+    }
+
+    @Override
+    public Node attr(String key, String value) {
+<span class="nc bnc" id="L52" title="All 4 branches missed.">        if (!hasAttributes() &amp;&amp; key.equals(nodeName())) {</span>
+<span class="nc" id="L53">            this.value = value;</span>
+        } else {
+<span class="nc" id="L55">            ensureAttributes();</span>
+<span class="nc" id="L56">            super.attr(key, value);</span>
+        }
+<span class="nc" id="L58">        return this;</span>
+    }
+
+    @Override
+    public boolean hasAttr(String key) {
+<span class="nc" id="L63">        ensureAttributes();</span>
+<span class="nc" id="L64">        return super.hasAttr(key);</span>
+    }
+
+    @Override
+    public Node removeAttr(String key) {
+<span class="nc" id="L69">        ensureAttributes();</span>
+<span class="nc" id="L70">        return super.removeAttr(key);</span>
+    }
+
+    @Override
+    public String absUrl(String key) {
+<span class="nc" id="L75">        ensureAttributes();</span>
+<span class="nc" id="L76">        return super.absUrl(key);</span>
+    }
+
+    @Override
+    public String baseUri() {
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        return hasParent() ? parent().baseUri() : &quot;&quot;;</span>
+    }
+
+    @Override
+    protected void doSetBaseUri(String baseUri) {
+        // noop
+<span class="nc" id="L87">    }</span>
+
+    @Override
+    public int childNodeSize() {
+<span class="nc" id="L91">        return 0;</span>
+    }
+
+    @Override
+    protected List&lt;Node&gt; ensureChildNodes() {
+<span class="nc" id="L96">        return EmptyNodes;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

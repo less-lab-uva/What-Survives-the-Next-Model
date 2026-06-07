@@ -1,0 +1,2 @@
+anthropic==0.104.1
+scikit-learn

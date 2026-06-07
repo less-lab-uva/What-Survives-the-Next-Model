@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Validate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.helper</a> &gt; <span class="el_source">Validate.java</span></div><h1>Validate.java</h1><pre class="source lang-java linenums">package org.jsoup.helper;
+
+/**
+ * Simple validation methods. Designed for jsoup internal use
+ */
+public final class Validate {
+    
+    private Validate() {}
+
+    /**
+     * Validates that the object is not null
+     * @param obj object to test
+     */
+    public static void notNull(Object obj) {
+<span class="pc bpc" id="L15" title="1 of 2 branches missed.">        if (obj == null)</span>
+<span class="nc" id="L16">            throw new IllegalArgumentException(&quot;Object must not be null&quot;);</span>
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * Validates that the object is not null
+     * @param obj object to test
+     * @param msg message to output if validation fails
+     */
+    public static void notNull(Object obj, String msg) {
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        if (obj == null)</span>
+<span class="nc" id="L26">            throw new IllegalArgumentException(msg);</span>
+<span class="nc" id="L27">    }</span>
+
+    /**
+     * Validates that the value is true
+     * @param val object to test
+     */
+    public static void isTrue(boolean val) {
+<span class="pc bpc" id="L34" title="1 of 2 branches missed.">        if (!val)</span>
+<span class="nc" id="L35">            throw new IllegalArgumentException(&quot;Must be true&quot;);</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Validates that the value is true
+     * @param val object to test
+     * @param msg message to output if validation fails
+     */
+    public static void isTrue(boolean val, String msg) {
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (!val)</span>
+<span class="nc" id="L45">            throw new IllegalArgumentException(msg);</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Validates that the value is false
+     * @param val object to test
+     */
+    public static void isFalse(boolean val) {
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (val)</span>
+<span class="nc" id="L54">            throw new IllegalArgumentException(&quot;Must be false&quot;);</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * Validates that the value is false
+     * @param val object to test
+     * @param msg message to output if validation fails
+     */
+    public static void isFalse(boolean val, String msg) {
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">        if (val)</span>
+<span class="nc" id="L64">            throw new IllegalArgumentException(msg);</span>
+<span class="fc" id="L65">    }</span>
+
+    /**
+     * Validates that the array contains no null elements
+     * @param objects the array to test
+     */
+    public static void noNullElements(Object[] objects) {
+<span class="nc" id="L72">        noNullElements(objects, &quot;Array must not contain any null objects&quot;);</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     * Validates that the array contains no null elements
+     * @param objects the array to test
+     * @param msg message to output if validation fails
+     */
+    public static void noNullElements(Object[] objects, String msg) {
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        for (Object obj : objects)</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            if (obj == null)</span>
+<span class="nc" id="L83">                throw new IllegalArgumentException(msg);</span>
+<span class="nc" id="L84">    }</span>
+
+    /**
+     * Validates that the string is not empty
+     * @param string the string to test
+     */
+    public static void notEmpty(String string) {
+<span class="nc bnc" id="L91" title="All 4 branches missed.">        if (string == null || string.length() == 0)</span>
+<span class="nc" id="L92">            throw new IllegalArgumentException(&quot;String must not be empty&quot;);</span>
+<span class="nc" id="L93">    }</span>
+
+    /**
+     * Validates that the string is not empty
+     * @param string the string to test
+     * @param msg message to output if validation fails
+     */
+    public static void notEmpty(String string, String msg) {
+<span class="nc bnc" id="L101" title="All 4 branches missed.">        if (string == null || string.length() == 0)</span>
+<span class="nc" id="L102">            throw new IllegalArgumentException(msg);</span>
+<span class="nc" id="L103">    }</span>
+
+    /**
+     Cause a failure.
+     @param msg message to output.
+     */
+    public static void fail(String msg) {
+<span class="nc" id="L110">        throw new IllegalArgumentException(msg);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

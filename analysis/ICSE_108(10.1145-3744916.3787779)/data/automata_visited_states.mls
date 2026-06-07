@@ -1,0 +1,62 @@
+type nat =
+  | O
+  | S of nat
+
+type list = 
+  | Nil
+  | Cons of nat * list
+
+type bool =
+  | True
+  | False
+
+type cmp =
+  | LT
+  | EQ
+  | GT
+
+type automata = 
+  | State of nat
+  | Trans of nat * cmp * nat * automata
+
+let eqcmp = 
+  fix (eqcmp : cmp -> cmp -> bool) =
+    fun (cop1 : cmp) ->
+      fun (cop2 : cmp) ->
+        match cop1 with
+        | EQ _ -> (match cop2 with
+                   | EQ _ -> True 
+                   | LT _ -> False
+                   | GT _ -> False)
+        | LT -> (match cop2 with
+                   | EQ _ -> False 
+                   | LT _ -> True
+                   | GT _ -> False)
+        | GT -> (match cop2 with
+                   | EQ _ -> False 
+                   | LT _ -> False
+                   | GT _ -> True)
+;;
+
+let compare =
+  fix (compare : nat -> nat -> cmp) =
+    fun (x1 : nat) ->
+      fun (x2 : nat) ->
+        match x1 with
+        | O -> (match x2 with
+                | O -> EQ
+                | S _ -> LT)
+        | S x1p -> (match x2 with
+                | O -> GT
+                | S x2p -> compare x1p x2p)
+;;
+
+synth automata -> nat -> list satisfying
+
+[State(5), 0] -> Cons(5, Nil),
+[State(5), 2] -> Cons(5, Nil),
+[Trans(2, EQ, 3, State(3)), 3] -> Cons(2, Cons(3, Nil)),
+[Trans(2, EQ, 2, State(3)), 3] -> Cons(2, Nil),
+[Trans(2, GT, 2, Trans(5, LT, 4, State(0))), 2] -> Cons(2, Nil),
+[Trans(2, GT, 2, Trans(5, LT, 4, State(0))), 3] -> Cons(2, Cons(5, Cons(0, Nil))),
+[Trans(2, GT, 2, Trans(5, LT, 4, State(0))), 5] -> Cons(2, Cons(5, Nil))

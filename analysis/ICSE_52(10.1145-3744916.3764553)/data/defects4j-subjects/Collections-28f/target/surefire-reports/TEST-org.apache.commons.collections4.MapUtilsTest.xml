@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.apache.commons.collections4.MapUtilsTest" time="0.116" tests="106" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.171-b11"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Collections-28f"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="MapUtilsTest"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Collections-28f"/>
+    <property name="java.runtime.version" value="1.8.0_171-b11"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/apps/software/standard/core/maven/3.9.0/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/apps/software/standard/core/java/8/lib:/apps/software/standard/core/maven/3.9.0/lib:/opt/slurm/current/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/apps/software/standard/core/maven/3.9.0/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.test.failure.ignore" value="true"/>
+    <property name="os.version" value="4.18.0-553.124.1.el8_10.x86_64"/>
+    <property name="library.jansi.path" value="/apps/software/standard/core/maven/3.9.0/lib/jansi-native"/>
+    <property name="user.home" value="/home/nwc8gr"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="nwc8gr"/>
+    <property name="java.class.path" value="/apps/software/standard/core/maven/3.9.0/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="error"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test -Dtest=MapUtilsTest -Dmaven.test.failure.ignore=true -q"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_171"/>
+    <property name="java.ext.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/resources.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/rt.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/sunrsasign.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jsse.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jce.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/charsets.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jfr.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/apps/software/standard/core/maven/3.9.0"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="testGetLongValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0.015"/>
+  <testcase name="testGetShortAsShort" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanValueWithDefaultPresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetStringNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanAsBooleanValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberAsInvalidString" classname="org.apache.commons.collections4.MapUtilsTest" time="0.011"/>
+  <testcase name="testIsNotEmptyNonEmptyMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetStringWithDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testSafeAddToMapNonNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllMapEntries" classname="org.apache.commons.collections4.MapUtilsTest" time="0.002"/>
+  <testcase name="testGetFloatAsFloat" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntegerAsInteger" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPopulateMapWithKeyTransformer" classname="org.apache.commons.collections4.MapUtilsTest" time="0.01">
+    <failure message="expected:&lt;[hello]&gt; but was:&lt;[world]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: expected:<[hello]> but was:<[world]>
+	at org.apache.commons.collections4.MapUtilsTest.testPopulateMapWithKeyTransformer(MapUtilsTest.java:649)
+]]></failure>
+  </testcase>
+  <testcase name="testGetFloatValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testEmptyIfNullWithNull" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllSubArrays" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testSizeNonNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllEmptyArray" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetFloatWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetLongNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntegerNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIterableSortedMapNullThrows" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testToPropertiesNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetDoubleAsDouble" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntegerWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIsEmptyNull" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetObjectNonNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberAsNumber" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanValueTrue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetStringNonNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetDoubleValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllAlternateKeyValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortAsNonShort" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetLongAsNonLong" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetObjectWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanAsStringValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetMapNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetFloatValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetDoubleNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetMapValueIsMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIsEmptyEmptyMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetMapWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetStringNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetMapValueIsNotMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testVerbosePrintSelfReferential" classname="org.apache.commons.collections4.MapUtilsTest" time="0.013"/>
+  <testcase name="testPutAllNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetLongAsLong" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllNullArray" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIterableSortedMapWrapsNonIterable" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetLongValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPutAllSubArrayTooShort" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetDoubleValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testInvertMapEmpty" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testVerbosePrintNullLabel" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testVerbosePrintNestedMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetDoubleWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanAsNumberZero" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetLongValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testDebugPrintSimpleMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetObjectNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetShortNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetIntegerAsNonInteger" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIsNotEmptyNull" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIterableMapAlreadyIterable" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetBooleanNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testInvertMapNonEmpty" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIterableMapWrapsNonIterable" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetNumberAsValidString" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testToPropertiesNonNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testEmptyIfNullWithNonNull" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetObjectWithDefaultValuePresent" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetFloatNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIsEmptyNonEmptyMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetFloatAsNonFloat" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testVerbosePrintNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteAsByte" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetObjectWithDefaultValueNull" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetBooleanAsNumberNonZero" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetFloatValueWithDefaultNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetDoubleAsNonDouble" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetLongWithDefaultReturnsDefault" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testPopulateMapWithKeyAndValueTransformer" classname="org.apache.commons.collections4.MapUtilsTest" time="0.001"/>
+  <testcase name="testGetDoubleValueNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testGetByteAsNonByte" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testIterableMapNullThrows" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testSizeNullMap" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+  <testcase name="testSafeAddToMapNullValue" classname="org.apache.commons.collections4.MapUtilsTest" time="0"/>
+</testsuite>

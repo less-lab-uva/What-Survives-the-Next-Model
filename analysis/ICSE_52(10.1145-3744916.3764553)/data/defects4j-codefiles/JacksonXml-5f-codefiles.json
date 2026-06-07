@@ -1,0 +1,2062 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "XmlTokenStream",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStream.java",
+      "class_declaration": "public class XmlTokenStream ",
+      "methods_under_test": {
+        "=1": {
+          "XmlTokenStream.skipEndElement()": [
+            1,
+            1,
+            1
+          ],
+          "XmlTokenStream.hasAttributes()": [
+            1,
+            1,
+            1
+          ],
+          "XmlTokenStream.closeCompletely()": [
+            1,
+            1,
+            1
+          ],
+          "XmlTokenStream.close()": [
+            1,
+            1,
+            1
+          ],
+          "XmlTokenStream.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlTokenStream.next()": [
+            2,
+            2,
+            2
+          ],
+          "XmlTokenStream.repeatStartElement()": [
+            3,
+            3,
+            3
+          ],
+          "XmlTokenStream.skipAttributes()": [
+            4,
+            4,
+            4
+          ],
+          "XmlTokenStream.convertToString()": [
+            5,
+            5,
+            5
+          ],
+          "XmlTokenStream._handleRepeatElement()": [
+            6,
+            6,
+            6
+          ],
+          "XmlTokenStream._allWs(String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTokenStreamTest.java"
+    },
+    {
+      "src_name": "ElementWrapper",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/ElementWrapper.java",
+      "class_declaration": "class ElementWrapper ",
+      "methods_under_test": {
+        "=1": {
+          "ElementWrapper.matchingWrapper(ElementWrapper, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "ElementWrapper.intermediateWrapper()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ElementWrapper.matchesWrapper(String, String)": [
+            3,
+            3,
+            3
+          ],
+          "ElementWrapper.toString()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/jaxb/ElementWrapperTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [
+    {
+      "src_name": "XmlTextDeserializer",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlTextDeserializer.java",
+      "class_declaration": "public class XmlTextDeserializer extends DelegatingDeserializer ",
+      "methods_under_test": {
+        "=1": {
+          "XmlTextDeserializer.newDelegatingInstance(JsonDeserializer<?>)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTextDeserializer.createContextual(DeserializationContext, BeanProperty)": [
+            1,
+            1,
+            1
+          ],
+          "XmlTextDeserializer.deserializeWithType(JsonParser, DeserializationContext, TypeDeserializer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlTextDeserializer.deserialize(JsonParser, DeserializationContext)": [
+            2,
+            2,
+            2
+          ],
+          "XmlTextDeserializer.deserialize(JsonParser, DeserializationContext, Object)": [
+            2,
+            2,
+            2
+          ],
+          "XmlTextDeserializer._verifyDeserType(JsonDeserializer<?>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/XmlTextTest.java"
+    },
+    {
+      "src_name": "ToXmlGenerator",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/ToXmlGenerator.java",
+      "class_declaration": "public final class ToXmlGenerator extends GeneratorBase ",
+      "methods_under_test": {
+        "=1": {
+          "ToXmlGenerator.enabledByDefault()": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.enabledIn(int)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator._constructDefaultPrettyPrinter()": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.setPrettyPrinter(PrettyPrinter)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.enable(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.disable(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.isEnabled(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.canWriteFormattedNumbers()": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.inRoot()": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeStringField(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeFieldName(SerializableString)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeString(SerializableString)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeRawUTF8String(byte[], int, int)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeUTF8String(byte[], int, int)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeRawValue(SerializableString)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeRaw(char)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.writeNumber(String)": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator.handleMissingName()": [
+            1,
+            1,
+            1
+          ],
+          "ToXmlGenerator._reportUnimplementedStax2(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ToXmlGenerator.collectDefaults()": [
+            3,
+            3,
+            3
+          ],
+          "ToXmlGenerator.overrideFormatFeatures(int, int)": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.configure(Feature, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.setNextNameIfMissing(QName)": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.startWrappedValue(QName, QName)": [
+            5,
+            5,
+            5
+          ],
+          "ToXmlGenerator.finishWrappedValue(QName, QName)": [
+            5,
+            5,
+            5
+          ],
+          "ToXmlGenerator.writeRepeatedFieldName()": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.writeFieldName(String)": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.writeStartArray()": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.writeEndArray()": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.writeStartObject()": [
+            3,
+            3,
+            3
+          ],
+          "ToXmlGenerator.writeEndObject()": [
+            4,
+            4,
+            4
+          ],
+          "ToXmlGenerator._handleStartObject()": [
+            4,
+            4,
+            4
+          ],
+          "ToXmlGenerator._handleEndObject()": [
+            8,
+            8,
+            8
+          ],
+          "ToXmlGenerator.writeRawValue(char[], int, int)": [
+            9,
+            9,
+            9
+          ],
+          "ToXmlGenerator.writeRaw(String)": [
+            4,
+            4,
+            4
+          ],
+          "ToXmlGenerator.writeRaw(String, int, int)": [
+            4,
+            4,
+            4
+          ],
+          "ToXmlGenerator.writeRaw(char[], int, int)": [
+            4,
+            4,
+            4
+          ],
+          "ToXmlGenerator.writeNull()": [
+            8,
+            8,
+            8
+          ],
+          "ToXmlGenerator._verifyValueWrite(String)": [
+            2,
+            2,
+            2
+          ],
+          "ToXmlGenerator.flush()": [
+            3,
+            3,
+            3
+          ],
+          "ToXmlGenerator.checkNextIsUnwrapped()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "ToXmlGenerator.initGenerator()": [
+            13,
+            13,
+            13
+          ],
+          "ToXmlGenerator.writeString(String)": [
+            17,
+            17,
+            17
+          ],
+          "ToXmlGenerator.writeString(char[], int, int)": [
+            17,
+            17,
+            17
+          ],
+          "ToXmlGenerator.writeRawValue(String)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeRawValue(String, int, int)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeBinary(Base64Variant, byte[], int, int)": [
+            14,
+            14,
+            14
+          ],
+          "ToXmlGenerator.writeBoolean(boolean)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeNumber(int)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeNumber(long)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeNumber(double)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeNumber(float)": [
+            12,
+            12,
+            12
+          ],
+          "ToXmlGenerator.writeNumber(BigDecimal)": [
+            20,
+            20,
+            20
+          ],
+          "ToXmlGenerator.writeNumber(BigInteger)": [
+            13,
+            13,
+            13
+          ],
+          "ToXmlGenerator.close()": [
+            15,
+            15,
+            15
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlGeneratorTest.java"
+    }
+  ],
+  "src_without_tests": [
+    {
+      "src_name": "JacksonXmlAnnotationIntrospector",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlAnnotationIntrospector.java",
+      "class_declaration": "public class JacksonXmlAnnotationIntrospector extends JacksonAnnotationIntrospector implements XmlAnnotationIntrospector ",
+      "methods_under_test": {
+        "=1": {
+          "JacksonXmlAnnotationIntrospector._constructStdTypeResolverBuilder()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JacksonXmlAnnotationIntrospector.findWrapperName(Annotated)": [
+            5,
+            5,
+            5
+          ],
+          "JacksonXmlAnnotationIntrospector.findRootName(AnnotatedClass)": [
+            3,
+            3,
+            3
+          ],
+          "JacksonXmlAnnotationIntrospector.findNamespace(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "JacksonXmlAnnotationIntrospector.isOutputAsAttribute(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "JacksonXmlAnnotationIntrospector.isOutputAsText(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "JacksonXmlAnnotationIntrospector.isOutputAsCData(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "JacksonXmlAnnotationIntrospector.findNameForSerialization(Annotated)": [
+            4,
+            4,
+            4
+          ],
+          "JacksonXmlAnnotationIntrospector.findNameForDeserialization(Annotated)": [
+            4,
+            4,
+            4
+          ],
+          "JacksonXmlAnnotationIntrospector._findXmlName(Annotated)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "WrapperHandlingDeserializer",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/WrapperHandlingDeserializer.java",
+      "class_declaration": "public class WrapperHandlingDeserializer extends DelegatingDeserializer ",
+      "methods_under_test": {
+        "=1": {
+          "WrapperHandlingDeserializer.newDelegatingInstance(JsonDeserializer<?>)": [
+            1,
+            1,
+            1
+          ],
+          "WrapperHandlingDeserializer.deserialize(JsonParser, DeserializationContext)": [
+            1,
+            1,
+            1
+          ],
+          "WrapperHandlingDeserializer.deserialize(JsonParser, DeserializationContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "WrapperHandlingDeserializer.deserializeWithType(JsonParser, DeserializationContext, TypeDeserializer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "WrapperHandlingDeserializer.createContextual(DeserializationContext, BeanProperty)": [
+            7,
+            7,
+            7
+          ],
+          "WrapperHandlingDeserializer._configureParser(JsonParser)": [
+            2,
+            2,
+            2
+          ],
+          "WrapperHandlingDeserializer._verifyDeserType(JsonDeserializer<?>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlBeanSerializerBase",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerBase.java",
+      "class_declaration": "@SuppressWarnings(\"serial\")\npublic abstract class XmlBeanSerializerBase extends BeanSerializerBase ",
+      "methods_under_test": {
+        "=1": {
+          "XmlBeanSerializerBase._isAttribute(BeanPropertyWriter)": [
+            1,
+            1,
+            1
+          ],
+          "XmlBeanSerializerBase._isCData(BeanPropertyWriter)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlBeanSerializerBase.serializeWithType(Object, JsonGenerator, SerializerProvider, TypeSerializer)": [
+            5,
+            5,
+            5
+          ],
+          "XmlBeanSerializerBase._serializeObjectId(Object, JsonGenerator, SerializerProvider, TypeSerializer, WritableObjectId)": [
+            4,
+            4,
+            4
+          ],
+          "XmlBeanSerializerBase._orderAttributesFirst(BeanPropertyWriter[], BeanPropertyWriter[])": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "XmlBeanSerializerBase.serializeFields(Object, JsonGenerator, SerializerProvider)": [
+            29,
+            29,
+            29
+          ],
+          "XmlBeanSerializerBase.serializeFieldsFiltered(Object, JsonGenerator, SerializerProvider)": [
+            27,
+            27,
+            27
+          ]
+        },
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlStringDeserializer",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlStringDeserializer.java",
+      "class_declaration": "public class XmlStringDeserializer extends StdScalarDeserializer<String> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "AnnotationUtil",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/AnnotationUtil.java",
+      "class_declaration": "public class AnnotationUtil ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "AnnotationUtil.findNamespaceAnnotation(AnnotationIntrospector, AnnotatedMember)": [
+            6,
+            6,
+            6
+          ],
+          "AnnotationUtil.findIsAttributeAnnotation(AnnotationIntrospector, AnnotatedMember)": [
+            6,
+            6,
+            6
+          ],
+          "AnnotationUtil.findIsTextAnnotation(AnnotationIntrospector, AnnotatedMember)": [
+            6,
+            6,
+            6
+          ],
+          "AnnotationUtil.findIsCDataAnnotation(AnnotationIntrospector, AnnotatedMember)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DefaultXmlPrettyPrinter",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/DefaultXmlPrettyPrinter.java",
+      "class_declaration": "public class DefaultXmlPrettyPrinter implements XmlPrettyPrinter, Instantiatable<DefaultXmlPrettyPrinter>,\n        java.io.Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "DefaultXmlPrettyPrinter.indentArraysWith(Indenter)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultXmlPrettyPrinter.indentObjectsWith(Indenter)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultXmlPrettyPrinter.spacesInObjectEntries(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultXmlPrettyPrinter.createInstance()": [
+            1,
+            1,
+            1
+          ],
+          "DefaultXmlPrettyPrinter.writeRootValueSeparator(JsonGenerator)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultXmlPrettyPrinter.writePrologLinefeed(XMLStreamWriter2)": [
+            1,
+            1,
+            1
+          ],
+          "FixedSpaceIndenter.writeIndentation(XMLStreamWriter2, int)": [
+            1,
+            1,
+            1
+          ],
+          "FixedSpaceIndenter.writeIndentation(JsonGenerator, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DefaultXmlPrettyPrinter.writeStartObject(JsonGenerator)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeEndObject(JsonGenerator, int)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeStartElement(XMLStreamWriter2, String, String)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeEndElement(XMLStreamWriter2, int)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, String, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, char[], int, int, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, int)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, long)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, double)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, float)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, BigInteger)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, BigDecimal)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafElement(XMLStreamWriter2, String, String, byte[], int, int)": [
+            2,
+            2,
+            2
+          ],
+          "DefaultXmlPrettyPrinter.writeLeafNullElement(XMLStreamWriter2, String, String)": [
+            2,
+            2,
+            2
+          ],
+          "Lf2SpacesIndenter.writeIndentation(XMLStreamWriter2, int)": [
+            2,
+            2,
+            2
+          ],
+          "Lf2SpacesIndenter.writeIndentation(JsonGenerator, int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JacksonXmlRootElement",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/JacksonXmlRootElement.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JacksonXmlCData",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/JacksonXmlCData.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "UnwrappingXmlBeanSerializer",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/UnwrappingXmlBeanSerializer.java",
+      "class_declaration": "public class UnwrappingXmlBeanSerializer extends XmlBeanSerializerBase ",
+      "methods_under_test": {
+        "=1": {
+          "UnwrappingXmlBeanSerializer.unwrappingSerializer(NameTransformer)": [
+            1,
+            1,
+            1
+          ],
+          "UnwrappingXmlBeanSerializer.withObjectIdWriter(ObjectIdWriter)": [
+            1,
+            1,
+            1
+          ],
+          "UnwrappingXmlBeanSerializer.withFilterId(Object)": [
+            1,
+            1,
+            1
+          ],
+          "UnwrappingXmlBeanSerializer.withIgnorals(Set<String>)": [
+            1,
+            1,
+            1
+          ],
+          "UnwrappingXmlBeanSerializer.asArraySerializer()": [
+            1,
+            1,
+            1
+          ],
+          "UnwrappingXmlBeanSerializer.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "UnwrappingXmlBeanSerializer.serialize(Object, JsonGenerator, SerializerProvider)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlInfo",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/XmlInfo.java",
+      "class_declaration": "public class XmlInfo ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlBeanPropertyWriter",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanPropertyWriter.java",
+      "class_declaration": "public class XmlBeanPropertyWriter extends BeanPropertyWriter ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {
+          "XmlBeanPropertyWriter.serializeAsField(Object, JsonGenerator, SerializerProvider)": [
+            13,
+            13,
+            13
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlSerializerProvider",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlSerializerProvider.java",
+      "class_declaration": "public class XmlSerializerProvider extends DefaultSerializerProvider ",
+      "methods_under_test": {
+        "=1": {
+          "XmlSerializerProvider.copy()": [
+            1,
+            1,
+            1
+          ],
+          "XmlSerializerProvider.createInstance(SerializationConfig, SerializerFactory)": [
+            1,
+            1,
+            1
+          ],
+          "XmlSerializerProvider._startRootArray(ToXmlGenerator, QName)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlSerializerProvider.serializeValue(JsonGenerator, Object)": [
+            7,
+            7,
+            7
+          ],
+          "XmlSerializerProvider.serializeValue(JsonGenerator, Object, JavaType, JsonSerializer<Object>)": [
+            8,
+            8,
+            8
+          ],
+          "XmlSerializerProvider._serializeXmlNull(JsonGenerator)": [
+            3,
+            3,
+            3
+          ],
+          "XmlSerializerProvider._initWithRootName(ToXmlGenerator, QName)": [
+            5,
+            5,
+            5
+          ],
+          "XmlSerializerProvider._rootNameFromConfig()": [
+            3,
+            3,
+            3
+          ],
+          "XmlSerializerProvider._asXmlGenerator(JsonGenerator)": [
+            3,
+            3,
+            3
+          ],
+          "XmlSerializerProvider._wrapAsIOE(JsonGenerator, Exception)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlAnnotationIntrospector",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlAnnotationIntrospector.java",
+      "class_declaration": "public static class Pair extends AnnotationIntrospectorPair implements XmlAnnotationIntrospector ",
+      "methods_under_test": {
+        "=1": {
+          "Pair.instance(AnnotationIntrospector, AnnotationIntrospector)": [
+            1,
+            1,
+            1
+          ],
+          "JaxbWrapper.findNamespace(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "JaxbWrapper.isOutputAsAttribute(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "JaxbWrapper.isOutputAsText(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "JaxbWrapper.isOutputAsCData(Annotated)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Pair.findNamespace(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "Pair.isOutputAsAttribute(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "Pair.isOutputAsText(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "Pair.isOutputAsCData(Annotated)": [
+            2,
+            2,
+            2
+          ],
+          "Pair.setDefaultUseWrapper(boolean)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlBeanSerializerModifier",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializerModifier.java",
+      "class_declaration": "public class XmlBeanSerializerModifier extends BeanSerializerModifier implements java.io.Serializable ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "XmlBeanSerializerModifier.changeProperties(SerializationConfig, BeanDescription, List<BeanPropertyWriter>)": [
+            5,
+            5,
+            5
+          ],
+          "XmlBeanSerializerModifier.modifySerializer(SerializationConfig, BeanDescription, JsonSerializer<?>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlJaxbAnnotationIntrospector",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/jaxb/XmlJaxbAnnotationIntrospector.java",
+      "class_declaration": "public class XmlJaxbAnnotationIntrospector extends JaxbAnnotationIntrospector implements XmlAnnotationIntrospector ",
+      "methods_under_test": {
+        "=1": {
+          "XmlJaxbAnnotationIntrospector.findNamespace(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "XmlJaxbAnnotationIntrospector.isOutputAsAttribute(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "XmlJaxbAnnotationIntrospector.isOutputAsText(Annotated)": [
+            1,
+            1,
+            1
+          ],
+          "XmlJaxbAnnotationIntrospector.isOutputAsCData(Annotated)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlReadContext",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlReadContext.java",
+      "class_declaration": "public final class XmlReadContext extends JsonStreamContext ",
+      "methods_under_test": {
+        "=1": {
+          "XmlReadContext.reset(int, int, int)": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.createRootContext(int, int)": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.createRootContext()": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.hasCurrentName()": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.expectComma()": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.getStartLocation(Object)": [
+            1,
+            1,
+            1
+          ],
+          "XmlReadContext.convertToArray()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlReadContext.createChildArrayContext(int, int)": [
+            2,
+            2,
+            2
+          ],
+          "XmlReadContext.createChildObjectContext(int, int)": [
+            2,
+            2,
+            2
+          ],
+          "XmlReadContext.toString()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlFactory",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlFactory.java",
+      "class_declaration": "public class XmlFactory extends JsonFactory ",
+      "methods_under_test": {
+        "=1": {
+          "XmlFactory._initFactories(XMLInputFactory, XMLOutputFactory)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.copy()": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.version()": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.enable(FromXmlParser.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.disable(FromXmlParser.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.isEnabled(FromXmlParser.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.enable(ToXmlGenerator.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.disable(ToXmlGenerator.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.isEnabled(ToXmlGenerator.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.hasFormat(InputAccessor)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.requiresCustomCodec()": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.canUseCharArrays()": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.createGenerator(OutputStream)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.createGenerator(OutputStream, JsonEncoding)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.createGenerator(Writer)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.createGenerator(File, JsonEncoding)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory.createGenerator(XMLStreamWriter)": [
+            1,
+            1,
+            1
+          ],
+          "XmlFactory._createGenerator(Writer, IOContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlFactory.readResolve()": [
+            4,
+            4,
+            4
+          ],
+          "XmlFactory.configure(FromXmlParser.Feature, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory.configure(ToXmlGenerator.Feature, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory.createParser(String)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory.createParser(XMLStreamReader)": [
+            3,
+            3,
+            3
+          ],
+          "XmlFactory._createParser(InputStream, IOContext)": [
+            3,
+            3,
+            3
+          ],
+          "XmlFactory._createParser(Reader, IOContext)": [
+            3,
+            3,
+            3
+          ],
+          "XmlFactory._createParser(char[], int, int, IOContext, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "XmlFactory._createParser(byte[], int, int, IOContext)": [
+            3,
+            3,
+            3
+          ],
+          "XmlFactory._createXmlWriter(OutputStream)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory._createXmlWriter(Writer)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory._initializeXmlWriter(XMLStreamWriter)": [
+            2,
+            2,
+            2
+          ],
+          "XmlFactory._initializeXmlReader(XMLStreamReader)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "XmlFactory.hasXMLFormat(InputAccessor)": [
+            25,
+            25,
+            25
+          ]
+        },
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "FromXmlParser",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/FromXmlParser.java",
+      "class_declaration": "public class FromXmlParser extends ParserMinimalBase ",
+      "methods_under_test": {
+        "=1": {
+          "FromXmlParser.enabledByDefault()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.enabledIn(int)": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.version()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.requiresCustomCodec()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.enable(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.disable(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.isEnabled(Feature)": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.overrideFormatFeatures(int, int)": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.getTextCharacters()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.getTextLength()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser.hasTextCharacters()": [
+            1,
+            1,
+            1
+          ],
+          "FromXmlParser._decodeBase64(Base64Variant)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "FromXmlParser.collectDefaults()": [
+            3,
+            3,
+            3
+          ],
+          "FromXmlParser.configure(Feature, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser.addVirtualWrapping(Set<String>)": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser.getCurrentName()": [
+            3,
+            3,
+            3
+          ],
+          "FromXmlParser.overrideCurrentName(String)": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser.close()": [
+            5,
+            5,
+            5
+          ],
+          "FromXmlParser.getText()": [
+            5,
+            5,
+            5
+          ],
+          "FromXmlParser.getText(Writer)": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser.getBinaryValue(Base64Variant)": [
+            4,
+            4,
+            4
+          ],
+          "FromXmlParser._handleEOF()": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser._getByteArrayBuilder()": [
+            2,
+            2,
+            2
+          ],
+          "FromXmlParser._isEmpty(String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "FromXmlParser.nextTextValue()": [
+            18,
+            18,
+            18
+          ],
+          "FromXmlParser.getValueAsString(String)": [
+            18,
+            18,
+            18
+          ]
+        },
+        ">20": {
+          "FromXmlParser.nextToken()": [
+            29,
+            29,
+            29
+          ]
+        },
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JacksonXmlModule",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/JacksonXmlModule.java",
+      "class_declaration": "public class JacksonXmlModule extends SimpleModule implements java.io.Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "JacksonXmlModule._constructIntrospector()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JacksonXmlModule.setupModule(SetupContext)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "StaxUtil",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/StaxUtil.java",
+      "class_declaration": "public class StaxUtil ",
+      "methods_under_test": {
+        "=1": {
+          "StaxUtil.throwXmlAsIOException(XMLStreamException)": [
+            1,
+            1,
+            1
+          ],
+          "StaxUtil.throwAsParseException(XMLStreamException, JsonParser)": [
+            1,
+            1,
+            1
+          ],
+          "StaxUtil.throwAsGenerationException(XMLStreamException, JsonGenerator)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {
+          "StaxUtil.sanitizeXmlTypeName(String)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TypeUtil",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/TypeUtil.java",
+      "class_declaration": "public class TypeUtil ",
+      "methods_under_test": {
+        "=1": {
+          "TypeUtil.isIndexedType(Class<?>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TypeUtil.isIndexedType(JavaType)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlBeanSerializer",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/ser/XmlBeanSerializer.java",
+      "class_declaration": "public class XmlBeanSerializer extends XmlBeanSerializerBase ",
+      "methods_under_test": {
+        "=1": {
+          "XmlBeanSerializer.unwrappingSerializer(NameTransformer)": [
+            1,
+            1,
+            1
+          ],
+          "XmlBeanSerializer.withObjectIdWriter(ObjectIdWriter)": [
+            1,
+            1,
+            1
+          ],
+          "XmlBeanSerializer.withFilterId(Object)": [
+            1,
+            1,
+            1
+          ],
+          "XmlBeanSerializer.withIgnorals(Set<String>)": [
+            1,
+            1,
+            1
+          ],
+          "XmlBeanSerializer.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlBeanSerializer.asArraySerializer()": [
+            2,
+            2,
+            2
+          ],
+          "XmlBeanSerializer.serialize(Object, JsonGenerator, SerializerProvider)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlMapper",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlMapper.java",
+      "class_declaration": "public class XmlMapper extends ObjectMapper ",
+      "methods_under_test": {
+        "=1": {
+          "XmlMapper.copy()": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.version()": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.configure(ToXmlGenerator.Feature, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.configure(FromXmlParser.Feature, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.enable(ToXmlGenerator.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.enable(FromXmlParser.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.disable(ToXmlGenerator.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.disable(FromXmlParser.Feature)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.readValue(XMLStreamReader, Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.readValue(XMLStreamReader, TypeReference<T>)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.readValue(XMLStreamReader, JavaType)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper.writeValue(XMLStreamWriter, Object)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMapper._defaultPrettyPrinter()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlMapper.setDefaultUseWrapper(boolean)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JacksonXmlText",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/JacksonXmlText.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JacksonXmlElementWrapper",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/JacksonXmlElementWrapper.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "XmlTypeResolverBuilder",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlTypeResolverBuilder.java",
+      "class_declaration": "public class XmlTypeResolverBuilder extends StdTypeResolverBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "XmlClassNameIdResolver.idFromValue(Object)": [
+            1,
+            1,
+            1
+          ],
+          "XmlClassNameIdResolver.typeFromId(DatabindContext, String)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMinimalClassNameIdResolver.idFromValue(Object)": [
+            1,
+            1,
+            1
+          ],
+          "XmlMinimalClassNameIdResolver.typeFromId(DatabindContext, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlTypeResolverBuilder.init(JsonTypeInfo.Id, TypeIdResolver)": [
+            2,
+            2,
+            2
+          ],
+          "XmlTypeResolverBuilder.typeProperty(String)": [
+            2,
+            2,
+            2
+          ],
+          "XmlTypeResolverBuilder.idResolver(MapperConfig<?>, JavaType, Collection<NamedType>, boolean, boolean)": [
+            5,
+            5,
+            5
+          ],
+          "XmlTypeResolverBuilder.encodeXmlClassName(String)": [
+            3,
+            3,
+            3
+          ],
+          "XmlTypeResolverBuilder.decodeXmlClassName(String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XmlRootNameLookup",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/util/XmlRootNameLookup.java",
+      "class_declaration": "public class XmlRootNameLookup implements java.io.Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "XmlRootNameLookup.findRootName(JavaType, MapperConfig<?>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XmlRootNameLookup.readResolve()": [
+            2,
+            2,
+            2
+          ],
+          "XmlRootNameLookup.findRootName(Class<?>, MapperConfig<?>)": [
+            2,
+            2,
+            2
+          ],
+          "XmlRootNameLookup._findRootName(Class<?>, MapperConfig<?>)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JacksonXmlProperty",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/annotation/JacksonXmlProperty.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "XmlPrettyPrinter",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/XmlPrettyPrinter.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "XmlBeanDeserializerModifier",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/deser/XmlBeanDeserializerModifier.java",
+      "class_declaration": "public class XmlBeanDeserializerModifier extends BeanDeserializerModifier implements java.io.Serializable ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "XmlBeanDeserializerModifier.updateProperties(DeserializationConfig, BeanDescription, List<BeanPropertyDefinition>)": [
+            8,
+            8,
+            8
+          ],
+          "XmlBeanDeserializerModifier.modifyDeserializer(DeserializationConfig, BeanDescription, JsonDeserializer<?>)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PackageVersion",
+      "src_path": "../../defects4j-subjects/JacksonXml-5f/src/main/java/com/fasterxml/jackson/dataformat/xml/PackageVersion.java",
+      "class_declaration": "public final class PackageVersion implements Versioned ",
+      "methods_under_test": {
+        "=1": {
+          "PackageVersion.version()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "XmlParserTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserTest.java"
+    },
+    {
+      "XmlParserNextXxxTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/XmlParserNextXxxTest.java"
+    },
+    {
+      "Issue274PropertyNameTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/Issue274PropertyNameTest.java"
+    },
+    {
+      "DTDSupportTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/DTDSupportTest.java"
+    },
+    {
+      "NullConversionsGenericTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NullConversionsGenericTest.java"
+    },
+    {
+      "EmptyPolymorphicTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/EmptyPolymorphicTest.java"
+    },
+    {
+      "SimpleStringValuesTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/SimpleStringValuesTest.java"
+    },
+    {
+      "ExceptionDeserializationTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/ExceptionDeserializationTest.java"
+    },
+    {
+      "ListAnnotationSharingTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAnnotationSharingTest.java"
+    },
+    {
+      "DeserializePolyList178Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/DeserializePolyList178Test.java"
+    },
+    {
+      "TestDeserialization": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TestDeserialization.java"
+    },
+    {
+      "NullConversionsSkipTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/NullConversionsSkipTest.java"
+    },
+    {
+      "TestUnwrappedDeserIssue86": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TestUnwrappedDeserIssue86.java"
+    },
+    {
+      "TestEnums": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestEnums.java"
+    },
+    {
+      "PolymorphicList97Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/PolymorphicList97Test.java"
+    },
+    {
+      "TestViews": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestViews.java"
+    },
+    {
+      "ListDeserializationTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListDeserializationTest.java"
+    },
+    {
+      "VersionInfoTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/VersionInfoTest.java"
+    },
+    {
+      "EmptyStringValueTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/EmptyStringValueTest.java"
+    },
+    {
+      "TestSerializationManual": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationManual.java"
+    },
+    {
+      "TestSerializationOrdering": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationOrdering.java"
+    },
+    {
+      "DeserErrorHandling236Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/DeserErrorHandling236Test.java"
+    },
+    {
+      "TestXmlDeclaration": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestXmlDeclaration.java"
+    },
+    {
+      "WithJAXBAnnotationsTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/jaxb/WithJAXBAnnotationsTest.java"
+    },
+    {
+      "RootListHandlingTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/RootListHandlingTest.java"
+    },
+    {
+      "TestConflictingGetters": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TestConflictingGetters.java"
+    },
+    {
+      "MapperCopyTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/MapperCopyTest.java"
+    },
+    {
+      "NestedUnwrappedLists180Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/NestedUnwrappedLists180Test.java"
+    },
+    {
+      "UnwrappingWithXMLTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/UnwrappingWithXMLTest.java"
+    },
+    {
+      "TestJDKSerializability": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestJDKSerializability.java"
+    },
+    {
+      "ListWithAttributes": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListWithAttributes.java"
+    },
+    {
+      "RoundtripContentTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/RoundtripContentTest.java"
+    },
+    {
+      "ListDeser191Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListDeser191Test.java"
+    },
+    {
+      "TestSerializationAttr": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializationAttr.java"
+    },
+    {
+      "EnumIssue9Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/EnumIssue9Test.java"
+    },
+    {
+      "TestSerialization": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerialization.java"
+    },
+    {
+      "FailingDelegatingCreator254Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/FailingDelegatingCreator254Test.java"
+    },
+    {
+      "TestIndentation": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestIndentation.java"
+    },
+    {
+      "JAXBObjectId170Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/jaxb/JAXBObjectId170Test.java"
+    },
+    {
+      "ListAsObjectTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListAsObjectTest.java"
+    },
+    {
+      "EmptyListDeser124Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/EmptyListDeser124Test.java"
+    },
+    {
+      "TestDeserialization": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestDeserialization.java"
+    },
+    {
+      "MixedContentTreeRead226Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/MixedContentTreeRead226Test.java"
+    },
+    {
+      "ObjectId104Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/ObjectId104Test.java"
+    },
+    {
+      "CaseInsensitiveDeserTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/CaseInsensitiveDeserTest.java"
+    },
+    {
+      "PolymorphicTypesTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/PolymorphicTypesTest.java"
+    },
+    {
+      "TestUntypedListSerialization": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TestUntypedListSerialization.java"
+    },
+    {
+      "TestSerializerCustom": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestSerializerCustom.java"
+    },
+    {
+      "EmptyListDeserTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/EmptyListDeserTest.java"
+    },
+    {
+      "TestBinaryData": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/deser/TestBinaryData.java"
+    },
+    {
+      "IncrementalWritingTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/incr/IncrementalWritingTest.java"
+    },
+    {
+      "NestedUnwrappedListsTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/NestedUnwrappedListsTest.java"
+    },
+    {
+      "TestEmptyContent": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TestEmptyContent.java"
+    },
+    {
+      "FormatDetectionTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/stream/FormatDetectionTest.java"
+    },
+    {
+      "XmlTestBase": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/XmlTestBase.java"
+    },
+    {
+      "NodeTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/NodeTest.java"
+    },
+    {
+      "Issue37AdapterTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/Issue37AdapterTest.java"
+    },
+    {
+      "CaseInsensitiveDeser273Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/CaseInsensitiveDeser273Test.java"
+    },
+    {
+      "RootNameTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/RootNameTest.java"
+    },
+    {
+      "PolymorphicIssue4Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/PolymorphicIssue4Test.java"
+    },
+    {
+      "PartialReadTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/incr/PartialReadTest.java"
+    },
+    {
+      "Issue101UnwrappedListAttributesTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/Issue101UnwrappedListAttributesTest.java"
+    },
+    {
+      "TextValueTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/TextValueTest.java"
+    },
+    {
+      "TestIssue47Attribute": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/adapters/TestIssue47Attribute.java"
+    },
+    {
+      "TypeAttributeOrder242Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/failing/TypeAttributeOrder242Test.java"
+    },
+    {
+      "ListRoundtripTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListRoundtripTest.java"
+    },
+    {
+      "AttributesWithJAXBTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/jaxb/AttributesWithJAXBTest.java"
+    },
+    {
+      "UnwrappedListWithEmptyCData129Test": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/UnwrappedListWithEmptyCData129Test.java"
+    },
+    {
+      "UnwrappedListsTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/UnwrappedListsTest.java"
+    },
+    {
+      "ListSerializationTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/ListSerializationTest.java"
+    },
+    {
+      "WrappedListsTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/lists/WrappedListsTest.java"
+    },
+    {
+      "ArrayConversionsTest": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/misc/ArrayConversionsTest.java"
+    },
+    {
+      "MediaItem": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/MediaItem.java"
+    },
+    {
+      "TestNamespaces": "../../defects4j-subjects/JacksonXml-5f/src/test/java/com/fasterxml/jackson/dataformat/xml/ser/TestNamespaces.java"
+    }
+  ]
+}

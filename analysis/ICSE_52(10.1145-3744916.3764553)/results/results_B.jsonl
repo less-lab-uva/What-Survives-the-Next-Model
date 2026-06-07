@@ -1,0 +1,24 @@
+{"aggregate": {"avg_line_coverage": 91.7, "avg_branch_coverage": 82.9, "pass_rate": 98.4, "evaluated": 23, "successful": 20, "avg_response_time": 44.341, "by_project": {"Codec-18f": {"classes": 7, "avg_line": 94.8, "avg_branch": 86.8, "pass_rate": 95.8}, "Collections-28f": {"classes": 5, "avg_line": 93.2, "avg_branch": 92.2, "pass_rate": 99.5}, "Csv-16f": {"classes": 3, "avg_line": 87.2, "avg_branch": 79.1, "pass_rate": 99.4}, "Jsoup-93f": {"classes": 8, "avg_line": 89.8, "avg_branch": 76.7, "pass_rate": 99.6}}}}
+{"project": "Codec-18f", "class": "ColognePhonetic", "line_coverage": 98.8, "branch_coverage": 94.2, "tests_run": 35, "tests_passed": 32, "error": null}
+{"project": "Codec-18f", "class": "PhoneticEngine", "line_coverage": 97.3, "branch_coverage": 88.6, "tests_run": 21, "tests_passed": 21, "error": null}
+{"project": "Codec-18f", "class": "Base64", "line_coverage": 97.3, "branch_coverage": 87.3, "tests_run": 40, "tests_passed": 40, "error": null}
+{"project": "Codec-18f", "class": "Base32", "line_coverage": 93.3, "branch_coverage": 88.0, "tests_run": 25, "tests_passed": 24, "error": null}
+{"project": "Codec-18f", "class": "Md5Crypt", "line_coverage": 98.5, "branch_coverage": 100.0, "tests_run": 16, "tests_passed": 16, "error": null}
+{"project": "Codec-18f", "class": "QuotedPrintableCodec", "line_coverage": 95.9, "branch_coverage": 82.9, "tests_run": 39, "tests_passed": 33, "error": null}
+{"project": "Codec-18f", "class": "DoubleMetaphone", "line_coverage": 82.7, "branch_coverage": 66.7, "tests_run": 86, "tests_passed": 85, "error": null}
+{"project": "Collections-28f", "class": "IterableUtils", "line_coverage": 92.9, "branch_coverage": 93.5, "tests_run": 71, "tests_passed": 71, "error": null}
+{"project": "Collections-28f", "class": "PrototypeFactory", "line_coverage": 100.0, "branch_coverage": 100.0, "tests_run": 8, "tests_passed": 8, "error": null}
+{"project": "Collections-28f", "class": "Flat3Map", "line_coverage": null, "branch_coverage": null, "tests_run": null, "tests_passed": null, "error": "compilation failed: n Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"}
+{"project": "Collections-28f", "class": "IteratorUtils", "line_coverage": null, "branch_coverage": null, "tests_run": null, "tests_passed": null, "error": "compilation failed: n Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"}
+{"project": "Collections-28f", "class": "MapUtils", "line_coverage": 86.6, "branch_coverage": 83.0, "tests_run": 106, "tests_passed": 105, "error": null}
+{"project": "Csv-16f", "class": "CSVFormat", "line_coverage": 83.6, "branch_coverage": 71.6, "tests_run": 93, "tests_passed": 93, "error": null}
+{"project": "Csv-16f", "class": "CSVParser", "line_coverage": 82.2, "branch_coverage": 75.0, "tests_run": 23, "tests_passed": 23, "error": null}
+{"project": "Csv-16f", "class": "Lexer", "line_coverage": 95.8, "branch_coverage": 90.6, "tests_run": 50, "tests_passed": 49, "error": null}
+{"project": "Jsoup-93f", "class": "NodeTraversor", "line_coverage": null, "branch_coverage": null, "tests_run": null, "tests_passed": null, "error": "compilation failed: n Maven with the -e switch.\n[ERROR] Re-run Maven using the -X switch to enable full debug logging.\n[ERROR] \n[ERROR] For more information about the errors and possible solutions, please read the following articles:\n[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"}
+{"project": "Jsoup-93f", "class": "HtmlTreeBuilder", "line_coverage": 74.3, "branch_coverage": 59.5, "tests_run": 54, "tests_passed": 54, "error": null}
+{"project": "Jsoup-93f", "class": "Tag", "line_coverage": 100.0, "branch_coverage": 71.2, "tests_run": 30, "tests_passed": 30, "error": null}
+{"project": "Jsoup-93f", "class": "DataUtil", "line_coverage": 79.5, "branch_coverage": 52.0, "tests_run": 20, "tests_passed": 20, "error": null}
+{"project": "Jsoup-93f", "class": "TokenQueue", "line_coverage": 97.2, "branch_coverage": 90.8, "tests_run": 56, "tests_passed": 56, "error": null}
+{"project": "Jsoup-93f", "class": "CharacterReader", "line_coverage": 96.5, "branch_coverage": 84.5, "tests_run": 66, "tests_passed": 65, "error": null}
+{"project": "Jsoup-93f", "class": "FormElement", "line_coverage": 92.9, "branch_coverage": 100.0, "tests_run": 19, "tests_passed": 19, "error": null}
+{"project": "Jsoup-93f", "class": "Tokeniser", "line_coverage": 87.9, "branch_coverage": 78.7, "tests_run": 31, "tests_passed": 31, "error": null}

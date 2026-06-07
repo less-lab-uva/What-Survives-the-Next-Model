@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwitchClosure.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Collections</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.collections4.functors</a> &gt; <span class="el_source">SwitchClosure.java</span></div><h1>SwitchClosure.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.collections4.functors;
+
+import java.io.Serializable;
+import java.util.Map;
+
+import org.apache.commons.collections4.Closure;
+import org.apache.commons.collections4.Predicate;
+
+/**
+ * Closure implementation calls the closure whose predicate returns true,
+ * like a switch statement.
+ *
+ * @since 3.0
+ * @version $Id$
+ */
+public class SwitchClosure&lt;E&gt; implements Closure&lt;E&gt;, Serializable {
+
+    /** Serial version UID */
+    private static final long serialVersionUID = 3518477308466486130L;
+
+    /** The tests to consider */
+    private final Predicate&lt;? super E&gt;[] iPredicates;
+    /** The matching closures to call */
+    private final Closure&lt;? super E&gt;[] iClosures;
+    /** The default closure to call if no tests match */
+    private final Closure&lt;? super E&gt; iDefault;
+
+    /**
+     * Factory method that performs validation and copies the parameter arrays.
+     *
+     * @param &lt;E&gt; the type that the closure acts on
+     * @param predicates  array of predicates, cloned, no nulls
+     * @param closures  matching array of closures, cloned, no nulls
+     * @param defaultClosure  the closure to use if no match, null means nop
+     * @return the &lt;code&gt;chained&lt;/code&gt; closure
+     * @throws NullPointerException if array is null
+     * @throws NullPointerException if any element in the array is null
+     * @throws IllegalArgumentException if the array lengths of predicates and closures do not match
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;E&gt; Closure&lt;E&gt; switchClosure(final Predicate&lt;? super E&gt;[] predicates,
+                                               final Closure&lt;? super E&gt;[] closures,
+                                               final Closure&lt;? super E&gt; defaultClosure) {
+<span class="nc" id="L60">        FunctorUtils.validate(predicates);</span>
+<span class="nc" id="L61">        FunctorUtils.validate(closures);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (predicates.length != closures.length) {</span>
+<span class="nc" id="L63">            throw new IllegalArgumentException(&quot;The predicate and closure arrays must be the same size&quot;);</span>
+        }
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if (predicates.length == 0) {</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            return (Closure&lt;E&gt;) (defaultClosure == null ? NOPClosure.&lt;E&gt;nopClosure(): defaultClosure);</span>
+        }
+<span class="nc" id="L68">        return new SwitchClosure&lt;E&gt;(predicates, closures, defaultClosure);</span>
+    }
+
+    /**
+     * Create a new Closure that calls one of the closures depending
+     * on the predicates.
+     * &lt;p&gt;
+     * The Map consists of Predicate keys and Closure values. A closure
+     * is called if its matching predicate returns true. Each predicate is evaluated
+     * until one returns true. If no predicates evaluate to true, the default
+     * closure is called. The default closure is set in the map with a
+     * null key. The ordering is that of the iterator() method on the entryset
+     * collection of the map.
+     *
+     * @param &lt;E&gt; the type that the closure acts on
+     * @param predicatesAndClosures  a map of predicates to closures
+     * @return the &lt;code&gt;switch&lt;/code&gt; closure
+     * @throws NullPointerException if the map is null
+     * @throws NullPointerException if any closure in the map is null
+     * @throws ClassCastException  if the map elements are of the wrong type
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    public static &lt;E&gt; Closure&lt;E&gt; switchClosure(final Map&lt;Predicate&lt;E&gt;, Closure&lt;E&gt;&gt; predicatesAndClosures) {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (predicatesAndClosures == null) {</span>
+<span class="nc" id="L92">            throw new NullPointerException(&quot;The predicate and closure map must not be null&quot;);</span>
+        }
+        // convert to array like this to guarantee iterator() ordering
+<span class="nc" id="L95">        final Closure&lt;? super E&gt; defaultClosure = predicatesAndClosures.remove(null);</span>
+<span class="nc" id="L96">        final int size = predicatesAndClosures.size();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (size == 0) {</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            return (Closure&lt;E&gt;) (defaultClosure == null ? NOPClosure.&lt;E&gt;nopClosure() : defaultClosure);</span>
+        }
+<span class="nc" id="L100">        final Closure&lt;E&gt;[] closures = new Closure[size];</span>
+<span class="nc" id="L101">        final Predicate&lt;E&gt;[] preds = new Predicate[size];</span>
+<span class="nc" id="L102">        int i = 0;</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for (final Map.Entry&lt;Predicate&lt;E&gt;, Closure&lt;E&gt;&gt; entry : predicatesAndClosures.entrySet()) {</span>
+<span class="nc" id="L104">            preds[i] = entry.getKey();</span>
+<span class="nc" id="L105">            closures[i] = entry.getValue();</span>
+<span class="nc" id="L106">            i++;</span>
+<span class="nc" id="L107">        }</span>
+<span class="nc" id="L108">        return new SwitchClosure&lt;E&gt;(false, preds, closures, defaultClosure);</span>
+    }
+
+    /**
+     * Hidden constructor for the use by the static factory methods.
+     *
+     * @param clone  if {@code true} the input arguments will be cloned
+     * @param predicates  array of predicates, no nulls
+     * @param closures  matching array of closures, no nulls
+     * @param defaultClosure  the closure to use if no match, null means nop
+     */
+    @SuppressWarnings(&quot;unchecked&quot;)
+    private SwitchClosure(final boolean clone, final Predicate&lt;? super E&gt;[] predicates,
+                          final Closure&lt;? super E&gt;[] closures, final Closure&lt;? super E&gt; defaultClosure) {
+<span class="nc" id="L122">        super();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        iPredicates = clone ? FunctorUtils.copy(predicates) : predicates;</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">        iClosures = clone ? FunctorUtils.copy(closures) : closures;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        iDefault = (Closure&lt;? super E&gt;) (defaultClosure == null ? NOPClosure.&lt;E&gt;nopClosure() : defaultClosure);</span>
+<span class="nc" id="L126">    }</span>
+
+    /**
+     * Constructor that performs no validation.
+     * Use &lt;code&gt;switchClosure&lt;/code&gt; if you want that.
+     *
+     * @param predicates  array of predicates, cloned, no nulls
+     * @param closures  matching array of closures, cloned, no nulls
+     * @param defaultClosure  the closure to use if no match, null means nop
+     */
+    public SwitchClosure(final Predicate&lt;? super E&gt;[] predicates, final Closure&lt;? super E&gt;[] closures,
+                         final Closure&lt;? super E&gt; defaultClosure) {
+<span class="nc" id="L138">        this(true, predicates, closures, defaultClosure);</span>
+<span class="nc" id="L139">    }</span>
+
+    /**
+     * Executes the closure whose matching predicate returns true
+     *
+     * @param input  the input object
+     */
+    @Override
+    public void execute(final E input) {
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        for (int i = 0; i &lt; iPredicates.length; i++) {</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">            if (iPredicates[i].evaluate(input) == true) {</span>
+<span class="nc" id="L150">                iClosures[i].execute(input);</span>
+<span class="nc" id="L151">                return;</span>
+            }
+        }
+<span class="nc" id="L154">        iDefault.execute(input);</span>
+<span class="nc" id="L155">    }</span>
+
+    /**
+     * Gets the predicates.
+     *
+     * @return a copy of the predicates
+     * @since 3.1
+     */
+    public Predicate&lt;? super E&gt;[] getPredicates() {
+<span class="nc" id="L164">        return FunctorUtils.&lt;E&gt;copy(iPredicates);</span>
+    }
+
+    /**
+     * Gets the closures.
+     *
+     * @return a copy of the closures
+     * @since 3.1
+     */
+    public Closure&lt;? super E&gt;[] getClosures() {
+<span class="nc" id="L174">        return FunctorUtils.&lt;E&gt;copy(iClosures);</span>
+    }
+
+    /**
+     * Gets the default closure.
+     *
+     * @return the default closure
+     * @since 3.1
+     */
+    public Closure&lt;? super E&gt; getDefaultClosure() {
+<span class="nc" id="L184">        return iDefault;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

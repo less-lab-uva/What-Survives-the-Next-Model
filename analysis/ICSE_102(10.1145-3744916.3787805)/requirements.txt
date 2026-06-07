@@ -1,0 +1,4 @@
+anthropic
+pytest
+coverage
+slipcover

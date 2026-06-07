@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TreeBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.parser</a> &gt; <span class="el_source">TreeBuilder.java</span></div><h1>TreeBuilder.java</h1><pre class="source lang-java linenums">package org.jsoup.parser;
+
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Attributes;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Jonathan Hedley
+ */
+<span class="nc" id="L16">abstract class TreeBuilder {</span>
+    protected Parser parser;
+    CharacterReader reader;
+    Tokeniser tokeniser;
+    protected Document doc; // current doc we are building into
+    protected ArrayList&lt;Element&gt; stack; // the stack of open elements
+    protected String baseUri; // current base uri, for creating new elements
+    protected Token currentToken; // currentToken is used only for error tracking.
+    protected ParseSettings settings;
+
+<span class="nc" id="L26">    private Token.StartTag start = new Token.StartTag(); // start tag to process</span>
+<span class="nc" id="L27">    private Token.EndTag end  = new Token.EndTag();</span>
+    abstract ParseSettings defaultSettings();
+
+    protected void initialiseParse(Reader input, String baseUri, Parser parser) {
+<span class="nc" id="L31">        Validate.notNull(input, &quot;String input must not be null&quot;);</span>
+<span class="nc" id="L32">        Validate.notNull(baseUri, &quot;BaseURI must not be null&quot;);</span>
+
+<span class="nc" id="L34">        doc = new Document(baseUri);</span>
+<span class="nc" id="L35">        doc.parser(parser);</span>
+<span class="nc" id="L36">        this.parser = parser;</span>
+<span class="nc" id="L37">        settings = parser.settings();</span>
+<span class="nc" id="L38">        reader = new CharacterReader(input);</span>
+<span class="nc" id="L39">        currentToken = null;</span>
+<span class="nc" id="L40">        tokeniser = new Tokeniser(reader, parser.getErrors());</span>
+<span class="nc" id="L41">        stack = new ArrayList&lt;&gt;(32);</span>
+<span class="nc" id="L42">        this.baseUri = baseUri;</span>
+<span class="nc" id="L43">    }</span>
+
+    Document parse(Reader input, String baseUri, Parser parser) {
+<span class="nc" id="L46">        initialiseParse(input, baseUri, parser);</span>
+<span class="nc" id="L47">        runParser();</span>
+<span class="nc" id="L48">        return doc;</span>
+    }
+
+    abstract List&lt;Node&gt; parseFragment(String inputFragment, Element context, String baseUri, Parser parser);
+
+    protected void runParser() {
+        while (true) {
+<span class="nc" id="L55">            Token token = tokeniser.read();</span>
+<span class="nc" id="L56">            process(token);</span>
+<span class="nc" id="L57">            token.reset();</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (token.type == Token.TokenType.EOF)</span>
+<span class="nc" id="L60">                break;</span>
+<span class="nc" id="L61">        }</span>
+<span class="nc" id="L62">    }</span>
+
+    protected abstract boolean process(Token token);
+
+    protected boolean processStartTag(String name) {
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (currentToken == start) { // don't recycle an in-use token</span>
+<span class="nc" id="L68">            return process(new Token.StartTag().name(name));</span>
+        }
+<span class="nc" id="L70">        return process(start.reset().name(name));</span>
+    }
+
+    public boolean processStartTag(String name, Attributes attrs) {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (currentToken == start) { // don't recycle an in-use token</span>
+<span class="nc" id="L75">            return process(new Token.StartTag().nameAttr(name, attrs));</span>
+        }
+<span class="nc" id="L77">        start.reset();</span>
+<span class="nc" id="L78">        start.nameAttr(name, attrs);</span>
+<span class="nc" id="L79">        return process(start);</span>
+    }
+
+    protected boolean processEndTag(String name) {
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        if (currentToken == end) { // don't recycle an in-use token</span>
+<span class="nc" id="L84">            return process(new Token.EndTag().name(name));</span>
+        }
+<span class="nc" id="L86">        return process(end.reset().name(name));</span>
+    }
+
+
+    protected Element currentElement() {
+<span class="nc" id="L91">        int size = stack.size();</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        return size &gt; 0 ? stack.get(size-1) : null;</span>
+    }
+
+
+    /**
+     * If the parser is tracking errors, and an error at the current position.
+     * @param msg error message
+     */
+    protected void error(String msg) {
+<span class="nc" id="L101">        ParseErrorList errors = parser.getErrors();</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        if (errors.canAddError())</span>
+<span class="nc" id="L103">            errors.add(new ParseError(reader.pos(), msg));</span>
+<span class="nc" id="L104">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

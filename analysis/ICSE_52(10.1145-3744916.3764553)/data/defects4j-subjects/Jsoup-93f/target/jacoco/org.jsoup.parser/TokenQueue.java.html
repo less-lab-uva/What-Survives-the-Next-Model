@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TokenQueue.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.parser</a> &gt; <span class="el_source">TokenQueue.java</span></div><h1>TokenQueue.java</h1><pre class="source lang-java linenums">package org.jsoup.parser;
+
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+
+/**
+ * A character queue with parsing helpers.
+ *
+ * @author Jonathan Hedley
+ */
+public class TokenQueue {
+    private String queue;
+<span class="nc" id="L13">    private int pos = 0;</span>
+    
+    private static final char ESC = '\\'; // escape char for chomp balanced.
+
+    /**
+     Create a new TokenQueue.
+     @param data string of data to back queue.
+     */
+<span class="nc" id="L21">    public TokenQueue(String data) {</span>
+<span class="nc" id="L22">        Validate.notNull(data);</span>
+<span class="nc" id="L23">        queue = data;</span>
+<span class="nc" id="L24">    }</span>
+
+    /**
+     * Is the queue empty?
+     * @return true if no data left in queue.
+     */
+    public boolean isEmpty() {
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        return remainingLength() == 0;</span>
+    }
+    
+    private int remainingLength() {
+<span class="nc" id="L35">        return queue.length() - pos;</span>
+    }
+
+    /**
+     * Retrieves but does not remove the first character from the queue.
+     * @return First character, or 0 if empty.
+     */
+    public char peek() {
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        return isEmpty() ? 0 : queue.charAt(pos);</span>
+    }
+
+    /**
+     Add a character to the start of the queue (will be the next character retrieved).
+     @param c character to add
+     */
+    public void addFirst(Character c) {
+<span class="nc" id="L51">        addFirst(c.toString());</span>
+<span class="nc" id="L52">    }</span>
+
+    /**
+     Add a string to the start of the queue.
+     @param seq string to add.
+     */
+    public void addFirst(String seq) {
+        // not very performant, but an edge case
+<span class="nc" id="L60">        queue = seq + queue.substring(pos);</span>
+<span class="nc" id="L61">        pos = 0;</span>
+<span class="nc" id="L62">    }</span>
+
+    /**
+     * Tests if the next characters on the queue match the sequence. Case insensitive.
+     * @param seq String to check queue for.
+     * @return true if the next characters match.
+     */
+    public boolean matches(String seq) {
+<span class="nc" id="L70">        return queue.regionMatches(true, pos, seq, 0, seq.length());</span>
+    }
+
+    /**
+     * Case sensitive match test.
+     * @param seq string to case sensitively check for
+     * @return true if matched, false if not
+     */
+    public boolean matchesCS(String seq) {
+<span class="nc" id="L79">        return queue.startsWith(seq, pos);</span>
+    }
+    
+
+    /**
+     Tests if the next characters match any of the sequences. Case insensitive.
+     @param seq list of strings to case insensitively check for
+     @return true of any matched, false if none did
+     */
+    public boolean matchesAny(String... seq) {
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        for (String s : seq) {</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (matches(s))</span>
+<span class="nc" id="L91">                return true;</span>
+        }
+<span class="nc" id="L93">        return false;</span>
+    }
+
+    public boolean matchesAny(char... seq) {
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if (isEmpty())</span>
+<span class="nc" id="L98">            return false;</span>
+
+<span class="nc bnc" id="L100" title="All 2 branches missed.">        for (char c: seq) {</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">            if (queue.charAt(pos) == c)</span>
+<span class="nc" id="L102">                return true;</span>
+        }
+<span class="nc" id="L104">        return false;</span>
+    }
+
+    public boolean matchesStartTag() {
+        // micro opt for matching &quot;&lt;x&quot;
+<span class="nc bnc" id="L109" title="All 6 branches missed.">        return (remainingLength() &gt;= 2 &amp;&amp; queue.charAt(pos) == '&lt;' &amp;&amp; Character.isLetter(queue.charAt(pos+1)));</span>
+    }
+
+    /**
+     * Tests if the queue matches the sequence (as with match), and if they do, removes the matched string from the
+     * queue.
+     * @param seq String to search for, and if found, remove from queue.
+     * @return true if found and removed, false if not found.
+     */
+    public boolean matchChomp(String seq) {
+<span class="nc bnc" id="L119" title="All 2 branches missed.">        if (matches(seq)) {</span>
+<span class="nc" id="L120">            pos += seq.length();</span>
+<span class="nc" id="L121">            return true;</span>
+        } else {
+<span class="nc" id="L123">            return false;</span>
+        }
+    }
+
+    /**
+     Tests if queue starts with a whitespace character.
+     @return if starts with whitespace
+     */
+    public boolean matchesWhitespace() {
+<span class="nc bnc" id="L132" title="All 4 branches missed.">        return !isEmpty() &amp;&amp; StringUtil.isWhitespace(queue.charAt(pos));</span>
+    }
+
+    /**
+     Test if the queue matches a word character (letter or digit).
+     @return if matches a word character
+     */
+    public boolean matchesWord() {
+<span class="nc bnc" id="L140" title="All 4 branches missed.">        return !isEmpty() &amp;&amp; Character.isLetterOrDigit(queue.charAt(pos));</span>
+    }
+
+    /**
+     * Drops the next character off the queue.
+     */
+    public void advance() {
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        if (!isEmpty()) pos++;</span>
+<span class="nc" id="L148">    }</span>
+
+    /**
+     * Consume one character off queue.
+     * @return first character on queue.
+     */
+    public char consume() {
+<span class="nc" id="L155">        return queue.charAt(pos++);</span>
+    }
+
+    /**
+     * Consumes the supplied sequence of the queue. If the queue does not start with the supplied sequence, will
+     * throw an illegal state exception -- but you should be running match() against that condition.
+     &lt;p&gt;
+     Case insensitive.
+     * @param seq sequence to remove from head of queue.
+     */
+    public void consume(String seq) {
+<span class="nc bnc" id="L166" title="All 2 branches missed.">        if (!matches(seq))</span>
+<span class="nc" id="L167">            throw new IllegalStateException(&quot;Queue did not match expected sequence&quot;);</span>
+<span class="nc" id="L168">        int len = seq.length();</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        if (len &gt; remainingLength())</span>
+<span class="nc" id="L170">            throw new IllegalStateException(&quot;Queue not long enough to consume sequence&quot;);</span>
+        
+<span class="nc" id="L172">        pos += len;</span>
+<span class="nc" id="L173">    }</span>
+
+    /**
+     * Pulls a string off the queue, up to but exclusive of the match sequence, or to the queue running out.
+     * @param seq String to end on (and not include in return, but leave on queue). &lt;b&gt;Case sensitive.&lt;/b&gt;
+     * @return The matched data consumed from queue.
+     */
+    public String consumeTo(String seq) {
+<span class="nc" id="L181">        int offset = queue.indexOf(seq, pos);</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        if (offset != -1) {</span>
+<span class="nc" id="L183">            String consumed = queue.substring(pos, offset);</span>
+<span class="nc" id="L184">            pos += consumed.length();</span>
+<span class="nc" id="L185">            return consumed;</span>
+        } else {
+<span class="nc" id="L187">            return remainder();</span>
+        }
+    }
+    
+    public String consumeToIgnoreCase(String seq) {
+<span class="nc" id="L192">        int start = pos;</span>
+<span class="nc" id="L193">        String first = seq.substring(0, 1);</span>
+<span class="nc" id="L194">        boolean canScan = first.toLowerCase().equals(first.toUpperCase()); // if first is not cased, use index of</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        while (!isEmpty()) {</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">            if (matches(seq))</span>
+<span class="nc" id="L197">                break;</span>
+            
+<span class="nc bnc" id="L199" title="All 2 branches missed.">            if (canScan) {</span>
+<span class="nc" id="L200">                int skip = queue.indexOf(first, pos) - pos;</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">                if (skip == 0) // this char is the skip char, but not match, so force advance of pos</span>
+<span class="nc" id="L202">                    pos++;</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">                else if (skip &lt; 0) // no chance of finding, grab to end</span>
+<span class="nc" id="L204">                    pos = queue.length();</span>
+                else
+<span class="nc" id="L206">                    pos += skip;</span>
+<span class="nc" id="L207">            }</span>
+            else
+<span class="nc" id="L209">                pos++;</span>
+        }
+
+<span class="nc" id="L212">        return queue.substring(start, pos);</span>
+    }
+
+    /**
+     Consumes to the first sequence provided, or to the end of the queue. Leaves the terminator on the queue.
+     @param seq any number of terminators to consume to. &lt;b&gt;Case insensitive.&lt;/b&gt;
+     @return consumed string   
+     */
+    // todo: method name. not good that consumeTo cares for case, and consume to any doesn't. And the only use for this
+    // is is a case sensitive time...
+    public String consumeToAny(String... seq) {
+<span class="nc" id="L223">        int start = pos;</span>
+<span class="nc bnc" id="L224" title="All 4 branches missed.">        while (!isEmpty() &amp;&amp; !matchesAny(seq)) {</span>
+<span class="nc" id="L225">            pos++;</span>
+        }
+
+<span class="nc" id="L228">        return queue.substring(start, pos);</span>
+    }
+
+    /**
+     * Pulls a string off the queue (like consumeTo), and then pulls off the matched string (but does not return it).
+     * &lt;p&gt;
+     * If the queue runs out of characters before finding the seq, will return as much as it can (and queue will go
+     * isEmpty() == true).
+     * @param seq String to match up to, and not include in return, and to pull off queue. &lt;b&gt;Case sensitive.&lt;/b&gt;
+     * @return Data matched from queue.
+     */
+    public String chompTo(String seq) {
+<span class="nc" id="L240">        String data = consumeTo(seq);</span>
+<span class="nc" id="L241">        matchChomp(seq);</span>
+<span class="nc" id="L242">        return data;</span>
+    }
+    
+    public String chompToIgnoreCase(String seq) {
+<span class="nc" id="L246">        String data = consumeToIgnoreCase(seq); // case insensitive scan</span>
+<span class="nc" id="L247">        matchChomp(seq);</span>
+<span class="nc" id="L248">        return data;</span>
+    }
+
+    /**
+     * Pulls a balanced string off the queue. E.g. if queue is &quot;(one (two) three) four&quot;, (,) will return &quot;one (two) three&quot;,
+     * and leave &quot; four&quot; on the queue. Unbalanced openers and closers can be quoted (with ' or &quot;) or escaped (with \). Those escapes will be left
+     * in the returned string, which is suitable for regexes (where we need to preserve the escape), but unsuitable for
+     * contains text strings; use unescape for that.
+     * @param open opener
+     * @param close closer
+     * @return data matched from the queue
+     */
+    public String chompBalanced(char open, char close) {
+<span class="nc" id="L261">        int start = -1;</span>
+<span class="nc" id="L262">        int end = -1;</span>
+<span class="nc" id="L263">        int depth = 0;</span>
+<span class="nc" id="L264">        char last = 0;</span>
+<span class="nc" id="L265">        boolean inSingleQuote = false;</span>
+<span class="nc" id="L266">        boolean inDoubleQuote = false;</span>
+
+        do {
+<span class="nc bnc" id="L269" title="All 2 branches missed.">            if (isEmpty()) break;</span>
+<span class="nc" id="L270">            Character c = consume();</span>
+<span class="nc bnc" id="L271" title="All 4 branches missed.">            if (last == 0 || last != ESC) {</span>
+<span class="nc bnc" id="L272" title="All 6 branches missed.">                if (c.equals('\'') &amp;&amp; c != open &amp;&amp; !inDoubleQuote)</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">                    inSingleQuote = !inSingleQuote;</span>
+<span class="nc bnc" id="L274" title="All 6 branches missed.">                else if (c.equals('&quot;') &amp;&amp; c != open &amp;&amp; !inSingleQuote)</span>
+<span class="nc bnc" id="L275" title="All 2 branches missed.">                    inDoubleQuote = !inDoubleQuote;</span>
+<span class="nc bnc" id="L276" title="All 4 branches missed.">                if (inSingleQuote || inDoubleQuote)</span>
+<span class="nc" id="L277">                    continue;</span>
+
+<span class="nc bnc" id="L279" title="All 2 branches missed.">                if (c.equals(open)) {</span>
+<span class="nc" id="L280">                    depth++;</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">                    if (start == -1)</span>
+<span class="nc" id="L282">                        start = pos;</span>
+                }
+<span class="nc bnc" id="L284" title="All 2 branches missed.">                else if (c.equals(close))</span>
+<span class="nc" id="L285">                    depth--;</span>
+            }
+
+<span class="nc bnc" id="L288" title="All 4 branches missed.">            if (depth &gt; 0 &amp;&amp; last != 0)</span>
+<span class="nc" id="L289">                end = pos; // don't include the outer match pair in the return</span>
+<span class="nc" id="L290">            last = c;</span>
+<span class="nc bnc" id="L291" title="All 2 branches missed.">        } while (depth &gt; 0);</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">        final String out = (end &gt;= 0) ? queue.substring(start, end) : &quot;&quot;;</span>
+<span class="nc bnc" id="L293" title="All 2 branches missed.">        if (depth &gt; 0) {// ran out of queue before seeing enough )</span>
+<span class="nc" id="L294">            Validate.fail(&quot;Did not find balanced marker at '&quot; + out + &quot;'&quot;);</span>
+        }
+<span class="nc" id="L296">        return out;</span>
+    }
+    
+    /**
+     * Unescape a \ escaped string.
+     * @param in backslash escaped string
+     * @return unescaped string
+     */
+    public static String unescape(String in) {
+<span class="nc" id="L305">        StringBuilder out = StringUtil.borrowBuilder();</span>
+<span class="nc" id="L306">        char last = 0;</span>
+<span class="nc bnc" id="L307" title="All 2 branches missed.">        for (char c : in.toCharArray()) {</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">            if (c == ESC) {</span>
+<span class="nc bnc" id="L309" title="All 4 branches missed.">                if (last != 0 &amp;&amp; last == ESC)</span>
+<span class="nc" id="L310">                    out.append(c);</span>
+            }
+            else 
+<span class="nc" id="L313">                out.append(c);</span>
+<span class="nc" id="L314">            last = c;</span>
+        }
+<span class="nc" id="L316">        return StringUtil.releaseBuilder(out);</span>
+    }
+
+    /**
+     * Pulls the next run of whitespace characters of the queue.
+     * @return Whether consuming whitespace or not
+     */
+    public boolean consumeWhitespace() {
+<span class="nc" id="L324">        boolean seen = false;</span>
+<span class="nc bnc" id="L325" title="All 2 branches missed.">        while (matchesWhitespace()) {</span>
+<span class="nc" id="L326">            pos++;</span>
+<span class="nc" id="L327">            seen = true;</span>
+        }
+<span class="nc" id="L329">        return seen;</span>
+    }
+
+    /**
+     * Retrieves the next run of word type (letter or digit) off the queue.
+     * @return String of word characters from queue, or empty string if none.
+     */
+    public String consumeWord() {
+<span class="nc" id="L337">        int start = pos;</span>
+<span class="nc bnc" id="L338" title="All 2 branches missed.">        while (matchesWord())</span>
+<span class="nc" id="L339">            pos++;</span>
+<span class="nc" id="L340">        return queue.substring(start, pos);</span>
+    }
+    
+    /**
+     * Consume an tag name off the queue (word or :, _, -)
+     * 
+     * @return tag name
+     */
+    public String consumeTagName() {
+<span class="nc" id="L349">        int start = pos;</span>
+<span class="nc bnc" id="L350" title="All 6 branches missed.">        while (!isEmpty() &amp;&amp; (matchesWord() || matchesAny(':', '_', '-')))</span>
+<span class="nc" id="L351">            pos++;</span>
+        
+<span class="nc" id="L353">        return queue.substring(start, pos);</span>
+    }
+    
+    /**
+     * Consume a CSS element selector (tag name, but | instead of : for namespaces (or *| for wildcard namespace), to not conflict with :pseudo selects).
+     * 
+     * @return tag name
+     */
+    public String consumeElementSelector() {
+<span class="nc" id="L362">        int start = pos;</span>
+<span class="nc bnc" id="L363" title="All 6 branches missed.">        while (!isEmpty() &amp;&amp; (matchesWord() || matchesAny(&quot;*|&quot;,&quot;|&quot;, &quot;_&quot;, &quot;-&quot;)))</span>
+<span class="nc" id="L364">            pos++;</span>
+        
+<span class="nc" id="L366">        return queue.substring(start, pos);</span>
+    }
+
+    /**
+     Consume a CSS identifier (ID or class) off the queue (letter, digit, -, _)
+     http://www.w3.org/TR/CSS2/syndata.html#value-def-identifier
+     @return identifier
+     */
+    public String consumeCssIdentifier() {
+<span class="nc" id="L375">        int start = pos;</span>
+<span class="nc bnc" id="L376" title="All 6 branches missed.">        while (!isEmpty() &amp;&amp; (matchesWord() || matchesAny('-', '_')))</span>
+<span class="nc" id="L377">            pos++;</span>
+
+<span class="nc" id="L379">        return queue.substring(start, pos);</span>
+    }
+
+    /**
+     Consume an attribute key off the queue (letter, digit, -, _, :&quot;)
+     @return attribute key
+     */
+    public String consumeAttributeKey() {
+<span class="nc" id="L387">        int start = pos;</span>
+<span class="nc bnc" id="L388" title="All 6 branches missed.">        while (!isEmpty() &amp;&amp; (matchesWord() || matchesAny('-', '_', ':')))</span>
+<span class="nc" id="L389">            pos++;</span>
+        
+<span class="nc" id="L391">        return queue.substring(start, pos);</span>
+    }
+
+    /**
+     Consume and return whatever is left on the queue.
+     @return remained of queue.
+     */
+    public String remainder() {
+<span class="nc" id="L399">        final String remainder = queue.substring(pos, queue.length());</span>
+<span class="nc" id="L400">        pos = queue.length();</span>
+<span class="nc" id="L401">        return remainder;</span>
+    }
+    
+    @Override
+    public String toString() {
+<span class="nc" id="L406">        return queue.substring(pos);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
