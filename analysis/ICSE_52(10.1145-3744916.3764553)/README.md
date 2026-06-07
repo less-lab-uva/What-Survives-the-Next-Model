@@ -2,7 +2,7 @@
 
 This project generates JUnit test suites for Defects4J Java classes using Prompt A or Prompt B, then evaluates the generated tests with Maven + JaCoCo to measure line and branch coverage.
 
-**Paper:** Panta: LLM-Based Test Generation for Complex Java Code  
+**Paper:** LLM Test Generation via Iterative Hybrid Program Analysis  
 **Venue:** ICSE 2026  
 **DOI:** 10.1145/3744916.3764553
 
