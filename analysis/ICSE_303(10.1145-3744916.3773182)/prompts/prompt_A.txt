@@ -1,0 +1,47 @@
+### Role
+You are an expert software engineer specializing in code review and defect detection, with deep experience analyzing source code changes for regression bugs.
+
+### Task
+Given a unified diff of a code commit, determine whether the commit introduces a regression bug — that is, a change that breaks previously working functionality.
+
+### Input
+You will receive a single field:
+
+- `diff`: A unified diff string showing all file changes in the commit. It includes `---`/`+++` file headers and `@@` hunk markers, with `-` lines removed and `+` lines added.
+
+### Output
+Produce a JSON object with exactly one field:
+
+```json
+{
+  "label": <integer>
+}
+```
+
+Where `label` is:
+- `1` if the commit introduces a regression bug
+- `0` if the commit does not introduce a regression bug
+
+### Example
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "diff": "--- a/src/main/java/org/cactoos/collection/CollectionEnvelope.java\n+++ b/src/main/java/org/cactoos/collection/CollectionEnvelope.java\n@@ -36,6 +36,10 @@\n  *\n  * @param <X> Element type\n  * @since 0.23\n+ * @todo #844:30min Implement methods equals and hashCode for this class.\n+ *  Implementation should rely on the items of the nested collection, but not\n+ *  on default JVM impl. Class {@link org.cactoos.map.MapEnvelope} can be used\n+ *  as an example.\n  * @checkstyle AbstractClassNameCheck (500 lines)\n  */\n @SuppressWarnings(\n--- a/src/main/java/org/cactoos/map/MapEnvelope.java\n+++ b/src/main/java/org/cactoos/map/MapEnvelope.java\n@@ -24,9 +24,12 @@\n package org.cactoos.map;\n \n import java.util.Collection;\n+import java.util.Iterator;\n import java.util.Map;\n import java.util.Set;\n import org.cactoos.Scalar;\n+import org.cactoos.scalar.Folded;\n+import org.cactoos.scalar.SumOfIntScalar;\n import org.cactoos.scalar.UncheckedScalar;\n import org.cactoos.text.TextOf;\n \n@@ -138,4 +141,52 @@ public final String toString() {\n             .append('}')\n             .toString();\n     }\n+\n+    @Override\n+    @SuppressWarnings(\"PMD.OnlyOneReturn\")\n+    public final boolean equals(final Object other) {\n+        if (this == other) {\n+            return true;\n+        }\n+        if (getClass() != other.getClass()) {\n+            return false;\n+        }\n+        final MapEnvelope<?, ?> that = (MapEnvelope<?, ?>) other;\n+        final Iterator<Entry<X, Y>> these =\n+            this.map.value().entrySet().iterator();\n+        final Iterator<? extends Entry<?, ?>> those =\n+            that.map.value().entrySet().iterator();\n+        while (these.hasNext() && those.hasNext()) {\n+            final Entry<X, Y> first = these.next();\n+            final Entry<?, ?> second = those.next();\n+            if (!first.getKey().equals(second.getKey())) {\n+                return false;\n+            }\n+            if (!first.getValue().equals(second.getValue())) {\n+                return false;\n+            }\n+        }\n+        return !these.hasNext() && !those.hasNext();\n+    }\n+\n+    // @checkstyle MagicNumberCheck (30 lines)\n+    @Override\n+    public final int hashCode() {\n+        return new UncheckedScalar<>(\n+            new Folded<>(\n+                42,\n+                (hash, entry) -> {\n+                    final int keys = new SumOfIntScalar(\n+                        () -> 37 * hash,\n+                        () -> entry.getKey().hashCode()\n+                    ).value();\n+                    return new SumOfIntScalar(\n+                        () -> 37 * keys,\n+                        () -> entry.getValue().hashCode()\n+                    ).value();\n+                },\n+                this.map.value().entrySet()\n+            )\n+        ).value();\n+    }\n }\n--- a/src/test/java/org/cactoos/map/MapEnvelopeTest.java\n+++ b/src/test/java/org/cactoos/map/MapEnvelopeTest.java\n@@ -27,6 +27,8 @@\n import org.cactoos.func.FuncOf;\n import org.hamcrest.MatcherAssert;\n import org.hamcrest.Matchers;\n+import org.hamcrest.core.IsEqual;\n+import org.hamcrest.core.IsNot;\n import org.junit.Rule;\n import org.junit.Test;\n import org.junit.rules.ExpectedException;\n@@ -38,7 +40,9 @@\n  * @since 0.4\n  * @checkstyle JavadocMethodCheck (500 lines)\n  * @checkstyle ClassDataAbstractionCouplingCheck (500 lines)\n+ * @checkstyle DiamondOperatorCheck (500 lines)\n  */\n+@SuppressWarnings(\"PMD.TooManyMethods\")\n public final class MapEnvelopeTest {\n \n     /**\n@@ -203,4 +207,107 @@ public void mapContainsValueFalse() {\n         );\n     }\n \n+    @Test\n+    public void mapEqualsToItself() {\n+        final MapOf<String, String> map =\n+            new MapOf<String, String>(new MapEntry<>(\"key\", \"value\"));\n+        MatcherAssert.assertThat(\n+            \"Map doesn't equal to itself\",\n+            map,\n+            new IsEqual<>(map)\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToAnotherClass() {\n+        final MapOf<String, String> map =\n+            new MapOf<String, String>(new MapEntry<>(\"key1\", \"value1\"));\n+        MatcherAssert.assertThat(\n+            \"Map equals to an instance of another type\",\n+            map,\n+            new IsNot<>(\n+                new IsEqual<>(\"Totally different type\")\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void mapEqualsToMapWithSameEntries() {\n+        final String key = \"key2\";\n+        final String value = \"value2\";\n+        final MapEntry<String, String> input = new MapEntry<>(key, value);\n+        final MapEntry<String, String> expected = new MapEntry<>(key, value);\n+        MatcherAssert.assertThat(\n+            \"Map doesn't equal to another map with same entries\",\n+            new MapOf<String, String>(input),\n+            new IsEqual<>(new MapOf<String, String>(expected))\n+        );\n+    }\n+\n+    @Test(expected = NullPointerException.class)\n+    public void equalFailsOnNull() {\n+        final MapEntry<String, String> first =\n+            new MapEntry<>(\"key3\", \"value3\");\n+        final MapEntry<String, String> second =\n+            new MapEntry<>(\"key4\", null);\n+        MatcherAssert.assertThat(\n+            \"Map allows null values, but shouldn't\",\n+            new MapOf<String, String>(first, second),\n+            new IsEqual<>(new MapOf<String, String>(first, second))\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToOtherWithDifferentKeys() {\n+        final String value = \"value5\";\n+        MatcherAssert.assertThat(\n+            \"Map equals to another map with different keys\",\n+            new MapOf<String, String>(new MapEntry<>(\"key5\", value)),\n+            new IsNot<>(\n+                new IsEqual<>(\n+                    new MapOf<String, String>(\n+                        new MapEntry<>(\"key6\", value)\n+                    )\n+                )\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToOtherWithDifferentValues() {\n+        final String key = \"key7\";\n+        MatcherAssert.assertThat(\n+            \"Map equals to another map with different values\",\n+            new MapOf<String, String>(new MapEntry<>(key, \"value7\")),\n+            new IsNot<>(\n+                new IsEqual<>(\n+                    new MapOf<String, String>(\n+                        new MapEntry<>(key, \"value8\")\n+                    )\n+                )\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void hashCodeDependsOnItems() {\n+        final String key = \"key9\";\n+        final String value = \"value9\";\n+        final MapEntry<String, String> input = new MapEntry<>(key, value);\n+        final MapEntry<String, String> expected = new MapEntry<>(key, value);\n+        MatcherAssert.assertThat(\n+            \"hashCode returns different results for same entries\",\n+            new MapOf<String, String>(input).hashCode(),\n+            new IsEqual<>(new MapOf<String, String>(expected).hashCode())\n+        );\n+    }\n+\n+    @Test(expected = NullPointerException.class)\n+    public void hashCodeFailsOnNull() {\n+        final MapEntry<String, String> first =\n+            new MapEntry<>(\"key10\", \"value10\");\n+        final MapEntry<String, String> second =\n+            new MapEntry<>(\"key11\", null);\n+        new MapOf<String, String>(first, second).hashCode();\n+    }\n }"
+      },
+      "outputs": {
+        "label": 1
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Output only the JSON object with the `label` field. Do not include any explanation, preamble, or trailing text.
+- `label` must be exactly `0` or `1` — no other values are permitted.
+- Base your decision solely on the content of the diff; do not assume any context beyond what is shown.
