@@ -4,7 +4,7 @@
 |-----------------|-------|
 | [`10.1145-3744916.3787839`](./10.1145-3744916.3787839) | Toxicity Ahead: Forecasting Conversational Derailment on GitHub |
 | [`ICSE_11(10.1145-3744916.3773248)`](./ICSE_11(10.1145-3744916.3773248)) | Knowledge-Augmented Log Anomaly Detection with Large Language Models |
-| [`ICSE_18(10.1145-3744916.3773143)`](./ICSE_18(10.1145-3744916.3773143)) | EnsLLM: Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach |
+| [`ICSE_18(10.1145-3744916.3773143)`](./ICSE_18(10.1145-3744916.3773143)) | Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach |
 | [`ICSE_19(10.1145-3744916.3773197)`](./ICSE_19(10.1145-3744916.3773197)) | SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning |
 | [`ICSE_38(10.1145-3744916.3787821)`](./ICSE_38(10.1145-3744916.3787821)) | ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction |
 | [`ICSE_42(10.1145-3744916.3773144)`](./ICSE_42(10.1145-3744916.3773144)) | AdapTrack: Constrained Decoding without Distorting LLM's Output Intent |
