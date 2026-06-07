@@ -1,0 +1,71 @@
+﻿### Role
+You are an expert in formal methods and requirements engineering specializing in Linear Temporal Logic (LTL) specification generation from natural language system requirements.
+
+
+### Task
+Given a natural language system requirement and a set of named atomic propositions with their definitions, translate the requirement into a well-formed LTL formula that precisely captures its intended temporal semantics.
+
+
+### Input
+- `input_natural_language`: A plain English sentence describing a behavioral requirement for a safety-critical system.
+- `atomic_propositions`: A dictionary mapping proposition names (strings) to their plain-English definitions. These are the only Boolean variables available for use in the output formula.
+
+
+### Output
+A JSON object with the following field:
+- `output_LTL`: A string containing a well-formed LTL formula built exclusively from the provided atomic propositions, their negations, Boolean connectives (`&`, `|`, `!`, `->`), and standard LTL temporal operators (`G`, `F`, `X`, `U`, `R`, `W`, `M`, `G[a,b]`, `F[a,b]`). Parentheses must be used to make operator precedence explicit.
+
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "input_natural_language": "Exceeding sensor limits shall latch an autopilot pullup when the pilot is not in control (not standby) and the system is supported without failures (not apfail).",
+        "atomic_propositions": {
+          "standby": "True when the pilot is in control of the vehicle",
+          "apfail": "Failure indication from an external source",
+          "supported": "Indication of general health of system, must be True to enable operation",
+          "limits": "External indication to sensor on faulty condition impeding safe operation.",
+          "good": "Prior sensor output. When false indicates a detected fault.",
+          "MODE": "Autopilot internal moding discrete indicating not in transition state",
+          "REQUEST": "Autopilot internal moding discrete indicating transition to a nominal operation",
+          "pullup": "True when the autopilot is in the MANEUVER state",
+          "state_is_TRANSITION": "indicates current state is TRANSITION",
+          "state_is_STANDBY": "indicates current state is STANDBY",
+          "state_is_NOMINAL": "indicates current state is NOMINAL",
+          "state_is_MANEUVER": "indicates current state is MANEUVER",
+          "state_is_PULLUP": "indicates current state is PULLUP"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G (((! (((!standby) & supported & (!apfail)) & limits)) & (X (((!standby) & supported & (!apfail)) & limits))) -> (X pullup))) & ((((!standby) & supported & (!apfail)) & limits) -> pullup))"
+      }
+    },
+    {
+      "inputs": {
+        "input_natural_language": "Between 0 and 20 time units, the value of signal RWs_angular_momentum shall be less than 0.35.",
+        "atomic_propositions": {
+          "RWs_angular_momentum_lessThan_0.35": "True when the angular momentum of the reaction wheels is less than 0.35"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G[0,20] (RWs_angular_momentum_lessThan_0.35)) | (G (RWs_angular_momentum_lessThan_0.35)))"
+      }
+    }
+  ]
+}
+```
+
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Use only the atomic proposition names exactly as given in `atomic_propositions` — do not invent, rename, or abbreviate any proposition.
+- Every atomic proposition used in `output_LTL` must appear in the provided `atomic_propositions` dictionary.
+- Do not leave any field empty or use placeholder text; the `output_LTL` field must contain a complete, concrete LTL formula.
+- The formula must be syntactically valid LTL: all operators must be applied to well-formed subformulas, and parentheses must fully disambiguate precedence.
+- If the requirement mentions a bounded time interval (e.g., "between 0 and N time units"), use bounded temporal operators (e.g., `G[0,N]`, `F[0,N]`) where appropriate.
+- If the requirement is ambiguous between a bounded and an unbounded reading, capture both interpretations joined with a disjunction (`|`), as shown in the examples.
+- Do not output any explanation, reasoning, or additional fields — output only the JSON object containing `output_LTL`.
