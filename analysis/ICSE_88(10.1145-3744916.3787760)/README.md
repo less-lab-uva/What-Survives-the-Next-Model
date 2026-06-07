@@ -1,6 +1,6 @@
 # Experiment Setup
 
-**ReduceFix: LLM-Based Bug Repair for Competitive Programming**  
+**Input Reduction Enhanced LLM-based Program Repair**  
 ICSE 2026 · DOI: 10.1145/3744916.3787760
 
 Given a buggy C++ submission and failing input, the LLM generates a corrected program using Prompt A and Prompt B, evaluated on compilation and test pass rate.
