@@ -1,4 +1,4 @@
-# EchoFuzz — LLM Replacement Study on SmartBugs D2
+# EchoFuzz — LLM Replacement Study on Dataset D2
 
 This directory contains an LLM replacement study for the EchoFuzz pipeline (ICSE 2026). We replace the original 4-phase smart contract fuzzer with a single Claude Sonnet 4.6 call per contract and evaluate on the D2 dataset using precision and recall against the same ground-truth labels used by the paper.
 
@@ -46,30 +46,6 @@ export ANTHROPIC_API_KEY=your_api_key_here
 
 ---
 
-## File Structure
-
-```
-with_sonnet/
-  main.py           — pipeline runner (budget-gated, resumable)
-  evaluator.py      — evaluation vs. D2 ground truth + paper Table 3 reference
-  prompts/
-    promptA.py      — black-box prompt (6-field output schema)
-    promptB.py      — informed prompt (VFCS reasoning steps + 6-field schema)
-  dataset/D2/       — 143 .sol files with embedded <report> annotations
-  outputs/
-    outputs_A.jsonl — one JSON line per contract: LLM response for Prompt A
-    outputs_B.jsonl — same for Prompt B
-    tokens_A.jsonl  — per-call token counts, cost, and wall-clock time for Prompt A
-    tokens_B.jsonl  — same for Prompt B
-    state.json      — resume checkpoint (selected contracts, target count)
-  results/
-    results_A.jsonl — line 1: aggregate metrics; lines 2+: per-contract breakdown
-    results_B.jsonl — same for Prompt B
-  paper.json        — paper metadata and final results
-  metaprompt.txt    — meta-prompt used to generate promptA.py and promptB.py
-```
-
----
 
 ## Step 1 — Input Processing
 
@@ -171,13 +147,12 @@ Direct numeric comparison between our results and the paper's Table 3 counts is 
 
 All 143 D2 contracts evaluated.
 
-| System | Precision | Recall | TP | FP | FN | Contracts |
-|---|---|---|---|---|---|---|
-| EchoFuzz (paper, Table 3, D2) | ~1.0 (runtime oracle) | ~0.78 | 103 | 0 | ~29 | 143 |
-| Ours — Prompt A | 38.7% | **100%** | 111 | 176 | 0 | 143 |
-| Ours — Prompt B | 37.4% | **100%** | 111 | 186 | 0 | 143 |
+| System | TP | FP | FN | Contracts |
+|---|---|---|---|---|
+| EchoFuzz (paper, Table 3, D2) | 103 | 0 | ~29 | 143 |
+| Ours — Prompt A | 111 | 176 | 0 | 143 |
+| Ours — Prompt B | 111 | 186 | 0 | 143 |
 
-> Paper recall is approximate: 103 detections out of 132 mappable GT vulnerabilities.
 
 **Per-category breakdown (Prompt A / Prompt B):**
 
