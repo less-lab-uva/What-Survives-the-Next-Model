@@ -172,6 +172,4 @@ All 143 D2 contracts evaluated.
 
 **Perfect recall, high false-positive rate.** The LLM detects every ground-truth vulnerability in the sample (FN=0) but over-reports substantially. IO and TP show the worst FP rates — the LLM flags integer arithmetic patterns and timestamp usage as vulnerabilities even in contracts where those patterns are benign.
 
-**Prompt B does not reduce recall or improve precision.** Providing the VFCS reasoning methodology (Prompt B) does not lower FPs; in fact, RE FPs increase from 26 to 48. The informed prompt appears to make the model more aggressive in flagging reentrancy-shaped patterns. Precision is essentially the same for both prompts (~38%).
-
 **Contrast with EchoFuzz.** EchoFuzz achieves near-zero FPs by using an instrumented runtime oracle that fires only on actual exploit execution. A static LLM prompt cannot replicate this guarantee — it reasons about code patterns, not runtime behaviour, and tends toward over-detection. The LLM's advantage is that it misses nothing in its evaluated category set; EchoFuzz misses ~22% of mappable GT (FN=29/132) because the fuzzer does not always reach the vulnerable branch.
