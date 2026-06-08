@@ -1,0 +1,78 @@
+{
+  "title": "RBCTest: Leveraging LLMs to Mine and Verify Oracles of API Response Bodies for RESTful API Testing",
+  "doi": "10.1145/3744916.3787775",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original RBCTest pipeline automatically mines constraints from OpenAPI specifications and generates test cases to detect mismatches in real REST API responses. It operates in three phases: (1) Constraint Mining — an LLM reads the OAS spec and a real API response to identify two constraint types: Response Property (RP) constraints on field schemas (type, enum, URI format, nullable) and Request-Response (RR) constraints where a request parameter determines a response field value; (2) Test Generation — the LLM generates Python verification scripts for each mined constraint; (3) Test Execution — scripts are executed against real responses and verdicts are collected. The original pipeline uses GPT-4o with an Observation-Confirmation (OC) two-step prompting scheme and reports results averaged over 5 independent runs.",
+    "This reproduction replaces all LLM phases with a single Claude Sonnet 4.6 call that takes the OAS spec and one real API response and outputs both constraint types in one structured JSON response. Two prompt strategies are evaluated: Prompt A (black-box, provides the output schema and a few-shot example but no explicit reasoning steps) and Prompt B (chain-of-thought, adds 9 explicit reasoning steps covering spec reading, property observation, RR identification, script generation, and output formatting). The pipeline runs on 9 of the 11 AGORA+ benchmark services — the 2 GitHub services are excluded because their OAS specs are ~460K tokens each, exceeding the 190K token context limit."
+  ],
+  "dataset": {
+    "name": "AGORA+ benchmark",
+    "services_evaluated": 9,
+    "services_total": 11,
+    "services_excluded": ["Github CreateOrganizationRepository", "Github GetOrganizationRepositories"],
+    "exclusion_reason": "OAS specs ~1.6MB (~460K tokens) each, exceeding 190K token context limit",
+    "ground_truth_source": "approaches/agora_data/our_ground_truth/<service>/",
+    "input_source": "datasets/agora/<service>/"
+  },
+  "metric": ["Precision", "Recall", "F1"],
+  "metric_note": "Macro-averaged P/R/F1 across 9 services; constraint match key is (operation, response_resource, attribute) triple; RP and RR constraints evaluated together (RQ1 only).",
+  "original_result": {
+    "note": "5-seed mean from CompareAGORAData.xlsx (Mining sheet); values shown for the 9 feasible services only",
+    "macro_avg_9_services": {
+      "P": 82.9,
+      "R": 81.2,
+      "F1": 81.6
+    },
+    "per_service": {
+      "OMDB bySearch":          {"gt": 6,   "P": 74.3, "R": 86.7, "F1": 80.0},
+      "OMDB byIdOrTitle":       {"gt": 15,  "P": 93.7, "R": 78.7, "F1": 85.5},
+      "Yelp getBusinesses":     {"gt": 4,   "P": 64.0, "R": 80.0, "F1": 71.1},
+      "Hotel Search":           {"gt": 59,  "P": 90.9, "R": 77.9, "F1": 83.9},
+      "Spotify createPlaylist": {"gt": 27,  "P": 75.6, "R": 74.4, "F1": 75.0},
+      "Spotify getAlbumTracks": {"gt": 21,  "P": 81.7, "R": 80.2, "F1": 80.9},
+      "Spotify getArtistAlbums":{"gt": 16,  "P": 81.9, "R": 93.9, "F1": 87.5},
+      "Marvel getComicById":    {"gt": 50,  "P": 89.8, "R": 74.1, "F1": 81.2},
+      "Youtube GetVideos":      {"gt": 161, "P": 94.1, "R": 84.5, "F1": 89.1}
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "macro_avg_9_services": {
+        "P": 53.7,
+        "R": 41.6,
+        "F1": 44.7
+      },
+      "micro_total_9_services": {
+        "gt": 318,
+        "mined": 139,
+        "tp": 72,
+        "fp": 67,
+        "fn": 246,
+        "P": 51.8,
+        "R": 22.6,
+        "F1": 31.5
+      },
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "macro_avg_9_services": {
+        "P": 61.8,
+        "R": 40.6,
+        "F1": 45.3
+      },
+      "micro_total_9_services": {
+        "gt": 318,
+        "mined": 126,
+        "tp": 75,
+        "fp": 51,
+        "fn": 243,
+        "P": 59.5,
+        "R": 23.6,
+        "F1": 33.8
+      },
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 2.34
+}
