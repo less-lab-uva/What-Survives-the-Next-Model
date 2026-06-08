@@ -3,12 +3,14 @@
 | Directory (DOI) | Paper |
 |-----------------|-------|
 | [`10.1145-3744916.3787839`](./10.1145-3744916.3787839) | Toxicity Ahead: Forecasting Conversational Derailment on GitHub |
+| [`ICSE_10(10.1145-3744916.3773224)`](./ICSE_10(10.1145-3744916.3773224)) | What to Retrieve for Effective Retrieval-Augmented Code Generation? An Empirical Study and Beyond |
 | [`ICSE_11(10.1145-3744916.3773248)`](./ICSE_11(10.1145-3744916.3773248)) | Knowledge-Augmented Log Anomaly Detection with Large Language Models |
 | [`ICSE_14(10.1145-3744916.3764576)`](./ICSE_14(10.1145-3744916.3764576)/) | Are "Solved Issues" in SWE-bench Really Solved Correctly? An Empirical Study |
 | [`ICSE_18(10.1145-3744916.3773143)`](./ICSE_18(10.1145-3744916.3773143)) | Enhancing LLM Code Generation with Ensembles: A Similarity-Based Selection Approach |
 | [`ICSE_19(10.1145-3744916.3773197)`](./ICSE_19(10.1145-3744916.3773197)) | SEER: Enhancing Chain-of-Thought Code Generation through Self-Exploring Deep Reasoning |
 | [`ICSE_20(10.1145-3744916.3773206)`](./ICSE_20(10.1145-3744916.3773206)) | HoarePrompt: Structural Reasoning About Program Correctness in Natural Language |
 | [`ICSE_25(10.1145-3744916.3773191)`](./ICSE_25(10.1145-3744916.3773191)) | SecureReviewer: Enhancing Large Language Models for Secure Code Review through Secure-Aware Fine-Tuning |
+| [`ICSE_32(10.1145-3744916.3773265))`](./ICSE_32(10.1145-3744916.3773265)) | From Seed to Scope: Reasoning to Identify Change Impact Sets |
 | [`ICSE_38(10.1145-3744916.3787821)`](./ICSE_38(10.1145-3744916.3787821)) | ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction |
 | [`ICSE_42(10.1145-3744916.3773144)`](./ICSE_42(10.1145-3744916.3773144)) | AdapTrack: Constrained Decoding without Distorting LLM's Output Intent |
 | [`ICSE_52(10.1145-3744916.3764553)`](./ICSE_52(10.1145-3744916.3764553)) | LLM Test Generation via Iterative Hybrid Program Analysis |
