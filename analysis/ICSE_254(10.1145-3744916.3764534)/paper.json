@@ -1,0 +1,67 @@
+{
+  "title": "Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search",
+  "doi": "10.1145/3744916.3764534",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original ReInFix approach improves LLM-based program repair by searching for repair ingredients that help the model reason about and synthesize patches.",
+    "This reproduction uses simplified single-LLM repair prompts over sampled Defects4J bugs and records generated patches for later Defects4J validation."
+  ],
+  "dataset": {
+    "name": "Defects4J",
+    "sample_size": 300,
+    "by_version": {
+      "v1.2": 150,
+      "v2.0": 150
+    }
+  },
+  "metric": [
+    "Compiles and Passes All Defects4J Tests"
+  ],
+  "original_result": {
+    "by_version": {
+      "v1.2": {
+        "compiles_and_passes_all_d4j_tests": 207
+      },
+      "v2.0": {
+        "compiles_and_passes_all_d4j_tests": 190
+      }
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "generated_patches": 300,
+      "validated_patches": 300,
+      "compiles_and_passes_all_d4j_tests": 123,
+      "by_version": {
+        "v1.2": {
+          "generated_patches": 150,
+          "validated_patches": 150,
+          "compiles_and_passes_all_d4j_tests": 65
+        },
+        "v2.0": {
+          "generated_patches": 150,
+          "validated_patches": 150,
+          "compiles_and_passes_all_d4j_tests": 58
+        }
+      }
+    },
+    "prompt_B": {
+      "generated_patches": 300,
+      "validated_patches": 300,
+      "compiles_and_passes_all_d4j_tests": 140,
+      "by_version": {
+        "v1.2": {
+          "generated_patches": 150,
+          "validated_patches": 150,
+          "compiles_and_passes_all_d4j_tests": 69
+        },
+        "v2.0": {
+          "generated_patches": 150,
+          "validated_patches": 150,
+          "compiles_and_passes_all_d4j_tests": 71
+        }
+      }
+    }
+  },
+  "total_cost": "$14.59"
+}
