@@ -1,0 +1,66 @@
+{
+  "title": "From Seed to Scope: Reasoning to Identify Change Impact Sets",
+  "doi": "10.1145/3744916.3773265",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original Ripple pipeline performs intent-aware change impact analysis (CIA) through two phases: a Recall-Focused phase that expands the impact set from a seed edit location using evolutionary coupling (commit history) and dependence coupling (call/class-member dependencies), and a Precision-Focused phase where a Planner LLM generates a change plan via Chain-of-Thought and a Reasoner LLM independently predicts impacted methods for each dependence cluster, applying sample-and-marginalize (intersection) across 5 candidates per cluster and union across all clusters. The pipeline uses GPT-4o, Claude-3.5 Sonnet, or Gemini-2.0 Flash as the LLM backbone.",
+    "This reproduction replaces the full two-phase Ripple pipeline with a single Claude Sonnet 4.6 call per instance using two prompt strategies: a black-box prompt (Prompt A) that provides the bug report, seed method, full repository structure XML, and commit history and asks the model to directly predict impacted methods, and an informed prompt (Prompt B) that extends Prompt A with an explicit 10-step reasoning process covering commit history mining, dependence-enhanced set expansion, three-pass repository slicing, internal change plan generation, and intersection-based aggregation with change-plan tie-breaking.",
+    "The original_result values reported here differ from the paper's Table 1 because they are computed only on the 5 instances that our pipeline has evaluated so far (not on all 100). This allows a direct, apples-to-apples comparison: both the original pipeline and our pipeline are scored on the exact same instances. Additionally, the original pipeline predictions are evaluated in numeric ID-space (method IDs from impact-set-methods in cia-dataset.json matched against the original pipeline's numeric predictions from all-outputs.zip), whereas our predictions are evaluated in name-space (method names extracted from the commit diff). This difference in evaluation space is an inherent limitation of the comparison, as the all-methods.json ID-to-name mapping is unavailable."
+  ],
+  "dataset": {
+    "name": "CIA Benchmark (Apache Java projects)",
+    "sample_size": 10,
+    "full_size": 100,
+    "sample_fraction": 0.1,
+    "note": "866 total instances across 25 Apache repos; paper evaluates on 100 untangled bug-fixing commits (50 with ≤5 co-changed methods, 50 with >5). We sample 10% = 10 instances."
+  },
+  "metric": [
+    "Macro Precision",
+    "Macro Recall",
+    "Macro F1",
+    "Hit@custom"
+  ],
+  "original_result": {
+    "note": "Evaluated on the same 5 instances our pipeline ran, using numeric ID-space GT from cia-dataset.json impact-set-methods. Not comparable to paper Table 1 (which covers all 100 instances).",
+    "Ripple-GPT-4o": {
+      "hit_at_custom": 0.800,
+      "macro_precision": 0.3988,
+      "macro_recall": 0.4167,
+      "macro_f1": 0.3555,
+      "instances": 5
+    },
+    "Ripple-Claude-3.5-Sonnet": {
+      "hit_at_custom": 0.800,
+      "macro_precision": 0.3571,
+      "macro_recall": 0.4726,
+      "macro_f1": 0.3780,
+      "instances": 5
+    },
+    "Ripple-Gemini-2.0-Flash": {
+      "hit_at_custom": 0.600,
+      "macro_precision": 0.3633,
+      "macro_recall": 0.2524,
+      "macro_f1": 0.2961,
+      "instances": 5
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "macro_precision": 0.200,
+      "macro_recall": 0.220,
+      "macro_f1": 0.209,
+      "hit_at_custom": 0.400,
+      "instances": 5,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "macro_precision": 0.167,
+      "macro_recall": 0.180,
+      "macro_f1": 0.173,
+      "hit_at_custom": 0.400,
+      "instances": 5,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 18.31
+}
