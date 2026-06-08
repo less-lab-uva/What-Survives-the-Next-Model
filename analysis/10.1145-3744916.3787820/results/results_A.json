@@ -1,0 +1,251 @@
+{
+  "metric": "macro_f1 (step verification, 3-class True/False/Unknown, flattened per dataset+model, macro average)",
+  "prompt_variant": "A",
+  "mean_per_dataset": {
+    "folio": 0.5682,
+    "prontoqa_ood": 0.7602,
+    "proofwriter": 0.6579
+  },
+  "per_run": [
+    {
+      "dataset": "folio",
+      "model": "folio_train_DeepseekR1Qwen32b",
+      "macro_f1": 0.42177083333333326,
+      "n_steps": 143,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_DeepseekR1Qwen7b",
+      "macro_f1": 0.6288745827372436,
+      "n_steps": 122,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_deepseekr1",
+      "macro_f1": 0.32539682539682535,
+      "n_steps": 129,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_gpt3.5",
+      "macro_f1": 0.8825031928480204,
+      "n_steps": 140,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_gpt4o",
+      "macro_f1": 0.529531051964512,
+      "n_steps": 138,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_gpto4mini",
+      "macro_f1": 0.48605577689243024,
+      "n_steps": 129,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_llama3170b",
+      "macro_f1": 0.5632152276115124,
+      "n_steps": 170,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_llama318b",
+      "macro_f1": 0.8608695652173912,
+      "n_steps": 149,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_qwen257b",
+      "macro_f1": 0.6614836649471875,
+      "n_steps": 161,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "folio",
+      "model": "folio_train_qwen32b",
+      "macro_f1": 0.3218390804597701,
+      "n_steps": 121,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_DeepseekR1Qwen32b",
+      "macro_f1": 1.0,
+      "n_steps": 122,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_DeepseekR1Qwen7b",
+      "macro_f1": 0.5811961722488038,
+      "n_steps": 151,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_deepseekr1",
+      "macro_f1": 1.0,
+      "n_steps": 130,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_gpt3.5",
+      "macro_f1": 0.5640826873385013,
+      "n_steps": 206,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_gpt4o",
+      "macro_f1": 1.0,
+      "n_steps": 183,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_gpto4mini",
+      "macro_f1": 0.49748743718592964,
+      "n_steps": 100,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_llama3170b",
+      "macro_f1": 0.8989775051124744,
+      "n_steps": 247,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_llama318b",
+      "macro_f1": 0.5393887623386484,
+      "n_steps": 230,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_qwen257b",
+      "macro_f1": 0.5204425204425204,
+      "n_steps": 259,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "prontoqa_ood",
+      "model": "prontoqa_ood_4hop_qwen32b",
+      "macro_f1": 1.0,
+      "n_steps": 120,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_DeepseekR1Qwen32b",
+      "macro_f1": 0.33031218529707956,
+      "n_steps": 168,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_DeepseekR1Qwen7b",
+      "macro_f1": 0.6590357203564751,
+      "n_steps": 208,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_deepseekr1",
+      "macro_f1": 0.6655132641291811,
+      "n_steps": 148,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_gpt3.5",
+      "macro_f1": 0.4979166666666666,
+      "n_steps": 168,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_gpt4o",
+      "macro_f1": 1.0,
+      "n_steps": 199,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_gpto4mini",
+      "macro_f1": 0.6,
+      "n_steps": 116,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_llama3170b",
+      "macro_f1": 0.6630469977044823,
+      "n_steps": 295,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_llama318b",
+      "macro_f1": 0.6498328826017613,
+      "n_steps": 253,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_qwen257b",
+      "macro_f1": 0.7811269823416939,
+      "n_steps": 304,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    },
+    {
+      "dataset": "proofwriter",
+      "model": "proofwriter_dev_qwen32b",
+      "macro_f1": 0.7320174517626746,
+      "n_steps": 167,
+      "unaligned_instances": 0,
+      "bad_label_instances": 0
+    }
+  ]
+}

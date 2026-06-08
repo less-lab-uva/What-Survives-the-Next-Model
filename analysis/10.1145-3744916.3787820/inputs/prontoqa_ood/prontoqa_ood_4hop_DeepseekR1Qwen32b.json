@@ -1,0 +1,596 @@
+[
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example13_example",
+    "premises": [
+      "(1) Everything that is a gorpus or a vumpus or a numpus is a brimpus.",
+      "(2) Everything that is a gorpus or a sterpus or a brimpus is a rompus.",
+      "(3) Every dumpus is a wumpus.",
+      "(4) Everything that is a gorpus or a vumpus or a numpus is a shumpus and a tumpus and an impus.",
+      "(5) Everything that is a wumpus or an impus or a brimpus is a yumpus.",
+      "(6) Every shumpus is a rompus.",
+      "(7) Lorpuses are brimpuses.",
+      "(8) Tumpuses are wumpuses.",
+      "(9) Sally is a brimpus and a yumpus and a sterpus.",
+      "(10) Sally is a lorpus, a gorpus, and a dumpus."
+    ],
+    "question": "Sally is an impus, a tumpus, or a grimpus.",
+    "reasoning_steps": [
+      "(1) Everything that is a gorpus or a vumpus or a numpus is a brimpus.",
+      "(2) Sally is a gorpus.",
+      "(3) Sally is a brimpus.",
+      "(4) Everything that is a gorpus or a vumpus or a numpus is a shumpus and a tumpus and an impus.",
+      "(5) Sally is a shumpus, a tumpus, and an impus.",
+      "(6) Sally is an impus and a tumpus."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example67_example",
+    "premises": [
+      "(1) Everything that is a dumpus or a numpus or a wumpus is a gorpus.",
+      "(2) Everything that is a grimpus or a wumpus or a sterpus is an impus and a yumpus and a lempus.",
+      "(3) Everything that is a vumpus, a sterpus, or a tumpus is a lorpus.",
+      "(4) Every lempus is a zumpus.",
+      "(5) Everything that is a dumpus or a numpus or a wumpus is a sterpus.",
+      "(6) Everything that is a zumpus, a numpus, or a tumpus is a gorpus.",
+      "(7) Yumpuses are lorpuses.",
+      "(8) Everything that is a grimpus or a wumpus or a sterpus is a tumpus.",
+      "(9) Sally is a shumpus.",
+      "(10) Sally is a numpus."
+    ],
+    "question": "Sally is an impus.",
+    "reasoning_steps": [
+      "(1) Sally is a numpus.",
+      "(2) Everything that is a dumpus, numpus, or wumpus is a sterpus.",
+      "(3) Sally is a sterpus.",
+      "(4) Everything that is a grimpus, wumpus, or sterpus is an impus, yumpus, and lempus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example48_example3",
+    "premises": [
+      "(1) Zumpuses are rompuses.",
+      "(2) Each sterpus is temperate.",
+      "(3) Brimpuses are floral.",
+      "(4) Every numpus is discordant.",
+      "(5) Every zumpus is luminous.",
+      "(6) Every wumpus is large.",
+      "(7) Numpuses are vumpuses.",
+      "(8) Every wumpus is a dumpus.",
+      "(9) Sterpuses are numpuses.",
+      "(10) Impuses are transparent.",
+      "(11) Each wumpus is a brimpus.",
+      "(12) Each brimpus is a sterpus.",
+      "(13) Each brimpus is a jompus.",
+      "(14) Jompuses are not dull.",
+      "(15) Each vumpus is nervous.",
+      "(16) Numpuses are grimpuses.",
+      "(17) Sterpuses are impuses.",
+      "(18) Each dumpus is not brown.",
+      "(19) Fae is a wumpus.",
+      "(20) Fae is a zumpus."
+    ],
+    "question": "Fae is discordant.",
+    "reasoning_steps": [
+      "(1) Fae is a wumpus.",
+      "(2) Every wumpus is a brimpus.",
+      "(3) Brimpuses are floral.",
+      "(4) Each brimpus is a sterpus.",
+      "(5) Sterpuses are numpuses.",
+      "(6) Every numpus is discordant.",
+      "(7) Fae is a numpus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example63_example",
+    "premises": [
+      "(1) Dumpuses are not bright.",
+      "(2) Gorpuses are yumpuses.",
+      "(3) Each rompus is a dumpus.",
+      "(4) Lorpuses are numpuses.",
+      "(5) Each gorpus is a rompus.",
+      "(6) Every rompus is large.",
+      "(7) Zumpuses are not sweet.",
+      "(8) Each impus is a lorpus.",
+      "(9) Gorpuses are fast.",
+      "(10) Every vumpus is not windy.",
+      "(11) Every numpus is not opaque.",
+      "(12) Every lorpus is a gorpus.",
+      "(13) Rompuses are brimpuses.",
+      "(14) Each zumpus is a grimpus.",
+      "(15) Impuses are vumpuses.",
+      "(16) Each yumpus is not blue.",
+      "(17) Each lorpus is wooden.",
+      "(18) Impuses are happy.",
+      "(19) Sam is a zumpus.",
+      "(20) Sam is an impus."
+    ],
+    "question": "Sam is large.",
+    "reasoning_steps": [
+      "(1) Each impus is a lorpus.",
+      "(2) Each lorpus is a gorpus.",
+      "(3) Each gorpus is a rompus.",
+      "(4) Every rompus is large.",
+      "(5) Sam is an impus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example20_example4",
+    "premises": [
+      "(1) Tumpuses are not liquid.",
+      "(2) Every rompus is a zumpus.",
+      "(3) Grimpuses are bitter.",
+      "(4) Each yumpus is a gorpus.",
+      "(5) Vumpuses are grimpuses.",
+      "(6) Brimpuses are dumpuses.",
+      "(7) Jompuses are brimpuses.",
+      "(8) Brimpuses are snowy.",
+      "(9) Each vumpus is a wumpus.",
+      "(10) Rompuses are not large.",
+      "(11) Brimpuses are vumpuses.",
+      "(12) Each rompus is a tumpus.",
+      "(13) Jompuses are impuses.",
+      "(14) Dumpuses are not red.",
+      "(15) Tumpuses are shumpuses.",
+      "(16) Each vumpus is feisty.",
+      "(17) Each impus is hot.",
+      "(18) Every shumpus is earthy.",
+      "(19) Every zumpus is not aggressive.",
+      "(20) Every yumpus is moderate.",
+      "(21) Each jompus is melodic.",
+      "(22) Tumpuses are jompuses.",
+      "(23) Wren is a tumpus.",
+      "(24) Wren is a yumpus."
+    ],
+    "question": "Wren is feisty.",
+    "reasoning_steps": [
+      "(1) Wren is a tumpus.",
+      "(2) Tumpuses are jompuses.",
+      "(3) Jompuses are brimpuses.",
+      "(4) Brimpuses are vumpuses.",
+      "(5) Each vumpus is feisty."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example72_example5",
+    "premises": [
+      "(1) Everything that is a lorpus or a tumpus is a numpus.",
+      "(2) Everything that is an impus or a shumpus is a sterpus.",
+      "(3) Everything that is a lorpus or a tumpus is a sterpus.",
+      "(4) Sally is not a sterpus.",
+      "(5) Sally is not a rompus."
+    ],
+    "question": "Sally is not a tumpus and Sally is not a lorpus.",
+    "reasoning_steps": [
+      "(1) Sally cannot be a lorpus or tumpus.",
+      "(2) that would make her a sterpus, which she is not.",
+      "(3) Everything that is a lorpus or a tumpus is a sterpus.",
+      "(4) Sally is not a sterpus."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example96_example",
+    "premises": [
+      "(1) Lempuses are grimpuses.",
+      "(2) Every zumpus is a wumpus.",
+      "(3) Lempuses are zumpuses.",
+      "(4) Everything that is a lorpus and a numpus and a jompus is a lempus, a gorpus, and a sterpus.",
+      "(5) Gorpuses are dumpuses.",
+      "(6) Sally is a brimpus.",
+      "(7) Everything that is a dumpus and a lorpus and a brimpus is a grimpus.",
+      "(8) Sally is a dumpus.",
+      "(9) Every sterpus is a wumpus.",
+      "(10) Zumpuses are shumpuses.",
+      "(11) Sally is a lorpus.",
+      "(12) Everything that is a lorpus, a numpus, and a jompus is a brimpus.",
+      "(13) Sally is a lorpus.",
+      "(14) Sally is a tumpus.",
+      "(15) Sally is a numpus.",
+      "(16) Sally is a jompus."
+    ],
+    "question": "Sally is a shumpus.",
+    "reasoning_steps": [
+      "(1) The premises establish that Sally is a Lempus, which makes her a zumpus.",
+      "(2) Since zumpuses are shumpuses, Sally must be a shumpus.",
+      "(3) Lempuses are grimpuses.",
+      "(4) Lempuses are zumpuses.",
+      "(5) Everything that is a lorpus, numpus, and jompus is a lempus.",
+      "(6) Sally is a lorpus, numpus, and jompus.",
+      "(7) Zumpuses are shumpuses."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example3_example",
+    "premises": [
+      "(1) Each wumpus is a shumpus.",
+      "(2) Every grimpus is a vumpus.",
+      "(3) Everything that is a rompus, a sterpus, or a lorpus is a vumpus.",
+      "(4) Impuses are brimpuses.",
+      "(5) Everything that is a gorpus or a lempus or a wumpus is a tumpus and a grimpus and a rompus.",
+      "(6) Everything that is a shumpus or a gorpus or a yumpus is a vumpus.",
+      "(7) Everything that is a gorpus or a lempus or a wumpus is a shumpus.",
+      "(8) Every tumpus is a lorpus.",
+      "(9) Sam is a sterpus and a shumpus and a yumpus.",
+      "(10) Sam is an impus and a gorpus and a wumpus."
+    ],
+    "question": "Sam is a zumpus, an impus, or a rompus.",
+    "reasoning_steps": [
+      "(1) Sam is an impus, a gorpus, and a wumpus.",
+      "(2) Everything that is a gorpus, lempus, or wumpus is a tumpus, grimpus, and rompus.",
+      "(3) Sam is a tumpus, grimpus, and rompus.",
+      "(4) Sam is a rompus."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example82_example0",
+    "premises": [
+      "(1) Everything that is a numpus, a yumpus, or a jompus is a dumpus.",
+      "(2) Rompuses are lempuses.",
+      "(3) Everything that is a vumpus, a lempus, or a numpus is a gorpus.",
+      "(4) Lorpuses are vumpuses.",
+      "(5) Everything that is a rompus or a tumpus or a lempus is a yumpus.",
+      "(6) Zumpuses are dumpuses.",
+      "(7) Each rompus is a dumpus.",
+      "(8) Everything that is a rompus or a tumpus or a lempus is a numpus.",
+      "(9) Polly is a gorpus and a numpus and a grimpus.",
+      "(10) Polly is a zumpus, a lorpus, and a rompus."
+    ],
+    "question": "Polly is an impus or a tumpus or a yumpus.",
+    "reasoning_steps": [
+      "(1) Polly is a rompus.",
+      "(2) Rompuses are lempuses.",
+      "(3) Everything that is a rompus, tumpus, or lempus is a yumpus.",
+      "(4) Polly is a yumpus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example96_example2",
+    "premises": [
+      "(1) Numpuses are tumpuses.",
+      "(2) Brimpuses are rainy.",
+      "(3) Each shumpus is dull.",
+      "(4) Impuses are metallic.",
+      "(5) Rompuses are floral.",
+      "(6) Each dumpus is not loud.",
+      "(7) Every shumpus is a zumpus.",
+      "(8) Impuses are dumpuses.",
+      "(9) Lempuses are numpuses.",
+      "(10) Every numpus is an impus.",
+      "(11) Every jompus is a rompus.",
+      "(12) Every tumpus is feisty.",
+      "(13) Every shumpus is a lempus.",
+      "(14) Impuses are sterpuses.",
+      "(15) Each zumpus is sweet.",
+      "(16) Wumpuses are orange.",
+      "(17) Each numpus is not opaque.",
+      "(18) Jompuses are shumpuses.",
+      "(19) Jompuses are not temperate.",
+      "(20) Every lempus is a wumpus.",
+      "(21) Brimpuses are vumpuses.",
+      "(22) Every lempus is large.",
+      "(23) Wren is a shumpus.",
+      "(24) Wren is a brimpus."
+    ],
+    "question": "Wren is metallic.",
+    "reasoning_steps": [
+      "(1) Wren is a shumpus.",
+      "(2) Every shumpus is a lempus.",
+      "(3) Every lempus is a wumpus.",
+      "(4) Every numpus is an impus.",
+      "(5) Lempuses are numpuses.",
+      "(6) Impuses are metallic.",
+      "(7) Wren is an impus."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example67_example4",
+    "premises": [
+      "(1) Jompuses are brimpuses.",
+      "(2) Every numpus is a jompus, a gorpus, and a rompus.",
+      "(3) Every rompus is a numpus and a lempus and a sterpus.",
+      "(4) Everything that is a gorpus or a lorpus or an impus is a shumpus.",
+      "(5) Rompuses are yumpuses.",
+      "(6) Sterpuses are wumpuses.",
+      "(7) Rompuses are tumpuses.",
+      "(8) Lempuses are dumpuses.",
+      "(9) Numpuses are tumpuses.",
+      "(10) Rex is a tumpus.",
+      "(11) Rex is a rompus."
+    ],
+    "question": "Rex is a numpus, a sterpus, or a gorpus.",
+    "reasoning_steps": [
+      "(1) Rex is a rompus.",
+      "(2) Every rompus is a numpus.",
+      "(3) Rex is a numpus.",
+      "(4) Every rompus is a sterpus.",
+      "(5) Rex is a sterpus.",
+      "(6) Every numpus is a gorpus.",
+      "(7) Rex is a gorpus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example91_example6",
+    "premises": [
+      "(1) Each rompus is a zumpus.",
+      "(2) Gorpuses are kind.",
+      "(3) Each brimpus is a lempus.",
+      "(4) Sterpuses are lorpuses.",
+      "(5) Brimpuses are rompuses.",
+      "(6) Every rompus is a sterpus.",
+      "(7) Each vumpus is not orange.",
+      "(8) Gorpuses are vumpuses.",
+      "(9) Wumpuses are dumpuses.",
+      "(10) Each rompus is nervous.",
+      "(11) Every wumpus is opaque.",
+      "(12) Every numpus is not large.",
+      "(13) Each sterpus is fast.",
+      "(14) Brimpuses are not fruity.",
+      "(15) Gorpuses are brimpuses.",
+      "(16) Lempuses are muffled.",
+      "(17) Sterpuses are numpuses.",
+      "(18) Each zumpus is not sunny.",
+      "(19) Max is a wumpus.",
+      "(20) Max is a gorpus."
+    ],
+    "question": "Max is fast.",
+    "reasoning_steps": [
+      "(1) Max is a gorpus.",
+      "(2) Gorpuses are brimpuses.",
+      "(3) Brimpuses are rompuses.",
+      "(4) Every rompus is a sterpus.",
+      "(5) Each sterpus is fast."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example26_example",
+    "premises": [
+      "(1) Wren is a yumpus.",
+      "(2) Wren is a jompus.",
+      "(3) Every jompus is a numpus.",
+      "(4) Tumpuses are numpuses.",
+      "(5) Every dumpus is a yumpus.",
+      "(6) Everything that is a jompus, a grimpus, and a rompus is a vumpus.",
+      "(7) Each shumpus is a sterpus.",
+      "(8) Every wumpus is a jompus, a shumpus, and a dumpus.",
+      "(9) Everything that is a jompus, a grimpus, and a rompus is a dumpus and a wumpus and a tumpus.",
+      "(10) Wumpuses are gorpuses.",
+      "(11) Wren is a sterpus.",
+      "(12) Everything that is a jompus, a yumpus, and a sterpus is a vumpus.",
+      "(13) Wren is a jompus.",
+      "(14) Wren is a gorpus.",
+      "(15) Wren is a grimpus.",
+      "(16) Wren is a rompus."
+    ],
+    "question": "Wren is a dumpus.",
+    "reasoning_steps": [
+      "(1) Wren is a jompus.",
+      "(2) Wren is a grimpus.",
+      "(3) Wren is a rompus.",
+      "(4) Everything that is a jompus, a grimpus, and a rompus is a dumpus."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example78_example2",
+    "premises": [
+      "(1) Impuses are floral.",
+      "(2) Sterpuses are tumpuses.",
+      "(3) Each shumpus is a sterpus.",
+      "(4) Each sterpus is a numpus.",
+      "(5) Zumpuses are lempuses.",
+      "(6) Jompuses are shy.",
+      "(7) Each shumpus is dull.",
+      "(8) Each brimpus is large.",
+      "(9) Each zumpus is a brimpus.",
+      "(10) Every rompus is luminous.",
+      "(11) Gorpuses are brown.",
+      "(12) Lempuses are shumpuses.",
+      "(13) Lempuses are bitter.",
+      "(14) Every jompus is a zumpus.",
+      "(15) Dumpuses are amenable.",
+      "(16) Every lempus is an impus.",
+      "(17) Every shumpus is a rompus.",
+      "(18) Every zumpus is sunny.",
+      "(19) Every tumpus is not discordant.",
+      "(20) Jompuses are dumpuses.",
+      "(21) Every gorpus is a grimpus.",
+      "(22) Sterpuses are not temperate.",
+      "(23) Sam is a jompus.",
+      "(24) Sam is a gorpus."
+    ],
+    "question": "Sam is dull.",
+    "reasoning_steps": [
+      "(1) Sam is a jompus, which is a zumpus.",
+      "(2) Zumpuses are lempuses, which are shumpuses.",
+      "(3) Each shumpus is dull."
+    ]
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example55_example",
+    "premises": [
+      "(1) Grimpuses are sterpuses.",
+      "(2) Every rompus is a wumpus.",
+      "(3) Dumpuses are rompuses.",
+      "(4) Sterpuses are dumpuses.",
+      "(5) Grimpuses are shumpuses.",
+      "(6) Each gorpus is spicy.",
+      "(7) Every zumpus is a numpus.",
+      "(8) Sterpuses are jompuses.",
+      "(9) Every jompus is dull.",
+      "(10) Rompuses are luminous.",
+      "(11) Sterpuses are temperate.",
+      "(12) Every dumpus is a brimpus.",
+      "(13) Grimpuses are sunny.",
+      "(14) Each yumpus is fruity.",
+      "(15) Each zumpus is not transparent.",
+      "(16) Each vumpus is melodic.",
+      "(17) Every gorpus is a grimpus.",
+      "(18) Every shumpus is not mean.",
+      "(19) Every dumpus is not happy.",
+      "(20) Rompuses are yumpuses.",
+      "(21) Every brimpus is not orange.",
+      "(22) Each gorpus is a vumpus.",
+      "(23) Stella is a gorpus.",
+      "(24) Stella is a zumpus."
+    ],
+    "question": "Stella is not happy.",
+    "reasoning_steps": [
+      "(1) Stella is a gorpus.",
+      "(2) Every gorpus is a grimpus.",
+      "(3) Grimpuses are sterpuses.",
+      "(4) Sterpuses are dumpuses.",
+      "(5) Every dumpus is not happy.",
+      "(6) Stella is a dumpus."
+    ]
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example74_example",
+    "premises": [
+      "(1) Stella is a rompus.",
+      "(2) Each dumpus is a yumpus.",
+      "(3) Each vumpus is a yumpus.",
+      "(4) Shumpuses are wumpuses.",
+      "(5) Everything that is a sterpus and a numpus and a rompus is a yumpus.",
+      "(6) Everything that is a sterpus, a brimpus, and a wumpus is a dumpus.",
+      "(7) Everything that is a sterpus, a brimpus, and a wumpus is a jompus.",
+      "(8) Each shumpus is a jompus.",
+      "(9) Lempuses are jompuses.",
+      "(10) Every lempus is a sterpus.",
+      "(11) Stella is a numpus.",
+      "(12) Dumpuses are shumpuses, vumpuses, and lorpuses.",
+      "(13) Gorpuses are brimpuses.",
+      "(14) Stella is a sterpus.",
+      "(15) Stella is a lempus.",
+      "(16) Stella is a gorpus.",
+      "(17) Stella is a zumpus.",
+      "(18) Stella is a shumpus."
+    ],
+    "question": "Stella is a lorpus.",
+    "reasoning_steps": [
+      "(1) Stella is a rompus.",
+      "(2) Everything that is a sterpus and a numpus and a rompus is a yumpus.",
+      "(3) Stella is a sterpus, a numpus, and a rompus.",
+      "(4) Each dumpus is a yumpus.",
+      "(5) Dumpuses are shumpuses, vumpuses, and lorpuses.",
+      "(6) Stella is a shumpus.",
+      "(7) Everything that is a sterpus, a brimpus, and a wumpus is a dumpus.",
+      "(8) Stella is a sterpus, a brimpus (as she is a gorpus), and a wumpus (as she is a shumpus)."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example3_example",
+    "premises": [
+      "(1) Shumpuses are zumpuses.",
+      "(2) Yumpuses are numpuses.",
+      "(3) Everything that is a lempus, a shumpus, and a grimpus is a yumpus, a rompus, and a gorpus.",
+      "(4) Max is a zumpus.",
+      "(5) Dumpuses are tumpuses.",
+      "(6) Gorpuses are brimpuses.",
+      "(7) Max is a lempus.",
+      "(8) Everything that is a lempus and a shumpus and a grimpus is a tumpus.",
+      "(9) Max is a numpus.",
+      "(10) Everything that is a numpus and a lempus and a zumpus is a wumpus.",
+      "(11) Rompuses are impuses.",
+      "(12) Gorpuses are dumpuses and shumpuses and lorpuses.",
+      "(13) Max is a brimpus.",
+      "(14) Max is a lempus.",
+      "(15) Max is a shumpus.",
+      "(16) Max is a grimpus."
+    ],
+    "question": "Max is a lorpus.",
+    "reasoning_steps": [
+      "(1) Shumpuses are zumpuses.",
+      "(2) Max is a shumpus.",
+      "(3) Max is a zumpus.",
+      "(4) Everything that is a lempus, a shumpus, and a grimpus is a yumpus, a rompus, and a gorpus.",
+      "(5) Max is a lempus.",
+      "(6) Max is a grimpus.",
+      "(7) Max is a yumpus.",
+      "(8) Max is a rompus.",
+      "(9) Max is a gorpus.",
+      "(10) Gorpuses are dumpuses and shumpuses and lorpuses.",
+      "(11) Max is a dumpus."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example98_example0",
+    "premises": [
+      "(1) Brimpuses are gorpuses.",
+      "(2) Jompuses are impuses.",
+      "(3) Zumpuses are vumpuses.",
+      "(4) Dumpuses are lempuses and wumpuses and shumpuses.",
+      "(5) Everything that is a wumpus, a yumpus, or a sterpus is an impus.",
+      "(6) Everything that is a wumpus, a yumpus, or a sterpus is a grimpus.",
+      "(7) Every dumpus is a numpus.",
+      "(8) Everything that is a wumpus or a rompus or a gorpus is a numpus.",
+      "(9) Every lempus is a vumpus.",
+      "(10) Shumpuses are lorpuses.",
+      "(11) Fae is a grimpus, a rompus, and a lorpus.",
+      "(12) Fae is a brimpus and Fae is a zumpus and Fae is not an impus."
+    ],
+    "question": "Fae is not a dumpus.",
+    "reasoning_steps": [
+      "(1) Brimpuses are gorpuses.",
+      "(2) Fae is a gorpus.",
+      "(3) Zumpuses are vumpuses.",
+      "(4) Fae is a vumpus.",
+      "(5) Fae is a grimpus, a rompus, and a lorpus.",
+      "(6) Fae is a brimpus and a zumpus.",
+      "(7) Fae is not an impus.",
+      "(8) Everything that is a wumpus, yumpus, or sterpus is an impus.",
+      "(9) Everything that is a wumpus, yumpus, or sterpus is a grimpus.",
+      "(10) Every dumpus is a numpus.",
+      "(11) Everything that is a wumpus or a rompus or a gorpus is a numpus.",
+      "(12) Fae is a numpus.",
+      "(13) she cannot be a wumpus, yumpus, or sterpus.",
+      "(14) Fae is a grimpus.",
+      "(15) she must be a wumpus, yumpus, or sterpus."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example33_example7",
+    "premises": [
+      "(1) Each impus is a lorpus.",
+      "(2) Every vumpus is a grimpus.",
+      "(3) Each rompus is a numpus.",
+      "(4) Gorpuses are vumpuses.",
+      "(5) Everything that is a rompus or a grimpus or a lempus is a sterpus.",
+      "(6) Vumpuses are rompuses, impuses, and zumpuses.",
+      "(7) Each gorpus is a grimpus.",
+      "(8) Each zumpus is a shumpus.",
+      "(9) Every zumpus is a rompus.",
+      "(10) Stella is a numpus.",
+      "(11) Stella is a gorpus."
+    ],
+    "question": "Stella is a dumpus or a rompus or a brimpus.",
+    "reasoning_steps": [
+      "(1) Stella is a gorpus and a numpus.",
+      "(2) Gorpuses are vumpuses, and vumpuses are rompuses.",
+      "(3) Stella is a gorpus.",
+      "(4) Gorpuses are vumpuses.",
+      "(5) Vumpuses are rompuses."
+    ]
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example81_example1",
+    "premises": [
+      "(1) Numpuses are shumpuses.",
+      "(2) Zumpuses are dumpuses.",
+      "(3) Sterpuses are numpuses.",
+      "(4) Each sterpus is a lempus.",
+      "(5) Everything that is a shumpus, a grimpus, or a tumpus is a gorpus.",
+      "(6) Vumpuses are brimpuses.",
+      "(7) Everything that is a shumpus or a grimpus or a tumpus is a zumpus.",
+      "(8) Everything that is a shumpus, a jompus, or a rompus is an impus.",
+      "(9) Every numpus is a dumpus.",
+      "(10) Alex is a lempus, a yumpus, and a dumpus.",
+      "(11) Alex is a vumpus and a zumpus and a sterpus."
+    ],
+    "question": "Alex is a zumpus.",
+    "reasoning_steps": [
+      "(1) Alex is a sterpus.",
+      "(2) Sterpuses are numpuses.",
+      "(3) Numpuses are shumpuses.",
+      "(4) Alex is a shumpus.",
+      "(5) Everything that is a shumpus is a zumpus."
+    ]
+  }
+]

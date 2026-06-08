@@ -1,0 +1,400 @@
+[
+  {
+    "idx": "444_1279",
+    "premises": [
+      "(1) All birds have wings.",
+      "(2) Animals with wings aren't reptiles.",
+      "(3) Some animals that fly are birds.",
+      "(4) If something is an iguana, then it is a reptile. Simeng: All iguanas are reptiles. ",
+      "(5) John is either both an iguana and a bird, or he is neither. ",
+      "(6) John is an animal. "
+    ],
+    "question": "John is an animal that can fly and John is a bird.",
+    "reasoning_steps": [
+      "(1) John is either both an iguana and a bird, or he is neither.",
+      "(2) If John is an iguana then John is a reptile.",
+      "(3) If John is a bird then John has wings.",
+      "(4) Animals with wings aren\u2019t reptiles.",
+      "(5) Assuming John is both an iguana and a bird leads to John being a reptile and having wings.",
+      "(6) Thus John is neither an iguana nor a bird."
+    ]
+  },
+  {
+    "idx": "123_367",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is sanctioned.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Unsanctioned businesses are free.",
+      "(3) The Crude Oil Data Exchange is a business that isn't free.",
+      "(4) If a business is unsanctioned then it is free.",
+      "(5) by contrapositive it isn\u2019t unsanctioned."
+    ]
+  },
+  {
+    "idx": "123_369",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is limited.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Unsanctioned businesses are free.",
+      "(3) Sanctioned businesses are limited.",
+      "(4) The Crude Oil Data Exchange is a business.",
+      "(5) The Crude Oil Data Exchange is not free.",
+      "(6) Since it must be either sanctioned or unsanctioned, it is sanctioned."
+    ]
+  },
+  {
+    "idx": "35_101",
+    "premises": [
+      "(1) An Olympian is a person who trains for an Olympic sport and goes to the Olympics.",
+      "(2) Carlos Reyes trains for an Olympic sport.",
+      "(3) Carlos Reyes went to the Olympics.",
+      "(4) Carlos Reyes is a welterweight.",
+      "(5) Heavy weights are not welterweights."
+    ],
+    "question": "Carlos Reyes is an Olympian.",
+    "reasoning_steps": [
+      "(1) An Olympian is a person who trains for an Olympic sport and goes to the Olympics.",
+      "(2) Carlos Reyes trains for an Olympic sport.",
+      "(3) Carlos Reyes went to the Olympics.",
+      "(4) Carlos Reyes."
+    ]
+  },
+  {
+    "idx": "486_1426",
+    "premises": [
+      "(1) Everything in Size Town is big or small.",
+      "(2) All big things in Size Town are heavy.",
+      "(3) All small things in Size Town are light.",
+      "(4) All heavy things in Size Town are still.",
+      "(5) All light things in Size Town are unstable.",
+      "(6) All unstable things in Size Town are changing.",
+      "(7) All unstable things in Size Town are unpredictable.",
+      "(8) The bird is in Size Town and it is not both heavy and still."
+    ],
+    "question": "The bird is unpredictable and changing.",
+    "reasoning_steps": [
+      "(1) The bird is in Size Town.",
+      "(2) Everything in Size Town is big or small.",
+      "(3) the bird is big or small.",
+      "(4) If the bird is big then it is heavy (all big things are heavy).",
+      "(5) If the bird is heavy then it is still (all heavy things are still).",
+      "(6) Hence if the bird is big it would be both heavy and still.",
+      "(7) But the bird is not both heavy and still.",
+      "(8) Thus the bird is small.",
+      "(9) All small things in Size Town are light.",
+      "(10) the bird is light.",
+      "(11) All light things are unstable.",
+      "(12) the bird is unstable.",
+      "(13) All unstable things are changing.",
+      "(14) the bird is changing.",
+      "(15) All unstable things are unpredictable.",
+      "(16) the bird is unpredictable."
+    ]
+  },
+  {
+    "idx": "39_113",
+    "premises": [
+      "(1) \"Your Woman\" is a song by the British one-person band White Town.",
+      "(2) \"Your Woman\" song peaked at No. 1 on the UK Singles Chart.",
+      "(3) If a song peaked at No.1 at a particular place, it was extremely popular.",
+      "(4) \"Your Woman\" peaked at No. 1 in Iceland, Israel, and Spain."
+    ],
+    "question": "\"Your Woman\" was extremely popular.",
+    "reasoning_steps": [
+      "(1) \u201cYour Woman\u201d peaked at No. 1 on the UK Singles Chart.",
+      "(2) \u201cYour Woman\u201d peaked at No. 1 in Iceland, Israel, and Spain.",
+      "(3) If a song peaked at No.1 at a particular place then it was extremely popular."
+    ]
+  },
+  {
+    "idx": "249_692",
+    "premises": [
+      "(1) Every chef can cook.",
+      "(2) Some people who aren\u2019t chefs can cook.",
+      "(3) People who cook can make scrambled eggs and pasta.",
+      "(4) If someone can make cookies and muffins, they are a baker.",
+      "(5) Bakers who can also make scrambled eggs can make a good breakfast.",
+      "(6) Luke can make cookies, scrambled eggs, and muffins, but not pasta."
+    ],
+    "question": "Luke can make a good breakfast.",
+    "reasoning_steps": [
+      "(1) People who cook can make scrambled eggs and pasta.",
+      "(2) Luke cannot make pasta.",
+      "(3) If someone can make cookies and muffins, they are a baker.",
+      "(4) Luke can make cookies and muffins.",
+      "(5) Luke can make scrambled eggs.",
+      "(6) Bakers who can also make scrambled eggs can make a good breakfast."
+    ]
+  },
+  {
+    "idx": "484_1416",
+    "premises": [
+      "(1) No songs are visuals. ",
+      "(2) All folk songs are songs. ",
+      "(3) All videos are visuals. ",
+      "(4) All movies are videos.",
+      "(5) All sci-fi movies are movies.",
+      "(6) Inception is a sci-fi movie.",
+      "(7) Mac is neither a folk song nor a sci-fi movie."
+    ],
+    "question": "Inception is not a folk song.",
+    "reasoning_steps": [
+      "(1) All scifi movies are movies.",
+      "(2) Inception is a scifi movie.",
+      "(3) All movies are videos.",
+      "(4) All videos are visuals.",
+      "(5) All folk songs are songs.",
+      "(6) No songs are visuals.",
+      "(7) Inception is a visual."
+    ]
+  },
+  {
+    "idx": "341_899",
+    "premises": [
+      "(1) No battery-powered watch is automatic.",
+      "(2) All digital watches are battery-powered.",
+      "(3) Some mechanical watches are automatic.",
+      "(4) All smart watches are digital.",
+      "(5) Moonwatch is either a digital watch and an automatic, or it is neither."
+    ],
+    "question": "If Moonwatch is a mechanical or battery-powered watch, then Moonwatch is not a smartwatch.",
+    "reasoning_steps": [
+      "(1) All digital watches are batterypowered.",
+      "(2) All smart watches are digital.",
+      "(3) No batterypowered watch is automatic.",
+      "(4) Moonwatch is either both digital and automatic, or neither digital nor automatic.",
+      "(5) If Moonwatch were both digital and automatic, it would be batterypowered and automatic, which is impossible.",
+      "(6) Since smart watches are digital, Moonwatch is not a smart watch."
+    ]
+  },
+  {
+    "idx": "314_783",
+    "premises": [
+      "(1) No animals are plants.",
+      "(2) All humans are animals.",
+      "(3) All pupils are humans.",
+      "(4) All flowers are plants.",
+      "(5) Bailey is either both a human and a flower or neither a human nor a flower."
+    ],
+    "question": "Bailey is not a pupil.",
+    "reasoning_steps": [
+      "(1) All humans are animals.",
+      "(2) All flowers are plants.",
+      "(3) No animals are plants.",
+      "(4) Bailey is either both a human and a flower or neither.",
+      "(5) Bailey cannot be both a human and a flower.",
+      "(6) All pupils are humans.",
+      "(7) Since Bailey is not a human, Bailey is not a pupil."
+    ]
+  },
+  {
+    "idx": "410_1149",
+    "premises": [
+      "(1) All products designed by Apple are sold at Apple Stores.",
+      "(2) All products with Apple logos are designed by Apple.",
+      "(3) All Macbooks have Apple logos.",
+      "(4) All products with Apple M2 chips are Mackbooks.",
+      "(5) A Thinkpad X1 is not both sold in Apple Stores and is a Macbook."
+    ],
+    "question": "The Thinkpad X1 has an Apple M2 chip and is a Macbook.",
+    "reasoning_steps": [
+      "(1) If Thinkpad X1 has an Apple M2 chip then by premise 4 it is a Macbook.",
+      "(2) All Macbooks have Apple logos (premise\n.",
+      "(3) Products with Apple logos are designed by Apple (premise\n.",
+      "(4) Products designed by Apple are sold at Apple Stores (premise\n.",
+      "(5) Thus if Thinkpad X1 had an M2 chip it would both be a Macbook and sold at Apple Stores.",
+      "(6) Premise 5 states Thinkpad X1 is not both sold in Apple Stores and is a Macbook."
+    ]
+  },
+  {
+    "idx": "474_1376",
+    "premises": [
+      "(1) All humans are capable of abstract thoughts.",
+      "(2) Plants are not capable of abstract thoughts.",
+      "(3) All multicellular creatures that are autotrophic or digest food internally are plants and animals.",
+      "(4) All goats are animals.",
+      "(5) Dirt is not an animal.",
+      "(6) Hulu is a goat or a human.",
+      "(7) Hulu is a multicellular creature that is autotrophic or digests food internally. "
+    ],
+    "question": "Hulu is either an animal or dirt, but not both.",
+    "reasoning_steps": [
+      "(1) Hulu is a goat or a human.",
+      "(2) All goats are animals.",
+      "(3) All humans are capable of abstract thoughts.",
+      "(4) Plants are not capable of abstract thoughts.",
+      "(5) All multicellular creatures that are autotrophic or digest food internally are plants or animals.",
+      "(6) Hulu is a multicellular creature that is autotrophic or digests food internally.",
+      "(7) Thus Hulu is a plant or an animal.",
+      "(8) Hulu cannot be a plant (it is a goat or human, and humans are not plants).",
+      "(9) Hence Hulu is an animal.",
+      "(10) Dirt is not an animal.",
+      "(11) Thus Hulu is not dirt."
+    ]
+  },
+  {
+    "idx": "428_1215",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is controlled by managers.",
+    "reasoning_steps": [
+      "(1) ModelXX was not produced after a new CTO was appointed.",
+      "(2) it is not easy to operate.",
+      "(3) Devices that connect to the company\u2019s wifi are easy to operate.",
+      "(4) ModelXX does not connect to the company\u2019s wifi.",
+      "(5) Devices belonging to employees can connect to the company\u2019s wifi.",
+      "(6) ModelXX does not belong to employees.",
+      "(7) Each device either has the company logo or belongs to employees.",
+      "(8) ModelXX has the company logo.",
+      "(9) All devices with the company logo belong to the company.",
+      "(10) ModelXX belongs to the company.",
+      "(11) All devices belonging to the company are connected to Google Home.",
+      "(12) ModelXX is connected to Google Home.",
+      "(13) All devices connected to Google Home are controlled by managers."
+    ]
+  },
+  {
+    "idx": "226_636",
+    "premises": [
+      "(1) William Dickinson was a British politician who sat in the House of Commons",
+      "(2) William Dickinson attended Westminster school for high school and then the University of Edinburgh.",
+      "(3) The University of Edinburgh is a university located in the United Kingdom.",
+      "(4) William Dickinson supported the Portland Whigs.",
+      "(5) People who supported the Portland Whigs did not get a seat in the Parliament."
+    ],
+    "question": "William Dickinson did not get a seat in Parliament.",
+    "reasoning_steps": [
+      "(1) William Dickinson sat in the House of Commons.",
+      "(2) William Dickinson supported the Portland Whigs.",
+      "(3) People who supported the Portland Whigs did not get a seat in Parliament."
+    ]
+  },
+  {
+    "idx": "316_795",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "If the LaLaurie House is not a mansion or not in an urban area, then it is either a skyscraper or in an urban area.",
+    "reasoning_steps": [
+      "(1) L is a creepy haunted house or a terrifying building on Halloween.",
+      "(2) If L is a terrifying building then L is a creepy haunted house.",
+      "(3) If L is a creepy haunted house then L is a mansion house.",
+      "(4) Thus L is a mansion house.",
+      "(5) There are no mansion houses in an urban area.",
+      "(6) The antecedent \u00ac(mansion) \u2228 \u00ac(urban) holds.",
+      "(7) L is not in an urban area.",
+      "(8) The consequent \u201cL is a skyscraper or in an urban area\u201d requires L to be a skyscraper or urban.",
+      "(9) All skyscrapers are in urban areas.",
+      "(10) Since L is not in an urban area, L cannot be a skyscraper."
+    ]
+  },
+  {
+    "idx": "206_589",
+    "premises": [
+      "(1) China is one of the BRICS, and its economy is emerging.",
+      "(2) If someone is from China, then they are from a country of BRICS.",
+      "(3) India is one of the BRICS, and its economy is emerging.",
+      "(4) If someone is from India, then they are in a country of BRICS.",
+      "(5) All people from China are Chinese people.",
+      "(6) All people from India are Indian people.",
+      "(7) There is a person from India."
+    ],
+    "question": "No people from BRICS are Indian people.",
+    "reasoning_steps": [
+      "(1) India is one of the BRICS.",
+      "(2) If someone is from India, then they are from a country of BRICS.",
+      "(3) All people from India are Indian people.",
+      "(4) So there exists an Indian person from a BRICS country."
+    ]
+  },
+  {
+    "idx": "48_139",
+    "premises": [
+      "(1) Douglas Adams is an author who created the book collection called The Salmon of Doubt. ",
+      "(2) The Salmon of Doubt is about life experiences and technology.",
+      "(3) All authors are writers.",
+      "(4) Writers create innovative ideas.",
+      "(5) Some books that contain innovative ideas are about technology."
+    ],
+    "question": "Douglas Adams created innovative ideas.",
+    "reasoning_steps": [
+      "(1) Douglas Adams is an author.",
+      "(2) All authors are writers.",
+      "(3) Writers create innovative ideas."
+    ]
+  },
+  {
+    "idx": "62_183",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices belonging to employees are connected to the company's wifi. ",
+      "(3) All devices connected to Google Home are controlled by the managers. ",
+      "(4) All devices that connect to the company's wifi are easy to operate. ",
+      "(5) ModelXX belongs to employees. "
+    ],
+    "question": "ModelXX is easy to operate.",
+    "reasoning_steps": [
+      "(1) ModelXX belongs to employees.",
+      "(2) All devices belonging to employees are connected to the company's wifi.",
+      "(3) All devices that connect to the company's wifi are easy to operate."
+    ]
+  },
+  {
+    "idx": "41_119",
+    "premises": [
+      "(1) Federico Garcia Lorca was a talented Spanish poet, and he supported the Popular Front.",
+      "(2) The Spanish Nationalists opposed anyone who supported the Popular Front",
+      "(3) Talented poets are popular.",
+      "(4) Spanish Nationalists killed anyone who they opposed and who was popular.",
+      "(5) Daniel supported the Popular Front but was not popular."
+    ],
+    "question": "The Spanish Nationalists killed Lorca.",
+    "reasoning_steps": [
+      "(1) Federico Garcia Lorca was a talented Spanish poet.",
+      "(2) Talented poets are popular.",
+      "(3) Lorca supported the Popular Front.",
+      "(4) Spanish Nationalists opposed anyone who supported the Popular Front.",
+      "(5) Spanish Nationalists killed anyone who they opposed and who was popular.",
+      "(6) Lorca is both opposed and popular."
+    ]
+  },
+  {
+    "idx": "189_542",
+    "premises": [
+      "(1) A summarization model is always faithful if it uses content from the input documents.",
+      "(2) Extractive models are summarization models.",
+      "(3) An extractive model can only use content from the input documents."
+    ],
+    "question": "Extractive models are always faithful.",
+    "reasoning_steps": [
+      "(1) A summarization model that uses content from the input documents is always faithful.",
+      "(2) Extractive models are summarization models.",
+      "(3) Extractive models can only use content from the input documents.",
+      "(4) Since extractive models are summarization models and use inputdocument content, they are always faithful."
+    ]
+  }
+]

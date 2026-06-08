@@ -1,0 +1,413 @@
+[
+  {
+    "idx": "7_17",
+    "premises": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) If the number x is larger than the number y, then y is not larger than x.",
+      "(4) Seven equals six plus one.",
+      "(5) Eight equals seven plus one.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Eight is the double of four.",
+      "(9) Four is the double of two."
+    ],
+    "question": "Eight is larger than seven.",
+    "reasoning_steps": [
+      "(1) Six, seven, and eight are real numbers.",
+      "(2) Seven equals six plus one.",
+      "(3) Eight equals seven plus one.",
+      "(4) If a real number equals another real number added by one, the first number is larger.",
+      "(5) If the number x is larger than the number y, then y is not larger than x.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Four is the double of two.",
+      "(9) Eight is the double of four."
+    ]
+  },
+  {
+    "idx": "170_490",
+    "premises": [
+      "(1) The Mona Lisa is a world's best-known painting.",
+      "(2) The Mona Lisa is a portrait painted by Leonardo da Vinci.",
+      "(3) Leonardo da Vinci was a scientist and painter.",
+      "(4) Painting genres can be history, portrait, animal, landscape, and still life."
+    ],
+    "question": "No world's best-known artworks are portraits.",
+    "reasoning_steps": [
+      "(1) The Mona Lisa is a world's best-known painting.",
+      "(2) The Mona Lisa is a portrait painted by Leonardo da Vinci.",
+      "(3) Leonardo da Vinci was a scientist and painter.",
+      "(4) The Mona Lisa falls under the portrait genre.",
+      "(5) Painting genres include history, portrait, animal, landscape, and still life.",
+      "(6) The Mona Lisa being a portrait does not automatically disqualify it from being a world's best-known artwork."
+    ]
+  },
+  {
+    "idx": "42_121",
+    "premises": [
+      "(1) James Cocks was a British lawyer.",
+      "(2) James Cocks was a Whig politician who sat in the House of Commons.",
+      "(3) A British is a European.",
+      "(4) Any lawyer is familiar with laws.",
+      "(5) Some Whigs speak French."
+    ],
+    "question": "Some European was familiar with laws.",
+    "reasoning_steps": [
+      "(1) James Cocks was a British lawyer.",
+      "(2) James Cocks was a Whig politician who sat in the House of Commons.",
+      "(3) A British is a European.",
+      "(4) Any lawyer is familiar with laws.",
+      "(5) Some Whigs speak French."
+    ]
+  },
+  {
+    "idx": "444_1279",
+    "premises": [
+      "(1) All birds have wings.",
+      "(2) Animals with wings aren't reptiles.",
+      "(3) Some animals that fly are birds.",
+      "(4) If something is an iguana, then it is a reptile. Simeng: All iguanas are reptiles. ",
+      "(5) John is either both an iguana and a bird, or he is neither. ",
+      "(6) John is an animal. "
+    ],
+    "question": "John is an animal that can fly and John is a bird.",
+    "reasoning_steps": [
+      "(1) All birds have wings.",
+      "(2) Animals with wings aren't reptiles.",
+      "(3) Some animals that fly are birds.",
+      "(4) If something is an iguana, then it is a reptile. Simeng: All iguanas are reptiles.",
+      "(5) John is either both an iguana and a bird, or he is neither.",
+      "(6) If John is an iguana, then he is a reptile.",
+      "(7) If John is a bird, then he can fly.",
+      "(8) If John is an iguana, then he is not a bird.",
+      "(9) If John is a bird, then he is not an iguana.",
+      "(10) John is an animal.",
+      "(11) John is not an iguana.",
+      "(12) John is not a reptile."
+    ]
+  },
+  {
+    "idx": "312_777",
+    "premises": [
+      "(1) To have the authorization to study in the United States as a foreigner, you must be enrolled in an academic program.",
+      "(2) Those who are enrolled in an academic program can not work full-time.",
+      "(3) Every who studies in the United States as a foreigner has the authorization to study in the U.S.",
+      "(4) All PhD graduate can work full-time. ",
+      "(5) If Tom does not study in the United States as a foreigner, he is enrolled in an academic program."
+    ],
+    "question": "Tom is not a PhD graduate.",
+    "reasoning_steps": [
+      "(1) To study in the United States as a foreigner, one must be enrolled in an academic program.",
+      "(2) Those enrolled in an academic program cannot work full-time.",
+      "(3) Those who study in the United States as a foreigner have the authorization to study in the U.S.",
+      "(4) All PhD graduates can work full-time.",
+      "(5) If Tom does not study in the United States as a foreigner, he is enrolled in an academic program.",
+      "(6) If Tom is enrolled in an academic program, he cannot work full-time.",
+      "(7) If Tom cannot work full-time, he is not a PhD graduate."
+    ]
+  },
+  {
+    "idx": "82_249",
+    "premises": [
+      "(1) Lawton Park is a neighborhood in Seattle. ",
+      "(2) All citizens of Lawton Park use the zip code 98199. ",
+      "(3) Tom is a citizen of Lawton Park.",
+      "(4) Daniel uses the zip code 98199. "
+    ],
+    "question": "Tom uses the zip code 98199.",
+    "reasoning_steps": [
+      "(1) Lawton Park is a neighborhood in Seattle.",
+      "(2) All citizens of Lawton Park use the zip code 98199.",
+      "(3) Tom is a citizen of Lawton Park.",
+      "(4) Daniel uses the zip code 98199.",
+      "(5) It is possible that Tom uses a different zip code.",
+      "(6) The premises do not provide a direct link between Tom and the zip code 98199."
+    ]
+  },
+  {
+    "idx": "181_521",
+    "premises": [
+      "(1) American superheroes come from either the DC Universe or Marvel Universe.",
+      "(2) Captain America is one of America's top-ten favorite superheroes",
+      "(3) Captain America does not come from the DC Universe.",
+      "(4) America's top-ten favorite superheroes speak English.",
+      "(5) Some superheroes speak both English and Spanish. "
+    ],
+    "question": "Captain America does not speak English.",
+    "reasoning_steps": [
+      "(1) Captain America is one of America's top-ten favorite superheroes.",
+      "(2) Captain America does not come from the DC Universe.",
+      "(3) America's top-ten favorite superheroes speak English.",
+      "(4) If Captain America does not come from the DC Universe and is one of America's top-ten favorite superheroes, then he comes from the Marvel Universe.",
+      "(5) Superheroes from the Marvel Universe speak English."
+    ]
+  },
+  {
+    "idx": "431_1230",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 is neither produced before 2010 nor scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) No Boeing-737 plane has more than 300 seats.",
+      "(2) All planes acquired by Delta in this batch are Boeing-737.",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers.",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight.",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010.",
+      "(6) If a plane is a Boeing-737 and acquired by Delta in this batch, it has a capacity of 100 passengers.",
+      "(7) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(8) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither.",
+      "(9) If T10 is a Boeing-737 plane and acquired by Delta in this batch, it has a capacity of 100 passengers.",
+      "(10) If T10 is a Boeing-737 plane and acquired by Delta in this batch, it is scheduled for a short-distance flight.",
+      "(11) If T10 is a Boeing-737 plane and acquired by Delta in this batch, it is produced before 2010.",
+      "(12) If T10 is neither a Boeing-737 plane nor acquired by Delta in this batch, it is not produced before 2010 or scheduled for a short-distance flight."
+    ]
+  },
+  {
+    "idx": "206_591",
+    "premises": [
+      "(1) China is one of the BRICS, and its economy is emerging.",
+      "(2) If someone is from China, then they are from a country of BRICS.",
+      "(3) India is one of the BRICS, and its economy is emerging.",
+      "(4) If someone is from India, then they are in a country of BRICS.",
+      "(5) All people from China are Chinese people.",
+      "(6) All people from India are Indian people.",
+      "(7) There is a person from India."
+    ],
+    "question": "There is an Indian people from BRICS.",
+    "reasoning_steps": [
+      "(1) China is one of the BRICS, and its economy is emerging.",
+      "(2) If someone is from China, then they are from a country of BRICS.",
+      "(3) India is one of the BRICS, and its economy is emerging.",
+      "(4) If someone is from India, then they are in a country of BRICS.",
+      "(5) All people from China are Chinese people.",
+      "(6) All people from India are Indian people."
+    ]
+  },
+  {
+    "idx": "110_334",
+    "premises": [
+      "(1) St Johnstone is a Scottish team.",
+      "(2) St Johnstone is part of the Scottish Premiership league.",
+      "(3) If a team is part of the league, it has joined the league.",
+      "(4) St Johnstone and Minsk are different teams.",
+      "(5) For two teams, either one team wins, or the other team wins.",
+      "(6) Minsk won against St Johnstone."
+    ],
+    "question": "St Johnstone won against Minsk.",
+    "reasoning_steps": [
+      "(1) St Johnstone is a Scottish team.",
+      "(2) St Johnstone is part of the Scottish Premiership league.",
+      "(3) If a team is part of the league, it has joined the league.",
+      "(4) St Johnstone and Minsk are different teams.",
+      "(5) For two teams, either one team wins, or the other team wins."
+    ]
+  },
+  {
+    "idx": "423_1198",
+    "premises": [
+      "(1) Everyone at the business conference is either an investor or an entrepreneur.",
+      "(2) None of those at the business conference who enjoy the opportunity of starting a business prefer a planned economy. ",
+      "(3) All entrepreneurs at the business conference enjoy the opportunity of starting a business. ",
+      "(4) Everyone at the business conference who enjoys state ownership of means of production prefers a planned economy. ",
+      "(5) Everyone at the business conference who is an ardent communist prefers state ownership of the means of production.",
+      "(6) Ho is at the business conference and prefers state ownership of the means of production. "
+    ],
+    "question": "Ho is an investor or is not an ardent communist.",
+    "reasoning_steps": [
+      "(1) Everyone at the business conference who enjoys state ownership of means of production prefers a planned economy.",
+      "(2) Everyone at the business conference who is an ardent communist prefers state ownership of the means of production.",
+      "(3) Everyone at the business conference who enjoys the opportunity of starting a business does not prefer a planned economy.",
+      "(4) All entrepreneurs at the business conference enjoy the opportunity of starting a business.",
+      "(5) Everyone at the business conference is either an investor or an entrepreneur.",
+      "(6) Ho prefers state ownership of the means of production and is at the business conference.",
+      "(7) Ho is an ardent communist and prefers state ownership of the means of production.",
+      "(8) Ho prefers state ownership of the means of production and prefers a planned economy.",
+      "(9) Ho is not an entrepreneur and everyone at the business conference who is not an entrepreneur is an investor."
+    ]
+  },
+  {
+    "idx": "31_90",
+    "premises": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Thomas Gilovich is a colleague of Justin Kruger. ",
+      "(3) Naive cynicism is a philosophy of mind."
+    ],
+    "question": "Justin Kruger proposed a philosophy of mind.",
+    "reasoning_steps": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Thomas Gilovich is a colleague of Justin Kruger.",
+      "(3) Naive cynicism is a philosophy of mind."
+    ]
+  },
+  {
+    "idx": "5_12",
+    "premises": [
+      "(1) Peter Parker is either a superhero or a civilian.",
+      "(2) The Hulk is a destroyer.",
+      "(3) The Hulk wakes up when he is angry.",
+      "(4) If the Hulk wakes up, then he will break a bridge.",
+      "(5) Thor is a god.",
+      "(6) Thor will break a bridge when he is happy.",
+      "(7) A god is not a destroyer.",
+      "(8) Peter Parker wears a uniform when he is a superhero.",
+      "(9) Peter Parker is not a civilian if a destroyer is breaking a bridge.",
+      "(10) If Thor is happy, the Hulk is angry."
+    ],
+    "question": "If Thor is happy, then Peter Parker wears a uniform.",
+    "reasoning_steps": [
+      "(1) Peter Parker is either a superhero or a civilian.",
+      "(2) Peter Parker wears a uniform when he is a superhero.",
+      "(3) If Peter Parker is not a civilian, then he is a superhero.",
+      "(4) If Peter Parker wears a uniform, then he is a superhero.",
+      "(5) If a destroyer is breaking a bridge, then Peter Parker is not a civilian.",
+      "(6) If Peter Parker is not a civilian, then he wears a uniform.",
+      "(7) If the Hulk wakes up, he will break a bridge.",
+      "(8) If the Hulk is angry, he wakes up.",
+      "(9) If the Hulk is angry, a bridge will break.",
+      "(10) If Thor is happy, the Hulk is angry.",
+      "(11) If the Hulk is angry, Peter Parker wears a uniform."
+    ]
+  },
+  {
+    "idx": "14_39",
+    "premises": [
+      "(1) The USS Salem is a heavy cruiser built for the United States Navy.",
+      "(2) The last heavy cruiser to enter service was the USS Salem.",
+      "(3) The USS Salem is a museum ship.",
+      "(4) Museum ships are open to the public.",
+      "(5) The USS Salem served in the Atlantic and Mediterranean."
+    ],
+    "question": "There is a museum ship open to the public that served in the Mediterranean.",
+    "reasoning_steps": [
+      "(1) The USS Salem is a heavy cruiser built for the United States Navy.",
+      "(2) The last heavy cruiser to enter service was the USS Salem.",
+      "(3) The USS Salem is a museum ship.",
+      "(4) Museum ships are open to the public.",
+      "(5) The USS Salem served in the Atlantic and Mediterranean.",
+      "(6) The USS Salem, being a heavy cruiser and a museum ship, is open to the public.",
+      "(7) The USS Salem, being a heavy cruiser that served in the Mediterranean, is open to the public."
+    ]
+  },
+  {
+    "idx": "267_711",
+    "premises": [
+      "(1) All juvenile delinquents have committed a crime.",
+      "(2) Some juvenile delinquents are products of broken homes."
+    ],
+    "question": "Some people who have committed a crime are products of broken homes.",
+    "reasoning_steps": [
+      "(1) All juvenile delinquents have committed a crime.",
+      "(2) Some juvenile delinquents are products of broken homes.",
+      "(3) If someone is a juvenile delinquent, then they have committed a crime."
+    ]
+  },
+  {
+    "idx": "221_626",
+    "premises": [
+      "(1) Ernest Pohl was a Polish football player. ",
+      "(2) A football player in the Polish First Division has scored over 180 goals. ",
+      "(3) Ernest Pohl scored more than 180 goals in the Polish First Division. ",
+      "(4) G\u00f3rnik Zabrze's stadium was named after a soccer player from Ruda \u015al\u0105ska. ",
+      "(5) Ernest Pohl is from Ruda \u015al\u0105ska. "
+    ],
+    "question": "Ernest Pohl has not scored more than 180 goals.",
+    "reasoning_steps": [
+      "(1) Ernest Pohl was a Polish football player.",
+      "(2) A football player in the Polish First Division has scored over 180 goals.",
+      "(3) Ernest Pohl scored more than 180 goals in the Polish First Division.",
+      "(4) Based on the premises, Ernest Pohl being a Polish football player and scoring over 180 goals in the Polish First Division, it is likely that Ernest Pohl has scored more than 180 goals."
+    ]
+  },
+  {
+    "idx": "453_1305",
+    "premises": [
+      "(1) No birds are ectothermic.",
+      "(2) All penguins are birds.",
+      "(3) An animal is ectothermic or endothermic.",
+      "(4) All endothermic animals produce heat within the body.",
+      "(5) Ron and Henry are both animals.",
+      "(6) Ron is not a bird and does not produce heat with the body. ",
+      "(7) Henry is not a cat and does not produce heat with the body. "
+    ],
+    "question": "Either Henry is a penguin or Henry is endothermic.",
+    "reasoning_steps": [
+      "(1) No birds are ectothermic.",
+      "(2) All penguins are birds.",
+      "(3) An animal is ectothermic or endothermic.",
+      "(4) All endothermic animals produce heat within the body.",
+      "(5) Ron is an animal and is not a bird.",
+      "(6) Ron does not produce heat within the body.",
+      "(7) Henry is an animal and is not a cat.",
+      "(8) Henry does not produce heat within the body.",
+      "(9) If an animal is not a bird and does not produce heat within the body, it is ectothermic.",
+      "(10) Ron is ectothermic.",
+      "(11) If an animal is not a cat and does not produce heat within the body, it is ectothermic.",
+      "(12) Henry is ectothermic."
+    ]
+  },
+  {
+    "idx": "415_1168",
+    "premises": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien. ",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman."
+    ],
+    "question": "If Hamlet has either won a Hugo Award and is written by Tolkien, or neither has won a Hugo Award nor is written by Tolkien, then Hamlet has neither won a Hugo Award nor is written by Neil Gaiman.",
+    "reasoning_steps": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien.",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman.",
+      "(6) If Hamlet is written by Neil Gaiman, it has sold more than one thousand copies.",
+      "(7) If Hamlet has won a Hugo Award and is written by Tolkien, then it is not written by Neil Gaiman.",
+      "(8) If Hamlet has neither won a Hugo Award nor is written by Tolkien, then it is not written by Neil Gaiman."
+    ]
+  },
+  {
+    "idx": "30_87",
+    "premises": [
+      "(1) EndGame is a movie released in 2006.",
+      "(2) EndGame was set in Washington.",
+      "(3) EndGame was filmed outside of Washington.",
+      "(4) Some movies are filmed in New York.",
+      "(5) Andy Chang directed EndGame.",
+      "(6) Andy Chang is from Hong Kong."
+    ],
+    "question": "EndGame was not directed by someone from Hong Kong.",
+    "reasoning_steps": [
+      "(1) EndGame is a movie released in 2006.",
+      "(2) EndGame was set in Washington.",
+      "(3) EndGame was filmed outside of Washington.",
+      "(4) Andy Chang directed EndGame.",
+      "(5) Andy Chang is from Hong Kong."
+    ]
+  },
+  {
+    "idx": "12_32",
+    "premises": [
+      "(1) The Croton River watershed is the drainage basin of the Croton River.",
+      "(2) The Croton River is in southwestern New York.",
+      "(3) Water from the Croton River watershed flows to the Bronx.",
+      "(4) The Bronx is in New York."
+    ],
+    "question": "Water from the Croton River watershed flows to somewhere in New York.",
+    "reasoning_steps": [
+      "(1) The Croton River watershed is the drainage basin of the Croton River.",
+      "(2) The Croton River is in southwestern New York.",
+      "(3) Water from the Croton River watershed flows to the Bronx.",
+      "(4) The Bronx is in New York.",
+      "(5) Water from the Croton River watershed flows to the Bronx, which is in New York."
+    ]
+  }
+]

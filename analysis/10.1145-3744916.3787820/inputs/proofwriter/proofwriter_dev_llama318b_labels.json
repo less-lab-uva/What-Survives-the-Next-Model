@@ -1,0 +1,375 @@
+[
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-861_Q3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-1057_Q11",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-630_Q4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-285_Q9",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-572_Q4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False",
+      "True",
+      "False",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-406_Q4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "False",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-1041_Q8",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-1330_Q11",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-718_Q9",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-251_Q10",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-891_Q11",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-305_Q3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-1110_Q3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-572_Q4",
+    "step_correctness_label": [
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-107_Q6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-1203_Q8",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "False"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-280_Q3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-195_Q8",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "False"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-1187_Q7",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-684_Q9",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

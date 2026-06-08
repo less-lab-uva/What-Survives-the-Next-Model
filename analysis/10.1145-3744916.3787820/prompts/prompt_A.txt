@@ -1,0 +1,161 @@
+### Role
+You are an expert formal logician and automated reasoning specialist with deep expertise in deductive inference, first-order logic, and step-by-step proof verification.
+
+### Task
+Given a set of premises, a question (candidate conclusion), and a sequence of reasoning steps, you must evaluate whether each reasoning step is logically supported by the premises and determine whether the reasoning steps together form a valid proof path that establishes the truth value of the question.
+
+### Input
+- **premises**: A numbered list of statements assumed to be true. These are the axioms of the reasoning task.
+- **question**: A candidate conclusion whose truth or falsity is to be determined from the premises.
+- **reasoning_steps**: A numbered sequence of intermediate statements produced during a reasoning attempt toward answering the question.
+
+### Output
+Produce a JSON object with exactly the following fields:
+- **step_correctness_label**: A list of strings, one per reasoning step, where each value is exactly `"True"`, `"False"`, or `"Unknown"`.
+  - `"True"` means the step is logically entailed by (provable from) the premises.
+  - `"False"` means the step contradicts the premises (its negation is provable from the premises).
+  - `"Unknown"` means the step is neither provable nor refutable from the premises alone.
+- **has_valid_proof_path_label**: A boolean (`true` or `false`) indicating whether the subset of `"True"`-labeled reasoning steps, taken together, is sufficient to logically entail the correct truth value of the question as determined by the premises.
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "premises": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) The only style of music Vic DiCara plays is punk music.",
+          "(3) Vic DiCara played in the band Inside Out."
+        ],
+        "question": "A musician from Inside Out plays bass.",
+        "reasoning_steps": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) Vic DiCara played in the band Inside Out.",
+          "(3) A musician (Vic DiCara) from Inside Out plays bass."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) Each vumpus is snowy.",
+          "(2) Each rompus is a lorpus.",
+          "(3) Every wumpus is not amenable.",
+          "(4) Each numpus is an impus.",
+          "(5) Gorpuses are hot.",
+          "(6) Numpuses are liquid.",
+          "(7) Each shumpus is bright.",
+          "(8) Numpuses are vumpuses.",
+          "(9) Each impus is not loud.",
+          "(10) Zumpuses are blue.",
+          "(11) Lorpuses are nervous.",
+          "(12) Rompuses are fast.",
+          "(13) Wumpuses are jompuses.",
+          "(14) Rompuses are zumpuses.",
+          "(15) Impuses are rompuses.",
+          "(16) Zumpuses are gorpuses.",
+          "(17) Every impus is a shumpus.",
+          "(18) Zumpuses are brimpuses.",
+          "(19) Sally is a wumpus.",
+          "(20) Sally is a numpus."
+        ],
+        "question": "Sally is blue.",
+        "reasoning_steps": [
+          "(1) Sally is a numpus.",
+          "(2) Each numpus is an impus.",
+          "(3) Sally is an impus.",
+          "(4) Each impus is a rompus.",
+          "(5) Sally is a rompus.",
+          "(6) Rompuses are zumpuses.",
+          "(7) Sally is a zumpus.",
+          "(8) Zumpuses are blue."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) The bald eagle is nice.",
+          "(2) The bald eagle is round.",
+          "(3) The bald eagle likes the lion.",
+          "(4) The bald eagle visits the dog.",
+          "(5) The cat is green.",
+          "(6) The cat is nice.",
+          "(7) The cat is round.",
+          "(8) The cat likes the bald eagle.",
+          "(9) The cat likes the dog.",
+          "(10) The cat visits the dog.",
+          "(11) The dog eats the cat.",
+          "(12) The dog is big.",
+          "(13) The dog is blue.",
+          "(14) The lion is blue.",
+          "(15) If something is nice and green then it visits the bald eagle.",
+          "(16) If something is big then it eats the lion.",
+          "(17) If the bald eagle visits the lion then the lion is nice.",
+          "(18) If the bald eagle likes the cat then the bald eagle visits the dog.",
+          "(19) Round things are big.",
+          "(20) If something eats the cat and the cat eats the dog then the cat eats the lion.",
+          "(21) If something visits the dog and it eats the lion then the lion is round."
+        ],
+        "question": "The lion is not round.",
+        "reasoning_steps": [
+          "(1) The cat is green and nice.",
+          "(2) If something is nice and green then it visits the bald eagle.",
+          "(3) The cat visits the bald eagle.",
+          "(4) The dog is big.",
+          "(5) If something is big then it eats the lion.",
+          "(6) The dog eats the lion.",
+          "(7) The dog visits the dog is not stated.",
+          "(8) Premise 21 requires something to visit the dog and eat the lion.",
+          "(9) No entity both visits the dog and eats the lion."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": false
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Evaluate each reasoning step solely against the given premises; do not import background knowledge not stated in the premises.
+- Assign `"True"` only when the step strictly follows from the premises by deductive inference. Assign `"False"` when the step directly contradicts a premise or a consequence provable from the premises. Assign `"Unknown"` when the step is consistent with but not provable from the premises.
+- For `has_valid_proof_path_label`, set it to `true` only if the steps labeled `"True"` form a logically complete chain that, by themselves (without any `"False"` or `"Unknown"` steps), suffice to prove or disprove the question as the premises dictate. Set it to `false` if no such complete chain exists among the `"True"`-labeled steps.
+- The `step_correctness_label` list must have exactly the same number of entries as there are reasoning steps in the input.
+- Output only the JSON object with no additional text, commentary, or explanation.

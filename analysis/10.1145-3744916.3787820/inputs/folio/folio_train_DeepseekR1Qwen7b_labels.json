@@ -1,0 +1,244 @@
+[
+  {
+    "idx": "123_369",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "428_1216",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "484_1415",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "92_282",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "484_1417",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "123_367",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "440_1264",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "342_900",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "206_589",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "34_98",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "428_1218",
+    "step_correctness_label": [
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "312_777",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "316_794",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "316_792",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "420_1186",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "113_342",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "7_17",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "449_1293",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "484_1416",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "141_415",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

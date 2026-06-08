@@ -1,0 +1,260 @@
+[
+  {
+    "idx": "170_490",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "207_592",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "396_1079",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "316_797",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "7_17",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "411_1154",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "93_284",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "449_1293",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "13_35",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "428_1215",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "27_77",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "6_15",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "63_187",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "123_367",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "303_747",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "465_1343",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "339_890",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "342_901",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "42_121",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "469_1356",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

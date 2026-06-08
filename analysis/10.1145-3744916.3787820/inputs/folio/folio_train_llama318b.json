@@ -1,0 +1,407 @@
+[
+  {
+    "idx": "94_286",
+    "premises": [
+      "(1) Ainderby Quernhow is a village and civil parish in the Hambleton District.",
+      "(2) Hambleton District is in North Yorkshire.",
+      "(3) North Yorkshire is in England.",
+      "(4) If place A is located in place B and place B is located in place C, then place A is located in place C."
+    ],
+    "question": "There is no civil parish in England.",
+    "reasoning_steps": [
+      "(1) Ainderby Quernhow is a village and civil parish in the Hambleton District.",
+      "(2) Hambleton District is in North Yorkshire.",
+      "(3) North Yorkshire is in England.",
+      "(4) If place A is located in place B and place B is located in place C, then place A is located in place C.",
+      "(5) Ainderby Quernhow is located in the Hambleton District.",
+      "(6) The Hambleton District is located in North Yorkshire.",
+      "(7) Ainderby Quernhow is located in North Yorkshire.",
+      "(8) Ainderby Quernhow is located in England.",
+      "(9) Ainderby Quernhow is a civil parish in England."
+    ]
+  },
+  {
+    "idx": "328_841",
+    "premises": [
+      "(1) No soccer players are professional basketball players.",
+      "(2) All NBA players are professional basketball players.",
+      "(3) All soccer defenders are soccer players.",
+      "(4) All centerback players are soccer defenders.",
+      "(5) If Stephen Curry is an NBA player or a soccer player, then he is a professional basketball player."
+    ],
+    "question": "Stephen Curry is a centerback player.",
+    "reasoning_steps": [
+      "(1) All soccer defenders are soccer players.",
+      "(2) All centerback players are soccer defenders.",
+      "(3) All centerback players are soccer players.",
+      "(4) No soccer players are professional basketball players.",
+      "(5) All NBA players are professional basketball players.",
+      "(6) If Stephen Curry is an NBA player or a soccer player, then he is a professional basketball player.",
+      "(7) Stephen Curry is an NBA player or a soccer player.",
+      "(8) Stephen Curry is a professional basketball player.",
+      "(9) If something is a professional basketball player then it is not a soccer player.",
+      "(10) Stephen curry is not a soccer player."
+    ]
+  },
+  {
+    "idx": "316_789",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is a skyscraper.",
+    "reasoning_steps": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(6) The LaLaurie House is a creepy haunted house.",
+      "(7) The LaLaurie House is a mansion house.",
+      "(8) The LaLaurie House is not in an urban area."
+    ]
+  },
+  {
+    "idx": "82_250",
+    "premises": [
+      "(1) Lawton Park is a neighborhood in Seattle. ",
+      "(2) All citizens of Lawton Park use the zip code 98199. ",
+      "(3) Tom is a citizen of Lawton Park.",
+      "(4) Daniel uses the zip code 98199. "
+    ],
+    "question": "Tom doesn't use the zip code 98199.",
+    "reasoning_steps": [
+      "(1) Lawton Park is a neighborhood in Seattle.",
+      "(2) All citizens of Lawton Park use the zip code 98199.",
+      "(3) Tom is a citizen of Lawton Park.",
+      "(4) Daniel uses the zip code 98199.",
+      "(5) If someone is a citizen of Lawton Park then they use the zip code 98199."
+    ]
+  },
+  {
+    "idx": "34_98",
+    "premises": [
+      "(1) Rafa Nadal was born in Mallorca.",
+      "(2) Rafa Nadal is a professional tennis player.",
+      "(3) Nadal's win ratio is high.",
+      "(4) All players in the Big 3 are professionals who have a high win ratio."
+    ],
+    "question": "Nadal was not born in Mallorca.",
+    "reasoning_steps": [
+      "(1) Rafa Nadal is a professional tennis player.",
+      "(2) All players in the Big 3 are professionals who have a high win ratio.",
+      "(3) Nadal's win ratio is high.",
+      "(4) Rafa Nadal is a player in the Big 3."
+    ]
+  },
+  {
+    "idx": "118_357",
+    "premises": [
+      "(1) Musicians have very busy lives.",
+      "(2) Singh Kaur is a musician and famous.",
+      "(3) If a musician is not famous, that musician will not make a lot of money.",
+      "(4) A musician can be a singer or a writer."
+    ],
+    "question": "Singh Kaur has a very busy life.",
+    "reasoning_steps": [
+      "(1) Musicians have very busy lives.",
+      "(2) Singh Kaur is a musician.",
+      "(3) A musician can be a singer or a writer.",
+      "(4) Singh Kaur is a singer or a writer.",
+      "(5) If a musician is not famous, that musician will not make a lot of money.",
+      "(6) Singh Kaur is famous.",
+      "(7) Singh Kaur will make a lot of money.",
+      "(8) A musician who makes a lot of money is likely to have a very busy life."
+    ]
+  },
+  {
+    "idx": "48_138",
+    "premises": [
+      "(1) Douglas Adams is an author who created the book collection called The Salmon of Doubt. ",
+      "(2) The Salmon of Doubt is about life experiences and technology.",
+      "(3) All authors are writers.",
+      "(4) Writers create innovative ideas.",
+      "(5) Some books that contain innovative ideas are about technology."
+    ],
+    "question": "Douglas Adams is a writer.",
+    "reasoning_steps": [
+      "(1) Douglas Adams is an author.",
+      "(2) All authors are writers.",
+      "(3) Writers create innovative ideas.",
+      "(4) The Salmon of Doubt is about technology.",
+      "(5) Some books that contain innovative ideas are about technology.",
+      "(6) The Salmon of Doubt contains innovative ideas.",
+      "(7) Douglas Adams created The Salmon of Doubt."
+    ]
+  },
+  {
+    "idx": "474_1376",
+    "premises": [
+      "(1) All humans are capable of abstract thoughts.",
+      "(2) Plants are not capable of abstract thoughts.",
+      "(3) All multicellular creatures that are autotrophic or digest food internally are plants and animals.",
+      "(4) All goats are animals.",
+      "(5) Dirt is not an animal.",
+      "(6) Hulu is a goat or a human.",
+      "(7) Hulu is a multicellular creature that is autotrophic or digests food internally. "
+    ],
+    "question": "Hulu is either an animal or dirt, but not both.",
+    "reasoning_steps": [
+      "(1) All multicellular creatures that are autotrophic or digest food internally are plants and animals.",
+      "(2) Hulu is a multicellular creature that is autotrophic or digests food internally.",
+      "(3) Hulu is a plant or an animal.",
+      "(4) All humans are capable of abstract thoughts.",
+      "(5) Hulu is a human.",
+      "(6) Hulu is a plant or an animal and a human.",
+      "(7) All goats are animals.",
+      "(8) Hulu is a goat or a human.",
+      "(9) Hulu is an animal or a human.",
+      "(10) Dirt is not an animal.",
+      "(11) Hulu is not dirt.",
+      "(12) Hulu is an animal or dirt, but not both."
+    ]
+  },
+  {
+    "idx": "48_139",
+    "premises": [
+      "(1) Douglas Adams is an author who created the book collection called The Salmon of Doubt. ",
+      "(2) The Salmon of Doubt is about life experiences and technology.",
+      "(3) All authors are writers.",
+      "(4) Writers create innovative ideas.",
+      "(5) Some books that contain innovative ideas are about technology."
+    ],
+    "question": "Douglas Adams created innovative ideas.",
+    "reasoning_steps": [
+      "(1) Douglas Adams is an author.",
+      "(2) All authors are writers.",
+      "(3) Douglas Adams is a writer.",
+      "(4) Writers create innovative ideas."
+    ]
+  },
+  {
+    "idx": "39_113",
+    "premises": [
+      "(1) \"Your Woman\" is a song by the British one-person band White Town.",
+      "(2) \"Your Woman\" song peaked at No. 1 on the UK Singles Chart.",
+      "(3) If a song peaked at No.1 at a particular place, it was extremely popular.",
+      "(4) \"Your Woman\" peaked at No. 1 in Iceland, Israel, and Spain."
+    ],
+    "question": "\"Your Woman\" was extremely popular.",
+    "reasoning_steps": [
+      "(1) \"Your Woman\" song peaked at No. 1 on the UK Singles Chart.",
+      "(2) If a song peaked at No.1 at a particular place, it was extremely popular.",
+      "(3) \"Your Woman\" peaked at No. 1 in Iceland, Israel, and Spain.",
+      "(4) The uk singles chart is a particular place."
+    ]
+  },
+  {
+    "idx": "410_1147",
+    "premises": [
+      "(1) All products designed by Apple are sold at Apple Stores.",
+      "(2) All products with Apple logos are designed by Apple.",
+      "(3) All Macbooks have Apple logos.",
+      "(4) All products with Apple M2 chips are Mackbooks.",
+      "(5) A Thinkpad X1 is not both sold in Apple Stores and is a Macbook."
+    ],
+    "question": "The Thinkpad X1 has an Apple M2 chip.",
+    "reasoning_steps": [
+      "(1) All products with Apple logos are designed by Apple.",
+      "(2) All Macbooks have Apple logos.",
+      "(3) All products designed by Apple are sold at Apple Stores.",
+      "(4) All products with Apple M2 chips are Mackbooks.",
+      "(5) All products with Apple M2 chips are designed by Apple.",
+      "(6) All products with Apple M2 chips are sold at Apple Stores.",
+      "(7) A Thinkpad X1 is not both sold in Apple Stores and is a Macbook.",
+      "(8) If a product is sold at Apple Stores and is a Macbook then it has an Apple M2 chip.",
+      "(9) The Thinkpad X1 is sold at Apple Stores.",
+      "(10) The Thinkpad X1 is a Macbook."
+    ]
+  },
+  {
+    "idx": "76_231",
+    "premises": [
+      "(1) Asa Hoffmann was born in New York City.",
+      "(2) Asa Hoffman lives in Manhattan.",
+      "(3) Asa Hoffman is a chess player.",
+      "(4) Some chess players are grandmasters.",
+      "(5) People born and living in New York City are New Yorkers.",
+      "(6) People living in Manhattan live in New York City."
+    ],
+    "question": "Asa Hoffmann is a New Yorker.",
+    "reasoning_steps": [
+      "(1) Asa Hoffmann was born in New York City.",
+      "(2) People born and living in New York City are New Yorkers.",
+      "(3) Asa Hoffmann lives in Manhattan.",
+      "(4) People living in Manhattan live in New York City.",
+      "(5) Asa Hoffman is a chess player.",
+      "(6) Some chess players are grandmasters.",
+      "(7) Some grandmasters are new yorkers."
+    ]
+  },
+  {
+    "idx": "348_923",
+    "premises": [
+      "(1) All young adults at the event like independence.",
+      "(2) All college students at the event are young adults.",
+      "(3) All Yale students at the event are college students.",
+      "(4) Everyone at the event is a Yale student or a Harvard student.",
+      "(5) All Harvard students at the event are diligent.",
+      "(6) Susan is at the event, and if Susan is a Harvard student, then she is a young adult.",
+      "(7) If Susan is a Yale student, then she does not like independence."
+    ],
+    "question": "Susan is not both diligent and likes independence.",
+    "reasoning_steps": [
+      "(1) Susan is at the event, and if Susan is a Harvard student, then she is a young adult.",
+      "(2) If Susan is a Yale student, then she does not like independence.",
+      "(3) Susan is a Yale student or a Harvard student.",
+      "(4) Susan is a Yale student or a young adult.",
+      "(5) If Susan is a Yale student, then she is a college student.",
+      "(6) Susan is a college student or a young adult.",
+      "(7) Susan is a college student or a Harvard student.",
+      "(8) If susan is a harvard student, then she is diligent.",
+      "(9) Susan is diligent or likes independence.",
+      "(10) If susan is a college student, then she likes independence.",
+      "(11) Susan is diligent or likes independence, and susan is not diligent.",
+      "(12) Susan does not like independence."
+    ]
+  },
+  {
+    "idx": "423_1198",
+    "premises": [
+      "(1) Everyone at the business conference is either an investor or an entrepreneur.",
+      "(2) None of those at the business conference who enjoy the opportunity of starting a business prefer a planned economy. ",
+      "(3) All entrepreneurs at the business conference enjoy the opportunity of starting a business. ",
+      "(4) Everyone at the business conference who enjoys state ownership of means of production prefers a planned economy. ",
+      "(5) Everyone at the business conference who is an ardent communist prefers state ownership of the means of production.",
+      "(6) Ho is at the business conference and prefers state ownership of the means of production. "
+    ],
+    "question": "Ho is an investor or is not an ardent communist.",
+    "reasoning_steps": [
+      "(1) Everyone at the business conference is either an investor or an entrepreneur.",
+      "(2) All entrepreneurs at the business conference enjoy the opportunity of starting a business.",
+      "(3) Everyone at the business conference who enjoys the opportunity of starting a business is an entrepreneur.",
+      "(4) Ho prefers state ownership of the means of production.",
+      "(5) Everyone at the business conference who prefers state ownership of the means of production prefers a planned economy.",
+      "(6) Everyone at the business conference who prefers a planned economy is not an entrepreneur.",
+      "(7) Ho prefers a planned economy.",
+      "(8) Ho is not an entrepreneur.",
+      "(9) Ho is an investor.",
+      "(10) If someone is an investor then they are not an ardent communist.",
+      "(11) Ho is not an ardent communist."
+    ]
+  },
+  {
+    "idx": "455_1312",
+    "premises": [
+      "(1) All philosophers reason. ",
+      "(2) Some sophists reason. ",
+      "(3) All who can reason can distinguish truth from falsehood.",
+      "(4) Nobody who can distinguish truth from falsehood is morally perfect.  ",
+      "(5) The theistic God is morally perfect."
+    ],
+    "question": "if the theistic God is a philosopher, then he is not a sophist.",
+    "reasoning_steps": [
+      "(1) All philosophers reason.",
+      "(2) Some sophists reason.",
+      "(3) Some sophists reason and all philosophers reason.",
+      "(4) The theistic God is morally perfect.",
+      "(5) The theistic God can reason.",
+      "(6) The theistic God is not morally perfect.",
+      "(7) The theistic God is a philosopher.",
+      "(8) The theistic God is not a sophist."
+    ]
+  },
+  {
+    "idx": "267_711",
+    "premises": [
+      "(1) All juvenile delinquents have committed a crime.",
+      "(2) Some juvenile delinquents are products of broken homes."
+    ],
+    "question": "Some people who have committed a crime are products of broken homes.",
+    "reasoning_steps": [
+      "(1) Some juvenile delinquents are products of broken homes.",
+      "(2) All juvenile delinquents have committed a crime.",
+      "(3) Some people who have committed a crime are juvenile delinquents."
+    ]
+  },
+  {
+    "idx": "123_367",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is sanctioned.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) The Crude Oil Data Exchange is a business that isn't free.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is not free.",
+      "(5) The Crude Oil Data Exchange is not unsanctioned.",
+      "(6) If something is not unsanctioned then it is sanctioned."
+    ]
+  },
+  {
+    "idx": "74_226",
+    "premises": [
+      "(1) Camp Davern is a traditional summer camp for boys and girls.",
+      "(2) Camp Davern was established in the year 1946.",
+      "(3) Camp Davern was operated by the YMCA until the year 2015.",
+      "(4) Camp Davern is an old summer camp."
+    ],
+    "question": "A traditional summer camp for boys and girls was operated by the YMCA until the year 2015.",
+    "reasoning_steps": [
+      "(1) Camp Davern is a traditional summer camp for boys and girls.",
+      "(2) Camp Davern was operated by the YMCA until the year 2015.",
+      "(3) If something is a traditional summer camp for boys and girls then it was operated by the YMCA until the year 2015."
+    ]
+  },
+  {
+    "idx": "97_293",
+    "premises": [
+      "(1) Deborah Wallace is a Scottish-born actress, playwright, and producer.",
+      "(2) Psyche is a play based on the life of James Miranda Barry.",
+      "(3) Homesick, Psyche and The Void are plays by Deborah Wallace.",
+      "(4) Deborah Wallace co-produced Gasland."
+    ],
+    "question": "No plays by Deborah Wallace are based on the life of James Miranda Barry.",
+    "reasoning_steps": [
+      "(1) Deborah Wallace is a Scottish-born actress, playwright, and producer.",
+      "(2) Homesick, Psyche and The Void are plays by Deborah Wallace.",
+      "(3) Psyche is a play based on the life of James Miranda Barry.",
+      "(4) Deborah Wallace co-produced Gasland.",
+      "(5) The content of Gasland is unrelated to the life of James Miranda Barry.",
+      "(6) The content of Homesick, The Void, or Psyche is unrelated to the life of James Miranda Barry.",
+      "(7) Deborah Wallace is a playwright.",
+      "(8) All plays by Deborah Wallace are unrelated to the life of James Miranda Barry."
+    ]
+  },
+  {
+    "idx": "465_1344",
+    "premises": [
+      "(1) Everyone who took the bar exam can read. ",
+      "(2) All lawyers took the bar exam. ",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures. ",
+      "(4) All people who got a score of 180 on the LSAT can read. ",
+      "(5) No elephants can read. ",
+      "(6) If Mike can not read or is not an elephant, then Mike either took the bar exam or can read. "
+    ],
+    "question": "Mike took the bar exam.",
+    "reasoning_steps": [
+      "(1) Everyone who took the bar exam can read.",
+      "(2) All lawyers took the bar exam.",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures.",
+      "(4) All people who got a score of 180 on the LSAT can read.",
+      "(5) No elephants can read.",
+      "(6) If Mike can not read or is not an elephant, then Mike either took the bar exam or can read.",
+      "(7) If Mike took the bar exam then Mike can read.",
+      "(8) Mike can read.",
+      "(9) Mike is not an elephant.",
+      "(10) Mike either took the bar exam or can read."
+    ]
+  }
+]

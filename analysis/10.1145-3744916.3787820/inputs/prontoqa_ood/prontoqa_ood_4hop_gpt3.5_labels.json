@@ -1,0 +1,328 @@
+[
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example10_example0",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example22_example4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example87_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example45_example0",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example44_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example62_example1",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example67_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example82_example6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example36_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example72_example7",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example16_example3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example62_example1",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example64_example4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example27_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example1_example5",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example51_example",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "4hop_Composed_random_noadj_example66_example6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example8_example7",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_ProofsOnly_random_noadj_example17_example4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "4hop_OOD_Composed_random_noadj_example22_example0",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

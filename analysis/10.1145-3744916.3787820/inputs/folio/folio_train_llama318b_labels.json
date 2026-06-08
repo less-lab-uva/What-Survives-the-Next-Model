@@ -1,0 +1,271 @@
+[
+  {
+    "idx": "94_286",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "328_841",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "316_789",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "82_250",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "34_98",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "118_357",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "48_138",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "474_1376",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "48_139",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "39_113",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "410_1147",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "76_231",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "348_923",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "423_1198",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "455_1312",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False",
+      "False",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "267_711",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "123_367",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "74_226",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "Unknown"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "97_293",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "False",
+      "True",
+      "False"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "465_1344",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

@@ -1,0 +1,205 @@
+### Role
+You are an expert formal logician and automated reasoning specialist with deep expertise in deductive inference, first-order logic, and step-by-step proof verification.
+
+### Task
+Given a set of premises, a question (candidate conclusion), and a sequence of reasoning steps, you must evaluate whether each reasoning step is logically supported by the premises and determine whether the reasoning steps together form a valid proof path that establishes the truth value of the question.
+
+### Input
+- **premises**: A numbered list of statements assumed to be true. These are the axioms of the reasoning task.
+- **question**: A candidate conclusion whose truth or falsity is to be determined from the premises.
+- **reasoning_steps**: A numbered sequence of intermediate statements produced during a reasoning attempt toward answering the question.
+
+### Output
+Produce a JSON object with exactly the following fields:
+- **step_correctness_label**: A list of strings, one per reasoning step, where each value is exactly `"True"`, `"False"`, or `"Unknown"`.
+  - `"True"` means the step is logically entailed by (provable from) the premises.
+  - `"False"` means the step contradicts the premises (its negation is provable from the premises).
+  - `"Unknown"` means the step is neither provable nor refutable from the premises alone.
+- **has_valid_proof_path_label**: A boolean (`true` or `false`) indicating whether the subset of `"True"`-labeled reasoning steps, taken together, is sufficient to logically entail the correct truth value of the question as determined by the premises.
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "premises": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) The only style of music Vic DiCara plays is punk music.",
+          "(3) Vic DiCara played in the band Inside Out."
+        ],
+        "question": "A musician from Inside Out plays bass.",
+        "reasoning_steps": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) Vic DiCara played in the band Inside Out.",
+          "(3) A musician (Vic DiCara) from Inside Out plays bass."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) Each vumpus is snowy.",
+          "(2) Each rompus is a lorpus.",
+          "(3) Every wumpus is not amenable.",
+          "(4) Each numpus is an impus.",
+          "(5) Gorpuses are hot.",
+          "(6) Numpuses are liquid.",
+          "(7) Each shumpus is bright.",
+          "(8) Numpuses are vumpuses.",
+          "(9) Each impus is not loud.",
+          "(10) Zumpuses are blue.",
+          "(11) Lorpuses are nervous.",
+          "(12) Rompuses are fast.",
+          "(13) Wumpuses are jompuses.",
+          "(14) Rompuses are zumpuses.",
+          "(15) Impuses are rompuses.",
+          "(16) Zumpuses are gorpuses.",
+          "(17) Every impus is a shumpus.",
+          "(18) Zumpuses are brimpuses.",
+          "(19) Sally is a wumpus.",
+          "(20) Sally is a numpus."
+        ],
+        "question": "Sally is blue.",
+        "reasoning_steps": [
+          "(1) Sally is a numpus.",
+          "(2) Each numpus is an impus.",
+          "(3) Sally is an impus.",
+          "(4) Each impus is a rompus.",
+          "(5) Sally is a rompus.",
+          "(6) Rompuses are zumpuses.",
+          "(7) Sally is a zumpus.",
+          "(8) Zumpuses are blue."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) The bald eagle is nice.",
+          "(2) The bald eagle is round.",
+          "(3) The bald eagle likes the lion.",
+          "(4) The bald eagle visits the dog.",
+          "(5) The cat is green.",
+          "(6) The cat is nice.",
+          "(7) The cat is round.",
+          "(8) The cat likes the bald eagle.",
+          "(9) The cat likes the dog.",
+          "(10) The cat visits the dog.",
+          "(11) The dog eats the cat.",
+          "(12) The dog is big.",
+          "(13) The dog is blue.",
+          "(14) The lion is blue.",
+          "(15) If something is nice and green then it visits the bald eagle.",
+          "(16) If something is big then it eats the lion.",
+          "(17) If the bald eagle visits the lion then the lion is nice.",
+          "(18) If the bald eagle likes the cat then the bald eagle visits the dog.",
+          "(19) Round things are big.",
+          "(20) If something eats the cat and the cat eats the dog then the cat eats the lion.",
+          "(21) If something visits the dog and it eats the lion then the lion is round."
+        ],
+        "question": "The lion is not round.",
+        "reasoning_steps": [
+          "(1) The cat is green and nice.",
+          "(2) If something is nice and green then it visits the bald eagle.",
+          "(3) The cat visits the bald eagle.",
+          "(4) The dog is big.",
+          "(5) If something is big then it eats the lion.",
+          "(6) The dog eats the lion.",
+          "(7) The dog visits the dog is not stated.",
+          "(8) Premise 21 requires something to visit the dog and eat the lion.",
+          "(9) No entity both visits the dog and eats the lion."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": false
+      }
+    }
+  ]
+}
+```
+
+### Steps
+
+1. **Determine the ground-truth truth value of the question from the premises.**
+   - Treat all premises as universally true axioms.
+   - Apply deductive closure: exhaustively derive all facts that logically follow from the premises using universal instantiation, modus ponens, transitivity of class membership, and chaining of conditional rules.
+   - Determine whether the question (candidate conclusion) is provable (entailed by the premises), refutable (its negation is entailed), or indeterminate (neither provable nor refutable).
+     - If provable, the ground-truth label for the question is `True`.
+     - If refutable, the ground-truth label is `False`.
+     - If indeterminate, note this — it affects the `has_valid_proof_path_label` determination.
+   - Keep a complete working set of all derived facts for use in subsequent steps.
+
+2. **Evaluate each reasoning step individually for logical correctness.**
+   - For each reasoning step in order, check whether it is entailed by the premises alone (the original premises, not including other reasoning steps):
+     - **`"True"`**: The step's content is a statement that is logically provable solely from the given premises. This includes steps that restate a premise verbatim, apply a conditional rule to a provably true antecedent, or instantiate a universal rule to a specific entity whose membership is established by the premises.
+     - **`"False"`**: The step asserts something whose negation is provable from the premises — i.e., the step directly contradicts what the premises entail.
+     - **`"Unknown"`**: The step asserts something that is consistent with the premises but cannot be derived from them — it introduces information not supported by the premises (e.g., a claim about an entity or relationship not mentioned or inferable from the premises, or a conditional rule not stated in the premises).
+   - Apply the following tie-breaking and edge-case rules:
+     - A step that merely restates or rephrases a premise without adding new content is `"True"`.
+     - A step that cites a conditional rule from the premises verbatim (without instantiation) is `"True"` because it is entailed as a general statement.
+     - A step that introduces a conditional rule or fact not present in and not derivable from the premises is `"Unknown"`.
+     - A step that draws a correct intermediate conclusion via a chain of provable inferences, even if multi-hop, is `"True"`.
+     - A step that makes a negative existence claim (e.g., "no entity satisfies X") is `"True"` only if the premises positively rule out all such entities; otherwise, it is `"Unknown"`.
+     - A step that asserts a specific entity's property is `"True"` if and only if that property can be derived by applying the given rules to facts about that entity that are themselves provable from the premises.
+
+3. **Construct the candidate proof path from `"True"`-labeled steps.**
+   - Collect all steps assigned `"True"` in Step 2.
+   - Iteratively build a minimal proof path: starting from an empty set, add each `"True"`-labeled step only if it introduces a new fact not already derivable from the steps already in the proof path set.
+     - To check whether a step is already derivable from the current proof path set, apply the same deductive closure logic as in Step 1, but restricted to the proof path set (without the original premises).
+   - After processing all `"True"`-labeled steps, the proof path set is the maximal non-redundant collection of logically independent `"True"` steps.
+
+4. **Determine whether the proof path is valid.**
+   - Using only the steps in the proof path set constructed in Step 3 (without the original premises), attempt to derive the ground-truth truth value of the question determined in Step 1.
+   - If the proof path set alone entails the question with the same truth value as established in Step 1, set `has_valid_proof_path_label` to `true`.
+   - If the proof path set does not suffice to derive the question's truth value — because key intermediate steps are missing, the chain is incomplete, or no `"True"` steps were found — set `has_valid_proof_path_label` to `false`.
+   - Edge cases:
+     - If the question is indeterminate from the premises (neither provable nor refutable), set `has_valid_proof_path_label` to `false`, because no proof path can establish an indeterminate conclusion.
+     - If all reasoning steps are `"Unknown"` or `"False"`, set `has_valid_proof_path_label` to `false`.
+     - If the `"True"`-labeled steps happen to include a restatement of the question itself, verify that the remaining `"True"` steps (excluding that restatement) still support it; if not, the proof path does not stand on its own.
+
+5. **Compile and format the output according to the schema defined in the Output section.**
+   - Produce a JSON object with exactly two fields: `step_correctness_label` (a list of strings of length equal to the number of reasoning steps) and `has_valid_proof_path_label` (a boolean).
+   - Output only the JSON object with no additional text.
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Evaluate each reasoning step solely against the given premises; do not import background knowledge not stated in the premises.
+- Assign `"True"` only when the step strictly follows from the premises by deductive inference. Assign `"False"` when the step directly contradicts a premise or a consequence provable from the premises. Assign `"Unknown"` when the step is consistent with but not provable from the premises.
+- For `has_valid_proof_path_label`, set it to `true` only if the steps labeled `"True"` form a logically complete chain that, by themselves (without any `"False"` or `"Unknown"` steps), suffice to prove or disprove the question as the premises dictate. Set it to `false` if no such complete chain exists among the `"True"`-labeled steps.
+- The `step_correctness_label` list must have exactly the same number of entries as there are reasoning steps in the input.
+- Output only the JSON object with no additional text, commentary, or explanation.
+- Follow the Steps above in order as your internal reasoning process.

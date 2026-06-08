@@ -1,0 +1,3 @@
+# Python deps for the analysis scripts. The only one is anthropic (used by main.py,
+# utils/estimate_cost.py, utils/prompt_generator.py). evaluator.py is pure stdlib.
+anthropic==0.105.2

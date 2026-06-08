@@ -1,0 +1,289 @@
+[
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-1119_Q6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-269_Q5",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-858_Q12",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-372_Q4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "False",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-650_Q11",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-604_Q12",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-595_Q3",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-169_Q6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-478_Q5",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-1220_Q6",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-878_Q10",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-616_Q11",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-897_Q12",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-68_Q7",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_RelNeg-OWA-D5-173_Q10",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-973_Q9",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-121_Q8",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "False",
+      "False",
+      "True",
+      "False"
+    ],
+    "has_valid_proof_path_label": false
+  },
+  {
+    "idx": "ProofWriter_AttNeg-OWA-D5-285_Q9",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "Unknown",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_RelNoneg-OWA-D5-816_Q7",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "True",
+      "True"
+    ],
+    "has_valid_proof_path_label": true
+  },
+  {
+    "idx": "ProofWriter_AttNoneg-OWA-D5-572_Q4",
+    "step_correctness_label": [
+      "True",
+      "True",
+      "True",
+      "True",
+      "False"
+    ],
+    "has_valid_proof_path_label": true
+  }
+]

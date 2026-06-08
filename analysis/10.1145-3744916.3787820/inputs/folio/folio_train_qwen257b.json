@@ -1,0 +1,439 @@
+[
+  {
+    "idx": "453_1305",
+    "premises": [
+      "(1) No birds are ectothermic.",
+      "(2) All penguins are birds.",
+      "(3) An animal is ectothermic or endothermic.",
+      "(4) All endothermic animals produce heat within the body.",
+      "(5) Ron and Henry are both animals.",
+      "(6) Ron is not a bird and does not produce heat with the body. ",
+      "(7) Henry is not a cat and does not produce heat with the body. "
+    ],
+    "question": "Either Henry is a penguin or Henry is endothermic.",
+    "reasoning_steps": [
+      "(1) No birds are ectothermic.",
+      "(2) All penguins are birds.",
+      "(3) An animal is either ectothermic or endothermic.",
+      "(4) All endothermic animals produce heat within the body.",
+      "(5) Ron is not a bird and does not produce heat with the body.",
+      "(6) Ron is.",
+      "(7) Henry is not a cat and does not produce heat with the body.",
+      "(8) Henry is.",
+      "(9) Since Henry is ectothermic, he cannot be endothermic.",
+      "(10) Since no penguins are ectothermic, Henry cannot be a penguin.",
+      "(11) Either Henry is a penguin or Henry is endothermic."
+    ]
+  },
+  {
+    "idx": "15_41",
+    "premises": [
+      "(1) Elephantopus is a genus of perennial plants in the daisy family.",
+      "(2) Elephantopus is widespread over much of Africa, southern Asia, Australia, and the Americas.",
+      "(3) Several species of Elephantopus are native to the southeastern United States.",
+      "(4) Elephantopus scaber is a traditional medicine."
+    ],
+    "question": "Elephantopus is found in Australia and Southern Asia.",
+    "reasoning_steps": [
+      "(1) Elephantopus is widespread over much of Africa, southern Asia, Australia, and the Americas.",
+      "(2) This includes Australia and southern Asia.",
+      "(3) Elephantopus is a genus of perennial plants in the daisy family.",
+      "(4) This fact is about the classification of Elephantopus, not its distribution.",
+      "(5) Several species of Elephantopus are native to the southeastern United States.",
+      "(6) This information is about specific species, not the genus as a whole.",
+      "(7) Elephantopus scaber is a traditional medicine."
+    ]
+  },
+  {
+    "idx": "316_790",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is not a skyscraper.",
+    "reasoning_steps": [
+      "(1) All skyscrapers are in urban areas.",
+      "(2) Every creepy haunted house is a mansion house.",
+      "(3) There are no mansion houses in an urban area.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(6) If the LaLaurie House is a terrifying building on Halloween, it is also a creepy haunted house.",
+      "(7) From statements 2 and 3, we know that a creepy haunted house cannot be a mansion house.",
+      "(8) Since there are no mansion houses in an urban area, and all skyscrapers are in urban areas, the LaLaurie House cannot be a skyscraper if it is a mansion house.",
+      "(9) The LaLaurie House is either a creepy haunted house or a terrifying building on Halloween.",
+      "(10) If the LaLaurie House is a creepy haunted house, it cannot be a skyscraper.",
+      "(11) it is not a mansion house.",
+      "(12) If the LaLaurie House is a terrifying building on Halloween, it is also a creepy haunted house, and thus cannot be a skyscraper."
+    ]
+  },
+  {
+    "idx": "57_170",
+    "premises": [
+      "(1) All pets are animals.",
+      "(2) Pets can be either a dog or a cat.",
+      "(3) If a person has a pet, they care for that pet. ",
+      "(4) Dogs and cats can be naughty. ",
+      "(5) Pets who are naughty are not liked as much. ",
+      "(6) Charlie has a naughty pet dog named Leo. "
+    ],
+    "question": "Dogs are not always naughty.",
+    "reasoning_steps": [
+      "(1) All pets are animals.",
+      "(2) Pets can be either a dog or a cat.",
+      "(3) If a person has a pet, they care for that pet.",
+      "(4) Dogs and cats can be naughty.",
+      "(5) Pets who are naughty are not liked as much.",
+      "(6) Charlie has a naughty pet dog named Leo.",
+      "(7) A dog being naughty does not imply all dogs are naughty.",
+      "(8) There are other pets besides Charlie's dog that might not be naughty."
+    ]
+  },
+  {
+    "idx": "444_1278",
+    "premises": [
+      "(1) All birds have wings.",
+      "(2) Animals with wings aren't reptiles.",
+      "(3) Some animals that fly are birds.",
+      "(4) If something is an iguana, then it is a reptile. Simeng: All iguanas are reptiles. ",
+      "(5) John is either both an iguana and a bird, or he is neither. ",
+      "(6) John is an animal. "
+    ],
+    "question": "John is not both an iguana and an animal that can fly.",
+    "reasoning_steps": [
+      "(1) All birds have wings.",
+      "(2) Animals with wings aren't reptiles.",
+      "(3) Some animals that fly are birds.",
+      "(4) If something is an iguana, then it is a reptile.",
+      "(5) All iguanas are reptiles.",
+      "(6) John is either both an iguana and a bird, or he is neither.",
+      "(7) John is an animal.",
+      "(8) Iguanas are reptiles.",
+      "(9) Reptiles don't have wings.",
+      "(10) Birds can fly.",
+      "(11) If John were a bird, he would have wings.",
+      "(12) If John had wings, he couldn't be a reptile.",
+      "(13) If John were an iguana, he wouldn't be a bird.",
+      "(14) Since John is an animal and can't be both a bird and a reptile, he can't be both an iguana and a bird."
+    ]
+  },
+  {
+    "idx": "316_792",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or a mansion house.",
+    "reasoning_steps": [
+      "(1) Every creepy haunted house is a mansion house.",
+      "(2) The LaLaurie House is a creepy haunted house.",
+      "(3) Every terrifying building on Halloween is a creepy haunted house.",
+      "(4) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(5) If the LaLaurie House is a terrifying building on Halloween, it is also a creepy haunted house.",
+      "(6) The LaLaurie House is a mansion house.",
+      "(7) Mansion houses are not in urban areas.",
+      "(8) Skyscrapers are in urban areas.",
+      "(9) The LaLaurie House cannot be a skyscraper.",
+      "(10) it is a mansion house."
+    ]
+  },
+  {
+    "idx": "177_509",
+    "premises": [
+      "(1) The National Lobster Hatchery is a hatchery located in Padstow, England.",
+      "(2) The National Lobster Hatchery is open to visitors.",
+      "(3) A hatchery is either for profit or for conservation.",
+      "(4) If a hatchery is for conservation, it might release animals into the wild.",
+      "(5) The National Lobster Hatchery is not for profit."
+    ],
+    "question": "The National Lobster Hatchery is for conservation.",
+    "reasoning_steps": [
+      "(1) The National Lobster Hatchery is a hatchery.",
+      "(2) The National Lobster Hatchery is not for profit.",
+      "(3) A hatchery is either for profit or for conservation.",
+      "(4) Since the National Lobster Hatchery is not for profit, it must be for conservation."
+    ]
+  },
+  {
+    "idx": "31_90",
+    "premises": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Thomas Gilovich is a colleague of Justin Kruger. ",
+      "(3) Naive cynicism is a philosophy of mind."
+    ],
+    "question": "Justin Kruger proposed a philosophy of mind.",
+    "reasoning_steps": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Thomas Gilovich is a colleague of Justin Kruger.",
+      "(3) Naive cynicism is a philosophy of mind.",
+      "(4) Justin Kruger and a colleague proposed naive cynicism."
+    ]
+  },
+  {
+    "idx": "7_17",
+    "premises": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) If the number x is larger than the number y, then y is not larger than x.",
+      "(4) Seven equals six plus one.",
+      "(5) Eight equals seven plus one.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Eight is the double of four.",
+      "(9) Four is the double of two."
+    ],
+    "question": "Eight is larger than seven.",
+    "reasoning_steps": [
+      "(1) Six, seven, and eight are real numbers.",
+      "(2) Seven equals six plus one.",
+      "(3) According to the rule, if a real number equals another real number added by one, the first number is larger.",
+      "(4) Eight equals seven plus one.",
+      "(5) If the number x is larger than the number y, then y is not larger than x.",
+      "(6) Since eight is larger than seven, seven is not larger than eight."
+    ]
+  },
+  {
+    "idx": "170_488",
+    "premises": [
+      "(1) The Mona Lisa is a world's best-known painting.",
+      "(2) The Mona Lisa is a portrait painted by Leonardo da Vinci.",
+      "(3) Leonardo da Vinci was a scientist and painter.",
+      "(4) Painting genres can be history, portrait, animal, landscape, and still life."
+    ],
+    "question": "A world's best-known artwork is painted by a scientist.",
+    "reasoning_steps": [
+      "(1) The Mona Lisa is a world's bestknown painting.",
+      "(2) The Mona Lisa is a portrait.",
+      "(3) Leonardo da Vinci was a scientist and painter.",
+      "(4) A scientist painted the Mona Lisa."
+    ]
+  },
+  {
+    "idx": "7_19",
+    "premises": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) If the number x is larger than the number y, then y is not larger than x.",
+      "(4) Seven equals six plus one.",
+      "(5) Eight equals seven plus one.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Eight is the double of four.",
+      "(9) Four is the double of two."
+    ],
+    "question": "Six is larger than seven.",
+    "reasoning_steps": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) Seven equals six plus one.",
+      "(3) If a real number equals another real number added by one, the first number is larger.",
+      "(4) Seven is larger than six.",
+      "(5) Eight equals seven plus one.",
+      "(6) Eight is larger than seven."
+    ]
+  },
+  {
+    "idx": "54_158",
+    "premises": [
+      "(1) A roundel is a rounded artillery fortification.",
+      "(2) A roundel is not higher than adjacent walls. ",
+      "(3) Cannons can be deployed on artillery fortifications. ",
+      "(4) Roundels are the oldest artillery fortifications.",
+      "(5) Battery towers are artillery fortifications."
+    ],
+    "question": "Cannons can be deployed on battery towers.",
+    "reasoning_steps": [
+      "(1) A roundel is a rounded artillery fortification.",
+      "(2) Roundels are the oldest artillery fortifications.",
+      "(3) Battery towers are artillery fortifications.",
+      "(4) A roundel can have cannons deployed on it.",
+      "(5) If something is an artillery fortification, cannons can be deployed on it."
+    ]
+  },
+  {
+    "idx": "451_1299",
+    "premises": [
+      "(1) People on the payroll are being paid by the school.",
+      "(2) If someone has a job at a school, then they are on the payroll.",
+      "(3) All faculty members have a job at a school.",
+      "(4) If someone teaches students, they are a faculty member or a teacher.",
+      "(5) Every teacher has students.",
+      "(6) If Nancy is a teacher, then they are on the payroll.",
+      "(7) If Nancy is not a teacher, then they are not paid by the school.",
+      "(8) Nancy teaches students."
+    ],
+    "question": "Nancy is paid by the school and has students.",
+    "reasoning_steps": [
+      "(1) People on the payroll are being paid by the school.",
+      "(2) If someone has a job at a school, then they are on the payroll.",
+      "(3) All faculty members have a job at a school.",
+      "(4) Nancy teaches students.",
+      "(5) Every teacher has students.",
+      "(6) Nancy is a teacher.",
+      "(7) If Nancy is a teacher, then she is on the payroll.",
+      "(8) If Nancy is not a teacher, then she is not paid by the school.",
+      "(9) Nancy is not not a teacher.",
+      "(10) Nancy is paid by the school.",
+      "(11) Nancy has students."
+    ]
+  },
+  {
+    "idx": "78_237",
+    "premises": [
+      "(1) Ableton has an office in Germany.",
+      "(2) Ableton has an office in the USA.",
+      "(3) USA and Germany are different countries.",
+      "(4) Any company that has offices in different countries is a multinational company.",
+      "(5) Ableton makes music software."
+    ],
+    "question": "Ableton is a multinational company.",
+    "reasoning_steps": [
+      "(1) Ableton has an office in Germany.",
+      "(2) Ableton has an office in the USA.",
+      "(3) USA and Germany are different countries.",
+      "(4) Ableton has offices in different countries.",
+      "(5) Any company that has offices in different countries is a multinational company."
+    ]
+  },
+  {
+    "idx": "476_1384",
+    "premises": [
+      "(1) All phones are things.",
+      "(2) All cell phones are phones. ",
+      "(3) All iPhones are cell phones. ",
+      "(4) All employees are wage earners.",
+      "(5) All wage earners are human. ",
+      "(6) Jack is either an employee or a wage earner.",
+      "(7) Jack is either a human or a phone."
+    ],
+    "question": "Jack is not both a thing and an iPhone.",
+    "reasoning_steps": [
+      "(1) All phones are things.",
+      "(2) All cell phones are phones.",
+      "(3) All iPhones are cell phones.",
+      "(4) Jack is either an employee or a wage earner.",
+      "(5) All wage earners are human.",
+      "(6) Jack is either a human or a phone.",
+      "(7) All employees are wage earners.",
+      "(8) Jack is a wage earner.",
+      "(9) If Jack is a wage earner then he is a human.",
+      "(10) Jack is a human.",
+      "(11) All humans are not phones.",
+      "(12) Jack is not a phone.",
+      "(13) If Jack is not a phone then he is a thing.",
+      "(14) Jack is a thing.",
+      "(15) All iPhones are phones."
+    ]
+  },
+  {
+    "idx": "139_408",
+    "premises": [
+      "(1) UFC Fight Night was a mixed martial arts event held in Sweden.",
+      "(2) At UFC Fight Night, Sadollah was scheduled to fight Musoke.",
+      "(3) Sadollah fought Akiyama at UFC Fight Night.",
+      "(4) Musoke fought Yakovlev at UFC Fight Night.",
+      "(5) Jung was injured at UFC Fight Night.",
+      "(6) People injured at UFC Fight Night did not fight."
+    ],
+    "question": "Jung did not fight at UFC Fight Night.",
+    "reasoning_steps": [
+      "(1) UFC Fight Night was a mixed martial arts event held in Sweden.",
+      "(2) Sadollah fought Akiyama at UFC Fight Night.",
+      "(3) Musoke fought Yakovlev at UFC Fight Night.",
+      "(4) Jung was injured at UFC Fight Night.",
+      "(5) People injured at UFC Fight Night did not fight.",
+      "(6) Jung was injured and thus did not fight."
+    ]
+  },
+  {
+    "idx": "5_12",
+    "premises": [
+      "(1) Peter Parker is either a superhero or a civilian.",
+      "(2) The Hulk is a destroyer.",
+      "(3) The Hulk wakes up when he is angry.",
+      "(4) If the Hulk wakes up, then he will break a bridge.",
+      "(5) Thor is a god.",
+      "(6) Thor will break a bridge when he is happy.",
+      "(7) A god is not a destroyer.",
+      "(8) Peter Parker wears a uniform when he is a superhero.",
+      "(9) Peter Parker is not a civilian if a destroyer is breaking a bridge.",
+      "(10) If Thor is happy, the Hulk is angry."
+    ],
+    "question": "If Thor is happy, then Peter Parker wears a uniform.",
+    "reasoning_steps": [
+      "(1) The Hulk is a destroyer.",
+      "(2) If the Hulk wakes up, then he will break a bridge.",
+      "(3) The Hulk wakes up when he is angry.",
+      "(4) A god is not a destroyer.",
+      "(5) Thor is a god.",
+      "(6) Thor will break a bridge when he is happy.",
+      "(7) If Thor is happy, the Hulk is angry.",
+      "(8) If the Hulk is angry, then he will wake up.",
+      "(9) If a destroyer breaks a bridge, Peter Parker is not a civilian.",
+      "(10) Peter Parker wears a uniform when he is a superhero.",
+      "(11) If Thor is happy, the Hulk is angry (from\n.",
+      "(12) If the Hulk is angry (from\n, then he will break a bridge (from 3 and\n.",
+      "(13) If a destroyer breaks a bridge (from 10 and\n, Peter Parker is not a civilian (from\n.",
+      "(14) Since Peter Parker is either a superhero or a civilian (from\n, and he is not a civilian if a destroyer breaks a bridge (from\n, Peter Parker must be a superhero when the Hulk breaks a bridge."
+    ]
+  },
+  {
+    "idx": "92_282",
+    "premises": [
+      "(1) Adventures of Rusty is a drama film and children's film.",
+      "(2) Columbia Pictures produced Adventures of Rusty.",
+      "(3) Tintin was produced by Paramount.",
+      "(4) Tintin is an adventure film."
+    ],
+    "question": "Paramount produces adventure films.",
+    "reasoning_steps": [
+      "(1) Adventures of Rusty is a drama film and children's film.",
+      "(2) Columbia Pictures produced Adventures of Rusty.",
+      "(3) Tintin is an adventure film.",
+      "(4) Tintin was produced by Paramount.",
+      "(5) Since Tintin is an adventure film and was produced by Paramount, Paramount produces adventure films."
+    ]
+  },
+  {
+    "idx": "425_1206",
+    "premises": [
+      "(1) Everyone working at Meta has a high income. ",
+      "(2) A person with a high income will not take a bus to their destination.",
+      "(3) People will either take a bus or drive to their destination. ",
+      "(4) Everyone who has a car will choose to drive to their destination. ",
+      "(5) No students drive to their destination. ",
+      "(6) James has a car or works at Meta."
+    ],
+    "question": "James either drives to their destination or is a student.",
+    "reasoning_steps": [
+      "(1) Everyone working at Meta has a high income.",
+      "(2) James has a car or works at Meta.",
+      "(3) If James works at Meta, he has a high income.",
+      "(4) A person with a high income will not take a bus to their destination.",
+      "(5) People will either take a bus or drive to their destination.",
+      "(6) If James takes a bus, he does not have a high income.",
+      "(7) No students drive to their destination.",
+      "(8) If James has a car, he will drive.",
+      "(9) James either drives to his destination or does not drive.",
+      "(10) If James does not drive, he takes a bus.",
+      "(11) If James takes a bus, he is not a student."
+    ]
+  },
+  {
+    "idx": "27_78",
+    "premises": [
+      "(1) Xiufeng, Xiangshan, Diecai, Qixing are districts in the city of Guilin.",
+      "(2) Yangshuo is not a district in Guilin. "
+    ],
+    "question": "Xiufeng is a district in Guilin.",
+    "reasoning_steps": [
+      "(1) Xiufeng, Xiangshan, Diecai, Qixing are districts in the city of Guilin.",
+      "(2) Xiufeng is listed as one of the districts in Guilin.",
+      "(3) Yangshuo is not a district in Guilin."
+    ]
+  }
+]

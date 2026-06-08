@@ -1,0 +1,416 @@
+[
+  {
+    "idx": "141_413",
+    "premises": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) TS Leda was a Norwegian vessel that was built with stabilizers.",
+      "(3) Stabilizers are mechanical devices found only on ships with powerful steam turbine engines.",
+      "(4) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(5) Some ships that are quiet and good at sea have powerful steam turbine engines.",
+      "(6) Vessels are ships."
+    ],
+    "question": "TS Leda was quiet and good at sea.",
+    "reasoning_steps": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(3) TS Leda was a Norwegian vessel that was built with stabilizers.",
+      "(4) Stabilizers are mechanical devices found only on ships with powerful steam turbine engines.",
+      "(5) Some ships that are quiet and good at sea have powerful steam turbine engines.",
+      "(6) TS Leda has powerful steam turbine engines."
+    ]
+  },
+  {
+    "idx": "431_1227",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 was produced before 2010 and is scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) Jake32 is a Boeing",
+      "(2) it has a capacity of 100 passengers.",
+      "(3) All such planes are scheduled for shortdistance flights and produced before",
+      "(4) Jake32 is either a Boeing737 or a plane acquired by Delta in this batch.",
+      "(5) All planes acquired by Delta in this batch are Boeing",
+      "(6) Thus, Jake32 is a Boeing737 plane.",
+      "(7) No Boeing737 plane has more than 300 seats.",
+      "(8) Planes either have more than 300 seats or have a capacity of 100 passengers.",
+      "(9) All planes with a capacity of 100 passengers are scheduled for a shortdistance flight.",
+      "(10) All planes with a capacity of 100 passengers are produced before"
+    ]
+  },
+  {
+    "idx": "476_1383",
+    "premises": [
+      "(1) All phones are things.",
+      "(2) All cell phones are phones. ",
+      "(3) All iPhones are cell phones. ",
+      "(4) All employees are wage earners.",
+      "(5) All wage earners are human. ",
+      "(6) Jack is either an employee or a wage earner.",
+      "(7) Jack is either a human or a phone."
+    ],
+    "question": "Jack is a thing and an iPhone.",
+    "reasoning_steps": [
+      "(1) All phones are things.",
+      "(2) All cell phones are phones.",
+      "(3) All iPhones are cell phones.",
+      "(4) All employees are wage earners.",
+      "(5) All wage earners are human.",
+      "(6) Jack is either an employee or a wage earner.",
+      "(7) Jack is either a human or a phone.",
+      "(8) If Jack is a wage earner, he is human.",
+      "(9) If Jack is human, he is not a phone.",
+      "(10) If Jack is not a phone, he is not a thing.",
+      "(11) If Jack is not a thing, he is not an iPhone."
+    ]
+  },
+  {
+    "idx": "346_914",
+    "premises": [
+      "(1) All professional athletes spend most of their time on sports.",
+      "(2) All Olympic gold medal winners are professional athletes.",
+      "(3) No full-time scientists spend the majority of their time on sports.",
+      "(4) All Nobel physics laureates are full-time scientists.",
+      "(5) Amy spends the most time on sports, or Amy is an Olympic gold medal winner.",
+      "(6) If Amy is not a Nobel physics laureate, then Amy is not an Olympic gold medal winner."
+    ],
+    "question": "Amy is neither a full-time scientist nor an Olympic gold medal winner.",
+    "reasoning_steps": [
+      "(1) All Olympic gold medal winners are professional athletes.",
+      "(2) All professional athletes spend most of their time on sports.",
+      "(3) If Amy is an Olympic gold medal winner, she must be a professional athlete and spend most of her time on sports.",
+      "(4) If Amy is not a Nobel physics laureate, she is not an Olympic gold medal winner.",
+      "(5) All Nobel physics laureates are fulltime scientists.",
+      "(6) No fulltime scientists spend most of their time on sports.",
+      "(7) If Amy is an Olympic gold medal winner, she must be a Nobel physics laureate and thus a fulltime scientist.",
+      "(8) Since Amy is not an Olympic gold medal winner, she must spend most of her time on sports.",
+      "(9) If Amy spends most of her time on sports, she is a professional athlete.",
+      "(10) Amy cannot be a fulltime scientist."
+    ]
+  },
+  {
+    "idx": "428_1215",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is controlled by managers.",
+    "reasoning_steps": [
+      "(1) ModelXX, not being produced after the CTO, isn't easy to operate, can't connect to the company's wifi, and thus isn't controlled by managers.",
+      "(2) All devices belonging to the company are connected to Google Home.",
+      "(3) All devices with the company logo belong to the company.",
+      "(4) Each device either has the company logo or belongs to employees.",
+      "(5) All of the devices belonging to employees can be connected to the company's wifi.",
+      "(6) All of the devices connected to Google Home are controlled by managers.",
+      "(7) All of the devices that connect to the company's wifi are easy to operate.",
+      "(8) All of the devices that are easy to operate were produced after a new CTO is appointed.",
+      "(9) ModelXX was not produced after a new CTO was appointed.",
+      "(10) If ModelXX was not produced after the CTO, it is not easy to operate.",
+      "(11) If ModelXX is not easy to operate, it cannot connect to the company's wifi.",
+      "(12) If ModelXX cannot connect to the company's wifi, it is not controlled by managers."
+    ]
+  },
+  {
+    "idx": "455_1312",
+    "premises": [
+      "(1) All philosophers reason. ",
+      "(2) Some sophists reason. ",
+      "(3) All who can reason can distinguish truth from falsehood.",
+      "(4) Nobody who can distinguish truth from falsehood is morally perfect.  ",
+      "(5) The theistic God is morally perfect."
+    ],
+    "question": "if the theistic God is a philosopher, then he is not a sophist.",
+    "reasoning_steps": [
+      "(1) Theistic God is morally perfect.",
+      "(2) All philosophers reason.",
+      "(3) If the theistic God is a philosopher, he reasons.",
+      "(4) Hence, theistic God cannot be a philosopher."
+    ]
+  },
+  {
+    "idx": "431_1230",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 is neither produced before 2010 nor scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) All planes acquired by Delta in this batch are Boeing",
+      "(2) Jake32 is either a Boeing737 plane or a plane acquired by Delta in this batch.",
+      "(3) Jake32 is a Boeing737 plane.",
+      "(4) No Boeing737 plane has more than 300 seats.",
+      "(5) Planes either have more than 300 seats or have a capacity of 100 passengers.",
+      "(6) Jake32 has a capacity of 100 passengers.",
+      "(7) All planes with a capacity of 100 passengers are scheduled for a shortdistance flight.",
+      "(8) All planes with a capacity of 100 passengers are produced before",
+      "(9) Jake32 is produced before",
+      "(10) Jake32 is scheduled for a shortdistance flight."
+    ]
+  },
+  {
+    "idx": "271_715",
+    "premises": [
+      "(1) No plants are fungi.",
+      "(2) Mushrooms are fungi."
+    ],
+    "question": "No plants are mushrooms.",
+    "reasoning_steps": [
+      "(1) The premises state that no plants are fungi and mushrooms are fungi.",
+      "(2) Since mushrooms are fungi and no plants are fungi, it follows that no plants are mushrooms.",
+      "(3) No plants are fungi.",
+      "(4) Mushrooms are fungi."
+    ]
+  },
+  {
+    "idx": "415_1168",
+    "premises": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien. ",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman."
+    ],
+    "question": "If Hamlet has either won a Hugo Award and is written by Tolkien, or neither has won a Hugo Award nor is written by Tolkien, then Hamlet has neither won a Hugo Award nor is written by Neil Gaiman.",
+    "reasoning_steps": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien.",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or is written by Neil Gaiman."
+    ]
+  },
+  {
+    "idx": "473_1369",
+    "premises": [
+      "(1) All pets in my house are either cats or dogs.",
+      "(2) All the dogs in my house bark.",
+      "(3) Ghosts do not exist.",
+      "(4) If some pet in my house barks, then it is not dead.",
+      "(5) All of the pets in my house are either dead or alive.",
+      "(6) Jojo is a pet in my house, and it is not alive."
+    ],
+    "question": "Jojo is a ghost.",
+    "reasoning_steps": [
+      "(1) All pets in my house are either cats or dogs.",
+      "(2) Jojo is a pet in my house and is not alive.",
+      "(3) All pets are either dead or alive.",
+      "(4) Jojo is dead.",
+      "(5) Ghosts do not exist.",
+      "(6) Jojo cannot be a ghost."
+    ]
+  },
+  {
+    "idx": "396_1079",
+    "premises": [
+      "(1) A neuroimaging technique is either an invasive neuroimaging technique or a noninvasive neuroimaging technique. ",
+      "(2) All noninvasive neuroimaging techniques provide a spatial resolution of brains.",
+      "(3) If a technique provides a spatial resolution of brains, then it is a measurement of brain activity. ",
+      "(4) All measurements of brain activity are used by neuroscience researchers.",
+      "(5) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.",
+      "(6) FMRI is a neuroimaging technique."
+    ],
+    "question": "If fMRI is not an invasive neuroimaging technique used by neuroscience researchers, then fMRI is neither a noninvasive neuroimaging technique nor provides a spatial resolution of brains.",
+    "reasoning_steps": [
+      "(1) the premises logically lead to fMRI being noninvasive and used by researchers if it's not invasive.",
+      "(2) A neuroimaging technique is either invasive or noninvasive.",
+      "(3) FMRI is a neuroimaging technique.",
+      "(4) If FMRI is noninvasive, it provides a spatial resolution.",
+      "(5) Providing spatial resolution makes it a measurement of brain activity.",
+      "(6) Measurements of brain activity are used by researchers.",
+      "(7) If FMRI is noninvasive, it is used by researchers."
+    ]
+  },
+  {
+    "idx": "431_1229",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 is produced before 2010 or scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) Jake32 is either a Boeing737 plane or a plane acquired by Delta in this batch.",
+      "(2) All planes acquired by Delta in this batch are Boeing",
+      "(3) Thus, Jake32 is a Boeing737 plane.",
+      "(4) No Boeing737 plane has more than 300 seats.",
+      "(5) Planes either have more than 300 seats or have a capacity of 100 passengers.",
+      "(6) Since Jake32 is a Boeing737, it has no more than 300 seats.",
+      "(7) All planes with a capacity of 100 passengers are scheduled for a shortdistance flight.",
+      "(8) All planes with a capacity of 100 passengers are produced before",
+      "(9) Thus, Jake32 is produced before 2010 and scheduled for a shortdistance flight."
+    ]
+  },
+  {
+    "idx": "316_789",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is a skyscraper.",
+    "reasoning_steps": [
+      "(1) The LaLaurie House is either a creepy haunted house or a terrifying building on Halloween.",
+      "(2) If it's a creepy haunted house, it's a mansion.",
+      "(3) No mansion houses are in urban areas, and all skyscrapers are in urban areas."
+    ]
+  },
+  {
+    "idx": "313_780",
+    "premises": [
+      "(1) Some of those who apply for a Schengen visa get it.",
+      "(2) To apply for a Schengen Visa, you need to provide financial guarantees.",
+      "(3) If you need to provide financial guarantees, you must request documents from the bank.",
+      "(4) Do not close your bank account if you request documents from the bank.",
+      "(5) Philip closed his bank account."
+    ],
+    "question": "Philip applied for a Schengen visa and got it.",
+    "reasoning_steps": [
+      "(1) Some who apply for a Schengen visa get it.",
+      "(2) To apply, you need financial guarantees.",
+      "(3) Financial guarantees require requesting bank documents.",
+      "(4) You shouldn't close your bank account if requesting documents.",
+      "(5) Philip closed his bank account.",
+      "(6) Closing the account means he didn't request documents.",
+      "(7) Without requesting documents, he couldn't provide financial guarantees.",
+      "(8) Without financial guarantees, he couldn't apply for the visa."
+    ]
+  },
+  {
+    "idx": "316_792",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or a mansion house.",
+    "reasoning_steps": [
+      "(1) The LaLaurie House is either a creepy haunted house or a terrifying building on Halloween.",
+      "(2) Every terrifying building on Halloween is a creepy haunted house.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) All skyscrapers are in urban areas.",
+      "(5) There are no mansion houses in urban areas.",
+      "(6) The LaLaurie House is a mansion house."
+    ]
+  },
+  {
+    "idx": "99_299",
+    "premises": [
+      "(1) Shafaq-Asiman is a large complex of offshore geological structures in the Caspian Sea.",
+      "(2) Baku is northwest of Shafaq-Asiman.",
+      "(3) If place A is northwest of place B, then place B is southeast of place A."
+    ],
+    "question": "A large complex is southeast of Baku.",
+    "reasoning_steps": [
+      "(1) ShafaqAsiman is a large complex of offshore geological structures in the Caspian Sea.",
+      "(2) Baku is northwest of ShafaqAsiman.",
+      "(3) If place A is northwest of place B, then place B is southeast of place A.",
+      "(4) A large complex (ShafaqAsiman) is southeast of Baku."
+    ]
+  },
+  {
+    "idx": "43_124",
+    "premises": [
+      "(1) Imagine Dragons are an American pop-rock band.",
+      "(2) The lead singer of Imagine Dragons is Dan.",
+      "(3) Dan is also a songwriter.",
+      "(4) All lead singers are singers.",
+      "(5) All singers are musicians.",
+      "(6) Demons is one of the most popular singles of Imagine Dragons.",
+      "(7) Some singles of Imagine Dragons have been on Billboard Hot 100."
+    ],
+    "question": "Dan is not a musician.",
+    "reasoning_steps": [
+      "(1) The lead singer of Imagine Dragons is Dan.",
+      "(2) All lead singers are singers.",
+      "(3) All singers are musicians.",
+      "(4) Dan is a singer."
+    ]
+  },
+  {
+    "idx": "267_711",
+    "premises": [
+      "(1) All juvenile delinquents have committed a crime.",
+      "(2) Some juvenile delinquents are products of broken homes."
+    ],
+    "question": "Some people who have committed a crime are products of broken homes.",
+    "reasoning_steps": [
+      "(1) The premises establish that all juvenile delinquents have committed crimes and that some are from broken homes.",
+      "(2) All juvenile delinquents have committed a crime.",
+      "(3) Some juvenile delinquents are products of broken homes."
+    ]
+  },
+  {
+    "idx": "139_408",
+    "premises": [
+      "(1) UFC Fight Night was a mixed martial arts event held in Sweden.",
+      "(2) At UFC Fight Night, Sadollah was scheduled to fight Musoke.",
+      "(3) Sadollah fought Akiyama at UFC Fight Night.",
+      "(4) Musoke fought Yakovlev at UFC Fight Night.",
+      "(5) Jung was injured at UFC Fight Night.",
+      "(6) People injured at UFC Fight Night did not fight."
+    ],
+    "question": "Jung did not fight at UFC Fight Night.",
+    "reasoning_steps": [
+      "(1) UFC Fight Night was held in Sweden.",
+      "(2) Sadollah was scheduled to fight Musoke but fought Akiyama instead.",
+      "(3) Musoke fought Yakovlev.",
+      "(4) Jung was injured at UFC Fight Night.",
+      "(5) People injured at UFC Fight Night did not fight.",
+      "(6) Since Jung was injured, he did not fight at the event."
+    ]
+  },
+  {
+    "idx": "465_1343",
+    "premises": [
+      "(1) Everyone who took the bar exam can read. ",
+      "(2) All lawyers took the bar exam. ",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures. ",
+      "(4) All people who got a score of 180 on the LSAT can read. ",
+      "(5) No elephants can read. ",
+      "(6) If Mike can not read or is not an elephant, then Mike either took the bar exam or can read. "
+    ],
+    "question": "Mike did not take the bar exam and is not both knowledgeable about criminal procedures and someone who got 180 on the LSAT.",
+    "reasoning_steps": [
+      "(1) Everyone who took the bar exam can read.",
+      "(2) All lawyers took the bar exam.",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures.",
+      "(4) All people who got a score of 180 on the LSAT can read.",
+      "(5) No elephants can read.",
+      "(6) If Mike cannot read or is not an elephant, then Mike either took the bar exam or can read.",
+      "(7) Mike did not take the bar exam.",
+      "(8) Mike cannot read.",
+      "(9) everyone who took the bar exam can read.",
+      "(10) Since Mike did not take the bar exam, he can read.",
+      "(11) Mike can read.",
+      "(12) he got a score of 180 on the LSAT.",
+      "(13) Mike is not knowledgeable about criminal procedures.",
+      "(14) he did not take the bar exam.",
+      "(15) Mike is not both knowledgeable about criminal procedures and someone who got 180 on the LSAT."
+    ]
+  }
+]

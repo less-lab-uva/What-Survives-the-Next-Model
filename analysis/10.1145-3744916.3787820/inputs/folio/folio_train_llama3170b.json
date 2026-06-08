@@ -1,0 +1,443 @@
+[
+  {
+    "idx": "431_1230",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 is neither produced before 2010 nor scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) All of the planes acquired by Delta in this batch are Boeing-737.",
+      "(2) No Boeing-737 plane has more than 300 seats.",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers.",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight.",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010.",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) If Jake32 is a Boeing-737 plane, then it does not have a capacity of 100 passengers.",
+      "(8) If Jake32 is a plane acquired by Delta in this batch, then it is a Boeing-737 plane and does not have a capacity of 100 passengers.",
+      "(9) If Jake32 does not have a capacity of 100 passengers, then it is neither scheduled for a short-distance flight nor produced before 2010."
+    ]
+  },
+  {
+    "idx": "341_898",
+    "premises": [
+      "(1) No battery-powered watch is automatic.",
+      "(2) All digital watches are battery-powered.",
+      "(3) Some mechanical watches are automatic.",
+      "(4) All smart watches are digital.",
+      "(5) Moonwatch is either a digital watch and an automatic, or it is neither."
+    ],
+    "question": "If Moonwatch is a smartwatch and a mechanical watch, then Moonwatch is not a mechanical watch.",
+    "reasoning_steps": [
+      "(1) All digital watches are battery-powered.",
+      "(2) No battery-powered watch is automatic.",
+      "(3) All digital watches are not automatic.",
+      "(4) All smart watches are digital.",
+      "(5) All smart watches are not automatic.",
+      "(6) Moonwatch is either a digital watch and an automatic, or it is neither.",
+      "(7) If Moonwatch is a digital watch, then it is not automatic.",
+      "(8) If Moonwatch is a smartwatch, then it is a digital watch.",
+      "(9) If Moonwatch is a smartwatch, then it is not automatic.",
+      "(10) If Moonwatch is a smartwatch and a mechanical watch, then it is not automatic.",
+      "(11) Some mechanical watches are automatic.",
+      "(12) If Moonwatch is a smartwatch and a mechanical watch, then it is not a mechanical watch that is automatic."
+    ]
+  },
+  {
+    "idx": "410_1147",
+    "premises": [
+      "(1) All products designed by Apple are sold at Apple Stores.",
+      "(2) All products with Apple logos are designed by Apple.",
+      "(3) All Macbooks have Apple logos.",
+      "(4) All products with Apple M2 chips are Mackbooks.",
+      "(5) A Thinkpad X1 is not both sold in Apple Stores and is a Macbook."
+    ],
+    "question": "The Thinkpad X1 has an Apple M2 chip.",
+    "reasoning_steps": [
+      "(1) All products with Apple logos are designed by Apple.",
+      "(2) All Macbooks have Apple logos.",
+      "(3) All Macbooks are designed by Apple.",
+      "(4) All products designed by Apple are sold at Apple Stores.",
+      "(5) All Macbooks are sold at Apple Stores.",
+      "(6) All products with Apple M2 chips are Macbooks.",
+      "(7) All products with Apple M2 chips are sold at Apple Stores.",
+      "(8) A Thinkpad X1 is not both sold in Apple Stores and is a Macbook.",
+      "(9) If a Thinkpad X1 is a Macbook then it is sold in Apple Stores.",
+      "(10) A Thinkpad X1 is not sold in Apple Stores.",
+      "(11) A Thinkpad X1 is not a Macbook."
+    ]
+  },
+  {
+    "idx": "436_1251",
+    "premises": [
+      "(1) All of this brand's products are either produced in China or in the US. ",
+      "(2) All of this brand's products produced in China are labeled. ",
+      "(3) All of this brand's products produced in the US are sold in the US. ",
+      "(4) The products of this brand that are labeled are cheaper.",
+      "(5) All of this brand's products sold in the US are sold at Walmart. ",
+      "(6) All products of this brand displayed on the homepage are sold at Walmart. ",
+      "(7) None of this brand's products that are returned by customers are sold at Walmart. ",
+      "(8) G-910 is a product of this brand, and it is either displayed on the homepage and is cheaper, or it is neither displayed on the homepage nor is it cheaper."
+    ],
+    "question": "G-910 is a product returned by customers or sold in Walmart.",
+    "reasoning_steps": [
+      "(1) All of this brand's products are either produced in China or in the US.",
+      "(2) All of this brand's products produced in China are labeled.",
+      "(3) All of this brand's products produced in the US are sold in the US.",
+      "(4) The products of this brand that are labeled are cheaper.",
+      "(5) All of this brand's products sold in the US are sold at Walmart.",
+      "(6) All products of this brand displayed on the homepage are sold at Walmart.",
+      "(7) G-910 is a product of this brand, and it is either displayed on the homepage and is cheaper, or it is neither displayed on the homepage nor is it cheaper.",
+      "(8) If G-910 is displayed on the homepage, then it is sold at Walmart.",
+      "(9) If G-910 is cheaper, then it is labeled.",
+      "(10) If G-910 is labeled, then it is produced in China.",
+      "(11) If G-910 is produced in China, then it is not sold in the US.",
+      "(12) If G-910 is not sold in the US, then it is not sold at Walmart.",
+      "(13) If G-910 is not displayed on the homepage, then it is not sold at Walmart.",
+      "(14) If G-910 is not sold at Walmart, then it is either returned by customers or sold in the US.",
+      "(15) If G-910 is cheaper, then it is not sold in the US.",
+      "(16) If G-910 is not sold in the US, then it is either returned by customers or sold at Walmart.",
+      "(17) If G-910 is not displayed on the homepage, then it is either returned by customers or sold in the US."
+    ]
+  },
+  {
+    "idx": "171_492",
+    "premises": [
+      "(1) Some fish stings people.",
+      "(2) Stonefish is a fish.",
+      "(3) Stonefish stings when stepped on. ",
+      "(4) If a stonefish stings someone and they are not treated, it can cause death to them.",
+      "(5) To treat stonefish stings, apply heat to the affected area or use an antivenom."
+    ],
+    "question": "Stings of some fish can cause death if not treated.",
+    "reasoning_steps": [
+      "(1) Some fish stings people.",
+      "(2) Stonefish is a fish.",
+      "(3) Stonefish stings when stepped on.",
+      "(4) Stonefish stings people when stepped on.",
+      "(5) If a stonefish stings someone and they are not treated, it can cause death to them.",
+      "(6) Stonefish stings can cause death if not treated.",
+      "(7) Stonefish is a type of fish."
+    ]
+  },
+  {
+    "idx": "104_317",
+    "premises": [
+      "(1) Ordinary is an unincorporated community.",
+      "(2) Located within Elliot County, Ordinary is on Kentucky Route 32.",
+      "(3) Ordinary is located northwest of Sandy Hook."
+    ],
+    "question": "There is an unincorporated community located in Elliot County.",
+    "reasoning_steps": [
+      "(1) Ordinary is an unincorporated community.",
+      "(2) Ordinary is located within Elliot County.",
+      "(3) If something is located within a county, then it is in that county.",
+      "(4) Ordinary is in Elliot County."
+    ]
+  },
+  {
+    "idx": "253_697",
+    "premises": [
+      "(1) No reptile has fur.",
+      "(2) All snakes are reptiles."
+    ],
+    "question": "Some snake has fur.",
+    "reasoning_steps": [
+      "(1) No reptile has fur.",
+      "(2) All snakes are reptiles.",
+      "(3) If all snakes are reptiles and no reptile has fur, then no snake has fur."
+    ]
+  },
+  {
+    "idx": "78_239",
+    "premises": [
+      "(1) Ableton has an office in Germany.",
+      "(2) Ableton has an office in the USA.",
+      "(3) USA and Germany are different countries.",
+      "(4) Any company that has offices in different countries is a multinational company.",
+      "(5) Ableton makes music software."
+    ],
+    "question": "Ableton does not have an office in Germany.",
+    "reasoning_steps": [
+      "(1) Ableton has an office in Germany.",
+      "(2) Ableton has an office in the USA.",
+      "(3) USA and Germany are different countries.",
+      "(4) Any company that has offices in different countries is a multinational company.",
+      "(5) Ableton has offices in different countries."
+    ]
+  },
+  {
+    "idx": "440_1267",
+    "premises": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat."
+    ],
+    "question": "Fido is neither a dog nor a husky.",
+    "reasoning_steps": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat.",
+      "(6) If Fido is a Bengal tiger, then Fido is a tiger.",
+      "(7) If Fido is a tiger, then Fido is a cat.",
+      "(8) If Fido is a cat, then Fido is not a dog.",
+      "(9) If Fido is not a dog, then Fido is not a husky.",
+      "(10) If Fido is a cat, then Fido is not a husky.",
+      "(11) Fido is either a Bengal tiger or a cat, and in both cases, Fido is not a dog and not a husky."
+    ]
+  },
+  {
+    "idx": "474_1375",
+    "premises": [
+      "(1) All humans are capable of abstract thoughts.",
+      "(2) Plants are not capable of abstract thoughts.",
+      "(3) All multicellular creatures that are autotrophic or digest food internally are plants and animals.",
+      "(4) All goats are animals.",
+      "(5) Dirt is not an animal.",
+      "(6) Hulu is a goat or a human.",
+      "(7) Hulu is a multicellular creature that is autotrophic or digests food internally. "
+    ],
+    "question": "Hulu is an animal or dirt.",
+    "reasoning_steps": [
+      "(1) All multicellular creatures that are autotrophic or digest food internally are plants and animals.",
+      "(2) Hulu is a multicellular creature that is autotrophic or digests food internally.",
+      "(3) Hulu is a plant or an animal.",
+      "(4) All goats are animals.",
+      "(5) Hulu is a goat or a human.",
+      "(6) If Hulu is a goat, then Hulu is an animal.",
+      "(7) If Hulu is a human, then Hulu is not a plant.",
+      "(8) Dirt is not an animal.",
+      "(9) Hulu is not dirt or a plant.",
+      "(10) Hulu is an animal."
+    ]
+  },
+  {
+    "idx": "76_231",
+    "premises": [
+      "(1) Asa Hoffmann was born in New York City.",
+      "(2) Asa Hoffman lives in Manhattan.",
+      "(3) Asa Hoffman is a chess player.",
+      "(4) Some chess players are grandmasters.",
+      "(5) People born and living in New York City are New Yorkers.",
+      "(6) People living in Manhattan live in New York City."
+    ],
+    "question": "Asa Hoffmann is a New Yorker.",
+    "reasoning_steps": [
+      "(1) Asa Hoffmann was born in New York City.",
+      "(2) Asa Hoffman lives in Manhattan.",
+      "(3) People living in Manhattan live in New York City.",
+      "(4) Asa Hoffman lives in New York City.",
+      "(5) Asa Hoffmann was born and lives in New York City.",
+      "(6) People born and living in New York City are New Yorkers."
+    ]
+  },
+  {
+    "idx": "210_600",
+    "premises": [
+      "(1) The only types of mammals that lay eggs are either platypuses or echidnas.",
+      "(2) Platypuses are not hyrax.",
+      "(3) Echidnas are not hyrax.",
+      "(4) No mammals are invertebrates.",
+      "(5) All animals are either vertebrates or invertebrates.",
+      "(6) Mammals are animals.",
+      "(7) Hyraxes are mammals.",
+      "(8) Grebes lay eggs.",
+      "(9) Grebes are not platypuses and also not echidnas."
+    ],
+    "question": "Grebes are not mammals.",
+    "reasoning_steps": [
+      "(1) The only types of mammals that lay eggs are either platypuses or echidnas.",
+      "(2) Grebes lay eggs.",
+      "(3) Grebes are not platypuses and also not echidnas.",
+      "(4) If Grebes were mammals, they would be either platypuses or echidnas.",
+      "(5) Grebes are not either platypuses or echidnas.",
+      "(6) Mammals are animals.",
+      "(7) All animals are either vertebrates or invertebrates.",
+      "(8) No mammals are invertebrates."
+    ]
+  },
+  {
+    "idx": "11_31",
+    "premises": [
+      "(1) Walter Folger Brown was an American politician and lawyer who served as the postmaster general.",
+      "(2) Walter Folger Brown graduated from Harvard University with a Bachelor of Arts.",
+      "(3) While they were both in Toledo, Walter Folger Brown's father practiced law with Walter Folger Brown.",
+      "(4) Katherin Hafer married Walter Folger Brown."
+    ],
+    "question": "Walter Folger Brown was not in Toledo.",
+    "reasoning_steps": [
+      "(1) Walter Folger Brown's father practiced law with Walter Folger Brown.",
+      "(2) While they were both in Toledo, Walter Folger Brown's father practiced law with Walter Folger Brown.",
+      "(3) This implies that Walter Folger Brown was in Toledo.",
+      "(4) In fact, the premises suggest the opposite."
+    ]
+  },
+  {
+    "idx": "469_1355",
+    "premises": [
+      "(1) All members of the university faculty are professors.",
+      "(2) All principal investigators are members of the university faculty.",
+      "(3) No professor is also an undergraduate student.",
+      "(4) Anyone pursuing a bachelor's degree is an undergraduate student.",
+      "(5) Leon is not pursuing a bachelor's degree, and he is not a principal investigator.",
+      "(6) If Leon is not pursuing a bachelor's degree, then he is a professor."
+    ],
+    "question": "Leon is neither an undergraduate student nor a principal investigator.",
+    "reasoning_steps": [
+      "(1) Anyone pursuing a bachelor's degree is an undergraduate student.",
+      "(2) Leon is not pursuing a bachelor's degree.",
+      "(3) Leon is not an undergraduate student.",
+      "(4) If Leon is not pursuing a bachelor's degree, then he is a professor.",
+      "(5) Leon is a professor.",
+      "(6) All members of the university faculty are professors.",
+      "(7) No professor is also an undergraduate student.",
+      "(8) Leon is not a principal investigator.",
+      "(9) All principal investigators are members of the university faculty.",
+      "(10) Leon is not a principal investigator and not an undergraduate student."
+    ]
+  },
+  {
+    "idx": "339_890",
+    "premises": [
+      "(1) No professional tennis umpires are professional tennis players.",
+      "(2) If you are a World Tour player, then you are a professional tennis player.",
+      "(3) All Grand Slam champions are World Tour players.",
+      "(4) All Grand Slam umpires are professional tennis umpires.",
+      "(5) Nadal is a World Tour player or a Grand Slam champion"
+    ],
+    "question": "Nadal is neither a Grand Slam umpire nor a professional tennis umpire.",
+    "reasoning_steps": [
+      "(1) No professional tennis umpires are professional tennis players.",
+      "(2) If you are a World Tour player, then you are a professional tennis player.",
+      "(3) All Grand Slam champions are World Tour players.",
+      "(4) Nadal is a World Tour player or a Grand Slam champion.",
+      "(5) If Nadal is a World Tour player, then Nadal is a professional tennis player.",
+      "(6) If Nadal is a Grand Slam champion, then Nadal is a World Tour player, and then Nadal is a professional tennis player.",
+      "(7) In either case, Nadal is a professional tennis player.",
+      "(8) Nadal cannot be a professional tennis umpire.",
+      "(9) All Grand Slam umpires are professional tennis umpires.",
+      "(10) Nadal cannot be a Grand Slam umpire."
+    ]
+  },
+  {
+    "idx": "290_734",
+    "premises": [
+      "(1) All tables are round.",
+      "(2) Some pieces of furniture are tables."
+    ],
+    "question": "Some pieces of furniture are round.",
+    "reasoning_steps": [
+      "(1) All tables are round.",
+      "(2) Some pieces of furniture are tables.",
+      "(3) If something is a table, then it is round.",
+      "(4) Some pieces of furniture are tables, and tables are round."
+    ]
+  },
+  {
+    "idx": "468_1353",
+    "premises": [
+      "(1) All drinks on the counter are edible. ",
+      "(2) All juices on the counter are drinks. ",
+      "(3) Orange juice is a type of juice. ",
+      "(4) Everything on the counter is either orange juice or apple juice.",
+      "(5) All apple juices on the counter are sweet.",
+      "(6) The coke is on the counter and if the coke is apple juice, then the coke is a drink.",
+      "(7) If the coke is not apple juice, then the coke is not edible."
+    ],
+    "question": "The coke is not edible and sweet.",
+    "reasoning_steps": [
+      "(1) Everything on the counter is either orange juice or apple juice.",
+      "(2) The coke is on the counter.",
+      "(3) The coke is either orange juice or apple juice.",
+      "(4) If the coke is not apple juice, then the coke is not edible.",
+      "(5) If the coke is apple juice, then the coke is a drink.",
+      "(6) All drinks on the counter are edible.",
+      "(7) If the coke is apple juice, then the coke is edible.",
+      "(8) The coke cannot be both edible and not edible.",
+      "(9) The coke is not apple juice.",
+      "(10) The coke is not edible.",
+      "(11) All apple juices on the counter are sweet.",
+      "(12) The coke is not apple juice, so it is not sweet.",
+      "(13) The coke is not edible and not sweet."
+    ]
+  },
+  {
+    "idx": "43_124",
+    "premises": [
+      "(1) Imagine Dragons are an American pop-rock band.",
+      "(2) The lead singer of Imagine Dragons is Dan.",
+      "(3) Dan is also a songwriter.",
+      "(4) All lead singers are singers.",
+      "(5) All singers are musicians.",
+      "(6) Demons is one of the most popular singles of Imagine Dragons.",
+      "(7) Some singles of Imagine Dragons have been on Billboard Hot 100."
+    ],
+    "question": "Dan is not a musician.",
+    "reasoning_steps": [
+      "(1) Imagine Dragons is an American pop-rock band.",
+      "(2) The lead singer of Imagine Dragons is Dan.",
+      "(3) All lead singers are singers.",
+      "(4) Dan is a singer.",
+      "(5) All singers are musicians."
+    ]
+  },
+  {
+    "idx": "428_1216",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is either produced after a new CTO was appointed or it is controlled by managers.",
+    "reasoning_steps": [
+      "(1) All devices belonging to the company are connected to Google Home.",
+      "(2) All devices with the company logo belong to the company.",
+      "(3) Each device either has the company logo or belongs to employees.",
+      "(4) All devices with the company logo are connected to Google Home.",
+      "(5) All devices connected to Google Home are controlled by managers.",
+      "(6) All devices with the company logo are controlled by managers.",
+      "(7) All devices belonging to employees can be connected to the company's wifi.",
+      "(8) All devices connected to the company's wifi are easy to operate.",
+      "(9) All devices that are easy to operate were produced after a new CTO is appointed.",
+      "(10) ModelXX was not produced after a new CTO was appointed.",
+      "(11) ModelXX is not easy to operate.",
+      "(12) ModelXX cannot be connected to the company's wifi.",
+      "(13) ModelXX does not belong to employees.",
+      "(14) ModelXX has the company logo.",
+      "(15) ModelXX is controlled by managers."
+    ]
+  },
+  {
+    "idx": "415_1167",
+    "premises": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien. ",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman."
+    ],
+    "question": "Hamlet has won a Hugo Award and is written by Tolkien.",
+    "reasoning_steps": [
+      "(1) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(2) This does not imply that all books written by Neil Gaiman have won Hugo Awards.",
+      "(3) Tomas has read all books written by Tolkien.",
+      "(4) This does not imply that Tomas has read all books that have won Hugo Awards.",
+      "(5) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(6) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman."
+    ]
+  }
+]

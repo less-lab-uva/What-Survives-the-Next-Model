@@ -1,0 +1,380 @@
+[
+  {
+    "idx": "420_1186",
+    "premises": [
+      "(1) Some people are both late-night and early-morning people.",
+      "(2) If a person is an earl- morning person, they have early-morning habits.",
+      "(3) Everyone who has early-morning habits gets up early.",
+      "(4) Everyone who gets up early catches the sunrise.",
+      "(5) James doesn't catch the sunrise."
+    ],
+    "question": "If James is an early-morning person, then he is a late night person.",
+    "reasoning_steps": [
+      "(1) James doesn't catch the sunrise.",
+      "(2) If James is an earlymorning person, he has earlymorning habits.",
+      "(3) Earlymorning habits require getting up early.",
+      "(4) Getting up early leads to catching the sunrise.",
+      "(5) Thus, if James is an earlymorning person, he catches the sunrise."
+    ]
+  },
+  {
+    "idx": "117_352",
+    "premises": [
+      "(1) Roads are made of either concrete or asphalt.",
+      "(2) Roads made of concrete last longer than roads made with asphalt.",
+      "(3) Roads made of asphalt are smoother than roads made of concrete.",
+      "(4) Everyone prefers the smoother of two roads. ",
+      "(5) The first road is made of concrete, and the second road is made of asphalt."
+    ],
+    "question": "The first road will last longer than the second road.",
+    "reasoning_steps": [
+      "(1) Roads made of concrete last longer than roads made with asphalt.",
+      "(2) The first road is made of concrete.",
+      "(3) The second road is made of asphalt."
+    ]
+  },
+  {
+    "idx": "451_1300",
+    "premises": [
+      "(1) People on the payroll are being paid by the school.",
+      "(2) If someone has a job at a school, then they are on the payroll.",
+      "(3) All faculty members have a job at a school.",
+      "(4) If someone teaches students, they are a faculty member or a teacher.",
+      "(5) Every teacher has students.",
+      "(6) If Nancy is a teacher, then they are on the payroll.",
+      "(7) If Nancy is not a teacher, then they are not paid by the school.",
+      "(8) Nancy teaches students."
+    ],
+    "question": "Nancy is not paid by the school or does not have students.",
+    "reasoning_steps": [
+      "(1) Nancy teaches students.",
+      "(2) If someone teaches students, they are a faculty member or a teacher.",
+      "(3) Since Nancy teaches students, she is a faculty member or a teacher.",
+      "(4) If Nancy is a faculty member, then all faculty members have a job at a school.",
+      "(5) If someone has a job at a school, they are on the payroll.",
+      "(6) Thus, if Nancy is faculty, she is on the payroll.",
+      "(7) If Nancy is a teacher, then by the premise \"If Nancy is a teacher, then they are on the payroll,\" she is on the payroll.",
+      "(8) In either case (faculty or teacher), Nancy is on the payroll.",
+      "(9) Every teacher has students.",
+      "(10) if Nancy is a teacher, she has students.",
+      "(11) Since Nancy teaches students, she must have students regardless.",
+      "(12) Nancy is paid by the school (on the payroll) and has students."
+    ]
+  },
+  {
+    "idx": "207_593",
+    "premises": [
+      "(1) TOra is a GUI.",
+      "(2) GUIs are software.",
+      "(3) Software can be free or paid.",
+      "(4) Paid Software is not under the GNU General Public License.",
+      "(5) TOra is under the GNU General Public License."
+    ],
+    "question": "TOra is a free software.",
+    "reasoning_steps": [
+      "(1) TOra is a GUI.",
+      "(2) GUIs are software.",
+      "(3) TOra is software.",
+      "(4) Software can be free or paid.",
+      "(5) Paid Software is not under the GNU General Public License.",
+      "(6) TOra is under the GNU General Public License.",
+      "(7) If TOra were paid, it would not be under the GNU GPL.",
+      "(8) But TOra is under the GNU GPL.",
+      "(9) Since software is either free or paid, and TOra is not paid, it must be free."
+    ]
+  },
+  {
+    "idx": "316_793",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or in an urban area.",
+    "reasoning_steps": [
+      "(1) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(2) Every terrifying building on Halloween is a creepy haunted house.",
+      "(3) If the LaLaurie House is a terrifying building on Halloween, it becomes a creepy haunted house.",
+      "(4) Every creepy haunted house is a mansion house.",
+      "(5) Thus, the LaLaurie House is a mansion house.",
+      "(6) There are no mansion houses in an urban area.",
+      "(7) All skyscrapers are in urban areas.",
+      "(8) Hence, the LaLaurie House cannot be a skyscraper.",
+      "(9) The LaLaurie House is neither a skyscraper nor in an urban area."
+    ]
+  },
+  {
+    "idx": "31_90",
+    "premises": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Thomas Gilovich is a colleague of Justin Kruger. ",
+      "(3) Naive cynicism is a philosophy of mind."
+    ],
+    "question": "Justin Kruger proposed a philosophy of mind.",
+    "reasoning_steps": [
+      "(1) Naive cynicism was proposed by Justin Kruger and a colleague.",
+      "(2) Naive cynicism is a philosophy of mind.",
+      "(3) Justin Kruger proposed Naive cynicism.",
+      "(4) Since Naive cynicism is a philosophy of mind, Justin Kruger proposed a philosophy of mind."
+    ]
+  },
+  {
+    "idx": "177_509",
+    "premises": [
+      "(1) The National Lobster Hatchery is a hatchery located in Padstow, England.",
+      "(2) The National Lobster Hatchery is open to visitors.",
+      "(3) A hatchery is either for profit or for conservation.",
+      "(4) If a hatchery is for conservation, it might release animals into the wild.",
+      "(5) The National Lobster Hatchery is not for profit."
+    ],
+    "question": "The National Lobster Hatchery is for conservation.",
+    "reasoning_steps": [
+      "(1) The National Lobster Hatchery is a hatchery.",
+      "(2) A hatchery is either for profit or for conservation.",
+      "(3) The National Lobster Hatchery is not for profit.",
+      "(4) If a hatchery is not for profit, it must be for conservation.",
+      "(5) There are no other options provided for the hatchery's purpose."
+    ]
+  },
+  {
+    "idx": "316_796",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "If the LaLaurie House is either a skyscraper or a mansion house, then it is in an urban area.",
+    "reasoning_steps": [
+      "(1) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(2) Every creepy haunted house is a mansion house.",
+      "(3) Every terrifying building on Halloween is a creepy haunted house.",
+      "(4) Thus, the LaLaurie House is a mansion house.",
+      "(5) There are no mansion houses in an urban area.",
+      "(6) If the LaLaurie House were a mansion house, it would not be in an urban area."
+    ]
+  },
+  {
+    "idx": "451_1299",
+    "premises": [
+      "(1) People on the payroll are being paid by the school.",
+      "(2) If someone has a job at a school, then they are on the payroll.",
+      "(3) All faculty members have a job at a school.",
+      "(4) If someone teaches students, they are a faculty member or a teacher.",
+      "(5) Every teacher has students.",
+      "(6) If Nancy is a teacher, then they are on the payroll.",
+      "(7) If Nancy is not a teacher, then they are not paid by the school.",
+      "(8) Nancy teaches students."
+    ],
+    "question": "Nancy is paid by the school and has students.",
+    "reasoning_steps": [
+      "(1) Nancy teaches students.",
+      "(2) If someone teaches students, they are a faculty member or a teacher.",
+      "(3) If Nancy is a faculty member, then she has a job at the school.",
+      "(4) If someone has a job at a school, they are on the payroll.",
+      "(5) If Nancy is a faculty member, she is on the payroll and paid by the school.",
+      "(6) If Nancy is a teacher, then she is on the payroll and paid by the school.",
+      "(7) Every teacher has students.",
+      "(8) Nancy is a teacher.",
+      "(9) she has students."
+    ]
+  },
+  {
+    "idx": "111_337",
+    "premises": [
+      "(1) Aberdeen won the cup in the 2013 final.",
+      "(2) Rangers won the cup in the 2014 final.",
+      "(3) Aberdeen and Rangers are different teams.",
+      "(4) Different teams cannot win the cup in the same year's final."
+    ],
+    "question": "Rangers won the cup in 2013.",
+    "reasoning_steps": [
+      "(1) Aberdeen won the cup in the 2013 final.",
+      "(2) Rangers won the cup in the 2014 final.",
+      "(3) Different teams cannot win the cup in the same year's final.",
+      "(4) Aberdeen and Rangers are different teams.",
+      "(5) If Rangers had won in 2013, they would be the same team as Aberdeen in that year's final."
+    ]
+  },
+  {
+    "idx": "314_782",
+    "premises": [
+      "(1) No animals are plants.",
+      "(2) All humans are animals.",
+      "(3) All pupils are humans.",
+      "(4) All flowers are plants.",
+      "(5) Bailey is either both a human and a flower or neither a human nor a flower."
+    ],
+    "question": "Bailey is a pupil.",
+    "reasoning_steps": [
+      "(1) Bailey is either both a human and a flower or neither a human nor a flower.",
+      "(2) All humans are animals.",
+      "(3) All flowers are plants.",
+      "(4) No animals are plants.",
+      "(5) Thus, Bailey cannot be both a human and a flower.",
+      "(6) All pupils are humans.",
+      "(7) If Bailey is not a human, Bailey cannot be a pupil."
+    ]
+  },
+  {
+    "idx": "396_1077",
+    "premises": [
+      "(1) A neuroimaging technique is either an invasive neuroimaging technique or a noninvasive neuroimaging technique. ",
+      "(2) All noninvasive neuroimaging techniques provide a spatial resolution of brains.",
+      "(3) If a technique provides a spatial resolution of brains, then it is a measurement of brain activity. ",
+      "(4) All measurements of brain activity are used by neuroscience researchers.",
+      "(5) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.",
+      "(6) FMRI is a neuroimaging technique."
+    ],
+    "question": "FMRI is an invasive neuroimaging technique and is used by neuroscience researchers.",
+    "reasoning_steps": [
+      "(1) FMRI is a neuroimaging technique.",
+      "(2) A neuroimaging technique is either invasive or noninvasive.",
+      "(3) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.",
+      "(4) If FMRI is noninvasive, it provides a spatial resolution of brains.",
+      "(5) If FMRI provides a spatial resolution, it is a measurement of brain activity.",
+      "(6) If FMRI is a measurement of brain activity, it is used by neuroscience researchers.",
+      "(7) If FMRI is noninvasive, it must be used by researchers.",
+      "(8) FMRI cannot be both invasive and noninvasive.",
+      "(9) FMRI must be noninvasive to satisfy the premises."
+    ]
+  },
+  {
+    "idx": "110_334",
+    "premises": [
+      "(1) St Johnstone is a Scottish team.",
+      "(2) St Johnstone is part of the Scottish Premiership league.",
+      "(3) If a team is part of the league, it has joined the league.",
+      "(4) St Johnstone and Minsk are different teams.",
+      "(5) For two teams, either one team wins, or the other team wins.",
+      "(6) Minsk won against St Johnstone."
+    ],
+    "question": "St Johnstone won against Minsk.",
+    "reasoning_steps": [
+      "(1) St Johnstone and Minsk are different teams.",
+      "(2) Minsk won against St Johnstone.",
+      "(3) For two teams, either one team wins, or the other team wins."
+    ]
+  },
+  {
+    "idx": "105_319",
+    "premises": [
+      "(1) Show Your Love is a song recorded by the South Korean boy band BtoB 4u.",
+      "(2) The lead single of the extended play Inside is Show Your Love.",
+      "(3) Show Your Love contains a hopeful message.",
+      "(4) BtoB 4u member Hyunsik wrote Show Your Love.",
+      "(5) There is a music video for Show Your Love."
+    ],
+    "question": "A lead single of Inside contains a hopeful message.",
+    "reasoning_steps": [
+      "(1) The lead single of the extended play Inside is Show Your Love.",
+      "(2) Show Your Love contains a hopeful message.",
+      "(3) The lead single of Inside (which is Show Your Love) contains a hopeful message."
+    ]
+  },
+  {
+    "idx": "27_77",
+    "premises": [
+      "(1) Xiufeng, Xiangshan, Diecai, Qixing are districts in the city of Guilin.",
+      "(2) Yangshuo is not a district in Guilin. "
+    ],
+    "question": "Xiangshan and Diecai are districts in the same city.",
+    "reasoning_steps": [
+      "(1) Xiufeng, Xiangshan, Diecai, Qixing are districts in the city of Guilin.",
+      "(2) Xiangshan is a district in Guilin.",
+      "(3) Diecai is a district in Guilin.",
+      "(4) A district in a city implies it is part of that city.",
+      "(5) Xiangshan and Diecai are both districts of Guilin."
+    ]
+  },
+  {
+    "idx": "396_1079",
+    "premises": [
+      "(1) A neuroimaging technique is either an invasive neuroimaging technique or a noninvasive neuroimaging technique. ",
+      "(2) All noninvasive neuroimaging techniques provide a spatial resolution of brains.",
+      "(3) If a technique provides a spatial resolution of brains, then it is a measurement of brain activity. ",
+      "(4) All measurements of brain activity are used by neuroscience researchers.",
+      "(5) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.",
+      "(6) FMRI is a neuroimaging technique."
+    ],
+    "question": "If fMRI is not an invasive neuroimaging technique used by neuroscience researchers, then fMRI is neither a noninvasive neuroimaging technique nor provides a spatial resolution of brains.",
+    "reasoning_steps": [
+      "(1) The neuroimaging technique is either invasive or noninvasive.",
+      "(2) FMRI is a neuroimaging technique.",
+      "(3) FMRI is either a measurement of brain activity or a noninvasive technique.",
+      "(4) If FMRI is noninvasive, it provides spatial resolution.",
+      "(5) If it provides spatial resolution, it is a measurement of brain activity.",
+      "(6) If it is a measurement, it is used by researchers.",
+      "(7) Thus, if FMRI is noninvasive, it must be a measurement and used by researchers.",
+      "(8) If FMRI is noninvasive (not invasive), it must provide spatial resolution and be used by researchers."
+    ]
+  },
+  {
+    "idx": "411_1154",
+    "premises": [
+      "(1) If a game is one of the top-3 best selling video-games, then it is multiplatform.",
+      "(2) If a game has sold more than 100 million copies, then it is one of the top-3 best-selling video games.",
+      "(3) Some games that support Windows are developed by Nintendo.",
+      "(4) All multiplatform games can be played on a wide range of devices.",
+      "(5) Pokemon Diamond version is neither developed by Nintendo nor can be played on a wide range of devices."
+    ],
+    "question": "If Pokemon Diamond version either supports Windows or has sold more than 100 million copies, then Pokemon Diamond version either is both multiplatform and one of the top-3 best selling video games, or is neither multiplatform nor one of the top-3 best selling video games.",
+    "reasoning_steps": [
+      "(1) The bald eagle is young.",
+      "(2) If something is young then it is red.",
+      "(3) The bald eagle is red.",
+      "(4) If something is red then it eats the tiger."
+    ]
+  },
+  {
+    "idx": "339_887",
+    "premises": [
+      "(1) No professional tennis umpires are professional tennis players.",
+      "(2) If you are a World Tour player, then you are a professional tennis player.",
+      "(3) All Grand Slam champions are World Tour players.",
+      "(4) All Grand Slam umpires are professional tennis umpires.",
+      "(5) Nadal is a World Tour player or a Grand Slam champion"
+    ],
+    "question": "Nadal is a Grand Slam umpire.",
+    "reasoning_steps": [
+      "(1) Nadal is a World Tour player or a Grand Slam champion.",
+      "(2) If Nadal is a World Tour player, then he is a professional tennis player.",
+      "(3) If Nadal is a Grand Slam champion, he is a World Tour player (since all Grand Slam champions are World Tour players), making him a professional tennis player.",
+      "(4) In either case, Nadal is a professional tennis player.",
+      "(5) No professional tennis umpires are professional tennis players.",
+      "(6) All Grand Slam umpires are professional tennis umpires."
+    ]
+  },
+  {
+    "idx": "278_722",
+    "premises": [
+      "(1) The bottle not falling is either standing upright or toppled over. ",
+      "(2) The bottle not falling is not standing upright."
+    ],
+    "question": "The bottle not falling is toppled over.",
+    "reasoning_steps": [
+      "(1) The bottle not falling is either standing upright or toppled over.",
+      "(2) The bottle not falling is not standing upright.",
+      "(3) If it is not standing upright, then it must be toppled over based on the first premise.",
+      "(4) There are only two options provided."
+    ]
+  },
+  {
+    "idx": "281_725",
+    "premises": [
+      "(1) All bears in zoos are not wild. ",
+      "(2) Some bears are in zoos. "
+    ],
+    "question": "Not all bears are wild.",
+    "reasoning_steps": [
+      "(1) All bears in zoos are not wild.",
+      "(2) Some bears are in zoos.",
+      "(3) There exists at least one bear that is not wild.",
+      "(4) If all bears were wild, no bears would be nonwild.",
+      "(5) But since some bears are nonwild (those in zoos), not all bears can be wild."
+    ]
+  }
+]

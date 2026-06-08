@@ -1,0 +1,400 @@
+[
+  {
+    "idx": "123_369",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is limited.",
+    "reasoning_steps": [
+      "(1) The Crude Oil Data Exchange is not free.",
+      "(2) it is not unsanctioned.",
+      "(3) Since unsanctioned businesses are free, the business must be sanctioned.",
+      "(4) All sanctioned businesses are limited."
+    ]
+  },
+  {
+    "idx": "428_1216",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is either produced after a new CTO was appointed or it is controlled by managers.",
+    "reasoning_steps": [
+      "(1) ModelXX was not produced after a new CTO was appointed.",
+      "(2) All devices that are easy to operate were produced after a new CTO is appointed.",
+      "(3) From premise 6, devices that connect to the company's wifi are easy to operate.",
+      "(4) From premise 4, devices belonging to employees can connect to the company's wifi.",
+      "(5) From premise 2, devices with the company logo belong to the company.",
+      "(6) From premise 3, each device either has the company logo or belongs to employees.",
+      "(7) From premise 7, easy to operate devices were produced after a new CTO.",
+      "(8) From premise 1, all devices belonging to the company are connected to Google Home.",
+      "(9) From premise 5, all devices connected to Google Home are controlled by managers."
+    ]
+  },
+  {
+    "idx": "484_1415",
+    "premises": [
+      "(1) No songs are visuals. ",
+      "(2) All folk songs are songs. ",
+      "(3) All videos are visuals. ",
+      "(4) All movies are videos.",
+      "(5) All sci-fi movies are movies.",
+      "(6) Inception is a sci-fi movie.",
+      "(7) Mac is neither a folk song nor a sci-fi movie."
+    ],
+    "question": "Inception is a folk song.",
+    "reasoning_steps": [
+      "(1) Inception is a scifi movie.",
+      "(2) All scifi movies are movies.",
+      "(3) All movies are videos.",
+      "(4) All videos are visuals.",
+      "(5) No songs are visuals.",
+      "(6) All folk songs are songs."
+    ]
+  },
+  {
+    "idx": "92_282",
+    "premises": [
+      "(1) Adventures of Rusty is a drama film and children's film.",
+      "(2) Columbia Pictures produced Adventures of Rusty.",
+      "(3) Tintin was produced by Paramount.",
+      "(4) Tintin is an adventure film."
+    ],
+    "question": "Paramount produces adventure films.",
+    "reasoning_steps": [
+      "(1) Adventures of Rusty is a drama film and children's film.",
+      "(2) Columbia Pictures produced Adventures of Rusty.",
+      "(3) Tintin was produced by Paramount.",
+      "(4) Tintin is an adventure film."
+    ]
+  },
+  {
+    "idx": "484_1417",
+    "premises": [
+      "(1) No songs are visuals. ",
+      "(2) All folk songs are songs. ",
+      "(3) All videos are visuals. ",
+      "(4) All movies are videos.",
+      "(5) All sci-fi movies are movies.",
+      "(6) Inception is a sci-fi movie.",
+      "(7) Mac is neither a folk song nor a sci-fi movie."
+    ],
+    "question": "Inception is either a video or a folk song.",
+    "reasoning_steps": [
+      "(1) Inception is a scifi movie.",
+      "(2) All scifi movies are movies.",
+      "(3) All movies are videos.",
+      "(4) All videos are visuals.",
+      "(5) All songs are not visuals (from premise\n.",
+      "(6) All folk songs are songs."
+    ]
+  },
+  {
+    "idx": "123_367",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is sanctioned.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) The Crude Oil Data Exchange is a business.",
+      "(3) The Crude Oil Data Exchange is either sanitized or unsanctioned.",
+      "(4) The Crude Oil Data Exchange isn't free.",
+      "(5) Unsanctioned businesses are free.",
+      "(6) Since the Crude Oil Data Exchange isn't free, it isn't unsanctioned.",
+      "(7) All unsanctioned businesses are free.",
+      "(8) The Crude Oil Data Exchange is a business that isn't free, hence it is unsanctioned.",
+      "(9) Wait, no, that's not right.",
+      "(10) Let me correct that.",
+      "(11) If unsanctioned businesses are free, and the Crude Oil Data Exchange isn't free, then it can't be unsanctioned."
+    ]
+  },
+  {
+    "idx": "440_1264",
+    "premises": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat."
+    ],
+    "question": "Fido is a husky animal.",
+    "reasoning_steps": [
+      "(1) All tigers are cats.",
+      "(2) Fido is either a Bengal tiger or a cat.",
+      "(3) Fido is a cat if he's a tiger.",
+      "(4) No cats are dogs.",
+      "(5) Fido can't be a dog.",
+      "(6) All huskies are dogs."
+    ]
+  },
+  {
+    "idx": "342_900",
+    "premises": [
+      "(1) All sports cars are loud.",
+      "(2) No loud cars are electric.",
+      "(3) If a car is a Ferrari, then it is a sports car.",
+      "(4) All cars made in Maranello are Ferraris.",
+      "(5) The Toyota Prius is made in Maranello or is a loud car, or both."
+    ],
+    "question": "Prius is an electric car.",
+    "reasoning_steps": [
+      "(1) All sports cars are loud.",
+      "(2) No loud cars are electric.",
+      "(3) If a car is a Ferrari, then it is a sports car.",
+      "(4) All cars made in Maranello are Ferraris.",
+      "(5) The Toyota Prius is made in Maranello or is a loud car, or both.",
+      "(6) If the Toyota Prius is made in Maranello, then it is a Ferrari.",
+      "(7) Since it is a sports car, it is loud.",
+      "(8) But no loud cars are electric."
+    ]
+  },
+  {
+    "idx": "206_589",
+    "premises": [
+      "(1) China is one of the BRICS, and its economy is emerging.",
+      "(2) If someone is from China, then they are from a country of BRICS.",
+      "(3) India is one of the BRICS, and its economy is emerging.",
+      "(4) If someone is from India, then they are in a country of BRICS.",
+      "(5) All people from China are Chinese people.",
+      "(6) All people from India are Indian people.",
+      "(7) There is a person from India."
+    ],
+    "question": "No people from BRICS are Indian people.",
+    "reasoning_steps": [
+      "(1) China is one of the BRICS, and its economy is emerging.",
+      "(2) If someone is from China, then they are from a country of BRICS.",
+      "(3) India is one of the BRICS, and its economy is emerging.",
+      "(4) If someone is from India, then they are in a country of BRICS.",
+      "(5) All people from China are Chinese people.",
+      "(6) All people from India are Indian people."
+    ]
+  },
+  {
+    "idx": "34_98",
+    "premises": [
+      "(1) Rafa Nadal was born in Mallorca.",
+      "(2) Rafa Nadal is a professional tennis player.",
+      "(3) Nadal's win ratio is high.",
+      "(4) All players in the Big 3 are professionals who have a high win ratio."
+    ],
+    "question": "Nadal was not born in Mallorca.",
+    "reasoning_steps": [
+      "(1) Rafa Nadal was born in Mallorca.",
+      "(2) Rafa Nadal is a professional tennis player.",
+      "(3) Nadal's win ratio is high.",
+      "(4) All players in the Big 3 are professionals who have a high win ratio."
+    ]
+  },
+  {
+    "idx": "428_1218",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is either with the company logo or controlled by managers.",
+    "reasoning_steps": [
+      "(1) ModelXX was not produced after a new CTO was appointed.",
+      "(2) All devices produced after a new CTO are easy to operate.",
+      "(3) All devices that connect to the company's wifi are easy to operate.",
+      "(4) All devices with the company logo belong to the company.",
+      "(5) All devices belonging to employees can be connected to the company's wifi.",
+      "(6) Each device either has the company logo or belongs to employees.",
+      "(7) All devices belonging to the company are connected to Google Home.",
+      "(8) All devices connected to Google Home are controlled by managers."
+    ]
+  },
+  {
+    "idx": "312_777",
+    "premises": [
+      "(1) To have the authorization to study in the United States as a foreigner, you must be enrolled in an academic program.",
+      "(2) Those who are enrolled in an academic program can not work full-time.",
+      "(3) Every who studies in the United States as a foreigner has the authorization to study in the U.S.",
+      "(4) All PhD graduate can work full-time. ",
+      "(5) If Tom does not study in the United States as a foreigner, he is enrolled in an academic program."
+    ],
+    "question": "Tom is not a PhD graduate.",
+    "reasoning_steps": [
+      "(1) To study in the U.S. as a foreigner, you must be enrolled in an academic program.",
+      "(2) If Tom does not study in the U.S. as a foreigner, he is enrolled in an academic program.",
+      "(3) Those who are enrolled in an academic program cannot work fulltime.",
+      "(4) All PhD graduates can work fulltime."
+    ]
+  },
+  {
+    "idx": "316_794",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or a creepy haunted house.",
+    "reasoning_steps": [
+      "(1) Stepbystep reasoning:",
+      "(2) Premise 5 states The LaLaurie House is either a creepy haunted house or a terrifying building on Halloween.",
+      "(3) Premise 4 states Every terrifying building on Halloween is a creepy haunted house.",
+      "(4) it cannot be a skyscraper.",
+      "(5) Premise 3 states Every creepy haunted house is a mansion house, but mansion houses are not in urban areas (premise\n, and skyscrapers are in urban areas (premise\n.",
+      "(6) Hence, a skyscraper cannot be a creepy haunted house."
+    ]
+  },
+  {
+    "idx": "316_792",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or a mansion house.",
+    "reasoning_steps": [
+      "(1) The premises indicate that the LaLaurie House is a mansion house, which means it cannot be a skyscraper.",
+      "(2) Since all skyscrapers are in urban areas and there are no mansion houses there, the LaLaurie House isn't a skyscraper.",
+      "(3) it can only be a mansion house."
+    ]
+  },
+  {
+    "idx": "420_1186",
+    "premises": [
+      "(1) Some people are both late-night and early-morning people.",
+      "(2) If a person is an earl- morning person, they have early-morning habits.",
+      "(3) Everyone who has early-morning habits gets up early.",
+      "(4) Everyone who gets up early catches the sunrise.",
+      "(5) James doesn't catch the sunrise."
+    ],
+    "question": "If James is an early-morning person, then he is a late night person.",
+    "reasoning_steps": [
+      "(1) Some people are both latenight and earlymorning people.",
+      "(2) If a person is an earlmorning person, they have earlymorning habits.",
+      "(3) Everyone who has earlymorning habits gets up early.",
+      "(4) Everyone who gets up early catches the sunrise.",
+      "(5) James doesn't catch the sunrise.",
+      "(6) If James is an earlymorning person, he has earlymorning habits.",
+      "(7) James has earlymorning habits if he is an earlymorning person.",
+      "(8) James gets up early if he has earlymorning habits.",
+      "(9) James catches the sunrise if he gets up early.",
+      "(10) he doesn't get up early.",
+      "(11) Since James isn't an earlymorning person, the statement \"If James is an earlymorning person, then he is a latenight person\" is vacuously true."
+    ]
+  },
+  {
+    "idx": "113_342",
+    "premises": [
+      "(1) Roversi is an Italian surname.",
+      "(2) Alba Roversi uses Roversi as a surname.",
+      "(3) Paolo Roversi uses Roversi as a surname.",
+      "(4) Roberto Roversi uses Roversi as a surname.",
+      "(5) Paolo Roversi is a photographer.",
+      "(6) A photographer is a professional or an amateur."
+    ],
+    "question": "There are no photographers using an Italian surname.",
+    "reasoning_steps": [
+      "(1) Paolo Roversi is a photographer.",
+      "(2) Paolo Roversi uses Roversi as a surname.",
+      "(3) Roversi is an Italian surname."
+    ]
+  },
+  {
+    "idx": "7_17",
+    "premises": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) If the number x is larger than the number y, then y is not larger than x.",
+      "(4) Seven equals six plus one.",
+      "(5) Eight equals seven plus one.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Eight is the double of four.",
+      "(9) Four is the double of two."
+    ],
+    "question": "Eight is larger than seven.",
+    "reasoning_steps": [
+      "(1) Seven equals six plus one.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) Eight equals seven plus one."
+    ]
+  },
+  {
+    "idx": "449_1293",
+    "premises": [
+      "(1) Animals who need large territory travel far.",
+      "(2) Every animal that eats a lot needs a large territory.",
+      "(3) If something is a big animal, then it will eat a lot.",
+      "(4) Bears are big animals.",
+      "(5) Larry is a big animal."
+    ],
+    "question": "Larry is not a bear and does not travel far.",
+    "reasoning_steps": [
+      "(1) Premise 3: If something is a big animal, then it will eat a lot.",
+      "(2) Premise 5: Larry is a big animal.",
+      "(3) Premise 2: Every animal that eats a lot needs a large territory.",
+      "(4) Premise 1: Animals who need large territory travel far."
+    ]
+  },
+  {
+    "idx": "484_1416",
+    "premises": [
+      "(1) No songs are visuals. ",
+      "(2) All folk songs are songs. ",
+      "(3) All videos are visuals. ",
+      "(4) All movies are videos.",
+      "(5) All sci-fi movies are movies.",
+      "(6) Inception is a sci-fi movie.",
+      "(7) Mac is neither a folk song nor a sci-fi movie."
+    ],
+    "question": "Inception is not a folk song.",
+    "reasoning_steps": [
+      "(1) All scifi movies are movies.",
+      "(2) Inception is a scifi movie.",
+      "(3) All movies are videos.",
+      "(4) All videos are visuals.",
+      "(5) No songs are visuals.",
+      "(6) Since Inception is a visual, it cannot be a song.",
+      "(7) All folk songs are songs."
+    ]
+  },
+  {
+    "idx": "141_415",
+    "premises": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) TS Leda was a Norwegian vessel that was built with stabilizers.",
+      "(3) Stabilizers are mechanical devices found only on ships with powerful steam turbine engines.",
+      "(4) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(5) Some ships that are quiet and good at sea have powerful steam turbine engines.",
+      "(6) Vessels are ships."
+    ],
+    "question": "TS Leda was not a Norwegian vessel.",
+    "reasoning_steps": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) Vessels are ships.",
+      "(3) TS Leda was a Norwegian vessel that was built with stabilizers.",
+      "(4) Stabilizers are mechanical devices found only on ships with powerful steam turbine engines.",
+      "(5) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(6) Some ships that are quiet and good at sea have powerful steam turbine engines.",
+      "(7) TS Leda has stabilizers.",
+      "(8) it has a powerful steam turbine engine.",
+      "(9) Being a good passenger and cargo vessel implies being quiet and good at sea."
+    ]
+  }
+]

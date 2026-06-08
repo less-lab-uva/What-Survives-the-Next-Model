@@ -1,0 +1,225 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert software security engineer specializing in fuzzing and crash analysis", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or clustering algorithm), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```
+{
+  "examples": [
+    {
+      "inputs": {
+        "premises": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) The only style of music Vic DiCara plays is punk music.",
+          "(3) Vic DiCara played in the band Inside Out."
+        ],
+        "question": "A musician from Inside Out plays bass.",
+        "reasoning_steps": [
+          "(1) Vic DiCara plays guitar and bass.",
+          "(2) Vic DiCara played in the band Inside Out.",
+          "(3) A musician (Vic DiCara) from Inside Out plays bass."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) Each vumpus is snowy.",
+          "(2) Each rompus is a lorpus.",
+          "(3) Every wumpus is not amenable.",
+          "(4) Each numpus is an impus.",
+          "(5) Gorpuses are hot.",
+          "(6) Numpuses are liquid.",
+          "(7) Each shumpus is bright.",
+          "(8) Numpuses are vumpuses.",
+          "(9) Each impus is not loud.",
+          "(10) Zumpuses are blue.",
+          "(11) Lorpuses are nervous.",
+          "(12) Rompuses are fast.",
+          "(13) Wumpuses are jompuses.",
+          "(14) Rompuses are zumpuses.",
+          "(15) Impuses are rompuses.",
+          "(16) Zumpuses are gorpuses.",
+          "(17) Every impus is a shumpus.",
+          "(18) Zumpuses are brimpuses.",
+          "(19) Sally is a wumpus.",
+          "(20) Sally is a numpus."
+        ],
+        "question": "Sally is blue.",
+        "reasoning_steps": [
+          "(1) Sally is a numpus.",
+          "(2) Each numpus is an impus.",
+          "(3) Sally is an impus.",
+          "(4) Each impus is a rompus.",
+          "(5) Sally is a rompus.",
+          "(6) Rompuses are zumpuses.",
+          "(7) Sally is a zumpus.",
+          "(8) Zumpuses are blue."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": true
+      }
+    },
+    {
+      "inputs": {
+        "premises": [
+          "(1) The bald eagle is nice.",
+          "(2) The bald eagle is round.",
+          "(3) The bald eagle likes the lion.",
+          "(4) The bald eagle visits the dog.",
+          "(5) The cat is green.",
+          "(6) The cat is nice.",
+          "(7) The cat is round.",
+          "(8) The cat likes the bald eagle.",
+          "(9) The cat likes the dog.",
+          "(10) The cat visits the dog.",
+          "(11) The dog eats the cat.",
+          "(12) The dog is big.",
+          "(13) The dog is blue.",
+          "(14) The lion is blue.",
+          "(15) If something is nice and green then it visits the bald eagle.",
+          "(16) If something is big then it eats the lion.",
+          "(17) If the bald eagle visits the lion then the lion is nice.",
+          "(18) If the bald eagle likes the cat then the bald eagle visits the dog.",
+          "(19) Round things are big.",
+          "(20) If something eats the cat and the cat eats the dog then the cat eats the lion.",
+          "(21) If something visits the dog and it eats the lion then the lion is round."
+        ],
+        "question": "The lion is not round.",
+        "reasoning_steps": [
+          "(1) The cat is green and nice.",
+          "(2) If something is nice and green then it visits the bald eagle.",
+          "(3) The cat visits the bald eagle.",
+          "(4) The dog is big.",
+          "(5) If something is big then it eats the lion.",
+          "(6) The dog eats the lion.",
+          "(7) The dog visits the dog is not stated.",
+          "(8) Premise 21 requires something to visit the dog and eat the lion.",
+          "(9) No entity both visits the dog and eats the lion."
+        ]
+      },
+      "outputs": {
+        "step_correctness_label": [
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True",
+          "True"
+        ],
+        "has_valid_proof_path_label": false
+      }
+    }
+  ]
+}
+```

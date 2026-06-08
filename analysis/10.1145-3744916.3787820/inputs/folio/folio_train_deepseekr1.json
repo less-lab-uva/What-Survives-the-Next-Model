@@ -1,0 +1,375 @@
+[
+  {
+    "idx": "153_444",
+    "premises": [
+      "(1) A laptop is a computer.",
+      "(2) You can play games on a computer.",
+      "(3) A phone is not a computer."
+    ],
+    "question": "You can play games on a laptop.",
+    "reasoning_steps": [
+      "(1) A laptop is a computer.",
+      "(2) You can play games on a computer.",
+      "(3) Since a laptop is a type of computer, it inherits the property of being able to play games."
+    ]
+  },
+  {
+    "idx": "123_367",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is sanctioned.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Unsanctioned businesses are free.",
+      "(3) The Crude Oil Data Exchange isn't free."
+    ]
+  },
+  {
+    "idx": "425_1204",
+    "premises": [
+      "(1) Everyone working at Meta has a high income. ",
+      "(2) A person with a high income will not take a bus to their destination.",
+      "(3) People will either take a bus or drive to their destination. ",
+      "(4) Everyone who has a car will choose to drive to their destination. ",
+      "(5) No students drive to their destination. ",
+      "(6) James has a car or works at Meta."
+    ],
+    "question": "James is a student.",
+    "reasoning_steps": [
+      "(1) Everyone working at Meta has a high income.",
+      "(2) James has a car or works at Meta.",
+      "(3) If James works at Meta, he has a high income.",
+      "(4) A high income person will not take a bus.",
+      "(5) People take a bus or drive.",
+      "(6) If James works at Meta, he must drive.",
+      "(7) If James has a car, he drives (from premise\n.",
+      "(8) Either way, James drives.",
+      "(9) No students drive.",
+      "(10) If James drove, he cannot be a student."
+    ]
+  },
+  {
+    "idx": "214_613",
+    "premises": [
+      "(1) If a class has prerequisites, the student must take the prerequisites to take the class.",
+      "(2) If a class has no prerequisites, then the student can take the class",
+      "(3) CPSC 201 and CPSC 223 are prerequisites for CPSC 323.",
+      "(4) Intro Microeconomics is the only prerequisite for Intermediate Microeconomics.",
+      "(5) Intro Geology has no prerequisites."
+    ],
+    "question": "A student cannot take Intro Geology.",
+    "reasoning_steps": [
+      "(1) If a class has no prerequisites, the student can take the class.",
+      "(2) Intro Geology has no prerequisites.",
+      "(3) According to the rule, the student can take Intro Geology."
+    ]
+  },
+  {
+    "idx": "438_1260",
+    "premises": [
+      "(1) None of the kids in our family love the opera.",
+      "(2) All of the adults in our family love the opera.",
+      "(3) If someone in our family is a scientist, then they are an adult.",
+      "(4) Some students in our family are kids.",
+      "(5) Billy is a kid in our family."
+    ],
+    "question": "If Billy is a student or a scientist, then Billy is a student and a kid.",
+    "reasoning_steps": [
+      "(1) Billy is a kid in our family.",
+      "(2) If someone in our family is a scientist, they are an adult.",
+      "(3) Billy is a kid.",
+      "(4) he cannot be an adult.",
+      "(5) Since Billy cannot be a scientist, the antecedent reduces to Billy being a student.",
+      "(6) Premise 4 states some students are kids.",
+      "(7) Billy is a kid and could be a student.",
+      "(8) If Billy is a student, the consequent (student and kid) is true.",
+      "(9) The scientist option is impossible, making the implication valid."
+    ]
+  },
+  {
+    "idx": "415_1167",
+    "premises": [
+      "(1) All books written by Neil Gaiman have sold more than one thousand copies.",
+      "(2) Some books that have won Hugo Awards are written by Neil Gaiman.",
+      "(3) Tomas has read all books written by Tolkien. ",
+      "(4) Either Tomas has read Hamlet, or it has sold more than one thousand copies.",
+      "(5) Hamlet has either sold more than one thousand copies or it is written by Neil Gaiman."
+    ],
+    "question": "Hamlet has won a Hugo Award and is written by Tolkien.",
+    "reasoning_steps": [
+      "(1) All books by Neil Gaiman sold >1000 copies.",
+      "(2) Some Hugowinning books are by Neil Gaiman.",
+      "(3) Tomas read all Tolkien books.",
+      "(4) Either Tomas read Hamlet or Hamlet sold >1000 copies.",
+      "(5) Hamlet either sold >1000 or is by Neil Gaiman.",
+      "(6) No premise links Hamlet to Hugo Award.",
+      "(7) Premise links Hamlet's authorship to Neil Gaiman or sales.",
+      "(8) No premise states Hamlet is written by Tolkien.",
+      "(9) Tolkien's books are only related to Tomas's reading.",
+      "(10) No connection between Hamlet and Tolkien exists in premises.",
+      "(11) Hugo Award premise only connects some Gaiman books, not Hamlet."
+    ]
+  },
+  {
+    "idx": "35_101",
+    "premises": [
+      "(1) An Olympian is a person who trains for an Olympic sport and goes to the Olympics.",
+      "(2) Carlos Reyes trains for an Olympic sport.",
+      "(3) Carlos Reyes went to the Olympics.",
+      "(4) Carlos Reyes is a welterweight.",
+      "(5) Heavy weights are not welterweights."
+    ],
+    "question": "Carlos Reyes is an Olympian.",
+    "reasoning_steps": [
+      "(1) An Olympian is defined as a person who trains for an Olympic sport and goes to the Olympics.",
+      "(2) Carlos Reyes trains for an Olympic sport.",
+      "(3) Carlos Reyes went to the Olympics.",
+      "(4) He satisfies both conditions in the definition of an Olympian.",
+      "(5) The premises about his welterweight status and heavy weights are irrelevant to the Olympian definition."
+    ]
+  },
+  {
+    "idx": "341_898",
+    "premises": [
+      "(1) No battery-powered watch is automatic.",
+      "(2) All digital watches are battery-powered.",
+      "(3) Some mechanical watches are automatic.",
+      "(4) All smart watches are digital.",
+      "(5) Moonwatch is either a digital watch and an automatic, or it is neither."
+    ],
+    "question": "If Moonwatch is a smartwatch and a mechanical watch, then Moonwatch is not a mechanical watch.",
+    "reasoning_steps": [
+      "(1) No batterypowered watch is automatic.",
+      "(2) All digital watches are batterypowered.",
+      "(3) If Moonwatch is a smartwatch, it is digital (since all smart watches are digital).",
+      "(4) A digital watch is batterypowered.",
+      "(5) Moonwatch cannot be automatic.",
+      "(6) The Moonwatch's condition: it is either (digital and automatic) or neither.",
+      "(7) Assuming Moonwatch is a smartwatch (digital), it cannot be automatic.",
+      "(8) An implication with an impossible antecedent is vacuously true."
+    ]
+  },
+  {
+    "idx": "341_897",
+    "premises": [
+      "(1) No battery-powered watch is automatic.",
+      "(2) All digital watches are battery-powered.",
+      "(3) Some mechanical watches are automatic.",
+      "(4) All smart watches are digital.",
+      "(5) Moonwatch is either a digital watch and an automatic, or it is neither."
+    ],
+    "question": "Moonwatch is a smartwatch and a mechanical watch.",
+    "reasoning_steps": [
+      "(1) No batterypowered watch is automatic.",
+      "(2) All digital watches are batterypowered.",
+      "(3) All smart watches are digital.",
+      "(4) Since Moonwatch is not digital, it cannot be a smartwatch."
+    ]
+  },
+  {
+    "idx": "173_498",
+    "premises": [
+      "(1) Detroit City is a horse.",
+      "(2) Some horses are racehorses.",
+      "(3) If a horse falls in a race, it poses risks to its rider.",
+      "(4) Detroit City fell in a race.",
+      "(5) A horse is a racehorse if it is in a race."
+    ],
+    "question": "Detroit City poses risks to its rider.",
+    "reasoning_steps": [
+      "(1) Detroit City is a horse.",
+      "(2) Detroit City fell in a race.",
+      "(3) A horse is a racehorse if it is in a race.",
+      "(4) Detroit City is a racehorse.",
+      "(5) If a horse falls in a race, it poses risks to its rider.",
+      "(6) Detroit City's fall in a race implies risks to its rider."
+    ]
+  },
+  {
+    "idx": "431_1227",
+    "premises": [
+      "(1) No Boeing-737 plane has more than 300 seats. ",
+      "(2) All of the planes acquired by Delta in this batch are Boeing-737. ",
+      "(3) Planes either have more than 300 seats or have a capacity of 100 passengers. ",
+      "(4) All planes with a capacity of 100 passengers are scheduled for a short-distance flight. ",
+      "(5) All planes with a capacity of 100 passengers are produced before 2010. ",
+      "(6) Jake32 is either a Boeing-737 plane or a plane acquired by Delta in this batch.",
+      "(7) T10 is either both a Boeing-737 plane and acquired by Delta in this batch, or it is neither."
+    ],
+    "question": "Jake32 was produced before 2010 and is scheduled for a short-distance flight.",
+    "reasoning_steps": [
+      "(1) No Boeing737 plane has more than 300 seats.",
+      "(2) All Deltaacquired planes in this batch are Boeing",
+      "(3) Planes must have >300 seats or 100 passengers.",
+      "(4) Boeing737 planes cannot have >300 seats.",
+      "(5) they must have 100 passengers.",
+      "(6) All 100passenger planes are scheduled for shortdistance flights and produced before",
+      "(7) Jake32 is either a Boeing737 or a Deltaacquired plane.",
+      "(8) Deltaacquired planes are Boeing",
+      "(9) Jake32 must be a Boeing",
+      "(10) As a Boeing737, Jake32 has 100 passengers."
+    ]
+  },
+  {
+    "idx": "440_1265",
+    "premises": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat."
+    ],
+    "question": "Fido is not a husky.",
+    "reasoning_steps": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat.",
+      "(6) If Fido is a Bengal tiger, then Fido is a tiger (since all Bengal tigers are tigers).",
+      "(7) Tigers are cats (as all tigers are cats).",
+      "(8) Cats are not dogs (no cats are dogs).",
+      "(9) Huskies are dogs (all huskies are dogs).",
+      "(10) If Fido is a cat, then Fido is not a dog.",
+      "(11) In either case (Bengal tiger or cat), Fido is not a dog.",
+      "(12) Since huskies are dogs, Fido cannot be a husky."
+    ]
+  },
+  {
+    "idx": "440_1264",
+    "premises": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) All huskies are dogs.",
+      "(5) Fido is either a Bengal tiger or a cat."
+    ],
+    "question": "Fido is a husky animal.",
+    "reasoning_steps": [
+      "(1) All tigers are cats.",
+      "(2) No cats are dogs.",
+      "(3) All Bengal tigers are tigers.",
+      "(4) Fido is either a Bengal tiger or a cat.",
+      "(5) If Fido is a Bengal tiger, he is a tiger and thus a cat.",
+      "(6) If Fido is a cat, he is a cat.",
+      "(7) In either case, Fido is a cat.",
+      "(8) Huskies are dogs."
+    ]
+  },
+  {
+    "idx": "428_1217",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is not with the company logo, and managers do not control it.",
+    "reasoning_steps": [
+      "(1) ModelXX was not produced after a new CTO was appointed.",
+      "(2) If something was not produced after a new CTO, then it is not easy to operate.",
+      "(3) ModelXX is not easy to operate.",
+      "(4) If something is not easy to operate, then it does not connect to the company's wifi.",
+      "(5) ModelXX does not connect to the company's wifi.",
+      "(6) If a device belongs to employees, it can connect to the company's wifi.",
+      "(7) Since ModelXX cannot connect to wifi, it does not belong to employees.",
+      "(8) Each device either has the company logo or belongs to employees.",
+      "(9) ModelXX must have the company logo.",
+      "(10) If a device has the company logo, it belongs to the company.",
+      "(11) Company devices are connected to Google Home.",
+      "(12) Devices connected to Google Home are controlled by managers.",
+      "(13) ModelXX is controlled by managers."
+    ]
+  },
+  {
+    "idx": "287_731",
+    "premises": [
+      "(1) Trees are plants. ",
+      "(2) Some living things are trees."
+    ],
+    "question": "Some living things are plants.",
+    "reasoning_steps": [
+      "(1) Trees are plants.",
+      "(2) Some living things are trees.",
+      "(3) All trees are plants implies that those some living things that are trees are also plants."
+    ]
+  },
+  {
+    "idx": "141_413",
+    "premises": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) TS Leda was a Norwegian vessel that was built with stabilizers.",
+      "(3) Stabilizers are mechanical devices found only on ships with powerful steam turbine engines.",
+      "(4) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(5) Some ships that are quiet and good at sea have powerful steam turbine engines.",
+      "(6) Vessels are ships."
+    ],
+    "question": "TS Leda was quiet and good at sea.",
+    "reasoning_steps": [
+      "(1) TS Leda was a good passenger and cargo vessel.",
+      "(2) To be a good passenger and cargo vessel, ships must be quiet and good at sea.",
+      "(3) If TS Leda meets the criteria of being a good passenger and cargo vessel, it must satisfy the necessary conditions.",
+      "(4) The premise directly states TS Leda was a good passenger and cargo vessel."
+    ]
+  },
+  {
+    "idx": "316_792",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "The LaLaurie House is either a skyscraper or a mansion house.",
+    "reasoning_steps": [
+      "(1) There are no mansion houses in urban areas.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(6) If the LaLaurie House is a terrifying building on Halloween, it is a creepy haunted house.",
+      "(7) Since every creepy haunted house is a mansion house, the LaLaurie House is a mansion house.",
+      "(8) Mansion houses cannot be skyscrapers.",
+      "(9) skyscrapers are in urban areas where no mansion houses exist.",
+      "(10) The LaLaurie House must be a mansion house."
+    ]
+  },
+  {
+    "idx": "95_288",
+    "premises": [
+      "(1) DI Ray is a police procedural television series.",
+      "(2) DI Ray was created and written by Maya Sondhi.",
+      "(3) DI Ray was produced by Jed Mercurio.",
+      "(4) Maya Sondhi and Jed Mercurio are both British."
+    ],
+    "question": "Some Brit produced a television series.",
+    "reasoning_steps": [
+      "(1) DI Ray is a police procedural television series.",
+      "(2) DI Ray was produced by Jed Mercurio.",
+      "(3) Jed Mercurio is British.",
+      "(4) A British person (Jed Mercurio) produced a television series (DI Ray)."
+    ]
+  },
+  {
+    "idx": "278_722",
+    "premises": [
+      "(1) The bottle not falling is either standing upright or toppled over. ",
+      "(2) The bottle not falling is not standing upright."
+    ],
+    "question": "The bottle not falling is toppled over.",
+    "reasoning_steps": [
+      "(1) The bottle not falling is either standing upright or toppled over.",
+      "(2) The bottle not falling is not standing upright.",
+      "(3) If it is not standing upright, the remaining possibility is toppled over."
+    ]
+  }
+]

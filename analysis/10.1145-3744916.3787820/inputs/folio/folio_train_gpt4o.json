@@ -1,0 +1,406 @@
+[
+  {
+    "idx": "170_490",
+    "premises": [
+      "(1) The Mona Lisa is a world's best-known painting.",
+      "(2) The Mona Lisa is a portrait painted by Leonardo da Vinci.",
+      "(3) Leonardo da Vinci was a scientist and painter.",
+      "(4) Painting genres can be history, portrait, animal, landscape, and still life."
+    ],
+    "question": "No world's best-known artworks are portraits.",
+    "reasoning_steps": [
+      "(1) The Mona Lisa is a world's best-known painting.  ",
+      "(2) The Mona Lisa is a portrait.  ",
+      "(3) The Mona Lisa is a portrait painted by Leonardo da Vinci.  ",
+      "(4) The Mona Lisa is both a world's best-known artwork and a portrait.  "
+    ]
+  },
+  {
+    "idx": "207_592",
+    "premises": [
+      "(1) TOra is a GUI.",
+      "(2) GUIs are software.",
+      "(3) Software can be free or paid.",
+      "(4) Paid Software is not under the GNU General Public License.",
+      "(5) TOra is under the GNU General Public License."
+    ],
+    "question": "TOra is a paid software.",
+    "reasoning_steps": [
+      "(1) TOra is a GUI.  ",
+      "(2) GUIs are software.  ",
+      "(3) Software can be free or paid.  ",
+      "(4) TOra is under the GNU General Public License.  ",
+      "(5) Paid Software is not under the GNU General Public License.  ",
+      "(6) Since TOra is under the GNU General Public License, it cannot be paid software.  "
+    ]
+  },
+  {
+    "idx": "396_1079",
+    "premises": [
+      "(1) A neuroimaging technique is either an invasive neuroimaging technique or a noninvasive neuroimaging technique. ",
+      "(2) All noninvasive neuroimaging techniques provide a spatial resolution of brains.",
+      "(3) If a technique provides a spatial resolution of brains, then it is a measurement of brain activity. ",
+      "(4) All measurements of brain activity are used by neuroscience researchers.",
+      "(5) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.",
+      "(6) FMRI is a neuroimaging technique."
+    ],
+    "question": "If fMRI is not an invasive neuroimaging technique used by neuroscience researchers, then fMRI is neither a noninvasive neuroimaging technique nor provides a spatial resolution of brains.",
+    "reasoning_steps": [
+      "(1) A neuroimaging technique is either an invasive neuroimaging technique or a noninvasive neuroimaging technique.  ",
+      "(2) FMRI is a neuroimaging technique.  ",
+      "(3) FMRI is either a measurement of brain activity or a noninvasive neuroimaging technique.  ",
+      "(4) All noninvasive neuroimaging techniques provide a spatial resolution of brains.  ",
+      "(5) If a technique provides a spatial resolution of brains, then it is a measurement of brain activity.  ",
+      "(6) All measurements of brain activity are used by neuroscience researchers.  ",
+      "(7) If fMRI is not an invasive neuroimaging technique, it must be a noninvasive neuroimaging technique.  ",
+      "(8) If fMRI is a noninvasive neuroimaging technique, it provides a spatial resolution of brains.  ",
+      "(9) If fMRI provides a spatial resolution of brains, it is a measurement of brain activity.  ",
+      "(10) If fMRI is a measurement of brain activity, it is used by neuroscience researchers.  ",
+      "(11) If fMRI is not an invasive neuroimaging technique, it is used by neuroscience researchers.  "
+    ]
+  },
+  {
+    "idx": "316_797",
+    "premises": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween."
+    ],
+    "question": "If the LaLaurie House is either a skyscraper or a mansion house, then it is neither a creepy haunted house nor a terrifying building on Halloween.",
+    "reasoning_steps": [
+      "(1) There are no mansion houses in an urban area.",
+      "(2) All skyscrapers are in urban areas.",
+      "(3) Every creepy haunted house is a mansion house.",
+      "(4) Every terrifying building on Halloween is a creepy haunted house.",
+      "(5) The LaLaurie House is a creepy haunted house or a terrifying building on Halloween.",
+      "(6) If the LaLaurie House is a creepy haunted house, then it is a mansion house.",
+      "(7) If the LaLaurie House is a terrifying building on Halloween, then it is a creepy haunted house, and thus a mansion house.",
+      "(8) If the LaLaurie House is a mansion house, it cannot be in an urban area.",
+      "(9) If the LaLaurie House is a skyscraper, it must be in an urban area.",
+      "(10) If the LaLaurie House is either a skyscraper or a mansion house, it cannot be both a creepy haunted house and a terrifying building on Halloween.",
+      "(11) The LaLaurie House cannot be a mansion house and a skyscraper simultaneously."
+    ]
+  },
+  {
+    "idx": "7_17",
+    "premises": [
+      "(1) Six, seven and eight are real numbers.",
+      "(2) If a real number equals another real number added by one, the first number is larger.",
+      "(3) If the number x is larger than the number y, then y is not larger than x.",
+      "(4) Seven equals six plus one.",
+      "(5) Eight equals seven plus one.",
+      "(6) Two is positive.",
+      "(7) If a number is positive, then the double of it is also positive.",
+      "(8) Eight is the double of four.",
+      "(9) Four is the double of two."
+    ],
+    "question": "Eight is larger than seven.",
+    "reasoning_steps": [
+      "(1) Six, seven, and eight are real numbers.",
+      "(2) Seven equals six plus one.",
+      "(3) According to the premises, if a real number equals another real number added by one, the first number is larger.",
+      "(4) Eight equals seven plus one."
+    ]
+  },
+  {
+    "idx": "411_1154",
+    "premises": [
+      "(1) If a game is one of the top-3 best selling video-games, then it is multiplatform.",
+      "(2) If a game has sold more than 100 million copies, then it is one of the top-3 best-selling video games.",
+      "(3) Some games that support Windows are developed by Nintendo.",
+      "(4) All multiplatform games can be played on a wide range of devices.",
+      "(5) Pokemon Diamond version is neither developed by Nintendo nor can be played on a wide range of devices."
+    ],
+    "question": "If Pokemon Diamond version either supports Windows or has sold more than 100 million copies, then Pokemon Diamond version either is both multiplatform and one of the top-3 best selling video games, or is neither multiplatform nor one of the top-3 best selling video games.",
+    "reasoning_steps": [
+      "(1) If a game has sold more than 100 million copies, then it is one of the top-3 best-selling video games.",
+      "(2) If a game is one of the top-3 best selling video-games, then it is multiplatform.",
+      "(3) All multiplatform games can be played on a wide range of devices.",
+      "(4) Pokemon Diamond version cannot be played on a wide range of devices.",
+      "(5) Since Pokemon Diamond version is not multiplatform, it is not one of the top-3 best selling video games.",
+      "(6) Thus, if Pokemon Diamond version either supports Windows or has sold more than 100 million copies, it is neither multiplatform nor one of the top-3 best selling video games."
+    ]
+  },
+  {
+    "idx": "93_284",
+    "premises": [
+      "(1) Roy Richardson was a cricketer who played for Sint Maarten, a constituent country.",
+      "(2) Roy Richardson was a right-handed batsman and medium-pace bowler.",
+      "(3) Roy Richardson was old when he debuted in cricket.",
+      "(4) Sherville Huggins dismissed Roy Richardson."
+    ],
+    "question": "No right-handed medium-pace bowlers were playing for Sint Maarten.",
+    "reasoning_steps": [
+      "(1) Roy Richardson was a cricketer who played for Sint Maarten.",
+      "(2) Roy Richardson was a right-handed batsman and medium-pace bowler.",
+      "(3) Roy Richardson was playing for Sint Maarten as a right-handed medium-pace bowler.",
+      "(4) Roy Richardson, being a right-handed medium-pace bowler, was indeed playing for Sint Maarten."
+    ]
+  },
+  {
+    "idx": "449_1293",
+    "premises": [
+      "(1) Animals who need large territory travel far.",
+      "(2) Every animal that eats a lot needs a large territory.",
+      "(3) If something is a big animal, then it will eat a lot.",
+      "(4) Bears are big animals.",
+      "(5) Larry is a big animal."
+    ],
+    "question": "Larry is not a bear and does not travel far.",
+    "reasoning_steps": [
+      "(1) Animals who need large territory travel far.",
+      "(2) Every animal that eats a lot needs a large territory.",
+      "(3) If something is a big animal, then it will eat a lot.",
+      "(4) Bears are big animals.",
+      "(5) Larry is a big animal.",
+      "(6) Since Larry is a big animal, Larry will eat a lot.",
+      "(7) Since Larry eats a lot, Larry needs a large territory.",
+      "(8) Since Larry needs a large territory, Larry will travel far."
+    ]
+  },
+  {
+    "idx": "13_35",
+    "premises": [
+      "(1) System 7 is a UK-based electronic dance music band.",
+      "(2) Steve Hillage and Miquette Giraudy formed System 7.",
+      "(3) Steve Hillage and Miquette Giraudy are former members of the band Gong.",
+      "(4) Electric dance music bands are bands.",
+      "(5) System 7 has released several club singles.",
+      "(6) Club singles are not singles."
+    ],
+    "question": "System 7 was formed by former members of Gong.",
+    "reasoning_steps": [
+      "(1) System 7 is a UK-based electronic dance music band.",
+      "(2) Steve Hillage and Miquette Giraudy formed System 7.",
+      "(3) Steve Hillage and Miquette Giraudy are former members of the band Gong.",
+      "(4) The premise states that System 7 was formed by Steve Hillage and Miquette Giraudy.",
+      "(5) Since Steve Hillage and Miquette Giraudy are former members of Gong, System 7 was formed by former members of Gong."
+    ]
+  },
+  {
+    "idx": "428_1215",
+    "premises": [
+      "(1) All devices belonging to the company are connected to Google Home. ",
+      "(2) All devices with the company logo belong to the company. ",
+      "(3) Each device either has the company logo or belongs to employees. ",
+      "(4) All of the devices belonging to employees can be connected to the company's wifi. ",
+      "(5) All of the devices connected to Google Home are controlled by managers. ",
+      "(6) All of the devices that connect to the company's wifi are easy to operate. ",
+      "(7) All of the devices that are easy to operate were produced after a new CTO is appointed. ",
+      "(8) ModelXX was not produced after a new CTO was appointed."
+    ],
+    "question": "ModelXX is controlled by managers.",
+    "reasoning_steps": [
+      "(1) All devices belonging to the company are connected to Google Home.  ",
+      "(2) All devices connected to Google Home are controlled by managers.  ",
+      "(3) ModelXX was not produced after a new CTO was appointed.  ",
+      "(4) All devices that are easy to operate were produced after a new CTO is appointed.  ",
+      "(5) ModelXX is not easy to operate.  ",
+      "(6) All devices that connect to the company's wifi are easy to operate.  ",
+      "(7) ModelXX does not connect to the company's wifi.  ",
+      "(8) Each device either has the company logo or belongs to employees.  ",
+      "(9) If ModelXX belongs to the company, it would be connected to Google Home.  ",
+      "(10) If ModelXX is connected to Google Home, it would be controlled by managers.  ",
+      "(11) ModelXX is not easy to operate, so it does not connect to the company's wifi.  ",
+      "(12) ModelXX is not controlled by managers because it is not connected to Google Home.  "
+    ]
+  },
+  {
+    "idx": "27_77",
+    "premises": [
+      "(1) Xiufeng, Xiangshan, Diecai, Qixing are districts in the city of Guilin.",
+      "(2) Yangshuo is not a district in Guilin. "
+    ],
+    "question": "Xiangshan and Diecai are districts in the same city.",
+    "reasoning_steps": [
+      "(1) Xiufeng, Xiangshan, Diecai, and Qixing are districts in the city of Guilin.",
+      "(2) Xiangshan is a district in Guilin.",
+      "(3) Diecai is a district in Guilin.",
+      "(4) Both Xiangshan and Diecai are districts in the city of Guilin."
+    ]
+  },
+  {
+    "idx": "6_15",
+    "premises": [
+      "(1) Boves is a railway station located in France. ",
+      "(2) The preceding station of Boves is Longueau.",
+      "(3) The preceding station of Dommartin is Boves.",
+      "(4) France is a European country.",
+      "(5) Dommartin is situated on the Paris\u2013Lille railway. ",
+      "(6) Any two contiguous stations are on the same railway.",
+      "(7) Boves is served by regional TER Hauts-de-France trains.",
+      "(8) If place A is located in place B and place B is located in place C, then place A is located in place C.",
+      "(9) If place A precedes place B and place B precedes place C, then place A precedes place C."
+    ],
+    "question": "Boves is not in Europe.",
+    "reasoning_steps": [
+      "(1) Boves is a railway station located in France.  ",
+      "(2) France is a European country.  ",
+      "(3) If place A is located in place B and place B is located in place C, then place A is located in place C.  ",
+      "(4) Boves is located in France, and France is located in Europe.  "
+    ]
+  },
+  {
+    "idx": "63_187",
+    "premises": [
+      "(1) All students who attend in person have registered for the conference. ",
+      "(2) Students either attend the conference in person or remotely. ",
+      "(3) No students from China attend the conference remotely. ",
+      "(4) James attends the conference, but he does not attend the conference remotely.",
+      "(5) Jack attends the conference, and he is a student from China."
+    ],
+    "question": "Jack attends the conference in person.",
+    "reasoning_steps": [
+      "(1) Students either attend the conference in person or remotely.  ",
+      "(2) No students from China attend the conference remotely.  ",
+      "(3) Jack is a student from China.  ",
+      "(4) Jack attends the conference.  ",
+      "(5) Since Jack is a student from China, he cannot attend the conference remotely.  "
+    ]
+  },
+  {
+    "idx": "123_367",
+    "premises": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free."
+    ],
+    "question": "Crude Oil Data Exchange is sanctioned.",
+    "reasoning_steps": [
+      "(1) Businesses are either sanctioned or unsanctioned.",
+      "(2) Sanctioned businesses are limited.",
+      "(3) Unsanctioned businesses are free.",
+      "(4) The Crude Oil Data Exchange is a business that isn't free.",
+      "(5) If a business isn't free, it cannot be unsanctioned.",
+      "(6) Since the Crude Oil Data Exchange is not unsanctioned, it must be sanctioned."
+    ]
+  },
+  {
+    "idx": "303_747",
+    "premises": [
+      "(1) Jerry should not worry about things outside of his control.",
+      "(2) All traffic is outside of my control."
+    ],
+    "question": "Jerry should not worry about traffic.",
+    "reasoning_steps": [
+      "(1) Jerry should not worry about things outside of his control.  ",
+      "(2) All traffic is outside of my control.  ",
+      "(3) Traffic is outside of Jerry's control.  ",
+      "(4) Jerry should not worry about traffic because it is outside of his control.  "
+    ]
+  },
+  {
+    "idx": "465_1343",
+    "premises": [
+      "(1) Everyone who took the bar exam can read. ",
+      "(2) All lawyers took the bar exam. ",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures. ",
+      "(4) All people who got a score of 180 on the LSAT can read. ",
+      "(5) No elephants can read. ",
+      "(6) If Mike can not read or is not an elephant, then Mike either took the bar exam or can read. "
+    ],
+    "question": "Mike did not take the bar exam and is not both knowledgeable about criminal procedures and someone who got 180 on the LSAT.",
+    "reasoning_steps": [
+      "(1) Everyone who took the bar exam can read.",
+      "(2) All lawyers took the bar exam.",
+      "(3) Everyone who took the bar exam is knowledgeable about criminal procedures.",
+      "(4) No elephants can read.",
+      "(5) If Mike cannot read or is not an elephant, then Mike either took the bar exam or can read.",
+      "(6) If Mike did not take the bar exam, then he cannot be knowledgeable about criminal procedures.",
+      "(7) If Mike is not knowledgeable about criminal procedures, he did not take the bar exam.",
+      "(8) If Mike got a score of 180 on the LSAT, then he can read.",
+      "(9) If Mike did not take the bar exam, he is not knowledgeable about criminal procedures."
+    ]
+  },
+  {
+    "idx": "339_890",
+    "premises": [
+      "(1) No professional tennis umpires are professional tennis players.",
+      "(2) If you are a World Tour player, then you are a professional tennis player.",
+      "(3) All Grand Slam champions are World Tour players.",
+      "(4) All Grand Slam umpires are professional tennis umpires.",
+      "(5) Nadal is a World Tour player or a Grand Slam champion"
+    ],
+    "question": "Nadal is neither a Grand Slam umpire nor a professional tennis umpire.",
+    "reasoning_steps": [
+      "(1) No professional tennis umpires are professional tennis players.  ",
+      "(2) If you are a World Tour player, then you are a professional tennis player.  ",
+      "(3) All Grand Slam champions are World Tour players.  ",
+      "(4) Nadal is a World Tour player or a Grand Slam champion.  ",
+      "(5) If Nadal is a World Tour player, then Nadal is a professional tennis player.  ",
+      "(6) If Nadal is a Grand Slam champion, then Nadal is a World Tour player and thus a professional tennis player.  ",
+      "(7) Nadal cannot be a professional tennis umpire because he is a professional tennis player.  ",
+      "(8) All Grand Slam umpires are professional tennis umpires.  ",
+      "(9) Nadal cannot be a Grand Slam umpire because he is a professional tennis player.  "
+    ]
+  },
+  {
+    "idx": "342_901",
+    "premises": [
+      "(1) All sports cars are loud.",
+      "(2) No loud cars are electric.",
+      "(3) If a car is a Ferrari, then it is a sports car.",
+      "(4) All cars made in Maranello are Ferraris.",
+      "(5) The Toyota Prius is made in Maranello or is a loud car, or both."
+    ],
+    "question": "The Toyota Prius is not an electric car.",
+    "reasoning_steps": [
+      "(1) All sports cars are loud.",
+      "(2) No loud cars are electric.",
+      "(3) If a car is a Ferrari, then it is a sports car.",
+      "(4) All cars made in Maranello are Ferraris.",
+      "(5) The Toyota Prius is made in Maranello or is a loud car, or both.",
+      "(6) If the Toyota Prius is made in Maranello, then it is a Ferrari.",
+      "(7) If the Toyota Prius is a Ferrari, then it is a sports car.",
+      "(8) If the Toyota Prius is a sports car, then it is loud.",
+      "(9) If the Toyota Prius is loud, then it is not electric."
+    ]
+  },
+  {
+    "idx": "42_121",
+    "premises": [
+      "(1) James Cocks was a British lawyer.",
+      "(2) James Cocks was a Whig politician who sat in the House of Commons.",
+      "(3) A British is a European.",
+      "(4) Any lawyer is familiar with laws.",
+      "(5) Some Whigs speak French."
+    ],
+    "question": "Some European was familiar with laws.",
+    "reasoning_steps": [
+      "(1) James Cocks was a British lawyer.",
+      "(2) A British is a European.",
+      "(3) James Cocks was a European.",
+      "(4) Any lawyer is familiar with laws.",
+      "(5) James Cocks was familiar with laws.",
+      "(6) James Cocks was a European and was familiar with laws."
+    ]
+  },
+  {
+    "idx": "469_1356",
+    "premises": [
+      "(1) All members of the university faculty are professors.",
+      "(2) All principal investigators are members of the university faculty.",
+      "(3) No professor is also an undergraduate student.",
+      "(4) Anyone pursuing a bachelor's degree is an undergraduate student.",
+      "(5) Leon is not pursuing a bachelor's degree, and he is not a principal investigator.",
+      "(6) If Leon is not pursuing a bachelor's degree, then he is a professor."
+    ],
+    "question": "If leon is not a principal investigator, then Leon is an undergraduate student.",
+    "reasoning_steps": [
+      "(1) Leon is not pursuing a bachelor's degree.",
+      "(2) Anyone pursuing a bachelor's degree is an undergraduate student.",
+      "(3) Leon is not pursuing a bachelor's degree, so he is not an undergraduate student.",
+      "(4) Leon is not a principal investigator.",
+      "(5) All principal investigators are members of the university faculty.",
+      "(6) Leon is not a principal investigator, so he is not a member of the university faculty.",
+      "(7) All members of the university faculty are professors.",
+      "(8) If Leon is not pursuing a bachelor's degree, then he is a professor.",
+      "(9) Leon is not pursuing a bachelor's degree, so he is a professor.",
+      "(10) No professor is also an undergraduate student.",
+      "(11) Since Leon is a professor, he cannot be an undergraduate student."
+    ]
+  }
+]
