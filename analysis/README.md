@@ -25,4 +25,5 @@
 | [`ICSE_108(10.1145-3744916.3787779)`](./ICSE_108(10.1145-3744916.3787779)) | Distance-Guided Search in Program Synthesis with Imperfect LLM Solutions |
 | [`ICSE_186(10.1145-3744916.3773157)`](./ICSE_186(10.1145-3744916.3773157)/) | Small Changes, Big Trouble: Demystifying and Parsing License Variants for Incompatibility Detection in the PyPI Ecosystem |
 | [`ICSE_219(10.1145-3744916.3787806)`](./ICSE_219(10.1145-3744916.3787806)/) | Modeling Like Peeling an Onion: Layerwise Analysis-Driven Automatic Behavioral Model Generation |
+| [`ICSE_254(10.1145-3744916.3764534)`](../../254/ICSE_254(10.1145-3744916.3764534)/) | Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search |
 | [`ICSE_303(10.1145-3744916.3773182)`](./ICSE_303(10.1145-3744916.3773182)) | Characterizing Regression Bug-Inducing Changes and Improving LLM-Based Regression Bug Detection |
