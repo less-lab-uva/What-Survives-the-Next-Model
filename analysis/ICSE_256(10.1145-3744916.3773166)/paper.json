@@ -1,0 +1,52 @@
+{
+  "title": "EchoFuzz: Empowering Smart Contract Fuzzing with Large Language Models",
+  "doi": "10.1145/3744916.3773166",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original EchoFuzz pipeline is a 4-phase LLM-guided smart contract fuzzer. Phase 1 (chain-guided LLM) generates Vulnerable Function Call Sequences (VFCS) — minimal, behavior-preserving execution paths that expose vulnerabilities through key state transitions. Phase 2 runs the IR-Fuzz fuzzer with those seeds. Phase 3 applies a runtime oracle that fires only on actual execution events (reentrancy callbacks, integer wrap-arounds, unchecked low-level call return values, block/timestamp manipulation), guaranteeing zero false positives by design. Phase 4 reports per-category detection counts.",
+    "This reproduction replaces the full 4-phase pipeline with a single Claude Sonnet 4.6 call per contract using two prompt strategies: a black-box prompt (Prompt A) that instructs the model to analyse the Solidity source and report vulnerabilities across six fields with concrete test cases, and an informed prompt (Prompt B) that provides the paper's VFCS methodology as numbered reasoning steps — chain analysis, state-transition mapping, VFCS generation, branch targeting, and oracle simulation."
+  ],
+  "dataset": {
+    "name": "EchoFuzz D2 (SmartBugs Wild subset)",
+    "sample_size": 143,
+    "full_size": 143,
+    "sample_fraction": 1.0
+  },
+  "metric": [
+    "Precision",
+    "Recall"
+  ],
+  "original_result": {
+    "EchoFuzz": {
+      "note": "Runtime oracle — all detections are true positives, no false positives possible. Counts are over all 143 D2 contracts. GL/DG/UE excluded because D2 has no ground-truth labels for those categories.",
+      "detections": {
+        "IO": 53,
+        "RE": 20,
+        "UC": 15,
+        "BN": 8,
+        "TP": 7
+      },
+      "total_detections": 103,
+      "contracts": 143
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "total_TP": 111,
+      "total_FP": 176,
+      "total_FN": 0,
+      "total_ground_truth": 111,
+      "contracts": 143,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "total_TP": 111,
+      "total_FP": 186,
+      "total_FN": 0,
+      "total_ground_truth": 111,
+      "contracts": 143,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "total_cost": 7.14
+}
