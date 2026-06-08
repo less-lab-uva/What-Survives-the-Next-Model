@@ -172,10 +172,10 @@ Both tables below cover the same 5 instances that our pipeline has evaluated so 
 
 **Ours — single Claude Sonnet 4.6 call (same 5 instances, name-space GT):**
 
-| Prompt | Macro P | Macro R | Macro F1 | Hit@custom |
+| Prompt | Hit@custom | Macro P | Macro R | Macro F1 | 
 |---|---|---|---|---|
-| Prompt A (Black-box) | 20.0% | 22.0% | 20.9% | 40.0% |
-| Prompt B (Informed CoT) | 16.7% | 18.0% | 17.3% | 40.0% |
+| Prompt A (Black-box) | 40.0% | 20.0% | 22.0% | 20.9% | 
+| Prompt B (Informed CoT) | 40.0% | 16.7% | 18.0% | 17.3% |
 
 > Results will update as the remaining 5 instances complete (10 total planned). For reference, the paper's Table 1 reports Ripple w/ GPT-4o at F1=25.0% on all 100 instances.
 
