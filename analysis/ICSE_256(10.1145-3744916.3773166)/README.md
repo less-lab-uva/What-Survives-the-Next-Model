@@ -1,4 +1,4 @@
-# EchoFuzz — LLM Replacement Study on Dataset D2
+# EchoFuzz — LLM Replacement Study on SmartBugs D2
 
 This directory contains an LLM replacement study for the EchoFuzz pipeline (ICSE 2026). We replace the original 4-phase smart contract fuzzer with a single Claude Sonnet 4.6 call per contract and evaluate on the D2 dataset using precision and recall against the same ground-truth labels used by the paper.
 
@@ -32,20 +32,78 @@ D2 covers 10 vulnerability label types. Six of these map directly to EchoFuzz's 
 
 ---
 
-## Prerequisites
+## Environment Setup
 
-**Python packages:**
+### 1. Python version
+
+Python 3.10 or later is required (`main.py` uses `list[...]` / `dict | None` type hints that require 3.10+).
+
 ```bash
-pip install anthropic
+python3 --version   # should be >= 3.10
 ```
 
-**Environment variable:**
+### 2. Install Python dependencies
+
+All required packages are listed in `requirements.txt`. Install them with:
+
+```bash
+pip install -r requirements.txt
+```
+
+The only external dependency is the [Anthropic Python SDK](https://github.com/anthropics/anthropic-sdk-python):
+
+| Package | Version | Purpose |
+|---|---|---|
+| `anthropic` | >=0.40.0 | Claude API client used by `main.py` |
+
+`evaluator.py` and the prompt files use only Python standard library modules.
+
+### 3. Set the API key
+
+`main.py` reads the Anthropic API key from the environment. Export it before running:
+
 ```bash
 export ANTHROPIC_API_KEY=your_api_key_here
 ```
 
+To persist it across sessions, add the line above to your `~/.bashrc` or `~/.bash_profile`.
+
 ---
 
+## Dataset
+
+The 143 Solidity smart contract files (`.sol`) were taken directly from the original EchoFuzz repository:
+
+> **EchoFuzz** — [https://github.com/iceray00/EchoFuzz](https://github.com/iceray00/EchoFuzz) (`dataset/D2/`)
+
+The D2 dataset is the **SmartBugs Wild** benchmark subset used by the EchoFuzz paper. Each `.sol` file contains embedded `<report>` annotations that mark the ground-truth vulnerability category (e.g., `// <report> REENTRANCY`). `main.py` strips these annotations before sending any contract to the LLM, and `evaluator.py` reads them back to compute precision and recall.
+
+---
+
+## File Structure
+
+```
+with_sonnet/
+  main.py           — pipeline runner (budget-gated, resumable)
+  evaluator.py      — evaluation vs. D2 ground truth + paper Table 3 reference
+  prompts/
+    promptA.py      — black-box prompt (6-field output schema)
+    promptB.py      — informed prompt (VFCS reasoning steps + 6-field schema)
+  dataset/D2/       — 143 .sol files with embedded <report> annotations
+  outputs/
+    outputs_A.jsonl — one JSON line per contract: LLM response for Prompt A
+    outputs_B.jsonl — same for Prompt B
+    tokens_A.jsonl  — per-call token counts, cost, and wall-clock time for Prompt A
+    tokens_B.jsonl  — same for Prompt B
+    state.json      — resume checkpoint (selected contracts, target count)
+  results/
+    results_A.jsonl — line 1: aggregate metrics; lines 2+: per-contract breakdown
+    results_B.jsonl — same for Prompt B
+  paper.json        — paper metadata and final results
+  metaprompt.txt    — meta-prompt used to generate promptA.py and promptB.py
+```
+
+---
 
 ## Step 1 — Input Processing
 
@@ -147,12 +205,13 @@ Direct numeric comparison between our results and the paper's Table 3 counts is 
 
 All 143 D2 contracts evaluated.
 
-| System | TP | FP | FN | Contracts |
-|---|---|---|---|---|
-| EchoFuzz (paper, Table 3, D2) | 103 | 0 | ~29 | 143 |
-| Ours — Prompt A | 111 | 176 | 0 | 143 |
-| Ours — Prompt B | 111 | 186 | 0 | 143 |
+| System | Precision | Recall | TP | FP | FN | Contracts |
+|---|---|---|---|---|---|---|
+| EchoFuzz (paper, Table 3, D2) | ~1.0 (runtime oracle) | ~0.78 | 103 | 0 | ~29 | 143 |
+| Ours — Prompt A | 38.7% | **100%** | 111 | 176 | 0 | 143 |
+| Ours — Prompt B | 37.4% | **100%** | 111 | 186 | 0 | 143 |
 
+> Paper recall is approximate: 103 detections out of 132 mappable GT vulnerabilities.
 
 **Per-category breakdown (Prompt A / Prompt B):**
 
@@ -171,5 +230,7 @@ All 143 D2 contracts evaluated.
 ## Discussion
 
 **Perfect recall, high false-positive rate.** The LLM detects every ground-truth vulnerability in the sample (FN=0) but over-reports substantially. IO and TP show the worst FP rates — the LLM flags integer arithmetic patterns and timestamp usage as vulnerabilities even in contracts where those patterns are benign.
+
+**Prompt B does not reduce recall or improve precision.** Providing the VFCS reasoning methodology (Prompt B) does not lower FPs; in fact, RE FPs increase from 26 to 48. The informed prompt appears to make the model more aggressive in flagging reentrancy-shaped patterns. Precision is essentially the same for both prompts (~38%).
 
 **Contrast with EchoFuzz.** EchoFuzz achieves near-zero FPs by using an instrumented runtime oracle that fires only on actual exploit execution. A static LLM prompt cannot replicate this guarantee — it reasons about code patterns, not runtime behaviour, and tends toward over-detection. The LLM's advantage is that it misses nothing in its evaluated category set; EchoFuzz misses ~22% of mappable GT (FN=29/132) because the fuzzer does not always reach the vulnerable branch.
