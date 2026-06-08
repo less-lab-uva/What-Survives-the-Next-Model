@@ -1,0 +1,3114 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "Gson",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/Gson.java",
+      "class_declaration": "public final class Gson ",
+      "methods_under_test": {
+        "=1": {
+          "Gson.excluder()": [
+            1,
+            1,
+            1
+          ],
+          "Gson.fieldNamingStrategy()": [
+            1,
+            1,
+            1
+          ],
+          "Gson.serializeNulls()": [
+            1,
+            1,
+            1
+          ],
+          "Gson.htmlSafe()": [
+            1,
+            1,
+            1
+          ],
+          "Gson.checkValidFloatingPoint(double)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.getAdapter(Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.toJsonTree(Object, Type)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.toJson(Object, Type)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.toJson(JsonElement)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.newJsonReader(Reader)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.fromJson(String, Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.fromJson(Reader, Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.fromJson(Reader, Type)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.fromJson(JsonElement, Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "Gson.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Gson.getAdapter(TypeToken<T>)": [
+            8,
+            8,
+            8
+          ],
+          "Gson.getDelegateAdapter(TypeAdapterFactory, TypeToken<T>)": [
+            6,
+            6,
+            6
+          ],
+          "Gson.toJsonTree(Object)": [
+            2,
+            2,
+            2
+          ],
+          "Gson.toJson(Object)": [
+            2,
+            2,
+            2
+          ],
+          "Gson.toJson(Object, Appendable)": [
+            3,
+            3,
+            3
+          ],
+          "Gson.toJson(Object, Type, Appendable)": [
+            2,
+            2,
+            2
+          ],
+          "Gson.toJson(Object, Type, JsonWriter)": [
+            3,
+            3,
+            3
+          ],
+          "Gson.toJson(JsonElement, Appendable)": [
+            2,
+            2,
+            2
+          ],
+          "Gson.newJsonWriter(Writer)": [
+            3,
+            3,
+            3
+          ],
+          "Gson.toJson(JsonElement, JsonWriter)": [
+            3,
+            3,
+            3
+          ],
+          "Gson.fromJson(String, Type)": [
+            2,
+            2,
+            2
+          ],
+          "Gson.fromJson(JsonElement, Type)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "Gson.fromJson(JsonReader, Type)": [
+            22,
+            22,
+            22
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/GsonTest.java"
+    },
+    {
+      "src_name": "JsonNull",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonNull.java",
+      "class_declaration": "public final class JsonNull extends JsonElement ",
+      "methods_under_test": {
+        "=1": {
+          "JsonNull.deepCopy()": [
+            1,
+            1,
+            1
+          ],
+          "JsonNull.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "JsonNull.equals(Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonNullTest.java"
+    },
+    {
+      "src_name": "DefaultDateTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/DefaultDateTypeAdapter.java",
+      "class_declaration": "final class DefaultDateTypeAdapter extends TypeAdapter<Date> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/DefaultDateTypeAdapterTest.java"
+    },
+    {
+      "src_name": "JsonWriter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/stream/JsonWriter.java",
+      "class_declaration": "public class JsonWriter implements Closeable, Flushable ",
+      "methods_under_test": {
+        "=1": {
+          "JsonWriter.beginArray()": [
+            1,
+            1,
+            1
+          ],
+          "JsonWriter.endArray()": [
+            1,
+            1,
+            1
+          ],
+          "JsonWriter.beginObject()": [
+            1,
+            1,
+            1
+          ],
+          "JsonWriter.endObject()": [
+            1,
+            1,
+            1
+          ],
+          "JsonWriter.value(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "JsonWriter.value(long)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonWriter.setIndent(String)": [
+            3,
+            3,
+            3
+          ],
+          "JsonWriter.name(String)": [
+            4,
+            4,
+            4
+          ],
+          "JsonWriter.value(String)": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.jsonValue(String)": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.nullValue()": [
+            3,
+            3,
+            3
+          ],
+          "JsonWriter.value(Boolean)": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.value(double)": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.value(Number)": [
+            3,
+            3,
+            3
+          ],
+          "JsonWriter.flush()": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.close()": [
+            2,
+            2,
+            2
+          ],
+          "JsonWriter.beforeValue()": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/stream/JsonWriterTest.java"
+    },
+    {
+      "src_name": "JsonObject",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonObject.java",
+      "class_declaration": "public final class JsonObject extends JsonElement ",
+      "methods_under_test": {
+        "=1": {
+          "JsonObject.remove(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.addProperty(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.addProperty(String, Number)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.addProperty(String, Boolean)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.addProperty(String, Character)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.entrySet()": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.keySet()": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.size()": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.has(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.get(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.getAsJsonPrimitive(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.getAsJsonArray(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.getAsJsonObject(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "JsonObject.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonObject.deepCopy()": [
+            2,
+            2,
+            2
+          ],
+          "JsonObject.add(String, JsonElement)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonObjectTest.java"
+    },
+    {
+      "src_name": "JsonTreeReader",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/JsonTreeReader.java",
+      "class_declaration": "public final class JsonTreeReader extends JsonReader ",
+      "methods_under_test": {
+        "=1": {
+          "JsonTreeReader.beginArray()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.beginObject()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.hasNext()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.nextName()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.close()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.toString()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeReader.promoteNameToValue()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonTreeReader.endArray()": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeReader.endObject()": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeReader.nextString()": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeReader.nextBoolean()": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeReader.nextNull()": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeReader.nextDouble()": [
+            4,
+            4,
+            4
+          ],
+          "JsonTreeReader.nextLong()": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeReader.nextInt()": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeReader.skipValue()": [
+            4,
+            4,
+            4
+          ],
+          "JsonTreeReader.getPath()": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "JsonTreeReader.peek()": [
+            23,
+            23,
+            23
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/bind/JsonTreeReaderTest.java"
+    },
+    {
+      "src_name": "UtcDateTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/typeadapters/UtcDateTypeAdapter.java",
+      "class_declaration": "public final class UtcDateTypeAdapter extends TypeAdapter<Date> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/extras/src/test/java/com/google/gson/typeadapters/UtcDateTypeAdapterTest.java"
+    },
+    {
+      "src_name": "LinkedTreeMap",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/LinkedTreeMap.java",
+      "class_declaration": "public final class LinkedTreeMap <K, V> extends AbstractMap<K, V> implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "Node.setValue(V)": [
+            1,
+            1,
+            1
+          ],
+          "Node.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Node.toString()": [
+            1,
+            1,
+            1
+          ],
+          "LinkedTreeMapIterator.hasNext()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Node.equals(Object)": [
+            2,
+            2,
+            2
+          ],
+          "Node.first()": [
+            2,
+            2,
+            2
+          ],
+          "Node.last()": [
+            2,
+            2,
+            2
+          ],
+          "LinkedTreeMapIterator.nextNode()": [
+            3,
+            3,
+            3
+          ],
+          "LinkedTreeMapIterator.remove()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/LinkedTreeMapTest.java"
+    },
+    {
+      "src_name": "GsonBuilder",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/GsonBuilder.java",
+      "class_declaration": "public final class GsonBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "GsonBuilder.setVersion(double)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.excludeFieldsWithModifiers()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.generateNonExecutableJson()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.excludeFieldsWithoutExposeAnnotation()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.serializeNulls()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.enableComplexMapKeySerialization()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.disableInnerClassSerialization()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setLongSerializationPolicy(LongSerializationPolicy)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setFieldNamingPolicy(FieldNamingPolicy)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setFieldNamingStrategy(FieldNamingStrategy)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.addSerializationExclusionStrategy(ExclusionStrategy)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.addDeserializationExclusionStrategy(ExclusionStrategy)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setPrettyPrinting()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setLenient()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.disableHtmlEscaping()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setDateFormat(String)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setDateFormat(int)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.setDateFormat(int, int)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.registerTypeAdapterFactory(TypeAdapterFactory)": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.serializeSpecialFloatingPointValues()": [
+            1,
+            1,
+            1
+          ],
+          "GsonBuilder.create()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "GsonBuilder.setExclusionStrategies()": [
+            2,
+            2,
+            2
+          ],
+          "GsonBuilder.registerTypeAdapter(Type, Object)": [
+            4,
+            4,
+            4
+          ],
+          "GsonBuilder.registerTypeHierarchyAdapter(Class<?>, Object)": [
+            3,
+            3,
+            3
+          ],
+          "GsonBuilder.addTypeAdaptersForDate(String, int, int, List<TypeAdapterFactory>)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/GsonBuilderTest.java"
+    },
+    {
+      "src_name": "ObjectTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/ObjectTypeAdapter.java",
+      "class_declaration": "public final class ObjectTypeAdapter extends TypeAdapter<Object> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/ObjectTypeAdapterTest.java"
+    },
+    {
+      "src_name": "SerializedName",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/SerializedName.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/SerializedNameTest.java"
+    },
+    {
+      "src_name": "JsonTreeWriter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/JsonTreeWriter.java",
+      "class_declaration": "public final class JsonTreeWriter extends JsonWriter ",
+      "methods_under_test": {
+        "=1": {
+          "JsonTreeWriter.beginArray()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeWriter.beginObject()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeWriter.nullValue()": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeWriter.value(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "JsonTreeWriter.value(long)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonTreeWriter.get()": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeWriter.endArray()": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeWriter.endObject()": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeWriter.name(String)": [
+            3,
+            3,
+            3
+          ],
+          "JsonTreeWriter.value(String)": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeWriter.value(Boolean)": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeWriter.value(double)": [
+            2,
+            2,
+            2
+          ],
+          "JsonTreeWriter.value(Number)": [
+            4,
+            4,
+            4
+          ],
+          "JsonTreeWriter.close()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/bind/JsonTreeWriterTest.java"
+    },
+    {
+      "src_name": "JsonReader",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/stream/JsonReader.java",
+      "class_declaration": "public class JsonReader implements Closeable ",
+      "methods_under_test": {
+        "=1": {
+          "JsonReader.close()": [
+            1,
+            1,
+            1
+          ],
+          "JsonReader.toString()": [
+            1,
+            1,
+            1
+          ],
+          "JsonReader.locationString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonReader.beginArray()": [
+            3,
+            3,
+            3
+          ],
+          "JsonReader.endArray()": [
+            3,
+            3,
+            3
+          ],
+          "JsonReader.beginObject()": [
+            3,
+            3,
+            3
+          ],
+          "JsonReader.endObject()": [
+            3,
+            3,
+            3
+          ],
+          "JsonReader.hasNext()": [
+            2,
+            2,
+            2
+          ],
+          "JsonReader.nextName()": [
+            5,
+            5,
+            5
+          ],
+          "JsonReader.nextString()": [
+            8,
+            8,
+            8
+          ],
+          "JsonReader.nextBoolean()": [
+            4,
+            4,
+            4
+          ],
+          "JsonReader.nextNull()": [
+            3,
+            3,
+            3
+          ],
+          "JsonReader.nextDouble()": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {
+          "JsonReader.peek()": [
+            19,
+            19,
+            19
+          ],
+          "JsonReader.nextLong()": [
+            12,
+            12,
+            12
+          ],
+          "JsonReader.nextInt()": [
+            13,
+            13,
+            13
+          ],
+          "JsonReader.skipValue()": [
+            11,
+            11,
+            11
+          ],
+          "JsonReader.getPath()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {
+          "JsonReader.doPeek()": [
+            37,
+            37,
+            37
+          ],
+          "JsonReader.nextUnquotedValue()": [
+            23,
+            23,
+            23
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/stream/JsonReaderTest.java"
+    },
+    {
+      "src_name": "LinkedHashTreeMap",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/LinkedHashTreeMap.java",
+      "class_declaration": "public final class LinkedHashTreeMap <K, V> extends AbstractMap<K, V> implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "Node.setValue(V)": [
+            1,
+            1,
+            1
+          ],
+          "Node.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Node.toString()": [
+            1,
+            1,
+            1
+          ],
+          "AvlBuilder.reset(int)": [
+            1,
+            1,
+            1
+          ],
+          "LinkedTreeMapIterator.hasNext()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Node.equals(Object)": [
+            2,
+            2,
+            2
+          ],
+          "Node.first()": [
+            2,
+            2,
+            2
+          ],
+          "Node.last()": [
+            2,
+            2,
+            2
+          ],
+          "AvlIterator.reset(Node<K, V>)": [
+            2,
+            2,
+            2
+          ],
+          "AvlIterator.next()": [
+            3,
+            3,
+            3
+          ],
+          "AvlBuilder.add(Node<K, V>)": [
+            3,
+            3,
+            3
+          ],
+          "AvlBuilder.root()": [
+            2,
+            2,
+            2
+          ],
+          "LinkedTreeMapIterator.nextNode()": [
+            3,
+            3,
+            3
+          ],
+          "LinkedTreeMapIterator.remove()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/LinkedHashTreeMapTest.java"
+    },
+    {
+      "src_name": "LongSerializationPolicy",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/LongSerializationPolicy.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/LongSerializationPolicyTest.java"
+    },
+    {
+      "src_name": "RuntimeTypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/typeadapters/RuntimeTypeAdapterFactory.java",
+      "class_declaration": "public final class RuntimeTypeAdapterFactory <T> implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {
+          "RuntimeTypeAdapterFactory.of(Class<T>, String)": [
+            1,
+            1,
+            1
+          ],
+          "RuntimeTypeAdapterFactory.of(Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "RuntimeTypeAdapterFactory.registerSubtype(Class<? extends T>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "RuntimeTypeAdapterFactory.registerSubtype(Class<? extends T>, String)": [
+            3,
+            3,
+            3
+          ],
+          "RuntimeTypeAdapterFactory.create(Gson, TypeToken<R>)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/extras/src/test/java/com/google/gson/typeadapters/RuntimeTypeAdapterFactoryTest.java"
+    },
+    {
+      "src_name": "TypeToken",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/reflect/TypeToken.java",
+      "class_declaration": "public class TypeToken <T> ",
+      "methods_under_test": {
+        "=1": {
+          "TypeToken.isAssignableFrom(Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.isAssignableFrom(TypeToken<?>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.toString()": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.get(Type)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.get(Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.getParameterized(Type)": [
+            1,
+            1,
+            1
+          ],
+          "TypeToken.getArray(Type)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TypeToken.getSuperclassTypeParameter(Class<?>)": [
+            2,
+            2,
+            2
+          ],
+          "TypeToken.isAssignableFrom(Type)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/reflect/TypeTokenTest.java"
+    },
+    {
+      "src_name": "JsonStreamParser",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonStreamParser.java",
+      "class_declaration": "public final class JsonStreamParser implements Iterator<JsonElement> ",
+      "methods_under_test": {
+        "=1": {
+          "JsonStreamParser.remove()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonStreamParser.next()": [
+            3,
+            3,
+            3
+          ],
+          "JsonStreamParser.hasNext()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonStreamParserTest.java"
+    },
+    {
+      "src_name": "JsonPrimitive",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonPrimitive.java",
+      "class_declaration": "public final class JsonPrimitive extends JsonElement ",
+      "methods_under_test": {
+        "=1": {
+          "JsonPrimitive.deepCopy()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonPrimitive.setValue(Object)": [
+            3,
+            3,
+            3
+          ],
+          "JsonPrimitive.getAsBoolean()": [
+            3,
+            3,
+            3
+          ],
+          "JsonPrimitive.getAsString()": [
+            4,
+            4,
+            4
+          ],
+          "JsonPrimitive.hashCode()": [
+            4,
+            4,
+            4
+          ],
+          "JsonPrimitive.equals(Object)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonPrimitiveTest.java"
+    },
+    {
+      "src_name": "JsonParser",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonParser.java",
+      "class_declaration": "public final class JsonParser ",
+      "methods_under_test": {
+        "=1": {
+          "JsonParser.parse(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonParser.parse(Reader)": [
+            3,
+            3,
+            3
+          ],
+          "JsonParser.parse(JsonReader)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonParserTest.java"
+    },
+    {
+      "src_name": "PostConstructAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/typeadapters/PostConstructAdapterFactory.java",
+      "class_declaration": "public class PostConstructAdapterFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "PostConstructAdapterFactory.create(Gson, TypeToken<T>)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/extras/src/test/java/com/google/gson/typeadapters/PostConstructAdapterFactoryTest.java"
+    },
+    {
+      "src_name": "FieldAttributes",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/FieldAttributes.java",
+      "class_declaration": "public final class FieldAttributes ",
+      "methods_under_test": {
+        "=1": {
+          "FieldAttributes.getAnnotation(Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "FieldAttributes.hasModifier(int)": [
+            1,
+            1,
+            1
+          ],
+          "FieldAttributes.get(Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/FieldAttributesTest.java"
+    },
+    {
+      "src_name": "GraphAdapterBuilder",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/graph/GraphAdapterBuilder.java",
+      "class_declaration": "@SuppressWarnings(\"rawtypes\")\npublic final class GraphAdapterBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "GraphAdapterBuilder.registerOn(GsonBuilder)": [
+            1,
+            1,
+            1
+          ],
+          "Graph.nextName()": [
+            1,
+            1,
+            1
+          ],
+          "Element.write(JsonWriter)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "GraphAdapterBuilder.addType(Type)": [
+            2,
+            2,
+            2
+          ],
+          "GraphAdapterBuilder.addType(Type, InstanceCreator<?>)": [
+            2,
+            2,
+            2
+          ],
+          "Factory.create(Gson, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ],
+          "Factory.createInstance(Type)": [
+            2,
+            2,
+            2
+          ],
+          "Element.read(Graph)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/extras/src/test/java/com/google/gson/graph/GraphAdapterBuilderTest.java"
+    },
+    {
+      "src_name": "InstanceCreator",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/InstanceCreator.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/InstanceCreatorTest.java"
+    },
+    {
+      "src_name": "LazilyParsedNumber",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/LazilyParsedNumber.java",
+      "class_declaration": "public final class LazilyParsedNumber extends Number ",
+      "methods_under_test": {
+        "=1": {
+          "LazilyParsedNumber.floatValue()": [
+            1,
+            1,
+            1
+          ],
+          "LazilyParsedNumber.doubleValue()": [
+            1,
+            1,
+            1
+          ],
+          "LazilyParsedNumber.toString()": [
+            1,
+            1,
+            1
+          ],
+          "LazilyParsedNumber.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "LazilyParsedNumber.intValue()": [
+            4,
+            4,
+            4
+          ],
+          "LazilyParsedNumber.longValue()": [
+            3,
+            3,
+            3
+          ],
+          "LazilyParsedNumber.equals(Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/LazilyParsedNumberTest.java"
+    },
+    {
+      "src_name": "JsonArray",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonArray.java",
+      "class_declaration": "public final class JsonArray extends JsonElement implements Iterable<JsonElement> ",
+      "methods_under_test": {
+        "=1": {
+          "JsonArray.add(Boolean)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.add(Character)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.add(Number)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.add(String)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.addAll(JsonArray)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.set(int, JsonElement)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.remove(JsonElement)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.remove(int)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.contains(JsonElement)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.size()": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.iterator()": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.get(int)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "JsonArray.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JsonArray.deepCopy()": [
+            3,
+            3,
+            3
+          ],
+          "JsonArray.add(JsonElement)": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsNumber()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsString()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsDouble()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsBigDecimal()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsBigInteger()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsFloat()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsLong()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsInt()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsByte()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsCharacter()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsShort()": [
+            2,
+            2,
+            2
+          ],
+          "JsonArray.getAsBoolean()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JsonArrayTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [
+    {
+      "src_name": "BagOfPrimitives",
+      "src_path": "../../defects4j-subjects/Gson-16f/metrics/src/main/java/com/google/gson/metrics/BagOfPrimitives.java",
+      "class_declaration": "public class BagOfPrimitives ",
+      "methods_under_test": {
+        "=1": {
+          "BagOfPrimitives.getExpectedJson()": [
+            1,
+            1,
+            1
+          ],
+          "BagOfPrimitives.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "BagOfPrimitives.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BagOfPrimitives.equals(Object)": [
+            10,
+            10,
+            10
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/PrimitiveCharacterTest.java"
+    },
+    {
+      "src_name": "TypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/TypeAdapter.java",
+      "class_declaration": "public abstract class TypeAdapter <T> ",
+      "methods_under_test": {
+        "=1": {
+          "TypeAdapter.toJson(Writer, T)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapter.nullSafe()": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapter.fromJson(Reader)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapter.fromJson(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TypeAdapter.toJson(T)": [
+            2,
+            2,
+            2
+          ],
+          "TypeAdapter.toJsonTree(T)": [
+            2,
+            2,
+            2
+          ],
+          "TypeAdapter.fromJsonTree(JsonElement)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/CustomTypeAdaptersTest.java"
+    },
+    {
+      "src_name": "JsonSerializer",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonSerializer.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/DefaultMapJsonSerializerTest.java"
+    },
+    {
+      "src_name": "Expose",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/Expose.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ExposeFieldsTest.java"
+    },
+    {
+      "src_name": "FieldNamingPolicy",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/FieldNamingPolicy.java",
+      "error": "local variable 'class_name' referenced before assignment",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/NamingPolicyTest.java"
+    },
+    {
+      "src_name": "FieldNamingStrategy",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/FieldNamingStrategy.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/FieldNamingTest.java"
+    },
+    {
+      "src_name": "CodeGen",
+      "src_path": "../../defects4j-subjects/Gson-16f/codegen/src/main/java/com/google/gson/codegen/CodeGen.java",
+      "class_declaration": "public class CodeGen ",
+      "methods_under_test": {
+        "=1": {
+          "CodeGen.adapterName(TypeElement, String)": [
+            1,
+            1,
+            1
+          ],
+          "CodeGen.rawTypeToString(StringBuilder, TypeElement, char)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CodeGen.getPackage(Element)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/codegen/src/test/java/com/google/gson/codegen/functional/CodeGenFunctionalTest.java"
+    },
+    {
+      "src_name": "Intercept",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/interceptors/Intercept.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/extras/src/test/java/com/google/gson/interceptors/InterceptorTest.java"
+    },
+    {
+      "src_name": "JsonElement",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonElement.java",
+      "class_declaration": "public abstract class JsonElement ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JsonElement.getAsJsonObject()": [
+            2,
+            2,
+            2
+          ],
+          "JsonElement.getAsJsonArray()": [
+            2,
+            2,
+            2
+          ],
+          "JsonElement.getAsJsonPrimitive()": [
+            2,
+            2,
+            2
+          ],
+          "JsonElement.getAsJsonNull()": [
+            2,
+            2,
+            2
+          ],
+          "JsonElement.toString()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/bind/JsonElementReaderTest.java"
+    },
+    {
+      "src_name": "Streams",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/Streams.java",
+      "class_declaration": "public final class Streams ",
+      "methods_under_test": {
+        "=1": {
+          "Streams.write(JsonElement, JsonWriter)": [
+            1,
+            1,
+            1
+          ],
+          "Streams.writerForAppendable(Appendable)": [
+            1,
+            1,
+            1
+          ],
+          "AppendableWriter.write(char[], int, int)": [
+            1,
+            1,
+            1
+          ],
+          "AppendableWriter.write(int)": [
+            1,
+            1,
+            1
+          ],
+          "CurrentWrite.length()": [
+            1,
+            1,
+            1
+          ],
+          "CurrentWrite.charAt(int)": [
+            1,
+            1,
+            1
+          ],
+          "CurrentWrite.subSequence(int, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Streams.parse(JsonReader)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/MixedStreamTest.java"
+    },
+    {
+      "src_name": "ExclusionStrategy",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/ExclusionStrategy.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ExclusionStrategyFunctionalTest.java"
+    },
+    {
+      "src_name": "CollectionTypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/CollectionTypeAdapterFactory.java",
+      "class_declaration": "public final class CollectionTypeAdapterFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CollectionTypeAdapterFactory.create(Gson, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/CollectionTest.java"
+    },
+    {
+      "src_name": "JsonDeserializer",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonDeserializer.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/CustomDeserializerTest.java"
+    },
+    {
+      "src_name": "UnsafeAllocator",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/UnsafeAllocator.java",
+      "class_declaration": "public abstract class UnsafeAllocator ",
+      "methods_under_test": {
+        "=1": {
+          "UnsafeAllocator.newInstance(Class<T>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "UnsafeAllocator.assertInstantiable(Class<?>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "UnsafeAllocator.create()": [
+            28,
+            28,
+            28
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/UnsafeAllocatorInstantiationTest.java"
+    },
+    {
+      "src_name": "JsonAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/JsonAdapter.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonAdapterSerializerDeserializerTest.java"
+    }
+  ],
+  "src_without_tests": [
+    {
+      "src_name": "JsonPostDeserializer",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/interceptors/JsonPostDeserializer.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "GeneratedTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/codegen/src/main/java/com/google/gson/codegen/GeneratedTypeAdapter.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "$Gson$Preconditions",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/$Gson$Preconditions.java",
+      "class_declaration": "public final class $Gson$Preconditions ",
+      "methods_under_test": {
+        "=1": {
+          "$Gson$Preconditions.checkArgument(boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "$Gson$Preconditions.checkNotNull(T)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DateTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/DateTypeAdapter.java",
+      "class_declaration": "public final class DateTypeAdapter extends TypeAdapter<Date> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ProtoTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/proto/src/main/java/com/google/gson/protobuf/ProtoTypeAdapter.java",
+      "class_declaration": "public class ProtoTypeAdapter implements JsonSerializer<GeneratedMessage>, JsonDeserializer<GeneratedMessage> ",
+      "methods_under_test": {
+        "=1": {
+          "Builder.setEnumSerialization(EnumSerialization)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.setFieldNameSerializationFormat(CaseFormat, CaseFormat)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.addSerializedNameExtension(Extension<FieldOptions, String>)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.addSerializedEnumValueExtension(Extension<EnumValueOptions, String>)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.build()": [
+            1,
+            1,
+            1
+          ],
+          "ProtoTypeAdapter.newBuilder()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ProtoTypeAdapter.serialize(GeneratedMessage, Type, JsonSerializationContext)": [
+            5,
+            5,
+            5
+          ],
+          "ProtoTypeAdapter.deserialize(JsonElement, Type, JsonDeserializationContext)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "InterceptorFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/interceptors/InterceptorFactory.java",
+      "class_declaration": "public final class InterceptorFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "InterceptorFactory.create(Gson, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonScope",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/stream/JsonScope.java",
+      "class_declaration": "final class JsonScope ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonDeserializationContext",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonDeserializationContext.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JsonParseException",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonParseException.java",
+      "class_declaration": "public class JsonParseException extends RuntimeException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonAdapterAnnotationTypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/JsonAdapterAnnotationTypeAdapterFactory.java",
+      "class_declaration": "public final class JsonAdapterAnnotationTypeAdapterFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JsonAdapterAnnotationTypeAdapterFactory.create(Gson, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ],
+          "JsonAdapterAnnotationTypeAdapterFactory.getTypeAdapter(ConstructorConstructor, Gson, TypeToken<?>, JsonAdapter)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "LineItem",
+      "src_path": "../../defects4j-subjects/Gson-16f/examples/android-proguard-example/src/com/google/gson/examples/android/model/LineItem.java",
+      "class_declaration": "public class LineItem ",
+      "methods_under_test": {
+        "=1": {
+          "LineItem.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "GeneratedTypeAdapterProcessor",
+      "src_path": "../../defects4j-subjects/Gson-16f/codegen/src/main/java/com/google/gson/codegen/GeneratedTypeAdapterProcessor.java",
+      "class_declaration": "@SupportedAnnotationTypes(\"com.google.gson.codegen.GeneratedTypeAdapter\")\n@SupportedSourceVersion(SourceVersion.RELEASE_6)\npublic final class GeneratedTypeAdapterProcessor extends AbstractProcessor ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "GeneratedTypeAdapterProcessor.process(Set<? extends TypeElement>, RoundEnvironment)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TreeTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/TreeTypeAdapter.java",
+      "class_declaration": "public final class TreeTypeAdapter <T> extends TypeAdapter<T> ",
+      "methods_under_test": {
+        "=1": {
+          "SingleTypeFactory.create(Gson, TypeToken<T>)": [
+            1,
+            1,
+            1
+          ],
+          "GsonContextImpl.serialize(Object)": [
+            1,
+            1,
+            1
+          ],
+          "GsonContextImpl.serialize(Object, Type)": [
+            1,
+            1,
+            1
+          ],
+          "GsonContextImpl.deserialize(JsonElement, Type)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/reflect/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JsonIOException",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonIOException.java",
+      "class_declaration": "public final class JsonIOException extends JsonParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonToken",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/stream/JsonToken.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ConstructorConstructor",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/ConstructorConstructor.java",
+      "class_declaration": "public final class ConstructorConstructor ",
+      "methods_under_test": {
+        "=1": {
+          "ConstructorConstructor.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ConstructorConstructor.get(TypeToken<T>)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "ConstructorConstructor.newDefaultImplementationConstructor(final, Type, Class<? super T>)": [
+            22,
+            0,
+            0
+          ]
+        },
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "SerializationBenchmark",
+      "src_path": "../../defects4j-subjects/Gson-16f/metrics/src/main/java/com/google/gson/metrics/SerializationBenchmark.java",
+      "class_declaration": "public class SerializationBenchmark extends SimpleBenchmark ",
+      "methods_under_test": {
+        "=1": {
+          "SerializationBenchmark.setUp()": [
+            1,
+            1,
+            1
+          ],
+          "SerializationBenchmark.timeObjectSerialization(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Cart",
+      "src_path": "../../defects4j-subjects/Gson-16f/examples/android-proguard-example/src/com/google/gson/examples/android/model/Cart.java",
+      "class_declaration": "public class Cart ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Cart.toString()": [
+            8,
+            8,
+            8
+          ],
+          "Cart.getSimpleTypeName(Type)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "$Gson$Types",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/$Gson$Types.java",
+      "class_declaration": "public final class $Gson$Types ",
+      "methods_under_test": {
+        "=1": {
+          "$Gson$Types.newParameterizedTypeWithOwner(Type, Type)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.arrayOf(Type)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.equal(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.hashCodeOrZero(Object)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.typeToString(Type)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.getSupertype(Type, Class<?>, Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.getArrayComponentType(Type)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.resolve(Type, Class<?>, Type)": [
+            1,
+            1,
+            1
+          ],
+          "$Gson$Types.checkNotPrimitive(Type)": [
+            1,
+            1,
+            1
+          ],
+          "ParameterizedTypeImpl.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "ParameterizedTypeImpl.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "GenericArrayTypeImpl.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "GenericArrayTypeImpl.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "GenericArrayTypeImpl.toString()": [
+            1,
+            1,
+            1
+          ],
+          "WildcardTypeImpl.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "WildcardTypeImpl.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "$Gson$Types.subtypeOf(Type)": [
+            2,
+            2,
+            2
+          ],
+          "$Gson$Types.supertypeOf(Type)": [
+            2,
+            2,
+            2
+          ],
+          "$Gson$Types.canonicalize(Type)": [
+            6,
+            6,
+            6
+          ],
+          "$Gson$Types.getGenericSupertype(Type, Class<?>, Class<?>)": [
+            10,
+            10,
+            10
+          ],
+          "$Gson$Types.getCollectionElementType(Type, Class<?>)": [
+            3,
+            3,
+            3
+          ],
+          "$Gson$Types.getMapKeyAndValueTypes(Type, Class<?>)": [
+            3,
+            3,
+            3
+          ],
+          "$Gson$Types.resolveTypeVariable(Type, Class<?>, TypeVariable<?>)": [
+            3,
+            3,
+            3
+          ],
+          "ParameterizedTypeImpl.toString()": [
+            3,
+            3,
+            3
+          ],
+          "WildcardTypeImpl.toString()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "$Gson$Types.getRawType(Type)": [
+            12,
+            12,
+            12
+          ],
+          "$Gson$Types.equals(Type, Type)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TypeAdapters",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/TypeAdapters.java",
+      "class_declaration": "public final class TypeAdapters ",
+      "methods_under_test": {
+        "=1": {
+          "TypeAdapters.newFactory(final, TypeToken<TT>, final, TypeAdapter<TT>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapters.newFactory(final, Class<TT>, final, TypeAdapter<TT>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapters.newFactory(final, Class<TT>, final, Class<TT>, final, TypeAdapter<? super TT>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapters.newFactoryForMultipleTypes(final, Class<TT>, final, Class<? extends TT>, final, TypeAdapter<? super TT>)": [
+            1,
+            1,
+            1
+          ],
+          "TypeAdapters.newTypeHierarchyFactory(final, Class<T1>, final, TypeAdapter<T1>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Until",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/Until.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ReflectiveTypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/ReflectiveTypeAdapterFactory.java",
+      "class_declaration": "public final class ReflectiveTypeAdapterFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {
+          "ReflectiveTypeAdapterFactory.excludeField(Field, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "ReflectiveTypeAdapterFactory.excludeField(Field, boolean, Excluder)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ReflectiveTypeAdapterFactory.create(Gson, final, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Since",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/annotations/Since.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JsonSyntaxException",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonSyntaxException.java",
+      "class_declaration": "public final class JsonSyntaxException extends JsonParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Excluder",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/Excluder.java",
+      "class_declaration": "public final class Excluder implements TypeAdapterFactory, Cloneable ",
+      "methods_under_test": {
+        "=1": {
+          "Excluder.withVersion(double)": [
+            1,
+            1,
+            1
+          ],
+          "Excluder.disableInnerClassSerialization()": [
+            1,
+            1,
+            1
+          ],
+          "Excluder.excludeFieldsWithoutExposeAnnotation()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Excluder.clone()": [
+            2,
+            2,
+            2
+          ],
+          "Excluder.withModifiers()": [
+            2,
+            2,
+            2
+          ],
+          "Excluder.withExclusionStrategy(ExclusionStrategy, boolean, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "Excluder.create(final, Gson, final, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ],
+          "Excluder.excludeClass(Class<?>, boolean)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {
+          "Excluder.excludeField(Field, boolean)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Primitives",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/Primitives.java",
+      "class_declaration": "public final class Primitives ",
+      "methods_under_test": {
+        "=1": {
+          "Primitives.isPrimitive(Type)": [
+            1,
+            1,
+            1
+          ],
+          "Primitives.isWrapperType(Type)": [
+            1,
+            1,
+            1
+          ],
+          "Primitives.wrap(Class<T>)": [
+            1,
+            1,
+            1
+          ],
+          "Primitives.unwrap(Class<T>)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseBenchmark",
+      "src_path": "../../defects4j-subjects/Gson-16f/metrics/src/main/java/com/google/gson/metrics/ParseBenchmark.java",
+      "error": "418 is not in list"
+    },
+    {
+      "src_name": "SqlDateTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/SqlDateTypeAdapter.java",
+      "class_declaration": "public final class SqlDateTypeAdapter extends TypeAdapter<java.sql.Date> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonReaderInternalAccess",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/JsonReaderInternalAccess.java",
+      "class_declaration": "public abstract class JsonReaderInternalAccess ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JsonSerializationContext",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/JsonSerializationContext.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "TimeTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/TimeTypeAdapter.java",
+      "class_declaration": "public final class TimeTypeAdapter extends TypeAdapter<Time> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/TypeAdapterFactory.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "TypeAdapterRuntimeTypeWrapper",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/TypeAdapterRuntimeTypeWrapper.java",
+      "class_declaration": "final class TypeAdapterRuntimeTypeWrapper <T> extends TypeAdapter<T> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MalformedJsonException",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/stream/MalformedJsonException.java",
+      "class_declaration": "public final class MalformedJsonException extends IOException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BagOfPrimitivesDeserializationBenchmark",
+      "src_path": "../../defects4j-subjects/Gson-16f/metrics/src/main/java/com/google/gson/metrics/BagOfPrimitivesDeserializationBenchmark.java",
+      "class_declaration": "public class BagOfPrimitivesDeserializationBenchmark extends SimpleBenchmark ",
+      "methods_under_test": {
+        "=1": {
+          "BagOfPrimitivesDeserializationBenchmark.setUp()": [
+            1,
+            1,
+            1
+          ],
+          "BagOfPrimitivesDeserializationBenchmark.timeBagOfPrimitivesDefault(int)": [
+            1,
+            1,
+            1
+          ],
+          "BagOfPrimitivesDeserializationBenchmark.timeBagOfPrimitivesStreaming(int)": [
+            1,
+            1,
+            1
+          ],
+          "BagOfPrimitivesDeserializationBenchmark.timeBagOfPrimitivesReflectionStreaming(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ObjectConstructor",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/ObjectConstructor.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "CollectionsDeserializationBenchmark",
+      "src_path": "../../defects4j-subjects/Gson-16f/metrics/src/main/java/com/google/gson/metrics/CollectionsDeserializationBenchmark.java",
+      "class_declaration": "public class CollectionsDeserializationBenchmark extends SimpleBenchmark ",
+      "methods_under_test": {
+        "=1": {
+          "CollectionsDeserializationBenchmark.timeCollectionsDefault(int)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionsDeserializationBenchmark.timeCollectionsStreaming(int)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionsDeserializationBenchmark.timeCollectionsReflectionStreaming(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CollectionsDeserializationBenchmark.setUp()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ArrayTypeAdapter",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/ArrayTypeAdapter.java",
+      "class_declaration": "public final class ArrayTypeAdapter <E> extends TypeAdapter<Object> ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "GsonProguardExampleActivity",
+      "src_path": "../../defects4j-subjects/Gson-16f/examples/android-proguard-example/src/com/google/gson/examples/android/GsonProguardExampleActivity.java",
+      "class_declaration": "public class GsonProguardExampleActivity extends Activity ",
+      "methods_under_test": {
+        "=1": {
+          "GsonProguardExampleActivity.onCreate(Bundle)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MapTypeAdapterFactory",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/MapTypeAdapterFactory.java",
+      "class_declaration": "public final class MapTypeAdapterFactory implements TypeAdapterFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "MapTypeAdapterFactory.create(Gson, TypeToken<T>)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JavaWriter",
+      "src_path": "../../defects4j-subjects/Gson-16f/codegen/src/main/java/com/google/gson/codegen/JavaWriter.java",
+      "class_declaration": "public final class JavaWriter ",
+      "methods_under_test": {
+        "=1": {
+          "JavaWriter.addImport(Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.beginType(String, String, int)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.field(String, String, int)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.annotation(String)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.annotation(Class<? extends Annotation>)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.statement(String)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.beginControlFlow(String)": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.endControlFlow()": [
+            1,
+            1,
+            1
+          ],
+          "JavaWriter.close()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JavaWriter.addPackage(String)": [
+            2,
+            2,
+            2
+          ],
+          "JavaWriter.addImport(String)": [
+            3,
+            3,
+            3
+          ],
+          "JavaWriter.beginType(String, String, int, String)": [
+            5,
+            5,
+            5
+          ],
+          "JavaWriter.endType()": [
+            2,
+            2,
+            2
+          ],
+          "JavaWriter.field(String, String, int, String)": [
+            2,
+            2,
+            2
+          ],
+          "JavaWriter.beginMethod(String, String, int)": [
+            6,
+            6,
+            6
+          ],
+          "JavaWriter.nextControlFlow(String)": [
+            2,
+            2,
+            2
+          ],
+          "JavaWriter.endControlFlow(String)": [
+            4,
+            4,
+            4
+          ],
+          "JavaWriter.endMethod()": [
+            3,
+            3,
+            3
+          ],
+          "JavaWriter.stringLiteral(String)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "RawCollectionsExample",
+      "src_path": "../../defects4j-subjects/Gson-16f/extras/src/main/java/com/google/gson/extras/examples/rawcollections/RawCollectionsExample.java",
+      "class_declaration": "public class RawCollectionsExample ",
+      "methods_under_test": {
+        "=1": {
+          "Event.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ISO8601Utils",
+      "src_path": "../../defects4j-subjects/Gson-16f/gson/src/main/java/com/google/gson/internal/bind/util/ISO8601Utils.java",
+      "class_declaration": "public class ISO8601Utils ",
+      "methods_under_test": {
+        "=1": {
+          "ISO8601Utils.format(Date)": [
+            1,
+            1,
+            1
+          ],
+          "ISO8601Utils.format(Date, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ISO8601Utils.format(Date, boolean, TimeZone)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "ISO8601Utils.parse(String, ParsePosition)": [
+            249,
+            249,
+            249
+          ]
+        },
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "ParameterizedTypeTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/ParameterizedTypeTest.java"
+    },
+    {
+      "ConcurrencyTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ConcurrencyTest.java"
+    },
+    {
+      "ObjectTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ObjectTest.java"
+    },
+    {
+      "GsonTypesTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/GsonTypesTest.java"
+    },
+    {
+      "ReadersWritersTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ReadersWritersTest.java"
+    },
+    {
+      "RuntimeTypeAdapterFactoryFunctionalTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/RuntimeTypeAdapterFactoryFunctionalTest.java"
+    },
+    {
+      "InheritanceTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/InheritanceTest.java"
+    },
+    {
+      "SecurityTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/SecurityTest.java"
+    },
+    {
+      "TypeHierarchyAdapterTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/TypeHierarchyAdapterTest.java"
+    },
+    {
+      "OverrideCoreTypeAdaptersTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/OverrideCoreTypeAdaptersTest.java"
+    },
+    {
+      "VersionExclusionStrategyTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/VersionExclusionStrategyTest.java"
+    },
+    {
+      "JsonParserTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonParserTest.java"
+    },
+    {
+      "InnerClassExclusionStrategyTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/InnerClassExclusionStrategyTest.java"
+    },
+    {
+      "VersioningTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/VersioningTest.java"
+    },
+    {
+      "StringTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/StringTest.java"
+    },
+    {
+      "RawSerializationTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/RawSerializationTest.java"
+    },
+    {
+      "CustomSerializerTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/CustomSerializerTest.java"
+    },
+    {
+      "MapTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/MapTest.java"
+    },
+    {
+      "LeniencyTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/LeniencyTest.java"
+    },
+    {
+      "JsonAdapterNullSafeTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/regression/JsonAdapterNullSafeTest.java"
+    },
+    {
+      "ProtosWithComplexAndRepeatedFieldsTest": "../../defects4j-subjects/Gson-16f/proto/src/test/java/com/google/gson/protobuf/functional/ProtosWithComplexAndRepeatedFieldsTest.java"
+    },
+    {
+      "PrimitiveTypeAdapter": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/PrimitiveTypeAdapter.java"
+    },
+    {
+      "GenericArrayTypeTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/GenericArrayTypeTest.java"
+    },
+    {
+      "JavaUtilTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JavaUtilTest.java"
+    },
+    {
+      "Order": "../../defects4j-subjects/Gson-16f/codegen/src/test/java/com/google/gson/codegen/functional/Order.java"
+    },
+    {
+      "MoreSpecificTypeSerializationTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/MoreSpecificTypeSerializationTest.java"
+    },
+    {
+      "JavaSerializationTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/JavaSerializationTest.java"
+    },
+    {
+      "GsonTypeAdapterTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/GsonTypeAdapterTest.java"
+    },
+    {
+      "PrimitiveTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/PrimitiveTest.java"
+    },
+    {
+      "ProtosWithAnnotationsTest": "../../defects4j-subjects/Gson-16f/proto/src/test/java/com/google/gson/protobuf/functional/ProtosWithAnnotationsTest.java"
+    },
+    {
+      "TestTypes": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/common/TestTypes.java"
+    },
+    {
+      "DefaultTypeAdaptersTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/DefaultTypeAdaptersTest.java"
+    },
+    {
+      "TreeTypeAdaptersTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/TreeTypeAdaptersTest.java"
+    },
+    {
+      "MoreAsserts": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/common/MoreAsserts.java"
+    },
+    {
+      "PrintFormattingTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/PrintFormattingTest.java"
+    },
+    {
+      "JsonAdapterAnnotationOnFieldsTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonAdapterAnnotationOnFieldsTest.java"
+    },
+    {
+      "ThrowableFunctionalTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ThrowableFunctionalTest.java"
+    },
+    {
+      "ArrayTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ArrayTest.java"
+    },
+    {
+      "InterfaceTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/InterfaceTest.java"
+    },
+    {
+      "JsonAdapterAnnotationOnClassesTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonAdapterAnnotationOnClassesTest.java"
+    },
+    {
+      "EscapingTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/EscapingTest.java"
+    },
+    {
+      "ParameterizedTypeFixtures": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/ParameterizedTypeFixtures.java"
+    },
+    {
+      "MockExclusionStrategy": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/MockExclusionStrategy.java"
+    },
+    {
+      "InternationalizationTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/InternationalizationTest.java"
+    },
+    {
+      "FieldExclusionTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/FieldExclusionTest.java"
+    },
+    {
+      "StreamingTypeAdaptersTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/StreamingTypeAdaptersTest.java"
+    },
+    {
+      "DelegateTypeAdapterTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/DelegateTypeAdapterTest.java"
+    },
+    {
+      "UncategorizedTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/UncategorizedTest.java"
+    },
+    {
+      "PerformanceTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/metrics/PerformanceTest.java"
+    },
+    {
+      "JsonReaderPathTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/stream/JsonReaderPathTest.java"
+    },
+    {
+      "ParameterizedTypesTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/ParameterizedTypesTest.java"
+    },
+    {
+      "EnumTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/EnumTest.java"
+    },
+    {
+      "TypeAdapterPrecedenceTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/TypeAdapterPrecedenceTest.java"
+    },
+    {
+      "MapAsArrayTypeAdapterTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/MapAsArrayTypeAdapterTest.java"
+    },
+    {
+      "ProtosWithPrimitiveTypesTest": "../../defects4j-subjects/Gson-16f/proto/src/test/java/com/google/gson/protobuf/functional/ProtosWithPrimitiveTypesTest.java"
+    },
+    {
+      "TypeVariableTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/TypeVariableTest.java"
+    },
+    {
+      "RecursiveTypesResolveTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/internal/bind/RecursiveTypesResolveTest.java"
+    },
+    {
+      "JsonTreeTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonTreeTest.java"
+    },
+    {
+      "JavaUtilConcurrentAtomicTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JavaUtilConcurrentAtomicTest.java"
+    },
+    {
+      "ExposeAnnotationExclusionStrategyTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/ExposeAnnotationExclusionStrategyTest.java"
+    },
+    {
+      "DefaultInetAddressTypeAdapterTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/DefaultInetAddressTypeAdapterTest.java"
+    },
+    {
+      "CircularReferenceTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/CircularReferenceTest.java"
+    },
+    {
+      "JsonArrayTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/JsonArrayTest.java"
+    },
+    {
+      "CommentsTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/CommentsTest.java"
+    },
+    {
+      "PrettyPrintingTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/PrettyPrintingTest.java"
+    },
+    {
+      "NullObjectAndFieldTest": "../../defects4j-subjects/Gson-16f/gson/src/test/java/com/google/gson/functional/NullObjectAndFieldTest.java"
+    }
+  ]
+}

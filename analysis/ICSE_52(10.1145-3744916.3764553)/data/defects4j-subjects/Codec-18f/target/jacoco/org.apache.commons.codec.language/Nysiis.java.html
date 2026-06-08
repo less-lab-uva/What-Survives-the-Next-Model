@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Nysiis.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.language</a> &gt; <span class="el_source">Nysiis.java</span></div><h1>Nysiis.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.language;
+
+import java.util.regex.Pattern;
+
+import org.apache.commons.codec.EncoderException;
+import org.apache.commons.codec.StringEncoder;
+
+/**
+ * Encodes a string into a NYSIIS value. NYSIIS is an encoding used to relate similar names, but can also be used as a
+ * general purpose scheme to find word with similar phonemes.
+ * &lt;p&gt;
+ * NYSIIS features an accuracy increase of 2.7% over the traditional Soundex algorithm.
+ * &lt;p&gt;
+ * Algorithm description:
+ * &lt;pre&gt;
+ * 1. Transcode first characters of name
+ *   1a. MAC -&amp;gt;   MCC
+ *   1b. KN  -&amp;gt;   NN
+ *   1c. K   -&amp;gt;   C
+ *   1d. PH  -&amp;gt;   FF
+ *   1e. PF  -&amp;gt;   FF
+ *   1f. SCH -&amp;gt;   SSS
+ * 2. Transcode last characters of name
+ *   2a. EE, IE          -&amp;gt;   Y
+ *   2b. DT,RT,RD,NT,ND  -&amp;gt;   D
+ * 3. First character of key = first character of name
+ * 4. Transcode remaining characters by following these rules, incrementing by one character each time
+ *   4a. EV  -&amp;gt;   AF  else A,E,I,O,U -&amp;gt; A
+ *   4b. Q   -&amp;gt;   G
+ *   4c. Z   -&amp;gt;   S
+ *   4d. M   -&amp;gt;   N
+ *   4e. KN  -&amp;gt;   N   else K -&amp;gt; C
+ *   4f. SCH -&amp;gt;   SSS
+ *   4g. PH  -&amp;gt;   FF
+ *   4h. H   -&amp;gt;   If previous or next is nonvowel, previous
+ *   4i. W   -&amp;gt;   If previous is vowel, previous
+ *   4j. Add current to key if current != last key character
+ * 5. If last character is S, remove it
+ * 6. If last characters are AY, replace with Y
+ * 7. If last character is A, remove it
+ * 8. Collapse all strings of repeated characters
+ * 9. Add original first character of name as first character of key
+ * &lt;/pre&gt;
+ * &lt;p&gt;
+ * This class is immutable and thread-safe.
+ *
+ * @see &lt;a href=&quot;http://en.wikipedia.org/wiki/NYSIIS&quot;&gt;NYSIIS on Wikipedia&lt;/a&gt;
+ * @see &lt;a href=&quot;http://www.dropby.com/NYSIIS.html&quot;&gt;NYSIIS on dropby.com&lt;/a&gt;
+ * @see Soundex
+ * @since 1.7
+ * @version $Id$
+ */
+public class Nysiis implements StringEncoder {
+
+<span class="nc" id="L72">    private static final char[] CHARS_A   = new char[] { 'A' };</span>
+<span class="nc" id="L73">    private static final char[] CHARS_AF  = new char[] { 'A', 'F' };</span>
+<span class="nc" id="L74">    private static final char[] CHARS_C   = new char[] { 'C' };</span>
+<span class="nc" id="L75">    private static final char[] CHARS_FF  = new char[] { 'F', 'F' };</span>
+<span class="nc" id="L76">    private static final char[] CHARS_G   = new char[] { 'G' };</span>
+<span class="nc" id="L77">    private static final char[] CHARS_N   = new char[] { 'N' };</span>
+<span class="nc" id="L78">    private static final char[] CHARS_NN  = new char[] { 'N', 'N' };</span>
+<span class="nc" id="L79">    private static final char[] CHARS_S   = new char[] { 'S' };</span>
+<span class="nc" id="L80">    private static final char[] CHARS_SSS = new char[] { 'S', 'S', 'S' };</span>
+
+<span class="nc" id="L82">    private static final Pattern PAT_MAC    = Pattern.compile(&quot;^MAC&quot;);</span>
+<span class="nc" id="L83">    private static final Pattern PAT_KN     = Pattern.compile(&quot;^KN&quot;);</span>
+<span class="nc" id="L84">    private static final Pattern PAT_K      = Pattern.compile(&quot;^K&quot;);</span>
+<span class="nc" id="L85">    private static final Pattern PAT_PH_PF  = Pattern.compile(&quot;^(PH|PF)&quot;);</span>
+<span class="nc" id="L86">    private static final Pattern PAT_SCH    = Pattern.compile(&quot;^SCH&quot;);</span>
+<span class="nc" id="L87">    private static final Pattern PAT_EE_IE  = Pattern.compile(&quot;(EE|IE)$&quot;);</span>
+<span class="nc" id="L88">    private static final Pattern PAT_DT_ETC = Pattern.compile(&quot;(DT|RT|RD|NT|ND)$&quot;);</span>
+
+    private static final char SPACE = ' ';
+    private static final int TRUE_LENGTH = 6;
+
+    /**
+     * Tests if the given character is a vowel.
+     *
+     * @param c
+     *            the character to test
+     * @return &lt;code&gt;true&lt;/code&gt; if the character is a vowel, &lt;code&gt;false&lt;/code&gt; otherwise
+     */
+    private static boolean isVowel(final char c) {
+<span class="nc bnc" id="L101" title="All 10 branches missed.">        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';</span>
+    }
+
+    /**
+     * Transcodes the remaining parts of the String. The method operates on a sliding window, looking at 4 characters at
+     * a time: [i-1, i, i+1, i+2].
+     *
+     * @param prev
+     *            the previous character
+     * @param curr
+     *            the current character
+     * @param next
+     *            the next character
+     * @param aNext
+     *            the after next character
+     * @return a transcoded array of characters, starting from the current position
+     */
+    private static char[] transcodeRemaining(final char prev, final char curr, final char next, final char aNext) {
+        // 1. EV -&gt; AF
+<span class="nc bnc" id="L120" title="All 4 branches missed.">        if (curr == 'E' &amp;&amp; next == 'V') {</span>
+<span class="nc" id="L121">            return CHARS_AF;</span>
+        }
+
+        // A, E, I, O, U -&gt; A
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (isVowel(curr)) {</span>
+<span class="nc" id="L126">            return CHARS_A;</span>
+        }
+
+        // 2. Q -&gt; G, Z -&gt; S, M -&gt; N
+<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (curr == 'Q') {</span>
+<span class="nc" id="L131">            return CHARS_G;</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        } else if (curr == 'Z') {</span>
+<span class="nc" id="L133">            return CHARS_S;</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        } else if (curr == 'M') {</span>
+<span class="nc" id="L135">            return CHARS_N;</span>
+        }
+
+        // 3. KN -&gt; NN else K -&gt; C
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if (curr == 'K') {</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">            if (next == 'N') {</span>
+<span class="nc" id="L141">                return CHARS_NN;</span>
+            }
+<span class="nc" id="L143">            return CHARS_C;</span>
+        }
+
+        // 4. SCH -&gt; SSS
+<span class="nc bnc" id="L147" title="All 6 branches missed.">        if (curr == 'S' &amp;&amp; next == 'C' &amp;&amp; aNext == 'H') {</span>
+<span class="nc" id="L148">            return CHARS_SSS;</span>
+        }
+
+        // PH -&gt; FF
+<span class="nc bnc" id="L152" title="All 4 branches missed.">        if (curr == 'P' &amp;&amp; next == 'H') {</span>
+<span class="nc" id="L153">            return CHARS_FF;</span>
+        }
+
+        // 5. H -&gt; If previous or next is a non vowel, previous.
+<span class="nc bnc" id="L157" title="All 6 branches missed.">        if (curr == 'H' &amp;&amp; (!isVowel(prev) || !isVowel(next))) {</span>
+<span class="nc" id="L158">            return new char[] { prev };</span>
+        }
+
+        // 6. W -&gt; If previous is vowel, previous.
+<span class="nc bnc" id="L162" title="All 4 branches missed.">        if (curr == 'W' &amp;&amp; isVowel(prev)) {</span>
+<span class="nc" id="L163">            return new char[] { prev };</span>
+        }
+
+<span class="nc" id="L166">        return new char[] { curr };</span>
+    }
+
+    /** Indicates the strict mode. */
+    private final boolean strict;
+
+    /**
+     * Creates an instance of the {@link Nysiis} encoder with strict mode (original form),
+     * i.e. encoded strings have a maximum length of 6.
+     */
+    public Nysiis() {
+<span class="nc" id="L177">        this(true);</span>
+<span class="nc" id="L178">    }</span>
+
+    /**
+     * Create an instance of the {@link Nysiis} encoder with the specified strict mode:
+     *
+     * &lt;ul&gt;
+     *  &lt;li&gt;&lt;code&gt;true&lt;/code&gt;: encoded strings have a maximum length of 6&lt;/li&gt;
+     *  &lt;li&gt;&lt;code&gt;false&lt;/code&gt;: encoded strings may have arbitrary length&lt;/li&gt;
+     * &lt;/ul&gt;
+     *
+     * @param strict
+     *            the strict mode
+     */
+<span class="nc" id="L191">    public Nysiis(final boolean strict) {</span>
+<span class="nc" id="L192">        this.strict = strict;</span>
+<span class="nc" id="L193">    }</span>
+
+    /**
+     * Encodes an Object using the NYSIIS algorithm. This method is provided in order to satisfy the requirements of the
+     * Encoder interface, and will throw an {@link EncoderException} if the supplied object is not of type
+     * {@link String}.
+     *
+     * @param obj
+     *            Object to encode
+     * @return An object (or a {@link String}) containing the NYSIIS code which corresponds to the given String.
+     * @throws EncoderException
+     *            if the parameter supplied is not of a {@link String}
+     * @throws IllegalArgumentException
+     *            if a character is not mapped
+     */
+    @Override
+    public Object encode(final Object obj) throws EncoderException {
+<span class="nc bnc" id="L210" title="All 2 branches missed.">        if (!(obj instanceof String)) {</span>
+<span class="nc" id="L211">            throw new EncoderException(&quot;Parameter supplied to Nysiis encode is not of type java.lang.String&quot;);</span>
+        }
+<span class="nc" id="L213">        return this.nysiis((String) obj);</span>
+    }
+
+    /**
+     * Encodes a String using the NYSIIS algorithm.
+     *
+     * @param str
+     *            A String object to encode
+     * @return A Nysiis code corresponding to the String supplied
+     * @throws IllegalArgumentException
+     *            if a character is not mapped
+     */
+    @Override
+    public String encode(final String str) {
+<span class="nc" id="L227">        return this.nysiis(str);</span>
+    }
+
+    /**
+     * Indicates the strict mode for this {@link Nysiis} encoder.
+     *
+     * @return &lt;code&gt;true&lt;/code&gt; if the encoder is configured for strict mode, &lt;code&gt;false&lt;/code&gt; otherwise
+     */
+    public boolean isStrict() {
+<span class="nc" id="L236">        return this.strict;</span>
+    }
+
+    /**
+     * Retrieves the NYSIIS code for a given String object.
+     *
+     * @param str
+     *            String to encode using the NYSIIS algorithm
+     * @return A NYSIIS code for the String supplied
+     */
+    public String nysiis(String str) {
+<span class="nc bnc" id="L247" title="All 2 branches missed.">        if (str == null) {</span>
+<span class="nc" id="L248">            return null;</span>
+        }
+
+        // Use the same clean rules as Soundex
+<span class="nc" id="L252">        str = SoundexUtils.clean(str);</span>
+
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        if (str.length() == 0) {</span>
+<span class="nc" id="L255">            return str;</span>
+        }
+
+        // Translate first characters of name:
+        // MAC -&gt; MCC, KN -&gt; NN, K -&gt; C, PH | PF -&gt; FF, SCH -&gt; SSS
+<span class="nc" id="L260">        str = PAT_MAC.matcher(str).replaceFirst(&quot;MCC&quot;);</span>
+<span class="nc" id="L261">        str = PAT_KN.matcher(str).replaceFirst(&quot;NN&quot;);</span>
+<span class="nc" id="L262">        str = PAT_K.matcher(str).replaceFirst(&quot;C&quot;);</span>
+<span class="nc" id="L263">        str = PAT_PH_PF.matcher(str).replaceFirst(&quot;FF&quot;);</span>
+<span class="nc" id="L264">        str = PAT_SCH.matcher(str).replaceFirst(&quot;SSS&quot;);</span>
+
+        // Translate last characters of name:
+        // EE -&gt; Y, IE -&gt; Y, DT | RT | RD | NT | ND -&gt; D
+<span class="nc" id="L268">        str = PAT_EE_IE.matcher(str).replaceFirst(&quot;Y&quot;);</span>
+<span class="nc" id="L269">        str = PAT_DT_ETC.matcher(str).replaceFirst(&quot;D&quot;);</span>
+
+        // First character of key = first character of name.
+<span class="nc" id="L272">        final StringBuilder key = new StringBuilder(str.length());</span>
+<span class="nc" id="L273">        key.append(str.charAt(0));</span>
+
+        // Transcode remaining characters, incrementing by one character each time
+<span class="nc" id="L276">        final char[] chars = str.toCharArray();</span>
+<span class="nc" id="L277">        final int len = chars.length;</span>
+
+<span class="nc bnc" id="L279" title="All 2 branches missed.">        for (int i = 1; i &lt; len; i++) {</span>
+<span class="nc bnc" id="L280" title="All 2 branches missed.">            final char next = i &lt; len - 1 ? chars[i + 1] : SPACE;</span>
+<span class="nc bnc" id="L281" title="All 2 branches missed.">            final char aNext = i &lt; len - 2 ? chars[i + 2] : SPACE;</span>
+<span class="nc" id="L282">            final char[] transcoded = transcodeRemaining(chars[i - 1], chars[i], next, aNext);</span>
+<span class="nc" id="L283">            System.arraycopy(transcoded, 0, chars, i, transcoded.length);</span>
+
+            // only append the current char to the key if it is different from the last one
+<span class="nc bnc" id="L286" title="All 2 branches missed.">            if (chars[i] != chars[i - 1]) {</span>
+<span class="nc" id="L287">                key.append(chars[i]);</span>
+            }
+        }
+
+<span class="nc bnc" id="L291" title="All 2 branches missed.">        if (key.length() &gt; 1) {</span>
+<span class="nc" id="L292">            char lastChar = key.charAt(key.length() - 1);</span>
+
+            // If last character is S, remove it.
+<span class="nc bnc" id="L295" title="All 2 branches missed.">            if (lastChar == 'S') {</span>
+<span class="nc" id="L296">                key.deleteCharAt(key.length() - 1);</span>
+<span class="nc" id="L297">                lastChar = key.charAt(key.length() - 1);</span>
+            }
+
+<span class="nc bnc" id="L300" title="All 2 branches missed.">            if (key.length() &gt; 2) {</span>
+<span class="nc" id="L301">                final char last2Char = key.charAt(key.length() - 2);</span>
+                // If last characters are AY, replace with Y.
+<span class="nc bnc" id="L303" title="All 4 branches missed.">                if (last2Char == 'A' &amp;&amp; lastChar == 'Y') {</span>
+<span class="nc" id="L304">                    key.deleteCharAt(key.length() - 2);</span>
+                }
+            }
+
+            // If last character is A, remove it.
+<span class="nc bnc" id="L309" title="All 2 branches missed.">            if (lastChar == 'A') {</span>
+<span class="nc" id="L310">                key.deleteCharAt(key.length() - 1);</span>
+            }
+        }
+
+<span class="nc" id="L314">        final String string = key.toString();</span>
+<span class="nc bnc" id="L315" title="All 2 branches missed.">        return this.isStrict() ? string.substring(0, Math.min(TRUE_LENGTH, string.length())) : string;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpConnection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.helper</a> &gt; <span class="el_source">HttpConnection.java</span></div><h1>HttpConnection.java</h1><pre class="source lang-java linenums">package org.jsoup.helper;
+
+import org.jsoup.Connection;
+import org.jsoup.HttpStatusException;
+import org.jsoup.UncheckedIOException;
+import org.jsoup.UnsupportedMimeTypeException;
+import org.jsoup.internal.ConstrainableInputStream;
+import org.jsoup.internal.StringUtil;
+import org.jsoup.nodes.Document;
+import org.jsoup.parser.Parser;
+import org.jsoup.parser.TokenQueue;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocketFactory;
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.MalformedURLException;
+import java.net.Proxy;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.Buffer;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.IllegalCharsetNameException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.Inflater;
+import java.util.zip.InflaterInputStream;
+
+import static org.jsoup.Connection.Method.HEAD;
+import static org.jsoup.internal.Normalizer.lowerCase;
+
+/**
+ * Implementation of {@link Connection}.
+ * @see org.jsoup.Jsoup#connect(String)
+ */
+public class HttpConnection implements Connection {
+    public static final String CONTENT_ENCODING = &quot;Content-Encoding&quot;;
+    /**
+     * Many users would get caught by not setting a user-agent and therefore getting different responses on their desktop
+     * vs in jsoup, which would otherwise default to {@code Java}. So by default, use a desktop UA.
+     */
+    public static final String DEFAULT_UA =
+        &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36&quot;;
+    private static final String USER_AGENT = &quot;User-Agent&quot;;
+    public static final String CONTENT_TYPE = &quot;Content-Type&quot;;
+    public static final String MULTIPART_FORM_DATA = &quot;multipart/form-data&quot;;
+    public static final String FORM_URL_ENCODED = &quot;application/x-www-form-urlencoded&quot;;
+    private static final int HTTP_TEMP_REDIR = 307; // http/1.1 temporary redirect, not in Java's set.
+    private static final String DefaultUploadType = &quot;application/octet-stream&quot;;
+
+    public static Connection connect(String url) {
+<span class="nc" id="L69">        Connection con = new HttpConnection();</span>
+<span class="nc" id="L70">        con.url(url);</span>
+<span class="nc" id="L71">        return con;</span>
+    }
+
+    public static Connection connect(URL url) {
+<span class="nc" id="L75">        Connection con = new HttpConnection();</span>
+<span class="nc" id="L76">        con.url(url);</span>
+<span class="nc" id="L77">        return con;</span>
+    }
+
+<span class="nc" id="L80">    public HttpConnection() {</span>
+<span class="nc" id="L81">        req = new Request();</span>
+<span class="nc" id="L82">        res = new Response();</span>
+<span class="nc" id="L83">    }</span>
+
+    /**
+     * Encodes the input URL into a safe ASCII URL string
+     * @param url unescaped URL
+     * @return escaped URL
+     */
+	private static String encodeUrl(String url) {
+        try {
+<span class="nc" id="L92">            URL u = new URL(url);</span>
+<span class="nc" id="L93">            return encodeUrl(u).toExternalForm();</span>
+<span class="nc" id="L94">        } catch (Exception e) {</span>
+<span class="nc" id="L95">            return url;</span>
+        }
+	}
+
+    static URL encodeUrl(URL u) {
+        try {
+            //  odd way to encode urls, but it works!
+<span class="nc" id="L102">            String urlS = u.toExternalForm(); // URL external form may have spaces which is illegal in new URL() (odd asymmetry)</span>
+<span class="nc" id="L103">            urlS = urlS.replaceAll(&quot; &quot;, &quot;%20&quot;);</span>
+<span class="nc" id="L104">            final URI uri = new URI(urlS);</span>
+<span class="nc" id="L105">            return new URL(uri.toASCIIString());</span>
+<span class="nc" id="L106">        } catch (URISyntaxException | MalformedURLException e) {</span>
+            // give up and return the original input
+<span class="nc" id="L108">            return u;</span>
+        }
+    }
+
+    private static String encodeMimeName(String val) {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        if (val == null)</span>
+<span class="nc" id="L114">            return null;</span>
+<span class="nc" id="L115">        return val.replaceAll(&quot;\&quot;&quot;, &quot;%22&quot;);</span>
+    }
+
+    private Connection.Request req;
+    private Connection.Response res;
+
+    public Connection url(URL url) {
+<span class="nc" id="L122">        req.url(url);</span>
+<span class="nc" id="L123">        return this;</span>
+    }
+
+    public Connection url(String url) {
+<span class="nc" id="L127">        Validate.notEmpty(url, &quot;Must supply a valid URL&quot;);</span>
+        try {
+<span class="nc" id="L129">            req.url(new URL(encodeUrl(url)));</span>
+<span class="nc" id="L130">        } catch (MalformedURLException e) {</span>
+<span class="nc" id="L131">            throw new IllegalArgumentException(&quot;Malformed URL: &quot; + url, e);</span>
+<span class="nc" id="L132">        }</span>
+<span class="nc" id="L133">        return this;</span>
+    }
+
+    public Connection proxy(Proxy proxy) {
+<span class="nc" id="L137">        req.proxy(proxy);</span>
+<span class="nc" id="L138">        return this;</span>
+    }
+
+    public Connection proxy(String host, int port) {
+<span class="nc" id="L142">        req.proxy(host, port);</span>
+<span class="nc" id="L143">        return this;</span>
+    }
+
+    public Connection userAgent(String userAgent) {
+<span class="nc" id="L147">        Validate.notNull(userAgent, &quot;User agent must not be null&quot;);</span>
+<span class="nc" id="L148">        req.header(USER_AGENT, userAgent);</span>
+<span class="nc" id="L149">        return this;</span>
+    }
+
+    public Connection timeout(int millis) {
+<span class="nc" id="L153">        req.timeout(millis);</span>
+<span class="nc" id="L154">        return this;</span>
+    }
+
+    public Connection maxBodySize(int bytes) {
+<span class="nc" id="L158">        req.maxBodySize(bytes);</span>
+<span class="nc" id="L159">        return this;</span>
+    }
+
+    public Connection followRedirects(boolean followRedirects) {
+<span class="nc" id="L163">        req.followRedirects(followRedirects);</span>
+<span class="nc" id="L164">        return this;</span>
+    }
+
+    public Connection referrer(String referrer) {
+<span class="nc" id="L168">        Validate.notNull(referrer, &quot;Referrer must not be null&quot;);</span>
+<span class="nc" id="L169">        req.header(&quot;Referer&quot;, referrer);</span>
+<span class="nc" id="L170">        return this;</span>
+    }
+
+    public Connection method(Method method) {
+<span class="nc" id="L174">        req.method(method);</span>
+<span class="nc" id="L175">        return this;</span>
+    }
+
+    public Connection ignoreHttpErrors(boolean ignoreHttpErrors) {
+<span class="nc" id="L179">		req.ignoreHttpErrors(ignoreHttpErrors);</span>
+<span class="nc" id="L180">		return this;</span>
+	}
+
+    public Connection ignoreContentType(boolean ignoreContentType) {
+<span class="nc" id="L184">        req.ignoreContentType(ignoreContentType);</span>
+<span class="nc" id="L185">        return this;</span>
+    }
+
+
+    public Connection data(String key, String value) {
+<span class="nc" id="L190">        req.data(KeyVal.create(key, value));</span>
+<span class="nc" id="L191">        return this;</span>
+    }
+
+    public Connection sslSocketFactory(SSLSocketFactory sslSocketFactory) {
+<span class="nc" id="L195">	    req.sslSocketFactory(sslSocketFactory);</span>
+<span class="nc" id="L196">	    return this;</span>
+    }
+
+    public Connection data(String key, String filename, InputStream inputStream) {
+<span class="nc" id="L200">        req.data(KeyVal.create(key, filename, inputStream));</span>
+<span class="nc" id="L201">        return this;</span>
+    }
+
+    @Override
+    public Connection data(String key, String filename, InputStream inputStream, String contentType) {
+<span class="nc" id="L206">        req.data(KeyVal.create(key, filename, inputStream).contentType(contentType));</span>
+<span class="nc" id="L207">        return this;</span>
+    }
+
+    public Connection data(Map&lt;String, String&gt; data) {
+<span class="nc" id="L211">        Validate.notNull(data, &quot;Data map must not be null&quot;);</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        for (Map.Entry&lt;String, String&gt; entry : data.entrySet()) {</span>
+<span class="nc" id="L213">            req.data(KeyVal.create(entry.getKey(), entry.getValue()));</span>
+<span class="nc" id="L214">        }</span>
+<span class="nc" id="L215">        return this;</span>
+    }
+
+    public Connection data(String... keyvals) {
+<span class="nc" id="L219">        Validate.notNull(keyvals, &quot;Data key value pairs must not be null&quot;);</span>
+<span class="nc bnc" id="L220" title="All 2 branches missed.">        Validate.isTrue(keyvals.length %2 == 0, &quot;Must supply an even number of key value pairs&quot;);</span>
+<span class="nc bnc" id="L221" title="All 2 branches missed.">        for (int i = 0; i &lt; keyvals.length; i += 2) {</span>
+<span class="nc" id="L222">            String key = keyvals[i];</span>
+<span class="nc" id="L223">            String value = keyvals[i+1];</span>
+<span class="nc" id="L224">            Validate.notEmpty(key, &quot;Data key must not be empty&quot;);</span>
+<span class="nc" id="L225">            Validate.notNull(value, &quot;Data value must not be null&quot;);</span>
+<span class="nc" id="L226">            req.data(KeyVal.create(key, value));</span>
+        }
+<span class="nc" id="L228">        return this;</span>
+    }
+
+    public Connection data(Collection&lt;Connection.KeyVal&gt; data) {
+<span class="nc" id="L232">        Validate.notNull(data, &quot;Data collection must not be null&quot;);</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">        for (Connection.KeyVal entry: data) {</span>
+<span class="nc" id="L234">            req.data(entry);</span>
+<span class="nc" id="L235">        }</span>
+<span class="nc" id="L236">        return this;</span>
+    }
+
+    public Connection.KeyVal data(String key) {
+<span class="nc" id="L240">        Validate.notEmpty(key, &quot;Data key must not be empty&quot;);</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">        for (Connection.KeyVal keyVal : request().data()) {</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">            if (keyVal.key().equals(key))</span>
+<span class="nc" id="L243">                return keyVal;</span>
+<span class="nc" id="L244">        }</span>
+<span class="nc" id="L245">        return null;</span>
+    }
+
+    public Connection requestBody(String body) {
+<span class="nc" id="L249">        req.requestBody(body);</span>
+<span class="nc" id="L250">        return this;</span>
+    }
+
+    public Connection header(String name, String value) {
+<span class="nc" id="L254">        req.header(name, value);</span>
+<span class="nc" id="L255">        return this;</span>
+    }
+
+    public Connection headers(Map&lt;String,String&gt; headers) {
+<span class="nc" id="L259">        Validate.notNull(headers, &quot;Header map must not be null&quot;);</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">        for (Map.Entry&lt;String,String&gt; entry : headers.entrySet()) {</span>
+<span class="nc" id="L261">            req.header(entry.getKey(),entry.getValue());</span>
+<span class="nc" id="L262">        }</span>
+<span class="nc" id="L263">        return this;</span>
+    }
+
+    public Connection cookie(String name, String value) {
+<span class="nc" id="L267">        req.cookie(name, value);</span>
+<span class="nc" id="L268">        return this;</span>
+    }
+
+    public Connection cookies(Map&lt;String, String&gt; cookies) {
+<span class="nc" id="L272">        Validate.notNull(cookies, &quot;Cookie map must not be null&quot;);</span>
+<span class="nc bnc" id="L273" title="All 2 branches missed.">        for (Map.Entry&lt;String, String&gt; entry : cookies.entrySet()) {</span>
+<span class="nc" id="L274">            req.cookie(entry.getKey(), entry.getValue());</span>
+<span class="nc" id="L275">        }</span>
+<span class="nc" id="L276">        return this;</span>
+    }
+
+    public Connection parser(Parser parser) {
+<span class="nc" id="L280">        req.parser(parser);</span>
+<span class="nc" id="L281">        return this;</span>
+    }
+
+    public Document get() throws IOException {
+<span class="nc" id="L285">        req.method(Method.GET);</span>
+<span class="nc" id="L286">        execute();</span>
+<span class="nc" id="L287">        return res.parse();</span>
+    }
+
+    public Document post() throws IOException {
+<span class="nc" id="L291">        req.method(Method.POST);</span>
+<span class="nc" id="L292">        execute();</span>
+<span class="nc" id="L293">        return res.parse();</span>
+    }
+
+    public Connection.Response execute() throws IOException {
+<span class="nc" id="L297">        res = Response.execute(req);</span>
+<span class="nc" id="L298">        return res;</span>
+    }
+
+    public Connection.Request request() {
+<span class="nc" id="L302">        return req;</span>
+    }
+
+    public Connection request(Connection.Request request) {
+<span class="nc" id="L306">        req = request;</span>
+<span class="nc" id="L307">        return this;</span>
+    }
+
+    public Connection.Response response() {
+<span class="nc" id="L311">        return res;</span>
+    }
+
+    public Connection response(Connection.Response response) {
+<span class="nc" id="L315">        res = response;</span>
+<span class="nc" id="L316">        return this;</span>
+    }
+
+    public Connection postDataCharset(String charset) {
+<span class="nc" id="L320">        req.postDataCharset(charset);</span>
+<span class="nc" id="L321">        return this;</span>
+    }
+
+    @SuppressWarnings({&quot;unchecked&quot;})
+    private static abstract class Base&lt;T extends Connection.Base&gt; implements Connection.Base&lt;T&gt; {
+        URL url;
+        Method method;
+        Map&lt;String, List&lt;String&gt;&gt; headers;
+        Map&lt;String, String&gt; cookies;
+
+<span class="nc" id="L331">        private Base() {</span>
+<span class="nc" id="L332">            headers = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L333">            cookies = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L334">        }</span>
+
+        public URL url() {
+<span class="nc" id="L337">            return url;</span>
+        }
+
+        public T url(URL url) {
+<span class="nc" id="L341">            Validate.notNull(url, &quot;URL must not be null&quot;);</span>
+<span class="nc" id="L342">            this.url = url;</span>
+<span class="nc" id="L343">            return (T) this;</span>
+        }
+
+        public Method method() {
+<span class="nc" id="L347">            return method;</span>
+        }
+
+        public T method(Method method) {
+<span class="nc" id="L351">            Validate.notNull(method, &quot;Method must not be null&quot;);</span>
+<span class="nc" id="L352">            this.method = method;</span>
+<span class="nc" id="L353">            return (T) this;</span>
+        }
+
+        public String header(String name) {
+<span class="nc" id="L357">            Validate.notNull(name, &quot;Header name must not be null&quot;);</span>
+<span class="nc" id="L358">            List&lt;String&gt; vals = getHeadersCaseInsensitive(name);</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">            if (vals.size() &gt; 0) {</span>
+                // https://www.w3.org/Protocols/rfc2616/rfc2616-sec4.html#sec4.2
+<span class="nc" id="L361">                return StringUtil.join(vals, &quot;, &quot;);</span>
+            }
+
+<span class="nc" id="L364">            return null;</span>
+        }
+
+        @Override
+        public T addHeader(String name, String value) {
+<span class="nc" id="L369">            Validate.notEmpty(name);</span>
+<span class="nc bnc" id="L370" title="All 2 branches missed.">            value = value == null ? &quot;&quot; : value;</span>
+
+<span class="nc" id="L372">            List&lt;String&gt; values = headers(name);</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">            if (values.isEmpty()) {</span>
+<span class="nc" id="L374">                values = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L375">                headers.put(name, values);</span>
+            }
+<span class="nc" id="L377">            values.add(fixHeaderEncoding(value));</span>
+
+<span class="nc" id="L379">            return (T) this;</span>
+        }
+
+        @Override
+        public List&lt;String&gt; headers(String name) {
+<span class="nc" id="L384">            Validate.notEmpty(name);</span>
+<span class="nc" id="L385">            return getHeadersCaseInsensitive(name);</span>
+        }
+
+        private static String fixHeaderEncoding(String val) {
+            try {
+<span class="nc" id="L390">                byte[] bytes = val.getBytes(&quot;ISO-8859-1&quot;);</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">                if (!looksLikeUtf8(bytes))</span>
+<span class="nc" id="L392">                    return val;</span>
+<span class="nc" id="L393">                return new String(bytes, &quot;UTF-8&quot;);</span>
+<span class="nc" id="L394">            } catch (UnsupportedEncodingException e) {</span>
+                // shouldn't happen as these both always exist
+<span class="nc" id="L396">                return val;</span>
+            }
+        }
+
+        private static boolean looksLikeUtf8(byte[] input) {
+<span class="nc" id="L401">            int i = 0;</span>
+            // BOM:
+<span class="nc bnc" id="L403" title="All 10 branches missed.">            if (input.length &gt;= 3 &amp;&amp; (input[0] &amp; 0xFF) == 0xEF</span>
+                &amp;&amp; (input[1] &amp; 0xFF) == 0xBB &amp; (input[2] &amp; 0xFF) == 0xBF) {
+<span class="nc" id="L405">                i = 3;</span>
+            }
+
+            int end;
+<span class="nc bnc" id="L409" title="All 2 branches missed.">            for (int j = input.length; i &lt; j; ++i) {</span>
+<span class="nc" id="L410">                int o = input[i];</span>
+<span class="nc bnc" id="L411" title="All 2 branches missed.">                if ((o &amp; 0x80) == 0) {</span>
+<span class="nc" id="L412">                    continue; // ASCII</span>
+                }
+
+                // UTF-8 leading:
+<span class="nc bnc" id="L416" title="All 2 branches missed.">                if ((o &amp; 0xE0) == 0xC0) {</span>
+<span class="nc" id="L417">                    end = i + 1;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">                } else if ((o &amp; 0xF0) == 0xE0) {</span>
+<span class="nc" id="L419">                    end = i + 2;</span>
+<span class="nc bnc" id="L420" title="All 2 branches missed.">                } else if ((o &amp; 0xF8) == 0xF0) {</span>
+<span class="nc" id="L421">                    end = i + 3;</span>
+                } else {
+<span class="nc" id="L423">                    return false;</span>
+                }
+
+<span class="nc bnc" id="L426" title="All 2 branches missed.">                if (end &gt;= input.length)</span>
+<span class="nc" id="L427">                    return false;</span>
+
+<span class="nc bnc" id="L429" title="All 2 branches missed.">                while (i &lt; end) {</span>
+<span class="nc" id="L430">                    i++;</span>
+<span class="nc" id="L431">                    o = input[i];</span>
+<span class="nc bnc" id="L432" title="All 2 branches missed.">                    if ((o &amp; 0xC0) != 0x80) {</span>
+<span class="nc" id="L433">                        return false;</span>
+                    }
+                }
+            }
+<span class="nc" id="L437">            return true;</span>
+        }
+
+        public T header(String name, String value) {
+<span class="nc" id="L441">            Validate.notEmpty(name, &quot;Header name must not be empty&quot;);</span>
+<span class="nc" id="L442">            removeHeader(name); // ensures we don't get an &quot;accept-encoding&quot; and a &quot;Accept-Encoding&quot;</span>
+<span class="nc" id="L443">            addHeader(name, value);</span>
+<span class="nc" id="L444">            return (T) this;</span>
+        }
+
+        public boolean hasHeader(String name) {
+<span class="nc" id="L448">            Validate.notEmpty(name, &quot;Header name must not be empty&quot;);</span>
+<span class="nc bnc" id="L449" title="All 2 branches missed.">            return !getHeadersCaseInsensitive(name).isEmpty();</span>
+        }
+
+        /**
+         * Test if the request has a header with this value (case insensitive).
+         */
+        public boolean hasHeaderWithValue(String name, String value) {
+<span class="nc" id="L456">            Validate.notEmpty(name);</span>
+<span class="nc" id="L457">            Validate.notEmpty(value);</span>
+<span class="nc" id="L458">            List&lt;String&gt; values = headers(name);</span>
+<span class="nc bnc" id="L459" title="All 2 branches missed.">            for (String candidate : values) {</span>
+<span class="nc bnc" id="L460" title="All 2 branches missed.">                if (value.equalsIgnoreCase(candidate))</span>
+<span class="nc" id="L461">                    return true;</span>
+<span class="nc" id="L462">            }</span>
+<span class="nc" id="L463">            return false;</span>
+        }
+
+        public T removeHeader(String name) {
+<span class="nc" id="L467">            Validate.notEmpty(name, &quot;Header name must not be empty&quot;);</span>
+<span class="nc" id="L468">            Map.Entry&lt;String, List&lt;String&gt;&gt; entry = scanHeaders(name); // remove is case insensitive too</span>
+<span class="nc bnc" id="L469" title="All 2 branches missed.">            if (entry != null)</span>
+<span class="nc" id="L470">                headers.remove(entry.getKey()); // ensures correct case</span>
+<span class="nc" id="L471">            return (T) this;</span>
+        }
+
+        public Map&lt;String, String&gt; headers() {
+<span class="nc" id="L475">            LinkedHashMap&lt;String, String&gt; map = new LinkedHashMap&lt;&gt;(headers.size());</span>
+<span class="nc bnc" id="L476" title="All 2 branches missed.">            for (Map.Entry&lt;String, List&lt;String&gt;&gt; entry : headers.entrySet()) {</span>
+<span class="nc" id="L477">                String header = entry.getKey();</span>
+<span class="nc" id="L478">                List&lt;String&gt; values = entry.getValue();</span>
+<span class="nc bnc" id="L479" title="All 2 branches missed.">                if (values.size() &gt; 0)</span>
+<span class="nc" id="L480">                    map.put(header, values.get(0));</span>
+<span class="nc" id="L481">            }</span>
+<span class="nc" id="L482">            return map;</span>
+        }
+
+        @Override
+        public Map&lt;String, List&lt;String&gt;&gt; multiHeaders() {
+<span class="nc" id="L487">            return headers;</span>
+        }
+
+        private List&lt;String&gt; getHeadersCaseInsensitive(String name) {
+<span class="nc" id="L491">            Validate.notNull(name);</span>
+
+<span class="nc bnc" id="L493" title="All 2 branches missed.">            for (Map.Entry&lt;String, List&lt;String&gt;&gt; entry : headers.entrySet()) {</span>
+<span class="nc bnc" id="L494" title="All 2 branches missed.">                if (name.equalsIgnoreCase(entry.getKey()))</span>
+<span class="nc" id="L495">                    return entry.getValue();</span>
+<span class="nc" id="L496">            }</span>
+
+<span class="nc" id="L498">            return Collections.emptyList();</span>
+        }
+
+        private Map.Entry&lt;String, List&lt;String&gt;&gt; scanHeaders(String name) {
+<span class="nc" id="L502">            String lc = lowerCase(name);</span>
+<span class="nc bnc" id="L503" title="All 2 branches missed.">            for (Map.Entry&lt;String, List&lt;String&gt;&gt; entry : headers.entrySet()) {</span>
+<span class="nc bnc" id="L504" title="All 2 branches missed.">                if (lowerCase(entry.getKey()).equals(lc))</span>
+<span class="nc" id="L505">                    return entry;</span>
+<span class="nc" id="L506">            }</span>
+<span class="nc" id="L507">            return null;</span>
+        }
+
+        public String cookie(String name) {
+<span class="nc" id="L511">            Validate.notEmpty(name, &quot;Cookie name must not be empty&quot;);</span>
+<span class="nc" id="L512">            return cookies.get(name);</span>
+        }
+
+        public T cookie(String name, String value) {
+<span class="nc" id="L516">            Validate.notEmpty(name, &quot;Cookie name must not be empty&quot;);</span>
+<span class="nc" id="L517">            Validate.notNull(value, &quot;Cookie value must not be null&quot;);</span>
+<span class="nc" id="L518">            cookies.put(name, value);</span>
+<span class="nc" id="L519">            return (T) this;</span>
+        }
+
+        public boolean hasCookie(String name) {
+<span class="nc" id="L523">            Validate.notEmpty(name, &quot;Cookie name must not be empty&quot;);</span>
+<span class="nc" id="L524">            return cookies.containsKey(name);</span>
+        }
+
+        public T removeCookie(String name) {
+<span class="nc" id="L528">            Validate.notEmpty(name, &quot;Cookie name must not be empty&quot;);</span>
+<span class="nc" id="L529">            cookies.remove(name);</span>
+<span class="nc" id="L530">            return (T) this;</span>
+        }
+
+        public Map&lt;String, String&gt; cookies() {
+<span class="nc" id="L534">            return cookies;</span>
+        }
+    }
+
+    public static class Request extends HttpConnection.Base&lt;Connection.Request&gt; implements Connection.Request {
+        private Proxy proxy; // nullable
+        private int timeoutMilliseconds;
+        private int maxBodySizeBytes;
+        private boolean followRedirects;
+        private Collection&lt;Connection.KeyVal&gt; data;
+<span class="nc" id="L544">        private String body = null;</span>
+<span class="nc" id="L545">        private boolean ignoreHttpErrors = false;</span>
+<span class="nc" id="L546">        private boolean ignoreContentType = false;</span>
+        private Parser parser;
+<span class="nc" id="L548">        private boolean parserDefined = false; // called parser(...) vs initialized in ctor</span>
+<span class="nc" id="L549">        private String postDataCharset = DataUtil.defaultCharset;</span>
+        private SSLSocketFactory sslSocketFactory;
+
+<span class="nc" id="L552">        Request() {</span>
+<span class="nc" id="L553">            timeoutMilliseconds = 30000; // 30 seconds</span>
+<span class="nc" id="L554">            maxBodySizeBytes = 1024 * 1024; // 1MB</span>
+<span class="nc" id="L555">            followRedirects = true;</span>
+<span class="nc" id="L556">            data = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L557">            method = Method.GET;</span>
+<span class="nc" id="L558">            addHeader(&quot;Accept-Encoding&quot;, &quot;gzip&quot;);</span>
+<span class="nc" id="L559">            addHeader(USER_AGENT, DEFAULT_UA);</span>
+<span class="nc" id="L560">            parser = Parser.htmlParser();</span>
+<span class="nc" id="L561">        }</span>
+
+        public Proxy proxy() {
+<span class="nc" id="L564">            return proxy;</span>
+        }
+
+        public Request proxy(Proxy proxy) {
+<span class="nc" id="L568">            this.proxy = proxy;</span>
+<span class="nc" id="L569">            return this;</span>
+        }
+
+        public Request proxy(String host, int port) {
+<span class="nc" id="L573">            this.proxy = new Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(host, port));</span>
+<span class="nc" id="L574">            return this;</span>
+        }
+
+        public int timeout() {
+<span class="nc" id="L578">            return timeoutMilliseconds;</span>
+        }
+
+        public Request timeout(int millis) {
+<span class="nc bnc" id="L582" title="All 2 branches missed.">            Validate.isTrue(millis &gt;= 0, &quot;Timeout milliseconds must be 0 (infinite) or greater&quot;);</span>
+<span class="nc" id="L583">            timeoutMilliseconds = millis;</span>
+<span class="nc" id="L584">            return this;</span>
+        }
+
+        public int maxBodySize() {
+<span class="nc" id="L588">            return maxBodySizeBytes;</span>
+        }
+
+        public Connection.Request maxBodySize(int bytes) {
+<span class="nc bnc" id="L592" title="All 2 branches missed.">            Validate.isTrue(bytes &gt;= 0, &quot;maxSize must be 0 (unlimited) or larger&quot;);</span>
+<span class="nc" id="L593">            maxBodySizeBytes = bytes;</span>
+<span class="nc" id="L594">            return this;</span>
+        }
+
+        public boolean followRedirects() {
+<span class="nc" id="L598">            return followRedirects;</span>
+        }
+
+        public Connection.Request followRedirects(boolean followRedirects) {
+<span class="nc" id="L602">            this.followRedirects = followRedirects;</span>
+<span class="nc" id="L603">            return this;</span>
+        }
+
+        public boolean ignoreHttpErrors() {
+<span class="nc" id="L607">            return ignoreHttpErrors;</span>
+        }
+
+        public SSLSocketFactory sslSocketFactory() {
+<span class="nc" id="L611">            return sslSocketFactory;</span>
+        }
+
+        public void sslSocketFactory(SSLSocketFactory sslSocketFactory) {
+<span class="nc" id="L615">            this.sslSocketFactory = sslSocketFactory;</span>
+<span class="nc" id="L616">        }</span>
+
+        public Connection.Request ignoreHttpErrors(boolean ignoreHttpErrors) {
+<span class="nc" id="L619">            this.ignoreHttpErrors = ignoreHttpErrors;</span>
+<span class="nc" id="L620">            return this;</span>
+        }
+
+        public boolean ignoreContentType() {
+<span class="nc" id="L624">            return ignoreContentType;</span>
+        }
+
+        public Connection.Request ignoreContentType(boolean ignoreContentType) {
+<span class="nc" id="L628">            this.ignoreContentType = ignoreContentType;</span>
+<span class="nc" id="L629">            return this;</span>
+        }
+
+        public Request data(Connection.KeyVal keyval) {
+<span class="nc" id="L633">            Validate.notNull(keyval, &quot;Key val must not be null&quot;);</span>
+<span class="nc" id="L634">            data.add(keyval);</span>
+<span class="nc" id="L635">            return this;</span>
+        }
+
+        public Collection&lt;Connection.KeyVal&gt; data() {
+<span class="nc" id="L639">            return data;</span>
+        }
+
+        public Connection.Request requestBody(String body) {
+<span class="nc" id="L643">            this.body = body;</span>
+<span class="nc" id="L644">            return this;</span>
+        }
+
+        public String requestBody() {
+<span class="nc" id="L648">            return body;</span>
+        }
+
+        public Request parser(Parser parser) {
+<span class="nc" id="L652">            this.parser = parser;</span>
+<span class="nc" id="L653">            parserDefined = true;</span>
+<span class="nc" id="L654">            return this;</span>
+        }
+
+        public Parser parser() {
+<span class="nc" id="L658">            return parser;</span>
+        }
+
+        public Connection.Request postDataCharset(String charset) {
+<span class="nc" id="L662">            Validate.notNull(charset, &quot;Charset must not be null&quot;);</span>
+<span class="nc bnc" id="L663" title="All 2 branches missed.">            if (!Charset.isSupported(charset)) throw new IllegalCharsetNameException(charset);</span>
+<span class="nc" id="L664">            this.postDataCharset = charset;</span>
+<span class="nc" id="L665">            return this;</span>
+        }
+
+        public String postDataCharset() {
+<span class="nc" id="L669">            return postDataCharset;</span>
+        }
+    }
+
+    public static class Response extends HttpConnection.Base&lt;Connection.Response&gt; implements Connection.Response {
+        private static final int MAX_REDIRECTS = 20;
+        private static final String LOCATION = &quot;Location&quot;;
+        private int statusCode;
+        private String statusMessage;
+        private ByteBuffer byteData;
+        private InputStream bodyStream;
+        private HttpURLConnection conn;
+        private String charset;
+        private String contentType;
+<span class="nc" id="L683">        private boolean executed = false;</span>
+<span class="nc" id="L684">        private boolean inputStreamRead = false;</span>
+<span class="nc" id="L685">        private int numRedirects = 0;</span>
+        private Connection.Request req;
+
+        /*
+         * Matches XML content types (like text/xml, application/xhtml+xml;charset=UTF8, etc)
+         */
+<span class="nc" id="L691">        private static final Pattern xmlContentTypeRxp = Pattern.compile(&quot;(application|text)/\\w*\\+?xml.*&quot;);</span>
+
+        Response() {
+<span class="nc" id="L694">            super();</span>
+<span class="nc" id="L695">        }</span>
+
+        private Response(Response previousResponse) throws IOException {
+<span class="nc" id="L698">            super();</span>
+<span class="nc bnc" id="L699" title="All 2 branches missed.">            if (previousResponse != null) {</span>
+<span class="nc" id="L700">                numRedirects = previousResponse.numRedirects + 1;</span>
+<span class="nc bnc" id="L701" title="All 2 branches missed.">                if (numRedirects &gt;= MAX_REDIRECTS)</span>
+<span class="nc" id="L702">                    throw new IOException(String.format(&quot;Too many redirects occurred trying to load URL %s&quot;, previousResponse.url()));</span>
+            }
+<span class="nc" id="L704">        }</span>
+
+        static Response execute(Connection.Request req) throws IOException {
+<span class="nc" id="L707">            return execute(req, null);</span>
+        }
+
+        static Response execute(Connection.Request req, Response previousResponse) throws IOException {
+<span class="nc" id="L711">            Validate.notNull(req, &quot;Request must not be null&quot;);</span>
+<span class="nc" id="L712">            Validate.notNull(req.url(), &quot;URL must be specified to connect&quot;);</span>
+<span class="nc" id="L713">            String protocol = req.url().getProtocol();</span>
+<span class="nc bnc" id="L714" title="All 4 branches missed.">            if (!protocol.equals(&quot;http&quot;) &amp;&amp; !protocol.equals(&quot;https&quot;))</span>
+<span class="nc" id="L715">                throw new MalformedURLException(&quot;Only http &amp; https protocols supported&quot;);</span>
+<span class="nc" id="L716">            final boolean methodHasBody = req.method().hasBody();</span>
+<span class="nc bnc" id="L717" title="All 2 branches missed.">            final boolean hasRequestBody = req.requestBody() != null;</span>
+<span class="nc bnc" id="L718" title="All 2 branches missed.">            if (!methodHasBody)</span>
+<span class="nc" id="L719">                Validate.isFalse(hasRequestBody, &quot;Cannot set a request body for HTTP method &quot; + req.method());</span>
+
+            // set up the request for execution
+<span class="nc" id="L722">            String mimeBoundary = null;</span>
+<span class="nc bnc" id="L723" title="All 6 branches missed.">            if (req.data().size() &gt; 0 &amp;&amp; (!methodHasBody || hasRequestBody))</span>
+<span class="nc" id="L724">                serialiseRequestUrl(req);</span>
+<span class="nc bnc" id="L725" title="All 2 branches missed.">            else if (methodHasBody)</span>
+<span class="nc" id="L726">                mimeBoundary = setOutputContentType(req);</span>
+
+<span class="nc" id="L728">            long startTime = System.nanoTime();</span>
+<span class="nc" id="L729">            HttpURLConnection conn = createConnection(req);</span>
+            Response res;
+            try {
+<span class="nc" id="L732">                conn.connect();</span>
+<span class="nc bnc" id="L733" title="All 2 branches missed.">                if (conn.getDoOutput())</span>
+<span class="nc" id="L734">                    writePost(req, conn.getOutputStream(), mimeBoundary);</span>
+
+<span class="nc" id="L736">                int status = conn.getResponseCode();</span>
+<span class="nc" id="L737">                res = new Response(previousResponse);</span>
+<span class="nc" id="L738">                res.setupFromConnection(conn, previousResponse);</span>
+<span class="nc" id="L739">                res.req = req;</span>
+
+                // redirect if there's a location header (from 3xx, or 201 etc)
+<span class="nc bnc" id="L742" title="All 4 branches missed.">                if (res.hasHeader(LOCATION) &amp;&amp; req.followRedirects()) {</span>
+<span class="nc bnc" id="L743" title="All 2 branches missed.">                    if (status != HTTP_TEMP_REDIR) {</span>
+<span class="nc" id="L744">                        req.method(Method.GET); // always redirect with a get. any data param from original req are dropped.</span>
+<span class="nc" id="L745">                        req.data().clear();</span>
+<span class="nc" id="L746">                        req.requestBody(null);</span>
+<span class="nc" id="L747">                        req.removeHeader(CONTENT_TYPE);</span>
+                    }
+
+<span class="nc" id="L750">                    String location = res.header(LOCATION);</span>
+<span class="nc bnc" id="L751" title="All 4 branches missed.">                    if (location.startsWith(&quot;http:/&quot;) &amp;&amp; location.charAt(6) != '/') // fix broken Location: http:/temp/AAG_New/en/index.php</span>
+<span class="nc" id="L752">                        location = location.substring(6);</span>
+<span class="nc" id="L753">                    URL redir = StringUtil.resolve(req.url(), location);</span>
+<span class="nc" id="L754">                    req.url(encodeUrl(redir));</span>
+
+<span class="nc bnc" id="L756" title="All 2 branches missed.">                    for (Map.Entry&lt;String, String&gt; cookie : res.cookies.entrySet()) { // add response cookies to request (for e.g. login posts)</span>
+<span class="nc" id="L757">                        req.cookie(cookie.getKey(), cookie.getValue());</span>
+<span class="nc" id="L758">                    }</span>
+<span class="nc" id="L759">                    return execute(req, res);</span>
+                }
+<span class="nc bnc" id="L761" title="All 6 branches missed.">                if ((status &lt; 200 || status &gt;= 400) &amp;&amp; !req.ignoreHttpErrors())</span>
+<span class="nc" id="L762">                        throw new HttpStatusException(&quot;HTTP error fetching URL&quot;, status, req.url().toString());</span>
+
+                // check that we can handle the returned content type; if not, abort before fetching it
+<span class="nc" id="L765">                String contentType = res.contentType();</span>
+<span class="nc bnc" id="L766" title="All 2 branches missed.">                if (contentType != null</span>
+<span class="nc bnc" id="L767" title="All 2 branches missed.">                        &amp;&amp; !req.ignoreContentType()</span>
+<span class="nc bnc" id="L768" title="All 2 branches missed.">                        &amp;&amp; !contentType.startsWith(&quot;text/&quot;)</span>
+<span class="nc bnc" id="L769" title="All 2 branches missed.">                        &amp;&amp; !xmlContentTypeRxp.matcher(contentType).matches()</span>
+                        )
+<span class="nc" id="L771">                    throw new UnsupportedMimeTypeException(&quot;Unhandled content type. Must be text/*, application/xml, or application/xhtml+xml&quot;,</span>
+<span class="nc" id="L772">                            contentType, req.url().toString());</span>
+
+                // switch to the XML parser if content type is xml and not parser not explicitly set
+<span class="nc bnc" id="L775" title="All 4 branches missed.">                if (contentType != null &amp;&amp; xmlContentTypeRxp.matcher(contentType).matches()) {</span>
+                    // only flip it if a HttpConnection.Request (i.e. don't presume other impls want it):
+<span class="nc bnc" id="L777" title="All 4 branches missed.">                    if (req instanceof HttpConnection.Request &amp;&amp; !((Request) req).parserDefined) {</span>
+<span class="nc" id="L778">                        req.parser(Parser.xmlParser());</span>
+                    }
+                }
+
+<span class="nc" id="L782">                res.charset = DataUtil.getCharsetFromContentType(res.contentType); // may be null, readInputStream deals with it</span>
+<span class="nc bnc" id="L783" title="All 4 branches missed.">                if (conn.getContentLength() != 0 &amp;&amp; req.method() != HEAD) { // -1 means unknown, chunked. sun throws an IO exception on 500 response with no content when trying to read body</span>
+<span class="nc" id="L784">                    res.bodyStream = null;</span>
+<span class="nc bnc" id="L785" title="All 2 branches missed.">                    res.bodyStream = conn.getErrorStream() != null ? conn.getErrorStream() : conn.getInputStream();</span>
+<span class="nc bnc" id="L786" title="All 2 branches missed.">                    if (res.hasHeaderWithValue(CONTENT_ENCODING, &quot;gzip&quot;)) {</span>
+<span class="nc" id="L787">                        res.bodyStream = new GZIPInputStream(res.bodyStream);</span>
+<span class="nc bnc" id="L788" title="All 2 branches missed.">                    } else if (res.hasHeaderWithValue(CONTENT_ENCODING, &quot;deflate&quot;)) {</span>
+<span class="nc" id="L789">                        res.bodyStream = new InflaterInputStream(res.bodyStream, new Inflater(true));</span>
+                    }
+<span class="nc" id="L791">                    res.bodyStream = ConstrainableInputStream</span>
+<span class="nc" id="L792">                        .wrap(res.bodyStream, DataUtil.bufferSize, req.maxBodySize())</span>
+<span class="nc" id="L793">                        .timeout(startTime, req.timeout())</span>
+                    ;
+                } else {
+<span class="nc" id="L796">                    res.byteData = DataUtil.emptyByteBuffer();</span>
+                }
+<span class="nc" id="L798">            } catch (IOException e){</span>
+                // per Java's documentation, this is not necessary, and precludes keepalives. However in practice,
+                // connection errors will not be released quickly enough and can cause a too many open files error.
+<span class="nc" id="L801">                conn.disconnect();</span>
+<span class="nc" id="L802">                throw e;</span>
+<span class="nc" id="L803">            }</span>
+
+<span class="nc" id="L805">            res.executed = true;</span>
+<span class="nc" id="L806">            return res;</span>
+        }
+
+        public int statusCode() {
+<span class="nc" id="L810">            return statusCode;</span>
+        }
+
+        public String statusMessage() {
+<span class="nc" id="L814">            return statusMessage;</span>
+        }
+
+        public String charset() {
+<span class="nc" id="L818">            return charset;</span>
+        }
+
+        public Response charset(String charset) {
+<span class="nc" id="L822">            this.charset = charset;</span>
+<span class="nc" id="L823">            return this;</span>
+        }
+
+        public String contentType() {
+<span class="nc" id="L827">            return contentType;</span>
+        }
+
+        public Document parse() throws IOException {
+<span class="nc" id="L831">            Validate.isTrue(executed, &quot;Request must be executed (with .execute(), .get(), or .post() before parsing response&quot;);</span>
+<span class="nc bnc" id="L832" title="All 2 branches missed.">            if (byteData != null) { // bytes have been read in to the buffer, parse that</span>
+<span class="nc" id="L833">                bodyStream = new ByteArrayInputStream(byteData.array());</span>
+<span class="nc" id="L834">                inputStreamRead = false; // ok to reparse if in bytes</span>
+            }
+<span class="nc" id="L836">            Validate.isFalse(inputStreamRead, &quot;Input stream already read and parsed, cannot re-read.&quot;);</span>
+<span class="nc" id="L837">            Document doc = DataUtil.parseInputStream(bodyStream, charset, url.toExternalForm(), req.parser());</span>
+<span class="nc" id="L838">            charset = doc.outputSettings().charset().name(); // update charset from meta-equiv, possibly</span>
+<span class="nc" id="L839">            inputStreamRead = true;</span>
+<span class="nc" id="L840">            safeClose();</span>
+<span class="nc" id="L841">            return doc;</span>
+        }
+
+        private void prepareByteData() {
+<span class="nc" id="L845">            Validate.isTrue(executed, &quot;Request must be executed (with .execute(), .get(), or .post() before getting response body&quot;);</span>
+<span class="nc bnc" id="L846" title="All 2 branches missed.">            if (byteData == null) {</span>
+<span class="nc" id="L847">                Validate.isFalse(inputStreamRead, &quot;Request has already been read (with .parse())&quot;);</span>
+                try {
+<span class="nc" id="L849">                    byteData = DataUtil.readToByteBuffer(bodyStream, req.maxBodySize());</span>
+<span class="nc" id="L850">                } catch (IOException e) {</span>
+<span class="nc" id="L851">                    throw new UncheckedIOException(e);</span>
+                } finally {
+<span class="nc" id="L853">                    inputStreamRead = true;</span>
+<span class="nc" id="L854">                    safeClose();</span>
+                }
+            }
+<span class="nc" id="L857">        }</span>
+
+        public String body() {
+<span class="nc" id="L860">            prepareByteData();</span>
+            // charset gets set from header on execute, and from meta-equiv on parse. parse may not have happened yet
+            String body;
+<span class="nc bnc" id="L863" title="All 2 branches missed.">            if (charset == null)</span>
+<span class="nc" id="L864">                body = Charset.forName(DataUtil.defaultCharset).decode(byteData).toString();</span>
+            else
+<span class="nc" id="L866">                body = Charset.forName(charset).decode(byteData).toString();</span>
+<span class="nc" id="L867">            ((Buffer)byteData).rewind(); // cast to avoid covariant return type change in jdk9</span>
+<span class="nc" id="L868">            return body;</span>
+        }
+
+        public byte[] bodyAsBytes() {
+<span class="nc" id="L872">            prepareByteData();</span>
+<span class="nc" id="L873">            return byteData.array();</span>
+        }
+
+        @Override
+        public Connection.Response bufferUp() {
+<span class="nc" id="L878">            prepareByteData();</span>
+<span class="nc" id="L879">            return this;</span>
+        }
+
+        @Override
+        public BufferedInputStream bodyStream() {
+<span class="nc" id="L884">            Validate.isTrue(executed, &quot;Request must be executed (with .execute(), .get(), or .post() before getting response body&quot;);</span>
+<span class="nc" id="L885">            Validate.isFalse(inputStreamRead, &quot;Request has already been read&quot;);</span>
+<span class="nc" id="L886">            inputStreamRead = true;</span>
+<span class="nc" id="L887">            return ConstrainableInputStream.wrap(bodyStream, DataUtil.bufferSize, req.maxBodySize());</span>
+        }
+
+        // set up connection defaults, and details from request
+        private static HttpURLConnection createConnection(Connection.Request req) throws IOException {
+<span class="nc" id="L892">            final HttpURLConnection conn = (HttpURLConnection) (</span>
+<span class="nc bnc" id="L893" title="All 2 branches missed.">                req.proxy() == null ?</span>
+<span class="nc" id="L894">                req.url().openConnection() :</span>
+<span class="nc" id="L895">                req.url().openConnection(req.proxy())</span>
+            );
+
+<span class="nc" id="L898">            conn.setRequestMethod(req.method().name());</span>
+<span class="nc" id="L899">            conn.setInstanceFollowRedirects(false); // don't rely on native redirection support</span>
+<span class="nc" id="L900">            conn.setConnectTimeout(req.timeout());</span>
+<span class="nc" id="L901">            conn.setReadTimeout(req.timeout() / 2); // gets reduced after connection is made and status is read</span>
+
+<span class="nc bnc" id="L903" title="All 4 branches missed.">            if (req.sslSocketFactory() != null &amp;&amp; conn instanceof HttpsURLConnection)</span>
+<span class="nc" id="L904">                ((HttpsURLConnection) conn).setSSLSocketFactory(req.sslSocketFactory());</span>
+<span class="nc bnc" id="L905" title="All 2 branches missed.">            if (req.method().hasBody())</span>
+<span class="nc" id="L906">                conn.setDoOutput(true);</span>
+<span class="nc bnc" id="L907" title="All 2 branches missed.">            if (req.cookies().size() &gt; 0)</span>
+<span class="nc" id="L908">                conn.addRequestProperty(&quot;Cookie&quot;, getRequestCookieString(req));</span>
+<span class="nc bnc" id="L909" title="All 2 branches missed.">            for (Map.Entry&lt;String, List&lt;String&gt;&gt; header : req.multiHeaders().entrySet()) {</span>
+<span class="nc bnc" id="L910" title="All 2 branches missed.">                for (String value : header.getValue()) {</span>
+<span class="nc" id="L911">                    conn.addRequestProperty(header.getKey(), value);</span>
+<span class="nc" id="L912">                }</span>
+<span class="nc" id="L913">            }</span>
+<span class="nc" id="L914">            return conn;</span>
+        }
+
+        /**
+         * Call on completion of stream read, to close the body (or error) stream
+         */
+        private void safeClose() {
+<span class="nc bnc" id="L921" title="All 2 branches missed.">            if (conn != null) {</span>
+<span class="nc" id="L922">                conn.disconnect();</span>
+<span class="nc" id="L923">                conn = null;</span>
+            }
+<span class="nc bnc" id="L925" title="All 2 branches missed.">            if (bodyStream != null) {</span>
+                try {
+<span class="nc" id="L927">                    bodyStream.close();</span>
+<span class="nc" id="L928">                } catch (IOException e) {</span>
+                    // no-op
+                } finally {
+<span class="nc" id="L931">                    bodyStream = null;</span>
+                }
+            }
+<span class="nc" id="L934">        }</span>
+
+        // set up url, method, header, cookies
+        private void setupFromConnection(HttpURLConnection conn, HttpConnection.Response previousResponse) throws IOException {
+<span class="nc" id="L938">            this.conn = conn;</span>
+<span class="nc" id="L939">            method = Method.valueOf(conn.getRequestMethod());</span>
+<span class="nc" id="L940">            url = conn.getURL();</span>
+<span class="nc" id="L941">            statusCode = conn.getResponseCode();</span>
+<span class="nc" id="L942">            statusMessage = conn.getResponseMessage();</span>
+<span class="nc" id="L943">            contentType = conn.getContentType();</span>
+
+<span class="nc" id="L945">            Map&lt;String, List&lt;String&gt;&gt; resHeaders = createHeaderMap(conn);</span>
+<span class="nc" id="L946">            processResponseHeaders(resHeaders);</span>
+
+            // if from a redirect, map previous response cookies into this response
+<span class="nc bnc" id="L949" title="All 2 branches missed.">            if (previousResponse != null) {</span>
+<span class="nc bnc" id="L950" title="All 2 branches missed.">                for (Map.Entry&lt;String, String&gt; prevCookie : previousResponse.cookies().entrySet()) {</span>
+<span class="nc bnc" id="L951" title="All 2 branches missed.">                    if (!hasCookie(prevCookie.getKey()))</span>
+<span class="nc" id="L952">                        cookie(prevCookie.getKey(), prevCookie.getValue());</span>
+<span class="nc" id="L953">                }</span>
+<span class="nc" id="L954">                previousResponse.safeClose();</span>
+            }
+<span class="nc" id="L956">        }</span>
+
+        private static LinkedHashMap&lt;String, List&lt;String&gt;&gt; createHeaderMap(HttpURLConnection conn) {
+            // the default sun impl of conn.getHeaderFields() returns header values out of order
+<span class="nc" id="L960">            final LinkedHashMap&lt;String, List&lt;String&gt;&gt; headers = new LinkedHashMap&lt;&gt;();</span>
+<span class="nc" id="L961">            int i = 0;</span>
+            while (true) {
+<span class="nc" id="L963">                final String key = conn.getHeaderFieldKey(i);</span>
+<span class="nc" id="L964">                final String val = conn.getHeaderField(i);</span>
+<span class="nc bnc" id="L965" title="All 4 branches missed.">                if (key == null &amp;&amp; val == null)</span>
+<span class="nc" id="L966">                    break;</span>
+<span class="nc" id="L967">                i++;</span>
+<span class="nc bnc" id="L968" title="All 4 branches missed.">                if (key == null || val == null)</span>
+<span class="nc" id="L969">                    continue; // skip http1.1 line</span>
+
+<span class="nc bnc" id="L971" title="All 2 branches missed.">                if (headers.containsKey(key))</span>
+<span class="nc" id="L972">                    headers.get(key).add(val);</span>
+                else {
+<span class="nc" id="L974">                    final ArrayList&lt;String&gt; vals = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L975">                    vals.add(val);</span>
+<span class="nc" id="L976">                    headers.put(key, vals);</span>
+                }
+<span class="nc" id="L978">            }</span>
+<span class="nc" id="L979">            return headers;</span>
+        }
+
+        void processResponseHeaders(Map&lt;String, List&lt;String&gt;&gt; resHeaders) {
+<span class="nc bnc" id="L983" title="All 2 branches missed.">            for (Map.Entry&lt;String, List&lt;String&gt;&gt; entry : resHeaders.entrySet()) {</span>
+<span class="nc" id="L984">                String name = entry.getKey();</span>
+<span class="nc bnc" id="L985" title="All 2 branches missed.">                if (name == null)</span>
+<span class="nc" id="L986">                    continue; // http/1.1 line</span>
+
+<span class="nc" id="L988">                List&lt;String&gt; values = entry.getValue();</span>
+<span class="nc bnc" id="L989" title="All 2 branches missed.">                if (name.equalsIgnoreCase(&quot;Set-Cookie&quot;)) {</span>
+<span class="nc bnc" id="L990" title="All 2 branches missed.">                    for (String value : values) {</span>
+<span class="nc bnc" id="L991" title="All 2 branches missed.">                        if (value == null)</span>
+<span class="nc" id="L992">                            continue;</span>
+<span class="nc" id="L993">                        TokenQueue cd = new TokenQueue(value);</span>
+<span class="nc" id="L994">                        String cookieName = cd.chompTo(&quot;=&quot;).trim();</span>
+<span class="nc" id="L995">                        String cookieVal = cd.consumeTo(&quot;;&quot;).trim();</span>
+                        // ignores path, date, domain, validateTLSCertificates et al. req'd?
+                        // name not blank, value not null
+<span class="nc bnc" id="L998" title="All 2 branches missed.">                        if (cookieName.length() &gt; 0)</span>
+<span class="nc" id="L999">                            cookie(cookieName, cookieVal);</span>
+<span class="nc" id="L1000">                    }</span>
+                }
+<span class="nc bnc" id="L1002" title="All 2 branches missed.">                for (String value : values) {</span>
+<span class="nc" id="L1003">                    addHeader(name, value);</span>
+<span class="nc" id="L1004">                }</span>
+<span class="nc" id="L1005">            }</span>
+<span class="nc" id="L1006">        }</span>
+
+        private static String setOutputContentType(final Connection.Request req) {
+<span class="nc" id="L1009">            String bound = null;</span>
+<span class="nc bnc" id="L1010" title="All 2 branches missed.">            if (req.hasHeader(CONTENT_TYPE)) {</span>
+                // no-op; don't add content type as already set (e.g. for requestBody())
+                // todo - if content type already set, we could add charset
+
+                // if user has set content type to multipart/form-data, auto add boundary.
+<span class="nc bnc" id="L1015" title="All 2 branches missed.">                if(req.header(CONTENT_TYPE).contains(MULTIPART_FORM_DATA) &amp;&amp;</span>
+<span class="nc bnc" id="L1016" title="All 2 branches missed.">                        !req.header(CONTENT_TYPE).contains(&quot;boundary&quot;)) {</span>
+<span class="nc" id="L1017">                    bound = DataUtil.mimeBoundary();</span>
+<span class="nc" id="L1018">                    req.header(CONTENT_TYPE, MULTIPART_FORM_DATA + &quot;; boundary=&quot; + bound);</span>
+                }
+
+            }
+<span class="nc bnc" id="L1022" title="All 2 branches missed.">            else if (needsMultipart(req)) {</span>
+<span class="nc" id="L1023">                bound = DataUtil.mimeBoundary();</span>
+<span class="nc" id="L1024">                req.header(CONTENT_TYPE, MULTIPART_FORM_DATA + &quot;; boundary=&quot; + bound);</span>
+            } else {
+<span class="nc" id="L1026">                req.header(CONTENT_TYPE, FORM_URL_ENCODED + &quot;; charset=&quot; + req.postDataCharset());</span>
+            }
+<span class="nc" id="L1028">            return bound;</span>
+        }
+
+        private static void writePost(final Connection.Request req, final OutputStream outputStream, final String bound) throws IOException {
+<span class="nc" id="L1032">            final Collection&lt;Connection.KeyVal&gt; data = req.data();</span>
+<span class="nc" id="L1033">            final BufferedWriter w = new BufferedWriter(new OutputStreamWriter(outputStream, req.postDataCharset()));</span>
+
+<span class="nc bnc" id="L1035" title="All 2 branches missed.">            if (bound != null) {</span>
+                // boundary will be set if we're in multipart mode
+<span class="nc bnc" id="L1037" title="All 2 branches missed.">                for (Connection.KeyVal keyVal : data) {</span>
+<span class="nc" id="L1038">                    w.write(&quot;--&quot;);</span>
+<span class="nc" id="L1039">                    w.write(bound);</span>
+<span class="nc" id="L1040">                    w.write(&quot;\r\n&quot;);</span>
+<span class="nc" id="L1041">                    w.write(&quot;Content-Disposition: form-data; name=\&quot;&quot;);</span>
+<span class="nc" id="L1042">                    w.write(encodeMimeName(keyVal.key())); // encodes &quot; to %22</span>
+<span class="nc" id="L1043">                    w.write(&quot;\&quot;&quot;);</span>
+<span class="nc bnc" id="L1044" title="All 2 branches missed.">                    if (keyVal.hasInputStream()) {</span>
+<span class="nc" id="L1045">                        w.write(&quot;; filename=\&quot;&quot;);</span>
+<span class="nc" id="L1046">                        w.write(encodeMimeName(keyVal.value()));</span>
+<span class="nc" id="L1047">                        w.write(&quot;\&quot;\r\nContent-Type: &quot;);</span>
+<span class="nc bnc" id="L1048" title="All 2 branches missed.">                        w.write(keyVal.contentType() != null ? keyVal.contentType() : DefaultUploadType);</span>
+<span class="nc" id="L1049">                        w.write(&quot;\r\n\r\n&quot;);</span>
+<span class="nc" id="L1050">                        w.flush(); // flush</span>
+<span class="nc" id="L1051">                        DataUtil.crossStreams(keyVal.inputStream(), outputStream);</span>
+<span class="nc" id="L1052">                        outputStream.flush();</span>
+                    } else {
+<span class="nc" id="L1054">                        w.write(&quot;\r\n\r\n&quot;);</span>
+<span class="nc" id="L1055">                        w.write(keyVal.value());</span>
+                    }
+<span class="nc" id="L1057">                    w.write(&quot;\r\n&quot;);</span>
+<span class="nc" id="L1058">                }</span>
+<span class="nc" id="L1059">                w.write(&quot;--&quot;);</span>
+<span class="nc" id="L1060">                w.write(bound);</span>
+<span class="nc" id="L1061">                w.write(&quot;--&quot;);</span>
+<span class="nc bnc" id="L1062" title="All 2 branches missed.">            } else if (req.requestBody() != null) {</span>
+                // data will be in query string, we're sending a plaintext body
+<span class="nc" id="L1064">                w.write(req.requestBody());</span>
+            }
+            else {
+                // regular form data (application/x-www-form-urlencoded)
+<span class="nc" id="L1068">                boolean first = true;</span>
+<span class="nc bnc" id="L1069" title="All 2 branches missed.">                for (Connection.KeyVal keyVal : data) {</span>
+<span class="nc bnc" id="L1070" title="All 2 branches missed.">                    if (!first)</span>
+<span class="nc" id="L1071">                        w.append('&amp;');</span>
+                    else
+<span class="nc" id="L1073">                        first = false;</span>
+
+<span class="nc" id="L1075">                    w.write(URLEncoder.encode(keyVal.key(), req.postDataCharset()));</span>
+<span class="nc" id="L1076">                    w.write('=');</span>
+<span class="nc" id="L1077">                    w.write(URLEncoder.encode(keyVal.value(), req.postDataCharset()));</span>
+<span class="nc" id="L1078">                }</span>
+            }
+<span class="nc" id="L1080">            w.close();</span>
+<span class="nc" id="L1081">        }</span>
+
+        private static String getRequestCookieString(Connection.Request req) {
+<span class="nc" id="L1084">            StringBuilder sb = StringUtil.borrowBuilder();</span>
+<span class="nc" id="L1085">            boolean first = true;</span>
+<span class="nc bnc" id="L1086" title="All 2 branches missed.">            for (Map.Entry&lt;String, String&gt; cookie : req.cookies().entrySet()) {</span>
+<span class="nc bnc" id="L1087" title="All 2 branches missed.">                if (!first)</span>
+<span class="nc" id="L1088">                    sb.append(&quot;; &quot;);</span>
+                else
+<span class="nc" id="L1090">                    first = false;</span>
+<span class="nc" id="L1091">                sb.append(cookie.getKey()).append('=').append(cookie.getValue());</span>
+                // todo: spec says only ascii, no escaping / encoding defined. validate on set? or escape somehow here?
+<span class="nc" id="L1093">            }</span>
+<span class="nc" id="L1094">            return StringUtil.releaseBuilder(sb);</span>
+        }
+
+        // for get url reqs, serialise the data map into the url
+        private static void serialiseRequestUrl(Connection.Request req) throws IOException {
+<span class="nc" id="L1099">            URL in = req.url();</span>
+<span class="nc" id="L1100">            StringBuilder url = StringUtil.borrowBuilder();</span>
+<span class="nc" id="L1101">            boolean first = true;</span>
+            // reconstitute the query, ready for appends
+<span class="nc" id="L1103">            url</span>
+<span class="nc" id="L1104">                .append(in.getProtocol())</span>
+<span class="nc" id="L1105">                .append(&quot;://&quot;)</span>
+<span class="nc" id="L1106">                .append(in.getAuthority()) // includes host, port</span>
+<span class="nc" id="L1107">                .append(in.getPath())</span>
+<span class="nc" id="L1108">                .append(&quot;?&quot;);</span>
+<span class="nc bnc" id="L1109" title="All 2 branches missed.">            if (in.getQuery() != null) {</span>
+<span class="nc" id="L1110">                url.append(in.getQuery());</span>
+<span class="nc" id="L1111">                first = false;</span>
+            }
+<span class="nc bnc" id="L1113" title="All 2 branches missed.">            for (Connection.KeyVal keyVal : req.data()) {</span>
+<span class="nc" id="L1114">                Validate.isFalse(keyVal.hasInputStream(), &quot;InputStream data not supported in URL query string.&quot;);</span>
+<span class="nc bnc" id="L1115" title="All 2 branches missed.">                if (!first)</span>
+<span class="nc" id="L1116">                    url.append('&amp;');</span>
+                else
+<span class="nc" id="L1118">                    first = false;</span>
+<span class="nc" id="L1119">                url</span>
+<span class="nc" id="L1120">                    .append(URLEncoder.encode(keyVal.key(), DataUtil.defaultCharset))</span>
+<span class="nc" id="L1121">                    .append('=')</span>
+<span class="nc" id="L1122">                    .append(URLEncoder.encode(keyVal.value(), DataUtil.defaultCharset));</span>
+<span class="nc" id="L1123">            }</span>
+<span class="nc" id="L1124">            req.url(new URL(StringUtil.releaseBuilder(url)));</span>
+<span class="nc" id="L1125">            req.data().clear(); // moved into url as get params</span>
+<span class="nc" id="L1126">        }</span>
+    }
+
+    private static boolean needsMultipart(Connection.Request req) {
+        // multipart mode, for files. add the header if we see something with an inputstream, and return a non-null boundary
+<span class="nc bnc" id="L1131" title="All 2 branches missed.">        for (Connection.KeyVal keyVal : req.data()) {</span>
+<span class="nc bnc" id="L1132" title="All 2 branches missed.">            if (keyVal.hasInputStream())</span>
+<span class="nc" id="L1133">                return true;</span>
+<span class="nc" id="L1134">        }</span>
+<span class="nc" id="L1135">        return false;</span>
+    }
+
+    public static class KeyVal implements Connection.KeyVal {
+        private String key;
+        private String value;
+        private InputStream stream;
+        private String contentType;
+
+        public static KeyVal create(String key, String value) {
+<span class="nc" id="L1145">            return new KeyVal().key(key).value(value);</span>
+        }
+
+        public static KeyVal create(String key, String filename, InputStream stream) {
+<span class="nc" id="L1149">            return new KeyVal().key(key).value(filename).inputStream(stream);</span>
+        }
+
+        private KeyVal() {}
+
+        public KeyVal key(String key) {
+<span class="nc" id="L1155">            Validate.notEmpty(key, &quot;Data key must not be empty&quot;);</span>
+<span class="nc" id="L1156">            this.key = key;</span>
+<span class="nc" id="L1157">            return this;</span>
+        }
+
+        public String key() {
+<span class="nc" id="L1161">            return key;</span>
+        }
+
+        public KeyVal value(String value) {
+<span class="nc" id="L1165">            Validate.notNull(value, &quot;Data value must not be null&quot;);</span>
+<span class="nc" id="L1166">            this.value = value;</span>
+<span class="nc" id="L1167">            return this;</span>
+        }
+
+        public String value() {
+<span class="nc" id="L1171">            return value;</span>
+        }
+
+        public KeyVal inputStream(InputStream inputStream) {
+<span class="nc" id="L1175">            Validate.notNull(value, &quot;Data input stream must not be null&quot;);</span>
+<span class="nc" id="L1176">            this.stream = inputStream;</span>
+<span class="nc" id="L1177">            return this;</span>
+        }
+
+        public InputStream inputStream() {
+<span class="nc" id="L1181">            return stream;</span>
+        }
+
+        public boolean hasInputStream() {
+<span class="nc bnc" id="L1185" title="All 2 branches missed.">            return stream != null;</span>
+        }
+
+        @Override
+        public Connection.KeyVal contentType(String contentType) {
+<span class="nc" id="L1190">            Validate.notEmpty(contentType);</span>
+<span class="nc" id="L1191">            this.contentType = contentType;</span>
+<span class="nc" id="L1192">            return this;</span>
+        }
+
+        @Override
+        public String contentType() {
+<span class="nc" id="L1197">            return contentType;</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L1202">            return key + &quot;=&quot; + value;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

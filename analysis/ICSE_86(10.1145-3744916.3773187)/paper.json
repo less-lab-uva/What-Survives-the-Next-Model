@@ -1,0 +1,83 @@
+{
+  "title": "TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code",
+  "doi": "10.1145/3744916.3773187",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original TraceCoder pipeline instruments generated code, collects fine-grained runtime traces, analyzes failures with multiple agents, repairs code iteratively, learns from historical failed attempts, and rolls back when a repair regresses.",
+    "This reproduction replaces that trace-driven multi-agent debugging workflow with a simplified single-LLM prompt that directly generates the completed function or class."
+  ],
+  "dataset": {
+    "humaneval": {
+      "name": "HumanEval",
+      "sample_size": 16
+    },
+    "humanevalplus": {
+      "name": "HumanEval+",
+      "sample_size": 30
+    },
+    "bigcodebench": {
+      "name": "BigCodeBench",
+      "sample_size": 114
+    },
+    "classeval": {
+      "name": "ClassEval",
+      "sample_size": 10
+    }
+  },
+  "metric": [
+    "Pass@1"
+  ],
+  "original_result": {
+    "humaneval": {
+      "pass_at_1": 0.9939
+    },
+    "humanevalplus": {
+      "pass_at_1": 0.9817
+    },
+    "classeval": {
+      "pass_at_1": 0.82
+    },
+    "bigcodebench": {
+      "pass_at_1": 0.8904
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "humaneval": {
+        "pass_at_1": 1.0,
+        "result_file": "results/results_A_humaneval.jsonl"
+      },
+      "humanevalplus": {
+        "pass_at_1": 0.9333,
+        "result_file": "results/results_A_humanevalplus.jsonl"
+      },
+      "bigcodebench": {
+        "pass_at_1": 0.0702,
+        "result_file": "results/results_A_bigcodebench.jsonl"
+      },
+      "classeval": {
+        "pass_at_1": 0.7,
+        "result_file": "results/results_A_classeval.jsonl"
+      }
+    },
+    "prompt_B": {
+      "humaneval": {
+        "pass_at_1": 1.0,
+        "result_file": "results/results_B_humaneval.jsonl"
+      },
+      "humanevalplus": {
+        "pass_at_1": 0.9,
+        "result_file": "results/results_B_humanevalplus.jsonl"
+      },
+      "bigcodebench": {
+        "pass_at_1": 0.0789,
+        "result_file": "results/results_B_bigcodebench.jsonl"
+      },
+      "classeval": {
+        "pass_at_1": 0.6,
+        "result_file": "results/results_B_classeval.jsonl"
+      }
+    }
+  },
+  "total_cost": 15.05
+}

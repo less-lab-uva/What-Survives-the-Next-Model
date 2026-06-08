@@ -1,0 +1,1208 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "Util",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/Util.java",
+      "class_declaration": "final class Util ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Util.stripLeadingHyphens(final, String)": [
+            4,
+            4,
+            4
+          ],
+          "Util.stripLeadingAndTrailingQuotes(String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/UtilTest.java"
+    },
+    {
+      "src_name": "HelpFormatter",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/HelpFormatter.java",
+      "class_declaration": "public class HelpFormatter ",
+      "methods_under_test": {
+        "=1": {
+          "HelpFormatter.setWidth(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setLeftPadding(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setDescPadding(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setSyntaxPrefix(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setNewLine(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setOptPrefix(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setLongOptPrefix(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setLongOptSeparator(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setArgName(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.setOptionComparator(final, Comparator<Option>)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, String, final, Options)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, String, final, Options, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, String, final, String, final, Options, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, String, final, String, final, Options, final, String, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, int, final, String, final, String, final, Options, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, int, final, String, final, String, final, Options, final, String, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printHelp(final, PrintWriter, final, int, final, String, final, String, final, Options, final, int, final, int, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printUsage(final, PrintWriter, final, int, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printOptions(final, PrintWriter, final, int, final, Options, final, int, final, int)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printWrapped(final, PrintWriter, final, int, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.printWrapped(final, PrintWriter, final, int, final, int, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HelpFormatter.createPadding(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "OptionComparator.compare(final, Option, final, Option)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "HelpFormatter.printHelp(final, PrintWriter, final, int, final, String, final, String, final, Options, final, int, final, int, final, String, final, boolean)": [
+            5,
+            5,
+            5
+          ],
+          "HelpFormatter.printUsage(final, PrintWriter, final, int, final, String, final, Options)": [
+            6,
+            6,
+            6
+          ],
+          "HelpFormatter.renderWrappedText(final, StringBuffer, final, int, int, String)": [
+            4,
+            4,
+            4
+          ],
+          "HelpFormatter.findWrapPos(final, String, final, int, final, int)": [
+            7,
+            7,
+            7
+          ],
+          "HelpFormatter.rtrim(final, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "HelpFormatter.renderOptions(final, StringBuffer, final, int, final, Options, final, int, final, int)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/HelpFormatterTest.java"
+    },
+    {
+      "src_name": "Parser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/Parser.java",
+      "class_declaration": "@Deprecated\npublic abstract class Parser implements CommandLineParser ",
+      "methods_under_test": {
+        "=1": {
+          "Parser.setOptions(final, Options)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parse(final, Options, final, String[])": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parse(final, Options, final, String[], final, Properties)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.parse(final, Options, final, String[], final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Parser.checkRequiredOptions()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Parser.processProperties(final, Properties)": [
+            2,
+            2,
+            2
+          ],
+          "Parser.processArgs(final, Option, final, ListIterator<String>)": [
+            4,
+            4,
+            4
+          ],
+          "Parser.processOption(final, String, final, ListIterator<String>)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "Parser.parse(final, Options, String[], final, Properties, final, boolean)": [
+            14,
+            14,
+            14
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/ParserTestCase.java"
+    },
+    {
+      "src_name": "PatternOptionBuilder",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/PatternOptionBuilder.java",
+      "class_declaration": "public class PatternOptionBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "PatternOptionBuilder.isValueCode(final, char)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PatternOptionBuilder.getValueClass(final, char)": [
+            10,
+            10,
+            10
+          ],
+          "PatternOptionBuilder.parsePattern(final, String)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/PatternOptionBuilderTest.java"
+    },
+    {
+      "src_name": "PosixParser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/PosixParser.java",
+      "class_declaration": "@Deprecated\npublic class PosixParser extends Parser ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "PosixParser.burstToken(final, String, final, boolean)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {
+          "PosixParser.flatten(final, Options, final, String[], final, boolean)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/PosixParserTest.java"
+    },
+    {
+      "src_name": "TypeHandler",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/TypeHandler.java",
+      "class_declaration": "public class TypeHandler ",
+      "methods_under_test": {
+        "=1": {
+          "TypeHandler.createValue(final, String, final, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TypeHandler.createDate(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "TypeHandler.createFile(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "TypeHandler.createFiles(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "TypeHandler.createValue(final, String, final, Class<T>)": [
+            10,
+            10,
+            10
+          ],
+          "TypeHandler.createObject(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "TypeHandler.createNumber(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "TypeHandler.createClass(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "TypeHandler.createURL(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "TypeHandler.openFile(String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/TypeHandlerTest.java"
+    },
+    {
+      "src_name": "BasicParser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/BasicParser.java",
+      "class_declaration": "@Deprecated\npublic class BasicParser extends Parser ",
+      "methods_under_test": {
+        "=1": {
+          "BasicParser.flatten(@SuppressWarnings(\"unused\") final, Options, final, String[], @SuppressWarnings(\"unused\") final, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/BasicParserTest.java"
+    },
+    {
+      "src_name": "CommandLine",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/CommandLine.java",
+      "class_declaration": "public class CommandLine implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "CommandLine.hasOption(final, Option)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.hasOption(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.hasOption(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getParsedOptionValue(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getParsedOptionValue(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionObject(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValue(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValue(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValues(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValues(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValue(final, Option, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValue(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptionValue(final, char, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getArgs()": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.addArg(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.addOption(final, Option)": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.iterator()": [
+            1,
+            1,
+            1
+          ],
+          "CommandLine.getOptions()": [
+            1,
+            1,
+            1
+          ],
+          "Builder.addOption(final, Option)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.addArg(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.build()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CommandLine.getOptionObject(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "CommandLine.getParsedOptionValue(final, Option)": [
+            3,
+            3,
+            3
+          ],
+          "CommandLine.getOptionValue(final, Option)": [
+            2,
+            2,
+            2
+          ],
+          "CommandLine.getOptionValues(final, Option)": [
+            3,
+            3,
+            3
+          ],
+          "CommandLine.getOptionProperties(final, Option)": [
+            5,
+            5,
+            5
+          ],
+          "CommandLine.getOptionProperties(final, String)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/CommandLineTest.java"
+    },
+    {
+      "src_name": "GnuParser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/GnuParser.java",
+      "class_declaration": "@Deprecated\npublic class GnuParser extends Parser ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "GnuParser.flatten(final, Options, final, String[], final, boolean)": [
+            10,
+            10,
+            10
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/GnuParserTest.java"
+    },
+    {
+      "src_name": "Option",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/Option.java",
+      "class_declaration": "public class Option implements Cloneable, Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "Option.setType(final, Object)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setType(final, Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setLongOpt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setOptionalArg(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasOptionalArg()": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasLongOpt()": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasArg()": [
+            1,
+            1,
+            1
+          ],
+          "Option.setDescription(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setRequired(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setArgName(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasArgName()": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasArgs()": [
+            1,
+            1,
+            1
+          ],
+          "Option.setArgs(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Option.setValueSeparator(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "Option.hasValueSeparator()": [
+            1,
+            1,
+            1
+          ],
+          "Option.getValue(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Option.getValue(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Option.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Option.clearValues()": [
+            1,
+            1,
+            1
+          ],
+          "Option.addValue(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Option.acceptsArg()": [
+            1,
+            1,
+            1
+          ],
+          "Option.builder()": [
+            1,
+            1,
+            1
+          ],
+          "Option.builder(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.argName(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.desc(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.longOpt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.numberOfArgs(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.optionalArg(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.required()": [
+            1,
+            1,
+            1
+          ],
+          "Builder.required(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.type(final, Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.valueSeparator()": [
+            1,
+            1,
+            1
+          ],
+          "Builder.valueSeparator(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.hasArg()": [
+            1,
+            1,
+            1
+          ],
+          "Builder.hasArg(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Builder.hasArgs()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Option.addValueForProcessing(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "Option.toString()": [
+            5,
+            5,
+            5
+          ],
+          "Option.equals(final, Object)": [
+            5,
+            5,
+            5
+          ],
+          "Option.clone()": [
+            2,
+            2,
+            2
+          ],
+          "Option.requiresArg()": [
+            3,
+            3,
+            3
+          ],
+          "Builder.build()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/OptionTest.java"
+    },
+    {
+      "src_name": "DefaultParser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/DefaultParser.java",
+      "class_declaration": "public class DefaultParser implements CommandLineParser ",
+      "methods_under_test": {
+        "=1": {
+          "DefaultParser.parse(final, Options, final, String[])": [
+            1,
+            1,
+            1
+          ],
+          "DefaultParser.parse(final, Options, final, String[], final, Properties)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultParser.parse(final, Options, final, String[], final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "DefaultParser.checkRequiredOptions()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DefaultParser.parse(final, Options, final, String[], final, Properties, final, boolean)": [
+            4,
+            4,
+            4
+          ],
+          "DefaultParser.handleConcatenatedOptions(final, String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/DefaultParserTest.java"
+    },
+    {
+      "src_name": "OptionBuilder",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/OptionBuilder.java",
+      "class_declaration": "@Deprecated\npublic final class OptionBuilder ",
+      "methods_under_test": {
+        "=1": {
+          "OptionBuilder.withLongOpt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasArg()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasArg(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withArgName(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.isRequired()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withValueSeparator(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withValueSeparator()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.isRequired(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasArgs()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasArgs(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasOptionalArg()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasOptionalArgs()": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.hasOptionalArgs(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withType(final, Object)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withType(final, Class<?>)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.withDescription(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.create(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "OptionBuilder.create(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "OptionBuilder.create()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/OptionBuilderTest.java"
+    },
+    {
+      "src_name": "OptionGroup",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/OptionGroup.java",
+      "class_declaration": "public class OptionGroup implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "OptionGroup.addOption(final, Option)": [
+            1,
+            1,
+            1
+          ],
+          "OptionGroup.setRequired(final, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "OptionGroup.setSelected(final, Option)": [
+            3,
+            3,
+            3
+          ],
+          "OptionGroup.toString()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/OptionGroupTest.java"
+    },
+    {
+      "src_name": "Options",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/Options.java",
+      "class_declaration": "public class Options implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "Options.addOption(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.addOption(final, String, final, boolean, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.addOption(final, String, final, String, final, boolean, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.addRequiredOption(final, String, final, String, final, boolean, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.helpOptions()": [
+            1,
+            1,
+            1
+          ],
+          "Options.hasOption(String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.hasLongOption(String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.hasShortOption(String)": [
+            1,
+            1,
+            1
+          ],
+          "Options.getOptionGroup(final, Option)": [
+            1,
+            1,
+            1
+          ],
+          "Options.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Options.addOptionGroup(final, OptionGroup)": [
+            3,
+            3,
+            3
+          ],
+          "Options.addOption(final, Option)": [
+            4,
+            4,
+            4
+          ],
+          "Options.getOption(String)": [
+            2,
+            2,
+            2
+          ],
+          "Options.getMatchingOptions(String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/OptionsTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [],
+  "src_without_tests": [
+    {
+      "src_name": "AmbiguousOptionException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/AmbiguousOptionException.java",
+      "class_declaration": "public class AmbiguousOptionException extends UnrecognizedOptionException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CommandLineParser",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/CommandLineParser.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "package-info",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/package-info.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "AlreadySelectedException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/AlreadySelectedException.java",
+      "class_declaration": "public class AlreadySelectedException extends ParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "UnrecognizedOptionException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/UnrecognizedOptionException.java",
+      "class_declaration": "public class UnrecognizedOptionException extends ParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MissingOptionException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/MissingOptionException.java",
+      "class_declaration": "public class MissingOptionException extends ParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MissingArgumentException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/MissingArgumentException.java",
+      "class_declaration": "public class MissingArgumentException extends ParseException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "OptionValidator",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/OptionValidator.java",
+      "class_declaration": "final class OptionValidator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "OptionValidator.validateOption(final, String)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseException",
+      "src_path": "../../defects4j-subjects/Cli-40f/src/main/java/org/apache/commons/cli/ParseException.java",
+      "class_declaration": "public class ParseException extends Exception ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "BugCLI18Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI18Test.java"
+    },
+    {
+      "BugCLI148Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI148Test.java"
+    },
+    {
+      "BugCLI252Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI252Test.java"
+    },
+    {
+      "BugCLI265Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI265Test.java"
+    },
+    {
+      "ValueTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/ValueTest.java"
+    },
+    {
+      "ApplicationTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/ApplicationTest.java"
+    },
+    {
+      "ArgumentIsOptionTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/ArgumentIsOptionTest.java"
+    },
+    {
+      "BugCLI162Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI162Test.java"
+    },
+    {
+      "BugCLI13Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI13Test.java"
+    },
+    {
+      "BugCLI133Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI133Test.java"
+    },
+    {
+      "DisablePartialMatchingTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/DisablePartialMatchingTest.java"
+    },
+    {
+      "BugsTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugsTest.java"
+    },
+    {
+      "BugCLI71Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI71Test.java"
+    },
+    {
+      "BugCLI266Test": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/bug/BugCLI266Test.java"
+    },
+    {
+      "ValuesTest": "../../defects4j-subjects/Cli-40f/src/test/java/org/apache/commons/cli/ValuesTest.java"
+    }
+  ]
+}

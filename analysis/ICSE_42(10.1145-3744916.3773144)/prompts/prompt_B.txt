@@ -1,0 +1,79 @@
+﻿### Role
+You are an expert software engineer specializing in library API completion and version-aware code generation.
+
+
+### Task
+Given a partial code snippet ending mid-expression, you must predict the most appropriate API name that naturally and correctly completes the expression, consistent with the libraries and context visible in the code.
+
+
+### Input
+- `prefix`: A string containing a partial code snippet. The snippet ends abruptly, typically mid-expression after a module or object accessor (e.g., `tf`, `torch.`, `np.`), and your task is to predict the API name that should follow.
+
+
+### Output
+A JSON object with the following field:
+- `api_name`: A string containing the API name that completes the expression. This should be just the callable or attribute name (and any sub-path) that follows the truncation point — not the full expression, not the surrounding code.
+
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "prefix": "  if None in [batch_size, height, width, channels]:\n    return tf"
+      },
+      "outputs": {
+        "api_name": ".compat.v1.placeholder"
+      }
+    }
+  ]
+}
+```
+
+
+### Steps
+1. **Identify the module and truncation point.** Locate where the prefix ends and determine which library module or object is being accessed (e.g., `tf`, `torch`, `np`). Note whether the prefix ends with just the module name (requiring a leading `.`) or already includes a partial sub-path.
+
+
+2. **Extract version and environment signals.** Scan the prefix for explicit version indicators:
+   - Comments such as `# tensorflow 1.x`, `# pytorch 2.0.0`, or version strings in import blocks.
+   - Import aliases (e.g., `import tensorflow.compat.v1 as tf`) that imply a specific API surface.
+   - If version signals are present, they are strong constraints — strongly prefer APIs valid in that version over those from other versions.
+
+
+3. **Extract semantic and functional signals.** Identify what the code is trying to accomplish:
+   - Function names, docstrings, and inline comments that describe the intended operation (e.g., `wrapper for losses.mean_pairwise_squared_error`, `calculate the rank of the tensor`).
+   - Variable names and types used nearby (e.g., tensor shapes, dtypes, argument names).
+   - The return statement or assignment target if visible.
+   - These signals identify the *intended* API family (e.g., a loss function, a linear algebra op, a placeholder).
+
+
+4. **Enumerate candidate APIs and rank them.** Based on signals from Steps 2 and 3, mentally enumerate plausible API completions for the identified module. Rank them by:
+   - Semantic fit: how well the API matches the described or implied functionality.
+   - Version compatibility: eliminate candidates that are not valid in the version identified in Step 2, if any.
+   - Specificity: prefer the most precise and direct API over generic or deprecated aliases.
+   - If multiple candidates remain after filtering, prefer the one with the highest prior probability of appearing in code with this context pattern.
+
+
+5. **Resolve ties and edge cases.**
+   - If two candidates are semantically equivalent but differ by version prefix (e.g., `.losses.fn` vs `.compat.v1.losses.fn`), use the version signal from Step 2 to select the correct one.
+   - If no version signal is present, prefer the API form that is most commonly used in modern code for the identified module.
+   - If the functional intent is ambiguous, prefer the most general-purpose API consistent with the visible argument patterns or return context.
+
+
+6. **Format the output.** Compile the single best API name as the value of `api_name`. Ensure:
+   - The value begins with `.` if the prefix ends with a bare module identifier.
+   - The value contains no parentheses, arguments, or trailing code.
+   - Output only the JSON object — nothing else.
+
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Output only the JSON object with the `api_name` field — no explanation, preamble, or additional text.
+- The `api_name` must begin with a `.` if the prefix ends with a module identifier (e.g., `tf`, `torch`), reflecting that the completion attaches as an attribute.
+- Predict the single most contextually appropriate API, taking into account any version hints, import statements, comments, function names, docstrings, or surrounding logic visible in the prefix.
+- Do not include parentheses, arguments, or any code beyond the API name itself.
+- If the prefix provides no disambiguating context, predict the most commonly used API consistent with the visible module.
+- Follow the Steps above in order as your internal reasoning process.

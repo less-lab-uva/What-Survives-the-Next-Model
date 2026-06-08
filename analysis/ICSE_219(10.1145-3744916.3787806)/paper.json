@@ -1,0 +1,95 @@
+{
+  "title": "Modeling Like Peeling an Onion: Layerwise Analysis-Driven Automatic Behavioral Model Generation",
+  "doi": "10.1145/3744916.3787806",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original LATO pipeline uses a layerwise LLM workflow to identify behavioral activities, extract nested relations, integrate the information, generate PlantUML activity diagrams, and iteratively validate diagram syntax.",
+    "This reproduction replaces the full LATO workflow with a simplified single-LLM prompt that directly generates one PlantUML activity diagram from each requirement text."
+  ],
+  "dataset": {
+    "bp": {
+      "name": "Business Process dataset",
+      "sample_size": 30
+    },
+    "fsd": {
+      "name": "Functional Scenario Descriptions",
+      "sample_size": 116
+    },
+    "lmc": {
+      "name": "Ten Lockheed Martin Cyber-Physical Challenges",
+      "sample_size": 56
+    },
+    "pure": {
+      "name": "PURE dataset",
+      "sample_size": 100
+    },
+    "rac": {
+      "name": "Real Automotive Case",
+      "sample_size": 20
+    },
+    "us": {
+      "name": "User Stories dataset",
+      "sample_size": 220
+    }
+  },
+  "metric": [
+    "R-F1",
+    "N-F1",
+    "pass_rate"
+  ],
+  "original_result": {
+    "lato": {
+      "R-F1": 0.6048,
+      "N-F1": 0.7132,
+      "pass_rate": 0.9778,
+      "averaging": "macro_average_over_datasets",
+      "per_dataset": {
+        "bp": {
+          "R-F1": 0.4043,
+          "N-F1": 0.5772,
+          "pass_rate": 0.9667
+        },
+        "fsd": {
+          "R-F1": 0.6071,
+          "N-F1": 0.8484,
+          "pass_rate": 0.9679
+        },
+        "lmc": {
+          "R-F1": 0.7892,
+          "N-F1": 0.5931,
+          "pass_rate": 0.9936
+        },
+        "pure": {
+          "R-F1": 0.5931,
+          "N-F1": 0.8742,
+          "pass_rate": 0.9764
+        },
+        "rac": {
+          "R-F1": 0.5074,
+          "N-F1": 0.7547,
+          "pass_rate": 0.9708
+        },
+        "us": {
+          "R-F1": 0.728,
+          "N-F1": 0.6317,
+          "pass_rate": 0.9914
+        }
+      }
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "R-F1": 0.3498,
+      "N-F1": 0.3532,
+      "pass_rate": 0.882,
+      "result_file": "results/aggregated_results_A.json"
+    },
+    "prompt_B": {
+      "R-F1": 0.3728,
+      "N-F1": 0.3821,
+      "pass_rate": 0.9393,
+      "result_file": "results/aggregated_results_B.json"
+    }
+  },
+  "total_cost": 7.78
+}

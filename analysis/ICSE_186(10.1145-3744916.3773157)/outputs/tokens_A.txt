@@ -1,0 +1,6 @@
+Prompt variant  : A
+Instances run   : 74
+From cache      : 0
+New LLM calls   : 74
+Total input tok : 301511
+Total output tok: 11272

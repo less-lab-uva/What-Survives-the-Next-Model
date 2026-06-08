@@ -1,0 +1,2930 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "RFC1522Codec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/RFC1522Codec.java",
+      "class_declaration": "abstract class RFC1522Codec ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "RFC1522Codec.encodeText(final, String, final, Charset)": [
+            2,
+            2,
+            2
+          ],
+          "RFC1522Codec.encodeText(final, String, final, String)": [
+            2,
+            2,
+            2
+          ],
+          "RFC1522Codec.decodeText(final, String)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/RFC1522CodecTest.java"
+    },
+    {
+      "src_name": "BaseNCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/BaseNCodec.java",
+      "class_declaration": "public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder ",
+      "methods_under_test": {
+        "=1": {
+          "Context.toString()": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.hasData(final, Context)": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.available(final, Context)": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.encodeToString(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.encodeAsString(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.decode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodec.isInAlphabet(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BaseNCodec.ensureBufferSize(final, int, final, Context)": [
+            2,
+            2,
+            2
+          ],
+          "BaseNCodec.readResults(final, byte[], final, int, final, int, final, Context)": [
+            3,
+            3,
+            3
+          ],
+          "BaseNCodec.isWhiteSpace(final, byte)": [
+            6,
+            6,
+            6
+          ],
+          "BaseNCodec.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "BaseNCodec.decode(final, Object)": [
+            3,
+            3,
+            3
+          ],
+          "BaseNCodec.decode(final, byte[])": [
+            2,
+            2,
+            2
+          ],
+          "BaseNCodec.encode(final, byte[])": [
+            2,
+            2,
+            2
+          ],
+          "BaseNCodec.encode(final, byte[], int, int)": [
+            2,
+            2,
+            2
+          ],
+          "BaseNCodec.isInAlphabet(final, byte[], final, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "BaseNCodec.containsAlphabetOrPad(final, byte[])": [
+            4,
+            4,
+            4
+          ],
+          "BaseNCodec.getEncodedLength(final, byte[])": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/BaseNCodecTest.java"
+    },
+    {
+      "src_name": "Metaphone",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Metaphone.java",
+      "class_declaration": "public class Metaphone implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "Metaphone.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Metaphone.isMetaphoneEqual(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Metaphone.setMaxCodeLen(final, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Metaphone.encode(final, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "Metaphone.metaphone(final, String)": [
+            67,
+            67,
+            67
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/MetaphoneTest.java"
+    },
+    {
+      "src_name": "Base32",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base32.java",
+      "class_declaration": "public class Base32 extends BaseNCodec ",
+      "methods_under_test": {
+        "=1": {
+          "Base32.isInAlphabet(final, byte)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {
+          "Base32.decode(final, byte[], int, final, int, final, Context)": [
+            14,
+            14,
+            14
+          ],
+          "Base32.encode(final, byte[], int, final, int, final, Context)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base32Test.java"
+    },
+    {
+      "src_name": "Utils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/Utils.java",
+      "class_declaration": "class Utils ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Utils.digit16(final, byte)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/UtilsTest.java"
+    },
+    {
+      "src_name": "PureJavaCrc32",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/PureJavaCrc32.java",
+      "class_declaration": "public class PureJavaCrc32 implements Checksum ",
+      "methods_under_test": {
+        "=1": {
+          "PureJavaCrc32.reset()": [
+            1,
+            1,
+            1
+          ],
+          "PureJavaCrc32.update(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PureJavaCrc32.update(final, byte[], final, int, final, int)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/PureJavaCrc32Test.java"
+    },
+    {
+      "src_name": "Charsets",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/Charsets.java",
+      "class_declaration": "public class Charsets ",
+      "methods_under_test": {
+        "=1": {
+          "Charsets.toCharset(final, Charset)": [
+            1,
+            1,
+            1
+          ],
+          "Charsets.toCharset(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/CharsetsTest.java"
+    },
+    {
+      "src_name": "CharEncoding",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/CharEncoding.java",
+      "class_declaration": "public class CharEncoding ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/CharEncodingTest.java"
+    },
+    {
+      "src_name": "QuotedPrintableCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/QuotedPrintableCodec.java",
+      "class_declaration": "public class QuotedPrintableCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, StringDecoder ",
+      "methods_under_test": {
+        "=1": {
+          "QuotedPrintableCodec.encodeQuotedPrintable(final, BitSet, final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "QuotedPrintableCodec.encode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "QuotedPrintableCodec.decode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "QuotedPrintableCodec.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "QuotedPrintableCodec.decode(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "QuotedPrintableCodec.decode(final, String, final, Charset)": [
+            2,
+            2,
+            2
+          ],
+          "QuotedPrintableCodec.decode(final, String, final, String)": [
+            2,
+            2,
+            2
+          ],
+          "QuotedPrintableCodec.encode(final, Object)": [
+            4,
+            4,
+            4
+          ],
+          "QuotedPrintableCodec.decode(final, Object)": [
+            4,
+            4,
+            4
+          ],
+          "QuotedPrintableCodec.encode(final, String, final, Charset)": [
+            2,
+            2,
+            2
+          ],
+          "QuotedPrintableCodec.encode(final, String, final, String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "QuotedPrintableCodec.encodeQuotedPrintable(BitSet, final, byte[], final, boolean)": [
+            11,
+            11,
+            11
+          ],
+          "QuotedPrintableCodec.decodeQuotedPrintable(final, byte[])": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/QuotedPrintableCodecTest.java"
+    },
+    {
+      "src_name": "MatchRatingApproachEncoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/MatchRatingApproachEncoder.java",
+      "class_declaration": "public class MatchRatingApproachEncoder implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "MatchRatingApproachEncoder.isVowel(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "MatchRatingApproachEncoder.cleanName(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "MatchRatingApproachEncoder.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "MatchRatingApproachEncoder.encode(String)": [
+            2,
+            2,
+            2
+          ],
+          "MatchRatingApproachEncoder.getFirst3Last3(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "MatchRatingApproachEncoder.getMinRating(final, int)": [
+            5,
+            5,
+            5
+          ],
+          "MatchRatingApproachEncoder.isEncodeEquals(String, String)": [
+            6,
+            6,
+            6
+          ],
+          "MatchRatingApproachEncoder.leftToRightThenRightToLeftProcessing(final, String, final, String)": [
+            6,
+            6,
+            6
+          ],
+          "MatchRatingApproachEncoder.removeAccents(final, String)": [
+            4,
+            4,
+            4
+          ],
+          "MatchRatingApproachEncoder.removeDoubleConsonants(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "MatchRatingApproachEncoder.removeVowels(String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/MatchRatingApproachEncoderTest.java"
+    },
+    {
+      "src_name": "DaitchMokotoffSoundex",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/DaitchMokotoffSoundex.java",
+      "class_declaration": "public class DaitchMokotoffSoundex implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "Branch.createBranch()": [
+            1,
+            1,
+            1
+          ],
+          "Branch.finish()": [
+            1,
+            1,
+            1
+          ],
+          "Branch.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "Rule.matches(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Rule.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Branch.equals(final, Object)": [
+            3,
+            3,
+            3
+          ],
+          "Branch.processNextReplacement(final, String, final, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "Branch.toString()": [
+            2,
+            2,
+            2
+          ],
+          "Rule.getReplacements(final, String, final, boolean)": [
+            3,
+            3,
+            3
+          ],
+          "DaitchMokotoffSoundex.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "DaitchMokotoffSoundex.encode(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "DaitchMokotoffSoundex.soundex(final, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/DaitchMokotoffSoundexTest.java"
+    },
+    {
+      "src_name": "UnixCrypt",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/UnixCrypt.java",
+      "class_declaration": "public class UnixCrypt ",
+      "methods_under_test": {
+        "=1": {
+          "UnixCrypt.crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "UnixCrypt.crypt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "UnixCrypt.crypt(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "UnixCrypt.crypt(final, byte[], String)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/UnixCryptTest.java"
+    },
+    {
+      "src_name": "Base32OutputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base32OutputStream.java",
+      "class_declaration": "public class Base32OutputStream extends BaseNCodecOutputStream ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base32OutputStreamTest.java"
+    },
+    {
+      "src_name": "PureJavaCrc32C",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/PureJavaCrc32C.java",
+      "class_declaration": "public class PureJavaCrc32C implements Checksum ",
+      "methods_under_test": {
+        "=1": {
+          "PureJavaCrc32C.getValue()": [
+            1,
+            1,
+            1
+          ],
+          "PureJavaCrc32C.reset()": [
+            1,
+            1,
+            1
+          ],
+          "PureJavaCrc32C.update(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PureJavaCrc32C.update(byte[], int, int)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/PureJavaCrc32CTest.java"
+    },
+    {
+      "src_name": "DecoderException",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/DecoderException.java",
+      "class_declaration": "public class DecoderException extends Exception ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/DecoderExceptionTest.java"
+    },
+    {
+      "src_name": "Base32InputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base32InputStream.java",
+      "class_declaration": "public class Base32InputStream extends BaseNCodecInputStream ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base32InputStreamTest.java"
+    },
+    {
+      "src_name": "Caverphone1",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Caverphone1.java",
+      "class_declaration": "public class Caverphone1 extends AbstractCaverphone ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Caverphone1.encode(final, String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/Caverphone1Test.java"
+    },
+    {
+      "src_name": "Rule",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/Rule.java",
+      "class_declaration": "public class Rule ",
+      "methods_under_test": {
+        "=1": {
+          "Phoneme.append(final, CharSequence)": [
+            1,
+            1,
+            1
+          ],
+          "Phoneme.join(final, Phoneme)": [
+            1,
+            1,
+            1
+          ],
+          "Phoneme.mergeWithLanguage(final, LanguageSet)": [
+            1,
+            1,
+            1
+          ],
+          "Phoneme.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Rule.getInstance(final, NameType, final, RuleType, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Rule.getInstanceMap(final, NameType, final, RuleType, final, Languages.LanguageSet)": [
+            1,
+            1,
+            1
+          ],
+          "Rule.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Rule.getInstance(final, NameType, final, RuleType, final, Languages.LanguageSet)": [
+            2,
+            2,
+            2
+          ],
+          "Rule.getInstanceMap(final, NameType, final, RuleType, final, String)": [
+            2,
+            2,
+            2
+          ],
+          "Rule.patternAndContextMatches(final, CharSequence, final, int)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/RuleTest.java"
+    },
+    {
+      "src_name": "HmacUtils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/HmacUtils.java",
+      "class_declaration": "public final class HmacUtils ",
+      "methods_under_test": {
+        "=1": {
+          "HmacUtils.getHmacMd5(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.getHmacSha1(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.getHmacSha256(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.getHmacSha384(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.getHmacSha512(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.getInitializedMac(final, HmacAlgorithms, final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5Hex(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5Hex(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacMd5Hex(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1Hex(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1Hex(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha1Hex(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256Hex(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256Hex(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha256Hex(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384Hex(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384Hex(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha384Hex(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512Hex(final, byte[], final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512Hex(final, byte[], final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacSha512Hex(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.updateHmac(final, Mac, final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.updateHmac(final, Mac, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmac(byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacHex(byte[])": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmac(String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacHex(String)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmac(ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacHex(ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacHex(InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "HmacUtils.hmacHex(File)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "HmacUtils.isAvailable(String)": [
+            4,
+            4,
+            4
+          ],
+          "HmacUtils.isAvailable(HmacAlgorithms)": [
+            4,
+            4,
+            4
+          ],
+          "HmacUtils.getInitializedMac(final, String, final, byte[])": [
+            3,
+            3,
+            3
+          ],
+          "HmacUtils.updateHmac(final, Mac, final, InputStream)": [
+            2,
+            2,
+            2
+          ],
+          "HmacUtils.hmac(InputStream)": [
+            2,
+            2,
+            2
+          ],
+          "HmacUtils.hmac(final, File)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/HmacUtilsTest.java"
+    },
+    {
+      "src_name": "DigestUtils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/DigestUtils.java",
+      "class_declaration": "public class DigestUtils ",
+      "methods_under_test": {
+        "=1": {
+          "DigestUtils.digest(final, MessageDigest, final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, MessageDigest, final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, MessageDigest, final, File)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, MessageDigest, final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md2Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.md5Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha1Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha256Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha384Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512Hex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512Hex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.sha512Hex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.shaHex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.shaHex(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.shaHex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.updateDigest(final, MessageDigest, final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.updateDigest(final, MessageDigest, final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.updateDigest(final, MessageDigest, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.isAvailable(String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, File)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digest(final, InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digestAsHex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digestAsHex(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digestAsHex(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digestAsHex(final, File)": [
+            1,
+            1,
+            1
+          ],
+          "DigestUtils.digestAsHex(final, InputStream)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DigestUtils.getDigest(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "DigestUtils.getDigest(final, String, MessageDigest)": [
+            3,
+            3,
+            3
+          ],
+          "DigestUtils.updateDigest(final, MessageDigest, final, File)": [
+            3,
+            3,
+            3
+          ],
+          "DigestUtils.updateDigest(final, MessageDigest, final, InputStream)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/DigestUtilsTest.java"
+    },
+    {
+      "src_name": "EncoderException",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/EncoderException.java",
+      "class_declaration": "public class EncoderException extends Exception ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/EncoderExceptionTest.java"
+    },
+    {
+      "src_name": "Base64OutputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base64OutputStream.java",
+      "class_declaration": "public class Base64OutputStream extends BaseNCodecOutputStream ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base64OutputStreamTest.java"
+    },
+    {
+      "src_name": "BinaryCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/BinaryCodec.java",
+      "class_declaration": "public class BinaryCodec implements BinaryDecoder, BinaryEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "BinaryCodec.encode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "BinaryCodec.decode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "BinaryCodec.toAsciiString(final, byte[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BinaryCodec.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "BinaryCodec.decode(final, Object)": [
+            5,
+            5,
+            5
+          ],
+          "BinaryCodec.toByteArray(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "BinaryCodec.fromAscii(final, char[])": [
+            5,
+            5,
+            5
+          ],
+          "BinaryCodec.fromAscii(final, byte[])": [
+            5,
+            5,
+            5
+          ],
+          "BinaryCodec.toAsciiBytes(final, byte[])": [
+            5,
+            5,
+            5
+          ],
+          "BinaryCodec.toAsciiChars(final, byte[])": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/BinaryCodecTest.java"
+    },
+    {
+      "src_name": "QCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/QCodec.java",
+      "class_declaration": "public class QCodec extends RFC1522Codec implements StringEncoder, StringDecoder ",
+      "methods_under_test": {
+        "=1": {
+          "QCodec.setEncodeBlanks(final, boolean)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "QCodec.doEncoding(final, byte[])": [
+            5,
+            5,
+            5
+          ],
+          "QCodec.doDecoding(final, byte[])": [
+            7,
+            7,
+            7
+          ],
+          "QCodec.encode(final, String, final, Charset)": [
+            2,
+            2,
+            2
+          ],
+          "QCodec.encode(final, String, final, String)": [
+            3,
+            3,
+            3
+          ],
+          "QCodec.encode(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "QCodec.decode(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "QCodec.encode(final, Object)": [
+            3,
+            3,
+            3
+          ],
+          "QCodec.decode(final, Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/QCodecTest.java"
+    },
+    {
+      "src_name": "HmacAlgorithms",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/HmacAlgorithms.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/HmacAlgorithmsTest.java"
+    },
+    {
+      "src_name": "Caverphone2",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Caverphone2.java",
+      "class_declaration": "public class Caverphone2 extends AbstractCaverphone ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Caverphone2.encode(final, String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/Caverphone2Test.java"
+    },
+    {
+      "src_name": "BeiderMorseEncoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/BeiderMorseEncoder.java",
+      "class_declaration": "public class BeiderMorseEncoder implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "BeiderMorseEncoder.setConcat(final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "BeiderMorseEncoder.setNameType(final, NameType)": [
+            1,
+            1,
+            1
+          ],
+          "BeiderMorseEncoder.setRuleType(final, RuleType)": [
+            1,
+            1,
+            1
+          ],
+          "BeiderMorseEncoder.setMaxPhonemes(final, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BeiderMorseEncoder.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "BeiderMorseEncoder.encode(final, String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/BeiderMorseEncoderTest.java"
+    },
+    {
+      "src_name": "BCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/BCodec.java",
+      "class_declaration": "public class BCodec extends RFC1522Codec implements StringEncoder, StringDecoder ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "BCodec.doEncoding(final, byte[])": [
+            2,
+            2,
+            2
+          ],
+          "BCodec.doDecoding(final, byte[])": [
+            2,
+            2,
+            2
+          ],
+          "BCodec.encode(final, String, final, Charset)": [
+            2,
+            2,
+            2
+          ],
+          "BCodec.encode(final, String, final, String)": [
+            3,
+            3,
+            3
+          ],
+          "BCodec.encode(final, String)": [
+            2,
+            2,
+            2
+          ],
+          "BCodec.decode(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "BCodec.encode(final, Object)": [
+            3,
+            3,
+            3
+          ],
+          "BCodec.decode(final, Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/BCodecTest.java"
+    },
+    {
+      "src_name": "Md5Crypt",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/Md5Crypt.java",
+      "class_declaration": "public class Md5Crypt ",
+      "methods_under_test": {
+        "=1": {
+          "Md5Crypt.apr1Crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Md5Crypt.apr1Crypt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Md5Crypt.apr1Crypt(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Md5Crypt.md5Crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Md5Crypt.md5Crypt(final, byte[], final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Md5Crypt.apr1Crypt(final, byte[], String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "Md5Crypt.md5Crypt(final, byte[], final, String, final, String)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/Md5CryptTest.java"
+    },
+    {
+      "src_name": "StringEncoderComparator",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/StringEncoderComparator.java",
+      "class_declaration": "@SuppressWarnings(\"rawtypes\")\npublic class StringEncoderComparator implements Comparator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "StringEncoderComparator.compare(final, Object, final, Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/StringEncoderComparatorTest.java"
+    },
+    {
+      "src_name": "ColognePhonetic",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/ColognePhonetic.java",
+      "class_declaration": "public class ColognePhonetic implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "CologneBuffer.length()": [
+            1,
+            1,
+            1
+          ],
+          "CologneBuffer.toString()": [
+            1,
+            1,
+            1
+          ],
+          "CologneBuffer.addRight(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CologneOutputBuffer.copyData(final, int, final, int)": [
+            1,
+            1,
+            1
+          ],
+          "CologneBuffer.addLeft(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "CologneInputBuffer.copyData(final, int, final, int)": [
+            1,
+            1,
+            1
+          ],
+          "CologneBuffer.removeNext()": [
+            1,
+            1,
+            1
+          ],
+          "ColognePhonetic.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "ColognePhonetic.isEncodeEqual(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ColognePhonetic.encode(final, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "ColognePhonetic.colognePhonetic(String)": [
+            22,
+            22,
+            22
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/ColognePhoneticTest.java"
+    },
+    {
+      "src_name": "Nysiis",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Nysiis.java",
+      "class_declaration": "public class Nysiis implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "Nysiis.encode(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Nysiis.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "Nysiis.nysiis(String)": [
+            10,
+            10,
+            10
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/NysiisTest.java"
+    },
+    {
+      "src_name": "Soundex",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Soundex.java",
+      "class_declaration": "public class Soundex implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "Soundex.difference(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Soundex.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Soundex.setMaxLength(final, int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Soundex.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "Soundex.soundex(String)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/SoundexTest.java"
+    },
+    {
+      "src_name": "StringUtils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/StringUtils.java",
+      "class_declaration": "public class StringUtils ",
+      "methods_under_test": {
+        "=1": {
+          "StringUtils.getByteBufferUtf8(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesIso8859_1(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesUsAscii(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesUtf16(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesUtf16Be(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesUtf16Le(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.getBytesUtf8(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringIso8859_1(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringUsAscii(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringUtf16(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringUtf16Be(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringUtf16Le(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "StringUtils.newStringUtf8(final, byte[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "StringUtils.equals(final, CharSequence, final, CharSequence)": [
+            4,
+            4,
+            4
+          ],
+          "StringUtils.getBytesUnchecked(final, String, final, String)": [
+            3,
+            3,
+            3
+          ],
+          "StringUtils.newString(final, byte[], final, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/StringUtilsTest.java"
+    },
+    {
+      "src_name": "Base64InputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base64InputStream.java",
+      "class_declaration": "public class Base64InputStream extends BaseNCodecInputStream ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base64InputStreamTest.java"
+    },
+    {
+      "src_name": "Base64",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Base64.java",
+      "class_declaration": "public class Base64 extends BaseNCodec ",
+      "methods_under_test": {
+        "=1": {
+          "Base64.isArrayByteBase64(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.isBase64(final, byte)": [
+            1,
+            1,
+            1
+          ],
+          "Base64.isBase64(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64String(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64URLSafe(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64URLSafeString(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64Chunked(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64(final, byte[], final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Base64.encodeBase64(final, byte[], final, boolean, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Base64.decodeBase64(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Base64.decodeBase64(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.decodeInteger(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Base64.isInAlphabet(final, byte)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Base64.isBase64(final, byte[])": [
+            3,
+            3,
+            3
+          ],
+          "Base64.encodeBase64(final, byte[], final, boolean, final, boolean, final, int)": [
+            3,
+            3,
+            3
+          ],
+          "Base64.encodeInteger(final, BigInteger)": [
+            2,
+            2,
+            2
+          ],
+          "Base64.toIntegerBytes(final, BigInteger)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "Base64.encode(final, byte[], int, final, int, final, Context)": [
+            11,
+            11,
+            11
+          ],
+          "Base64.decode(final, byte[], int, final, int, final, Context)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base64Test.java"
+    },
+    {
+      "src_name": "RefinedSoundex",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/RefinedSoundex.java",
+      "class_declaration": "public class RefinedSoundex implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "RefinedSoundex.difference(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "RefinedSoundex.encode(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "RefinedSoundex.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "RefinedSoundex.getMappingCode(final, char)": [
+            2,
+            2,
+            2
+          ],
+          "RefinedSoundex.soundex(String)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/RefinedSoundexTest.java"
+    },
+    {
+      "src_name": "Hex",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/Hex.java",
+      "class_declaration": "public class Hex implements BinaryEncoder, BinaryDecoder ",
+      "methods_under_test": {
+        "=1": {
+          "Hex.decodeHex(String)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHex(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHex(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHex(final, byte[], final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHex(final, ByteBuffer, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHex(final, ByteBuffer, final, char[])": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHexString(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHexString(final, byte[], boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHexString(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encodeHexString(final, ByteBuffer, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.decode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Hex.decode(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Hex.encode(final, ByteBuffer)": [
+            1,
+            1,
+            1
+          ],
+          "Hex.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Hex.decodeHex(final, char[])": [
+            3,
+            3,
+            3
+          ],
+          "Hex.encodeHex(final, byte[], final, char[])": [
+            2,
+            2,
+            2
+          ],
+          "Hex.toDigit(final, char, final, int)": [
+            2,
+            2,
+            2
+          ],
+          "Hex.decode(final, Object)": [
+            5,
+            5,
+            5
+          ],
+          "Hex.encode(final, Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/HexTest.java"
+    },
+    {
+      "src_name": "Crypt",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/Crypt.java",
+      "class_declaration": "public class Crypt ",
+      "methods_under_test": {
+        "=1": {
+          "Crypt.crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Crypt.crypt(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Crypt.crypt(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Crypt.crypt(final, byte[], final, String)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/CryptTest.java"
+    },
+    {
+      "src_name": "PhoneticEngine",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/PhoneticEngine.java",
+      "class_declaration": "public class PhoneticEngine ",
+      "methods_under_test": {
+        "=1": {
+          "PhonemeBuilder.empty(final, Languages.LanguageSet)": [
+            1,
+            1,
+            1
+          ],
+          "PhonemeBuilder.append(final, CharSequence)": [
+            1,
+            1,
+            1
+          ],
+          "PhoneticEngine.encode(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PhonemeBuilder.apply(final, Rule.PhonemeExpr, final, int)": [
+            6,
+            6,
+            6
+          ],
+          "PhonemeBuilder.makeString()": [
+            3,
+            3,
+            3
+          ],
+          "RulesApplication.invoke()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {
+          "PhoneticEngine.encode(String, final, Languages.LanguageSet)": [
+            13,
+            13,
+            13
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/PhoneticEngineTest.java"
+    },
+    {
+      "src_name": "B64",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/B64.java",
+      "class_declaration": "class B64 ",
+      "methods_under_test": {
+        "=1": {
+          "B64.b64from24bit(final, byte, final, byte, final, byte, final, int, final, StringBuilder)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "B64.getRandomSalt(final, int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/B64Test.java"
+    },
+    {
+      "src_name": "Sha2Crypt",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/Sha2Crypt.java",
+      "class_declaration": "public class Sha2Crypt ",
+      "methods_under_test": {
+        "=1": {
+          "Sha2Crypt.sha256Crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "Sha2Crypt.sha512Crypt(final, byte[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Sha2Crypt.sha256Crypt(final, byte[], String)": [
+            2,
+            2,
+            2
+          ],
+          "Sha2Crypt.sha512Crypt(final, byte[], String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/Sha2CryptTest.java"
+    },
+    {
+      "src_name": "URLCodec",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/net/URLCodec.java",
+      "class_declaration": "public class URLCodec implements BinaryEncoder, BinaryDecoder, StringEncoder, StringDecoder ",
+      "methods_under_test": {
+        "=1": {
+          "URLCodec.encode(final, byte[])": [
+            1,
+            1,
+            1
+          ],
+          "URLCodec.decode(final, byte[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "URLCodec.encodeUrl(BitSet, final, byte[])": [
+            7,
+            7,
+            7
+          ],
+          "URLCodec.decodeUrl(final, byte[])": [
+            8,
+            8,
+            8
+          ],
+          "URLCodec.encode(final, String, final, String)": [
+            2,
+            2,
+            2
+          ],
+          "URLCodec.encode(final, String)": [
+            5,
+            5,
+            5
+          ],
+          "URLCodec.decode(final, String, final, String)": [
+            2,
+            2,
+            2
+          ],
+          "URLCodec.decode(final, String)": [
+            5,
+            5,
+            5
+          ],
+          "URLCodec.encode(final, Object)": [
+            4,
+            4,
+            4
+          ],
+          "URLCodec.decode(final, Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/net/URLCodecTest.java"
+    },
+    {
+      "src_name": "MessageDigestAlgorithms",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/digest/MessageDigestAlgorithms.java",
+      "class_declaration": "public class MessageDigestAlgorithms ",
+      "methods_under_test": {
+        "=1": {
+          "MessageDigestAlgorithms.values()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/MessageDigestAlgorithmsTest.java"
+    },
+    {
+      "src_name": "DoubleMetaphone",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/DoubleMetaphone.java",
+      "class_declaration": "public class DoubleMetaphone implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "DoubleMetaphone.doubleMetaphone(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphone.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphone.isDoubleMetaphoneEqual(final, String, final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphone.isDoubleMetaphoneEqual(final, String, final, String, final, boolean)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphone.setMaxCodeLen(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphoneResult.append(final, char)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphoneResult.append(final, char, final, char)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphoneResult.append(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "DoubleMetaphoneResult.append(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DoubleMetaphone.encode(final, Object)": [
+            2,
+            2,
+            2
+          ],
+          "DoubleMetaphone.charAt(final, String, final, int)": [
+            2,
+            2,
+            2
+          ],
+          "DoubleMetaphone.contains(final, String, final, int, final, int)": [
+            4,
+            4,
+            4
+          ],
+          "DoubleMetaphoneResult.appendPrimary(final, char)": [
+            2,
+            2,
+            2
+          ],
+          "DoubleMetaphoneResult.appendAlternate(final, char)": [
+            2,
+            2,
+            2
+          ],
+          "DoubleMetaphoneResult.appendPrimary(final, String)": [
+            3,
+            3,
+            3
+          ],
+          "DoubleMetaphoneResult.appendAlternate(final, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "DoubleMetaphone.doubleMetaphone(String, final, boolean)": [
+            31,
+            31,
+            31
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/DoubleMetaphoneTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [
+    {
+      "src_name": "Lang",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/Lang.java",
+      "class_declaration": "public class Lang ",
+      "methods_under_test": {
+        "=1": {
+          "LangRule.matches(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Lang.instance(final, NameType)": [
+            1,
+            1,
+            1
+          ],
+          "Lang.guessLanguage(final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Lang.loadFromResource(final, String, final, Languages)": [
+            9,
+            9,
+            9
+          ],
+          "Lang.guessLanguages(final, String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/LanguageGuessingTest.java"
+    },
+    {
+      "src_name": "StringEncoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/StringEncoder.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/StringEncoderAbstractTest.java"
+    }
+  ],
+  "src_without_tests": [
+    {
+      "src_name": "StringDecoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/StringDecoder.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ResourceConstants",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/ResourceConstants.java",
+      "class_declaration": "class ResourceConstants ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BinaryDecoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/BinaryDecoder.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Caverphone",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/Caverphone.java",
+      "class_declaration": "@Deprecated\npublic class Caverphone implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "Caverphone.caverphone(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Caverphone.encode(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "Caverphone.isCaverphoneEqual(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Caverphone.encode(final, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Encoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/Encoder.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Digest",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/cli/Digest.java",
+      "class_declaration": "public class Digest ",
+      "methods_under_test": {
+        "=1": {
+          "Digest.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "SoundexUtils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/SoundexUtils.java",
+      "class_declaration": "final class SoundexUtils ",
+      "methods_under_test": {
+        "=1": {
+          "SoundexUtils.difference(final, StringEncoder, final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "SoundexUtils.clean(final, String)": [
+            5,
+            5,
+            5
+          ],
+          "SoundexUtils.differenceEncoded(final, String, final, String)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CharSequenceUtils",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/CharSequenceUtils.java",
+      "class_declaration": "public class CharSequenceUtils ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CharSequenceUtils.regionMatches(final, CharSequence, final, boolean, final, int, final, CharSequence, final, int, final, int)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BinaryEncoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/BinaryEncoder.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "NameType",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/NameType.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "RuleType",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/RuleType.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "AbstractCaverphone",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/AbstractCaverphone.java",
+      "class_declaration": "public abstract class AbstractCaverphone implements StringEncoder ",
+      "methods_under_test": {
+        "=1": {
+          "AbstractCaverphone.isEncodeEqual(final, String, final, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "AbstractCaverphone.encode(final, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BaseNCodecInputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/BaseNCodecInputStream.java",
+      "class_declaration": "public class BaseNCodecInputStream extends FilterInputStream ",
+      "methods_under_test": {
+        "=1": {
+          "BaseNCodecInputStream.available()": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodecInputStream.markSupported()": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodecInputStream.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BaseNCodecInputStream.read()": [
+            3,
+            3,
+            3
+          ],
+          "BaseNCodecInputStream.read(final, byte, [], final, int, final, int)": [
+            9,
+            9,
+            9
+          ],
+          "BaseNCodecInputStream.skip(final, long)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BaseNCodecOutputStream",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/binary/BaseNCodecOutputStream.java",
+      "class_declaration": "public class BaseNCodecOutputStream extends FilterOutputStream ",
+      "methods_under_test": {
+        "=1": {
+          "BaseNCodecOutputStream.write(final, int)": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodecOutputStream.flush()": [
+            1,
+            1,
+            1
+          ],
+          "BaseNCodecOutputStream.close()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BaseNCodecOutputStream.write(final, byte, [], final, int, final, int)": [
+            7,
+            7,
+            7
+          ],
+          "BaseNCodecOutputStream.eof()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Languages",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/language/bm/Languages.java",
+      "class_declaration": "public class Languages ",
+      "methods_under_test": {
+        "=1": {
+          "LanguageSet.from(final, Set<String>)": [
+            1,
+            1,
+            1
+          ],
+          "SomeLanguages.contains(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "SomeLanguages.toString()": [
+            1,
+            1,
+            1
+          ],
+          "Languages.getInstance(final, NameType)": [
+            1,
+            1,
+            1
+          ],
+          "LanguageSet.contains(final, String)": [
+            1,
+            1,
+            1
+          ],
+          "LanguageSet.restrictTo(final, LanguageSet)": [
+            1,
+            1,
+            1
+          ],
+          "LanguageSet.merge(final, LanguageSet)": [
+            1,
+            1,
+            1
+          ],
+          "LanguageSet.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "SomeLanguages.restrictTo(final, LanguageSet)": [
+            6,
+            6,
+            6
+          ],
+          "SomeLanguages.merge(final, LanguageSet)": [
+            5,
+            5,
+            5
+          ],
+          "Languages.getInstance(final, String)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Decoder",
+      "src_path": "../../defects4j-subjects/Codec-18f/src/main/java/org/apache/commons/codec/Decoder.java",
+      "error": "list index out of range"
+    }
+  ],
+  "test_unpaired": [
+    {
+      "PhoneticEnginePerformanceTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/PhoneticEnginePerformanceTest.java"
+    },
+    {
+      "Sha512CryptTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/Sha512CryptTest.java"
+    },
+    {
+      "Base64Codec13Test": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base64Codec13Test.java"
+    },
+    {
+      "Sha256CryptTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/Sha256CryptTest.java"
+    },
+    {
+      "BinaryEncoderAbstractTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/BinaryEncoderAbstractTest.java"
+    },
+    {
+      "Codec105ErrorInputStream": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Codec105ErrorInputStream.java"
+    },
+    {
+      "Apr1CryptTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/digest/Apr1CryptTest.java"
+    },
+    {
+      "DoubleMetaphone2Test": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/DoubleMetaphone2Test.java"
+    },
+    {
+      "PhoneticEngineRegressionTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/PhoneticEngineRegressionTest.java"
+    },
+    {
+      "CacheSubSequencePerformanceTest": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/language/bm/CacheSubSequencePerformanceTest.java"
+    },
+    {
+      "Base64TestData": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base64TestData.java"
+    },
+    {
+      "Base32TestData": "../../defects4j-subjects/Codec-18f/src/test/java/org/apache/commons/codec/binary/Base32TestData.java"
+    }
+  ]
+}

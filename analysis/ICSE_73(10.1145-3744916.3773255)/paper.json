@@ -1,0 +1,53 @@
+{
+  "title": "From Code to Correctness: Closing the Last Mile of Code Generation with Hierarchical Debugging",
+  "doi": "10.1145/3744916.3773255",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original MGDebugger pipeline decomposes LLM-generated code into a hierarchy of subfunctions, generates tests for smaller code units, simulates execution to localize failures, fixes subfunctions bottom-up, and then propagates fixes back into the full program.",
+    "This reproduction replaces that hierarchical multi-granularity debugging workflow with a simplified single-LLM prompt that directly produces a corrected solution."
+  ],
+  "dataset": {
+    "humaneval": {
+      "name": "HumanEval",
+      "sample_size": 164
+    },
+    "mbpp": {
+      "name": "MBPP",
+      "sample_size": 250
+    }
+  },
+  "metric": [
+    "accuracy"
+  ],
+  "original_result": {
+    "humaneval": {
+      "accuracy": 0.945
+    },
+    "mbpp": {
+      "accuracy": 0.8
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "humaneval": {
+        "accuracy": 1.0,
+        "result_file": "results/results_A_humaneval.jsonl"
+      },
+      "mbpp": {
+        "accuracy": 0.96,
+        "result_file": "results/results_A_mbpp.jsonl"
+      }
+    },
+    "prompt_B": {
+      "humaneval": {
+        "accuracy": 0.9939,
+        "result_file": "results/results_B_humaneval.jsonl"
+      },
+      "mbpp": {
+        "accuracy": 0.96,
+        "result_file": "results/results_B_mbpp.jsonl"
+      }
+    }
+  },
+  "total_cost": 13.67
+}

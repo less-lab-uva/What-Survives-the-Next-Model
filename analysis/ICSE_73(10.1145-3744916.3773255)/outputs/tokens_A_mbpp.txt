@@ -1,0 +1,5 @@
+Prompt          : A
+Dataset         : mbpp
+Instances run   : 250
+Total input tok : 335551
+Total output tok: 99970

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseNCodecOutputStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.binary</a> &gt; <span class="el_source">BaseNCodecOutputStream.java</span></div><h1>BaseNCodecOutputStream.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.binary;
+
+import static org.apache.commons.codec.binary.BaseNCodec.EOF;
+
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import org.apache.commons.codec.binary.BaseNCodec.Context;
+
+/**
+ * Abstract superclass for Base-N output streams.
+ * &lt;p&gt;
+ * To write the EOF marker without closing the stream, call {@link #eof()} or use an &lt;a
+ * href=&quot;https://commons.apache.org/proper/commons-io/&quot;&gt;Apache Commons IO&lt;/a&gt; &lt;a href=
+ * &quot;https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/output/CloseShieldOutputStream.html&quot;
+ * &gt;CloseShieldOutputStream&lt;/a&gt;.
+ * &lt;/p&gt;
+ *
+ * @since 1.5
+ * @version $Id$
+ */
+public class BaseNCodecOutputStream extends FilterOutputStream {
+
+    private final boolean doEncode;
+
+    private final BaseNCodec baseNCodec;
+
+<span class="nc" id="L46">    private final byte[] singleByte = new byte[1];</span>
+
+<span class="nc" id="L48">    private final Context context = new Context();</span>
+
+    // TODO should this be protected?
+    public BaseNCodecOutputStream(final OutputStream out, final BaseNCodec basedCodec, final boolean doEncode) {
+<span class="nc" id="L52">        super(out);</span>
+<span class="nc" id="L53">        this.baseNCodec = basedCodec;</span>
+<span class="nc" id="L54">        this.doEncode = doEncode;</span>
+<span class="nc" id="L55">    }</span>
+
+    /**
+     * Writes the specified &lt;code&gt;byte&lt;/code&gt; to this output stream.
+     *
+     * @param i
+     *            source byte
+     * @throws IOException
+     *             if an I/O error occurs.
+     */
+    @Override
+    public void write(final int i) throws IOException {
+<span class="nc" id="L67">        singleByte[0] = (byte) i;</span>
+<span class="nc" id="L68">        write(singleByte, 0, 1);</span>
+<span class="nc" id="L69">    }</span>
+
+    /**
+     * Writes &lt;code&gt;len&lt;/code&gt; bytes from the specified &lt;code&gt;b&lt;/code&gt; array starting at &lt;code&gt;offset&lt;/code&gt; to this
+     * output stream.
+     *
+     * @param b
+     *            source byte array
+     * @param offset
+     *            where to start reading the bytes
+     * @param len
+     *            maximum number of bytes to write
+     *
+     * @throws IOException
+     *             if an I/O error occurs.
+     * @throws NullPointerException
+     *             if the byte array parameter is null
+     * @throws IndexOutOfBoundsException
+     *             if offset, len or buffer size are invalid
+     */
+    @Override
+    public void write(final byte b[], final int offset, final int len) throws IOException {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if (b == null) {</span>
+<span class="nc" id="L92">            throw new NullPointerException();</span>
+<span class="nc bnc" id="L93" title="All 4 branches missed.">        } else if (offset &lt; 0 || len &lt; 0) {</span>
+<span class="nc" id="L94">            throw new IndexOutOfBoundsException();</span>
+<span class="nc bnc" id="L95" title="All 4 branches missed.">        } else if (offset &gt; b.length || offset + len &gt; b.length) {</span>
+<span class="nc" id="L96">            throw new IndexOutOfBoundsException();</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        } else if (len &gt; 0) {</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (doEncode) {</span>
+<span class="nc" id="L99">                baseNCodec.encode(b, offset, len, context);</span>
+            } else {
+<span class="nc" id="L101">                baseNCodec.decode(b, offset, len, context);</span>
+            }
+<span class="nc" id="L103">            flush(false);</span>
+        }
+<span class="nc" id="L105">    }</span>
+
+    /**
+     * Flushes this output stream and forces any buffered output bytes to be written out to the stream. If propagate is
+     * true, the wrapped stream will also be flushed.
+     *
+     * @param propagate
+     *            boolean flag to indicate whether the wrapped OutputStream should also be flushed.
+     * @throws IOException
+     *             if an I/O error occurs.
+     */
+    private void flush(final boolean propagate) throws IOException {
+<span class="nc" id="L117">        final int avail = baseNCodec.available(context);</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (avail &gt; 0) {</span>
+<span class="nc" id="L119">            final byte[] buf = new byte[avail];</span>
+<span class="nc" id="L120">            final int c = baseNCodec.readResults(buf, 0, avail, context);</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            if (c &gt; 0) {</span>
+<span class="nc" id="L122">                out.write(buf, 0, c);</span>
+            }
+        }
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (propagate) {</span>
+<span class="nc" id="L126">            out.flush();</span>
+        }
+<span class="nc" id="L128">    }</span>
+
+    /**
+     * Flushes this output stream and forces any buffered output bytes to be written out to the stream.
+     *
+     * @throws IOException
+     *             if an I/O error occurs.
+     */
+    @Override
+    public void flush() throws IOException {
+<span class="nc" id="L138">        flush(true);</span>
+<span class="nc" id="L139">    }</span>
+
+    /**
+     * Closes this output stream and releases any system resources associated with the stream.
+     * &lt;p&gt;
+     * To write the EOF marker without closing the stream, call {@link #eof()} or use an
+     * &lt;a href=&quot;https://commons.apache.org/proper/commons-io/&quot;&gt;Apache Commons IO&lt;/a&gt; &lt;a href=
+     * &quot;https://commons.apache.org/proper/commons-io/apidocs/org/apache/commons/io/output/CloseShieldOutputStream.html&quot;
+     * &gt;CloseShieldOutputStream&lt;/a&gt;.
+     * &lt;/p&gt;
+     *
+     * @throws IOException
+     *             if an I/O error occurs.
+     */
+    @Override
+    public void close() throws IOException {
+<span class="nc" id="L155">        eof();</span>
+<span class="nc" id="L156">        flush();</span>
+<span class="nc" id="L157">        out.close();</span>
+<span class="nc" id="L158">    }</span>
+
+    /**
+     * Writes EOF.
+     *
+     * @throws IOException
+     *             if an I/O error occurs.
+     * @since 1.11
+     */
+    public void eof() throws IOException {
+        // Notify encoder of EOF (-1).
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        if (doEncode) {</span>
+<span class="nc" id="L170">            baseNCodec.encode(singleByte, 0, EOF, context);</span>
+        } else {
+<span class="nc" id="L172">            baseNCodec.decode(singleByte, 0, EOF, context);</span>
+        }
+<span class="nc" id="L174">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

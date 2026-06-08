@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParseSettings.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.parser</a> &gt; <span class="el_source">ParseSettings.java</span></div><h1>ParseSettings.java</h1><pre class="source lang-java linenums">package org.jsoup.parser;
+
+import org.jsoup.nodes.Attributes;
+
+import static org.jsoup.internal.Normalizer.lowerCase;
+
+/**
+ * Controls parser settings, to optionally preserve tag and/or attribute name case.
+ */
+public class ParseSettings {
+    /**
+     * HTML default settings: both tag and attribute names are lower-cased during parsing.
+     */
+    public static final ParseSettings htmlDefault;
+    /**
+     * Preserve both tag and attribute case.
+     */
+    public static final ParseSettings preserveCase;
+
+    static {
+<span class="nc" id="L21">        htmlDefault = new ParseSettings(false, false);</span>
+<span class="nc" id="L22">        preserveCase = new ParseSettings(true, true);</span>
+<span class="nc" id="L23">    }</span>
+
+    private final boolean preserveTagCase;
+    private final boolean preserveAttributeCase;
+
+    /**
+     * Returns true if preserving tag name case.
+     */
+    public boolean preserveTagCase() {
+<span class="nc" id="L32">        return preserveTagCase;</span>
+    }
+
+    /**
+     * Returns true if preserving attribute case.
+     */
+    public boolean preserveAttributeCase() {
+<span class="nc" id="L39">        return preserveAttributeCase;</span>
+    }
+
+    /**
+     * Define parse settings.
+     * @param tag preserve tag case?
+     * @param attribute preserve attribute name case?
+     */
+<span class="nc" id="L47">    public ParseSettings(boolean tag, boolean attribute) {</span>
+<span class="nc" id="L48">        preserveTagCase = tag;</span>
+<span class="nc" id="L49">        preserveAttributeCase = attribute;</span>
+<span class="nc" id="L50">    }</span>
+
+    /**
+     * Normalizes a tag name according to the case preservation setting.
+     */
+    public String normalizeTag(String name) {
+<span class="nc" id="L56">        name = name.trim();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (!preserveTagCase)</span>
+<span class="nc" id="L58">            name = lowerCase(name);</span>
+<span class="nc" id="L59">        return name;</span>
+    }
+
+    /**
+     * Normalizes an attribute according to the case preservation setting.
+     */
+    public String normalizeAttribute(String name) {
+<span class="nc" id="L66">        name = name.trim();</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (!preserveAttributeCase)</span>
+<span class="nc" id="L68">            name = lowerCase(name);</span>
+<span class="nc" id="L69">        return name;</span>
+    }
+
+    Attributes normalizeAttributes(Attributes attributes) {
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (!preserveAttributeCase) {</span>
+<span class="nc" id="L74">            attributes.normalize();</span>
+        }
+<span class="nc" id="L76">        return attributes;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,56 @@
+{
+  "title": "Are \"Solved Issues\" in SWE-bench Really Solved Correctly? An Empirical Study",
+  "doi": "10.1145/3744916.3764576",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original PatchDiff pipeline compares a suspicious patch against the developer/oracle patch by generating differential tests, filtering flaky tests, and checking whether the generated tests expose behavioral differences between the two patches.",
+    "This reproduction replaces PatchDiff's full differential-testing workflow with a simplified single-LLM prompt that directly generates one differentiating Python test from the issue statement, suspicious patch, and oracle patch."
+  ],
+  "dataset": {
+    "name": "SWE-bench Verified with PatchDiff tool results",
+    "tools": {
+      "codestory": {
+        "dataset_rows": 454,
+        "sample_size": 45
+      },
+      "openhands": {
+        "dataset_rows": 494,
+        "sample_size": 49
+      }
+    }
+  },
+  "metric": [
+    "differentiating_rate"
+  ],
+  "original_result": {
+    "codestory": {
+      "differentiating_rate": 0.293
+    },
+    "openhands": {
+      "differentiating_rate": 0.272
+    }
+  },
+  "our_result": {
+    "prompt_A": {
+      "codestory": {
+        "differentiating_rate": 0.3111,
+        "result_file": "results/results_A_codestory.jsonl"
+      },
+      "openhands": {
+        "differentiating_rate": 0.551,
+        "result_file": "results/results_A_openhands.jsonl"
+      }
+    },
+    "prompt_B": {
+      "codestory": {
+        "differentiating_rate": 0.3111,
+        "result_file": "results/results_B_codestory.jsonl"
+      },
+      "openhands": {
+        "differentiating_rate": 0.551,
+        "result_file": "results/results_B_openhands.jsonl"
+      }
+    }
+  },
+  "total_cost": 12.44
+}

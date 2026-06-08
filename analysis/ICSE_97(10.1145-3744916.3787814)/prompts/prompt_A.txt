@@ -1,0 +1,68 @@
+### Role
+You are an expert site reliability engineer and systems analyst specializing in microservice failure diagnosis and root cause localization.
+
+### Task
+Given a set of anomalous monitoring metrics and a component dependency graph from a microservices system experiencing a failure, rank the candidate components from most likely to least likely to be the root cause of the failure.
+
+### Input
+You will receive a single problem description containing three sections:
+
+1. **Basic Information**: A list of anomalous metrics detected during the current failure. Each metric is described by its name, the component it belongs to, its length, and its time series values (as an ordered list of numeric readings).
+
+2. **Component Graph**: A directed call graph describing which components call which other components in the system.
+
+3. **Components to rank**: An explicit list of candidate component names that must all appear in your final ranked output.
+
+### Output
+Produce a JSON object with the following structure:
+
+```json
+{
+  "rank_list": [
+    {"component": "<component_name>"},
+    {"component": "<component_name>"},
+    ...
+  ]
+}
+```
+
+- `rank_list` is an ordered list of objects, each containing a single key `"component"` with the component name as its value.
+- The list must be ordered from most likely root cause (index 0) to least likely.
+- Every candidate component listed in the "Components to rank" section must appear in `rank_list`.
+- The total number of entries in `rank_list` must equal 10, achieved by repeating component names as needed to fill all 10 slots, with higher-ranked components repeated more than lower-ranked ones.
+
+### Example
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "problem": "## Basic Information\nThere are 10 monitoring metrics with detected anomalies in a microservices system during a current failure (the naming format in the following list is: \"MetricA\" in \"ComponentX\"):\n- \"docker_memory_stats_pgfault\" in \"zookeeper\" is a metric with length of 16: [16876530.0,16876648.8,16876721.4,16876787.4,16876853.4,16876919.4,16876985.4,16877051.4,16877147.1,16877186.7,16877279.1,16877318.7,16877411.1,16877450.7,16878255.9,16878523.2]\n- \"docker_memory_usage_pct\" in \"logservice1\" is a metric with length of 16: [0.63,0.63,0.62,0.62,0.63,0.63,0.46,0.37,0.37,0.38,0.38,0.37,0.38,0.38,0.38,0.38]\n- \"docker_memory_usage_total\" in \"logservice1\" is a metric with length of 16: [2721800192.0,2688600473.6,2669405525.33,2680232891.73,2708968243.2,2688679526.4,1988105420.8,1593765068.8,1593826918.4,1627241267.2,1613251788.8,1594104763.73,1627396778.67,1646586948.27,1646717883.73,1646802397.87]\n- \"docker_memory_rss_total\" in \"logservice1\" is a metric with length of 16: [2366136320.0,2332915848.53,2313625873.07,2324436309.33,2353010688.0,2332831061.33,1633614916.27,1239992046.93,1239894562.13,1272883746.13,1258893994.67,1239795848.53,1273054412.8,1292233113.6,1292263150.93,1292244309.33]\n- \"docker_memory_stats_active_anon\" in \"logservice1\" is a metric with length of 16: [1944629248.0,1911421747.2,1892196352.0,1902974976.0,1931618167.47,1911406728.53,1212157269.33,818450432.0,818427084.8,851631445.33,837668317.87,818450432.0,851642368.0,870853563.73,870845371.73,870873497.6]\n- \"docker_memory_stats_total_pgfault\" in \"zookeeper\" is a metric with length of 16: [16876530.0,16876648.8,16876721.4,16876787.4,16876853.4,16876919.4,16876985.4,16877051.4,16877147.1,16877186.7,16877279.1,16877318.7,16877411.1,16877450.7,16878255.9,16878523.2]\n- \"docker_memory_stats_rss\" in \"logservice1\" is a metric with length of 16: [2366136320.0,2332915848.53,2313625873.07,2324436309.33,2353010688.0,2332831061.33,1633614916.27,1239992046.93,1239894562.13,1272883746.13,1258893994.67,1239795848.53,1273054412.8,1292233113.6,1292263150.93,1292244309.33]\n- \"docker_memory_stats_total_active_anon\" in \"logservice1\" is a metric with length of 16: [1944629248.0,1911421747.2,1892196352.0,1902974976.0,1931618167.47,1911406728.53,1212157269.33,818450432.0,818427084.8,851631445.33,837668317.87,818450432.0,851642368.0,870853563.73,870845371.73,870873497.6]\n- \"docker_memory_rss_pct\" in \"logservice1\" is a metric with length of 16: [0.55,0.54,0.54,0.54,0.55,0.54,0.38,0.29,0.29,0.3,0.29,0.29,0.3,0.3,0.3,0.3]\n- \"docker_memory_stats_total_rss\" in \"logservice1\" is a metric with length of 16: [2366136320.0,2332915848.53,2313625873.07,2324436309.33,2353010688.0,2332831061.33,1633614916.27,1239992046.93,1239894562.13,1272883746.13,1258893994.67,1239795848.53,1273054412.8,1292233113.6,1292263150.93,1292244309.33]\n\n## Component Graph\nThe relationship between some of the components in this system are as follows:\n- \"webservice1\" calls \"mobservice1\"\n- \"webservice1\" calls \"logservice1\"\n- \"webservice1\" calls \"redisservice1\"\n- \"webservice2\" calls \"mobservice2\"\n- \"webservice2\" calls \"logservice2\"\n- \"webservice2\" calls \"redisservice2\"\n- \"mobservice1\" calls \"redisservice1\"\n- \"mobservice2\" calls \"redisservice2\"\n- \"logservice1\" calls \"redisservice1\"\n- \"logservice1\" calls \"dbservice1\"\n- \"logservice2\" calls \"redisservice2\"\n- \"logservice2\" calls \"dbservice2\"\n- \"dbservice1\" calls \"redisservice1\"\n- \"dbservice2\" calls \"redisservice2\"\n- \"redisservice1\" calls \"redis\"\n- \"redisservice2\" calls \"redis\"\n- \"zookeeper\" calls \"webservice1\"\n- \"zookeeper\" calls \"webservice2\"\n- \"zookeeper\" calls \"logservice1\"\n\n## Components to rank\nThe candidate components to rank are:\n - \"zookeeper\"\n - \"logservice1\"\nAll components are required to be in the rank list.\n\n## Your think process and answer"
+      },
+      "outputs": {
+        "rank_list": [
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "logservice1"},
+          {"component": "zookeeper"},
+          {"component": "zookeeper"}
+        ]
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Every candidate component listed in "Components to rank" must appear in the output `rank_list`.
+- The `rank_list` must contain exactly 10 entries total, repeating component names as needed to fill all slots. The most likely root cause should appear most frequently (earliest and most repeated).
+- Output only the valid JSON object matching the schema shown above. Do not include any explanation, preamble, or text outside the JSON.
+- Base your ranking solely on the metric time series values, metric names, and the component dependency graph provided.

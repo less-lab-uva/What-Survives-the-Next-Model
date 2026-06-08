@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Whitelist.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.safety</a> &gt; <span class="el_source">Whitelist.java</span></div><h1>Whitelist.java</h1><pre class="source lang-java linenums">package org.jsoup.safety;
+
+/*
+    Thank you to Ryan Grove (wonko.com) for the Ruby HTML cleaner http://github.com/rgrove/sanitize/, which inspired
+    this whitelist configuration, and the initial defaults.
+ */
+
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Attribute;
+import org.jsoup.nodes.Attributes;
+import org.jsoup.nodes.Element;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import static org.jsoup.internal.Normalizer.lowerCase;
+
+
+/**
+ Whitelists define what HTML (elements and attributes) to allow through the cleaner. Everything else is removed.
+ &lt;p&gt;
+ Start with one of the defaults:
+ &lt;/p&gt;
+ &lt;ul&gt;
+ &lt;li&gt;{@link #none}
+ &lt;li&gt;{@link #simpleText}
+ &lt;li&gt;{@link #basic}
+ &lt;li&gt;{@link #basicWithImages}
+ &lt;li&gt;{@link #relaxed}
+ &lt;/ul&gt;
+ &lt;p&gt;
+ If you need to allow more through (please be careful!), tweak a base whitelist with:
+ &lt;/p&gt;
+ &lt;ul&gt;
+ &lt;li&gt;{@link #addTags}
+ &lt;li&gt;{@link #addAttributes}
+ &lt;li&gt;{@link #addEnforcedAttribute}
+ &lt;li&gt;{@link #addProtocols}
+ &lt;/ul&gt;
+ &lt;p&gt;
+ You can remove any setting from an existing whitelist with:
+ &lt;/p&gt;
+ &lt;ul&gt;
+ &lt;li&gt;{@link #removeTags}
+ &lt;li&gt;{@link #removeAttributes}
+ &lt;li&gt;{@link #removeEnforcedAttribute}
+ &lt;li&gt;{@link #removeProtocols}
+ &lt;/ul&gt;
+ 
+ &lt;p&gt;
+ The cleaner and these whitelists assume that you want to clean a &lt;code&gt;body&lt;/code&gt; fragment of HTML (to add user
+ supplied HTML into a templated page), and not to clean a full HTML document. If the latter is the case, either wrap the
+ document HTML around the cleaned body HTML, or create a whitelist that allows &lt;code&gt;html&lt;/code&gt; and &lt;code&gt;head&lt;/code&gt;
+ elements as appropriate.
+ &lt;/p&gt;
+ &lt;p&gt;
+ If you are going to extend a whitelist, please be very careful. Make sure you understand what attributes may lead to
+ XSS attack vectors. URL attributes are particularly vulnerable and require careful validation. See 
+ http://ha.ckers.org/xss.html for some XSS attack examples.
+ &lt;/p&gt;
+
+ @author Jonathan Hedley
+ */
+public class Whitelist {
+    private Set&lt;TagName&gt; tagNames; // tags allowed, lower case. e.g. [p, br, span]
+    private Map&lt;TagName, Set&lt;AttributeKey&gt;&gt; attributes; // tag -&gt; attribute[]. allowed attributes [href] for a tag.
+    private Map&lt;TagName, Map&lt;AttributeKey, AttributeValue&gt;&gt; enforcedAttributes; // always set these attribute values
+    private Map&lt;TagName, Map&lt;AttributeKey, Set&lt;Protocol&gt;&gt;&gt; protocols; // allowed URL protocols for attributes
+    private boolean preserveRelativeLinks; // option to preserve relative links
+
+    /**
+     This whitelist allows only text nodes: all HTML will be stripped.
+
+     @return whitelist
+     */
+    public static Whitelist none() {
+<span class="nc" id="L79">        return new Whitelist();</span>
+    }
+
+    /**
+     This whitelist allows only simple text formatting: &lt;code&gt;b, em, i, strong, u&lt;/code&gt;. All other HTML (tags and
+     attributes) will be removed.
+
+     @return whitelist
+     */
+    public static Whitelist simpleText() {
+<span class="nc" id="L89">        return new Whitelist()</span>
+<span class="nc" id="L90">                .addTags(&quot;b&quot;, &quot;em&quot;, &quot;i&quot;, &quot;strong&quot;, &quot;u&quot;)</span>
+                ;
+    }
+
+    /**
+     &lt;p&gt;
+     This whitelist allows a fuller range of text nodes: &lt;code&gt;a, b, blockquote, br, cite, code, dd, dl, dt, em, i, li,
+     ol, p, pre, q, small, span, strike, strong, sub, sup, u, ul&lt;/code&gt;, and appropriate attributes.
+     &lt;/p&gt;
+     &lt;p&gt;
+     Links (&lt;code&gt;a&lt;/code&gt; elements) can point to &lt;code&gt;http, https, ftp, mailto&lt;/code&gt;, and have an enforced
+     &lt;code&gt;rel=nofollow&lt;/code&gt; attribute.
+     &lt;/p&gt;
+     &lt;p&gt;
+     Does not allow images.
+     &lt;/p&gt;
+
+     @return whitelist
+     */
+    public static Whitelist basic() {
+<span class="nc" id="L110">        return new Whitelist()</span>
+<span class="nc" id="L111">                .addTags(</span>
+                        &quot;a&quot;, &quot;b&quot;, &quot;blockquote&quot;, &quot;br&quot;, &quot;cite&quot;, &quot;code&quot;, &quot;dd&quot;, &quot;dl&quot;, &quot;dt&quot;, &quot;em&quot;,
+                        &quot;i&quot;, &quot;li&quot;, &quot;ol&quot;, &quot;p&quot;, &quot;pre&quot;, &quot;q&quot;, &quot;small&quot;, &quot;span&quot;, &quot;strike&quot;, &quot;strong&quot;, &quot;sub&quot;,
+                        &quot;sup&quot;, &quot;u&quot;, &quot;ul&quot;)
+
+<span class="nc" id="L116">                .addAttributes(&quot;a&quot;, &quot;href&quot;)</span>
+<span class="nc" id="L117">                .addAttributes(&quot;blockquote&quot;, &quot;cite&quot;)</span>
+<span class="nc" id="L118">                .addAttributes(&quot;q&quot;, &quot;cite&quot;)</span>
+
+<span class="nc" id="L120">                .addProtocols(&quot;a&quot;, &quot;href&quot;, &quot;ftp&quot;, &quot;http&quot;, &quot;https&quot;, &quot;mailto&quot;)</span>
+<span class="nc" id="L121">                .addProtocols(&quot;blockquote&quot;, &quot;cite&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+<span class="nc" id="L122">                .addProtocols(&quot;cite&quot;, &quot;cite&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+
+<span class="nc" id="L124">                .addEnforcedAttribute(&quot;a&quot;, &quot;rel&quot;, &quot;nofollow&quot;)</span>
+                ;
+
+    }
+
+    /**
+     This whitelist allows the same text tags as {@link #basic}, and also allows &lt;code&gt;img&lt;/code&gt; tags, with appropriate
+     attributes, with &lt;code&gt;src&lt;/code&gt; pointing to &lt;code&gt;http&lt;/code&gt; or &lt;code&gt;https&lt;/code&gt;.
+
+     @return whitelist
+     */
+    public static Whitelist basicWithImages() {
+<span class="nc" id="L136">        return basic()</span>
+<span class="nc" id="L137">                .addTags(&quot;img&quot;)</span>
+<span class="nc" id="L138">                .addAttributes(&quot;img&quot;, &quot;align&quot;, &quot;alt&quot;, &quot;height&quot;, &quot;src&quot;, &quot;title&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L139">                .addProtocols(&quot;img&quot;, &quot;src&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+                ;
+    }
+
+    /**
+     This whitelist allows a full range of text and structural body HTML: &lt;code&gt;a, b, blockquote, br, caption, cite,
+     code, col, colgroup, dd, div, dl, dt, em, h1, h2, h3, h4, h5, h6, i, img, li, ol, p, pre, q, small, span, strike, strong, sub,
+     sup, table, tbody, td, tfoot, th, thead, tr, u, ul&lt;/code&gt;
+     &lt;p&gt;
+     Links do not have an enforced &lt;code&gt;rel=nofollow&lt;/code&gt; attribute, but you can add that if desired.
+     &lt;/p&gt;
+
+     @return whitelist
+     */
+    public static Whitelist relaxed() {
+<span class="nc" id="L154">        return new Whitelist()</span>
+<span class="nc" id="L155">                .addTags(</span>
+                        &quot;a&quot;, &quot;b&quot;, &quot;blockquote&quot;, &quot;br&quot;, &quot;caption&quot;, &quot;cite&quot;, &quot;code&quot;, &quot;col&quot;,
+                        &quot;colgroup&quot;, &quot;dd&quot;, &quot;div&quot;, &quot;dl&quot;, &quot;dt&quot;, &quot;em&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;,
+                        &quot;i&quot;, &quot;img&quot;, &quot;li&quot;, &quot;ol&quot;, &quot;p&quot;, &quot;pre&quot;, &quot;q&quot;, &quot;small&quot;, &quot;span&quot;, &quot;strike&quot;, &quot;strong&quot;,
+                        &quot;sub&quot;, &quot;sup&quot;, &quot;table&quot;, &quot;tbody&quot;, &quot;td&quot;, &quot;tfoot&quot;, &quot;th&quot;, &quot;thead&quot;, &quot;tr&quot;, &quot;u&quot;,
+                        &quot;ul&quot;)
+
+<span class="nc" id="L162">                .addAttributes(&quot;a&quot;, &quot;href&quot;, &quot;title&quot;)</span>
+<span class="nc" id="L163">                .addAttributes(&quot;blockquote&quot;, &quot;cite&quot;)</span>
+<span class="nc" id="L164">                .addAttributes(&quot;col&quot;, &quot;span&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L165">                .addAttributes(&quot;colgroup&quot;, &quot;span&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L166">                .addAttributes(&quot;img&quot;, &quot;align&quot;, &quot;alt&quot;, &quot;height&quot;, &quot;src&quot;, &quot;title&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L167">                .addAttributes(&quot;ol&quot;, &quot;start&quot;, &quot;type&quot;)</span>
+<span class="nc" id="L168">                .addAttributes(&quot;q&quot;, &quot;cite&quot;)</span>
+<span class="nc" id="L169">                .addAttributes(&quot;table&quot;, &quot;summary&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L170">                .addAttributes(&quot;td&quot;, &quot;abbr&quot;, &quot;axis&quot;, &quot;colspan&quot;, &quot;rowspan&quot;, &quot;width&quot;)</span>
+<span class="nc" id="L171">                .addAttributes(</span>
+                        &quot;th&quot;, &quot;abbr&quot;, &quot;axis&quot;, &quot;colspan&quot;, &quot;rowspan&quot;, &quot;scope&quot;,
+                        &quot;width&quot;)
+<span class="nc" id="L174">                .addAttributes(&quot;ul&quot;, &quot;type&quot;)</span>
+
+<span class="nc" id="L176">                .addProtocols(&quot;a&quot;, &quot;href&quot;, &quot;ftp&quot;, &quot;http&quot;, &quot;https&quot;, &quot;mailto&quot;)</span>
+<span class="nc" id="L177">                .addProtocols(&quot;blockquote&quot;, &quot;cite&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+<span class="nc" id="L178">                .addProtocols(&quot;cite&quot;, &quot;cite&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+<span class="nc" id="L179">                .addProtocols(&quot;img&quot;, &quot;src&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+<span class="nc" id="L180">                .addProtocols(&quot;q&quot;, &quot;cite&quot;, &quot;http&quot;, &quot;https&quot;)</span>
+                ;
+    }
+
+    /**
+     Create a new, empty whitelist. Generally it will be better to start with a default prepared whitelist instead.
+
+     @see #basic()
+     @see #basicWithImages()
+     @see #simpleText()
+     @see #relaxed()
+     */
+<span class="nc" id="L192">    public Whitelist() {</span>
+<span class="nc" id="L193">        tagNames = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L194">        attributes = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L195">        enforcedAttributes = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L196">        protocols = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L197">        preserveRelativeLinks = false;</span>
+<span class="nc" id="L198">    }</span>
+
+    /**
+     Add a list of allowed elements to a whitelist. (If a tag is not allowed, it will be removed from the HTML.)
+
+     @param tags tag names to allow
+     @return this (for chaining)
+     */
+    public Whitelist addTags(String... tags) {
+<span class="nc" id="L207">        Validate.notNull(tags);</span>
+
+<span class="nc bnc" id="L209" title="All 2 branches missed.">        for (String tagName : tags) {</span>
+<span class="nc" id="L210">            Validate.notEmpty(tagName);</span>
+<span class="nc" id="L211">            tagNames.add(TagName.valueOf(tagName));</span>
+        }
+<span class="nc" id="L213">        return this;</span>
+    }
+
+    /**
+     Remove a list of allowed elements from a whitelist. (If a tag is not allowed, it will be removed from the HTML.)
+
+     @param tags tag names to disallow
+     @return this (for chaining)
+     */
+    public Whitelist removeTags(String... tags) {
+<span class="nc" id="L223">        Validate.notNull(tags);</span>
+
+<span class="nc bnc" id="L225" title="All 2 branches missed.">        for(String tag: tags) {</span>
+<span class="nc" id="L226">            Validate.notEmpty(tag);</span>
+<span class="nc" id="L227">            TagName tagName = TagName.valueOf(tag);</span>
+
+<span class="nc bnc" id="L229" title="All 2 branches missed.">            if(tagNames.remove(tagName)) { // Only look in sub-maps if tag was allowed</span>
+<span class="nc" id="L230">                attributes.remove(tagName);</span>
+<span class="nc" id="L231">                enforcedAttributes.remove(tagName);</span>
+<span class="nc" id="L232">                protocols.remove(tagName);</span>
+            }
+        }
+<span class="nc" id="L235">        return this;</span>
+    }
+
+    /**
+     Add a list of allowed attributes to a tag. (If an attribute is not allowed on an element, it will be removed.)
+     &lt;p&gt;
+     E.g.: &lt;code&gt;addAttributes(&quot;a&quot;, &quot;href&quot;, &quot;class&quot;)&lt;/code&gt; allows &lt;code&gt;href&lt;/code&gt; and &lt;code&gt;class&lt;/code&gt; attributes
+     on &lt;code&gt;a&lt;/code&gt; tags.
+     &lt;/p&gt;
+     &lt;p&gt;
+     To make an attribute valid for &lt;b&gt;all tags&lt;/b&gt;, use the pseudo tag &lt;code&gt;:all&lt;/code&gt;, e.g.
+     &lt;code&gt;addAttributes(&quot;:all&quot;, &quot;class&quot;)&lt;/code&gt;.
+     &lt;/p&gt;
+
+     @param tag  The tag the attributes are for. The tag will be added to the allowed tag list if necessary.
+     @param attributes List of valid attributes for the tag
+     @return this (for chaining)
+     */
+    public Whitelist addAttributes(String tag, String... attributes) {
+<span class="nc" id="L254">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L255">        Validate.notNull(attributes);</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">        Validate.isTrue(attributes.length &gt; 0, &quot;No attribute names supplied.&quot;);</span>
+
+<span class="nc" id="L258">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc" id="L259">        tagNames.add(tagName);</span>
+<span class="nc" id="L260">        Set&lt;AttributeKey&gt; attributeSet = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">        for (String key : attributes) {</span>
+<span class="nc" id="L262">            Validate.notEmpty(key);</span>
+<span class="nc" id="L263">            attributeSet.add(AttributeKey.valueOf(key));</span>
+        }
+<span class="nc bnc" id="L265" title="All 2 branches missed.">        if (this.attributes.containsKey(tagName)) {</span>
+<span class="nc" id="L266">            Set&lt;AttributeKey&gt; currentSet = this.attributes.get(tagName);</span>
+<span class="nc" id="L267">            currentSet.addAll(attributeSet);</span>
+<span class="nc" id="L268">        } else {</span>
+<span class="nc" id="L269">            this.attributes.put(tagName, attributeSet);</span>
+        }
+<span class="nc" id="L271">        return this;</span>
+    }
+
+    /**
+     Remove a list of allowed attributes from a tag. (If an attribute is not allowed on an element, it will be removed.)
+     &lt;p&gt;
+     E.g.: &lt;code&gt;removeAttributes(&quot;a&quot;, &quot;href&quot;, &quot;class&quot;)&lt;/code&gt; disallows &lt;code&gt;href&lt;/code&gt; and &lt;code&gt;class&lt;/code&gt;
+     attributes on &lt;code&gt;a&lt;/code&gt; tags.
+     &lt;/p&gt;
+     &lt;p&gt;
+     To make an attribute invalid for &lt;b&gt;all tags&lt;/b&gt;, use the pseudo tag &lt;code&gt;:all&lt;/code&gt;, e.g.
+     &lt;code&gt;removeAttributes(&quot;:all&quot;, &quot;class&quot;)&lt;/code&gt;.
+     &lt;/p&gt;
+
+     @param tag  The tag the attributes are for.
+     @param attributes List of invalid attributes for the tag
+     @return this (for chaining)
+     */
+    public Whitelist removeAttributes(String tag, String... attributes) {
+<span class="nc" id="L290">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L291">        Validate.notNull(attributes);</span>
+<span class="nc bnc" id="L292" title="All 2 branches missed.">        Validate.isTrue(attributes.length &gt; 0, &quot;No attribute names supplied.&quot;);</span>
+
+<span class="nc" id="L294">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc" id="L295">        Set&lt;AttributeKey&gt; attributeSet = new HashSet&lt;&gt;();</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">        for (String key : attributes) {</span>
+<span class="nc" id="L297">            Validate.notEmpty(key);</span>
+<span class="nc" id="L298">            attributeSet.add(AttributeKey.valueOf(key));</span>
+        }
+<span class="nc bnc" id="L300" title="All 4 branches missed.">        if(tagNames.contains(tagName) &amp;&amp; this.attributes.containsKey(tagName)) { // Only look in sub-maps if tag was allowed</span>
+<span class="nc" id="L301">            Set&lt;AttributeKey&gt; currentSet = this.attributes.get(tagName);</span>
+<span class="nc" id="L302">            currentSet.removeAll(attributeSet);</span>
+
+<span class="nc bnc" id="L304" title="All 2 branches missed.">            if(currentSet.isEmpty()) // Remove tag from attribute map if no attributes are allowed for tag</span>
+<span class="nc" id="L305">                this.attributes.remove(tagName);</span>
+        }
+<span class="nc bnc" id="L307" title="All 2 branches missed.">        if(tag.equals(&quot;:all&quot;)) // Attribute needs to be removed from all individually set tags</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">            for(TagName name: this.attributes.keySet()) {</span>
+<span class="nc" id="L309">                Set&lt;AttributeKey&gt; currentSet = this.attributes.get(name);</span>
+<span class="nc" id="L310">                currentSet.removeAll(attributeSet);</span>
+
+<span class="nc bnc" id="L312" title="All 2 branches missed.">                if(currentSet.isEmpty()) // Remove tag from attribute map if no attributes are allowed for tag</span>
+<span class="nc" id="L313">                    this.attributes.remove(name);</span>
+<span class="nc" id="L314">            }</span>
+<span class="nc" id="L315">        return this;</span>
+    }
+
+    /**
+     Add an enforced attribute to a tag. An enforced attribute will always be added to the element. If the element
+     already has the attribute set, it will be overridden with this value.
+     &lt;p&gt;
+     E.g.: &lt;code&gt;addEnforcedAttribute(&quot;a&quot;, &quot;rel&quot;, &quot;nofollow&quot;)&lt;/code&gt; will make all &lt;code&gt;a&lt;/code&gt; tags output as
+     &lt;code&gt;&amp;lt;a href=&quot;...&quot; rel=&quot;nofollow&quot;&amp;gt;&lt;/code&gt;
+     &lt;/p&gt;
+
+     @param tag   The tag the enforced attribute is for. The tag will be added to the allowed tag list if necessary.
+     @param attribute   The attribute name
+     @param value The enforced attribute value
+     @return this (for chaining)
+     */
+    public Whitelist addEnforcedAttribute(String tag, String attribute, String value) {
+<span class="nc" id="L332">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L333">        Validate.notEmpty(attribute);</span>
+<span class="nc" id="L334">        Validate.notEmpty(value);</span>
+
+<span class="nc" id="L336">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc" id="L337">        tagNames.add(tagName);</span>
+<span class="nc" id="L338">        AttributeKey attrKey = AttributeKey.valueOf(attribute);</span>
+<span class="nc" id="L339">        AttributeValue attrVal = AttributeValue.valueOf(value);</span>
+
+<span class="nc bnc" id="L341" title="All 2 branches missed.">        if (enforcedAttributes.containsKey(tagName)) {</span>
+<span class="nc" id="L342">            enforcedAttributes.get(tagName).put(attrKey, attrVal);</span>
+        } else {
+<span class="nc" id="L344">            Map&lt;AttributeKey, AttributeValue&gt; attrMap = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L345">            attrMap.put(attrKey, attrVal);</span>
+<span class="nc" id="L346">            enforcedAttributes.put(tagName, attrMap);</span>
+        }
+<span class="nc" id="L348">        return this;</span>
+    }
+
+    /**
+     Remove a previously configured enforced attribute from a tag.
+
+     @param tag   The tag the enforced attribute is for.
+     @param attribute   The attribute name
+     @return this (for chaining)
+     */
+    public Whitelist removeEnforcedAttribute(String tag, String attribute) {
+<span class="nc" id="L359">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L360">        Validate.notEmpty(attribute);</span>
+
+<span class="nc" id="L362">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc bnc" id="L363" title="All 4 branches missed.">        if(tagNames.contains(tagName) &amp;&amp; enforcedAttributes.containsKey(tagName)) {</span>
+<span class="nc" id="L364">            AttributeKey attrKey = AttributeKey.valueOf(attribute);</span>
+<span class="nc" id="L365">            Map&lt;AttributeKey, AttributeValue&gt; attrMap = enforcedAttributes.get(tagName);</span>
+<span class="nc" id="L366">            attrMap.remove(attrKey);</span>
+
+<span class="nc bnc" id="L368" title="All 2 branches missed.">            if(attrMap.isEmpty()) // Remove tag from enforced attribute map if no enforced attributes are present</span>
+<span class="nc" id="L369">                enforcedAttributes.remove(tagName);</span>
+        }
+<span class="nc" id="L371">        return this;</span>
+    }
+
+    /**
+     * Configure this Whitelist to preserve relative links in an element's URL attribute, or convert them to absolute
+     * links. By default, this is &lt;b&gt;false&lt;/b&gt;: URLs will be  made absolute (e.g. start with an allowed protocol, like
+     * e.g. {@code http://}.
+     * &lt;p&gt;
+     * Note that when handling relative links, the input document must have an appropriate {@code base URI} set when
+     * parsing, so that the link's protocol can be confirmed. Regardless of the setting of the {@code preserve relative
+     * links} option, the link must be resolvable against the base URI to an allowed protocol; otherwise the attribute
+     * will be removed.
+     * &lt;/p&gt;
+     *
+     * @param preserve {@code true} to allow relative links, {@code false} (default) to deny
+     * @return this Whitelist, for chaining.
+     * @see #addProtocols
+     */
+    public Whitelist preserveRelativeLinks(boolean preserve) {
+<span class="nc" id="L390">        preserveRelativeLinks = preserve;</span>
+<span class="nc" id="L391">        return this;</span>
+    }
+
+    /**
+     Add allowed URL protocols for an element's URL attribute. This restricts the possible values of the attribute to
+     URLs with the defined protocol.
+     &lt;p&gt;
+     E.g.: &lt;code&gt;addProtocols(&quot;a&quot;, &quot;href&quot;, &quot;ftp&quot;, &quot;http&quot;, &quot;https&quot;)&lt;/code&gt;
+     &lt;/p&gt;
+     &lt;p&gt;
+     To allow a link to an in-page URL anchor (i.e. &lt;code&gt;&amp;lt;a href=&quot;#anchor&quot;&amp;gt;&lt;/code&gt;, add a &lt;code&gt;#&lt;/code&gt;:&lt;br&gt;
+     E.g.: &lt;code&gt;addProtocols(&quot;a&quot;, &quot;href&quot;, &quot;#&quot;)&lt;/code&gt;
+     &lt;/p&gt;
+
+     @param tag       Tag the URL protocol is for
+     @param attribute       Attribute name
+     @param protocols List of valid protocols
+     @return this, for chaining
+     */
+    public Whitelist addProtocols(String tag, String attribute, String... protocols) {
+<span class="nc" id="L411">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L412">        Validate.notEmpty(attribute);</span>
+<span class="nc" id="L413">        Validate.notNull(protocols);</span>
+
+<span class="nc" id="L415">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc" id="L416">        AttributeKey attrKey = AttributeKey.valueOf(attribute);</span>
+        Map&lt;AttributeKey, Set&lt;Protocol&gt;&gt; attrMap;
+        Set&lt;Protocol&gt; protSet;
+
+<span class="nc bnc" id="L420" title="All 2 branches missed.">        if (this.protocols.containsKey(tagName)) {</span>
+<span class="nc" id="L421">            attrMap = this.protocols.get(tagName);</span>
+        } else {
+<span class="nc" id="L423">            attrMap = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L424">            this.protocols.put(tagName, attrMap);</span>
+        }
+<span class="nc bnc" id="L426" title="All 2 branches missed.">        if (attrMap.containsKey(attrKey)) {</span>
+<span class="nc" id="L427">            protSet = attrMap.get(attrKey);</span>
+        } else {
+<span class="nc" id="L429">            protSet = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L430">            attrMap.put(attrKey, protSet);</span>
+        }
+<span class="nc bnc" id="L432" title="All 2 branches missed.">        for (String protocol : protocols) {</span>
+<span class="nc" id="L433">            Validate.notEmpty(protocol);</span>
+<span class="nc" id="L434">            Protocol prot = Protocol.valueOf(protocol);</span>
+<span class="nc" id="L435">            protSet.add(prot);</span>
+        }
+<span class="nc" id="L437">        return this;</span>
+    }
+
+    /**
+     Remove allowed URL protocols for an element's URL attribute. If you remove all protocols for an attribute, that
+     attribute will allow any protocol.
+     &lt;p&gt;
+     E.g.: &lt;code&gt;removeProtocols(&quot;a&quot;, &quot;href&quot;, &quot;ftp&quot;)&lt;/code&gt;
+     &lt;/p&gt;
+
+     @param tag Tag the URL protocol is for
+     @param attribute Attribute name
+     @param removeProtocols List of invalid protocols
+     @return this, for chaining
+     */
+    public Whitelist removeProtocols(String tag, String attribute, String... removeProtocols) {
+<span class="nc" id="L453">        Validate.notEmpty(tag);</span>
+<span class="nc" id="L454">        Validate.notEmpty(attribute);</span>
+<span class="nc" id="L455">        Validate.notNull(removeProtocols);</span>
+
+<span class="nc" id="L457">        TagName tagName = TagName.valueOf(tag);</span>
+<span class="nc" id="L458">        AttributeKey attr = AttributeKey.valueOf(attribute);</span>
+
+        // make sure that what we're removing actually exists; otherwise can open the tag to any data and that can
+        // be surprising
+<span class="nc" id="L462">        Validate.isTrue(protocols.containsKey(tagName), &quot;Cannot remove a protocol that is not set.&quot;);</span>
+<span class="nc" id="L463">        Map&lt;AttributeKey, Set&lt;Protocol&gt;&gt; tagProtocols = protocols.get(tagName);</span>
+<span class="nc" id="L464">        Validate.isTrue(tagProtocols.containsKey(attr), &quot;Cannot remove a protocol that is not set.&quot;);</span>
+
+<span class="nc" id="L466">        Set&lt;Protocol&gt; attrProtocols = tagProtocols.get(attr);</span>
+<span class="nc bnc" id="L467" title="All 2 branches missed.">        for (String protocol : removeProtocols) {</span>
+<span class="nc" id="L468">            Validate.notEmpty(protocol);</span>
+<span class="nc" id="L469">            attrProtocols.remove(Protocol.valueOf(protocol));</span>
+        }
+
+<span class="nc bnc" id="L472" title="All 2 branches missed.">        if (attrProtocols.isEmpty()) { // Remove protocol set if empty</span>
+<span class="nc" id="L473">            tagProtocols.remove(attr);</span>
+<span class="nc bnc" id="L474" title="All 2 branches missed.">            if (tagProtocols.isEmpty()) // Remove entry for tag if empty</span>
+<span class="nc" id="L475">                protocols.remove(tagName);</span>
+        }
+<span class="nc" id="L477">        return this;</span>
+    }
+
+    /**
+     * Test if the supplied tag is allowed by this whitelist
+     * @param tag test tag
+     * @return true if allowed
+     */
+    protected boolean isSafeTag(String tag) {
+<span class="nc" id="L486">        return tagNames.contains(TagName.valueOf(tag));</span>
+    }
+
+    /**
+     * Test if the supplied attribute is allowed by this whitelist for this tag
+     * @param tagName tag to consider allowing the attribute in
+     * @param el element under test, to confirm protocol
+     * @param attr attribute under test
+     * @return true if allowed
+     */
+    protected boolean isSafeAttribute(String tagName, Element el, Attribute attr) {
+<span class="nc" id="L497">        TagName tag = TagName.valueOf(tagName);</span>
+<span class="nc" id="L498">        AttributeKey key = AttributeKey.valueOf(attr.getKey());</span>
+
+<span class="nc" id="L500">        Set&lt;AttributeKey&gt; okSet = attributes.get(tag);</span>
+<span class="nc bnc" id="L501" title="All 4 branches missed.">        if (okSet != null &amp;&amp; okSet.contains(key)) {</span>
+<span class="nc bnc" id="L502" title="All 2 branches missed.">            if (protocols.containsKey(tag)) {</span>
+<span class="nc" id="L503">                Map&lt;AttributeKey, Set&lt;Protocol&gt;&gt; attrProts = protocols.get(tag);</span>
+                // ok if not defined protocol; otherwise test
+<span class="nc bnc" id="L505" title="All 4 branches missed.">                return !attrProts.containsKey(key) || testValidProtocol(el, attr, attrProts.get(key));</span>
+            } else { // attribute found, no protocols defined, so OK
+<span class="nc" id="L507">                return true;</span>
+            }
+        }
+        // might be an enforced attribute?
+<span class="nc" id="L511">        Map&lt;AttributeKey, AttributeValue&gt; enforcedSet = enforcedAttributes.get(tag);</span>
+<span class="nc bnc" id="L512" title="All 2 branches missed.">        if (enforcedSet != null) {</span>
+<span class="nc" id="L513">            Attributes expect = getEnforcedAttributes(tagName);</span>
+<span class="nc" id="L514">            String attrKey = attr.getKey();</span>
+<span class="nc bnc" id="L515" title="All 2 branches missed.">            if (expect.hasKeyIgnoreCase(attrKey)) {</span>
+<span class="nc" id="L516">                return expect.getIgnoreCase(attrKey).equals(attr.getValue());</span>
+            }
+        }
+        // no attributes defined for tag, try :all tag
+<span class="nc bnc" id="L520" title="All 4 branches missed.">        return !tagName.equals(&quot;:all&quot;) &amp;&amp; isSafeAttribute(&quot;:all&quot;, el, attr);</span>
+    }
+
+    private boolean testValidProtocol(Element el, Attribute attr, Set&lt;Protocol&gt; protocols) {
+        // try to resolve relative urls to abs, and optionally update the attribute so output html has abs.
+        // rels without a baseuri get removed
+<span class="nc" id="L526">        String value = el.absUrl(attr.getKey());</span>
+<span class="nc bnc" id="L527" title="All 2 branches missed.">        if (value.length() == 0)</span>
+<span class="nc" id="L528">            value = attr.getValue(); // if it could not be made abs, run as-is to allow custom unknown protocols</span>
+<span class="nc bnc" id="L529" title="All 2 branches missed.">        if (!preserveRelativeLinks)</span>
+<span class="nc" id="L530">            attr.setValue(value);</span>
+        
+<span class="nc bnc" id="L532" title="All 2 branches missed.">        for (Protocol protocol : protocols) {</span>
+<span class="nc" id="L533">            String prot = protocol.toString();</span>
+
+<span class="nc bnc" id="L535" title="All 2 branches missed.">            if (prot.equals(&quot;#&quot;)) { // allows anchor links</span>
+<span class="nc bnc" id="L536" title="All 2 branches missed.">                if (isValidAnchor(value)) {</span>
+<span class="nc" id="L537">                    return true;</span>
+                } else {
+                    continue;
+                }
+            }
+
+<span class="nc" id="L543">            prot += &quot;:&quot;;</span>
+
+<span class="nc bnc" id="L545" title="All 2 branches missed.">            if (lowerCase(value).startsWith(prot)) {</span>
+<span class="nc" id="L546">                return true;</span>
+            }
+<span class="nc" id="L548">        }</span>
+<span class="nc" id="L549">        return false;</span>
+    }
+
+    private boolean isValidAnchor(String value) {
+<span class="nc bnc" id="L553" title="All 4 branches missed.">        return value.startsWith(&quot;#&quot;) &amp;&amp; !value.matches(&quot;.*\\s.*&quot;);</span>
+    }
+
+    Attributes getEnforcedAttributes(String tagName) {
+<span class="nc" id="L557">        Attributes attrs = new Attributes();</span>
+<span class="nc" id="L558">        TagName tag = TagName.valueOf(tagName);</span>
+<span class="nc bnc" id="L559" title="All 2 branches missed.">        if (enforcedAttributes.containsKey(tag)) {</span>
+<span class="nc" id="L560">            Map&lt;AttributeKey, AttributeValue&gt; keyVals = enforcedAttributes.get(tag);</span>
+<span class="nc bnc" id="L561" title="All 2 branches missed.">            for (Map.Entry&lt;AttributeKey, AttributeValue&gt; entry : keyVals.entrySet()) {</span>
+<span class="nc" id="L562">                attrs.put(entry.getKey().toString(), entry.getValue().toString());</span>
+<span class="nc" id="L563">            }</span>
+        }
+<span class="nc" id="L565">        return attrs;</span>
+    }
+    
+    // named types for config. All just hold strings, but here for my sanity.
+
+    static class TagName extends TypedValue {
+        TagName(String value) {
+<span class="nc" id="L572">            super(value);</span>
+<span class="nc" id="L573">        }</span>
+
+        static TagName valueOf(String value) {
+<span class="nc" id="L576">            return new TagName(value);</span>
+        }
+    }
+
+    static class AttributeKey extends TypedValue {
+        AttributeKey(String value) {
+<span class="nc" id="L582">            super(value);</span>
+<span class="nc" id="L583">        }</span>
+
+        static AttributeKey valueOf(String value) {
+<span class="nc" id="L586">            return new AttributeKey(value);</span>
+        }
+    }
+
+    static class AttributeValue extends TypedValue {
+        AttributeValue(String value) {
+<span class="nc" id="L592">            super(value);</span>
+<span class="nc" id="L593">        }</span>
+
+        static AttributeValue valueOf(String value) {
+<span class="nc" id="L596">            return new AttributeValue(value);</span>
+        }
+    }
+
+    static class Protocol extends TypedValue {
+        Protocol(String value) {
+<span class="nc" id="L602">            super(value);</span>
+<span class="nc" id="L603">        }</span>
+
+        static Protocol valueOf(String value) {
+<span class="nc" id="L606">            return new Protocol(value);</span>
+        }
+    }
+
+    abstract static class TypedValue {
+        private String value;
+
+<span class="nc" id="L613">        TypedValue(String value) {</span>
+<span class="nc" id="L614">            Validate.notNull(value);</span>
+<span class="nc" id="L615">            this.value = value;</span>
+<span class="nc" id="L616">        }</span>
+
+        @Override
+        public int hashCode() {
+<span class="nc" id="L620">            final int prime = 31;</span>
+<span class="nc" id="L621">            int result = 1;</span>
+<span class="nc bnc" id="L622" title="All 2 branches missed.">            result = prime * result + ((value == null) ? 0 : value.hashCode());</span>
+<span class="nc" id="L623">            return result;</span>
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+<span class="nc bnc" id="L628" title="All 2 branches missed.">            if (this == obj) return true;</span>
+<span class="nc bnc" id="L629" title="All 2 branches missed.">            if (obj == null) return false;</span>
+<span class="nc bnc" id="L630" title="All 2 branches missed.">            if (getClass() != obj.getClass()) return false;</span>
+<span class="nc" id="L631">            TypedValue other = (TypedValue) obj;</span>
+<span class="nc bnc" id="L632" title="All 2 branches missed.">            if (value == null) {</span>
+<span class="nc bnc" id="L633" title="All 2 branches missed.">                return other.value == null;</span>
+<span class="nc" id="L634">            } else return value.equals(other.value);</span>
+        }
+
+        @Override
+        public String toString() {
+<span class="nc" id="L639">            return value;</span>
+        }
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

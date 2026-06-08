@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Tag.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.parser</a> &gt; <span class="el_source">Tag.java</span></div><h1>Tag.java</h1><pre class="source lang-java linenums">package org.jsoup.parser;
+
+import org.jsoup.helper.Validate;
+import org.jsoup.internal.Normalizer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * HTML Tag capabilities.
+ *
+ * @author Jonathan Hedley, jonathan@hedley.net
+ */
+public class Tag {
+<span class="nc" id="L15">    private static final Map&lt;String, Tag&gt; tags = new HashMap&lt;&gt;(); // map of known tags</span>
+
+    private String tagName;
+    private String normalName; // always the lower case version of this tag, regardless of case preservation mode
+<span class="nc" id="L19">    private boolean isBlock = true; // block or inline</span>
+<span class="nc" id="L20">    private boolean formatAsBlock = true; // should be formatted as a block</span>
+<span class="nc" id="L21">    private boolean canContainInline = true; // only pcdata if not</span>
+<span class="nc" id="L22">    private boolean empty = false; // can hold nothing; e.g. img</span>
+<span class="nc" id="L23">    private boolean selfClosing = false; // can self close (&lt;foo /&gt;). used for unknown tags that self close, without forcing them as empty.</span>
+<span class="nc" id="L24">    private boolean preserveWhitespace = false; // for pre, textarea, script etc</span>
+<span class="nc" id="L25">    private boolean formList = false; // a control that appears in forms: input, textarea, output etc</span>
+<span class="nc" id="L26">    private boolean formSubmit = false; // a control that can be submitted in a form: input etc</span>
+
+<span class="nc" id="L28">    private Tag(String tagName) {</span>
+<span class="nc" id="L29">        this.tagName = tagName;</span>
+<span class="nc" id="L30">        normalName = Normalizer.lowerCase(tagName);</span>
+<span class="nc" id="L31">    }</span>
+
+    /**
+     * Get this tag's name.
+     *
+     * @return the tag's name
+     */
+    public String getName() {
+<span class="nc" id="L39">        return tagName;</span>
+    }
+
+    /**
+     * Get this tag's normalized (lowercased) name.
+     * @return the tag's normal name.
+     */
+    public String normalName() {
+<span class="nc" id="L47">        return normalName;</span>
+    }
+
+    /**
+     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.
+     * &lt;p&gt;
+     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().
+     * &lt;/p&gt;
+     * 
+     * @param tagName Name of tag, e.g. &quot;p&quot;. Case insensitive.
+     * @param settings used to control tag name sensitivity
+     * @return The tag, either defined or new generic.
+     */
+    public static Tag valueOf(String tagName, ParseSettings settings) {
+<span class="nc" id="L61">        Validate.notNull(tagName);</span>
+<span class="nc" id="L62">        Tag tag = tags.get(tagName);</span>
+
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (tag == null) {</span>
+<span class="nc" id="L65">            tagName = settings.normalizeTag(tagName);</span>
+<span class="nc" id="L66">            Validate.notEmpty(tagName);</span>
+<span class="nc" id="L67">            tag = tags.get(tagName);</span>
+
+<span class="nc bnc" id="L69" title="All 2 branches missed.">            if (tag == null) {</span>
+                // not defined: create default; go anywhere, do anything! (incl be inside a &lt;p&gt;)
+<span class="nc" id="L71">                tag = new Tag(tagName);</span>
+<span class="nc" id="L72">                tag.isBlock = false;</span>
+            }
+        }
+<span class="nc" id="L75">        return tag;</span>
+    }
+
+    /**
+     * Get a Tag by name. If not previously defined (unknown), returns a new generic tag, that can do anything.
+     * &lt;p&gt;
+     * Pre-defined tags (P, DIV etc) will be ==, but unknown tags are not registered and will only .equals().
+     * &lt;/p&gt;
+     *
+     * @param tagName Name of tag, e.g. &quot;p&quot;. &lt;b&gt;Case sensitive&lt;/b&gt;.
+     * @return The tag, either defined or new generic.
+     */
+    public static Tag valueOf(String tagName) {
+<span class="nc" id="L88">        return valueOf(tagName, ParseSettings.preserveCase);</span>
+    }
+
+    /**
+     * Gets if this is a block tag.
+     *
+     * @return if block tag
+     */
+    public boolean isBlock() {
+<span class="nc" id="L97">        return isBlock;</span>
+    }
+
+    /**
+     * Gets if this tag should be formatted as a block (or as inline)
+     *
+     * @return if should be formatted as block or inline
+     */
+    public boolean formatAsBlock() {
+<span class="nc" id="L106">        return formatAsBlock;</span>
+    }
+
+    /**
+     * Gets if this tag can contain block tags.
+     *
+     * @return if tag can contain block tags
+     * @deprecated No longer used, and no different result than {{@link #isBlock()}}
+     */
+    public boolean canContainBlock() {
+<span class="nc" id="L116">        return isBlock;</span>
+    }
+
+    /**
+     * Gets if this tag is an inline tag.
+     *
+     * @return if this tag is an inline tag.
+     */
+    public boolean isInline() {
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        return !isBlock;</span>
+    }
+
+    /**
+     * Gets if this tag is a data only tag.
+     *
+     * @return if this tag is a data only tag
+     */
+    public boolean isData() {
+<span class="nc bnc" id="L134" title="All 4 branches missed.">        return !canContainInline &amp;&amp; !isEmpty();</span>
+    }
+
+    /**
+     * Get if this is an empty tag
+     *
+     * @return if this is an empty tag
+     */
+    public boolean isEmpty() {
+<span class="nc" id="L143">        return empty;</span>
+    }
+
+    /**
+     * Get if this tag is self closing.
+     *
+     * @return if this tag should be output as self closing.
+     */
+    public boolean isSelfClosing() {
+<span class="nc bnc" id="L152" title="All 4 branches missed.">        return empty || selfClosing;</span>
+    }
+
+    /**
+     * Get if this is a pre-defined tag, or was auto created on parsing.
+     *
+     * @return if a known tag
+     */
+    public boolean isKnownTag() {
+<span class="nc" id="L161">        return tags.containsKey(tagName);</span>
+    }
+
+    /**
+     * Check if this tagname is a known tag.
+     *
+     * @param tagName name of tag
+     * @return if known HTML tag
+     */
+    public static boolean isKnownTag(String tagName) {
+<span class="nc" id="L171">        return tags.containsKey(tagName);</span>
+    }
+
+    /**
+     * Get if this tag should preserve whitespace within child text nodes.
+     *
+     * @return if preserve whitespace
+     */
+    public boolean preserveWhitespace() {
+<span class="nc" id="L180">        return preserveWhitespace;</span>
+    }
+
+    /**
+     * Get if this tag represents a control associated with a form. E.g. input, textarea, output
+     * @return if associated with a form
+     */
+    public boolean isFormListed() {
+<span class="nc" id="L188">        return formList;</span>
+    }
+
+    /**
+     * Get if this tag represents an element that should be submitted with a form. E.g. input, option
+     * @return if submittable with a form
+     */
+    public boolean isFormSubmittable() {
+<span class="nc" id="L196">        return formSubmit;</span>
+    }
+
+    Tag setSelfClosing() {
+<span class="nc" id="L200">        selfClosing = true;</span>
+<span class="nc" id="L201">        return this;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">        if (!(o instanceof Tag)) return false;</span>
+
+<span class="nc" id="L209">        Tag tag = (Tag) o;</span>
+
+<span class="nc bnc" id="L211" title="All 2 branches missed.">        if (!tagName.equals(tag.tagName)) return false;</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        if (canContainInline != tag.canContainInline) return false;</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">        if (empty != tag.empty) return false;</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        if (formatAsBlock != tag.formatAsBlock) return false;</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">        if (isBlock != tag.isBlock) return false;</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">        if (preserveWhitespace != tag.preserveWhitespace) return false;</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">        if (selfClosing != tag.selfClosing) return false;</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">        if (formList != tag.formList) return false;</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">        return formSubmit == tag.formSubmit;</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc" id="L224">        int result = tagName.hashCode();</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">        result = 31 * result + (isBlock ? 1 : 0);</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">        result = 31 * result + (formatAsBlock ? 1 : 0);</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">        result = 31 * result + (canContainInline ? 1 : 0);</span>
+<span class="nc bnc" id="L228" title="All 2 branches missed.">        result = 31 * result + (empty ? 1 : 0);</span>
+<span class="nc bnc" id="L229" title="All 2 branches missed.">        result = 31 * result + (selfClosing ? 1 : 0);</span>
+<span class="nc bnc" id="L230" title="All 2 branches missed.">        result = 31 * result + (preserveWhitespace ? 1 : 0);</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">        result = 31 * result + (formList ? 1 : 0);</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">        result = 31 * result + (formSubmit ? 1 : 0);</span>
+<span class="nc" id="L233">        return result;</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L238">        return tagName;</span>
+    }
+
+    // internal static initialisers:
+    // prepped from http://www.w3.org/TR/REC-html40/sgml/dtd.html and other sources
+<span class="nc" id="L243">    private static final String[] blockTags = {</span>
+            &quot;html&quot;, &quot;head&quot;, &quot;body&quot;, &quot;frameset&quot;, &quot;script&quot;, &quot;noscript&quot;, &quot;style&quot;, &quot;meta&quot;, &quot;link&quot;, &quot;title&quot;, &quot;frame&quot;,
+            &quot;noframes&quot;, &quot;section&quot;, &quot;nav&quot;, &quot;aside&quot;, &quot;hgroup&quot;, &quot;header&quot;, &quot;footer&quot;, &quot;p&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;,
+            &quot;ul&quot;, &quot;ol&quot;, &quot;pre&quot;, &quot;div&quot;, &quot;blockquote&quot;, &quot;hr&quot;, &quot;address&quot;, &quot;figure&quot;, &quot;figcaption&quot;, &quot;form&quot;, &quot;fieldset&quot;, &quot;ins&quot;,
+            &quot;del&quot;, &quot;dl&quot;, &quot;dt&quot;, &quot;dd&quot;, &quot;li&quot;, &quot;table&quot;, &quot;caption&quot;, &quot;thead&quot;, &quot;tfoot&quot;, &quot;tbody&quot;, &quot;colgroup&quot;, &quot;col&quot;, &quot;tr&quot;, &quot;th&quot;,
+            &quot;td&quot;, &quot;video&quot;, &quot;audio&quot;, &quot;canvas&quot;, &quot;details&quot;, &quot;menu&quot;, &quot;plaintext&quot;, &quot;template&quot;, &quot;article&quot;, &quot;main&quot;,
+            &quot;svg&quot;, &quot;math&quot;, &quot;center&quot;
+    };
+<span class="nc" id="L251">    private static final String[] inlineTags = {</span>
+            &quot;object&quot;, &quot;base&quot;, &quot;font&quot;, &quot;tt&quot;, &quot;i&quot;, &quot;b&quot;, &quot;u&quot;, &quot;big&quot;, &quot;small&quot;, &quot;em&quot;, &quot;strong&quot;, &quot;dfn&quot;, &quot;code&quot;, &quot;samp&quot;, &quot;kbd&quot;,
+            &quot;var&quot;, &quot;cite&quot;, &quot;abbr&quot;, &quot;time&quot;, &quot;acronym&quot;, &quot;mark&quot;, &quot;ruby&quot;, &quot;rt&quot;, &quot;rp&quot;, &quot;a&quot;, &quot;img&quot;, &quot;br&quot;, &quot;wbr&quot;, &quot;map&quot;, &quot;q&quot;,
+            &quot;sub&quot;, &quot;sup&quot;, &quot;bdo&quot;, &quot;iframe&quot;, &quot;embed&quot;, &quot;span&quot;, &quot;input&quot;, &quot;select&quot;, &quot;textarea&quot;, &quot;label&quot;, &quot;button&quot;, &quot;optgroup&quot;,
+            &quot;option&quot;, &quot;legend&quot;, &quot;datalist&quot;, &quot;keygen&quot;, &quot;output&quot;, &quot;progress&quot;, &quot;meter&quot;, &quot;area&quot;, &quot;param&quot;, &quot;source&quot;, &quot;track&quot;,
+            &quot;summary&quot;, &quot;command&quot;, &quot;device&quot;, &quot;area&quot;, &quot;basefont&quot;, &quot;bgsound&quot;, &quot;menuitem&quot;, &quot;param&quot;, &quot;source&quot;, &quot;track&quot;,
+            &quot;data&quot;, &quot;bdi&quot;, &quot;s&quot;
+    };
+<span class="nc" id="L259">    private static final String[] emptyTags = {</span>
+            &quot;meta&quot;, &quot;link&quot;, &quot;base&quot;, &quot;frame&quot;, &quot;img&quot;, &quot;br&quot;, &quot;wbr&quot;, &quot;embed&quot;, &quot;hr&quot;, &quot;input&quot;, &quot;keygen&quot;, &quot;col&quot;, &quot;command&quot;,
+            &quot;device&quot;, &quot;area&quot;, &quot;basefont&quot;, &quot;bgsound&quot;, &quot;menuitem&quot;, &quot;param&quot;, &quot;source&quot;, &quot;track&quot;
+    };
+<span class="nc" id="L263">    private static final String[] formatAsInlineTags = {</span>
+            &quot;title&quot;, &quot;a&quot;, &quot;p&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;h6&quot;, &quot;pre&quot;, &quot;address&quot;, &quot;li&quot;, &quot;th&quot;, &quot;td&quot;, &quot;script&quot;, &quot;style&quot;,
+            &quot;ins&quot;, &quot;del&quot;, &quot;s&quot;
+    };
+<span class="nc" id="L267">    private static final String[] preserveWhitespaceTags = {</span>
+            &quot;pre&quot;, &quot;plaintext&quot;, &quot;title&quot;, &quot;textarea&quot;
+            // script is not here as it is a data node, which always preserve whitespace
+    };
+    // todo: I think we just need submit tags, and can scrub listed
+<span class="nc" id="L272">    private static final String[] formListedTags = {</span>
+            &quot;button&quot;, &quot;fieldset&quot;, &quot;input&quot;, &quot;keygen&quot;, &quot;object&quot;, &quot;output&quot;, &quot;select&quot;, &quot;textarea&quot;
+    };
+<span class="nc" id="L275">    private static final String[] formSubmitTags = {</span>
+            &quot;input&quot;, &quot;keygen&quot;, &quot;object&quot;, &quot;select&quot;, &quot;textarea&quot;
+    };
+
+    static {
+        // creates
+<span class="nc bnc" id="L281" title="All 2 branches missed.">        for (String tagName : blockTags) {</span>
+<span class="nc" id="L282">            Tag tag = new Tag(tagName);</span>
+<span class="nc" id="L283">            register(tag);</span>
+        }
+<span class="nc bnc" id="L285" title="All 2 branches missed.">        for (String tagName : inlineTags) {</span>
+<span class="nc" id="L286">            Tag tag = new Tag(tagName);</span>
+<span class="nc" id="L287">            tag.isBlock = false;</span>
+<span class="nc" id="L288">            tag.formatAsBlock = false;</span>
+<span class="nc" id="L289">            register(tag);</span>
+        }
+
+        // mods:
+<span class="nc bnc" id="L293" title="All 2 branches missed.">        for (String tagName : emptyTags) {</span>
+<span class="nc" id="L294">            Tag tag = tags.get(tagName);</span>
+<span class="nc" id="L295">            Validate.notNull(tag);</span>
+<span class="nc" id="L296">            tag.canContainInline = false;</span>
+<span class="nc" id="L297">            tag.empty = true;</span>
+        }
+
+<span class="nc bnc" id="L300" title="All 2 branches missed.">        for (String tagName : formatAsInlineTags) {</span>
+<span class="nc" id="L301">            Tag tag = tags.get(tagName);</span>
+<span class="nc" id="L302">            Validate.notNull(tag);</span>
+<span class="nc" id="L303">            tag.formatAsBlock = false;</span>
+        }
+
+<span class="nc bnc" id="L306" title="All 2 branches missed.">        for (String tagName : preserveWhitespaceTags) {</span>
+<span class="nc" id="L307">            Tag tag = tags.get(tagName);</span>
+<span class="nc" id="L308">            Validate.notNull(tag);</span>
+<span class="nc" id="L309">            tag.preserveWhitespace = true;</span>
+        }
+
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        for (String tagName : formListedTags) {</span>
+<span class="nc" id="L313">            Tag tag = tags.get(tagName);</span>
+<span class="nc" id="L314">            Validate.notNull(tag);</span>
+<span class="nc" id="L315">            tag.formList = true;</span>
+        }
+
+<span class="nc bnc" id="L318" title="All 2 branches missed.">        for (String tagName : formSubmitTags) {</span>
+<span class="nc" id="L319">            Tag tag = tags.get(tagName);</span>
+<span class="nc" id="L320">            Validate.notNull(tag);</span>
+<span class="nc" id="L321">            tag.formSubmit = true;</span>
+        }
+<span class="nc" id="L323">    }</span>
+
+    private static void register(Tag tag) {
+<span class="nc" id="L326">        tags.put(tag.tagName, tag);</span>
+<span class="nc" id="L327">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

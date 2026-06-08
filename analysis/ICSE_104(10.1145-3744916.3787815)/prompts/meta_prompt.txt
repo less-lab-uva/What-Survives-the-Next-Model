@@ -1,0 +1,147 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert in formal methods and requirements engineering specializing in Linear Temporal Logic", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., a model checker, parser, or LTL library), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.
+
+For ARTEMIS specifically, the Steps must capture the paper's three-layer compositional decomposition:
+
+Step 1 — Identify the scope layer (decision1): Determine whether the main property holds unconditionally, within a timed window, or only while/before/after some boolean condition. Choose the most fitting template from the scope layer options and identify the boolean expression (using only atomic propositions from the input) that fills bool_exp1. If no scope condition exists, use the identity placeholder.
+
+Step 2 — Identify the trigger layer (decision2): Within the resolved scope, determine whether the property fires on every occurrence of a condition (whenever) or only upon the rising edge of a condition (upon), or unconditionally. Choose the appropriate template and fill bool_exp2 from the atomic propositions. If no trigger condition exists, use the identity placeholder.
+
+Step 3 — Identify the timing/property layer (decision3): Express what must hold and when — immediately, eventually, always, never, within N ticks, after N ticks, for N ticks, at the next timepoint, until a condition, or before a condition. Choose the template and fill bool_exp3, bool_exp4, and N_DURATION from the atomic propositions and the NL.
+
+Step 4 — Compose the structured natural language: Combine the three layers by substituting the inner layer into the outer layer's abstract variable placeholder, yielding a single flat structured NL string in the form: `<decision1_filled> <decision2_filled> <decision3_filled>`.
+
+Step 5 — Derive the LTL formula: Translate the composed structured NL string into a well-formed LTL formula using standard LTL operators (G, F, X, U, R, W, M, G[a,b], F[a,b]). Apply the boolean expressions to the correct positions as dictated by the structure of the chosen templates. Ensure the formula is syntactically valid LTL using only operators and atomic propositions from the input.
+
+Step 6 — Compile and format output as specified in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "input_natural_language": "Exceeding sensor limits shall latch an autopilot pullup when the pilot is not in control (not standby) and the system is supported without failures (not apfail).",
+        "atomic_propositions": {
+          "standby": "True when the pilot is in control of the vehicle",
+          "apfail": "Failure indication from an external source",
+          "supported": "Indication of general health of system, must be True to enable operation",
+          "limits": "External indication to sensor on faulty condition impeding safe operation.",
+          "good": "Prior sensor output. When false indicates a detected fault.",
+          "MODE": "Autopilot internal moding discrete indicating not in transition state",
+          "REQUEST": "Autopilot internal moding discrete indicating transition to a nominal operation",
+          "pullup": "True when the autopilot is in the MANEUVER state",
+          "state_is_TRANSITION": "indicates current state is TRANSITION",
+          "state_is_STANDBY": "indicates current state is STANDBY",
+          "state_is_NOMINAL": "indicates current state is NOMINAL",
+          "state_is_MANEUVER": "indicates current state is MANEUVER",
+          "state_is_PULLUP": "indicates current state is PULLUP"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G (((! (((!standby) & supported & (!apfail)) & limits)) & (X (((!standby) & supported & (!apfail)) & limits))) -> (X pullup))) & ((((!standby) & supported & (!apfail)) & limits) -> pullup))"
+      }
+    },
+    {
+      "inputs": {
+        "input_natural_language": "Between 0 and 20 time units, the value of signal RWs_angular_momentum shall be less than 0.35.",
+        "atomic_propositions": {
+          "RWs_angular_momentum_lessThan_0.35": "True when the angular momentum of the reaction wheels is less than 0.35"
+        }
+      },
+      "outputs": {
+        "output_LTL": "((G[0,20] (RWs_angular_momentum_lessThan_0.35)) | (G (RWs_angular_momentum_lessThan_0.35)))"
+      }
+    }
+  ]
+}
+```

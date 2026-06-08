@@ -1,0 +1,35 @@
+### Role
+You are an expert software security analyst specializing in identifying vulnerabilities in source code functions.
+
+### Task
+Analyze the provided source code function and determine whether it contains a security vulnerability. Produce a final verdict indicating whether or not a security vulnerability is present.
+
+### Input
+- `func`: A source code function as a string.
+
+### Output
+A JSON object with the following field:
+- `verdict`: A string that is either `"YES: A security vulnerability detected"` or `"NO: No security vulnerability detected"`.
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "func": "u32 GetHintFormat(GF_TrackBox *trak)\n{\n\tGF_HintMediaHeaderBox *hmhd = (GF_HintMediaHeaderBox *)trak->Media->information->InfoHeader;\n\tif (hmhd->type != GF_ISOM_BOX_TYPE_HMHD)\n\t\treturn 0;\n\t\t\n\tif (!hmhd || !hmhd->subType) {\n\t\tGF_Box *a = (GF_Box *)gf_list_get(trak->Media->information->sampleTable->SampleDescription->child_boxes, 0);\n\t\tif (!hmhd) return a ? a->type : 0;\n\t\tif (a) hmhd->subType = a->type;\n\t\treturn hmhd->subType;\n\t}\n\treturn hmhd->subType;\n}"
+      },
+      "outputs": {
+        "verdict": "YES: A security vulnerability detected"
+      }
+    }
+  ]
+}
+```
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Output only the JSON object with the `verdict` field. Do not include any explanation, commentary, or additional fields.
+- The `verdict` value must be exactly `"YES: A security vulnerability detected"` or `"NO: No security vulnerability detected"` — no other values are permitted.
+- Base your determination solely on the content of the provided function.

@@ -1,0 +1,5 @@
+Prompt          : A
+Dataset         : bigcodebench
+Instances run   : 114 (10% random sample, seed=42)
+Total input tok : 1358739
+Total output tok: 32724

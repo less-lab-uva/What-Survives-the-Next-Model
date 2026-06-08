@@ -1,0 +1,1118 @@
+{
+  "results_file": "/home/nahian/Research/Ephemeral SE/Nahian-bucket/ICSE_R098/outputs/outputs_A_humaneval.json",
+  "total": 158,
+  "evaluated": 158,
+  "passed": 143,
+  "failed": 15,
+  "skipped": 0,
+  "timeout": 0,
+  "pass@1": 0.9051,
+  "instances": [
+    {
+      "instance_index": 0,
+      "instance_name": "HumanEval_0_has_close_elements",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 1,
+      "instance_name": "HumanEval_1_separate_paren_groups",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 2,
+      "instance_name": "HumanEval_2_truncate_number",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 3,
+      "instance_name": "HumanEval_3_below_zero",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 4,
+      "instance_name": "HumanEval_4_mean_absolute_deviation",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 5,
+      "instance_name": "HumanEval_5_intersperse",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 6,
+      "instance_name": "HumanEval_6_parse_nested_parens",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 7,
+      "instance_name": "HumanEval_7_filter_by_substring",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 8,
+      "instance_name": "HumanEval_8_sum_product",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 9,
+      "instance_name": "HumanEval_9_rolling_max",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 10,
+      "instance_name": "HumanEval_10_make_palindrome",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 11,
+      "instance_name": "HumanEval_11_string_xor",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 12,
+      "instance_name": "HumanEval_12_longest",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 13,
+      "instance_name": "HumanEval_13_greatest_common_divisor",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 14,
+      "instance_name": "HumanEval_14_all_prefixes",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 15,
+      "instance_name": "HumanEval_15_string_sequence",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 16,
+      "instance_name": "HumanEval_16_count_distinct_characters",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 17,
+      "instance_name": "HumanEval_17_parse_music",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 18,
+      "instance_name": "HumanEval_18_how_many_times",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 19,
+      "instance_name": "HumanEval_19_sort_numbers",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 20,
+      "instance_name": "HumanEval_20_find_closest_elements",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 21,
+      "instance_name": "HumanEval_21_rescale_to_unit",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 22,
+      "instance_name": "HumanEval_22_filter_integers",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 23,
+      "instance_name": "HumanEval_23_strlen",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 24,
+      "instance_name": "HumanEval_24_largest_divisor",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 25,
+      "instance_name": "HumanEval_25_factorize",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 26,
+      "instance_name": "HumanEval_26_remove_duplicates",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 27,
+      "instance_name": "HumanEval_27_flip_case",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 28,
+      "instance_name": "HumanEval_28_concatenate",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 29,
+      "instance_name": "HumanEval_29_filter_by_prefix",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 30,
+      "instance_name": "HumanEval_30_get_positive",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 31,
+      "instance_name": "HumanEval_31_is_prime",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 32,
+      "instance_name": "HumanEval_33_sort_third",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 33,
+      "instance_name": "HumanEval_34_unique",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 34,
+      "instance_name": "HumanEval_35_max_element",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 35,
+      "instance_name": "HumanEval_36_fizz_buzz",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 36,
+      "instance_name": "HumanEval_37_sort_even",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 37,
+      "instance_name": "HumanEval_39_prime_fib",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 38,
+      "instance_name": "HumanEval_40_triples_sum_to_zero",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 39,
+      "instance_name": "HumanEval_41_car_race_collision",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 40,
+      "instance_name": "HumanEval_42_incr_list",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 41,
+      "instance_name": "HumanEval_43_pairs_sum_to_zero",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 42,
+      "instance_name": "HumanEval_44_change_base",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 43,
+      "instance_name": "HumanEval_45_triangle_area",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmpsk_zwaxu/Problem.java:13: error: not a statement\n{\"generated_code\": \"        return (float)(a * h) / 2;\\n    }\\n}\"}\n ^\n/tmp/tmpsk_zwaxu/Problem.java:13: error: ';' expected\n{\"generated_code\": \"        return (float)(a * h) / 2;\\n    }\\n}\"}\n                 ^\n2 errors"
+    },
+    {
+      "instance_index": 44,
+      "instance_name": "HumanEval_46_fib4",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 45,
+      "instance_name": "HumanEval_47_median",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmp9ods58hn/Problem.java:22: error: illegal start of expression\n    public static void main(String[] args) {\n    ^\n1 error"
+    },
+    {
+      "instance_index": 46,
+      "instance_name": "HumanEval_48_is_palindrome",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 47,
+      "instance_name": "HumanEval_49_modp",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 48,
+      "instance_name": "HumanEval_51_remove_vowels",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 49,
+      "instance_name": "HumanEval_52_below_threshold",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 50,
+      "instance_name": "HumanEval_53_add",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 51,
+      "instance_name": "HumanEval_54_same_chars",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 52,
+      "instance_name": "HumanEval_55_fib",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 53,
+      "instance_name": "HumanEval_56_correct_bracketing",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 54,
+      "instance_name": "HumanEval_57_monotonic",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 55,
+      "instance_name": "HumanEval_58_common",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 56,
+      "instance_name": "HumanEval_59_largest_prime_factor",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 57,
+      "instance_name": "HumanEval_60_sum_to_n",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 58,
+      "instance_name": "HumanEval_61_correct_bracketing",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 59,
+      "instance_name": "HumanEval_62_derivative",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 60,
+      "instance_name": "HumanEval_63_fibfib",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 61,
+      "instance_name": "HumanEval_64_vowels_count",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 62,
+      "instance_name": "HumanEval_65_circular_shift",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:27)"
+    },
+    {
+      "instance_index": 63,
+      "instance_name": "HumanEval_66_digitSum",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 64,
+      "instance_name": "HumanEval_67_fruit_distribution",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 65,
+      "instance_name": "HumanEval_68_pluck",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 66,
+      "instance_name": "HumanEval_69_search",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 67,
+      "instance_name": "HumanEval_70_strange_sort_list",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 68,
+      "instance_name": "HumanEval_71_triangle_area",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 69,
+      "instance_name": "HumanEval_72_will_it_fly",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 70,
+      "instance_name": "HumanEval_73_smallest_change",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 71,
+      "instance_name": "HumanEval_74_total_match",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmptfipnpwb/Problem.java:31: error: illegal start of expression\n    public static void main(String[] args) {\n    ^\n1 error"
+    },
+    {
+      "instance_index": 72,
+      "instance_name": "HumanEval_75_is_multiply_prime",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 73,
+      "instance_name": "HumanEval_76_is_simple_power",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 74,
+      "instance_name": "HumanEval_77_iscube",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 75,
+      "instance_name": "HumanEval_78_hex_key",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 76,
+      "instance_name": "HumanEval_79_decimal_to_binary",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 77,
+      "instance_name": "HumanEval_80_is_happy",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 78,
+      "instance_name": "HumanEval_81_numerical_letter_grade",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 79,
+      "instance_name": "HumanEval_82_prime_length",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 80,
+      "instance_name": "HumanEval_83_starts_one_ends",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 81,
+      "instance_name": "HumanEval_84_solve",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 82,
+      "instance_name": "HumanEval_85_add",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 83,
+      "instance_name": "HumanEval_86_anti_shuffle",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 84,
+      "instance_name": "HumanEval_87_get_row",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 85,
+      "instance_name": "HumanEval_88_sort_array",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 86,
+      "instance_name": "HumanEval_89_encrypt",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 87,
+      "instance_name": "HumanEval_90_next_smallest",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 88,
+      "instance_name": "HumanEval_91_is_bored",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 89,
+      "instance_name": "HumanEval_92_any_int",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:37)"
+    },
+    {
+      "instance_index": 90,
+      "instance_name": "HumanEval_93_encode",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 91,
+      "instance_name": "HumanEval_94_skjkasdkd",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 92,
+      "instance_name": "HumanEval_95_check_dict_case",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:42)"
+    },
+    {
+      "instance_index": 93,
+      "instance_name": "HumanEval_96_count_up_to",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 94,
+      "instance_name": "HumanEval_97_multiply",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 95,
+      "instance_name": "HumanEval_98_count_upper",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 96,
+      "instance_name": "HumanEval_99_closest_integer",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmpmlqe9fc1/Problem.java:29: error: illegal start of expression\n    public static void main(String[] args) {\n    ^\n1 error"
+    },
+    {
+      "instance_index": 97,
+      "instance_name": "HumanEval_100_make_a_pile",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 98,
+      "instance_name": "HumanEval_101_words_string",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 99,
+      "instance_name": "HumanEval_102_choose_num",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 100,
+      "instance_name": "HumanEval_104_unique_digits",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 101,
+      "instance_name": "HumanEval_105_by_length",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 102,
+      "instance_name": "HumanEval_106_f",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:39)"
+    },
+    {
+      "instance_index": 103,
+      "instance_name": "HumanEval_107_even_odd_palindrome",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 104,
+      "instance_name": "HumanEval_108_count_nums",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 105,
+      "instance_name": "HumanEval_109_move_one_ball",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 106,
+      "instance_name": "HumanEval_110_exchange",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 107,
+      "instance_name": "HumanEval_111_histogram",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 108,
+      "instance_name": "HumanEval_112_reverse_delete",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 109,
+      "instance_name": "HumanEval_113_odd_count",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 110,
+      "instance_name": "HumanEval_114_minSubArraySum",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 111,
+      "instance_name": "HumanEval_115_max_fill",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 112,
+      "instance_name": "HumanEval_116_sort_array",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:33)"
+    },
+    {
+      "instance_index": 113,
+      "instance_name": "HumanEval_117_select_words",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 114,
+      "instance_name": "HumanEval_118_get_closest_vowel",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 115,
+      "instance_name": "HumanEval_119_match_parens",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 116,
+      "instance_name": "HumanEval_120_maximum",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 117,
+      "instance_name": "HumanEval_121_solution",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 118,
+      "instance_name": "HumanEval_122_add_elements",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 119,
+      "instance_name": "HumanEval_123_get_odd_collatz",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 120,
+      "instance_name": "HumanEval_124_valid_date",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 121,
+      "instance_name": "HumanEval_126_is_sorted",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 122,
+      "instance_name": "HumanEval_127_intersection",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 123,
+      "instance_name": "HumanEval_128_prod_signs",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 124,
+      "instance_name": "HumanEval_129_minPath",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 125,
+      "instance_name": "HumanEval_130_tri",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 6 out of bounds for length 6\n\tat Problem.tri(Problem.java:59)\n\tat Problem.main(Problem.java:70)"
+    },
+    {
+      "instance_index": 126,
+      "instance_name": "HumanEval_131_digits",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 127,
+      "instance_name": "HumanEval_132_is_nested",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:44)"
+    },
+    {
+      "instance_index": 128,
+      "instance_name": "HumanEval_133_sum_squares",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 129,
+      "instance_name": "HumanEval_134_check_if_last_char_is_a_letter",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 130,
+      "instance_name": "HumanEval_135_can_arrange",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 131,
+      "instance_name": "HumanEval_136_largest_smallest_integers",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:30)"
+    },
+    {
+      "instance_index": 132,
+      "instance_name": "HumanEval_138_is_equal_to_sum_even",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 133,
+      "instance_name": "HumanEval_139_special_factorial",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 134,
+      "instance_name": "HumanEval_140_fix_spaces",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 135,
+      "instance_name": "HumanEval_141_file_name_check",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 136,
+      "instance_name": "HumanEval_142_sum_squares",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 137,
+      "instance_name": "HumanEval_143_words_in_sentence",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 138,
+      "instance_name": "HumanEval_144_simplify",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 139,
+      "instance_name": "HumanEval_145_order_by_points",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmpukonk66b/Problem.java:59: error: illegal start of expression\n    public static void main(String[] args) {\n    ^\n1 error"
+    },
+    {
+      "instance_index": 140,
+      "instance_name": "HumanEval_146_specialFilter",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 141,
+      "instance_name": "HumanEval_147_get_max_triples",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 142,
+      "instance_name": "HumanEval_148_bf",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 143,
+      "instance_name": "HumanEval_149_sorted_list_sum",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 144,
+      "instance_name": "HumanEval_150_x_or_y",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 145,
+      "instance_name": "HumanEval_151_double_the_difference",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 146,
+      "instance_name": "HumanEval_152_compare",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 147,
+      "instance_name": "HumanEval_153_Strongest_Extension",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 148,
+      "instance_name": "HumanEval_154_cycpattern_check",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 149,
+      "instance_name": "HumanEval_155_even_odd_count",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 150,
+      "instance_name": "HumanEval_156_int_to_mini_roman",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 151,
+      "instance_name": "HumanEval_157_right_angle_triangle",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 152,
+      "instance_name": "HumanEval_158_find_max",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 153,
+      "instance_name": "HumanEval_159_eat",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 154,
+      "instance_name": "HumanEval_160_do_algebra",
+      "pass@1": 0,
+      "stage": "run",
+      "error": "Exception in thread \"main\" java.lang.AssertionError\n\tat Problem.main(Problem.java:55)"
+    },
+    {
+      "instance_index": 155,
+      "instance_name": "HumanEval_161_solve",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    },
+    {
+      "instance_index": 156,
+      "instance_name": "HumanEval_162_string_to_md5",
+      "pass@1": 0,
+      "stage": "compile",
+      "error": "/tmp/tmpn2tctud3/Problem.java:28: error: illegal start of expression\n    public static void main(String[] args) {\n    ^\n1 error"
+    },
+    {
+      "instance_index": 157,
+      "instance_name": "HumanEval_163_generate_integers",
+      "pass@1": 1,
+      "stage": null,
+      "error": ""
+    }
+  ]
+}

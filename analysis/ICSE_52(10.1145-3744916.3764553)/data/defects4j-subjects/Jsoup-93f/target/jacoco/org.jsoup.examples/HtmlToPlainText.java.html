@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HtmlToPlainText.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.examples</a> &gt; <span class="el_source">HtmlToPlainText.java</span></div><h1>HtmlToPlainText.java</h1><pre class="source lang-java linenums">package org.jsoup.examples;
+
+import org.jsoup.Jsoup;
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
+import org.jsoup.select.Elements;
+import org.jsoup.select.NodeTraversor;
+import org.jsoup.select.NodeVisitor;
+
+import java.io.IOException;
+
+/**
+ * HTML to plain-text. This example program demonstrates the use of jsoup to convert HTML input to lightly-formatted
+ * plain-text. That is divergent from the general goal of jsoup's .text() methods, which is to get clean data from a
+ * scrape.
+ * &lt;p&gt;
+ * Note that this is a fairly simplistic formatter -- for real world use you'll want to embrace and extend.
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * To invoke from the command line, assuming you've downloaded the jsoup jar to your current directory:&lt;/p&gt;
+ * &lt;p&gt;&lt;code&gt;java -cp jsoup.jar org.jsoup.examples.HtmlToPlainText url [selector]&lt;/code&gt;&lt;/p&gt;
+ * where &lt;i&gt;url&lt;/i&gt; is the URL to fetch, and &lt;i&gt;selector&lt;/i&gt; is an optional CSS selector.
+ * 
+ * @author Jonathan Hedley, jonathan@hedley.net
+ */
+<span class="nc" id="L30">public class HtmlToPlainText {</span>
+    private static final String userAgent = &quot;Mozilla/5.0 (jsoup)&quot;;
+    private static final int timeout = 5 * 1000;
+
+    public static void main(String... args) throws IOException {
+<span class="nc bnc" id="L35" title="All 4 branches missed.">        Validate.isTrue(args.length == 1 || args.length == 2, &quot;usage: java -cp jsoup.jar org.jsoup.examples.HtmlToPlainText url [selector]&quot;);</span>
+<span class="nc" id="L36">        final String url = args[0];</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        final String selector = args.length == 2 ? args[1] : null;</span>
+
+        // fetch the specified URL and parse to a HTML DOM
+<span class="nc" id="L40">        Document doc = Jsoup.connect(url).userAgent(userAgent).timeout(timeout).get();</span>
+
+<span class="nc" id="L42">        HtmlToPlainText formatter = new HtmlToPlainText();</span>
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">        if (selector != null) {</span>
+<span class="nc" id="L45">            Elements elements = doc.select(selector); // get each element that matches the CSS selector</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">            for (Element element : elements) {</span>
+<span class="nc" id="L47">                String plainText = formatter.getPlainText(element); // format that element to plain text</span>
+<span class="nc" id="L48">                System.out.println(plainText);</span>
+<span class="nc" id="L49">            }</span>
+<span class="nc" id="L50">        } else { // format the whole doc</span>
+<span class="nc" id="L51">            String plainText = formatter.getPlainText(doc);</span>
+<span class="nc" id="L52">            System.out.println(plainText);</span>
+        }
+<span class="nc" id="L54">    }</span>
+
+    /**
+     * Format an Element to plain-text
+     * @param element the root element to format
+     * @return formatted text
+     */
+    public String getPlainText(Element element) {
+<span class="nc" id="L62">        FormattingVisitor formatter = new FormattingVisitor();</span>
+<span class="nc" id="L63">        NodeTraversor.traverse(formatter, element); // walk the DOM, and call .head() and .tail() for each node</span>
+
+<span class="nc" id="L65">        return formatter.toString();</span>
+    }
+
+    // the formatting rules, implemented in a breadth-first DOM traverse
+<span class="nc" id="L69">    private static class FormattingVisitor implements NodeVisitor {</span>
+        private static final int maxWidth = 80;
+<span class="nc" id="L71">        private int width = 0;</span>
+<span class="nc" id="L72">        private StringBuilder accum = new StringBuilder(); // holds the accumulated text</span>
+
+        // hit when the node is first seen
+        public void head(Node node, int depth) {
+<span class="nc" id="L76">            String name = node.nodeName();</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">            if (node instanceof TextNode)</span>
+<span class="nc" id="L78">                append(((TextNode) node).text()); // TextNodes carry all user-readable text in the DOM.</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">            else if (name.equals(&quot;li&quot;))</span>
+<span class="nc" id="L80">                append(&quot;\n * &quot;);</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">            else if (name.equals(&quot;dt&quot;))</span>
+<span class="nc" id="L82">                append(&quot;  &quot;);</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">            else if (StringUtil.in(name, &quot;p&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;, &quot;tr&quot;))</span>
+<span class="nc" id="L84">                append(&quot;\n&quot;);</span>
+<span class="nc" id="L85">        }</span>
+
+        // hit when all of the node's children (if any) have been visited
+        public void tail(Node node, int depth) {
+<span class="nc" id="L89">            String name = node.nodeName();</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (StringUtil.in(name, &quot;br&quot;, &quot;dd&quot;, &quot;dt&quot;, &quot;p&quot;, &quot;h1&quot;, &quot;h2&quot;, &quot;h3&quot;, &quot;h4&quot;, &quot;h5&quot;))</span>
+<span class="nc" id="L91">                append(&quot;\n&quot;);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            else if (name.equals(&quot;a&quot;))</span>
+<span class="nc" id="L93">                append(String.format(&quot; &lt;%s&gt;&quot;, node.absUrl(&quot;href&quot;)));</span>
+<span class="nc" id="L94">        }</span>
+
+        // appends text to the string builder with a simple word wrap method
+        private void append(String text) {
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (text.startsWith(&quot;\n&quot;))</span>
+<span class="nc" id="L99">                width = 0; // reset counter if starts with a newline. only from formats above, not in natural text</span>
+<span class="nc bnc" id="L100" title="All 2 branches missed.">            if (text.equals(&quot; &quot;) &amp;&amp;</span>
+<span class="nc bnc" id="L101" title="All 4 branches missed.">                    (accum.length() == 0 || StringUtil.in(accum.substring(accum.length() - 1), &quot; &quot;, &quot;\n&quot;)))</span>
+<span class="nc" id="L102">                return; // don't accumulate long runs of empty spaces</span>
+
+<span class="nc bnc" id="L104" title="All 2 branches missed.">            if (text.length() + width &gt; maxWidth) { // won't fit, needs to wrap</span>
+<span class="nc" id="L105">                String[] words = text.split(&quot;\\s+&quot;);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                for (int i = 0; i &lt; words.length; i++) {</span>
+<span class="nc" id="L107">                    String word = words[i];</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">                    boolean last = i == words.length - 1;</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">                    if (!last) // insert a space if not the last word</span>
+<span class="nc" id="L110">                        word = word + &quot; &quot;;</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                    if (word.length() + width &gt; maxWidth) { // wrap and reset counter</span>
+<span class="nc" id="L112">                        accum.append(&quot;\n&quot;).append(word);</span>
+<span class="nc" id="L113">                        width = word.length();</span>
+                    } else {
+<span class="nc" id="L115">                        accum.append(word);</span>
+<span class="nc" id="L116">                        width += word.length();</span>
+                    }
+                }
+<span class="nc" id="L119">            } else { // fits as is, without need to wrap text</span>
+<span class="nc" id="L120">                accum.append(text);</span>
+<span class="nc" id="L121">                width += text.length();</span>
+            }
+<span class="nc" id="L123">        }</span>
+
+        @Override
+        public String toString() {
+<span class="nc" id="L127">            return accum.toString();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

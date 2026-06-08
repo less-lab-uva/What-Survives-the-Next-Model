@@ -1,0 +1,11 @@
+Prompt type      : A
+Dataset          : rac
+Model             : claude-sonnet-4-6
+Dataset rows     : 20
+Instances run    : 20
+Cached instances : 2
+New LLM calls    : 18
+Sampling fraction: 1
+Random seed      : 42
+Total input tok  : 23498
+Total output tok : 11010

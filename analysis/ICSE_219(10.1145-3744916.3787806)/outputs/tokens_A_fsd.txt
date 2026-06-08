@@ -1,0 +1,11 @@
+Prompt type      : A
+Dataset          : fsd
+Model             : claude-sonnet-4-6
+Dataset rows     : 116
+Instances run    : 116
+Cached instances : 12
+New LLM calls    : 104
+Sampling fraction: 1
+Random seed      : 42
+Total input tok  : 129463
+Total output tok : 51989

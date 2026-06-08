@@ -1,0 +1,5 @@
+Prompt          : B
+Dataset         : classeval
+Instances run   : 10 (10% random sample, seed=42)
+Total input tok : 152433
+Total output tok: 7366

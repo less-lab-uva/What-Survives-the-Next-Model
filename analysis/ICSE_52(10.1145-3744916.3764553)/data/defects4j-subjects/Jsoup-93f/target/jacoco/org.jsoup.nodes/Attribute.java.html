@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Attribute.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.nodes</a> &gt; <span class="el_source">Attribute.java</span></div><h1>Attribute.java</h1><pre class="source lang-java linenums">package org.jsoup.nodes;
+
+import org.jsoup.SerializationException;
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Map;
+
+/**
+ A single key + value attribute. (Only used for presentation.)
+ */
+public class Attribute implements Map.Entry&lt;String, String&gt;, Cloneable  {
+<span class="nc" id="L15">    private static final String[] booleanAttributes = {</span>
+            &quot;allowfullscreen&quot;, &quot;async&quot;, &quot;autofocus&quot;, &quot;checked&quot;, &quot;compact&quot;, &quot;declare&quot;, &quot;default&quot;, &quot;defer&quot;, &quot;disabled&quot;,
+            &quot;formnovalidate&quot;, &quot;hidden&quot;, &quot;inert&quot;, &quot;ismap&quot;, &quot;itemscope&quot;, &quot;multiple&quot;, &quot;muted&quot;, &quot;nohref&quot;, &quot;noresize&quot;,
+            &quot;noshade&quot;, &quot;novalidate&quot;, &quot;nowrap&quot;, &quot;open&quot;, &quot;readonly&quot;, &quot;required&quot;, &quot;reversed&quot;, &quot;seamless&quot;, &quot;selected&quot;,
+            &quot;sortable&quot;, &quot;truespeed&quot;, &quot;typemustmatch&quot;
+    };
+
+    private String key;
+    private String val;
+    Attributes parent; // used to update the holding Attributes when the key / value is changed via this interface
+
+    /**
+     * Create a new attribute from unencoded (raw) key and value.
+     * @param key attribute key; case is preserved.
+     * @param value attribute value
+     * @see #createFromEncoded
+     */
+    public Attribute(String key, String value) {
+<span class="nc" id="L33">        this(key, value, null);</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     * Create a new attribute from unencoded (raw) key and value.
+     * @param key attribute key; case is preserved.
+     * @param val attribute value
+     * @param parent the containing Attributes (this Attribute is not automatically added to said Attributes)
+     * @see #createFromEncoded*/
+<span class="nc" id="L42">    public Attribute(String key, String val, Attributes parent) {</span>
+<span class="nc" id="L43">        Validate.notNull(key);</span>
+<span class="nc" id="L44">        key = key.trim();</span>
+<span class="nc" id="L45">        Validate.notEmpty(key); // trimming could potentially make empty, so validate here</span>
+<span class="nc" id="L46">        this.key = key;</span>
+<span class="nc" id="L47">        this.val = val;</span>
+<span class="nc" id="L48">        this.parent = parent;</span>
+<span class="nc" id="L49">    }</span>
+
+    /**
+     Get the attribute key.
+     @return the attribute key
+     */
+    public String getKey() {
+<span class="nc" id="L56">        return key;</span>
+    }
+
+    /**
+     Set the attribute key; case is preserved.
+     @param key the new key; must not be null
+     */
+    public void setKey(String key) {
+<span class="nc" id="L64">        Validate.notNull(key);</span>
+<span class="nc" id="L65">        key = key.trim();</span>
+<span class="nc" id="L66">        Validate.notEmpty(key); // trimming could potentially make empty, so validate here</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (parent != null) {</span>
+<span class="nc" id="L68">            int i = parent.indexOfKey(this.key);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">            if (i != Attributes.NotFound)</span>
+<span class="nc" id="L70">                parent.keys[i] = key;</span>
+        }
+<span class="nc" id="L72">        this.key = key;</span>
+<span class="nc" id="L73">    }</span>
+
+    /**
+     Get the attribute value.
+     @return the attribute value
+     */
+    public String getValue() {
+<span class="nc" id="L80">        return Attributes.checkNotNull(val);</span>
+    }
+
+    /**
+     Set the attribute value.
+     @param val the new attribute value; must not be null
+     */
+    public String setValue(String val) {
+<span class="nc" id="L88">        String oldVal = this.val;</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (parent != null) {</span>
+<span class="nc" id="L90">            oldVal = parent.get(this.key); // trust the container more</span>
+<span class="nc" id="L91">            int i = parent.indexOfKey(this.key);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            if (i != Attributes.NotFound)</span>
+<span class="nc" id="L93">                parent.vals[i] = val;</span>
+        }
+<span class="nc" id="L95">        this.val = val;</span>
+<span class="nc" id="L96">        return Attributes.checkNotNull(oldVal);</span>
+    }
+
+    /**
+     Get the HTML representation of this attribute; e.g. {@code href=&quot;index.html&quot;}.
+     @return HTML
+     */
+    public String html() {
+<span class="nc" id="L104">        StringBuilder sb = StringUtil.borrowBuilder();</span>
+        
+        try {
+<span class="nc" id="L107">        	html(sb, (new Document(&quot;&quot;)).outputSettings());</span>
+<span class="nc" id="L108">        } catch(IOException exception) {</span>
+<span class="nc" id="L109">        	throw new SerializationException(exception);</span>
+<span class="nc" id="L110">        }</span>
+<span class="nc" id="L111">        return StringUtil.releaseBuilder(sb);</span>
+    }
+
+    protected static void html(String key, String val, Appendable accum, Document.OutputSettings out) throws IOException {
+<span class="nc" id="L115">        accum.append(key);</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        if (!shouldCollapseAttribute(key, val, out)) {</span>
+<span class="nc" id="L117">            accum.append(&quot;=\&quot;&quot;);</span>
+<span class="nc" id="L118">            Entities.escape(accum, Attributes.checkNotNull(val) , out, true, false, false);</span>
+<span class="nc" id="L119">            accum.append('&quot;');</span>
+        }
+<span class="nc" id="L121">    }</span>
+    
+    protected void html(Appendable accum, Document.OutputSettings out) throws IOException {
+<span class="nc" id="L124">        html(key, val, accum, out);</span>
+<span class="nc" id="L125">    }</span>
+
+    /**
+     Get the string representation of this attribute, implemented as {@link #html()}.
+     @return string
+     */
+    @Override
+    public String toString() {
+<span class="nc" id="L133">        return html();</span>
+    }
+
+    /**
+     * Create a new Attribute from an unencoded key and a HTML attribute encoded value.
+     * @param unencodedKey assumes the key is not encoded, as can be only run of simple \w chars.
+     * @param encodedValue HTML attribute encoded value
+     * @return attribute
+     */
+    public static Attribute createFromEncoded(String unencodedKey, String encodedValue) {
+<span class="nc" id="L143">        String value = Entities.unescape(encodedValue, true);</span>
+<span class="nc" id="L144">        return new Attribute(unencodedKey, value, null); // parent will get set when Put</span>
+    }
+
+    protected boolean isDataAttribute() {
+<span class="nc" id="L148">        return isDataAttribute(key);</span>
+    }
+
+    protected static boolean isDataAttribute(String key) {
+<span class="nc bnc" id="L152" title="All 4 branches missed.">        return key.startsWith(Attributes.dataPrefix) &amp;&amp; key.length() &gt; Attributes.dataPrefix.length();</span>
+    }
+
+    /**
+     * Collapsible if it's a boolean attribute and value is empty or same as name
+     * 
+     * @param out output settings
+     * @return  Returns whether collapsible or not
+     */
+    protected final boolean shouldCollapseAttribute(Document.OutputSettings out) {
+<span class="nc" id="L162">        return shouldCollapseAttribute(key, val, out);</span>
+    }
+
+    protected static boolean shouldCollapseAttribute(final String key, final String val, final Document.OutputSettings out) {
+<span class="nc" id="L166">        return (</span>
+<span class="nc bnc" id="L167" title="All 4 branches missed.">            out.syntax() == Document.OutputSettings.Syntax.html &amp;&amp;</span>
+<span class="nc bnc" id="L168" title="All 6 branches missed.">                (val == null || (&quot;&quot;.equals(val) || val.equalsIgnoreCase(key)) &amp;&amp; Attribute.isBooleanAttribute(key)));</span>
+    }
+
+    /**
+     * @deprecated
+     */
+    protected boolean isBooleanAttribute() {
+<span class="nc bnc" id="L175" title="All 4 branches missed.">        return Arrays.binarySearch(booleanAttributes, key) &gt;= 0 || val == null;</span>
+    }
+
+    /**
+     * Checks if this attribute name is defined as a boolean attribute in HTML5
+     */
+    protected static boolean isBooleanAttribute(final String key) {
+<span class="nc bnc" id="L182" title="All 2 branches missed.">        return Arrays.binarySearch(booleanAttributes, key) &gt;= 0;</span>
+    }
+
+    @Override
+    public boolean equals(Object o) { // note parent not considered
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L188" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+<span class="nc" id="L189">        Attribute attribute = (Attribute) o;</span>
+<span class="nc bnc" id="L190" title="All 6 branches missed.">        if (key != null ? !key.equals(attribute.key) : attribute.key != null) return false;</span>
+<span class="nc bnc" id="L191" title="All 4 branches missed.">        return val != null ? val.equals(attribute.val) : attribute.val == null;</span>
+    }
+
+    @Override
+    public int hashCode() { // note parent not considered
+<span class="nc bnc" id="L196" title="All 2 branches missed.">        int result = key != null ? key.hashCode() : 0;</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        result = 31 * result + (val != null ? val.hashCode() : 0);</span>
+<span class="nc" id="L198">        return result;</span>
+    }
+
+    @Override
+    public Attribute clone() {
+        try {
+<span class="nc" id="L204">            return (Attribute) super.clone();</span>
+<span class="nc" id="L205">        } catch (CloneNotSupportedException e) {</span>
+<span class="nc" id="L206">            throw new RuntimeException(e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

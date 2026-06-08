@@ -1,0 +1,13 @@
+Prompt type          : A
+Tool                 : openhands
+Model                : claude-sonnet-4-6
+Dataset rows         : 494
+Instances run        : 49
+Cached instances     : 0
+New LLM calls        : 49
+Requested sample size: 49
+Random seed          : 42
+Total input tokens   : 737235
+Total output tokens  : 43511
+Total LLM time (s)   : 777.137
+Avg LLM time/call (s): 15.86

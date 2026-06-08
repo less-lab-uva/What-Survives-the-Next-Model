@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.079" tests="86" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.171-b11"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Codec-18f"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="test" value="DoubleMetaphoneTest"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/sfs/weka/scratch/nwc8gr/Ephemeral_SE/analysis/ICSE_52(10.1145-3744916.3764553)/data/defects4j-subjects/Codec-18f"/>
+    <property name="java.runtime.version" value="1.8.0_171-b11"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/apps/software/standard/core/maven/3.9.0/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/apps/software/standard/core/java/8/lib:/apps/software/standard/core/maven/3.9.0/lib:/opt/slurm/current/lib:/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/apps/software/standard/core/maven/3.9.0/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.test.failure.ignore" value="true"/>
+    <property name="os.version" value="4.18.0-553.124.1.el8_10.x86_64"/>
+    <property name="library.jansi.path" value="/apps/software/standard/core/maven/3.9.0/lib/jansi-native"/>
+    <property name="user.home" value="/home/nwc8gr"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="nwc8gr"/>
+    <property name="java.class.path" value="/apps/software/standard/core/maven/3.9.0/boot/plexus-classworlds-2.6.0.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="error"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test -Dtest=DoubleMetaphoneTest -Dmaven.test.failure.ignore=true -q"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_171"/>
+    <property name="java.ext.dirs" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/resources.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/rt.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/sunrsasign.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jsse.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jce.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/charsets.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/lib/jfr.jar:/sfs/gpfs/tardis/applications/202606/software/standard/core/java/8/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/apps/software/standard/core/maven/3.9.0"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="testDoubleMetaphoneNTilde" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.012"/>
+  <testcase name="testDoubleMetaphoneBB" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCZ" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneDD" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneDG" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneDT" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneFF" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGG" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneKK" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneLL" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneNN" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphonePH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphonePP" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneRR" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSZ" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneTH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneVV" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneWH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneWR" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testDoubleMetaphoneZH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneZZ" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneWVowel" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneXMiddle" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneContainsHelper" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.006">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at org.apache.commons.codec.language.DoubleMetaphoneTest.testDoubleMetaphoneContainsHelper(DoubleMetaphoneTest.java:625)
+</failure>
+  </testcase>
+  <testcase name="testDoubleMetaphoneTHGeneral" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testEncodeObjectNonString" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneDefault" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testIsDoubleMetaphoneEqualFalse" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testDoubleMetaphoneSCH_Schermerhorn" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSugarAlternate" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneZSlavoGermanic" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testDoubleMetaphoneSanJacinto" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneHConsonant" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSilentStartGN" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSilentStartKN" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSilentStartPN" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSilentStartPS" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSilentStartWR" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGER" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGLI" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSCH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSIO" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneTIA" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneMaxCodeLenEffect" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCHAE" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneJose" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneTION" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneWICZ" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testDoubleMetaphoneEmptyInput" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGHStart" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneVowelStart" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testEncodeString" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testIsDoubleMetaphoneEqualAlternate" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneGNStart" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneNullInput" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneWhitespaceInput" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testEncodeObjectString" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testDoubleMetaphoneSIASlavoGermanic" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testGetSetMaxCodeLen" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSHGermanic" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneLaugh" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneSugar" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneXFrenchEnd" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneB" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneD" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneF" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneH" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneK" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneM" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneN" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneQ" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneR" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneV" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneX" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCCItalian" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0.001"/>
+  <testcase name="testCharAtOutOfBounds" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testIsDoubleMetaphoneEqual" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCedilla" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneCaesar" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneHStart" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneIsland" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneResnais" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+  <testcase name="testDoubleMetaphoneAlternate" classname="org.apache.commons.codec.language.DoubleMetaphoneTest" time="0"/>
+</testsuite>

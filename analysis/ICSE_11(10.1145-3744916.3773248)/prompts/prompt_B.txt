@@ -1,0 +1,88 @@
+﻿### Role
+You are an expert system reliability engineer specializing in log-based anomaly detection and system fault analysis.
+
+
+### Task
+You receive a system log sequence paired with its abstracted event ID list and must determine whether the log sequence represents a normal or anomalous system state, outputting a single status label.
+
+
+### Input
+- `log_content`: A string of pipe-separated raw log messages representing a sequence of system events (e.g., "instruction cache parity error corrected | total of 5 ddr error(s) detected and corrected | ...").
+- `event_list`: A string representation of a list of abstracted event IDs corresponding to each log message in `log_content`, in the same order (e.g., "['E1', 'E4', 'E6', ...]").
+
+
+### Output
+A JSON object with a single field:
+- `status`: either `"success"` (the log sequence is normal) or `"fail"` (the log sequence is anomalous).
+
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "log_content": "CE sym 14, at 0x06047860, mask 0x20 | CE sym 26, at 0x06f7e2e0, mask 0x08 | total of 5 ddr error(s) detected and corrected | CE sym 26, at 0x0685e2e0, mask 0x08 | total of 7 ddr error(s) detected and corrected | instruction cache parity error corrected | 1 ddr errors(s) detected and corrected on rank 3 | 1 ddr errors(s) detected and corrected on rank 3 | total of 2 ddr error(s) detected and corrected | 1 ddr errors(s) detected and corrected on rank 3",
+        "event_list": "['E6', 'E6', 'E7', 'E6', 'E7', 'E1', 'E4', 'E4', 'E5', 'E4']"
+      },
+      "outputs": {
+        "status": "fail"
+      }
+    },
+    {
+      "inputs": {
+        "log_content": "instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected | instruction cache parity error corrected",
+        "event_list": "['E1', 'E1', 'E1', 'E1', 'E1', 'E1', 'E1', 'E1', 'E1', 'E1']"
+      },
+      "outputs": {
+        "status": "success"
+      }
+    }
+  ]
+}
+```
+
+
+### Steps
+
+
+1. **Parse the inputs.** Split `log_content` on ` | ` to obtain individual log messages. Parse `event_list` to obtain the corresponding list of event IDs. Verify that both lists have the same length and are non-empty. If either is empty or unparseable, classify as `"success"` and skip remaining steps.
+
+
+2. **Assign a sentiment label to each unique event ID.** For each distinct event ID, read its corresponding log message(s) and assign one of three sentiment labels based on semantic content:
+   - **Negative**: the message describes a definitive failure, hardware fault, unrecoverable error, communication breakdown, abort, crash, or critical system malfunction (e.g., "socket closed", "journal aborted", "epilog failed", "no free leases", "permission denied" indicating a genuine fault). These events are suspicious by nature.
+   - **Neutral**: the message describes a monitoring, informational, diagnostic, or self-correcting action that does not by itself indicate a persistent fault (e.g., "detected and corrected", "cache parity error corrected", "scanning", "checking"). Self-correcting language ("corrected", "recovered") strongly favors neutral over negative.
+   - **Positive**: the message describes a successful operation, normal completion, or expected healthy behavior.
+   - Tie-breaking rule: if a message contains both corrective language and failure language, prefer **neutral** unless the failure is described as unrecoverable or final.
+
+
+3. **Build the normal event set.** Identify all event IDs whose assigned sentiment is **neutral** or **positive**. These form the candidate normal event set for this sequence.
+
+
+4. **Compute the residual suspicious set.** Remove all normal-event-set IDs from the full set of unique event IDs in the sequence. The remaining IDs form the residual suspicious set — event types not explained by neutral or positive behavior.
+   - If the residual suspicious set is empty (all events are neutral or positive), proceed to Step 6 with a strong prior toward `"success"`.
+
+
+5. **Analyze event co-occurrence and pattern diversity for anomaly signals.** For the residual suspicious (negative-sentiment) event IDs, reason about whether their combination and frequency constitute a genuine anomaly:
+   - **Single unique suspicious event dominating the sequence**: if the sequence consists almost entirely of one negative-sentiment event repeated many times with no other event types, this is a borderline signal — weigh the severity of that single event's message. Unrecoverable or terminal language (abort, crash, fatal) → lean `"fail"`. Recoverable or monitored language → lean `"success"`.
+   - **Multiple distinct suspicious event IDs co-occurring**: the presence of two or more distinct negative-sentiment event IDs in the same sequence is a strong signal of `"fail"`, especially if they represent different subsystems (e.g., memory errors + cache errors + rank-level errors together).
+   - **High-frequency infrequent combinations**: scan contiguous sub-sequences of length 1, 2, and 3 among the negative-sentiment events. If the sequence contains several distinct sub-sequences that would not be expected in normal operation (i.e., they represent unusual combinations rather than a single repeating corrective action), treat this as a high-risk pattern and lean `"fail"`.
+   - Tie-breaking rule: when uncertain between `"success"` and `"fail"`, prefer `"fail"` if two or more distinct negative-sentiment event IDs are present; prefer `"success"` if only one unique event ID exists in the sequence regardless of repetition count, and its message contains self-correcting or monitored language.
+
+
+6. **Make the final determination.**
+   - Output `"success"` if: (a) all events are neutral or positive sentiment, OR (b) only one unique event ID exists in the entire sequence and its message describes a self-correcting, monitored, or non-terminal condition.
+   - Output `"fail"` if: (a) two or more distinct negative-sentiment event IDs are present, OR (b) any negative-sentiment event describes an unrecoverable, terminal, or cascading failure with no corrective language.
+   - If neither condition is clearly met, default to `"fail"` as the conservative choice.
+
+
+7. **Compile and format the output.** Produce a JSON object with a single field `status` set to either `"success"` or `"fail"` based on the determination in Step 6. Include no other fields, no explanation text, and no markdown formatting outside the JSON object.
+
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Output only a valid JSON object with the single field `status` set to either `"success"` or `"fail"`. Do not include any explanation, preamble, or additional fields.
+- Do not judge solely based on the presence of negative-sounding keywords such as "error", "fail", or "invalid" in the log messages — a sequence consisting entirely of such keywords may still be normal.
+- If the log sequence is empty or malformed, output `{"status": "success"}` as a safe default.
+- Follow the Steps above in order as your internal reasoning process.

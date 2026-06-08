@@ -1,0 +1,5 @@
+Prompt          : A
+Dataset         : humaneval
+Instances run   : 16 (10% random sample, seed=42)
+Total input tok : 178569
+Total output tok: 1301

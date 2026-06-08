@@ -1,0 +1,5 @@
+{"instance_id": "instance-00270", "timestamp": "20260607_183405", "impacted_methods": ["AbstractLeastSquaresOptimizer,updateResidualsAndCost"]}
+{"instance_id": "instance-00717", "timestamp": "20260607_183449", "impacted_methods": ["EdgeReaderWrapper,initialize", "VertexReaderWrapper,initialize"]}
+{"instance_id": "instance-00632", "timestamp": "20260607_184319", "impacted_methods": ["will,__parseNewsgroupListEntry", "will,__parseGroupReply", "NewsgroupInfo,_setFirstArticle", "NewsgroupInfo,_setLastArticle", "NewsgroupInfo,_setArticleCount", "NewsgroupInfo,getFirstArticle", "NewsgroupInfo,getLastArticle", "NewsgroupInfo,getArticleCount", "NNTPUtils,getArticleInfo", "Article,getArticleNumber", "Article,setArticleNumber", "showing,demo"]}
+{"instance_id": "instance-00111", "timestamp": "20260607_185000", "impacted_methods": ["IvyCacheFileset,getBaseDir", "IvyCacheFileset,getPath"]}
+{"instance_id": "instance-00070", "timestamp": "20260607_185301", "impacted_methods": ["PomModuleDescriptorBuilder,addDependency", "PomModuleDescriptorBuilder,addDependencyMgt", "DefaultPomDependencyMgt,DefaultPomDependencyMgt"]}

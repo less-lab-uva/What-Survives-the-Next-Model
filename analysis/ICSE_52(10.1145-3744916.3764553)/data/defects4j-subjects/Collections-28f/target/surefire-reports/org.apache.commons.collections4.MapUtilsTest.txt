@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.commons.collections4.MapUtilsTest
+-------------------------------------------------------------------------------
+Tests run: 106, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.116 sec <<< FAILURE! - in org.apache.commons.collections4.MapUtilsTest
+testPopulateMapWithKeyTransformer(org.apache.commons.collections4.MapUtilsTest)  Time elapsed: 0.01 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[hello]> but was:<[world]>
+	at org.apache.commons.collections4.MapUtilsTest.testPopulateMapWithKeyTransformer(MapUtilsTest.java:649)
+

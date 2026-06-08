@@ -1,0 +1,6670 @@
+{
+  "src_test_exact_match": [
+    {
+      "src_name": "CoreFunction",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreFunction.java",
+      "class_declaration": "public class CoreFunction extends Operation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreFunction.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionPosition(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionID(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionStartsWith(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionEndsWith(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionContains(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionBoolean(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionNot(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionTrue(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionFalse(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "CoreFunction.functionNull(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CoreFunction.getArgumentCount()": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.toString()": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionLast(EvalContext)": [
+            3,
+            3,
+            3
+          ],
+          "CoreFunction.functionCount(EvalContext)": [
+            6,
+            6,
+            6
+          ],
+          "CoreFunction.functionLang(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionKey(EvalContext)": [
+            5,
+            5,
+            5
+          ],
+          "CoreFunction.functionNamespaceURI(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionLocalName(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionName(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionString(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionConcat(EvalContext)": [
+            3,
+            3,
+            3
+          ],
+          "CoreFunction.functionSubstringBefore(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionSubstringAfter(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionSubstring(EvalContext)": [
+            10,
+            10,
+            10
+          ],
+          "CoreFunction.functionStringLength(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionNormalizeSpace(EvalContext)": [
+            8,
+            8,
+            8
+          ],
+          "CoreFunction.functionTranslate(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionNumber(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionSum(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "CoreFunction.functionFloor(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionCeiling(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "CoreFunction.functionRound(EvalContext)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "CoreFunction.getFunctionName()": [
+            32,
+            32,
+            32
+          ],
+          "CoreFunction.computeContextDependent()": [
+            32,
+            32,
+            32
+          ],
+          "CoreFunction.computeValue(EvalContext)": [
+            33,
+            33,
+            33
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/CoreFunctionTest.java"
+    },
+    {
+      "src_name": "Functions",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/Functions.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/TestFunctions.java"
+    },
+    {
+      "src_name": "ExceptionHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ExceptionHandler.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/ExceptionHandlerTest.java"
+    },
+    {
+      "src_name": "BasicNodeSet",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/BasicNodeSet.java",
+      "class_declaration": "public class BasicNodeSet implements NodeSet ",
+      "methods_under_test": {
+        "=1": {
+          "BasicNodeSet.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BasicNodeSet.add(Pointer)": [
+            2,
+            2,
+            2
+          ],
+          "BasicNodeSet.add(NodeSet)": [
+            2,
+            2,
+            2
+          ],
+          "BasicNodeSet.remove(Pointer)": [
+            2,
+            2,
+            2
+          ],
+          "BasicNodeSet.getPointers()": [
+            2,
+            2,
+            2
+          ],
+          "BasicNodeSet.getNodes()": [
+            3,
+            3,
+            3
+          ],
+          "BasicNodeSet.getValues()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/BasicNodeSetTest.java"
+    },
+    {
+      "src_name": "SimplePathInterpreter",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/SimplePathInterpreter.java",
+      "class_declaration": "public class SimplePathInterpreter ",
+      "methods_under_test": {
+        "=1": {
+          "SimplePathInterpreter.interpretSimpleLocationPath(EvalContext, NodePointer, Step[])": [
+            1,
+            1,
+            1
+          ],
+          "SimplePathInterpreter.interpretSimpleExpressionPath(EvalContext, NodePointer, Expression[], Step[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "SimplePathInterpreter.createNullPointer(EvalContext, NodePointer, Step[], int)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/axes/SimplePathInterpreterTest.java"
+    },
+    {
+      "src_name": "BasicTypeConverter",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/BasicTypeConverter.java",
+      "class_declaration": "public class BasicTypeConverter implements TypeConverter ",
+      "methods_under_test": {
+        "=1": {
+          "ValuePointer.clone()": [
+            1,
+            1,
+            1
+          ],
+          "ValuePointer.compareTo(Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BasicTypeConverter.convertNullToPrimitive(Class)": [
+            9,
+            9,
+            9
+          ],
+          "BasicTypeConverter.convertStringToPrimitive(Object, Class)": [
+            9,
+            9,
+            9
+          ],
+          "BasicTypeConverter.canCreateCollection(Class)": [
+            5,
+            5,
+            5
+          ],
+          "BasicTypeConverter.allocateCollection(Class)": [
+            6,
+            6,
+            6
+          ],
+          "BasicTypeConverter.unmodifiableCollection(Collection)": [
+            4,
+            4,
+            4
+          ],
+          "ValueNodeSet.getPointers()": [
+            3,
+            3,
+            3
+          ],
+          "ValuePointer.asPath()": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {
+          "BasicTypeConverter.canConvert(Object, final, Class)": [
+            22,
+            22,
+            22
+          ],
+          "BasicTypeConverter.convert(Object, final, Class)": [
+            32,
+            32,
+            32
+          ],
+          "BasicTypeConverter.allocateNumber(Class, double)": [
+            24,
+            24,
+            24
+          ]
+        },
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/util/BasicTypeConverterTest.java"
+    },
+    {
+      "src_name": "JXPathCompiledExpression",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/JXPathCompiledExpression.java",
+      "class_declaration": "public class JXPathCompiledExpression implements CompiledExpression ",
+      "methods_under_test": {
+        "=1": {
+          "JXPathCompiledExpression.toString()": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.getValue(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.getValue(JXPathContext, Class)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.setValue(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.createPath(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.createPathAndSetValue(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.iterate(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.getPointer(JXPathContext, String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.iteratePointers(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.removePath(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathCompiledExpression.removeAll(JXPathContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/JXPathCompiledExpressionTest.java"
+    },
+    {
+      "src_name": "ExtensionFunction",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/ExtensionFunction.java",
+      "class_declaration": "public class ExtensionFunction extends Operation ",
+      "methods_under_test": {
+        "=1": {
+          "ExtensionFunction.computeContextDependent()": [
+            1,
+            1,
+            1
+          ],
+          "ExtensionFunction.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ExtensionFunction.toString()": [
+            4,
+            4,
+            4
+          ],
+          "ExtensionFunction.computeValue(EvalContext)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/ExtensionFunctionTest.java"
+    },
+    {
+      "src_name": "CoreOperation",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperation.java",
+      "class_declaration": "public abstract class CoreOperation extends Operation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperation.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CoreOperation.toString()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/CoreOperationTest.java"
+    },
+    {
+      "src_name": "ClassLoaderUtil",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/ClassLoaderUtil.java",
+      "class_declaration": "public class ClassLoaderUtil ",
+      "methods_under_test": {
+        "=1": {
+          "ClassLoaderUtil.getClass(ClassLoader, String)": [
+            1,
+            1,
+            1
+          ],
+          "ClassLoaderUtil.getClass(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ClassLoaderUtil.getClass(ClassLoader, String, boolean)": [
+            2,
+            2,
+            2
+          ],
+          "ClassLoaderUtil.getClass(String, boolean)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/util/ClassLoaderUtilTest.java"
+    }
+  ],
+  "src_test_fuzz_match": [
+    {
+      "src_name": "QName",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/QName.java",
+      "class_declaration": "public class QName implements Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "QName.toString()": [
+            1,
+            1,
+            1
+          ],
+          "QName.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "QName.equals(Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/NameAttributeTest.java"
+    },
+    {
+      "src_name": "Path",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/Path.java",
+      "class_declaration": "public abstract class Path extends Expression ",
+      "methods_under_test": {
+        "=1": {
+          "Path.evalSteps(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Path.computeContextDependent()": [
+            4,
+            4,
+            4
+          ],
+          "Path.isSimpleStep(Step)": [
+            7,
+            7,
+            7
+          ],
+          "Path.areBasicPredicates(Expression[])": [
+            7,
+            7,
+            7
+          ],
+          "Path.getSingleNodePointerForSteps(EvalContext)": [
+            3,
+            3,
+            3
+          ],
+          "Path.searchForPath(EvalContext)": [
+            7,
+            7,
+            7
+          ],
+          "Path.buildContextChain(EvalContext, int, boolean)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {
+          "Path.createContextForStep(EvalContext, int, NodeTest)": [
+            17,
+            17,
+            17
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/servlet/JXPathServletContextTest.java"
+    },
+    {
+      "src_name": "Variables",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/Variables.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/VariableFactory.java"
+    },
+    {
+      "src_name": "DocumentContainer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/xml/DocumentContainer.java",
+      "class_declaration": "public class DocumentContainer extends XMLParser2 implements Container ",
+      "methods_under_test": {
+        "=1": {
+          "DocumentContainer.registerXMLParser(String, XMLParser)": [
+            1,
+            1,
+            1
+          ],
+          "DocumentContainer.registerXMLParser(String, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DocumentContainer.getValue()": [
+            10,
+            10,
+            10
+          ],
+          "DocumentContainer.parseXML(InputStream)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      },
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/container/ContainerModelTest.java"
+    },
+    {
+      "src_name": "XMLParser",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/xml/XMLParser.java",
+      "error": "list index out of range",
+      "test_path": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/XMLPreserveSpaceTest.java"
+    }
+  ],
+  "src_without_tests": [
+    {
+      "src_name": "TypeConverter",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/TypeConverter.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JXPathBasicBeanInfo",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathBasicBeanInfo.java",
+      "class_declaration": "public class JXPathBasicBeanInfo implements JXPathBeanInfo ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JXPathBasicBeanInfo.getPropertyDescriptor(String)": [
+            3,
+            3,
+            3
+          ],
+          "JXPathBasicBeanInfo.toString()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "JXPathBasicBeanInfo.getPropertyDescriptors()": [
+            14,
+            14,
+            14
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/NodeIterator.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JDOMNamespaceIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespaceIterator.java",
+      "class_declaration": "public class JDOMNamespaceIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JDOMNamespaceIterator.getNodePointer()": [
+            4,
+            4,
+            4
+          ],
+          "JDOMNamespaceIterator.setPosition(int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathContext.java",
+      "class_declaration": "public abstract class JXPathContext ",
+      "methods_under_test": {
+        "=1": {
+          "JXPathContext.newContext(Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.newContext(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.setLenient(boolean)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.selectSingleNode(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.registerNamespace(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.getNamespaceURI(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContext.getPrefix(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JXPathContext.getVariables()": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.getFunctions()": [
+            3,
+            3,
+            3
+          ],
+          "JXPathContext.getFactory()": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContext.getLocale()": [
+            5,
+            5,
+            5
+          ],
+          "JXPathContext.setDecimalFormatSymbols(String, DecimalFormatSymbols)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.getDecimalFormatSymbols(String)": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContext.compile(String)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.selectNodes(String)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.getIdentityManager()": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContext.getPointerByID(String)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.getKeyManager()": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContext.getPointerByKey(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContext.getNodeSetByKey(String, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ExpressionPath",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/ExpressionPath.java",
+      "class_declaration": "public class ExpressionPath extends Path ",
+      "methods_under_test": {
+        "=1": {
+          "ExpressionPath.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "ExpressionPath.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ExpressionPath.computeContextDependent()": [
+            5,
+            5,
+            5
+          ],
+          "ExpressionPath.toString()": [
+            6,
+            6,
+            6
+          ],
+          "ExpressionPath.expressionPath(EvalContext, boolean)": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ExpressionContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ExpressionContext.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "JXPathContextFactoryConfigurationError",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathContextFactoryConfigurationError.java",
+      "class_declaration": "public class JXPathContextFactoryConfigurationError extends Error ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JXPathContextFactoryConfigurationError.getMessage()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "UnionContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/UnionContext.java",
+      "class_declaration": "public class UnionContext extends NodeSetContext ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "UnionContext.setPosition(int)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "KeyManager",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/KeyManager.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "ServletRequestHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/ServletRequestHandler.java",
+      "class_declaration": "public class ServletRequestHandler extends HttpSessionHandler ",
+      "methods_under_test": {
+        "=1": {
+          "ServletRequestHandler.setProperty(Object, String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ServletRequestHandler.collectPropertyNames(HashSet, Object)": [
+            2,
+            2,
+            2
+          ],
+          "ServletRequestHandler.getProperty(Object, String)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathContextReferenceImpl",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/JXPathContextReferenceImpl.java",
+      "class_declaration": "public class JXPathContextReferenceImpl extends JXPathContext ",
+      "methods_under_test": {
+        "=1": {
+          "JXPathContextReferenceImpl.addNodePointerFactory(NodePointerFactory)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.compilePath(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getValue(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getValue(String, Class)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.iterate(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.iterate(String, Expression)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getPointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.setValue(String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.createPath(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.createPathAndSetValue(String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.iteratePointers(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.iteratePointers(String, Expression)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.removePath(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.removeAll(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getVariablePointer(QName)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getNamespaceURI(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getPrefix(String)": [
+            1,
+            1,
+            1
+          ],
+          "JXPathContextReferenceImpl.getNamespaceResolver()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JXPathContextReferenceImpl.getValue(String, Expression)": [
+            7,
+            7,
+            7
+          ],
+          "JXPathContextReferenceImpl.getValue(String, Expression, Class)": [
+            3,
+            3,
+            3
+          ],
+          "JXPathContextReferenceImpl.getPointer(String, Expression)": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContextReferenceImpl.setValue(String, Expression, Object)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.createPath(String, Expression)": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContextReferenceImpl.createPathAndSetValue(String, Expression, Object)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.removePath(String, Expression)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.removeAll(String, Expression)": [
+            3,
+            3,
+            3
+          ],
+          "JXPathContextReferenceImpl.getRelativeContext(Pointer)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.getFunction(QName, Object[])": [
+            4,
+            4,
+            4
+          ],
+          "JXPathContextReferenceImpl.registerNamespace(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.setNamespaceContextPointer(Pointer)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.setExceptionHandler(ExceptionHandler)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathContextReferenceImpl.allocateConditionally(String, String)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMParser",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/xml/DOMParser.java",
+      "class_declaration": "public class DOMParser extends XMLParser2 ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "DOMParser.parseXML(InputStream)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationMod",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationMod.java",
+      "class_declaration": "public class CoreOperationMod extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationMod.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CollectionNodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/CollectionNodeIterator.java",
+      "class_declaration": "public abstract class CollectionNodeIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CollectionNodeIterator.setPosition(int)": [
+            3,
+            3,
+            3
+          ],
+          "CollectionNodeIterator.getNodePointer()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XMLParser2",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/xml/XMLParser2.java",
+      "class_declaration": "public abstract class XMLParser2 implements XMLParser ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationCompare",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationCompare.java",
+      "class_declaration": "public abstract class CoreOperationCompare extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationCompare.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CoreOperationCompare.equal(EvalContext, Expression, Expression)": [
+            10,
+            10,
+            10
+          ],
+          "CoreOperationCompare.contains(Iterator, Object)": [
+            3,
+            3,
+            3
+          ],
+          "CoreOperationCompare.findMatch(Iterator, Iterator)": [
+            4,
+            4,
+            4
+          ],
+          "CoreOperationCompare.equal(Object, Object)": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMNodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodeIterator.java",
+      "class_declaration": "public class DOMNodeIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "DOMNodeIterator.getNodePointer()": [
+            2,
+            2,
+            2
+          ],
+          "DOMNodeIterator.setPosition(int)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ChildContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/ChildContext.java",
+      "class_declaration": "public class ChildContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "ChildContext.nextNode()": [
+            1,
+            1,
+            1
+          ],
+          "ChildContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ChildContext.getCurrentNodePointer()": [
+            2,
+            2,
+            2
+          ],
+          "ChildContext.getSingleNodePointer()": [
+            5,
+            5,
+            5
+          ],
+          "ChildContext.setPosition(int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationRelationalExpression",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationRelationalExpression.java",
+      "class_declaration": "public abstract class CoreOperationRelationalExpression extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationRelationalExpression.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParentContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/ParentContext.java",
+      "class_declaration": "public class ParentContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "ParentContext.reset()": [
+            1,
+            1,
+            1
+          ],
+          "ParentContext.setPosition(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ParentContext.nextNode()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "IdentityManager",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/IdentityManager.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "NodePointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/NodePointerFactory.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Parser",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/Parser.java",
+      "class_declaration": "public class Parser ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Parser.parseExpression(String, Compiler)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynamicPropertyHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/DynamicPropertyHandler.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "DynamicPropertyPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyPointer.java",
+      "class_declaration": "public class DynamicPropertyPointer extends PropertyPointer ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "DynamicPropertyPointer.getPropertyNames()": [
+            5,
+            5,
+            5
+          ],
+          "DynamicPropertyPointer.getPropertyName()": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPropertyPointer.setPropertyName(String)": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPropertyPointer.getPropertyIndex()": [
+            4,
+            4,
+            4
+          ],
+          "DynamicPropertyPointer.setPropertyIndex(int)": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPropertyPointer.getImmediateNode()": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPropertyPointer.setValue(Object)": [
+            3,
+            3,
+            3
+          ],
+          "DynamicPropertyPointer.createPath(JXPathContext)": [
+            6,
+            6,
+            6
+          ],
+          "DynamicPropertyPointer.createPath(JXPathContext, Object)": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPropertyPointer.remove()": [
+            5,
+            5,
+            5
+          ],
+          "DynamicPropertyPointer.asPath()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynaBeanPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPointerFactory.java",
+      "class_declaration": "public class DynaBeanPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "DynaBeanPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ],
+          "DynaBeanPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ContainerPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/container/ContainerPointerFactory.java",
+      "class_declaration": "public class ContainerPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "ContainerPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "LocationPath",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/LocationPath.java",
+      "class_declaration": "public class LocationPath extends Path ",
+      "methods_under_test": {
+        "=1": {
+          "LocationPath.computeContextDependent()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "LocationPath.toString()": [
+            4,
+            4,
+            4
+          ],
+          "LocationPath.compute(EvalContext)": [
+            2,
+            2,
+            2
+          ],
+          "LocationPath.computeValue(EvalContext)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMAttributeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributeIterator.java",
+      "class_declaration": "public class JDOMAttributeIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JDOMAttributeIterator.getNodePointer()": [
+            4,
+            4,
+            4
+          ],
+          "JDOMAttributeIterator.setPosition(int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationUnion",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationUnion.java",
+      "class_declaration": "public class CoreOperationUnion extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CoreOperationUnion.computeValue(EvalContext)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ExtendedKeyManager",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ExtendedKeyManager.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "CoreOperationNotEqual",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationNotEqual.java",
+      "class_declaration": "public class CoreOperationNotEqual extends CoreOperationCompare ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "SimpleCharStream",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/SimpleCharStream.java",
+      "class_declaration": "public class SimpleCharStream ",
+      "methods_under_test": {
+        "=1": {
+          "SimpleCharStream.BeginToken()": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.ReInit(java.io.Reader, int, int)": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.ReInit(java.io.Reader)": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.ReInit(java.io.InputStream, int, int, int)": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.ReInit(java.io.InputStream)": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.ReInit(java.io.InputStream, int, int)": [
+            1,
+            1,
+            1
+          ],
+          "SimpleCharStream.Done()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "SimpleCharStream.FillBuff()": [
+            9,
+            9,
+            9
+          ],
+          "SimpleCharStream.UpdateLineColumn(char)": [
+            7,
+            7,
+            7
+          ],
+          "SimpleCharStream.readChar()": [
+            4,
+            4,
+            4
+          ],
+          "SimpleCharStream.backup(int)": [
+            2,
+            2,
+            2
+          ],
+          "SimpleCharStream.ReInit(java.io.Reader, int, int, int)": [
+            2,
+            2,
+            2
+          ],
+          "SimpleCharStream.GetImage()": [
+            3,
+            3,
+            3
+          ],
+          "SimpleCharStream.GetSuffix(int)": [
+            2,
+            2,
+            2
+          ],
+          "SimpleCharStream.adjustBeginLineColumn(int, int)": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {
+          "SimpleCharStream.ExpandBuff(boolean)": [
+            19,
+            19,
+            19
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ClassFunctions",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ClassFunctions.java",
+      "class_declaration": "public class ClassFunctions implements Functions ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "ClassFunctions.getFunction(String, String, Object[])": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynamicPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPointer.java",
+      "class_declaration": "public class DynamicPointer extends PropertyOwnerPointer ",
+      "methods_under_test": {
+        "=1": {
+          "DynamicPointer.createNodeIterator(String, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "DynamicPointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "DynamicPointer.asPath()": [
+            1,
+            1,
+            1
+          ],
+          "DynamicPointer.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DynamicPointer.equals(Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMPointerFactory.java",
+      "class_declaration": "public class DOMPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "DOMPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ],
+          "DOMPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMNamespaceIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMNamespaceIterator.java",
+      "class_declaration": "public class DOMNamespaceIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "DOMNamespaceIterator.setPosition(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DOMNamespaceIterator.getNodePointer()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "FunctionLibrary",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/FunctionLibrary.java",
+      "class_declaration": "public class FunctionLibrary implements Functions ",
+      "methods_under_test": {
+        "=1": {
+          "FunctionLibrary.addFunctions(Functions)": [
+            1,
+            1,
+            1
+          ],
+          "FunctionLibrary.removeFunctions(Functions)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "FunctionLibrary.getFunction(String, String, Object[])": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathTypeConversionException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathTypeConversionException.java",
+      "class_declaration": "public class JXPathTypeConversionException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MethodFunction",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/functions/MethodFunction.java",
+      "class_declaration": "public class MethodFunction implements Function ",
+      "methods_under_test": {
+        "=1": {
+          "MethodFunction.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "MethodFunction.invoke(ExpressionContext, Object[])": [
+            10,
+            10,
+            10
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathServletContexts",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/JXPathServletContexts.java",
+      "class_declaration": "public final class JXPathServletContexts ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JXPathServletContexts.getPageContext(PageContext)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathServletContexts.getRequestContext(ServletRequest, ServletContext)": [
+            5,
+            5,
+            5
+          ],
+          "JXPathServletContexts.getSessionContext(HttpSession, ServletContext)": [
+            2,
+            2,
+            2
+          ],
+          "JXPathServletContexts.getApplicationContext(ServletContext)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PageContextHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/PageContextHandler.java",
+      "class_declaration": "public class PageContextHandler implements DynamicPropertyHandler ",
+      "methods_under_test": {
+        "=1": {
+          "PageContextHandler.getProperty(Object, String)": [
+            1,
+            1,
+            1
+          ],
+          "PageContextHandler.setProperty(Object, String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PageContextHandler.getPropertyNames(Object)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NamespacePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/NamespacePointer.java",
+      "class_declaration": "public class NamespacePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "NamespacePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "NamespacePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "NamespacePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NamespacePointer.getNamespaceURI()": [
+            2,
+            2,
+            2
+          ],
+          "NamespacePointer.asPath()": [
+            3,
+            3,
+            3
+          ],
+          "NamespacePointer.equals(Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMAttributePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMAttributePointer.java",
+      "class_declaration": "public class JDOMAttributePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "JDOMAttributePointer.remove()": [
+            1,
+            1,
+            1
+          ],
+          "JDOMAttributePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "JDOMAttributePointer.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMAttributePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JDOMAttributePointer.getNamespaceURI()": [
+            2,
+            2,
+            2
+          ],
+          "JDOMAttributePointer.asPath()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "InitialContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/InitialContext.java",
+      "class_declaration": "public class InitialContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "InitialContext.nextNode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "InitialContext.setPosition(int)": [
+            3,
+            3,
+            3
+          ],
+          "InitialContext.nextSet()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynaBeanPropertyPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPropertyPointer.java",
+      "class_declaration": "public class DynaBeanPropertyPointer extends PropertyPointer ",
+      "methods_under_test": {
+        "=1": {
+          "DynaBeanPropertyPointer.setPropertyName(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DynaBeanPropertyPointer.getPropertyNames()": [
+            4,
+            4,
+            4
+          ],
+          "DynaBeanPropertyPointer.getPropertyName()": [
+            2,
+            2,
+            2
+          ],
+          "DynaBeanPropertyPointer.getPropertyIndex()": [
+            4,
+            4,
+            4
+          ],
+          "DynaBeanPropertyPointer.setPropertyIndex(int)": [
+            2,
+            2,
+            2
+          ],
+          "DynaBeanPropertyPointer.getImmediateNode()": [
+            8,
+            8,
+            8
+          ],
+          "DynaBeanPropertyPointer.remove()": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Compiler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/Compiler.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "Token",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/Token.java",
+      "class_declaration": "public class Token ",
+      "methods_under_test": {
+        "=1": {
+          "Token.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Token.newToken(int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CollectionPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointerFactory.java",
+      "class_declaration": "public class CollectionPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "CollectionPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Operation",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/Operation.java",
+      "class_declaration": "public abstract class Operation extends Expression ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Operation.computeContextDependent()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CompiledExpression",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/CompiledExpression.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "TypeUtils",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/TypeUtils.java",
+      "class_declaration": "public class TypeUtils ",
+      "methods_under_test": {
+        "=1": {
+          "TypeUtils.canConvert(Object, Class)": [
+            1,
+            1,
+            1
+          ],
+          "TypeUtils.convert(Object, Class)": [
+            1,
+            1,
+            1
+          ],
+          "TypeUtils.wrapPrimitive(Class)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathInvalidSyntaxException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathInvalidSyntaxException.java",
+      "class_declaration": "public class JXPathInvalidSyntaxException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BeanPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/BeanPointerFactory.java",
+      "class_declaration": "public class BeanPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "BeanPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BeanPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CollectionPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/CollectionPointer.java",
+      "class_declaration": "public class CollectionPointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "CollectionPointer.setIndex(int)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.createPath(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.createChild(JXPathContext, QName, int)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "CollectionPointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "CollectionPointer.setValue(Object)": [
+            3,
+            3,
+            3
+          ],
+          "CollectionPointer.getValuePointer()": [
+            3,
+            3,
+            3
+          ],
+          "CollectionPointer.createPath(JXPathContext)": [
+            2,
+            2,
+            2
+          ],
+          "CollectionPointer.equals(Object)": [
+            3,
+            3,
+            3
+          ],
+          "CollectionPointer.childIterator(NodeTest, boolean, NodePointer)": [
+            2,
+            2,
+            2
+          ],
+          "CollectionPointer.testNode(NodeTest)": [
+            4,
+            4,
+            4
+          ],
+          "CollectionPointer.asPath()": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NullPropertyPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/NullPropertyPointer.java",
+      "class_declaration": "public class NullPropertyPointer extends PropertyPointer ",
+      "methods_under_test": {
+        "=1": {
+          "NullPropertyPointer.createChild(JXPathContext, QName, int)": [
+            1,
+            1,
+            1
+          ],
+          "NullPropertyPointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NullPropertyPointer.setNameAttributeValue(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NullPropertyPointer.setValue(Object)": [
+            5,
+            5,
+            5
+          ],
+          "NullPropertyPointer.createPath(JXPathContext)": [
+            4,
+            4,
+            4
+          ],
+          "NullPropertyPointer.createPath(JXPathContext, Object)": [
+            4,
+            4,
+            4
+          ],
+          "NullPropertyPointer.asPath()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationLessThanOrEqual",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationLessThanOrEqual.java",
+      "class_declaration": "public class CoreOperationLessThanOrEqual extends\n        CoreOperationRelationalExpression ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationLessThanOrEqual.evaluateCompare(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BeanPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/BeanPointer.java",
+      "class_declaration": "public class BeanPointer extends PropertyOwnerPointer ",
+      "methods_under_test": {
+        "=1": {
+          "BeanPointer.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BeanPointer.equals(Object)": [
+            7,
+            7,
+            7
+          ],
+          "BeanPointer.asPath()": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XPathParser",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/XPathParser.java",
+      "class_declaration": "public class XPathParser implements XPathParserConstants ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "XPathParser.NCName_Without_CoreFunctions()": [
+            7,
+            7,
+            7
+          ],
+          "XPathParser.QName()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.QName_Without_CoreFunctions()": [
+            10,
+            10,
+            10
+          ],
+          "XPathParser.parseExpression()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.AbsoluteLocationPath()": [
+            7,
+            7,
+            7
+          ],
+          "XPathParser.RelativeLocationPath()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.LocationStep(ArrayList)": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.Predicate()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.AbbreviatedAxisSpecifier()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.Expression()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.FunctionCall()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.CoreFunctionCall()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.Argument()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.UnionExpr()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.FilterExpr()": [
+            9,
+            9,
+            9
+          ],
+          "XPathParser.OrExpr()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.AndExpr()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.EqualityExpr()": [
+            7,
+            7,
+            7
+          ],
+          "XPathParser.AdditiveExpr()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.SubtractiveExpr()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.MultiplicativeExpr()": [
+            9,
+            9,
+            9
+          ],
+          "XPathParser.FunctionName()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.VariableReference()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.NodeType()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.jj_2_1(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_2_2(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_2_3(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_2_4(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_2_5(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_2_6(int)": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3_2()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_144()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_143()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_150()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_132()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_130()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_148()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_131()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_64()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.jj_3R_113()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_91()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_141()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.jj_3R_129()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3_6()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_146()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_135()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_145()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_134()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_133()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_142()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_140()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_139()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_77()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_127()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_137()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_128()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_112()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_111()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_110()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_122()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_109()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_108()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_107()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_106()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_121()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_105()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_104()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_103()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_20()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_102()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_101()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_100()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_138()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_136()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_118()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.jj_3R_117()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_83()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_82()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_96()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_126()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_97()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_125()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_73()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_124()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_116()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_123()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_88()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_115()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_26()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_80()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_25()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_24()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_120()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_23()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_119()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_68()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3_1()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3_4()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3_3()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_17()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.jj_3R_67()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_114()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_66()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_94()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_76()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_99()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_98()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_75()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.jj_3R_92()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_74()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_71()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_93()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_65()": [
+            5,
+            5,
+            5
+          ],
+          "XPathParser.jj_3R_85()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_89()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_95()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_84()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_22()": [
+            6,
+            6,
+            6
+          ],
+          "XPathParser.jj_3R_72()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_86()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_151()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3_5()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_78()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_69()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_57()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_56()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_55()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_63()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_54()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_62()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_53()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_61()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_52()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_21()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_60()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_51()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_59()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_87()": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_3R_50()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_58()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_81()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_49()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_48()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_47()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_46()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_16()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_149()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_45()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_44()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_19()": [
+            7,
+            7,
+            7
+          ],
+          "XPathParser.jj_3R_43()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_42()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_41()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_40()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_79()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.jj_3R_39()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_38()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_37()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_36()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_35()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_34()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_33()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_32()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_31()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_70()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_30()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_29()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_28()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_27()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_3R_147()": [
+            4,
+            4,
+            4
+          ],
+          "XPathParser.ReInit(java.io.InputStream)": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.ReInit(java.io.Reader)": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.ReInit(XPathParserTokenManager)": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.jj_consume_token(int)": [
+            7,
+            7,
+            7
+          ],
+          "XPathParser.jj_scan_token(int)": [
+            8,
+            8,
+            8
+          ],
+          "XPathParser.getNextToken()": [
+            2,
+            2,
+            2
+          ],
+          "XPathParser.getToken(int)": [
+            3,
+            3,
+            3
+          ],
+          "XPathParser.jj_rescan_token()": [
+            10,
+            10,
+            10
+          ],
+          "XPathParser.jj_save(int, int)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "XPathParser.AxisSpecifier()": [
+            15,
+            15,
+            15
+          ],
+          "XPathParser.AxisName()": [
+            15,
+            15,
+            15
+          ],
+          "XPathParser.RelationalExpr()": [
+            11,
+            11,
+            11
+          ],
+          "XPathParser.jj_3R_90()": [
+            14,
+            14,
+            14
+          ],
+          "XPathParser.generateParseException()": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {
+          "XPathParser.NCName()": [
+            42,
+            42,
+            42
+          ],
+          "XPathParser.CoreFunctionName()": [
+            33,
+            33,
+            33
+          ],
+          "XPathParser.LocationPath()": [
+            61,
+            61,
+            61
+          ],
+          "XPathParser.NodeTest(ArrayList)": [
+            105,
+            105,
+            105
+          ],
+          "XPathParser.PrimaryExpr()": [
+            47,
+            47,
+            47
+          ],
+          "XPathParser.ArgumentList()": [
+            68,
+            68,
+            68
+          ],
+          "XPathParser.PathExpr()": [
+            62,
+            62,
+            62
+          ],
+          "XPathParser.UnaryExpr()": [
+            69,
+            0,
+            0
+          ],
+          "XPathParser.WildcardName()": [
+            86,
+            86,
+            86
+          ],
+          "XPathParser.jj_3R_15()": [
+            37,
+            37,
+            37
+          ],
+          "XPathParser.jj_3R_18()": [
+            32,
+            32,
+            32
+          ]
+        },
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "AncestorContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/AncestorContext.java",
+      "class_declaration": "public class AncestorContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "AncestorContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "AncestorContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ],
+          "AncestorContext.nextNode()": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NamespaceResolver",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/NamespaceResolver.java",
+      "class_declaration": "public class NamespaceResolver implements Cloneable, Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "NamespaceResolver.getNamespaceURI(String)": [
+            1,
+            1,
+            1
+          ],
+          "NamespaceResolver.getPrefix(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NamespaceResolver.getPrefix(final, NodePointer, String)": [
+            5,
+            5,
+            5
+          ],
+          "NamespaceResolver.registerNamespace(String, String)": [
+            2,
+            2,
+            2
+          ],
+          "NamespaceResolver.getNamespaceContextPointer()": [
+            4,
+            4,
+            4
+          ],
+          "NamespaceResolver.getExternallyRegisteredNamespaceURI(String)": [
+            2,
+            2,
+            2
+          ],
+          "NamespaceResolver.getExternallyRegisteredPrefix(String)": [
+            2,
+            2,
+            2
+          ],
+          "NamespaceResolver.seal()": [
+            3,
+            3,
+            3
+          ],
+          "NamespaceResolver.clone()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XPathParserTokenManager",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/XPathParserTokenManager.java",
+      "class_declaration": "public class XPathParserTokenManager implements XPathParserConstants ",
+      "methods_under_test": {
+        "=1": {
+          "XPathParserTokenManager.ReInit(SimpleCharStream)": [
+            1,
+            1,
+            1
+          ],
+          "XPathParserTokenManager.ReInit(SimpleCharStream, int)": [
+            1,
+            1,
+            1
+          ],
+          "XPathParserTokenManager.jjFillToken()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "XPathParserTokenManager.SwitchTo(int)": [
+            3,
+            3,
+            3
+          ],
+          "XPathParserTokenManager.getNextToken()": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMNodePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMNodePointer.java",
+      "class_declaration": "public class DOMNodePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "DOMNodePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.childIterator(NodeTest, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.isLanguage(String)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "DOMNodePointer.getPointerByID(JXPathContext, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DOMNodePointer.getName()": [
+            3,
+            3,
+            3
+          ],
+          "DOMNodePointer.getNamespaceResolver()": [
+            2,
+            2,
+            2
+          ],
+          "DOMNodePointer.getDefaultNamespaceURI()": [
+            7,
+            7,
+            7
+          ],
+          "DOMNodePointer.findEnclosingAttribute(Node, String)": [
+            4,
+            4,
+            4
+          ],
+          "DOMNodePointer.setValue(Object)": [
+            9,
+            9,
+            9
+          ],
+          "DOMNodePointer.createChild(JXPathContext, QName, int)": [
+            4,
+            4,
+            4
+          ],
+          "DOMNodePointer.createAttribute(JXPathContext, QName)": [
+            6,
+            6,
+            6
+          ],
+          "DOMNodePointer.remove()": [
+            2,
+            2,
+            2
+          ],
+          "DOMNodePointer.getPrefix(Node)": [
+            2,
+            2,
+            2
+          ],
+          "DOMNodePointer.getLocalName(Node)": [
+            2,
+            2,
+            2
+          ],
+          "DOMNodePointer.getNamespaceURI(Node)": [
+            6,
+            6,
+            6
+          ],
+          "DOMNodePointer.getValue()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {
+          "DOMNodePointer.testNode(Node, NodeTest)": [
+            12,
+            12,
+            12
+          ],
+          "DOMNodePointer.getNamespaceURI(String)": [
+            12,
+            12,
+            12
+          ],
+          "DOMNodePointer.asPath()": [
+            12,
+            12,
+            12
+          ],
+          "DOMNodePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PropertyIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/PropertyIterator.java",
+      "class_declaration": "public class PropertyIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "PropertyIterator.reset()": [
+            1,
+            1,
+            1
+          ],
+          "PropertyIterator.setPosition(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PropertyIterator.getNodePointer()": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {
+          "PropertyIterator.prepareForIndividualProperty(String)": [
+            13,
+            13,
+            13
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Pointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/Pointer.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "PackageFunctions",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/PackageFunctions.java",
+      "class_declaration": "public class PackageFunctions implements Functions ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {
+          "PackageFunctions.getFunction(String, String, Object[])": [
+            18,
+            18,
+            18
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PageScopeContextHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/PageScopeContextHandler.java",
+      "class_declaration": "public class PageScopeContextHandler implements DynamicPropertyHandler ",
+      "methods_under_test": {
+        "=1": {
+          "PageScopeContextHandler.getProperty(Object, String)": [
+            1,
+            1,
+            1
+          ],
+          "PageScopeContextHandler.setProperty(Object, String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PageScopeContextHandler.getPropertyNames(Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "KeyManagerUtils",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/KeyManagerUtils.java",
+      "class_declaration": "public class KeyManagerUtils ",
+      "methods_under_test": {
+        "=1": {
+          "SingleNodeExtendedKeyManager.getNodeSetByKey(JXPathContext, String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "SingleNodeExtendedKeyManager.getPointerByKey(JXPathContext, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "KeyManagerUtils.getExtendedKeyManager(KeyManager)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationGreaterThanOrEqual",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThanOrEqual.java",
+      "class_declaration": "public class CoreOperationGreaterThanOrEqual extends\n        CoreOperationRelationalExpression ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationGreaterThanOrEqual.evaluateCompare(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationMultiply",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationMultiply.java",
+      "class_declaration": "public class CoreOperationMultiply extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationMultiply.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "VariablePointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/VariablePointerFactory.java",
+      "class_declaration": "public class VariablePointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "VariablePointerFactory.contextWrapper(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "VariablePointerFactory.createNodePointer(QName, Object, Locale)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMParser",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/xml/JDOMParser.java",
+      "class_declaration": "public class JDOMParser extends XMLParser2 ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JDOMParser.parseXML(InputStream)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "AbstractFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/AbstractFactory.java",
+      "class_declaration": "public abstract class AbstractFactory ",
+      "methods_under_test": {
+        "=1": {
+          "AbstractFactory.createObject(JXPathContext, Pointer, Object, String, int)": [
+            1,
+            1,
+            1
+          ],
+          "AbstractFactory.declareVariable(JXPathContext, String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationGreaterThan",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationGreaterThan.java",
+      "class_declaration": "public class CoreOperationGreaterThan extends CoreOperationRelationalExpression ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationGreaterThan.evaluateCompare(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "AttributeContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/AttributeContext.java",
+      "class_declaration": "public class AttributeContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "AttributeContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "AttributeContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ],
+          "AttributeContext.nextNode()": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathInvalidAccessException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathInvalidAccessException.java",
+      "class_declaration": "public class JXPathInvalidAccessException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "RootContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/RootContext.java",
+      "class_declaration": "public class RootContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "RootContext.nextNode()": [
+            1,
+            1,
+            1
+          ],
+          "RootContext.nextSet()": [
+            1,
+            1,
+            1
+          ],
+          "RootContext.setPosition(int)": [
+            1,
+            1,
+            1
+          ],
+          "RootContext.getVariableContext(QName)": [
+            1,
+            1,
+            1
+          ],
+          "RootContext.getFunction(QName, Object[])": [
+            1,
+            1,
+            1
+          ],
+          "RootContext.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "RootContext.getConstantContext(Object)": [
+            3,
+            3,
+            3
+          ],
+          "RootContext.getRegisteredValue(int)": [
+            2,
+            2,
+            2
+          ],
+          "RootContext.setRegisteredValue(Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMNodePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodePointer.java",
+      "class_declaration": "public class JDOMNodePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "JDOMNodePointer.childIterator(NodeTest, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.isLanguage(String)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNodePointer.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JDOMNodePointer.getNamespaceResolver()": [
+            2,
+            2,
+            2
+          ],
+          "JDOMNodePointer.getNamespaceURI(String)": [
+            5,
+            5,
+            5
+          ],
+          "JDOMNodePointer.getName()": [
+            4,
+            4,
+            4
+          ],
+          "JDOMNodePointer.setValue(Object)": [
+            10,
+            10,
+            10
+          ],
+          "JDOMNodePointer.getPrefix(Object)": [
+            3,
+            3,
+            3
+          ],
+          "JDOMNodePointer.getLocalName(Object)": [
+            3,
+            3,
+            3
+          ],
+          "JDOMNodePointer.findEnclosingAttribute(Object, String, Namespace)": [
+            4,
+            4,
+            4
+          ],
+          "JDOMNodePointer.createChild(JXPathContext, QName, int)": [
+            4,
+            4,
+            4
+          ],
+          "JDOMNodePointer.createAttribute(JXPathContext, QName)": [
+            6,
+            6,
+            6
+          ],
+          "JDOMNodePointer.remove()": [
+            2,
+            2,
+            2
+          ],
+          "JDOMNodePointer.asPath()": [
+            10,
+            10,
+            10
+          ],
+          "JDOMNodePointer.equals(Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "JDOMNodePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            12,
+            12,
+            12
+          ],
+          "JDOMNodePointer.getValue()": [
+            12,
+            12,
+            12
+          ],
+          "JDOMNodePointer.testNode(NodePointer, Object, NodeTest)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "VariablePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/VariablePointer.java",
+      "class_declaration": "public class VariablePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "VariablePointer.getImmediateNode()": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.setIndex(int)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.childIterator(NodeTest, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "VariablePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "VariablePointer.getBaseValue()": [
+            2,
+            2,
+            2
+          ],
+          "VariablePointer.setValue(Object)": [
+            4,
+            4,
+            4
+          ],
+          "VariablePointer.getImmediateValuePointer()": [
+            4,
+            4,
+            4
+          ],
+          "VariablePointer.getLength()": [
+            2,
+            2,
+            2
+          ],
+          "VariablePointer.createPath(JXPathContext, Object)": [
+            2,
+            2,
+            2
+          ],
+          "VariablePointer.createPath(JXPathContext)": [
+            3,
+            3,
+            3
+          ],
+          "VariablePointer.createChild(JXPathContext, QName, int)": [
+            3,
+            3,
+            3
+          ],
+          "VariablePointer.remove()": [
+            5,
+            5,
+            5
+          ],
+          "VariablePointer.findVariables(JXPathContext)": [
+            2,
+            2,
+            2
+          ],
+          "VariablePointer.equals(Object)": [
+            3,
+            3,
+            3
+          ],
+          "VariablePointer.asPath()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PropertyPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/PropertyPointer.java",
+      "class_declaration": "public abstract class PropertyPointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "PropertyPointer.getLength()": [
+            1,
+            1,
+            1
+          ],
+          "PropertyPointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "PropertyPointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PropertyPointer.setPropertyIndex(int)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.getBean()": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.getImmediateNode()": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.createPath(JXPathContext)": [
+            3,
+            3,
+            3
+          ],
+          "PropertyPointer.createPath(JXPathContext, Object)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.createChild(JXPathContext, QName, int, Object)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.createChild(JXPathContext, QName, int)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyPointer.equals(Object)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynamicPropertyIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertyIterator.java",
+      "class_declaration": "public class DynamicPropertyIterator extends PropertyIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ValueUtils",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/ValueUtils.java",
+      "class_declaration": "public class ValueUtils ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "ValueUtils.isCollection(Object)": [
+            4,
+            4,
+            4
+          ],
+          "ValueUtils.getCollectionHint(Class)": [
+            6,
+            6,
+            6
+          ],
+          "ValueUtils.getIndexedPropertyLength(Object, IndexedPropertyDescriptor)": [
+            5,
+            5,
+            5
+          ],
+          "ValueUtils.getLength(Object)": [
+            4,
+            4,
+            4
+          ],
+          "ValueUtils.iterate(Object)": [
+            6,
+            6,
+            6
+          ],
+          "ValueUtils.expandCollection(Object, int)": [
+            6,
+            6,
+            6
+          ],
+          "ValueUtils.getValue(Object, int)": [
+            9,
+            9,
+            9
+          ],
+          "ValueUtils.setValue(Object, int, Object)": [
+            4,
+            4,
+            4
+          ],
+          "ValueUtils.getValue(Object, PropertyDescriptor)": [
+            5,
+            5,
+            5
+          ],
+          "ValueUtils.setValue(Object, PropertyDescriptor, Object)": [
+            3,
+            3,
+            3
+          ],
+          "ValueUtils.setValue(Object, PropertyDescriptor, int, Object)": [
+            10,
+            10,
+            10
+          ],
+          "ValueUtils.getValue(Object)": [
+            2,
+            2,
+            2
+          ],
+          "ValueUtils.getDynamicPropertyHandler(Class)": [
+            3,
+            3,
+            3
+          ],
+          "ValueUtils.getAccessibleMethod(Method)": [
+            9,
+            9,
+            9
+          ]
+        },
+        "11-20": {
+          "ValueUtils.remove(Object, int)": [
+            12,
+            12,
+            12
+          ],
+          "ValueUtils.getValue(Object, PropertyDescriptor, int)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PropertyOwnerPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/PropertyOwnerPointer.java",
+      "class_declaration": "public abstract class PropertyOwnerPointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "PropertyOwnerPointer.createNodeIterator(String, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "PropertyOwnerPointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "PropertyOwnerPointer.isValidProperty(QName)": [
+            1,
+            1,
+            1
+          ],
+          "PropertyOwnerPointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PropertyOwnerPointer.childIterator(NodeTest, boolean, NodePointer)": [
+            4,
+            4,
+            4
+          ],
+          "PropertyOwnerPointer.setIndex(int)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyOwnerPointer.getImmediateNode()": [
+            2,
+            2,
+            2
+          ],
+          "PropertyOwnerPointer.setValue(Object)": [
+            2,
+            2,
+            2
+          ],
+          "PropertyOwnerPointer.remove()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeSetContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/NodeSetContext.java",
+      "class_declaration": "public class NodeSetContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "NodeSetContext.setPosition(int)": [
+            1,
+            1,
+            1
+          ],
+          "NodeSetContext.nextNode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NodeSetContext.getCurrentNodePointer()": [
+            2,
+            2,
+            2
+          ],
+          "NodeSetContext.nextSet()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodeSet",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/NodeSet.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "TokenMgrError",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/TokenMgrError.java",
+      "class_declaration": "public class TokenMgrError extends Error ",
+      "methods_under_test": {
+        "=1": {
+          "TokenMgrError.LexicalError(boolean, int, int, int, String, char)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {
+          "TokenMgrError.addEscapes(String)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "EvalContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/EvalContext.java",
+      "class_declaration": "public abstract class EvalContext implements ExpressionContext, Iterator ",
+      "methods_under_test": {
+        "=1": {
+          "EvalContext.remove()": [
+            1,
+            1,
+            1
+          ],
+          "EvalContext.toString()": [
+            1,
+            1,
+            1
+          ],
+          "EvalContext.reset()": [
+            1,
+            1,
+            1
+          ],
+          "EvalContext.setPosition(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "EvalContext.hasNext()": [
+            4,
+            4,
+            4
+          ],
+          "EvalContext.next()": [
+            6,
+            6,
+            6
+          ],
+          "EvalContext.sortPointers(List)": [
+            4,
+            4,
+            4
+          ],
+          "EvalContext.getContextNodeList()": [
+            4,
+            4,
+            4
+          ],
+          "EvalContext.getNodeSet()": [
+            4,
+            4,
+            4
+          ],
+          "EvalContext.getRootContext()": [
+            4,
+            4,
+            4
+          ],
+          "EvalContext.getSingleNodePointer()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "EvalContext.nextSet()": [
+            19,
+            19,
+            19
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationAnd",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationAnd.java",
+      "class_declaration": "public class CoreOperationAnd extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CoreOperationAnd.computeValue(EvalContext)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Constant",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/Constant.java",
+      "class_declaration": "public class Constant extends Expression ",
+      "methods_under_test": {
+        "=1": {
+          "Constant.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "Constant.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "Constant.computeContextDependent()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Constant.toString()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Expression",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/Expression.java",
+      "class_declaration": "public abstract class Expression ",
+      "methods_under_test": {
+        "=1": {
+          "PointerIterator.hasNext()": [
+            1,
+            1,
+            1
+          ],
+          "PointerIterator.next()": [
+            1,
+            1,
+            1
+          ],
+          "PointerIterator.remove()": [
+            1,
+            1,
+            1
+          ],
+          "ValueIterator.remove()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "Expression.iterate(EvalContext)": [
+            3,
+            3,
+            3
+          ],
+          "Expression.iteratePointers(EvalContext)": [
+            4,
+            4,
+            4
+          ],
+          "ValueIterator.hasNext()": [
+            2,
+            2,
+            2
+          ],
+          "ValueIterator.next()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathIntrospector",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathIntrospector.java",
+      "class_declaration": "public class JXPathIntrospector ",
+      "methods_under_test": {
+        "=1": {
+          "JXPathIntrospector.registerAtomicClass(Class)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JXPathIntrospector.registerDynamicClass(Class, Class)": [
+            3,
+            3,
+            3
+          ],
+          "JXPathIntrospector.getBeanInfo(Class)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathException.java",
+      "class_declaration": "public class JXPathException extends RuntimeException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JXPathException.getMessage()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "StrictLazyDynaBeanPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynabeans/StrictLazyDynaBeanPointerFactory.java",
+      "class_declaration": "public class StrictLazyDynaBeanPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {
+          "StrictLazyDynaBeanPointerFactory.createNodePointer(QName, Object, Locale)": [
+            1,
+            1,
+            1
+          ],
+          "StrictLazyDynaBeanPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "HttpSessionHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/HttpSessionHandler.java",
+      "class_declaration": "public class HttpSessionHandler extends ServletContextHandler ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "HttpSessionHandler.collectPropertyNames(HashSet, Object)": [
+            2,
+            2,
+            2
+          ],
+          "HttpSessionHandler.getProperty(Object, String)": [
+            3,
+            3,
+            3
+          ],
+          "HttpSessionHandler.setProperty(Object, String, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ConstructorFunction",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/functions/ConstructorFunction.java",
+      "class_declaration": "public class ConstructorFunction implements Function ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "ConstructorFunction.invoke(ExpressionContext, Object[])": [
+            6,
+            6,
+            6
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationOr",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationOr.java",
+      "class_declaration": "public class CoreOperationOr extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CoreOperationOr.computeValue(EvalContext)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "VariableReference",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/VariableReference.java",
+      "class_declaration": "public class VariableReference extends Expression ",
+      "methods_under_test": {
+        "=1": {
+          "VariableReference.toString()": [
+            1,
+            1,
+            1
+          ],
+          "VariableReference.computeContextDependent()": [
+            1,
+            1,
+            1
+          ],
+          "VariableReference.compute(EvalContext)": [
+            1,
+            1,
+            1
+          ],
+          "VariableReference.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynaBeanPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanPointer.java",
+      "class_declaration": "public class DynaBeanPointer extends PropertyOwnerPointer ",
+      "methods_under_test": {
+        "=1": {
+          "DynaBeanPointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "DynaBeanPointer.asPath()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DynaBeanPointer.equals(Object)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "MethodLookupUtils",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/MethodLookupUtils.java",
+      "class_declaration": "public class MethodLookupUtils ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {
+          "MethodLookupUtils.lookupConstructor(Class, Object[])": [
+            13,
+            13,
+            13
+          ],
+          "MethodLookupUtils.lookupStaticMethod(Class, String, Object[])": [
+            14,
+            14,
+            14
+          ],
+          "MethodLookupUtils.lookupMethod(Class, String, Object[])": [
+            16,
+            16,
+            16
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathBeanInfo",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathBeanInfo.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "PredicateContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/PredicateContext.java",
+      "class_declaration": "public class PredicateContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "PredicateContext.reset()": [
+            1,
+            1,
+            1
+          ],
+          "PredicateContext.nextSet()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PredicateContext.setPosition(int)": [
+            5,
+            5,
+            5
+          ],
+          "PredicateContext.getCurrentNodePointer()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "PredicateContext.nextNode()": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "TreeCompiler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/TreeCompiler.java",
+      "class_declaration": "public class TreeCompiler implements Compiler ",
+      "methods_under_test": {
+        "=1": {
+          "TreeCompiler.number(String)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.literal(String)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.qname(String, String)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.sum(Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.minus(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.multiply(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.divide(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.mod(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.lessThan(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.lessThanOrEqual(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.greaterThan(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.greaterThanOrEqual(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.equal(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.notEqual(Object, Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.minus(Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.variableReference(Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.function(int, Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.function(Object, Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.and(Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.or(Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.union(Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.locationPath(boolean, Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.expressionPath(Object, Object[], Object[])": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.nodeNameTest(Object)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.nodeTypeTest(int)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.processingInstructionTest(String)": [
+            1,
+            1,
+            1
+          ],
+          "TreeCompiler.step(int, Object, Object[])": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NullElementPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/NullElementPointer.java",
+      "class_declaration": "public class NullElementPointer extends CollectionPointer ",
+      "methods_under_test": {
+        "=1": {
+          "NullElementPointer.createPath(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "NullElementPointer.createPath(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NullElementPointer.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NullElementPointer.equals(Object)": [
+            3,
+            3,
+            3
+          ],
+          "NullElementPointer.asPath()": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BasicVariables",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/BasicVariables.java",
+      "class_declaration": "public class BasicVariables implements Variables ",
+      "methods_under_test": {
+        "=1": {
+          "BasicVariables.isDeclaredVariable(String)": [
+            1,
+            1,
+            1
+          ],
+          "BasicVariables.declareVariable(String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "BasicVariables.undeclareVariable(String)": [
+            1,
+            1,
+            1
+          ],
+          "BasicVariables.toString()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BasicVariables.getVariable(String)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationEqual",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationEqual.java",
+      "class_declaration": "public class CoreOperationEqual extends CoreOperationCompare ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationDivide",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationDivide.java",
+      "class_declaration": "public class CoreOperationDivide extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationDivide.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BeanPropertyPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/BeanPropertyPointer.java",
+      "class_declaration": "public class BeanPropertyPointer extends PropertyPointer ",
+      "methods_under_test": {
+        "=1": {
+          "BeanPropertyPointer.setPropertyName(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "BeanPropertyPointer.getPropertyCount()": [
+            2,
+            2,
+            2
+          ],
+          "BeanPropertyPointer.getPropertyNames()": [
+            3,
+            3,
+            3
+          ],
+          "BeanPropertyPointer.setPropertyIndex(int)": [
+            2,
+            2,
+            2
+          ],
+          "BeanPropertyPointer.getBaseValue()": [
+            3,
+            3,
+            3
+          ],
+          "BeanPropertyPointer.setIndex(int)": [
+            3,
+            3,
+            3
+          ],
+          "BeanPropertyPointer.getImmediateNode()": [
+            4,
+            4,
+            4
+          ],
+          "BeanPropertyPointer.getLength()": [
+            4,
+            4,
+            4
+          ],
+          "BeanPropertyPointer.setValue(Object)": [
+            3,
+            3,
+            3
+          ],
+          "BeanPropertyPointer.createPath(JXPathContext)": [
+            2,
+            2,
+            2
+          ],
+          "BeanPropertyPointer.remove()": [
+            6,
+            6,
+            6
+          ],
+          "BeanPropertyPointer.getPropertyName()": [
+            3,
+            3,
+            3
+          ],
+          "BeanPropertyPointer.getPropertyDescriptors()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ServletContextHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/ServletContextHandler.java",
+      "class_declaration": "public class ServletContextHandler implements DynamicPropertyHandler ",
+      "methods_under_test": {
+        "=1": {
+          "ServletContextHandler.getPropertyNames(Object)": [
+            1,
+            1,
+            1
+          ],
+          "ServletContextHandler.getProperty(Object, String)": [
+            1,
+            1,
+            1
+          ],
+          "ServletContextHandler.setProperty(Object, String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ServletContextHandler.collectPropertyNames(Set, Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMAttributePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributePointer.java",
+      "class_declaration": "public class DOMAttributePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "DOMAttributePointer.getNamespaceURI()": [
+            1,
+            1,
+            1
+          ],
+          "DOMAttributePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "DOMAttributePointer.remove()": [
+            1,
+            1,
+            1
+          ],
+          "DOMAttributePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "DOMAttributePointer.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "DOMAttributePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DOMAttributePointer.getValue()": [
+            2,
+            2,
+            2
+          ],
+          "DOMAttributePointer.asPath()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DescendantContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/DescendantContext.java",
+      "class_declaration": "public class DescendantContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "DescendantContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DescendantContext.getCurrentNodePointer()": [
+            2,
+            2,
+            2
+          ],
+          "DescendantContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "DescendantContext.nextNode()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NullPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/NullPointer.java",
+      "class_declaration": "public class NullPointer extends PropertyOwnerPointer ",
+      "methods_under_test": {
+        "=1": {
+          "NullPointer.createChild(JXPathContext, QName, int)": [
+            1,
+            1,
+            1
+          ],
+          "NullPointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NullPointer.hashCode()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NullPointer.createPath(JXPathContext, Object)": [
+            2,
+            2,
+            2
+          ],
+          "NullPointer.createPath(JXPathContext)": [
+            2,
+            2,
+            2
+          ],
+          "NullPointer.equals(Object)": [
+            3,
+            3,
+            3
+          ],
+          "NullPointer.asPath()": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationSubtract",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationSubtract.java",
+      "class_declaration": "public class CoreOperationSubtract extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationSubtract.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NodePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/NodePointer.java",
+      "class_declaration": "public abstract class NodePointer implements Pointer ",
+      "methods_under_test": {
+        "=1": {
+          "NodePointer.createPath(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.createPath(JXPathContext)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.createChild(JXPathContext, QName, int, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.createChild(JXPathContext, QName, int)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.createAttribute(JXPathContext, QName)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.isLanguage(String)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.getNamespaceURI(String)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.getPointerByID(JXPathContext, String)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.getPointerByKey(JXPathContext, String, String)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.getNodeSetByKey(JXPathContext, String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.toString()": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.printPointerChain()": [
+            1,
+            1,
+            1
+          ],
+          "NodePointer.handle(Throwable)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NodePointer.newNodePointer(QName, Object, Locale)": [
+            4,
+            4,
+            4
+          ],
+          "NodePointer.newChildNodePointer(NodePointer, QName, Object)": [
+            3,
+            3,
+            3
+          ],
+          "NodePointer.getNamespaceResolver()": [
+            4,
+            4,
+            4
+          ],
+          "NodePointer.getParent()": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.getValue()": [
+            4,
+            4,
+            4
+          ],
+          "NodePointer.getValuePointer()": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.getRootNode()": [
+            4,
+            4,
+            4
+          ],
+          "NodePointer.testNode(NodeTest)": [
+            8,
+            8,
+            8
+          ],
+          "NodePointer.getLocale()": [
+            4,
+            4,
+            4
+          ],
+          "NodePointer.childIterator(NodeTest, boolean, NodePointer)": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.attributeIterator(QName)": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.isDefaultNamespace(String)": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.clone()": [
+            10,
+            10,
+            10
+          ],
+          "NodePointer.compareTo(Object)": [
+            7,
+            7,
+            7
+          ],
+          "NodePointer.handle(Throwable, NodePointer)": [
+            5,
+            5,
+            5
+          ],
+          "NodePointer.escape(String)": [
+            8,
+            8,
+            8
+          ],
+          "NodePointer.getAbstractFactory(JXPathContext)": [
+            2,
+            2,
+            2
+          ],
+          "NodePointer.verify(NodePointer)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {
+          "NodePointer.asPath()": [
+            11,
+            11,
+            11
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ContainerPointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/container/ContainerPointer.java",
+      "class_declaration": "public class ContainerPointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "ContainerPointer.getLength()": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.childIterator(NodeTest, boolean, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.attributeIterator(QName)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.namespaceIterator()": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.namespacePointer(String)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.getNamespaceURI(String)": [
+            1,
+            1,
+            1
+          ],
+          "ContainerPointer.asPath()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "ContainerPointer.getImmediateNode()": [
+            2,
+            2,
+            2
+          ],
+          "ContainerPointer.getImmediateValuePointer()": [
+            2,
+            2,
+            2
+          ],
+          "ContainerPointer.equals(Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathAbstractFactoryException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathAbstractFactoryException.java",
+      "class_declaration": "public class JXPathAbstractFactoryException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ReverseComparator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/ReverseComparator.java",
+      "class_declaration": "public final class ReverseComparator implements Comparator, Serializable ",
+      "methods_under_test": {
+        "=1": {
+          "ReverseComparator.compare(Object, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMNodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNodeIterator.java",
+      "class_declaration": "public class JDOMNodeIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JDOMNodeIterator.getNodePointer()": [
+            3,
+            3,
+            3
+          ],
+          "JDOMNodeIterator.setPosition(int)": [
+            5,
+            5,
+            5
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationNegate",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationNegate.java",
+      "class_declaration": "public class CoreOperationNegate extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationNegate.computeValue(EvalContext)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PrecedingOrFollowingContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/PrecedingOrFollowingContext.java",
+      "class_declaration": "public class PrecedingOrFollowingContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "PrecedingOrFollowingContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "PrecedingOrFollowingContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {
+          "PrecedingOrFollowingContext.nextNode()": [
+            18,
+            18,
+            18
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ServletRequestAndContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/ServletRequestAndContext.java",
+      "class_declaration": "public class ServletRequestAndContext extends HttpSessionAndServletContext ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DOMAttributeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dom/DOMAttributeIterator.java",
+      "class_declaration": "public class DOMAttributeIterator implements NodeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "DOMAttributeIterator.setPosition(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "DOMAttributeIterator.getNodePointer()": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XMLDocumentContainer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/XMLDocumentContainer.java",
+      "class_declaration": "public class XMLDocumentContainer implements Container ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "XMLDocumentContainer.getValue()": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "PageScopeContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/PageScopeContext.java",
+      "class_declaration": "public class PageScopeContext ",
+      "methods_under_test": {
+        "=1": {
+          "PageScopeContext.getAttribute(String)": [
+            1,
+            1,
+            1
+          ],
+          "PageScopeContext.setAttribute(String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "ParseException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/ParseException.java",
+      "class_declaration": "public class ParseException extends Exception ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "ParseException.getMessage()": [
+            10,
+            10,
+            10
+          ]
+        },
+        "11-20": {
+          "ParseException.add_escapes(String)": [
+            12,
+            12,
+            12
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "NamespaceContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/NamespaceContext.java",
+      "class_declaration": "public class NamespaceContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "NamespaceContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "NamespaceContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ],
+          "NamespaceContext.nextNode()": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "KeywordVariables",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/KeywordVariables.java",
+      "class_declaration": "public class KeywordVariables implements Variables ",
+      "methods_under_test": {
+        "=1": {
+          "KeywordVariables.isDeclaredVariable(String)": [
+            1,
+            1,
+            1
+          ],
+          "KeywordVariables.getVariable(String)": [
+            1,
+            1,
+            1
+          ],
+          "KeywordVariables.declareVariable(String, Object)": [
+            1,
+            1,
+            1
+          ],
+          "KeywordVariables.undeclareVariable(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "HttpSessionAndServletContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/HttpSessionAndServletContext.java",
+      "class_declaration": "public class HttpSessionAndServletContext ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathNotFoundException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathNotFoundException.java",
+      "class_declaration": "public class JXPathNotFoundException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynamicPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicPointerFactory.java",
+      "class_declaration": "public class DynamicPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "DynamicPointerFactory.createNodePointer(QName, Object, Locale)": [
+            2,
+            2,
+            2
+          ],
+          "DynamicPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "LangAttributePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/LangAttributePointer.java",
+      "class_declaration": "public class LangAttributePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "LangAttributePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "LangAttributePointer.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "LangAttributePointer.testNode(NodeTest)": [
+            1,
+            1,
+            1
+          ],
+          "LangAttributePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "LangAttributePointer.asPath()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Step",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/Step.java",
+      "class_declaration": "public class Step ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "Step.toString()": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {
+          "Step.axisToString(int)": [
+            15,
+            15,
+            15
+          ]
+        },
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathFunctionNotFoundException",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathFunctionNotFoundException.java",
+      "class_declaration": "public class JXPathFunctionNotFoundException extends JXPathException ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationAdd",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationAdd.java",
+      "class_declaration": "public class CoreOperationAdd extends CoreOperation ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "CoreOperationAdd.computeValue(EvalContext)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CollectionChildNodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/CollectionChildNodeIterator.java",
+      "class_declaration": "public class CollectionChildNodeIterator extends CollectionNodeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "CollectionChildNodeIterator.getElementNodeIterator(NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "DynamicAttributeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/dynamic/DynamicAttributeIterator.java",
+      "class_declaration": "public class DynamicAttributeIterator extends BeanAttributeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "DynamicAttributeIterator.prepareForIndividualProperty(String)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Constants",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/servlet/Constants.java",
+      "class_declaration": "public final class Constants ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "InfoSetUtil",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/InfoSetUtil.java",
+      "class_declaration": "public class InfoSetUtil ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "InfoSetUtil.stringValue(Object)": [
+            7,
+            7,
+            7
+          ],
+          "InfoSetUtil.number(Object)": [
+            8,
+            8,
+            8
+          ],
+          "InfoSetUtil.doubleValue(Object)": [
+            9,
+            9,
+            9
+          ],
+          "InfoSetUtil.booleanValue(Object)": [
+            7,
+            7,
+            7
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMNamespacePointer",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMNamespacePointer.java",
+      "class_declaration": "public class JDOMNamespacePointer extends NodePointer ",
+      "methods_under_test": {
+        "=1": {
+          "JDOMNamespacePointer.hashCode()": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNamespacePointer.equals(Object)": [
+            1,
+            1,
+            1
+          ],
+          "JDOMNamespacePointer.compareChildNodePointers(NodePointer, NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "JDOMNamespacePointer.getNamespaceURI()": [
+            2,
+            2,
+            2
+          ],
+          "JDOMNamespacePointer.asPath()": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JDOMPointerFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/jdom/JDOMPointerFactory.java",
+      "class_declaration": "public class JDOMPointerFactory implements NodePointerFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JDOMPointerFactory.createNodePointer(QName, Object, Locale)": [
+            3,
+            3,
+            3
+          ],
+          "JDOMPointerFactory.createNodePointer(NodePointer, QName, Object)": [
+            3,
+            3,
+            3
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "CoreOperationLessThan",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/CoreOperationLessThan.java",
+      "class_declaration": "public class CoreOperationLessThan extends CoreOperationRelationalExpression ",
+      "methods_under_test": {
+        "=1": {
+          "CoreOperationLessThan.evaluateCompare(int)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Function",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/Function.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "SelfContext",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/axes/SelfContext.java",
+      "class_declaration": "public class SelfContext extends EvalContext ",
+      "methods_under_test": {
+        "=1": {
+          "SelfContext.nextNode()": [
+            1,
+            1,
+            1
+          ],
+          "SelfContext.reset()": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "SelfContext.getCurrentNodePointer()": [
+            2,
+            2,
+            2
+          ],
+          "SelfContext.setPosition(int)": [
+            4,
+            4,
+            4
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathContextFactory",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/JXPathContextFactory.java",
+      "class_declaration": "public abstract class JXPathContextFactory ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "JXPathContextFactory.newInstance()": [
+            8,
+            8,
+            8
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPath11CompatibleTypeConverter",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/util/JXPath11CompatibleTypeConverter.java",
+      "class_declaration": "public class JXPath11CompatibleTypeConverter extends BasicTypeConverter ",
+      "methods_under_test": {
+        "=1": {
+          "JXPath11CompatibleTypeConverter.canConvert(Object, Class)": [
+            1,
+            1,
+            1
+          ],
+          "JXPath11CompatibleTypeConverter.convert(Object, Class)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "JXPathContextFactoryReferenceImpl",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/JXPathContextFactoryReferenceImpl.java",
+      "class_declaration": "public class JXPathContextFactoryReferenceImpl extends JXPathContextFactory ",
+      "methods_under_test": {
+        "=1": {
+          "JXPathContextFactoryReferenceImpl.newContext(JXPathContext, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "XPathParserConstants",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/parser/XPathParserConstants.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "MapDynamicPropertyHandler",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/MapDynamicPropertyHandler.java",
+      "class_declaration": "public class MapDynamicPropertyHandler implements DynamicPropertyHandler ",
+      "methods_under_test": {
+        "=1": {
+          "MapDynamicPropertyHandler.getProperty(Object, String)": [
+            1,
+            1,
+            1
+          ],
+          "MapDynamicPropertyHandler.setProperty(Object, String, Object)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {
+          "MapDynamicPropertyHandler.getPropertyNames(Object)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "BeanAttributeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/BeanAttributeIterator.java",
+      "class_declaration": "public class BeanAttributeIterator extends PropertyIterator ",
+      "methods_under_test": {
+        "=1": {},
+        "2-10": {
+          "BeanAttributeIterator.setPosition(int)": [
+            2,
+            2,
+            2
+          ]
+        },
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    },
+    {
+      "src_name": "Container",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/Container.java",
+      "error": "list index out of range"
+    },
+    {
+      "src_name": "CollectionAttributeNodeIterator",
+      "src_path": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/model/beans/CollectionAttributeNodeIterator.java",
+      "class_declaration": "public class CollectionAttributeNodeIterator extends CollectionNodeIterator ",
+      "methods_under_test": {
+        "=1": {
+          "CollectionAttributeNodeIterator.getElementNodeIterator(NodePointer)": [
+            1,
+            1,
+            1
+          ]
+        },
+        "2-10": {},
+        "11-20": {},
+        ">20": {},
+        "to_be_determined": {}
+      }
+    }
+  ],
+  "test_unpaired": [
+    {
+      "RecursiveBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/axes/RecursiveBean.java"
+    },
+    {
+      "DynamicPropertiesModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dynamic/DynamicPropertiesModelTest.java"
+    },
+    {
+      "JDOMModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/jdom/JDOMModelTest.java"
+    },
+    {
+      "TestJDOMFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/jdom/TestJDOMFactory.java"
+    },
+    {
+      "ClassLoadingExampleClass": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/util/ClassLoadingExampleClass.java"
+    },
+    {
+      "EmbeddedColonMapKeysTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/EmbeddedColonMapKeysTest.java"
+    },
+    {
+      "BadlyImplementedFactoryTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/beans/BadlyImplementedFactoryTest.java"
+    },
+    {
+      "StressTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/StressTest.java"
+    },
+    {
+      "NodeTest": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/NodeTest.java"
+    },
+    {
+      "MixedModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/MixedModelTest.java"
+    },
+    {
+      "AliasedNamespaceIterationTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/AliasedNamespaceIterationTest.java"
+    },
+    {
+      "XMLModelTestCase": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/XMLModelTestCase.java"
+    },
+    {
+      "TestMixedModelFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/TestMixedModelFactory.java"
+    },
+    {
+      "LazyDynaBeanTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dynabeans/LazyDynaBeanTest.java"
+    },
+    {
+      "TestBeanFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/beans/TestBeanFactory.java"
+    },
+    {
+      "XMLSpaceTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/XMLSpaceTest.java"
+    },
+    {
+      "XMLUpperCaseElementsTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/XMLUpperCaseElementsTest.java"
+    },
+    {
+      "JXPathTestCase": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/JXPathTestCase.java"
+    },
+    {
+      "NestedTestBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/NestedTestBean.java"
+    },
+    {
+      "TestBeanWithNode": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/axes/TestBeanWithNode.java"
+    },
+    {
+      "TestDynaBeanFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dynabeans/TestDynaBeanFactory.java"
+    },
+    {
+      "ExceptionPropertyTestBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/ExceptionPropertyTestBean.java"
+    },
+    {
+      "JXPath149Test": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/JXPath149Test.java"
+    },
+    {
+      "NodeNameTest": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/NodeNameTest.java"
+    },
+    {
+      "JXPath151Test": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/JXPath151Test.java"
+    },
+    {
+      "ContextDependencyTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/ContextDependencyTest.java"
+    },
+    {
+      "DynaBeanModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dynabeans/DynaBeanModelTest.java"
+    },
+    {
+      "TestNull": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/TestNull.java"
+    },
+    {
+      "EmptyCollectionTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/EmptyCollectionTest.java"
+    },
+    {
+      "TestBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/TestBean.java"
+    },
+    {
+      "TestDOMFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dom/TestDOMFactory.java"
+    },
+    {
+      "TestFunctions2": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/TestFunctions2.java"
+    },
+    {
+      "ProcessingInstructionTest": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/ProcessingInstructionTest.java"
+    },
+    {
+      "VariableTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/compiler/VariableTest.java"
+    },
+    {
+      "NodeTypeTest": "../../defects4j-subjects/JxPath-22f/src/java/org/apache/commons/jxpath/ri/compiler/NodeTypeTest.java"
+    },
+    {
+      "JXPath154Test": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/JXPath154Test.java"
+    },
+    {
+      "RecursiveAxesTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/axes/RecursiveAxesTest.java"
+    },
+    {
+      "BeanModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/beans/BeanModelTest.java"
+    },
+    {
+      "TestMixedModelBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/TestMixedModelBean.java"
+    },
+    {
+      "TestIndexedPropertyBean": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/beans/TestIndexedPropertyBean.java"
+    },
+    {
+      "DOMModelTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dom/DOMModelTest.java"
+    },
+    {
+      "BeanModelTestCase": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/BeanModelTestCase.java"
+    },
+    {
+      "TestDynamicPropertyFactory": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/dynamic/TestDynamicPropertyFactory.java"
+    },
+    {
+      "ExternalXMLNamespaceTest": "../../defects4j-subjects/JxPath-22f/src/test/org/apache/commons/jxpath/ri/model/ExternalXMLNamespaceTest.java"
+    }
+  ]
+}

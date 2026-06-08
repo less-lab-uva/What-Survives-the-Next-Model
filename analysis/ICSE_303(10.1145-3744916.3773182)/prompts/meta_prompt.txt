@@ -1,0 +1,102 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content - no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- Steps: The methodology - what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- Instructions: Hard behavioural constraints - what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A - The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed.]
+
+### Task
+[One or two sentences describing the task.]
+
+### Input
+[Describe only the `diff` field — the unified diff of the commit's changed files. This is the sole input passed to the LLM. Fields such as `owner_repo`, `sha`, `commit_message`, and `skipped` are dataset metadata and must not be listed as inputs.]
+
+### Output
+[Describe the exact final output fields and structure shown in the reference examples.]
+
+### Example
+[Reproduce the reference examples verbatim.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints.]
+
+---
+
+## PROMPT B - The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "diff": "--- a/src/main/java/org/cactoos/collection/CollectionEnvelope.java\n+++ b/src/main/java/org/cactoos/collection/CollectionEnvelope.java\n@@ -36,6 +36,10 @@\n  *\n  * @param <X> Element type\n  * @since 0.23\n+ * @todo #844:30min Implement methods equals and hashCode for this class.\n+ *  Implementation should rely on the items of the nested collection, but not\n+ *  on default JVM impl. Class {@link org.cactoos.map.MapEnvelope} can be used\n+ *  as an example.\n  * @checkstyle AbstractClassNameCheck (500 lines)\n  */\n @SuppressWarnings(\n--- a/src/main/java/org/cactoos/map/MapEnvelope.java\n+++ b/src/main/java/org/cactoos/map/MapEnvelope.java\n@@ -24,9 +24,12 @@\n package org.cactoos.map;\n \n import java.util.Collection;\n+import java.util.Iterator;\n import java.util.Map;\n import java.util.Set;\n import org.cactoos.Scalar;\n+import org.cactoos.scalar.Folded;\n+import org.cactoos.scalar.SumOfIntScalar;\n import org.cactoos.scalar.UncheckedScalar;\n import org.cactoos.text.TextOf;\n \n@@ -138,4 +141,52 @@ public final String toString() {\n             .append('}')\n             .toString();\n     }\n+\n+    @Override\n+    @SuppressWarnings(\"PMD.OnlyOneReturn\")\n+    public final boolean equals(final Object other) {\n+        if (this == other) {\n+            return true;\n+        }\n+        if (getClass() != other.getClass()) {\n+            return false;\n+        }\n+        final MapEnvelope<?, ?> that = (MapEnvelope<?, ?>) other;\n+        final Iterator<Entry<X, Y>> these =\n+            this.map.value().entrySet().iterator();\n+        final Iterator<? extends Entry<?, ?>> those =\n+            that.map.value().entrySet().iterator();\n+        while (these.hasNext() && those.hasNext()) {\n+            final Entry<X, Y> first = these.next();\n+            final Entry<?, ?> second = those.next();\n+            if (!first.getKey().equals(second.getKey())) {\n+                return false;\n+            }\n+            if (!first.getValue().equals(second.getValue())) {\n+                return false;\n+            }\n+        }\n+        return !these.hasNext() && !those.hasNext();\n+    }\n+\n+    // @checkstyle MagicNumberCheck (30 lines)\n+    @Override\n+    public final int hashCode() {\n+        return new UncheckedScalar<>(\n+            new Folded<>(\n+                42,\n+                (hash, entry) -> {\n+                    final int keys = new SumOfIntScalar(\n+                        () -> 37 * hash,\n+                        () -> entry.getKey().hashCode()\n+                    ).value();\n+                    return new SumOfIntScalar(\n+                        () -> 37 * keys,\n+                        () -> entry.getValue().hashCode()\n+                    ).value();\n+                },\n+                this.map.value().entrySet()\n+            )\n+        ).value();\n+    }\n }\n--- a/src/test/java/org/cactoos/map/MapEnvelopeTest.java\n+++ b/src/test/java/org/cactoos/map/MapEnvelopeTest.java\n@@ -27,6 +27,8 @@\n import org.cactoos.func.FuncOf;\n import org.hamcrest.MatcherAssert;\n import org.hamcrest.Matchers;\n+import org.hamcrest.core.IsEqual;\n+import org.hamcrest.core.IsNot;\n import org.junit.Rule;\n import org.junit.Test;\n import org.junit.rules.ExpectedException;\n@@ -38,7 +40,9 @@\n  * @since 0.4\n  * @checkstyle JavadocMethodCheck (500 lines)\n  * @checkstyle ClassDataAbstractionCouplingCheck (500 lines)\n+ * @checkstyle DiamondOperatorCheck (500 lines)\n  */\n+@SuppressWarnings(\"PMD.TooManyMethods\")\n public final class MapEnvelopeTest {\n \n     /**\n@@ -203,4 +207,107 @@ public void mapContainsValueFalse() {\n         );\n     }\n \n+    @Test\n+    public void mapEqualsToItself() {\n+        final MapOf<String, String> map =\n+            new MapOf<String, String>(new MapEntry<>(\"key\", \"value\"));\n+        MatcherAssert.assertThat(\n+            \"Map doesn't equal to itself\",\n+            map,\n+            new IsEqual<>(map)\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToAnotherClass() {\n+        final MapOf<String, String> map =\n+            new MapOf<String, String>(new MapEntry<>(\"key1\", \"value1\"));\n+        MatcherAssert.assertThat(\n+            \"Map equals to an instance of another type\",\n+            map,\n+            new IsNot<>(\n+                new IsEqual<>(\"Totally different type\")\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void mapEqualsToMapWithSameEntries() {\n+        final String key = \"key2\";\n+        final String value = \"value2\";\n+        final MapEntry<String, String> input = new MapEntry<>(key, value);\n+        final MapEntry<String, String> expected = new MapEntry<>(key, value);\n+        MatcherAssert.assertThat(\n+            \"Map doesn't equal to another map with same entries\",\n+            new MapOf<String, String>(input),\n+            new IsEqual<>(new MapOf<String, String>(expected))\n+        );\n+    }\n+\n+    @Test(expected = NullPointerException.class)\n+    public void equalFailsOnNull() {\n+        final MapEntry<String, String> first =\n+            new MapEntry<>(\"key3\", \"value3\");\n+        final MapEntry<String, String> second =\n+            new MapEntry<>(\"key4\", null);\n+        MatcherAssert.assertThat(\n+            \"Map allows null values, but shouldn't\",\n+            new MapOf<String, String>(first, second),\n+            new IsEqual<>(new MapOf<String, String>(first, second))\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToOtherWithDifferentKeys() {\n+        final String value = \"value5\";\n+        MatcherAssert.assertThat(\n+            \"Map equals to another map with different keys\",\n+            new MapOf<String, String>(new MapEntry<>(\"key5\", value)),\n+            new IsNot<>(\n+                new IsEqual<>(\n+                    new MapOf<String, String>(\n+                        new MapEntry<>(\"key6\", value)\n+                    )\n+                )\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void mapNotEqualsToOtherWithDifferentValues() {\n+        final String key = \"key7\";\n+        MatcherAssert.assertThat(\n+            \"Map equals to another map with different values\",\n+            new MapOf<String, String>(new MapEntry<>(key, \"value7\")),\n+            new IsNot<>(\n+                new IsEqual<>(\n+                    new MapOf<String, String>(\n+                        new MapEntry<>(key, \"value8\")\n+                    )\n+                )\n+            )\n+        );\n+    }\n+\n+    @Test\n+    public void hashCodeDependsOnItems() {\n+        final String key = \"key9\";\n+        final String value = \"value9\";\n+        final MapEntry<String, String> input = new MapEntry<>(key, value);\n+        final MapEntry<String, String> expected = new MapEntry<>(key, value);\n+        MatcherAssert.assertThat(\n+            \"hashCode returns different results for same entries\",\n+            new MapOf<String, String>(input).hashCode(),\n+            new IsEqual<>(new MapOf<String, String>(expected).hashCode())\n+        );\n+    }\n+\n+    @Test(expected = NullPointerException.class)\n+    public void hashCodeFailsOnNull() {\n+        final MapEntry<String, String> first =\n+            new MapEntry<>(\"key10\", \"value10\");\n+        final MapEntry<String, String> second =\n+            new MapEntry<>(\"key11\", null);\n+        new MapOf<String, String>(first, second).hashCode();\n+    }\n }"
+      },
+      "outputs": {
+        "label": 1
+      }
+    }
+  ]
+}
+```

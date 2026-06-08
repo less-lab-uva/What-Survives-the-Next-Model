@@ -1,0 +1,31 @@
+{
+  "title": "Input Reduction Enhanced LLM-based Program Repair",
+  "doi": "10.1145/3744916.3787760",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original ReduceFix approach first asks an LLM to reduce long failure-inducing test inputs while preserving the bug-triggering behavior, then uses the reduced input to guide patch generation.",
+    "This reproduction skips the full reduction pipeline and evaluates simplified single-LLM repair prompts over sampled LFTBench C++ wrong-answer submissions."
+  ],
+  "dataset": {
+    "name": "LFTBench C++ Wrong Answer Submissions",
+    "sample_size": 25
+  },
+  "metric": [
+    "Pass@1"
+  ],
+  "original_result": {
+    "overall": 0.459,
+    "percentage": "45.90%"
+  },
+  "our_result": {
+    "prompt_A": {
+      "overall": 0.68,
+      "percentage": "68.00%"
+    },
+    "prompt_B": {
+      "overall": 0.72,
+      "percentage": "72.00%"
+    }
+  },
+  "total_cost": "$14.93"
+}

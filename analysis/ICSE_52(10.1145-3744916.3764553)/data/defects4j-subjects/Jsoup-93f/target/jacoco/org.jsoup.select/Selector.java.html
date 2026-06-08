@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Selector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.select</a> &gt; <span class="el_source">Selector.java</span></div><h1>Selector.java</h1><pre class="source lang-java linenums">package org.jsoup.select;
+
+import org.jsoup.helper.Validate;
+import org.jsoup.nodes.Element;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.IdentityHashMap;
+
+/**
+ * CSS-like element selector, that finds elements matching a query.
+ *
+ * &lt;h2&gt;Selector syntax&lt;/h2&gt;
+ * &lt;p&gt;
+ * A selector is a chain of simple selectors, separated by combinators. Selectors are &lt;b&gt;case insensitive&lt;/b&gt; (including against
+ * elements, attributes, and attribute values).
+ * &lt;/p&gt;
+ * &lt;p&gt;
+ * The universal selector (*) is implicit when no element selector is supplied (i.e. {@code *.header} and {@code .header}
+ * is equivalent).
+ * &lt;/p&gt;
+ * &lt;style&gt;table.syntax tr td {vertical-align: top; padding-right: 2em; padding-top:0.5em; padding-bottom:0.5em; } table.syntax tr:hover{background-color: #eee;} table.syntax {border-spacing: 0px 0px;}&lt;/style&gt;
+ * &lt;table summary=&quot;&quot; class=&quot;syntax&quot;&gt;&lt;colgroup&gt;&lt;col span=&quot;1&quot; style=&quot;width: 20%;&quot;&gt;&lt;col span=&quot;1&quot; style=&quot;width: 40%;&quot;&gt;&lt;col span=&quot;1&quot; style=&quot;width: 40%;&quot;&gt;&lt;/colgroup&gt;
+ * &lt;tr&gt;&lt;th align=&quot;left&quot;&gt;Pattern&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Matches&lt;/th&gt;&lt;th align=&quot;left&quot;&gt;Example&lt;/th&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;&lt;td&gt;any element&lt;/td&gt;&lt;td&gt;&lt;code&gt;*&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;tag&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with the given tag name&lt;/td&gt;&lt;td&gt;&lt;code&gt;div&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;*|E&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements of type E in any namespace &lt;i&gt;ns&lt;/i&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;*|name&lt;/code&gt; finds &lt;code&gt;&amp;lt;fb:name&amp;gt;&lt;/code&gt; elements&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;ns|E&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements of type E in the namespace &lt;i&gt;ns&lt;/i&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;fb|name&lt;/code&gt; finds &lt;code&gt;&amp;lt;fb:name&amp;gt;&lt;/code&gt; elements&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;#id&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with attribute ID of &quot;id&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;div#wrap&lt;/code&gt;, &lt;code&gt;#logo&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;.class&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with a class name of &quot;class&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;div.left&lt;/code&gt;, &lt;code&gt;.result&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot; (with any value)&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href]&lt;/code&gt;, &lt;code&gt;[title]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[^attrPrefix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute name starting with &quot;attrPrefix&quot;. Use to find elements with HTML5 datasets&lt;/td&gt;&lt;td&gt;&lt;code&gt;[^data-]&lt;/code&gt;, &lt;code&gt;div[^data-]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr=val]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value equal to &quot;val&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[width=500]&lt;/code&gt;, &lt;code&gt;a[rel=nofollow]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr=&amp;quot;val&amp;quot;]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value equal to &quot;val&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;span[hello=&quot;Cleveland&quot;][goodbye=&quot;Columbus&quot;]&lt;/code&gt;, &lt;code&gt;a[rel=&amp;quot;nofollow&amp;quot;]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr^=valPrefix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value starting with &quot;valPrefix&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href^=http:]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr$=valSuffix]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value ending with &quot;valSuffix&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[src$=.png]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr*=valContaining]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value containing &quot;valContaining&quot;&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href*=/search/]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;[attr~=&lt;em&gt;regex&lt;/em&gt;]&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements with an attribute named &quot;attr&quot;, and value matching the regular expression&lt;/td&gt;&lt;td&gt;&lt;code&gt;img[src~=(?i)\\.(png|jpe?g)]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;The above may be combined in any order&lt;/td&gt;&lt;td&gt;&lt;code&gt;div.header[title]&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;h3&gt;Combinators&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element descended from an E element&lt;/td&gt;&lt;td&gt;&lt;code&gt;div a&lt;/code&gt;, &lt;code&gt;.logo h1&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E {@literal &gt;} F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F direct child of E&lt;/td&gt;&lt;td&gt;&lt;code&gt;ol {@literal &gt;} li&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E + F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element immediately preceded by sibling E&lt;/td&gt;&lt;td&gt;&lt;code&gt;li + li&lt;/code&gt;, &lt;code&gt;div.head + div&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E ~ F&lt;/code&gt;&lt;/td&gt;&lt;td&gt;an F element preceded by sibling E&lt;/td&gt;&lt;td&gt;&lt;code&gt;h1 ~ p&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;E, F, G&lt;/code&gt;&lt;/td&gt;&lt;td&gt;all matching elements E, F, or G&lt;/td&gt;&lt;td&gt;&lt;code&gt;a[href], div, h3&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;h3&gt;Pseudo selectors&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:lt(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is less than &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:lt(3)&lt;/code&gt; finds the first 3 cells of each row&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:gt(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is greater than &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:gt(1)&lt;/code&gt; finds cells after skipping the first two&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:eq(&lt;em&gt;n&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose sibling index is equal to &lt;em&gt;n&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:eq(0)&lt;/code&gt; finds the first cell of each row&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:has(&lt;em&gt;selector&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains at least one element matching the &lt;em&gt;selector&lt;/em&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;div:has(p)&lt;/code&gt; finds &lt;code&gt;div&lt;/code&gt;s that contain &lt;code&gt;p&lt;/code&gt; elements.&lt;br&gt;&lt;code&gt;div:has(&amp;gt; a)&lt;/code&gt; selects &lt;code&gt;div&lt;/code&gt; elements that have at least one direct child &lt;code&gt;a&lt;/code&gt; element.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:not(&lt;em&gt;selector&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that do not match the &lt;em&gt;selector&lt;/em&gt;. See also {@link Elements#not(String)}&lt;/td&gt;&lt;td&gt;&lt;code&gt;div:not(.logo)&lt;/code&gt; finds all divs that do not have the &quot;logo&quot; class.&lt;p&gt;&lt;code&gt;div:not(:has(div))&lt;/code&gt; finds divs that do not contain divs.&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:contains(&lt;em&gt;text&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains the specified text. The search is case insensitive. The text may appear in the found element, or any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;p:contains(jsoup)&lt;/code&gt; finds p elements containing the text &quot;jsoup&quot;.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matches(&lt;em&gt;regex&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose text matches the specified regular expression. The text may appear in the found element, or any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:matches(\\d+)&lt;/code&gt; finds table cells containing digits. &lt;code&gt;div:matches((?i)login)&lt;/code&gt; finds divs containing the text, case insensitively.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:containsOwn(&lt;em&gt;text&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that directly contain the specified text. The search is case insensitive. The text must appear in the found element, not any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;p:containsOwn(jsoup)&lt;/code&gt; finds p elements with own text &quot;jsoup&quot;.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matchesOwn(&lt;em&gt;regex&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements whose own text matches the specified regular expression. The text must appear in the found element, not any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;td:matchesOwn(\\d+)&lt;/code&gt; finds table cells directly containing digits. &lt;code&gt;div:matchesOwn((?i)login)&lt;/code&gt; finds divs containing the text, case insensitively.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:containsData(&lt;em&gt;data&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that contains the specified &lt;em&gt;data&lt;/em&gt;. The contents of {@code script} and {@code style} elements, and {@code comment} nodes (etc) are considered data nodes, not text nodes. The search is case insensitive. The data may appear in the found element, or any of its descendants.&lt;/td&gt;&lt;td&gt;&lt;code&gt;script:contains(jsoup)&lt;/code&gt; finds script elements containing the data &quot;jsoup&quot;.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;The above may be combined in any order and with other selectors&lt;/td&gt;&lt;td&gt;&lt;code&gt;.light:contains(name):eq(0)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:matchText&lt;/code&gt;&lt;/td&gt;&lt;td&gt;treats text nodes as elements, and so allows you to match against and select text nodes.&lt;p&gt;&lt;b&gt;Note&lt;/b&gt; that using this selector will modify the DOM, so you may want to {@code clone} your document before using.&lt;/td&gt;&lt;td&gt;{@code p:matchText:firstChild} with input {@code &lt;p&gt;One&lt;br /&gt;Two&lt;/p&gt;} will return one {@link org.jsoup.nodes.PseudoTextElement} with text &quot;{@code One}&quot;.&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;h3&gt;Structural pseudo selectors&lt;/h3&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:root&lt;/code&gt;&lt;/td&gt;&lt;td&gt;The element that is the root of the document. In HTML, this is the &lt;code&gt;html&lt;/code&gt; element&lt;/td&gt;&lt;td&gt;&lt;code&gt;:root&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-child(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;elements that have &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings &lt;b&gt;before&lt;/b&gt; it in the document tree, for any positive integer or zero value of &lt;code&gt;n&lt;/code&gt;, and has a parent element. For values of &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; greater than zero, this effectively divides the element's children into groups of a elements (the last group taking the remainder), and selecting the &lt;em&gt;b&lt;/em&gt;th element of each group. For example, this allows the selectors to address every other row in a table, and could be used to alternate the color of paragraph text in a cycle of four. The &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; values must be integers (positive, negative, or zero). The index of the first child of an element is 1.&lt;/p&gt;
+ * In addition to this, &lt;code&gt;:nth-child()&lt;/code&gt; can take &lt;code&gt;odd&lt;/code&gt; and &lt;code&gt;even&lt;/code&gt; as arguments instead. &lt;code&gt;odd&lt;/code&gt; has the same signification as &lt;code&gt;2n+1&lt;/code&gt;, and &lt;code&gt;even&lt;/code&gt; has the same signification as &lt;code&gt;2n&lt;/code&gt;.&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr:nth-child(2n+1)&lt;/code&gt; finds every odd row of a table. &lt;code&gt;:nth-child(10n-1)&lt;/code&gt; the 9th, 19th, 29th, etc, element. &lt;code&gt;li:nth-child(5)&lt;/code&gt; the 5h li&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-last-child(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings &lt;b&gt;after&lt;/b&gt; it in the document tree. Otherwise like &lt;code&gt;:nth-child()&lt;/code&gt;&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr:nth-last-child(-n+2)&lt;/code&gt; the last two rows of a table&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-of-type(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;pseudo-class notation represents an element that has &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings with the same expanded element name &lt;em&gt;before&lt;/em&gt; it in the document tree, for any zero or positive integer value of n, and has a parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;img:nth-of-type(2n+1)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:nth-last-of-type(&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;)&lt;/code&gt;&lt;/td&gt;&lt;td&gt;pseudo-class notation represents an element that has &lt;code&gt;&lt;em&gt;a&lt;/em&gt;n+&lt;em&gt;b&lt;/em&gt;-1&lt;/code&gt; siblings with the same expanded element name &lt;em&gt;after&lt;/em&gt; it in the document tree, for any zero or positive integer value of n, and has a parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;img:nth-last-of-type(2n+1)&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:first-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the first child of some other element.&lt;/td&gt;&lt;td&gt;&lt;code&gt;div {@literal &gt;} p:first-child&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:last-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the last child of some other element.&lt;/td&gt;&lt;td&gt;&lt;code&gt;ol {@literal &gt;} li:last-child&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:first-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the first sibling of its type in the list of children of its parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;dl dt:first-of-type&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:last-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that are the last sibling of its type in the list of children of its parent element&lt;/td&gt;&lt;td&gt;&lt;code&gt;tr {@literal &gt;} td:last-of-type&lt;/code&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:only-child&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have a parent element and whose parent element have no other element children&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:only-of-type&lt;/code&gt;&lt;/td&gt;&lt;td&gt; an element that has a parent element and whose parent element has no other element children with the same expanded element name&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;tr&gt;&lt;td&gt;&lt;code&gt;:empty&lt;/code&gt;&lt;/td&gt;&lt;td&gt;elements that have no children at all&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+ * &lt;/table&gt;
+ *
+ * @author Jonathan Hedley, jonathan@hedley.net
+ * @see Element#select(String)
+ */
+public class Selector {
+    // not instantiable
+    private Selector() {}
+
+    /**
+     * Find elements matching selector.
+     *
+     * @param query CSS selector
+     * @param root  root element to descend into
+     * @return matching elements, empty if none
+     * @throws Selector.SelectorParseException (unchecked) on an invalid CSS query.
+     */
+    public static Elements select(String query, Element root) {
+<span class="nc" id="L91">        Validate.notEmpty(query);</span>
+<span class="nc" id="L92">        return select(QueryParser.parse(query), root);</span>
+    }
+
+    /**
+     * Find elements matching selector.
+     *
+     * @param evaluator CSS selector
+     * @param root root element to descend into
+     * @return matching elements, empty if none
+     */
+    public static Elements select(Evaluator evaluator, Element root) {
+<span class="nc" id="L103">        Validate.notNull(evaluator);</span>
+<span class="nc" id="L104">        Validate.notNull(root);</span>
+<span class="nc" id="L105">        return Collector.collect(evaluator, root);</span>
+    }
+
+    /**
+     * Find elements matching selector.
+     *
+     * @param query CSS selector
+     * @param roots root elements to descend into
+     * @return matching elements, empty if none
+     */
+    public static Elements select(String query, Iterable&lt;Element&gt; roots) {
+<span class="nc" id="L116">        Validate.notEmpty(query);</span>
+<span class="nc" id="L117">        Validate.notNull(roots);</span>
+<span class="nc" id="L118">        Evaluator evaluator = QueryParser.parse(query);</span>
+<span class="nc" id="L119">        ArrayList&lt;Element&gt; elements = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L120">        IdentityHashMap&lt;Element, Boolean&gt; seenElements = new IdentityHashMap&lt;&gt;();</span>
+        // dedupe elements by identity, not equality
+
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        for (Element root : roots) {</span>
+<span class="nc" id="L124">            final Elements found = select(evaluator, root);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">            for (Element el : found) {</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">                if (!seenElements.containsKey(el)) {</span>
+<span class="nc" id="L127">                    elements.add(el);</span>
+<span class="nc" id="L128">                    seenElements.put(el, Boolean.TRUE);</span>
+                }
+<span class="nc" id="L130">            }</span>
+<span class="nc" id="L131">        }</span>
+<span class="nc" id="L132">        return new Elements(elements);</span>
+    }
+
+    // exclude set. package open so that Elements can implement .not() selector.
+    static Elements filterOut(Collection&lt;Element&gt; elements, Collection&lt;Element&gt; outs) {
+<span class="nc" id="L137">        Elements output = new Elements();</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        for (Element el : elements) {</span>
+<span class="nc" id="L139">            boolean found = false;</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">            for (Element out : outs) {</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                if (el.equals(out)) {</span>
+<span class="nc" id="L142">                    found = true;</span>
+<span class="nc" id="L143">                    break;</span>
+                }
+<span class="nc" id="L145">            }</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (!found)</span>
+<span class="nc" id="L147">                output.add(el);</span>
+<span class="nc" id="L148">        }</span>
+<span class="nc" id="L149">        return output;</span>
+    }
+
+    /**
+     * Find the first element that matches the query.
+     * @param cssQuery CSS selector
+     * @param root root element to descend into
+     * @return the matching element, or &lt;b&gt;null&lt;/b&gt; if none.
+     */
+    public static Element selectFirst(String cssQuery, Element root) {
+<span class="nc" id="L159">        Validate.notEmpty(cssQuery);</span>
+<span class="nc" id="L160">        return Collector.findFirst(QueryParser.parse(cssQuery), root);</span>
+    }
+
+    public static class SelectorParseException extends IllegalStateException {
+        public SelectorParseException(String msg, Object... params) {
+<span class="nc" id="L165">            super(String.format(msg, params));</span>
+<span class="nc" id="L166">        }</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

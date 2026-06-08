@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BaseNCodec.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.binary</a> &gt; <span class="el_source">BaseNCodec.java</span></div><h1>BaseNCodec.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.binary;
+
+import java.util.Arrays;
+
+import org.apache.commons.codec.BinaryDecoder;
+import org.apache.commons.codec.BinaryEncoder;
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.EncoderException;
+
+/**
+ * Abstract superclass for Base-N encoders and decoders.
+ *
+ * &lt;p&gt;
+ * This class is thread-safe.
+ * &lt;/p&gt;
+ *
+ * @version $Id$
+ */
+public abstract class BaseNCodec implements BinaryEncoder, BinaryDecoder {
+
+    /**
+     * Holds thread context so classes can be thread-safe.
+     *
+     * This class is not itself thread-safe; each thread must allocate its own copy.
+     *
+     * @since 1.7
+     */
+    static class Context {
+
+        /**
+         * Place holder for the bytes we're dealing with for our based logic.
+         * Bitwise operations store and extract the encoding or decoding from this variable.
+         */
+        int ibitWorkArea;
+
+        /**
+         * Place holder for the bytes we're dealing with for our based logic.
+         * Bitwise operations store and extract the encoding or decoding from this variable.
+         */
+        long lbitWorkArea;
+
+        /**
+         * Buffer for streaming.
+         */
+        byte[] buffer;
+
+        /**
+         * Position where next character should be written in the buffer.
+         */
+        int pos;
+
+        /**
+         * Position where next character should be read from the buffer.
+         */
+        int readPos;
+
+        /**
+         * Boolean flag to indicate the EOF has been reached. Once EOF has been reached, this object becomes useless,
+         * and must be thrown away.
+         */
+        boolean eof;
+
+        /**
+         * Variable tracks how many characters have been written to the current line. Only used when encoding. We use
+         * it to make sure each encoded line never goes beyond lineLength (if lineLength &amp;gt; 0).
+         */
+        int currentLinePos;
+
+        /**
+         * Writes to the buffer only occur after every 3/5 reads when encoding, and every 4/8 reads when decoding. This
+         * variable helps track that.
+         */
+        int modulus;
+
+<span class="nc" id="L92">        Context() {</span>
+<span class="nc" id="L93">        }</span>
+
+        /**
+         * Returns a String useful for debugging (especially within a debugger.)
+         *
+         * @return a String useful for debugging.
+         */
+        @SuppressWarnings(&quot;boxing&quot;) // OK to ignore boxing here
+        @Override
+        public String toString() {
+<span class="nc" id="L103">            return String.format(&quot;%s[buffer=%s, currentLinePos=%s, eof=%s, ibitWorkArea=%s, lbitWorkArea=%s, &quot; +</span>
+<span class="nc" id="L104">                    &quot;modulus=%s, pos=%s, readPos=%s]&quot;, this.getClass().getSimpleName(), Arrays.toString(buffer),</span>
+<span class="nc" id="L105">                    currentLinePos, eof, ibitWorkArea, lbitWorkArea, modulus, pos, readPos);</span>
+        }
+    }
+
+    /**
+     * EOF
+     *
+     * @since 1.7
+     */
+    static final int EOF = -1;
+
+    /**
+     *  MIME chunk size per RFC 2045 section 6.8.
+     *
+     * &lt;p&gt;
+     * The {@value} character limit does not count the trailing CRLF, but counts all other characters, including any
+     * equal signs.
+     * &lt;/p&gt;
+     *
+     * @see &lt;a href=&quot;http://www.ietf.org/rfc/rfc2045.txt&quot;&gt;RFC 2045 section 6.8&lt;/a&gt;
+     */
+    public static final int MIME_CHUNK_SIZE = 76;
+
+    /**
+     * PEM chunk size per RFC 1421 section 4.3.2.4.
+     *
+     * &lt;p&gt;
+     * The {@value} character limit does not count the trailing CRLF, but counts all other characters, including any
+     * equal signs.
+     * &lt;/p&gt;
+     *
+     * @see &lt;a href=&quot;http://tools.ietf.org/html/rfc1421&quot;&gt;RFC 1421 section 4.3.2.4&lt;/a&gt;
+     */
+    public static final int PEM_CHUNK_SIZE = 64;
+
+    private static final int DEFAULT_BUFFER_RESIZE_FACTOR = 2;
+
+    /**
+     * Defines the default buffer size - currently {@value}
+     * - must be large enough for at least one encoded block+separator
+     */
+    private static final int DEFAULT_BUFFER_SIZE = 8192;
+
+    /** Mask used to extract 8 bits, used in decoding bytes */
+    protected static final int MASK_8BITS = 0xff;
+
+    /**
+     * Byte used to pad output.
+     */
+    protected static final byte PAD_DEFAULT = '='; // Allow static access to default
+
+    /**
+     * @deprecated Use {@link #pad}. Will be removed in 2.0.
+     */
+<span class="nc" id="L159">    @Deprecated</span>
+    protected final byte PAD = PAD_DEFAULT; // instance variable just in case it needs to vary later
+
+    protected final byte pad; // instance variable just in case it needs to vary later
+
+    /** Number of bytes in each full block of unencoded data, e.g. 4 for Base64 and 5 for Base32 */
+    private final int unencodedBlockSize;
+
+    /** Number of bytes in each full block of encoded data, e.g. 3 for Base64 and 8 for Base32 */
+    private final int encodedBlockSize;
+
+    /**
+     * Chunksize for encoding. Not used when decoding.
+     * A value of zero or less implies no chunking of the encoded data.
+     * Rounded down to nearest multiple of encodedBlockSize.
+     */
+    protected final int lineLength;
+
+    /**
+     * Size of chunk separator. Not used unless {@link #lineLength} &amp;gt; 0.
+     */
+    private final int chunkSeparatorLength;
+
+    /**
+     * Note &lt;code&gt;lineLength&lt;/code&gt; is rounded down to the nearest multiple of {@link #encodedBlockSize}
+     * If &lt;code&gt;chunkSeparatorLength&lt;/code&gt; is zero, then chunking is disabled.
+     * @param unencodedBlockSize the size of an unencoded block (e.g. Base64 = 3)
+     * @param encodedBlockSize the size of an encoded block (e.g. Base64 = 4)
+     * @param lineLength if &amp;gt; 0, use chunking with a length &lt;code&gt;lineLength&lt;/code&gt;
+     * @param chunkSeparatorLength the chunk separator length, if relevant
+     */
+    protected BaseNCodec(final int unencodedBlockSize, final int encodedBlockSize,
+                         final int lineLength, final int chunkSeparatorLength) {
+<span class="nc" id="L192">        this(unencodedBlockSize, encodedBlockSize, lineLength, chunkSeparatorLength, PAD_DEFAULT);</span>
+<span class="nc" id="L193">    }</span>
+
+    /**
+     * Note &lt;code&gt;lineLength&lt;/code&gt; is rounded down to the nearest multiple of {@link #encodedBlockSize}
+     * If &lt;code&gt;chunkSeparatorLength&lt;/code&gt; is zero, then chunking is disabled.
+     * @param unencodedBlockSize the size of an unencoded block (e.g. Base64 = 3)
+     * @param encodedBlockSize the size of an encoded block (e.g. Base64 = 4)
+     * @param lineLength if &amp;gt; 0, use chunking with a length &lt;code&gt;lineLength&lt;/code&gt;
+     * @param chunkSeparatorLength the chunk separator length, if relevant
+     * @param pad byte used as padding byte.
+     */
+    protected BaseNCodec(final int unencodedBlockSize, final int encodedBlockSize,
+<span class="nc" id="L205">                         final int lineLength, final int chunkSeparatorLength, final byte pad) {</span>
+<span class="nc" id="L206">        this.unencodedBlockSize = unencodedBlockSize;</span>
+<span class="nc" id="L207">        this.encodedBlockSize = encodedBlockSize;</span>
+<span class="nc bnc" id="L208" title="All 4 branches missed.">        final boolean useChunking = lineLength &gt; 0 &amp;&amp; chunkSeparatorLength &gt; 0;</span>
+<span class="nc bnc" id="L209" title="All 2 branches missed.">        this.lineLength = useChunking ? (lineLength / encodedBlockSize) * encodedBlockSize : 0;</span>
+<span class="nc" id="L210">        this.chunkSeparatorLength = chunkSeparatorLength;</span>
+
+<span class="nc" id="L212">        this.pad = pad;</span>
+<span class="nc" id="L213">    }</span>
+
+    /**
+     * Returns true if this object has buffered data for reading.
+     *
+     * @param context the context to be used
+     * @return true if there is data still available for reading.
+     */
+    boolean hasData(final Context context) {  // package protected for access from I/O streams
+<span class="nc bnc" id="L222" title="All 2 branches missed.">        return context.buffer != null;</span>
+    }
+
+    /**
+     * Returns the amount of buffered data available for reading.
+     *
+     * @param context the context to be used
+     * @return The amount of buffered data available for reading.
+     */
+    int available(final Context context) {  // package protected for access from I/O streams
+<span class="nc bnc" id="L232" title="All 2 branches missed.">        return context.buffer != null ? context.pos - context.readPos : 0;</span>
+    }
+
+    /**
+     * Get the default buffer size. Can be overridden.
+     *
+     * @return {@link #DEFAULT_BUFFER_SIZE}
+     */
+    protected int getDefaultBufferSize() {
+<span class="nc" id="L241">        return DEFAULT_BUFFER_SIZE;</span>
+    }
+
+    /**
+     * Increases our buffer by the {@link #DEFAULT_BUFFER_RESIZE_FACTOR}.
+     * @param context the context to be used
+     */
+    private byte[] resizeBuffer(final Context context) {
+<span class="nc bnc" id="L249" title="All 2 branches missed.">        if (context.buffer == null) {</span>
+<span class="nc" id="L250">            context.buffer = new byte[getDefaultBufferSize()];</span>
+<span class="nc" id="L251">            context.pos = 0;</span>
+<span class="nc" id="L252">            context.readPos = 0;</span>
+        } else {
+<span class="nc" id="L254">            final byte[] b = new byte[context.buffer.length * DEFAULT_BUFFER_RESIZE_FACTOR];</span>
+<span class="nc" id="L255">            System.arraycopy(context.buffer, 0, b, 0, context.buffer.length);</span>
+<span class="nc" id="L256">            context.buffer = b;</span>
+        }
+<span class="nc" id="L258">        return context.buffer;</span>
+    }
+
+    /**
+     * Ensure that the buffer has room for &lt;code&gt;size&lt;/code&gt; bytes
+     *
+     * @param size minimum spare space required
+     * @param context the context to be used
+     * @return the buffer
+     */
+    protected byte[] ensureBufferSize(final int size, final Context context){
+<span class="nc bnc" id="L269" title="All 4 branches missed.">        if ((context.buffer == null) || (context.buffer.length &lt; context.pos + size)){</span>
+<span class="nc" id="L270">            return resizeBuffer(context);</span>
+        }
+<span class="nc" id="L272">        return context.buffer;</span>
+    }
+
+    /**
+     * Extracts buffered data into the provided byte[] array, starting at position bPos, up to a maximum of bAvail
+     * bytes. Returns how many bytes were actually extracted.
+     * &lt;p&gt;
+     * Package protected for access from I/O streams.
+     *
+     * @param b
+     *            byte[] array to extract the buffered data into.
+     * @param bPos
+     *            position in byte[] array to start extraction at.
+     * @param bAvail
+     *            amount of bytes we're allowed to extract. We may extract fewer (if fewer are available).
+     * @param context
+     *            the context to be used
+     * @return The number of bytes successfully extracted into the provided byte[] array.
+     */
+    int readResults(final byte[] b, final int bPos, final int bAvail, final Context context) {
+<span class="nc bnc" id="L292" title="All 2 branches missed.">        if (context.buffer != null) {</span>
+<span class="nc" id="L293">            final int len = Math.min(available(context), bAvail);</span>
+<span class="nc" id="L294">            System.arraycopy(context.buffer, context.readPos, b, bPos, len);</span>
+<span class="nc" id="L295">            context.readPos += len;</span>
+<span class="nc bnc" id="L296" title="All 2 branches missed.">            if (context.readPos &gt;= context.pos) {</span>
+<span class="nc" id="L297">                context.buffer = null; // so hasData() will return false, and this method can return -1</span>
+            }
+<span class="nc" id="L299">            return len;</span>
+        }
+<span class="nc bnc" id="L301" title="All 2 branches missed.">        return context.eof ? EOF : 0;</span>
+    }
+
+    /**
+     * Checks if a byte value is whitespace or not.
+     * Whitespace is taken to mean: space, tab, CR, LF
+     * @param byteToCheck
+     *            the byte to check
+     * @return true if byte is whitespace, false otherwise
+     */
+    protected static boolean isWhiteSpace(final byte byteToCheck) {
+<span class="nc bnc" id="L312" title="All 2 branches missed.">        switch (byteToCheck) {</span>
+            case ' ' :
+            case '\n' :
+            case '\r' :
+            case '\t' :
+<span class="nc" id="L317">                return true;</span>
+            default :
+<span class="nc" id="L319">                return false;</span>
+        }
+    }
+
+    /**
+     * Encodes an Object using the Base-N algorithm. This method is provided in order to satisfy the requirements of
+     * the Encoder interface, and will throw an EncoderException if the supplied object is not of type byte[].
+     *
+     * @param obj
+     *            Object to encode
+     * @return An object (of type byte[]) containing the Base-N encoded data which corresponds to the byte[] supplied.
+     * @throws EncoderException
+     *             if the parameter supplied is not of type byte[]
+     */
+    @Override
+    public Object encode(final Object obj) throws EncoderException {
+<span class="nc bnc" id="L335" title="All 2 branches missed.">        if (!(obj instanceof byte[])) {</span>
+<span class="nc" id="L336">            throw new EncoderException(&quot;Parameter supplied to Base-N encode is not a byte[]&quot;);</span>
+        }
+<span class="nc" id="L338">        return encode((byte[]) obj);</span>
+    }
+
+    /**
+     * Encodes a byte[] containing binary data, into a String containing characters in the Base-N alphabet.
+     * Uses UTF8 encoding.
+     *
+     * @param pArray
+     *            a byte array containing binary data
+     * @return A String containing only Base-N character data
+     */
+    public String encodeToString(final byte[] pArray) {
+<span class="nc" id="L350">        return StringUtils.newStringUtf8(encode(pArray));</span>
+    }
+
+    /**
+     * Encodes a byte[] containing binary data, into a String containing characters in the appropriate alphabet.
+     * Uses UTF8 encoding.
+     *
+     * @param pArray a byte array containing binary data
+     * @return String containing only character data in the appropriate alphabet.
+    */
+    public String encodeAsString(final byte[] pArray){
+<span class="nc" id="L361">        return StringUtils.newStringUtf8(encode(pArray));</span>
+    }
+
+    /**
+     * Decodes an Object using the Base-N algorithm. This method is provided in order to satisfy the requirements of
+     * the Decoder interface, and will throw a DecoderException if the supplied object is not of type byte[] or String.
+     *
+     * @param obj
+     *            Object to decode
+     * @return An object (of type byte[]) containing the binary data which corresponds to the byte[] or String
+     *         supplied.
+     * @throws DecoderException
+     *             if the parameter supplied is not of type byte[]
+     */
+    @Override
+    public Object decode(final Object obj) throws DecoderException {
+<span class="nc bnc" id="L377" title="All 2 branches missed.">        if (obj instanceof byte[]) {</span>
+<span class="nc" id="L378">            return decode((byte[]) obj);</span>
+<span class="nc bnc" id="L379" title="All 2 branches missed.">        } else if (obj instanceof String) {</span>
+<span class="nc" id="L380">            return decode((String) obj);</span>
+        } else {
+<span class="nc" id="L382">            throw new DecoderException(&quot;Parameter supplied to Base-N decode is not a byte[] or a String&quot;);</span>
+        }
+    }
+
+    /**
+     * Decodes a String containing characters in the Base-N alphabet.
+     *
+     * @param pArray
+     *            A String containing Base-N character data
+     * @return a byte array containing binary data
+     */
+    public byte[] decode(final String pArray) {
+<span class="nc" id="L394">        return decode(StringUtils.getBytesUtf8(pArray));</span>
+    }
+
+    /**
+     * Decodes a byte[] containing characters in the Base-N alphabet.
+     *
+     * @param pArray
+     *            A byte array containing Base-N character data
+     * @return a byte array containing binary data
+     */
+    @Override
+    public byte[] decode(final byte[] pArray) {
+<span class="nc bnc" id="L406" title="All 4 branches missed.">        if (pArray == null || pArray.length == 0) {</span>
+<span class="nc" id="L407">            return pArray;</span>
+        }
+<span class="nc" id="L409">        final Context context = new Context();</span>
+<span class="nc" id="L410">        decode(pArray, 0, pArray.length, context);</span>
+<span class="nc" id="L411">        decode(pArray, 0, EOF, context); // Notify decoder of EOF.</span>
+<span class="nc" id="L412">        final byte[] result = new byte[context.pos];</span>
+<span class="nc" id="L413">        readResults(result, 0, result.length, context);</span>
+<span class="nc" id="L414">        return result;</span>
+    }
+
+    /**
+     * Encodes a byte[] containing binary data, into a byte[] containing characters in the alphabet.
+     *
+     * @param pArray
+     *            a byte array containing binary data
+     * @return A byte array containing only the base N alphabetic character data
+     */
+    @Override
+    public byte[] encode(final byte[] pArray) {
+<span class="nc bnc" id="L426" title="All 4 branches missed.">        if (pArray == null || pArray.length == 0) {</span>
+<span class="nc" id="L427">            return pArray;</span>
+        }
+<span class="nc" id="L429">        return encode(pArray, 0, pArray.length);</span>
+    }
+
+    /**
+     * Encodes a byte[] containing binary data, into a byte[] containing
+     * characters in the alphabet.
+     *
+     * @param pArray
+     *            a byte array containing binary data
+     * @param offset
+     *            initial offset of the subarray.
+     * @param length
+     *            length of the subarray.
+     * @return A byte array containing only the base N alphabetic character data
+     * @since 1.11
+     */
+    public byte[] encode(final byte[] pArray, int offset, int length) {
+<span class="nc bnc" id="L446" title="All 4 branches missed.">        if (pArray == null || pArray.length == 0) {</span>
+<span class="nc" id="L447">            return pArray;</span>
+        }
+<span class="nc" id="L449">        final Context context = new Context();</span>
+<span class="nc" id="L450">        encode(pArray, offset, length, context);</span>
+<span class="nc" id="L451">        encode(pArray, offset, EOF, context); // Notify encoder of EOF.</span>
+<span class="nc" id="L452">        final byte[] buf = new byte[context.pos - context.readPos];</span>
+<span class="nc" id="L453">        readResults(buf, 0, buf.length, context);</span>
+<span class="nc" id="L454">        return buf;</span>
+    }
+
+    // package protected for access from I/O streams
+    abstract void encode(byte[] pArray, int i, int length, Context context);
+
+    // package protected for access from I/O streams
+    abstract void decode(byte[] pArray, int i, int length, Context context);
+
+    /**
+     * Returns whether or not the &lt;code&gt;octet&lt;/code&gt; is in the current alphabet.
+     * Does not allow whitespace or pad.
+     *
+     * @param value The value to test
+     *
+     * @return &lt;code&gt;true&lt;/code&gt; if the value is defined in the current alphabet, &lt;code&gt;false&lt;/code&gt; otherwise.
+     */
+    protected abstract boolean isInAlphabet(byte value);
+
+    /**
+     * Tests a given byte array to see if it contains only valid characters within the alphabet.
+     * The method optionally treats whitespace and pad as valid.
+     *
+     * @param arrayOctet byte array to test
+     * @param allowWSPad if &lt;code&gt;true&lt;/code&gt;, then whitespace and PAD are also allowed
+     *
+     * @return &lt;code&gt;true&lt;/code&gt; if all bytes are valid characters in the alphabet or if the byte array is empty;
+     *         &lt;code&gt;false&lt;/code&gt;, otherwise
+     */
+    public boolean isInAlphabet(final byte[] arrayOctet, final boolean allowWSPad) {
+<span class="nc bnc" id="L484" title="All 2 branches missed.">        for (byte octet : arrayOctet) {</span>
+<span class="nc bnc" id="L485" title="All 6 branches missed.">            if (!isInAlphabet(octet) &amp;&amp;</span>
+<span class="nc bnc" id="L486" title="All 2 branches missed.">                    (!allowWSPad || (octet != pad) &amp;&amp; !isWhiteSpace(octet))) {</span>
+<span class="nc" id="L487">                return false;</span>
+            }
+        }
+<span class="nc" id="L490">        return true;</span>
+    }
+
+    /**
+     * Tests a given String to see if it contains only valid characters within the alphabet.
+     * The method treats whitespace and PAD as valid.
+     *
+     * @param basen String to test
+     * @return &lt;code&gt;true&lt;/code&gt; if all characters in the String are valid characters in the alphabet or if
+     *         the String is empty; &lt;code&gt;false&lt;/code&gt;, otherwise
+     * @see #isInAlphabet(byte[], boolean)
+     */
+    public boolean isInAlphabet(final String basen) {
+<span class="nc" id="L503">        return isInAlphabet(StringUtils.getBytesUtf8(basen), true);</span>
+    }
+
+    /**
+     * Tests a given byte array to see if it contains any characters within the alphabet or PAD.
+     *
+     * Intended for use in checking line-ending arrays
+     *
+     * @param arrayOctet
+     *            byte array to test
+     * @return &lt;code&gt;true&lt;/code&gt; if any byte is a valid character in the alphabet or PAD; &lt;code&gt;false&lt;/code&gt; otherwise
+     */
+    protected boolean containsAlphabetOrPad(final byte[] arrayOctet) {
+<span class="nc bnc" id="L516" title="All 2 branches missed.">        if (arrayOctet == null) {</span>
+<span class="nc" id="L517">            return false;</span>
+        }
+<span class="nc bnc" id="L519" title="All 2 branches missed.">        for (final byte element : arrayOctet) {</span>
+<span class="nc bnc" id="L520" title="All 4 branches missed.">            if (pad == element || isInAlphabet(element)) {</span>
+<span class="nc" id="L521">                return true;</span>
+            }
+        }
+<span class="nc" id="L524">        return false;</span>
+    }
+
+    /**
+     * Calculates the amount of space needed to encode the supplied array.
+     *
+     * @param pArray byte[] array which will later be encoded
+     *
+     * @return amount of space needed to encoded the supplied array.
+     * Returns a long since a max-len array will require &amp;gt; Integer.MAX_VALUE
+     */
+    public long getEncodedLength(final byte[] pArray) {
+        // Calculate non-chunked size - rounded up to allow for padding
+        // cast to long is needed to avoid possibility of overflow
+<span class="nc" id="L538">        long len = ((pArray.length + unencodedBlockSize-1)  / unencodedBlockSize) * (long) encodedBlockSize;</span>
+<span class="nc bnc" id="L539" title="All 2 branches missed.">        if (lineLength &gt; 0) { // We're using chunking</span>
+            // Round up to nearest multiple
+<span class="nc" id="L541">            len += ((len + lineLength-1) / lineLength) * chunkSeparatorLength;</span>
+        }
+<span class="nc" id="L543">        return len;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

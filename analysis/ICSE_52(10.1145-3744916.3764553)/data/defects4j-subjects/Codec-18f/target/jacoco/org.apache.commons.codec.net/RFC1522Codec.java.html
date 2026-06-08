@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RFC1522Codec.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Apache Commons Codec</a> &gt; <a href="index.source.html" class="el_package">org.apache.commons.codec.net</a> &gt; <span class="el_source">RFC1522Codec.java</span></div><h1>RFC1522Codec.java</h1><pre class="source lang-java linenums">/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the &quot;License&quot;); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.apache.commons.codec.net;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+
+import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.EncoderException;
+import org.apache.commons.codec.binary.StringUtils;
+
+/**
+ * Implements methods common to all codecs defined in RFC 1522.
+ * &lt;p&gt;
+ * &lt;a href=&quot;http://www.ietf.org/rfc/rfc1522.txt&quot;&gt;RFC 1522&lt;/a&gt; describes techniques to allow the
+ * encoding of non-ASCII text in various portions of a RFC 822 [2] message header, in a manner which
+ * is unlikely to confuse existing message handling software.
+ * &lt;p&gt;
+ * This class is immutable and thread-safe.
+ *
+ * @see &lt;a href=&quot;http://www.ietf.org/rfc/rfc1522.txt&quot;&gt;MIME (Multipurpose Internet Mail Extensions) Part Two:
+ *          Message Header Extensions for Non-ASCII Text&lt;/a&gt;
+ *
+ * @since 1.3
+ * @version $Id$
+ */
+<span class="nc" id="L42">abstract class RFC1522Codec {</span>
+
+    /** Separator. */
+    protected static final char SEP = '?';
+
+    /** Prefix. */
+    protected static final String POSTFIX = &quot;?=&quot;;
+
+    /** Postfix. */
+    protected static final String PREFIX = &quot;=?&quot;;
+
+    /**
+     * Applies an RFC 1522 compliant encoding scheme to the given string of text with the given charset.
+     * &lt;p&gt;
+     * This method constructs the &quot;encoded-word&quot; header common to all the RFC 1522 codecs and then invokes
+     * {@link #doEncoding(byte [])} method of a concrete class to perform the specific encoding.
+     *
+     * @param text
+     *            a string to encode
+     * @param charset
+     *            a charset to be used
+     * @return RFC 1522 compliant &quot;encoded-word&quot;
+     * @throws EncoderException
+     *             thrown if there is an error condition during the Encoding process.
+     * @see &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&quot;&gt;Standard charsets&lt;/a&gt;
+     */
+    protected String encodeText(final String text, final Charset charset) throws EncoderException {
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        if (text == null) {</span>
+<span class="nc" id="L70">            return null;</span>
+        }
+<span class="nc" id="L72">        final StringBuilder buffer = new StringBuilder();</span>
+<span class="nc" id="L73">        buffer.append(PREFIX);</span>
+<span class="nc" id="L74">        buffer.append(charset);</span>
+<span class="nc" id="L75">        buffer.append(SEP);</span>
+<span class="nc" id="L76">        buffer.append(this.getEncoding());</span>
+<span class="nc" id="L77">        buffer.append(SEP);</span>
+<span class="nc" id="L78">        final byte [] rawData = this.doEncoding(text.getBytes(charset));</span>
+<span class="nc" id="L79">        buffer.append(StringUtils.newStringUsAscii(rawData));</span>
+<span class="nc" id="L80">        buffer.append(POSTFIX);</span>
+<span class="nc" id="L81">        return buffer.toString();</span>
+    }
+
+    /**
+     * Applies an RFC 1522 compliant encoding scheme to the given string of text with the given charset.
+     * &lt;p&gt;
+     * This method constructs the &quot;encoded-word&quot; header common to all the RFC 1522 codecs and then invokes
+     * {@link #doEncoding(byte [])} method of a concrete class to perform the specific encoding.
+     *
+     * @param text
+     *            a string to encode
+     * @param charsetName
+     *            the charset to use
+     * @return RFC 1522 compliant &quot;encoded-word&quot;
+     * @throws EncoderException
+     *             thrown if there is an error condition during the Encoding process.
+     * @throws UnsupportedEncodingException
+     *             if charset is not available
+     *
+     * @see &lt;a href=&quot;http://download.oracle.com/javase/6/docs/api/java/nio/charset/Charset.html&quot;&gt;Standard charsets&lt;/a&gt;
+     */
+    protected String encodeText(final String text, final String charsetName)
+            throws EncoderException, UnsupportedEncodingException {
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (text == null) {</span>
+<span class="nc" id="L105">            return null;</span>
+        }
+<span class="nc" id="L107">        return this.encodeText(text, Charset.forName(charsetName));</span>
+    }
+
+    /**
+     * Applies an RFC 1522 compliant decoding scheme to the given string of text.
+     * &lt;p&gt;
+     * This method processes the &quot;encoded-word&quot; header common to all the RFC 1522 codecs and then invokes
+     * {@link #doEncoding(byte [])} method of a concrete class to perform the specific decoding.
+     *
+     * @param text
+     *            a string to decode
+     * @return A new decoded String or &lt;code&gt;null&lt;/code&gt; if the input is &lt;code&gt;null&lt;/code&gt;.
+     * @throws DecoderException
+     *             thrown if there is an error condition during the decoding process.
+     * @throws UnsupportedEncodingException
+     *             thrown if charset specified in the &quot;encoded-word&quot; header is not supported
+     */
+    protected String decodeText(final String text)
+            throws DecoderException, UnsupportedEncodingException {
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (text == null) {</span>
+<span class="nc" id="L127">            return null;</span>
+        }
+<span class="nc bnc" id="L129" title="All 4 branches missed.">        if (!text.startsWith(PREFIX) || !text.endsWith(POSTFIX)) {</span>
+<span class="nc" id="L130">            throw new DecoderException(&quot;RFC 1522 violation: malformed encoded content&quot;);</span>
+        }
+<span class="nc" id="L132">        final int terminator = text.length() - 2;</span>
+<span class="nc" id="L133">        int from = 2;</span>
+<span class="nc" id="L134">        int to = text.indexOf(SEP, from);</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (to == terminator) {</span>
+<span class="nc" id="L136">            throw new DecoderException(&quot;RFC 1522 violation: charset token not found&quot;);</span>
+        }
+<span class="nc" id="L138">        final String charset = text.substring(from, to);</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        if (charset.equals(&quot;&quot;)) {</span>
+<span class="nc" id="L140">            throw new DecoderException(&quot;RFC 1522 violation: charset not specified&quot;);</span>
+        }
+<span class="nc" id="L142">        from = to + 1;</span>
+<span class="nc" id="L143">        to = text.indexOf(SEP, from);</span>
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (to == terminator) {</span>
+<span class="nc" id="L145">            throw new DecoderException(&quot;RFC 1522 violation: encoding token not found&quot;);</span>
+        }
+<span class="nc" id="L147">        final String encoding = text.substring(from, to);</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        if (!getEncoding().equalsIgnoreCase(encoding)) {</span>
+<span class="nc" id="L149">            throw new DecoderException(&quot;This codec cannot decode &quot; + encoding + &quot; encoded content&quot;);</span>
+        }
+<span class="nc" id="L151">        from = to + 1;</span>
+<span class="nc" id="L152">        to = text.indexOf(SEP, from);</span>
+<span class="nc" id="L153">        byte[] data = StringUtils.getBytesUsAscii(text.substring(from, to));</span>
+<span class="nc" id="L154">        data = doDecoding(data);</span>
+<span class="nc" id="L155">        return new String(data, charset);</span>
+    }
+
+    /**
+     * Returns the codec name (referred to as encoding in the RFC 1522).
+     *
+     * @return name of the codec
+     */
+    protected abstract String getEncoding();
+
+    /**
+     * Encodes an array of bytes using the defined encoding scheme.
+     *
+     * @param bytes
+     *            Data to be encoded
+     * @return A byte array containing the encoded data
+     * @throws EncoderException
+     *             thrown if the Encoder encounters a failure condition during the encoding process.
+     */
+    protected abstract byte[] doEncoding(byte[] bytes) throws EncoderException;
+
+    /**
+     * Decodes an array of bytes using the defined encoding scheme.
+     *
+     * @param bytes
+     *            Data to be decoded
+     * @return a byte array that contains decoded data
+     * @throws DecoderException
+     *             A decoder exception is thrown if a Decoder encounters a failure condition during the decode process.
+     */
+    protected abstract byte[] doDecoding(byte[] bytes) throws DecoderException;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

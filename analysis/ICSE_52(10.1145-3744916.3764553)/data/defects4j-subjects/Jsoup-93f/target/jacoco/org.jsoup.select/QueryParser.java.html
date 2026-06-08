@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryParser.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">jsoup Java HTML Parser</a> &gt; <a href="index.source.html" class="el_package">org.jsoup.select</a> &gt; <span class="el_source">QueryParser.java</span></div><h1>QueryParser.java</h1><pre class="source lang-java linenums">package org.jsoup.select;
+
+import org.jsoup.internal.StringUtil;
+import org.jsoup.helper.Validate;
+import org.jsoup.parser.TokenQueue;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.jsoup.internal.Normalizer.normalize;
+
+/**
+ * Parses a CSS selector into an Evaluator tree.
+ */
+public class QueryParser {
+<span class="nc" id="L18">    private final static String[] combinators = {&quot;,&quot;, &quot;&gt;&quot;, &quot;+&quot;, &quot;~&quot;, &quot; &quot;};</span>
+<span class="nc" id="L19">    private static final String[] AttributeEvals = new String[]{&quot;=&quot;, &quot;!=&quot;, &quot;^=&quot;, &quot;$=&quot;, &quot;*=&quot;, &quot;~=&quot;};</span>
+
+    private TokenQueue tq;
+    private String query;
+<span class="nc" id="L23">    private List&lt;Evaluator&gt; evals = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Create a new QueryParser.
+     * @param query CSS query
+     */
+<span class="nc" id="L29">    private QueryParser(String query) {</span>
+<span class="nc" id="L30">        this.query = query;</span>
+<span class="nc" id="L31">        this.tq = new TokenQueue(query);</span>
+<span class="nc" id="L32">    }</span>
+
+    /**
+     * Parse a CSS query into an Evaluator.
+     * @param query CSS query
+     * @return Evaluator
+     */
+    public static Evaluator parse(String query) {
+        try {
+<span class="nc" id="L41">            QueryParser p = new QueryParser(query);</span>
+<span class="nc" id="L42">            return p.parse();</span>
+<span class="nc" id="L43">        } catch (IllegalArgumentException e) {</span>
+<span class="nc" id="L44">            throw new Selector.SelectorParseException(e.getMessage());</span>
+        }
+    }
+
+    /**
+     * Parse the query
+     * @return Evaluator
+     */
+    Evaluator parse() {
+<span class="nc" id="L53">        tq.consumeWhitespace();</span>
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        if (tq.matchesAny(combinators)) { // if starts with a combinator, use root as elements</span>
+<span class="nc" id="L56">            evals.add(new StructuralEvaluator.Root());</span>
+<span class="nc" id="L57">            combinator(tq.consume());</span>
+        } else {
+<span class="nc" id="L59">            findElements();</span>
+        }
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        while (!tq.isEmpty()) {</span>
+            // hierarchy and extras
+<span class="nc" id="L64">            boolean seenWhite = tq.consumeWhitespace();</span>
+
+<span class="nc bnc" id="L66" title="All 2 branches missed.">            if (tq.matchesAny(combinators)) {</span>
+<span class="nc" id="L67">                combinator(tq.consume());</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">            } else if (seenWhite) {</span>
+<span class="nc" id="L69">                combinator(' ');</span>
+            } else { // E.class, E#id, E[attr] etc. AND
+<span class="nc" id="L71">                findElements(); // take next el, #. etc off queue</span>
+            }
+<span class="nc" id="L73">        }</span>
+
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (evals.size() == 1)</span>
+<span class="nc" id="L76">            return evals.get(0);</span>
+
+<span class="nc" id="L78">        return new CombiningEvaluator.And(evals);</span>
+    }
+
+    private void combinator(char combinator) {
+<span class="nc" id="L82">        tq.consumeWhitespace();</span>
+<span class="nc" id="L83">        String subQuery = consumeSubQuery(); // support multi &gt; childs</span>
+
+        Evaluator rootEval; // the new topmost evaluator
+        Evaluator currentEval; // the evaluator the new eval will be combined to. could be root, or rightmost or.
+<span class="nc" id="L87">        Evaluator newEval = parse(subQuery); // the evaluator to add into target evaluator</span>
+<span class="nc" id="L88">        boolean replaceRightMost = false;</span>
+
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if (evals.size() == 1) {</span>
+<span class="nc" id="L91">            rootEval = currentEval = evals.get(0);</span>
+            // make sure OR (,) has precedence:
+<span class="nc bnc" id="L93" title="All 4 branches missed.">            if (rootEval instanceof CombiningEvaluator.Or &amp;&amp; combinator != ',') {</span>
+<span class="nc" id="L94">                currentEval = ((CombiningEvaluator.Or) currentEval).rightMostEvaluator();</span>
+<span class="nc" id="L95">                replaceRightMost = true;</span>
+            }
+        }
+        else {
+<span class="nc" id="L99">            rootEval = currentEval = new CombiningEvaluator.And(evals);</span>
+        }
+<span class="nc" id="L101">        evals.clear();</span>
+
+        // for most combinators: change the current eval into an AND of the current eval and the new eval
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        if (combinator == '&gt;')</span>
+<span class="nc" id="L105">            currentEval = new CombiningEvaluator.And(newEval, new StructuralEvaluator.ImmediateParent(currentEval));</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        else if (combinator == ' ')</span>
+<span class="nc" id="L107">            currentEval = new CombiningEvaluator.And(newEval, new StructuralEvaluator.Parent(currentEval));</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        else if (combinator == '+')</span>
+<span class="nc" id="L109">            currentEval = new CombiningEvaluator.And(newEval, new StructuralEvaluator.ImmediatePreviousSibling(currentEval));</span>
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        else if (combinator == '~')</span>
+<span class="nc" id="L111">            currentEval = new CombiningEvaluator.And(newEval, new StructuralEvaluator.PreviousSibling(currentEval));</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        else if (combinator == ',') { // group or.</span>
+            CombiningEvaluator.Or or;
+<span class="nc bnc" id="L114" title="All 2 branches missed.">            if (currentEval instanceof CombiningEvaluator.Or) {</span>
+<span class="nc" id="L115">                or = (CombiningEvaluator.Or) currentEval;</span>
+<span class="nc" id="L116">                or.add(newEval);</span>
+            } else {
+<span class="nc" id="L118">                or = new CombiningEvaluator.Or();</span>
+<span class="nc" id="L119">                or.add(currentEval);</span>
+<span class="nc" id="L120">                or.add(newEval);</span>
+            }
+<span class="nc" id="L122">            currentEval = or;</span>
+<span class="nc" id="L123">        }</span>
+        else
+<span class="nc" id="L125">            throw new Selector.SelectorParseException(&quot;Unknown combinator: &quot; + combinator);</span>
+
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (replaceRightMost)</span>
+<span class="nc" id="L128">            ((CombiningEvaluator.Or) rootEval).replaceRightMostEvaluator(currentEval);</span>
+<span class="nc" id="L129">        else rootEval = currentEval;</span>
+<span class="nc" id="L130">        evals.add(rootEval);</span>
+<span class="nc" id="L131">    }</span>
+
+    private String consumeSubQuery() {
+<span class="nc" id="L134">        StringBuilder sq = StringUtil.borrowBuilder();</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        while (!tq.isEmpty()) {</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if (tq.matches(&quot;(&quot;))</span>
+<span class="nc" id="L137">                sq.append(&quot;(&quot;).append(tq.chompBalanced('(', ')')).append(&quot;)&quot;);</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">            else if (tq.matches(&quot;[&quot;))</span>
+<span class="nc" id="L139">                sq.append(&quot;[&quot;).append(tq.chompBalanced('[', ']')).append(&quot;]&quot;);</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">            else if (tq.matchesAny(combinators))</span>
+<span class="nc" id="L141">                break;</span>
+            else
+<span class="nc" id="L143">                sq.append(tq.consume());</span>
+        }
+<span class="nc" id="L145">        return StringUtil.releaseBuilder(sq);</span>
+    }
+
+    private void findElements() {
+<span class="nc bnc" id="L149" title="All 2 branches missed.">        if (tq.matchChomp(&quot;#&quot;))</span>
+<span class="nc" id="L150">            byId();</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;.&quot;))</span>
+<span class="nc" id="L152">            byClass();</span>
+<span class="nc bnc" id="L153" title="All 4 branches missed.">        else if (tq.matchesWord() || tq.matches(&quot;*|&quot;))</span>
+<span class="nc" id="L154">            byTag();</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">        else if (tq.matches(&quot;[&quot;))</span>
+<span class="nc" id="L156">            byAttribute();</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;*&quot;))</span>
+<span class="nc" id="L158">            allElements();</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:lt(&quot;))</span>
+<span class="nc" id="L160">            indexLessThan();</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:gt(&quot;))</span>
+<span class="nc" id="L162">            indexGreaterThan();</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:eq(&quot;))</span>
+<span class="nc" id="L164">            indexEquals();</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        else if (tq.matches(&quot;:has(&quot;))</span>
+<span class="nc" id="L166">            has();</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        else if (tq.matches(&quot;:contains(&quot;))</span>
+<span class="nc" id="L168">            contains(false);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        else if (tq.matches(&quot;:containsOwn(&quot;))</span>
+<span class="nc" id="L170">            contains(true);</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        else if (tq.matches(&quot;:containsData(&quot;))</span>
+<span class="nc" id="L172">            containsData();</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        else if (tq.matches(&quot;:matches(&quot;))</span>
+<span class="nc" id="L174">            matches(false);</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        else if (tq.matches(&quot;:matchesOwn(&quot;))</span>
+<span class="nc" id="L176">            matches(true);</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">        else if (tq.matches(&quot;:not(&quot;))</span>
+<span class="nc" id="L178">            not();</span>
+<span class="nc bnc" id="L179" title="All 2 branches missed.">		else if (tq.matchChomp(&quot;:nth-child(&quot;))</span>
+<span class="nc" id="L180">        	cssNthChild(false, false);</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:nth-last-child(&quot;))</span>
+<span class="nc" id="L182">        	cssNthChild(true, false);</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:nth-of-type(&quot;))</span>
+<span class="nc" id="L184">        	cssNthChild(false, true);</span>
+<span class="nc bnc" id="L185" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:nth-last-of-type(&quot;))</span>
+<span class="nc" id="L186">        	cssNthChild(true, true);</span>
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:first-child&quot;))</span>
+<span class="nc" id="L188">        	evals.add(new Evaluator.IsFirstChild());</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:last-child&quot;))</span>
+<span class="nc" id="L190">        	evals.add(new Evaluator.IsLastChild());</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:first-of-type&quot;))</span>
+<span class="nc" id="L192">        	evals.add(new Evaluator.IsFirstOfType());</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:last-of-type&quot;))</span>
+<span class="nc" id="L194">        	evals.add(new Evaluator.IsLastOfType());</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:only-child&quot;))</span>
+<span class="nc" id="L196">        	evals.add(new Evaluator.IsOnlyChild());</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:only-of-type&quot;))</span>
+<span class="nc" id="L198">        	evals.add(new Evaluator.IsOnlyOfType());</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:empty&quot;))</span>
+<span class="nc" id="L200">        	evals.add(new Evaluator.IsEmpty());</span>
+<span class="nc bnc" id="L201" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:root&quot;))</span>
+<span class="nc" id="L202">        	evals.add(new Evaluator.IsRoot());</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">        else if (tq.matchChomp(&quot;:matchText&quot;))</span>
+<span class="nc" id="L204">            evals.add(new Evaluator.MatchText());</span>
+		else // unhandled
+<span class="nc" id="L206">            throw new Selector.SelectorParseException(&quot;Could not parse query '%s': unexpected token at '%s'&quot;, query, tq.remainder());</span>
+
+<span class="nc" id="L208">    }</span>
+
+    private void byId() {
+<span class="nc" id="L211">        String id = tq.consumeCssIdentifier();</span>
+<span class="nc" id="L212">        Validate.notEmpty(id);</span>
+<span class="nc" id="L213">        evals.add(new Evaluator.Id(id));</span>
+<span class="nc" id="L214">    }</span>
+
+    private void byClass() {
+<span class="nc" id="L217">        String className = tq.consumeCssIdentifier();</span>
+<span class="nc" id="L218">        Validate.notEmpty(className);</span>
+<span class="nc" id="L219">        evals.add(new Evaluator.Class(className.trim()));</span>
+<span class="nc" id="L220">    }</span>
+
+    private void byTag() {
+<span class="nc" id="L223">        String tagName = tq.consumeElementSelector();</span>
+
+<span class="nc" id="L225">        Validate.notEmpty(tagName);</span>
+
+        // namespaces: wildcard match equals(tagName) or ending in &quot;:&quot;+tagName
+<span class="nc bnc" id="L228" title="All 2 branches missed.">        if (tagName.startsWith(&quot;*|&quot;)) {</span>
+<span class="nc" id="L229">            evals.add(new CombiningEvaluator.Or(new Evaluator.Tag(normalize(tagName)), new Evaluator.TagEndsWith(normalize(tagName.replace(&quot;*|&quot;, &quot;:&quot;)))));</span>
+        } else {
+            // namespaces: if element name is &quot;abc:def&quot;, selector must be &quot;abc|def&quot;, so flip:
+<span class="nc bnc" id="L232" title="All 2 branches missed.">            if (tagName.contains(&quot;|&quot;))</span>
+<span class="nc" id="L233">                tagName = tagName.replace(&quot;|&quot;, &quot;:&quot;);</span>
+
+<span class="nc" id="L235">            evals.add(new Evaluator.Tag(tagName.trim()));</span>
+        }
+<span class="nc" id="L237">    }</span>
+
+    private void byAttribute() {
+<span class="nc" id="L240">        TokenQueue cq = new TokenQueue(tq.chompBalanced('[', ']')); // content queue</span>
+<span class="nc" id="L241">        String key = cq.consumeToAny(AttributeEvals); // eq, not, start, end, contain, match, (no val)</span>
+<span class="nc" id="L242">        Validate.notEmpty(key);</span>
+<span class="nc" id="L243">        cq.consumeWhitespace();</span>
+
+<span class="nc bnc" id="L245" title="All 2 branches missed.">        if (cq.isEmpty()) {</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">            if (key.startsWith(&quot;^&quot;))</span>
+<span class="nc" id="L247">                evals.add(new Evaluator.AttributeStarting(key.substring(1)));</span>
+            else
+<span class="nc" id="L249">                evals.add(new Evaluator.Attribute(key));</span>
+        } else {
+<span class="nc bnc" id="L251" title="All 2 branches missed.">            if (cq.matchChomp(&quot;=&quot;))</span>
+<span class="nc" id="L252">                evals.add(new Evaluator.AttributeWithValue(key, cq.remainder()));</span>
+
+<span class="nc bnc" id="L254" title="All 2 branches missed.">            else if (cq.matchChomp(&quot;!=&quot;))</span>
+<span class="nc" id="L255">                evals.add(new Evaluator.AttributeWithValueNot(key, cq.remainder()));</span>
+
+<span class="nc bnc" id="L257" title="All 2 branches missed.">            else if (cq.matchChomp(&quot;^=&quot;))</span>
+<span class="nc" id="L258">                evals.add(new Evaluator.AttributeWithValueStarting(key, cq.remainder()));</span>
+
+<span class="nc bnc" id="L260" title="All 2 branches missed.">            else if (cq.matchChomp(&quot;$=&quot;))</span>
+<span class="nc" id="L261">                evals.add(new Evaluator.AttributeWithValueEnding(key, cq.remainder()));</span>
+
+<span class="nc bnc" id="L263" title="All 2 branches missed.">            else if (cq.matchChomp(&quot;*=&quot;))</span>
+<span class="nc" id="L264">                evals.add(new Evaluator.AttributeWithValueContaining(key, cq.remainder()));</span>
+
+<span class="nc bnc" id="L266" title="All 2 branches missed.">            else if (cq.matchChomp(&quot;~=&quot;))</span>
+<span class="nc" id="L267">                evals.add(new Evaluator.AttributeWithValueMatching(key, Pattern.compile(cq.remainder())));</span>
+            else
+<span class="nc" id="L269">                throw new Selector.SelectorParseException(&quot;Could not parse attribute query '%s': unexpected token at '%s'&quot;, query, cq.remainder());</span>
+        }
+<span class="nc" id="L271">    }</span>
+
+    private void allElements() {
+<span class="nc" id="L274">        evals.add(new Evaluator.AllElements());</span>
+<span class="nc" id="L275">    }</span>
+
+    // pseudo selectors :lt, :gt, :eq
+    private void indexLessThan() {
+<span class="nc" id="L279">        evals.add(new Evaluator.IndexLessThan(consumeIndex()));</span>
+<span class="nc" id="L280">    }</span>
+
+    private void indexGreaterThan() {
+<span class="nc" id="L283">        evals.add(new Evaluator.IndexGreaterThan(consumeIndex()));</span>
+<span class="nc" id="L284">    }</span>
+
+    private void indexEquals() {
+<span class="nc" id="L287">        evals.add(new Evaluator.IndexEquals(consumeIndex()));</span>
+<span class="nc" id="L288">    }</span>
+    
+    //pseudo selectors :first-child, :last-child, :nth-child, ...
+<span class="nc" id="L291">    private static final Pattern NTH_AB = Pattern.compile(&quot;(([+-])?(\\d+)?)n(\\s*([+-])?\\s*\\d+)?&quot;, Pattern.CASE_INSENSITIVE);</span>
+<span class="nc" id="L292">    private static final Pattern NTH_B  = Pattern.compile(&quot;([+-])?(\\d+)&quot;);</span>
+
+	private void cssNthChild(boolean backwards, boolean ofType) {
+<span class="nc" id="L295">		String argS = normalize(tq.chompTo(&quot;)&quot;));</span>
+<span class="nc" id="L296">		Matcher mAB = NTH_AB.matcher(argS);</span>
+<span class="nc" id="L297">		Matcher mB = NTH_B.matcher(argS);</span>
+		final int a, b;
+<span class="nc bnc" id="L299" title="All 2 branches missed.">		if (&quot;odd&quot;.equals(argS)) {</span>
+<span class="nc" id="L300">			a = 2;</span>
+<span class="nc" id="L301">			b = 1;</span>
+<span class="nc bnc" id="L302" title="All 2 branches missed.">		} else if (&quot;even&quot;.equals(argS)) {</span>
+<span class="nc" id="L303">			a = 2;</span>
+<span class="nc" id="L304">			b = 0;</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">		} else if (mAB.matches()) {</span>
+<span class="nc bnc" id="L306" title="All 2 branches missed.">			a = mAB.group(3) != null ? Integer.parseInt(mAB.group(1).replaceFirst(&quot;^\\+&quot;, &quot;&quot;)) : 1;</span>
+<span class="nc bnc" id="L307" title="All 2 branches missed.">			b = mAB.group(4) != null ? Integer.parseInt(mAB.group(4).replaceFirst(&quot;^\\+&quot;, &quot;&quot;)) : 0;</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">		} else if (mB.matches()) {</span>
+<span class="nc" id="L309">			a = 0;</span>
+<span class="nc" id="L310">			b = Integer.parseInt(mB.group().replaceFirst(&quot;^\\+&quot;, &quot;&quot;));</span>
+		} else {
+<span class="nc" id="L312">			throw new Selector.SelectorParseException(&quot;Could not parse nth-index '%s': unexpected format&quot;, argS);</span>
+		}
+<span class="nc bnc" id="L314" title="All 2 branches missed.">		if (ofType)</span>
+<span class="nc bnc" id="L315" title="All 2 branches missed.">			if (backwards)</span>
+<span class="nc" id="L316">				evals.add(new Evaluator.IsNthLastOfType(a, b));</span>
+			else
+<span class="nc" id="L318">				evals.add(new Evaluator.IsNthOfType(a, b));</span>
+		else {
+<span class="nc bnc" id="L320" title="All 2 branches missed.">			if (backwards)</span>
+<span class="nc" id="L321">				evals.add(new Evaluator.IsNthLastChild(a, b));</span>
+			else
+<span class="nc" id="L323">				evals.add(new Evaluator.IsNthChild(a, b));</span>
+		}
+<span class="nc" id="L325">	}</span>
+
+    private int consumeIndex() {
+<span class="nc" id="L328">        String indexS = tq.chompTo(&quot;)&quot;).trim();</span>
+<span class="nc" id="L329">        Validate.isTrue(StringUtil.isNumeric(indexS), &quot;Index must be numeric&quot;);</span>
+<span class="nc" id="L330">        return Integer.parseInt(indexS);</span>
+    }
+
+    // pseudo selector :has(el)
+    private void has() {
+<span class="nc" id="L335">        tq.consume(&quot;:has&quot;);</span>
+<span class="nc" id="L336">        String subQuery = tq.chompBalanced('(', ')');</span>
+<span class="nc" id="L337">        Validate.notEmpty(subQuery, &quot;:has(el) subselect must not be empty&quot;);</span>
+<span class="nc" id="L338">        evals.add(new StructuralEvaluator.Has(parse(subQuery)));</span>
+<span class="nc" id="L339">    }</span>
+
+    // pseudo selector :contains(text), containsOwn(text)
+    private void contains(boolean own) {
+<span class="nc bnc" id="L343" title="All 2 branches missed.">        tq.consume(own ? &quot;:containsOwn&quot; : &quot;:contains&quot;);</span>
+<span class="nc" id="L344">        String searchText = TokenQueue.unescape(tq.chompBalanced('(', ')'));</span>
+<span class="nc" id="L345">        Validate.notEmpty(searchText, &quot;:contains(text) query must not be empty&quot;);</span>
+<span class="nc bnc" id="L346" title="All 2 branches missed.">        if (own)</span>
+<span class="nc" id="L347">            evals.add(new Evaluator.ContainsOwnText(searchText));</span>
+        else
+<span class="nc" id="L349">            evals.add(new Evaluator.ContainsText(searchText));</span>
+<span class="nc" id="L350">    }</span>
+
+    // pseudo selector :containsData(data)
+    private void containsData() {
+<span class="nc" id="L354">        tq.consume(&quot;:containsData&quot;);</span>
+<span class="nc" id="L355">        String searchText = TokenQueue.unescape(tq.chompBalanced('(', ')'));</span>
+<span class="nc" id="L356">        Validate.notEmpty(searchText, &quot;:containsData(text) query must not be empty&quot;);</span>
+<span class="nc" id="L357">        evals.add(new Evaluator.ContainsData(searchText));</span>
+<span class="nc" id="L358">    }</span>
+
+    // :matches(regex), matchesOwn(regex)
+    private void matches(boolean own) {
+<span class="nc bnc" id="L362" title="All 2 branches missed.">        tq.consume(own ? &quot;:matchesOwn&quot; : &quot;:matches&quot;);</span>
+<span class="nc" id="L363">        String regex = tq.chompBalanced('(', ')'); // don't unescape, as regex bits will be escaped</span>
+<span class="nc" id="L364">        Validate.notEmpty(regex, &quot;:matches(regex) query must not be empty&quot;);</span>
+
+<span class="nc bnc" id="L366" title="All 2 branches missed.">        if (own)</span>
+<span class="nc" id="L367">            evals.add(new Evaluator.MatchesOwn(Pattern.compile(regex)));</span>
+        else
+<span class="nc" id="L369">            evals.add(new Evaluator.Matches(Pattern.compile(regex)));</span>
+<span class="nc" id="L370">    }</span>
+
+    // :not(selector)
+    private void not() {
+<span class="nc" id="L374">        tq.consume(&quot;:not&quot;);</span>
+<span class="nc" id="L375">        String subQuery = tq.chompBalanced('(', ')');</span>
+<span class="nc" id="L376">        Validate.notEmpty(subQuery, &quot;:not(selector) subselect must not be empty&quot;);</span>
+
+<span class="nc" id="L378">        evals.add(new StructuralEvaluator.Not(parse(subQuery)));</span>
+<span class="nc" id="L379">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
