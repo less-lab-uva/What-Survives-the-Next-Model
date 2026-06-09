@@ -1,0 +1,122 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert software security engineer specializing in fuzzing and crash analysis", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or clustering algorithm), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "solidity_source_code": "/**\n *Submitted for verification at Etherscan.io on 2019-11-13\n*/\n\n// median.sol - Medianizer v2\n\n// Copyright (C) 2019 Maker Foundation\n\n// This program is free software: you can redistribute it and/or modify\n// it under the terms of the GNU General Public License as published by\n// the Free Software Foundation, either version 3 of the License, or\n// (at your option) any later version.\n\n// This program is distributed in the hope that it will be useful,\n// but WITHOUT ANY WARRANTY; without even the implied warranty of\n// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n// GNU General Public License for more details.\n\n// You should have received a copy of the GNU General Public License\n// along with this program. If not, see <http://www.gnu.org/licenses/>.\n\npragma solidity >=0.5.10;\n\ncontract LibNote {\n    event LogNote(\n        bytes4   indexed  sig,\n        address  indexed  usr,\n        bytes32  indexed  arg1,\n        bytes32  indexed  arg2,\n        bytes             data\n    ) anonymous;\n\n    modifier note {\n        _;\n        assembly {\n            // log an 'anonymous' event with a constant 6 words of calldata\n            // and four indexed topics: selector, caller, arg1 and arg2\n            let mark := msize                         // end of memory ensures zero\n            mstore(0x40, add(mark, 288))              // update free memory pointer\n            mstore(mark, 0x20)                        // bytes type data offset\n            mstore(add(mark, 0x20), 224)              // bytes size (padded)\n            calldatacopy(add(mark, 0x40), 0, 224)     // bytes payload\n            log4(mark, 288,                           // calldata\n                 shl(224, shr(224, calldataload(0))), // msg.sig\n                 caller,                              // msg.sender\n                 calldataload(4),                     // arg1\n                 calldataload(36)                     // arg2\n                )\n        }\n    }\n}\n\ncontract Median is LibNote {\n\n    // --- Auth ---\n    mapping (address => uint) public wards;\n    function rely(address usr) external note auth { wards[usr] = 1; }\n    function deny(address usr) external note auth { wards[usr] = 0; }\n    modifier auth {\n        require(wards[msg.sender] == 1, \"Median/not-authorized\");\n        _;\n    }\n\n    uint128        val;\n    uint32  public age;\n    bytes32 public constant wat = \"ethusd\"; // You want to change this every deploy\n    uint256 public bar = 1;\n\n    // Authorized oracles, set by an auth\n    mapping (address => uint256) public orcl;\n\n    // Whitelisted contracts, set by an auth\n    mapping (address => uint256) public bud;\n\n    // Mapping for at most 256 oracles\n    mapping (uint8 => address) public slot;\n\n    modifier toll { require(bud[msg.sender] == 1, \"Median/contract-not-whitelisted\"); _;}\n\n    event LogMedianPrice(uint256 val, uint256 age);\n\n    //Set type of Oracle\n    constructor() public {\n        wards[msg.sender] = 1;\n    }\n\n    function read() external view toll returns (uint256) {\n        require(val > 0, \"Median/invalid-price-feed\");\n        return val;\n    }\n\n    function peek() external view toll returns (uint256,bool) {\n        return (val, val > 0);\n    }\n\n    function recover(uint256 val_, uint256 age_, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {\n        return ecrecover(\n            keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", keccak256(abi.encodePacked(val_, age_, wat)))),\n            v, r, s\n        );\n    }\n\n    function poke(\n        uint256[] calldata val_, uint256[] calldata age_,\n        uint8[] calldata v, bytes32[] calldata r, bytes32[] calldata s) external\n    {\n        require(val_.length == bar, \"Median/bar-too-low\");\n\n        uint256 bloom = 0;\n        uint256 last = 0;\n        uint256 zzz = age;\n\n        for (uint i = 0; i < val_.length; i++) {\n            // Validate the values were signed by an authorized oracle\n            address signer = recover(val_[i], age_[i], v[i], r[i], s[i]);\n            // Check that signer is an oracle\n            require(orcl[signer] == 1, \"Median/invalid-oracle\");\n            // Price feed age greater than last medianizer age\n            require(age_[i] > zzz, \"Median/stale-message\");\n            // Check for ordered values\n            require(val_[i] >= last, \"Median/messages-not-in-order\");\n            last = val_[i];\n            // Bloom filter for signer uniqueness\n            uint8 sl = uint8(uint256(signer) >> 152);\n            require((bloom >> sl) % 2 == 0, \"Median/oracle-already-signed\");\n            bloom += uint256(2) ** sl;\n        }\n\n        val = uint128(val_[val_.length >> 1]);\n        age = uint32(block.timestamp);\n\n        emit LogMedianPrice(val, age);\n    }\n\n    function lift(address[] calldata a) external note auth {\n        for (uint i = 0; i < a.length; i++) {\n            require(a[i] != address(0), \"Median/no-oracle-0\");\n            uint8 s = uint8(uint256(a[i]) >> 152);\n            require(slot[s] == address(0), \"Median/signer-already-exists\");\n            orcl[a[i]] = 1;\n            slot[s] = a[i];\n        }\n    }\n\n    function drop(address[] calldata a) external note auth {\n       for (uint i = 0; i < a.length; i++) {\n            orcl[a[i]] = 0;\n            slot[uint8(uint256(a[i]) >> 152)] = address(0);\n       }\n    }\n\n    function setBar(uint256 bar_) external note auth {\n        require(bar_ > 0, \"Median/quorum-is-zero\");\n        require(bar_ % 2 != 0, \"Median/quorum-not-odd-number\");\n        bar = bar_;\n    }\n\n    function kiss(address a) external note auth {\n        require(a != address(0), \"Median/no-contract-0\");\n        bud[a] = 1;\n    }\n\n    function diss(address a) external note auth {\n        bud[a] = 0;\n    }\n\n    function kiss(address[] calldata a) external note auth {\n        for(uint i = 0; i < a.length; i++) {\n            require(a[i] != address(0), \"Median/no-contract-0\");\n            bud[a[i]] = 1;\n        }\n    }\n\n    function diss(address[] calldata a) external note auth {\n        for(uint i = 0; i < a.length; i++) {\n            bud[a[i]] = 0;\n        }\n    }\n}\n\ncontract MedianBATUSD is Median {\n    bytes32 public constant wat = \"BATUSD\";\n\n    function recover(uint256 val_, uint256 age_, uint8 v, bytes32 r, bytes32 s) internal pure returns (address) {\n        return ecrecover(\n            keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", keccak256(abi.encodePacked(val_, age_, wat)))),\n            v, r, s\n        );\n    }\n}"
+      },
+      "outputs": {
+        "Exist": true,
+        "Vuln_type": [
+          "X-CRA",
+          "X-PRA",
+          "SSMI",
+          "SMA"
+        ]
+      }
+    },
+    {
+      "inputs": {
+        "solidity_source_code": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\nlibrary Signature {\n  function recoverSigner(bytes32 message, bytes memory sig)\n    internal\n    pure\n    returns (address){\n    \n    uint8 v;\n    bytes32 r;\n    bytes32 s;\n    (v, r, s) = splitSignature(sig);\n    return ecrecover(message, v, r, s);\n  }\n  \n  function splitSignature(bytes memory sig)\n    internal\n    pure\n    returns (uint8, bytes32, bytes32){\n    \n    require(sig.length == 65, \"Invalid Signature\");\n    bytes32 r;\n    bytes32 s;\n    uint8 v;\n    assembly {\n    r := mload(add(sig, 32))\n        s := mload(add(sig, 64))\n        v := byte(0, mload(add(sig, 96)))\n        }\n    return (v, r, s);\n  }\n}\n\n"
+      },
+      "outputs": {
+        "Exist": false,
+        "Vuln_type": []
+      }
+    }
+  ]
+}
+```

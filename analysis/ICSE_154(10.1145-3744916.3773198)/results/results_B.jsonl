@@ -1,0 +1,51 @@
+{"prompt": "B", "dataset": "RQ2", "evaluated": 50, "confusion_matrix": {"TP": 7, "FP": 36, "TN": 7, "FN": 0}, "metrics": {"Precision": 0.1628, "Recall": 1.0, "F1": 0.28, "Accuracy": 0.28}, "paper_reference": {"TP": 69, "FP": 15, "TN": 413, "FN": 3, "Precision": 0.8214, "Recall": 0.9583, "F1": 0.8846}, "timestamp": "2026-06-08 20:09:51"}
+{"contract_id": "06f6512a2f08df9f566b0843ee27326a688883b7_ForeignBridgeNativeToErc.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SMA"], "outcome": "FP"}
+{"contract_id": "0c6E86710c69FeCCEcf99871834c987eed952cE6_PDesignNFT.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SSMI", "SMA"], "outcome": "TP"}
+{"contract_id": "155E52EdAF1D576E33A31ab4A5d3896Eb8E6C051_HanYinToken.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI", "SMA"], "outcome": "FP"}
+{"contract_id": "14d3e0ffbd62c9618c73ebb6f9c1cbcd23b6abe1_AnyswapV6ERC20.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "0a821bfbaec3df492558830f75283069f83f150e_xPixulToken.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "06b8947d9e234C93eB81ba8cf436ce6bd695F8C1_FeeManager.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "198478f870d97d62d640368d111b979d7ca3c38f__8SIAN_.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI"], "outcome": "FP"}
+{"contract_id": "14f2A9c262cb47c5475F3cF16F735dA0D1e91E33_VaultRegistry.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "0dcff98368bc0bd5880682068ff5d527449d5fb5_UnicornDAO.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "1336fe6a80741210070d86c88093887391caeb43_GnomeGardenNFT.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "01e4a1a095b46c4131852567b61edec6805f0725_BallIdo.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA"], "outcome": "FP"}
+{"contract_id": "14d69bfd1f10d9d9a00c489af7c9eebefcf22505_PoolLp.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "02fd4060b3bf31714c716f5620448cef8502f349_USDGreen.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "166df39721b2fd26d4907f91df74f6ae064a38ae_FinalCoreModule.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI"], "outcome": "FP"}
+{"contract_id": "109a68761a7d9a99949e9da0363244861eff6a22_SixthSocietyNFTSaleWithSig.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "140ade9722ce74d6f58c5ec332ba7cef4c5566ce_Mescaline.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "00e856ee945a49bb73436e719d96910cd9d116a4_AnyswapV5ERC20.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "1305597acd6ba8f36f207cd10b1e64a75fc48edc_RARESwapFactory.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "13d1cd18d379e3800623bbce84f7367ea17ad03d_Asset.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-PRA"], "outcome": "FP"}
+{"contract_id": "0254294703b01e75e1165f5d763aead76d7d487b_JuraNFT.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "05f2972cd67705e7f2dcbffd0daa3f939b61020b_AnyswapV6ERC20.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "153CdDD727e407Cb951f728F24bEB9A5FaaA8512_LoopringIOExchangeOwner.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["CASR", "SSMI"], "outcome": "FP"}
+{"contract_id": "179c8253c80fc3163ac1eb3508b7619c517348ab_BreadHeads.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI", "SMA"], "outcome": "TP"}
+{"contract_id": "14192ba2d54081d065055728e1be4b646cff0c9a_Lottery.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SMA"], "outcome": "TP"}
+{"contract_id": "15526af86721e8265139e4f3d759c343ac1d53ce_ReservaX.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SSMI", "SMA"], "outcome": "TP"}
+{"contract_id": "066b613a215df9aa5cda247ac3d497fedbdac126_InterstellarApeClubContract.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "17ce2e6fa8c681ec0980c6d196f6b839eb4a1cd0_ERC20CappedShort.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI", "SMA"], "outcome": "FP"}
+{"contract_id": "0fAA45C7671597E2ef286DB9AfE5BfDd0C55A2D1_GovernorAlpha.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "14f80970289d3128ffcba53a6a6ed794852d908d_ForwardRootToken.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "009e9cFaD18132D9fB258984196191BdB6D58CFF_KashiPairMediumRiskV1.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "07596933a94CA533F36E938406408A58e1a8FF32_BTCR.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "19b85848babf379d26dba3f0c5be7a056459b6b1_GovernorMeow.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "07511e88628f990d0ada3c446da3859833a0798f_HolyHeroes.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI", "SMA"], "outcome": "TP"}
+{"contract_id": "00fbd1774093e9240beb559f7a1300d291d86309_OptionsV1Reserve.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "0000000020e0a4bc775eb0cbefc7cfbeafc88444_LogOfClaimedMEVBlocks.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SMA"], "outcome": "FP"}
+{"contract_id": "0807b255c2d489DBe8cE45D048773d06b1fBF87a_PopsicleV3Optimizer.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "0f416bd36fdee5e6afc88a6238bff5a5fad6c7fb_ComptorllersAuctionIndividual.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SMA"], "outcome": "FP"}
+{"contract_id": "017c89ca4bda3d66cc65e3d20dd95432258201ca_WithdrawManager.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-PRA", "SSMI", "SMA"], "outcome": "FP"}
+{"contract_id": "1012bccf0b5c576bf3711a3fa19ef583473fab79_ManUvsTottenham.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "16eccfdbb4ee1a85a33f3a9b21175cd7ae753db4_Route.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "0e786d42fd70e4a51ab5f80aa5da19e74337e7f2_Swap.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SMA"], "outcome": "TP"}
+{"contract_id": "0f628641d0ea1ecab9341e58d4982c0018a51c6b_EVEExchangeERC20.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "13B05742D857314847F6A583A7aC2C9324B1d62d_AddOfficialGuardianModule.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "CASR", "SSMI"], "outcome": "FP"}
+{"contract_id": "17752F916f2206A2665fB5396B6C9267921D1b65_DataSyndicateNFT.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "0c327c633854c58d0c6a516822171dae70af4629_UPYOERC721Mintable.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SSMI", "SMA"], "outcome": "FP"}
+{"contract_id": "0e29eaed3e3cfef358b1657b5573100dd4628a55_Crowdsale.sol", "ground_truth": "positive", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "X-PRA", "SSMI", "SMA"], "outcome": "TP"}
+{"contract_id": "0aabcc65ef352ad84b1326df188c95b6ab856c1c_Scorefam.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
+{"contract_id": "0d5eae179709e92b3bff65731158e8291c49eafb_GaintDex.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["X-CRA", "SMA"], "outcome": "FP"}
+{"contract_id": "0cd4638abd6317837a62d383fa9e77a513b3b871_Aggregate.sol", "ground_truth": "negative", "predicted_exist": false, "predicted_vuln_type": [], "outcome": "TN"}
+{"contract_id": "0ace20a35ee382bda90d1d93cee65f5970fc01c8_Chip.sol", "ground_truth": "negative", "predicted_exist": true, "predicted_vuln_type": ["SMA"], "outcome": "FP"}
