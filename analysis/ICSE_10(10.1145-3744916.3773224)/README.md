@@ -17,35 +17,79 @@ Both prompts use the same two few-shot examples drawn from CoderEval tasks.
 
 ---
 
-## Prerequisites
+## Environment Setup
 
-**Python packages:**
+### 1. Python version
+
+Python 3.8 or later is required. Python 3.10+ is recommended (matches the CoderEval container).
+
 ```bash
-pip install anthropic
+python3 --version   # should be >= 3.8
 ```
 
-**Environment variable:**
+### 2. Install Python dependencies
+
+All required packages are listed in `requirements.txt`. Install them with:
+
+```bash
+pip install -r requirements.txt
+```
+
+The only external dependency is the [Anthropic Python SDK](https://github.com/anthropics/anthropic-sdk-python):
+
+| Package | Version | Purpose |
+|---|---|---|
+| `anthropic` | >=0.40.0 | Claude API client used by `main.py` |
+
+### 3. Set the API key
+
+`main.py` reads the Anthropic API key from the environment. Export it before running:
+
 ```bash
 export ANTHROPIC_API_KEY=your_api_key_here
 ```
 
-**Apptainer** (for running the CoderEval evaluation container):
+To make it persistent across sessions, add the line above to your `~/.bashrc` or `~/.bash_profile`.
+
+### 4. Apptainer (for evaluation only)
+
+`evaluator.py` runs the CoderEval test harness inside an Apptainer container. This is only needed for Step 4 (evaluation) — you can run `main.py` without it.
+
 ```bash
-module load apptainer   # or install apptainer >= 1.4.5 on your system
+module load apptainer/1.5.0   # on HPC clusters with Lmod
+# — or —
+apptainer --version            # verify >= 1.4.5 is already on your PATH
 ```
+
+---
+
+## Dataset
+
+### Source
+
+The raw dataset `CoderEval4Python.json` (4.5 MB, 230 Python tasks) comes directly from the original CoderEval benchmark repository:
+
+> **CoderEval** — [https://github.com/CoderEval/CoderEval](https://github.com/CoderEval/CoderEval)
+
+The file is hosted in the root of that repo and is freely available without authentication.
+
+The processing logic that converts `CoderEval4Python.json` into the JSONL format expected by `main.py` is adapted from the original AllianceCoder pipeline:
+
+> **AllianceCoder** — [https://github.com/Elendil3703/AllianceCoder](https://github.com/Elendil3703/AllianceCoder) (`input/handle_input+CoderEval+Context.py`)
+
+It filters the dataset to the `SoftwareHeritage/swh-lister` project subset, extracts each function's signature and docstring as the prompt, and captures the file content preceding the target function as context.
 
 ---
 
 ## Step 1 — Prepare the Input Dataset
 
-The input file `input/input_codereval.jsonl` contains all 230 CoderEval Python tasks. If it does not exist, generate it from the raw dataset:
+Run the provided download script. It downloads `CoderEval4Python.json` directly from the CoderEval GitHub repository and processes it into `input/input_codereval.jsonl`:
 
 ```bash
-cd input/
-python3 "handle_input+CoderEval+Context.py"
+python3 download_dataset.py
 ```
 
-This reads `CoderEval4Python.json` and produces `input_codereval.jsonl` with one JSON record per task containing the function stub, file context, and metadata.
+This requires an internet connection and takes about 30 seconds. Once complete, `input/input_codereval.jsonl` will contain one JSON record per task with the function stub, file context, and metadata needed by `main.py`.
 
 ---
 

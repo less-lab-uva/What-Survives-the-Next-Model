@@ -1,0 +1,207 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert software security engineer specializing in fuzzing and crash analysis", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or clustering algorithm), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "openapi_spec": {
+          "swagger": "2.0",
+          "info": {"title": "OMDb bySearch API", "version": "1.0"},
+          "host": "omdbapi.com",
+          "basePath": "/",
+          "paths": {
+            "/": {
+              "get": {
+                "operationId": "bySearch",
+                "parameters": [
+                  {"name": "s", "in": "query", "description": "Title of movie or series", "required": true, "type": "string"},
+                  {"name": "type", "in": "query", "description": "Return movie or series", "required": false, "type": "string", "enum": ["movie", "series", "episode"]},
+                  {"name": "y", "in": "query", "description": "Year of release", "required": false, "type": "integer"},
+                  {"name": "r", "in": "query", "description": "The response type to return", "required": false, "type": "string", "enum": ["json"]},
+                  {"name": "page", "in": "query", "description": "Page number to return", "required": false, "type": "integer"}
+                ],
+                "responses": {
+                  "200": {"description": "Successful operation", "schema": {"$ref": "#/definitions/Response"}},
+                  "401": {"description": "Not authenticated", "schema": {"$ref": "#/definitions/Error"}}
+                }
+              }
+            }
+          },
+          "definitions": {
+            "Response": {
+              "type": "object",
+              "required": ["Response"],
+              "properties": {
+                "Response": {"type": "string", "enum": ["True", "False"], "example": "True"},
+                "Search": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "Title": {"type": "string", "example": "This Is the End"},
+                      "Year":  {"type": "string", "example": 2013},
+                      "imdbID": {"type": "string", "example": "tt1245492"},
+                      "Type": {"type": "string", "example": "movie"},
+                      "Poster": {"type": "string", "example": "https://m.media-amazon.com/images/M/MV5BMTQxODE3NjM1Ml5BMl5BanBnXkFtZTcwMzkzNjc4OA@@._V1_SX300.jpg"}
+                    }
+                  }
+                },
+                "totalResults": {"type": "string", "example": 2}
+              }
+            },
+            "Error": {
+              "type": "object",
+              "required": ["Response", "Error"],
+              "properties": {
+                "Response": {"type": "string", "enum": ["False"], "example": "False"},
+                "Error": {"type": "string", "example": "No API key provided."}
+              }
+            }
+          }
+        },
+        "request_info": {"s": "Sin eater", "apikey": "anonymous", "y": "2009", "type": "movie"},
+        "response_body": {
+          "Search": [{"Title": "Sin Eater", "Year": "2009", "imdbID": "tt1585652", "Type": "movie", "Poster": "N/A"}],
+          "totalResults": "1",
+          "Response": "True"
+        }
+      },
+      "outputs": {
+        "response_property_constraints": [
+          {
+            "operation": "get-/",
+            "response_resource": "Response",
+            "attribute": "Response",
+            "description": "The Response field must be one of the enumerated string values 'True' or 'False'.",
+            "verification_script": "def verify_latest_response(latest_response):\n    try:\n        val = latest_response.get('Response')\n        if val is None:\n            return 0\n        return 1 if val in ['True', 'False'] else -1\n    except:\n        return 0"
+          },
+          {
+            "operation": "get-/",
+            "response_resource": "Response",
+            "attribute": "Poster",
+            "description": "The Poster field, when not 'N/A', must be a valid URI starting with http:// or https://.",
+            "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            poster = item.get('Poster')\n            if poster is None:\n                continue\n            checked = True\n            if poster == 'N/A':\n                continue\n            if not re.match(r'^https?://', str(poster)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+          }
+        ],
+        "request_response_constraints": [
+          {
+            "response_resource": "Response",
+            "attribute": "Type",
+            "description": "When the request parameter 'type' is provided, every item in the Search array must have a Type equal to that value.",
+            "attribute_inferred_from_operation": "get-/",
+            "part": "parameters",
+            "corresponding_attribute": "type",
+            "corresponding_attribute_description": "Return movie or series",
+            "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        type_param = request_info.get('type')\n        if type_param is None:\n            return 0\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        for item in items:\n            if item.get('Type') != type_param:\n                return -1\n        return 1\n    except:\n        return 0"
+          },
+          {
+            "response_resource": "Response",
+            "attribute": "Year",
+            "description": "When the request parameter 'y' is provided, every item in the Search array must have a Year matching that release year.",
+            "attribute_inferred_from_operation": "get-/",
+            "part": "parameters",
+            "corresponding_attribute": "y",
+            "corresponding_attribute_description": "Year of release",
+            "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        y_param = request_info.get('y')\n        if y_param is None:\n            return 0\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        for item in items:\n            year = item.get('Year')\n            if year is None:\n                return 0\n            if str(y_param) not in str(year):\n                return -1\n        return 1\n    except:\n        return 0"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+
+

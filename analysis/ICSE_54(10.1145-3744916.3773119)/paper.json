@@ -1,0 +1,65 @@
+{
+  "title": "Large Language Model-Aided Partial Program Dependence Analysis",
+  "framework": "ΛMDA (PrePA)",
+  "doi": "https://doi.org/10.1145/3744916.3773119",
+  "venue": "ICSE 2026",
+  "summary": [
+    "ΛMDA is a two-phase framework for analysing partial Java programs that cannot be compiled. Phase 1 (Context Augmentation): an LLM receives a partial Java snippet together with compiler error messages iteratively, producing an approximately-complete program P_AC that compiles. Two prompts are used — an initial approximation prompt and a self-correction prompt that feeds back the compiler error. Phase 2 (Analysis): Joern runs on P_AC to produce a Program Dependence Graph (PDG). Edges are then pruned to retain only those whose both endpoints are statements present in the original partial snippet P, giving a PDG over the original code.",
+    "This reproduction replaces Phase 1 with a single Claude Sonnet 4.6 call per snippet using two prompt strategies: a black-box prompt (Prompt A) that asks the model to produce an approximately-complete Java class, and an informed prompt (Prompt B) that describes the 6-step methodology (import resolution, type inference, stub generation, compilation fix, wrapping, output format). Phase 2 (Joern analysis and edge pruning) is kept identical to the paper."
+  ],
+  "dataset": {
+    "name": "StatType-SO",
+    "description": "172 partial Java code snippets collected from StackOverflow, annotated with manually-completed ground-truth programs and their PDGs.",
+    "total_entries": 172,
+    "entries_with_valid_gt": 169,
+    "entries_excluded_no_gt": 3,
+    "excluded_entries": ["Android14", "gwt_class_39", "xstream_class_35"],
+    "entries_evaluated": 109,
+    "entries_skipped_no_valid_ddg": 60,
+    "reason_for_choice": "StatType-SO is the smaller of the two paper datasets (172 vs 274 for COSTER-SO), chosen for cost efficiency. It is also the primary dataset in the paper's main evaluation (Table 1)."
+  },
+  "metric": {
+    "names": ["Precision", "Recall", "F1"],
+    "note": "Evaluated on DDG (data dependence) edges only. This corresponds to the 'Data' column in the paper's Table 1, NOT the headline 'Data+Control' column. The paper's calculate_fp_tp_fn function (from RQ3_eval.py) is reproduced verbatim."
+  },
+  "original_result": {
+    "note": "Computed by our evaluator on pre-stored PrePA_code_res PDGs from Stattype_res.json, using the same calculate_fp_tp_fn function as the paper. Covers n=109 entries that have valid DDG edges in partial_code (not the paper's own n=164 count). These numbers correspond to the 'Data' column of Table 1, not the Data+Control headline.",
+    "PrePA_pipeline": {
+      "precision": 95.9,
+      "recall": 92.0,
+      "f1": 93.9,
+      "n_evaluated": 109,
+      "tp": 578,
+      "fp": 25,
+      "fn": 50
+    }
+  },
+  "our_result": {
+    "model": "claude-sonnet-4-6",
+    "dataset": "StatType-SO",
+    "n_evaluated": 109,
+    "n_skipped_no_valid_edges": 60,
+    "n_joern_failed": 1,
+    "n_parse_failed": 0,
+    "structural_gap": "Single LLM call only — no iterative compiler feedback loop. The paper's self-correction phase (feeding compiler errors back to the LLM across multiple iterations) is absent.",
+    "prompt_A": {
+      "precision": 78.7,
+      "recall": 85.4,
+      "f1": 81.9,
+      "tp": 536,
+      "fp": 145,
+      "fn": 92,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "precision": 75.4,
+      "recall": 85.2,
+      "f1": 80.0,
+      "tp": 535,
+      "fp": 175,
+      "fn": 93,
+      "result_file": "results/results_B.jsonl"
+    },
+    "total_cost_usd": 3.28
+  }
+}

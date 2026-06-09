@@ -1,0 +1,65 @@
+{
+  "title": "InferLog: Accelerating LLM Inference for Online Log Parsing via ICL-oriented Prefix Caching",
+  "doi": "10.1145/3744916.3764523", 
+  "artifact_url": "https://github.com/wilhew/InferLog",
+  "venue": "ICSE 2026",
+  "summary": [
+    "InferLog is a framework for accelerating LLM-based online log parsing by maximising KV cache reuse across concurrent requests. Given a batch of raw log messages, each query is paired with 5 dynamically selected in-context learning (ICL) examples chosen by DPP diversity + kNN similarity on pre-computed embeddings. InferLog's PAIR module then reorders those examples to maximise shared prefix across concurrent requests, increasing the KV cache hit rate and thereby reducing p95 end-to-end latency and improving throughput — without changing the underlying log parser. A separate configuration tuning component (AttMAML + SMBO) finds optimal vLLM scheduling parameters for each workload.",
+    "This reproduction replaces the full pipeline with a single Claude Sonnet 4.6 call per log message using two prompt strategies: a black-box prompt (Prompt A) that describes only the output format (replace dynamic tokens with <*>), and an informed prompt (Prompt B) that provides a 5-step tokenisation and classification methodology. Both prompts use 3 static few-shot examples drawn from the HPC dataset. The paper's post-processing normalisation (correct_single_template) is applied to every LLM response before saving."
+  ],
+  "dataset": {
+    "name": "HPC (Loghub-2k)",
+    "description": "2000 log messages from an HPC system, part of the Loghub-2k benchmark. Each log has a raw Content field (input) and an EventTemplate field (ground truth). 46 unique templates. Average log message length: 24.9 characters (~6.2 tokens).",
+    "total_logs": 2000,
+    "unique_templates": 46,
+    "avg_content_chars": 24.9,
+    "source": "benchmark/dataset/HPC/HPC_2k.log_structured_corrected.csv",
+    "reason_for_choice": "HPC has the shortest average log message in Loghub-2k (24.9 chars), making it the cheapest dataset to run. The full 2000-log evaluation costs ~$14.54, the lowest of all 16 Loghub-2k datasets. Running all 2000 logs is required for PTA, RTA, and GA to be meaningful."
+  },
+  "metric": {
+    "names": ["PA", "PTA", "RTA", "GA"],
+    "definitions": {
+      "PA": "Parsing Accuracy — fraction of log messages whose predicted template exactly matches the ground truth.",
+      "PTA": "Precision Template Accuracy — fraction of predicted template groups that exactly match an oracle group.",
+      "RTA": "Recall Template Accuracy — fraction of oracle template groups that are exactly recovered.",
+      "GA": "Grouping Accuracy — fraction of log messages that fall into a correctly grouped cluster."
+    },
+    "evaluation_note": "All four metrics use content-based joining (log message text as key), not positional indexing. GA denominator = 2000 for a full run, matching the paper's hardcoded /2000. The paper's comparison baselines (Default vLLM, PC, PC-Tune, PC-Chunk, BatchLLM, DivLog, LILAC, LogBatcher) are compared ONLY on p95-latency and throughput — NOT on PA/PTA/RTA/GA. Table 2 compares the same underlying system (DivLog + Qwen2.5-14B) with and without PAIR reordering; it does not compare against external log parsers on accuracy."
+  },
+  "original_result": {
+    "note": "From Table 2 of the paper (HPC row). Both columns use the same underlying parser (DivLog with Qwen2.5-14B-Instruct, ascending ICL permutation). 'w/o InferLog' = no PAIR reordering (natural ICL order); 'w/ InferLog' = PAIR reordering for KV cache optimisation. The primary comparison for our study is 'w/o InferLog', as our pipeline also does no prefix-aware reordering.",
+    "w/o_inferlog": {
+      "PA": 98.4,
+      "PTA": 75.0,
+      "RTA": 84.8,
+      "GA": 94.9
+    },
+    "w_inferlog": {
+      "PA": 99.3,
+      "PTA": 71.7,
+      "RTA": 82.6,
+      "GA": 93.4
+    }
+  },
+  "our_result": {
+    "model": "claude-sonnet-4-6",
+    "dataset": "HPC",
+    "logs_evaluated": 2000,
+    "structural_gap": "Single LLM call with static 3-shot examples. No dynamic ICL selection (DPP + kNN), no PAIR prefix reordering, no iterative configuration tuning. Paper uses Qwen2.5-14B-Instruct locally via vLLM with 100 concurrent requests; our pipeline is sequential.",
+    "prompt_A": {
+      "PA": 90.5,
+      "PTA": 72.9,
+      "RTA": 76.1,
+      "GA": 90.0,
+      "result_file": "results/results_A.jsonl"
+    },
+    "prompt_B": {
+      "PA": 90.5,
+      "PTA": 78.3,
+      "RTA": 78.3,
+      "GA": 90.5,
+      "result_file": "results/results_B.jsonl"
+    },
+    "total_cost_usd": 13.23
+  }
+}
