@@ -31,7 +31,7 @@
 | [`ICSE_86(10.1145-3744916.3773187)`](./ICSE_86(10.1145-3744916.3773187)/) | TraceCoder: A Trace-Driven Multi-Agent Framework for Automated Debugging of LLM-Generated Code |
 | [`ICSE_88(10.1145-3744916.3787760)`](./ICSE_88(10.1145-3744916.3787760)) | Input Reduction Enhanced LLM-based Program Repair |
 | [`ICSE_97(10.1145-3744916.3787814)`](./ICSE_97(10.1145-3744916.3787814)) | FoundRoot: Towards Foundation Model for Root Cause Analysis via Structured Deep Thinking |
-| [`ICSE_98(10.1145-3744916.3787822)`] (./ICSE_98(10.1145-3744916.3787822)) | Improving Code Generation via Small Language Model-as-a-judge
+| [`ICSE_98(10.1145-3744916.3787822)`](./ICSE_98(10.1145-3744916.3787822)) | Improving Code Generation via Small Language Model-as-a-judge
 | [`ICSE_102(10.1145-3744916.3787805)`](./ICSE_102(10.1145-3744916.3787805)) | TestWeaver: Execution-aware, Feedback-driven Regression Testing Generation with Large Language Models |
 | [`ICSE_104(10.1145-3744916.3787815)`](./ICSE_104(10.1145-3744916.3787815)) | Automating Requirements Formalization: Using LLMs and Low-Complexity Distinguishing Traces for Semantic Validation |
 | [`ICSE_108(10.1145-3744916.3787779)`](./ICSE_108(10.1145-3744916.3787779)) | Distance-Guided Search in Program Synthesis with Imperfect LLM Solutions |
