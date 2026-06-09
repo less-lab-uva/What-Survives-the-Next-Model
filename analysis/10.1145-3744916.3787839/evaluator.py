@@ -1,11 +1,12 @@
-"""Score the RQ2 oracle predictions against the gold derailment labels.
+"""Score the RQ2 oracle predictions against the gold derailment labels, one file per prompt.
 
-Reports precision / recall / F1 at each decision threshold for prompt A and prompt B
-— the paper's metric (P/R/F1 on true_label vs pred_score >= threshold, computed directly
-from TP/FP/FN; the paper headlines F1 at threshold 0.3). Writes results/metrics.json.
+Reads outputs/output_{A,B}.jsonl ({issue_id, pred_score, true_label}) and reports
+precision / recall / F1 at each decision threshold — the paper's metric (P/R/F1 on true_label
+vs pred_score >= threshold, from TP/FP/FN; the paper headlines F1 at threshold 0.3). Writes
+results/results_A.json and results/results_B.json.
 
-Like main.py: fixed paths, prerequisites checked up front, hard-abort on anything not set
-up, and it will NOT overwrite an existing metrics file.
+Like main.py: fixed paths, prerequisites checked up front, hard-abort, will NOT overwrite
+existing results files.
 """
 
 import os
@@ -15,26 +16,24 @@ import pandas as pd
 
 THRESHOLDS = [0.1, 0.3, 0.5, 0.7]
 
-PRED_A = "outputs/oracle-claude-sonnet-4-6-a-our.csv"
-PRED_B = "outputs/oracle-claude-sonnet-4-6-b-our.csv"
-
-METRICS = "results/metrics.json"
+OUTPUTS = {"A": "outputs/output_A.jsonl", "B": "outputs/output_B.jsonl"}
+RESULTS = {"A": "results/results_A.json", "B": "results/results_B.json"}
 
 # Preconditions.
-if not os.path.exists(PRED_A):
-    sys.exit(f"ABORT: missing {PRED_A} (run main.py first)")
-if not os.path.exists(PRED_B):
-    sys.exit(f"ABORT: missing {PRED_B} (run main.py first)")
-if os.path.exists(METRICS):
-    sys.exit(f"ABORT: output already exists: {METRICS}")
+for path in OUTPUTS.values():
+    if not os.path.exists(path):
+        sys.exit(f"ABORT: missing {path} (run main.py first)")
+for path in RESULTS.values():
+    if os.path.exists(path):
+        sys.exit(f"ABORT: output already exists: {path}")
 
 os.makedirs("results", exist_ok=True)
 
 
-def score(pred_csv):
-    df = pd.read_csv(pred_csv)
+def score(tag: str) -> dict:
+    df = pd.read_json(OUTPUTS[tag], lines=True)
     if not {"pred_score", "true_label"}.issubset(df.columns):
-        sys.exit(f"ABORT: {pred_csv} missing pred_score/true_label columns")
+        sys.exit(f"ABORT: {OUTPUTS[tag]} missing pred_score/true_label columns")
 
     y_true = df["true_label"] == 1
     per_threshold = {}
@@ -52,24 +51,23 @@ def score(pred_csv):
             "f1": round(f1, 4),
         }
     return {
-        "file": os.path.basename(pred_csv),
+        "prompt": tag,
+        "metric": "precision/recall/F1 on true_label vs pred_score >= threshold; headline F1@0.3",
+        "thresholds": THRESHOLDS,
         "n_threads": int(len(df)),
         "n_positive": int(y_true.sum()),
-        "thresholds": per_threshold,
+        "per_threshold": per_threshold,
     }
 
 
-results = {
-    "thresholds": THRESHOLDS,
-    "A": score(PRED_A),
-    "B": score(PRED_B),
-}
+for tag in ("A", "B"):
+    report = score(tag)
+    with open(RESULTS[tag], "w") as f:
+        json.dump(report, f, indent=2)
+    print(f"Saved {RESULTS[tag]}")
 
-with open(METRICS, "w") as f:
-    json.dump(results, f, indent=2)
-
-print(f"Saved {METRICS}")
+print("F1 by threshold:")
+a = score("A")["per_threshold"]
+b = score("B")["per_threshold"]
 for t in THRESHOLDS:
-    a = results["A"]["thresholds"][str(t)]["f1"]
-    b = results["B"]["thresholds"][str(t)]["f1"]
-    print(f"  F1@{t}:  A={a}  B={b}")
+    print(f"  F1@{t}:  A={a[str(t)]['f1']}  B={b[str(t)]['f1']}")

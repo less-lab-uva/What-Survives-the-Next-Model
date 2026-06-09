@@ -3,7 +3,7 @@
 Input tokens are counted EXACTLY with Anthropic's free `messages.count_tokens` endpoint (no
 generation, no billing); output uses a fixed budget for the {"is_typosquat": ...} JSON. Edit
 the RUNS table below to change which (prompt, dataset, columns) pairs are priced. Prints
-per-run + grand-total cost and writes results/cost_estimate.json.
+per-run + grand-total cost and writes logs/cost_estimate.json.
 
 This makes one free count_tokens call PER ROW, so it takes a few minutes — it prints progress
 as it goes.
@@ -44,7 +44,7 @@ RUNS = [
     #("prompts/prompt_A.txt", "inputs/NeupaneDB_no_malware.csv", ["Adversarial pkg", "Ecosystem"]),
     #("prompts/prompt_B.txt", "inputs/NeupaneDB_no_malware.csv", ["Adversarial pkg", "Ecosystem"]),
 ]
-METRICS = "results/cost_estimate.json"
+METRICS = "logs/cost_estimate.json"
 
 # Preconditions — abort unless everything a run needs is exactly present.
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -100,7 +100,7 @@ print(f"\nGRAND TOTAL (all runs, full datasets): ${grand_total:.2f}")
 print("(input tokens EXACT via free count_tokens — no spend; output is a fixed JSON budget,"
       " not prompt B's chain-of-thought)")
 
-os.makedirs("results", exist_ok=True)
+os.makedirs("logs", exist_ok=True)
 json.dump({"model": MODEL, "output_tokens_budget": OUTPUT_TOKENS,
            "price_in_per_mtok": PRICE_IN_PER_M, "price_out_per_mtok": PRICE_OUT_PER_M,
            "runs": [asdict(r) | {"cost_usd": r.cost_usd} for r in results],

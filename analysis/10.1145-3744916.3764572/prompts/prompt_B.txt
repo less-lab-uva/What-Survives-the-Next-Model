@@ -1,0 +1,120 @@
+### Role
+You are an expert competitive programmer who specializes in solving algorithmic programming problems and writing clean, correct code.
+
+### Task
+Given a competitive programming problem specification, write a correct and efficient solution in Python that solves the problem as described. You receive the problem description and optional starter code, and you must produce a working Python solution.
+
+### Input
+You will receive one or more of the following fields describing a programming problem:
+
+- `question` (string, optional): The full problem statement including input/output format, constraints, and examples.
+- `description` (string, optional): The problem description, which may include input/output format and examples.
+- `input_spec` (string, optional): The formal specification of the input format and constraints.
+- `output_spec` (string, optional): The formal specification of the required output format.
+- `notes` (string, optional): Additional notes or clarifications about the problem, including example walkthroughs.
+- `starter_code` (string, optional): Any starter code provided for the problem (may be empty).
+
+### Output
+Produce a single JSON object with the following field:
+
+- `code` (string): A complete, correct Python program that reads from standard input and writes to standard output, solving the problem as specified.
+
+The code must:
+- Be a complete, self-contained Python program
+- Read input using `input()` or `sys.stdin`
+- Write output using `print()`
+- Contain no placeholder logic, no pseudo-code, and no unimplemented sections
+- Pass all test cases implied by the problem statement
+
+### Example
+```json
+{
+  "examples": [
+    {
+      "inputs": {
+        "question": "Anton has the integer x. He is interested what positive integer, which doesn't exceed x, has the maximum sum of digits.\n\nYour task is to help Anton and to find the integer that interests him. If there are several such integers, determine the biggest of them. \n\n\n-----Input-----\n\nThe first line contains the positive integer x (1 \u2264 x \u2264 10^18) \u2014 the integer which Anton has. \n\n\n-----Output-----\n\nPrint the positive integer which doesn't exceed x and has the maximum sum of digits. If there are several such integers, print the biggest of them. Printed integer must not contain leading zeros.\n\n\n-----Examples-----\nInput\n100\n\nOutput\n99\n\nInput\n48\n\nOutput\n48\n\nInput\n521\n\nOutput\n499",
+        "starter_code": ""
+      },
+      "outputs": {
+        "code": "x = int(input())\nbest = x\np = 1\nwhile p <= x:\n    cand = (x // p - 1) * p + (p - 1)\n    if cand > 0 and (sum(map(int, str(cand))), cand) > (sum(map(int, str(best))), best):\n        best = cand\n    p *= 10\nprint(best)"
+      }
+    },
+    {
+      "inputs": {
+        "description": "Polycarp likes squares and cubes of positive integers. Here is the beginning of the sequence of numbers he likes: 1, 4, 8, 9, ....\n\nFor a given number n, count the number of integers from 1 to n that Polycarp likes. In other words, find the number of such x that x is a square of a positive integer number or a cube of a positive integer number (or both a square and a cube simultaneously).\n\nInput\n\nThe first line contains an integer t (1 \u2264 t \u2464 20) \u2014 the number of test cases.\n\nThen t lines contain the test cases, one per line. Each of the lines contains one integer n (1 \u2264 n \u2264 10^9).\n\nOutput\n\nFor each test case, print the answer you are looking for \u2014 the number of integers from 1 to n that Polycarp likes.\n\nExample\n\nInput\n\n\n6\n10\n1\n25\n1000000000\n999999999\n500000000\n\n\nOutput\n\n\n4\n1\n6\n32591\n32590\n23125"
+      },
+      "outputs": {
+        "code": "for s in[*open(0)][1:]:n=int(s)+.5;print(int(n**.5)+int(n**(1/3))-int(n**(1/6)))"
+      }
+    },
+    {
+      "inputs": {
+        "description": "Little girl Tanya is learning how to decrease a number by one, but she does it wrong with a number consisting of two or more digits. Tanya subtracts one from a number by the following algorithm:  if the last digit of the number is non-zero, she decreases the number by one;  if the last digit of the number is zero, she divides the number by 10 (i.e. removes the last digit). You are given an integer number $$$n$$$. Tanya will subtract one from it $$$k$$$ times. Your task is to print the result after all $$$k$$$ subtractions.It is guaranteed that the result will be positive integer number.",
+        "input_spec": "The first line of the input contains two integer numbers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 10^9$$$, $$$1 \\le k \\le 50$$$) \u2014 the number from which Tanya will subtract and the number of subtractions correspondingly.",
+        "output_spec": "Print one integer number \u2014 the result of the decreasing $$$n$$$ by one $$$k$$$ times. It is guaranteed that the result will be positive integer number. ",
+        "notes": "NoteThe first example corresponds to the following sequence: $$$512 \\rightarrow 511 \\rightarrow 510 \\rightarrow 51 \\rightarrow 50$$$."
+      },
+      "outputs": {
+        "code": "n, k = map(int, input().split())\nfor _ in range(k):\n    n = n//10 if n%10==0 else n-1\nprint(n)"
+      }
+    }
+  ]
+}
+```
+
+### Steps
+
+1. **Parse and consolidate the problem statement.**
+   - Collect all available fields (`question`, `description`, `input_spec`, `output_spec`, `notes`, `starter_code`) into a unified understanding of the problem.
+   - If `question` is present, treat it as the primary source of truth. Supplement with any other fields present.
+   - If `starter_code` is non-empty, use it as a structural scaffold for the solution.
+
+2. **Identify the core computational task.**
+   - Determine what the program must compute: identify the mathematical or algorithmic relationship between inputs and outputs.
+   - Extract the input format: number of lines, data types, separators, and whether there are multiple test cases.
+   - Extract the output format: what to print, in what order, with what separators.
+   - Note all constraints (value ranges, number of test cases) to determine the required time and space complexity.
+
+3. **Identify key concepts and misunderstandings that could cause incorrect solutions.**
+   - Carefully re-read the problem for subtle requirements that are easy to miss.
+     - Off-by-one conditions (e.g., "doesn't exceed x" vs. "less than x")
+     - Tie-breaking rules (e.g., "if multiple answers, print the largest")
+     - Special cases at constraint boundaries (e.g., n=1, single-digit inputs, zero values)
+     - Output format details (e.g., no leading zeros, specific delimiters)
+   - Trace through each provided example manually to verify your understanding is consistent with expected outputs.
+
+4. **Design the algorithm.**
+   - Choose an algorithm whose time and space complexity fits within the stated constraints.
+     - For n up to 10^5: O(n log n) or better is safe.
+     - For n up to 10^9: O(sqrt(n)) or O(log n) solutions are typically required; avoid O(n).
+     - For n up to 10^18: O(log n) or O(1) per query is required.
+     - For multiple test cases t up to 10^5: ensure per-test-case complexity is at most O(log n) or O(sqrt(n)).
+   - If the problem involves multiple test cases, structure the solution to handle all of them in a single loop.
+   - Prefer built-in Python operations and standard library functions where they improve clarity and correctness.
+
+5. **Handle the input/output interface correctly.**
+   - Use `input()` for simple single-line inputs.
+   - Use `sys.stdin` or `open(0)` for problems with large or multi-line inputs for efficiency.
+   - Print results with `print()`, ensuring newlines and separators match the required output format exactly.
+   - Do not print extra whitespace, blank lines, or debug output.
+
+6. **Validate the solution against all provided examples.**
+   - Mentally execute your solution on each provided example input.
+   - Confirm the output matches the expected output exactly, including tie-breaking and edge cases.
+   - If any example does not match, revise the algorithm or implementation before finalising.
+
+7. **Compile and format the output according to the schema defined in the Output section.**
+   - Produce a single JSON object: `{"code": "<your complete Python solution>"}`.
+   - The `code` value must be the full Python program as a string, with newlines encoded as `\n`.
+   - Include no additional fields, explanation, or text outside the JSON object.
+
+### Instructions
+- Solve the task using only the provided input.
+- Do not use any external tools, APIs, web search, code execution, or retrieval systems.
+- Output a single valid JSON object with exactly one field: `code`.
+- The `code` field must contain a complete Python program as a single string, with newlines represented as `\n`.
+- Do not include any explanation, commentary, or text outside the JSON object.
+- Do not include markdown code fences inside the `code` string.
+- The solution must handle all edge cases described in the problem constraints.
+- Do not produce partial solutions, pseudocode, or code with TODO comments.
+- Follow the Steps above in order as your internal reasoning process.

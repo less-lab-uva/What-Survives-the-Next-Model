@@ -1,0 +1,127 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content - no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology - what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints - what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A - The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task - e.g., "You are an expert competitive programmer", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as the exact output schema and any formatting the grader requires. Do not include methodology or reasoning guidance here - those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B - The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or separate model call), rewrite it as a reasoning step the LLM performs directly.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```
+{
+  "examples": [
+    {
+      "inputs": {
+        "question": "Anton has the integer x. He is interested what positive integer, which doesn't exceed x, has the maximum sum of digits.\n\nYour task is to help Anton and to find the integer that interests him. If there are several such integers, determine the biggest of them. \n\n\n-----Input-----\n\nThe first line contains the positive integer x (1 \u2264 x \u2264 10^18) \u2014 the integer which Anton has. \n\n\n-----Output-----\n\nPrint the positive integer which doesn't exceed x and has the maximum sum of digits. If there are several such integers, print the biggest of them. Printed integer must not contain leading zeros.\n\n\n-----Examples-----\nInput\n100\n\nOutput\n99\n\nInput\n48\n\nOutput\n48\n\nInput\n521\n\nOutput\n499",
+        "starter_code": ""
+      },
+      "outputs": {
+        "code": "x = int(input())\nbest = x\np = 1\nwhile p <= x:\n    cand = (x // p - 1) * p + (p - 1)\n    if cand > 0 and (sum(map(int, str(cand))), cand) > (sum(map(int, str(best))), best):\n        best = cand\n    p *= 10\nprint(best)"
+      }
+    },
+    {
+      "inputs": {
+        "description": "Polycarp likes squares and cubes of positive integers. Here is the beginning of the sequence of numbers he likes: 1, 4, 8, 9, ....\n\nFor a given number n, count the number of integers from 1 to n that Polycarp likes. In other words, find the number of such x that x is a square of a positive integer number or a cube of a positive integer number (or both a square and a cube simultaneously).\n\nInput\n\nThe first line contains an integer t (1 \u2264 t \u2264 20) \u2014 the number of test cases.\n\nThen t lines contain the test cases, one per line. Each of the lines contains one integer n (1 \u2264 n \u2264 10^9).\n\nOutput\n\nFor each test case, print the answer you are looking for \u2014 the number of integers from 1 to n that Polycarp likes.\n\nExample\n\nInput\n\n\n6\n10\n1\n25\n1000000000\n999999999\n500000000\n\n\nOutput\n\n\n4\n1\n6\n32591\n32590\n23125"
+      },
+      "outputs": {
+        "code": "for s in[*open(0)][1:]:n=int(s)+.5;print(int(n**.5)+int(n**(1/3))-int(n**(1/6)))"
+      }
+    },
+    {
+      "inputs": {
+        "description": "Little girl Tanya is learning how to decrease a number by one, but she does it wrong with a number consisting of two or more digits. Tanya subtracts one from a number by the following algorithm:  if the last digit of the number is non-zero, she decreases the number by one;  if the last digit of the number is zero, she divides the number by 10 (i.e. removes the last digit). You are given an integer number $$$n$$$. Tanya will subtract one from it $$$k$$$ times. Your task is to print the result after all $$$k$$$ subtractions.It is guaranteed that the result will be positive integer number.",
+        "input_spec": "The first line of the input contains two integer numbers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 10^9$$$, $$$1 \\le k \\le 50$$$) \u2014 the number from which Tanya will subtract and the number of subtractions correspondingly.",
+        "output_spec": "Print one integer number \u2014 the result of the decreasing $$$n$$$ by one $$$k$$$ times. It is guaranteed that the result will be positive integer number. ",
+        "notes": "NoteThe first example corresponds to the following sequence: $$$512 \\rightarrow 511 \\rightarrow 510 \\rightarrow 51 \\rightarrow 50$$$."
+      },
+      "outputs": {
+        "code": "n, k = map(int, input().split())\nfor _ in range(k):\n    n = n//10 if n%10==0 else n-1\nprint(n)"
+      }
+    }
+  ]
+}
+```

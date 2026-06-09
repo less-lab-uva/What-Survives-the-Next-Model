@@ -1,17 +1,18 @@
-"""Score the ConfuGuard oracle -> Table 5 (active / stealthy / benign + overall, per dataset).
+"""Score the ConfuGuard oracle -> Table 5 (active / stealthy / benign + overall, per dataset),
+one results file per prompt variant.
 
-Static scoring, no infra. Predictions come from the oracle result files; the gold
-label/category is recovered from the source CSVs (it was never sent to the model). The
-positive class is THREAT (active | stealthy); benign packages have no positives, so their
-precision/recall/F1 are reported as null ("-" in the paper) and only accuracy is meaningful.
+Static scoring, no infra. Predictions come from outputs/output_{A,B}.jsonl (one row per package
+occurrence, tagged with `dataset`); the gold label/category is recovered from the source CSVs (it
+was never sent to the model). The positive class is THREAT (active | stealthy); benign packages
+have no positives, so their precision/recall/F1 are reported as null ("-" in the paper) and only
+accuracy is meaningful.
 
-Packages appearing in multiple rows are aggregated to one verdict — typosquat if ANY of
-their rows is predicted/labelled a typosquat — matching the paper's package-level counts
-(analyze_CG_benchmark_metrics.py: is_typosquat = ...any()). Category for a package is the
-most severe seen (active > stealthy > benign).
+Packages appearing in multiple rows are aggregated to one verdict — typosquat if ANY of their rows
+is predicted/labelled a typosquat — matching the paper's package-level counts. Category for a
+package is the most severe seen (active > stealthy > benign).
 
-Like main.py / the Toxicity evaluator: fixed paths, preconditions up front, hard-abort,
-will NOT overwrite an existing metrics file.
+Writes results/results_A.json and results/results_B.json. Fixed paths, preconditions up front,
+hard-abort, will NOT overwrite existing results files.
 """
 
 import os
@@ -22,29 +23,28 @@ import json
 CATEGORIES = ["active", "stealthy", "benign"]
 SEVERITY = {"active": 3, "stealthy": 2, "benign": 1}
 
-# source datasets (gold lives here) — the same $15 sample main.py ran on, so gold packages
-# match the predictions exactly
+# source datasets (gold lives here) — the same $15 sample main.py ran on
 CONFUDB      = "inputs/ConfuDB.down_sampled_15usd.csv"
 REAL_MALWARE = "inputs/NeupaneDB_real_malware.down_sampled_15usd.csv"
 NO_MALWARE   = "inputs/NeupaneDB_no_malware.down_sampled_15usd.csv"
 
-# oracle result files (predictions; produced by main.py)
-PRED_A_CONFUDB = "outputs/oracle-claude-sonnet-4-6-a-ConfuDB.down_sampled_15usd.csv"
-PRED_B_CONFUDB = "outputs/oracle-claude-sonnet-4-6-b-ConfuDB.down_sampled_15usd.csv"
-PRED_A_REAL    = "outputs/oracle-claude-sonnet-4-6-a-NeupaneDB_real_malware.down_sampled_15usd.csv"
-PRED_B_REAL    = "outputs/oracle-claude-sonnet-4-6-b-NeupaneDB_real_malware.down_sampled_15usd.csv"
-PRED_A_NOMAL   = "outputs/oracle-claude-sonnet-4-6-a-NeupaneDB_no_malware.down_sampled_15usd.csv"
-PRED_B_NOMAL   = "outputs/oracle-claude-sonnet-4-6-b-NeupaneDB_no_malware.down_sampled_15usd.csv"
+OUTPUTS = {"A": "outputs/output_A.jsonl", "B": "outputs/output_B.jsonl"}
+RESULTS = {"A": "results/results_A.json", "B": "results/results_B.json"}
 
-METRICS = "results/metrics.json"
+# the package-identifier column per dataset (used to aggregate predictions to packages)
+DATASET_KEY = {
+    "ConfuDB": "name",
+    "NeupaneDB_real_malware": "typosquat_pkg",
+    "NeupaneDB_no_malware": "Adversarial pkg",
+}
 
 # Preconditions.
-for path in (CONFUDB, REAL_MALWARE, NO_MALWARE,
-             PRED_A_CONFUDB, PRED_B_CONFUDB, PRED_A_REAL, PRED_B_REAL, PRED_A_NOMAL, PRED_B_NOMAL):
+for path in (CONFUDB, REAL_MALWARE, NO_MALWARE, OUTPUTS["A"], OUTPUTS["B"]):
     if not os.path.exists(path):
         sys.exit(f"ABORT: missing {path} (run main.py first)")
-if os.path.exists(METRICS):
-    sys.exit(f"ABORT: output already exists: {METRICS}")
+for path in RESULTS.values():
+    if os.path.exists(path):
+        sys.exit(f"ABORT: output already exists: {path}")
 
 
 def read_rows(csv_path: str) -> list:
@@ -80,12 +80,18 @@ def gold_neupane() -> dict:
     return gold
 
 
-def load_preds(pred_csv: str, key_col: str) -> dict:
-    """package -> predicted is_typosquat (True if ANY of its rows is a typosquat)."""
+def load_preds(tag: str) -> dict:
+    """dataset -> {package -> predicted is_typosquat (True if ANY of its rows is a typosquat)}."""
     preds = {}
-    for row in read_rows(pred_csv):
-        is_typo = row["is_typosquat"].strip().lower() == "true"
-        preds[row[key_col]] = preds.get(row[key_col], False) or is_typo
+    with open(OUTPUTS[tag], encoding="utf-8") as fin:
+        for line in fin:
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            ds = row["dataset"]
+            pkg = row[DATASET_KEY[ds]]
+            preds.setdefault(ds, {})
+            preds[ds][pkg] = preds[ds].get(pkg, False) or bool(row["is_typosquat"])
     return preds
 
 
@@ -120,28 +126,23 @@ def score(gold: dict, preds: dict) -> dict:
     return result
 
 
-metrics = {
-    "A": {
-        "ConfuDB": score(gold_confudb(), load_preds(PRED_A_CONFUDB, "name")),
-        "NeupaneDB": score(gold_neupane(),
-                           {**load_preds(PRED_A_REAL, "typosquat_pkg"),
-                            **load_preds(PRED_A_NOMAL, "Adversarial pkg")}),
-    },
-    "B": {
-        "ConfuDB": score(gold_confudb(), load_preds(PRED_B_CONFUDB, "name")),
-        "NeupaneDB": score(gold_neupane(),
-                           {**load_preds(PRED_B_REAL, "typosquat_pkg"),
-                            **load_preds(PRED_B_NOMAL, "Adversarial pkg")}),
-    },
-}
-
 os.makedirs("results", exist_ok=True)
-with open(METRICS, "w") as f:
-    json.dump(metrics, f, indent=2)
-
-print(f"Saved {METRICS}")
-for variant in ("A", "B"):
+for tag in ("A", "B"):
+    preds = load_preds(tag)
+    neupane_preds = {**preds.get("NeupaneDB_real_malware", {}),
+                     **preds.get("NeupaneDB_no_malware", {})}
+    report = {
+        "prompt": tag,
+        "metric": ("Table 5 (EQ5): per dataset x {active,stealthy,benign,overall} -> tp/fp/tn/fn "
+                   "+ precision/recall/f1/accuracy. Positive class = threat; benign has no "
+                   "positives so P/R/F1 are null."),
+        "ConfuDB": score(gold_confudb(), preds.get("ConfuDB", {})),
+        "NeupaneDB": score(gold_neupane(), neupane_preds),
+    }
+    with open(RESULTS[tag], "w") as f:
+        json.dump(report, f, indent=2)
+    print(f"Saved {RESULTS[tag]}")
     for dataset in ("ConfuDB", "NeupaneDB"):
-        o = metrics[variant][dataset]["overall"]
-        print(f"  {variant} {dataset:10} overall: "
+        o = report[dataset]["overall"]
+        print(f"  {tag} {dataset:10} overall: "
               f"P={o['precision']} R={o['recall']} F1={o['f1']} Acc={o['accuracy']}")

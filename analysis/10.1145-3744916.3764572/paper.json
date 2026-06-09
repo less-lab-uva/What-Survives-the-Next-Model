@@ -1,0 +1,78 @@
+{
+  "title": "Aligning Requirement for Large Language Model's Code Generation (Specine)",
+  "doi": "10.1145/3744916.3764572",
+  "pdf": "202500c964.pdf",
+  "venue": "ICSE 2026",
+  "metric": [
+    "Pass@1",
+    "AvgPassRatio"
+  ],
+  "dataset": [
+    {
+      "name": "APPS",
+      "sample": "129"
+    },
+    {
+      "name": "CodeContets",
+      "sample": "71"
+    },
+    {
+      "name": "xCodeEval",
+      "sample": "129"
+    }
+  ],
+  "original_result": [
+    {
+      "name": "APPS",
+      "Pass@1": "0.6533",
+      "AveragePassRatio": "0.7815"
+    },
+    {
+      "name": "CodeContets",
+      "Pass@1": "0.3636",
+      "AveragePassRatio": "0.5434"
+    },
+    {
+      "name": "xCodeEval",
+      "Pass@1": "0.3867",
+      "AveragePassRatio": "0.5842"
+    }
+  ],
+  "our_result": {
+    "prompt_A": [
+      {
+        "name": "APPS",
+        "Pass@1": "0.7054",
+        "AveragePassRatio": "0.7662"
+      },
+      {
+        "name": "CodeContets",
+        "Pass@1": "0.4085",
+        "AveragePassRatio": "0.4823"
+      },
+      {
+        "name": "xCodeEval",
+        "Pass@1": "0.5504",
+        "AveragePassRatio": "0.663"
+      }
+    ],
+    "prompt_B": [
+      {
+        "name": "APPS",
+        "Pass@1": "0.6434",
+        "AveragePassRatio": "0.7261"
+      },
+      {
+        "name": "CodeContets",
+        "Pass@1": "0.4366",
+        "AveragePassRatio": "0.5042"
+      },
+      {
+        "name": "xCodeEval",
+        "Pass@1": "0.4806",
+        "AveragePassRatio": "0.5887"
+      }
+    ]
+  },
+  "total_cost": "22.43"
+}

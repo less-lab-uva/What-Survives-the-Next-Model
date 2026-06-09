@@ -10,3 +10,11 @@ analysis/**/CHECKLIST.md
 
 # Per-paper run artifacts (cost/usage estimates, backups) — not committed
 analysis/**/logs/
+
+# Specine (3764572) inputs too large for GitHub. The full benchmarks are regenerable
+# (utils/build_inputs.py + sample_to_budget.py); the downsampled data is committed as split
+# .part-* chunks and reassembled via utils/assemble_inputs.py. Ignore the whole files, keep parts.
+analysis/10.1145-3744916.3764572/inputs/apps.jsonl
+analysis/10.1145-3744916.3764572/inputs/code_contests.jsonl
+analysis/10.1145-3744916.3764572/inputs/apps.down_sampled_15usd.jsonl
+analysis/10.1145-3744916.3764572/inputs/code_contests.down_sampled_15usd.jsonl

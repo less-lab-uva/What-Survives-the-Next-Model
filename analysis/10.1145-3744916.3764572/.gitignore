@@ -1,0 +1,7 @@
+# per-call logs + failures (regenerated each run)
+/logs/
+
+# python caches / venvs
+__pycache__/
+*.pyc
+.venv/

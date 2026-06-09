@@ -1,0 +1,27 @@
+{
+  "metric": "Pass@1 / AvgPassRatio (run generated program vs all_test_cases, stdin->stdout)",
+  "prompt_variant": "A",
+  "per_dataset": {
+    "apps": {
+      "n": 129,
+      "pass_at_1": 0.7054,
+      "avg_pass_ratio": 0.7662
+    },
+    "code_contests": {
+      "n": 71,
+      "pass_at_1": 0.4085,
+      "avg_pass_ratio": 0.4823
+    },
+    "xCodeEval": {
+      "n": 129,
+      "pass_at_1": 0.5504,
+      "avg_pass_ratio": 0.663
+    }
+  },
+  "overall": {
+    "n": 329,
+    "pass_at_1": 0.5805,
+    "avg_pass_ratio": 0.6645
+  },
+  "predictions_without_tests": 0
+}

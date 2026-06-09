@@ -9,7 +9,7 @@ of rows, plus a fixed output-token budget for the {"is_typosquat": ...} JSON. Re
 datasets inputs/<name>.csv and writes inputs/<name>.down_sampled_15usd.csv (full original
 columns, fewer rows). If the full run already fits the budget (f >= 1.0) it keeps everything.
 The full datasets are not modified; re-running overwrites the samples. Also writes
-results/down_sample_report.json with the % of each dataset kept; if the overall sample falls
+logs/down_sample_report.json with the % of each dataset kept; if the overall sample falls
 below 10% it is flagged as a problem (the budget is too small to be representative).
 
 NOTE: output is budgeted as JSON-only (OUTPUT_TOKENS). If prompt B emits chain-of-thought, the
@@ -164,8 +164,8 @@ if below_10:
     report["warning"] = (f"PROBLEM: ${BUDGET:.0f} buys only {overall_pct:.1f}% of the data (< 10%); "
                          f"the sample may be too small to be representative.")
 
-os.makedirs("results", exist_ok=True)
-json.dump(report, open("results/down_sample_report.json", "w"), indent=2)
-print(f"\noverall: {total_sampled}/{total_full} rows kept ({overall_pct:.1f}%) -> results/down_sample_report.json")
+os.makedirs("logs", exist_ok=True)
+json.dump(report, open("logs/down_sample_report.json", "w"), indent=2)
+print(f"\noverall: {total_sampled}/{total_full} rows kept ({overall_pct:.1f}%) -> logs/down_sample_report.json")
 if below_10:
     print(f"  *** {report['warning']} ***")

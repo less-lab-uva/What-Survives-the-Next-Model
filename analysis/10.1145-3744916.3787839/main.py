@@ -1,22 +1,19 @@
 """ToxicityAhead single-call oracle (RQ2): pre-toxicity transcript -> derailment probability.
 
-One LLM call per thread (collapses the paper's two-stage LtM-SCD pipeline into one),
-over our curated dataset only. RQ2 = "Can LLMs predict derailment on GitHub?"; it uses
-the curated dataset, not Raman et al.'s (Raman is the RQ3 generalization set).
-Runs prompt A and prompt B.
+One LLM call per thread (collapses the paper's two-stage LtM-SCD pipeline into one), over our
+curated dataset only. RQ2 = "Can LLMs predict derailment on GitHub?". Runs prompt A and prompt B.
 
-Each call writes two things: the prediction (outputs/oracle-*.csv) and a raw per-call
-log (outputs/log-*.csv) with start/end timestamps, token counts, and model. The log
-records API facts only — any derivation (duration, cost) happens later in evaluation.
+OUTPUT IS TWO COMMITTED FILES — one per prompt variant — in JSONL:
+    outputs/output_A.jsonl   outputs/output_B.jsonl     {issue_id, pred_score, true_label}
+Per-call logs go to logs/ (gitignored), one per variant:
+    logs/log_A.jsonl         logs/log_B.jsonl           {issue_id, start/end_time, tokens, model}
 
-Reproducibility: refuses to run unless the API key, both prompts, and the dataset are
-present, and it will NOT overwrite existing output/log files. Anything not perfectly
-set up is a hard abort.
+Reproducibility: refuses to run unless the API key, both prompts, and the dataset are present,
+and it will NOT overwrite existing output/log files. Anything not perfectly set up is a hard abort.
 """
 
 import os
 import sys
-import csv
 import re
 import json
 import time
@@ -25,60 +22,40 @@ import anthropic
 
 MODEL = "claude-sonnet-4-6"
 TEMPERATURE = 0.0      # paper sets temp 0 to minimize output variance
-MAX_TOKENS = 2048      # headroom for prompt B's chain-of-thought before the JSON (A needs far less)
+MAX_TOKENS = 2048      # headroom for prompt B's chain-of-thought before the JSON
 MAX_WORDS = 3000       # pre-toxicity transcript cap (verbatim from replication package)
 
 PROMPT_A = "prompts/prompt_A.txt"
 PROMPT_B = "prompts/prompt_B.txt"
-
 DATA = "inputs/our-dataset.csv"
 
-OUT_A = "outputs/oracle-claude-sonnet-4-6-a-our.csv"
-OUT_B = "outputs/oracle-claude-sonnet-4-6-b-our.csv"
-
-LOG_A = "outputs/log-claude-sonnet-4-6-a-our.csv"
-LOG_B = "outputs/log-claude-sonnet-4-6-b-our.csv"
+PROMPTS = {"A": PROMPT_A, "B": PROMPT_B}
+OUTPUTS = {"A": "outputs/output_A.jsonl", "B": "outputs/output_B.jsonl"}
+LOGS = {"A": "logs/log_A.jsonl", "B": "logs/log_B.jsonl"}
 
 # Preconditions.
 if not os.environ.get("ANTHROPIC_API_KEY"):
     sys.exit("ABORT: ANTHROPIC_API_KEY is not set.")
-
-if not os.path.exists(PROMPT_A):
-    sys.exit(f"ABORT: missing {PROMPT_A}")
-if not os.path.exists(PROMPT_B):
-    sys.exit(f"ABORT: missing {PROMPT_B}")
-if not os.path.exists(DATA):
-    sys.exit(f"ABORT: missing {DATA}")
-
-if os.path.exists(OUT_A):
-    sys.exit(f"ABORT: output already exists: {OUT_A}")
-if os.path.exists(OUT_B):
-    sys.exit(f"ABORT: output already exists: {OUT_B}")
-if os.path.exists(LOG_A):
-    sys.exit(f"ABORT: output already exists: {LOG_A}")
-if os.path.exists(LOG_B):
-    sys.exit(f"ABORT: output already exists: {LOG_B}")
+for path in (PROMPT_A, PROMPT_B, DATA):
+    if not os.path.exists(path):
+        sys.exit(f"ABORT: missing {path}")
+for path in list(OUTPUTS.values()) + list(LOGS.values()):
+    if os.path.exists(path):
+        sys.exit(f"ABORT: output already exists: {path}")
 
 client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 os.makedirs("outputs", exist_ok=True)
+os.makedirs("logs", exist_ok=True)
 
 
-def run(prompt_file, input_csv, output_csv, log_csv):
-    prompt = open(prompt_file, encoding="utf-8").read()
-    data = pd.read_csv(input_csv)
+def run(tag: str) -> None:
+    prompt = open(PROMPTS[tag], encoding="utf-8").read()
+    data = pd.read_csv(DATA)
     data["text"] = data["text"].astype(str).fillna("")
-    print(f"\n=== {prompt_file} x {input_csv} -> {output_csv} ===")
+    print(f"\n=== prompt {tag}: {PROMPTS[tag]} -> {OUTPUTS[tag]} ===")
 
-    with open(output_csv, "w", newline="", encoding="utf-8") as f, \
-         open(log_csv, "w", newline="", encoding="utf-8") as lf:
-        writer = csv.DictWriter(f, fieldnames=["issue_id", "pred_score", "true_label"])
-        writer.writeheader()
-        logger = csv.DictWriter(lf, fieldnames=[
-            "issue_id", "start_time", "end_time",
-            "input_tokens", "output_tokens", "model",
-        ])
-        logger.writeheader()
-
+    with open(OUTPUTS[tag], "w", encoding="utf-8") as out, \
+         open(LOGS[tag], "w", encoding="utf-8") as log:
         for issue_id, group in data.groupby("issue_id"):
             # pre-toxicity transcript: stop at the first toxic comment, then pack
             # newest-first up to MAX_WORDS (transcript logic from oracle-llama.py).
@@ -108,23 +85,22 @@ def run(prompt_file, input_csv, output_csv, log_csv):
                 sys.exit(f"ABORT: no derailment_probability in response for {issue_id}: {raw!r}")
             pred = float(json.loads(m.group(0))["derailment_probability"])
 
-            writer.writerow({
+            out.write(json.dumps({
                 "issue_id": issue_id,
                 "pred_score": pred,
                 "true_label": int((group["toxic"] == 1).any()),
-            })
-            logger.writerow({
+            }, ensure_ascii=False) + "\n")
+            log.write(json.dumps({
                 "issue_id": issue_id,
                 "start_time": start_time,
                 "end_time": end_time,
                 "input_tokens": resp.usage.input_tokens,
                 "output_tokens": resp.usage.output_tokens,
                 "model": MODEL,
-            })
-            f.flush()
-            lf.flush()
+            }, ensure_ascii=False) + "\n")
+            out.flush(); log.flush()
             print(f"{issue_id}: pred={pred}")
 
 
-run(PROMPT_A, DATA, OUT_A, LOG_A)
-run(PROMPT_B, DATA, OUT_B, LOG_B)
+run("A")
+run("B")

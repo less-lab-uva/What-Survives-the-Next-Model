@@ -1,79 +1,75 @@
-"""Derive resource usage (call latency + cost) for the RQ2 oracle runs.
+"""Derive cost + wall-time for the ToxicityAhead oracle run from the per-call logs.
 
-Separate from evaluator.py (which scores predictions). Reads the raw per-call logs
-(outputs/log-*.csv) and derives, per prompt variant, total/mean call seconds
-(end_time - start_time) and total cost (logged token counts x published price).
-Writes results/usage.json.
+Reads logs/log_{A,B}.jsonl (one line per call: start_time, end_time, input_tokens,
+output_tokens) and, per prompt, sums call latency and cost (logged tokens x published price),
+plus a grand total. Writes logs/usage.json (overwrites -- pure function of the logs).
 
-There is no pricing API, so the rates below are Anthropic's published pricing for
-claude-sonnet-4-6 (applied here, at analysis time, not during the run).
+There is no pricing API, so the rates below are Anthropic's published claude-sonnet-4-6
+pricing, applied at analysis time (not during the run).
 
 Run from the analysis directory:  python3 utils/usage.py
-Paths are FIXED relative to that directory (not computed). Like main.py: prerequisites
-checked up front, hard-abort, no overwrite.
+Paths are FIXED relative to that directory. Prerequisites checked up front, hard-abort.
 """
 
 import os
 import sys
 import json
-import pandas as pd
 
-# claude-sonnet-4-6 published pricing, USD per 1M tokens.
-# Source (Wayback snapshot, archived 2026-06-06):
-# https://web.archive.org/web/20260606180643/https://platform.claude.com/docs/en/about-claude/pricing
-PRICE_IN_PER_M = 3.0
-PRICE_OUT_PER_M = 15.0
+MODEL = "claude-sonnet-4-6"
+PRICE_IN_PER_M = 3.0       # claude-sonnet-4-6 input  $/1M tokens
+PRICE_OUT_PER_M = 15.0     # claude-sonnet-4-6 output $/1M tokens
 
-LOG_A = "outputs/log-claude-sonnet-4-6-a-our.csv"
-LOG_B = "outputs/log-claude-sonnet-4-6-b-our.csv"
-
-USAGE = "results/usage.json"
-
-REQUIRED = {"start_time", "end_time", "input_tokens", "output_tokens"}
+LOGS = {"A": os.path.join("logs", "log_A.jsonl"),
+        "B": os.path.join("logs", "log_B.jsonl")}
+USAGE = os.path.join("logs", "usage.json")
 
 # Preconditions.
-if not os.path.exists(LOG_A):
-    sys.exit(f"ABORT: missing {LOG_A} (run main.py first)")
-if not os.path.exists(LOG_B):
-    sys.exit(f"ABORT: missing {LOG_B} (run main.py first)")
-if os.path.exists(USAGE):
-    sys.exit(f"ABORT: output already exists: {USAGE}")
-
-os.makedirs("results", exist_ok=True)
+for path in LOGS.values():
+    if not os.path.exists(path):
+        sys.exit(f"ABORT: missing {path} (run main.py first)")
+os.makedirs("logs", exist_ok=True)
 
 
-def summarize(log_csv):
-    df = pd.read_csv(log_csv)
-    if not REQUIRED.issubset(df.columns):
-        sys.exit(f"ABORT: {log_csv} missing required columns {sorted(REQUIRED)}")
-
-    seconds = df["end_time"] - df["start_time"]
-    in_tok = int(df["input_tokens"].sum())
-    out_tok = int(df["output_tokens"].sum())
+def summarize(tag: str) -> dict:
+    rows = [json.loads(l) for l in open(LOGS[tag], encoding="utf-8") if l.strip()]
+    seconds = [r["end_time"] - r["start_time"] for r in rows]
+    in_tok = sum(r["input_tokens"] for r in rows)
+    out_tok = sum(r["output_tokens"] for r in rows)
     cost = (in_tok * PRICE_IN_PER_M + out_tok * PRICE_OUT_PER_M) / 1e6
     return {
-        "file": os.path.basename(log_csv),
-        "n_calls": int(len(df)),
-        "total_seconds": round(float(seconds.sum()), 3),
-        "mean_seconds": round(float(seconds.mean()), 3),
+        "prompt": tag,
+        "model": MODEL,
+        "n_calls": len(rows),
+        "total_seconds": round(sum(seconds), 3),
+        "mean_seconds": round(sum(seconds) / len(seconds), 3) if seconds else 0.0,
         "input_tokens": in_tok,
         "output_tokens": out_tok,
         "cost_usd": round(cost, 4),
     }
 
 
+a = summarize("A")
+b = summarize("B")
+grand = {
+    "n_calls": a["n_calls"] + b["n_calls"],
+    "total_seconds": round(a["total_seconds"] + b["total_seconds"], 3),
+    "input_tokens": a["input_tokens"] + b["input_tokens"],
+    "output_tokens": a["output_tokens"] + b["output_tokens"],
+    "cost_usd": round(a["cost_usd"] + b["cost_usd"], 4),
+}
 usage = {
+    "model": MODEL,
     "price_in_per_mtok": PRICE_IN_PER_M,
     "price_out_per_mtok": PRICE_OUT_PER_M,
-    "A": summarize(LOG_A),
-    "B": summarize(LOG_B),
+    "A": a,
+    "B": b,
+    "grand_total": grand,
 }
-usage["total_cost_usd"] = round(usage["A"]["cost_usd"] + usage["B"]["cost_usd"], 4)
 
-with open(USAGE, "w") as f:
+with open(USAGE, "w", encoding="utf-8") as f:
     json.dump(usage, f, indent=2)
 
 print(f"Saved {USAGE}")
-print(f"  A: {usage['A']['n_calls']} calls, {usage['A']['total_seconds']}s, ${usage['A']['cost_usd']}")
-print(f"  B: {usage['B']['n_calls']} calls, {usage['B']['total_seconds']}s, ${usage['B']['cost_usd']}")
-print(f"  total cost: ${usage['total_cost_usd']}")
+print(f"  A: {a['n_calls']} calls, {a['total_seconds']}s, ${a['cost_usd']}")
+print(f"  B: {b['n_calls']} calls, {b['total_seconds']}s, ${b['cost_usd']}")
+print(f"  grand total: {grand['n_calls']} calls, {grand['total_seconds']}s, ${grand['cost_usd']}")

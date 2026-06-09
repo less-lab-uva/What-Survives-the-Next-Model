@@ -5,7 +5,7 @@ generation, no billing); output uses a fixed budget for the {"derailment_probabi
 JSON. The per-thread transcript is built IDENTICALLY to main.py (group by issue_id, keep
 pre-toxicity comments, pack newest-first up to MAX_WORDS) so the token counts match the run.
 
-Prints per-run + grand-total cost and writes results/cost_estimate.json. One free
+Prints per-run + grand-total cost and writes logs/cost_estimate.json. One free
 count_tokens call per thread, so it prints progress as it goes.
 
 Run from the analysis directory:  python3 utils/estimate_cost.py
@@ -35,7 +35,7 @@ PROGRESS_EVERY = 50         # print a progress line every N threads
 DATA = "inputs/our-dataset.csv"
 # Prompts priced against DATA (one entry per run). Edit freely.
 PROMPTS = ["prompts/prompt_A.txt", "prompts/prompt_B.txt"]
-METRICS = "results/cost_estimate.json"
+METRICS = "logs/cost_estimate.json"
 
 # Preconditions.
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -107,7 +107,7 @@ print(f"\nGRAND TOTAL (prompt A + B over {DATA}): ${grand_total:.2f}")
 print("(input tokens EXACT via free count_tokens — no spend; output is a fixed JSON budget,"
       " not prompt B's chain-of-thought)")
 
-os.makedirs("results", exist_ok=True)
+os.makedirs("logs", exist_ok=True)
 json.dump({"model": MODEL, "output_tokens_budget": OUTPUT_TOKENS, "max_words": MAX_WORDS,
            "price_in_per_mtok": PRICE_IN_PER_M, "price_out_per_mtok": PRICE_OUT_PER_M,
            "runs": [asdict(r) | {"cost_usd": r.cost_usd} for r in results],
