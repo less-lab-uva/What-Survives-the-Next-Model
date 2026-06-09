@@ -147,11 +147,11 @@ python3 evaluator.py "Hotel Search"
 
 ### RQ1: Constraint Mining (macro-averaged P/R/F1 across 9 services)
 
-| System | Precision | Recall | F1 |
+| System | Precision | Recall |
 |---|---|---|---|
-| RBCTest (GPT-4o, OC scheme, 5-seed mean) | 82.9% | 81.2% | 81.6% |
-| Ours — Prompt A (Claude Sonnet 4.6, single call) | 53.7% | 41.6% | 44.7% |
-| Ours — Prompt B (Claude Sonnet 4.6, chain-of-thought) | 61.8% | 40.6% | 45.3% |
+| RBCTest | 85.1% | 83.7% |
+| Ours — Prompt A | 53.7% | 41.6% |
+| Ours — Prompt B | 61.8% | 40.6% |
 
 > Paper baselines are for the 9 feasible services only (5-seed mean from `CompareAGORAData.xlsx`). Full per-service breakdown is in `results/rq1_results.json`.
 
