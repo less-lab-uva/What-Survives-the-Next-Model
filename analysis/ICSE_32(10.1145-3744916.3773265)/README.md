@@ -72,8 +72,6 @@ python3 main.py 15.0
 |---|---|
 | `outputs_A.jsonl` | One JSON line per instance: `instance_id`, `impacted_methods` (list of `"ClassName,methodName"` strings), and metadata |
 | `outputs_B.jsonl` | Same for Prompt B |
-| `tokens_A.jsonl` | Token counts, cost, and wall-clock time per API call for Prompt A |
-| `tokens_B.jsonl` | Same for Prompt B |
 
 If the model's response cannot be parsed as JSON, a `parse_failed: true` entry is written to the outputs JSONL and the raw response is saved to `outputs/<instance_id>_prompt<L>_raw_<timestamp>.txt`. If you delete a `parse_failed` entry from `outputs_*.jsonl`, also delete its corresponding line from `tokens_*.jsonl` to avoid double-counting cost on the next run.
 
