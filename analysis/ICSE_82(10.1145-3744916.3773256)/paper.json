@@ -11,15 +11,13 @@
     "sample_size": 406
   },
   "metric": [
-    "Accuracy",
-    "Precision",
-    "Recall",
-    "F1",
-    "MCC",
     "PC",
     "PV",
     "PB",
     "PR",
+    "Error",
+    "Precision",
+    "Recall",
     "FPR"
   ],
   "original_result": {
