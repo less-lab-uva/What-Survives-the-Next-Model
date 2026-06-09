@@ -122,8 +122,6 @@ python3 main.py 7.0
 |---|---|
 | `outputs_A.jsonl` | One JSON line per contract: `contract_id`, `label`, `Exist`, `Vuln_type`, `dataset` |
 | `outputs_B.jsonl` | Same for Prompt B |
-| `tokens_A.jsonl` | Token counts, cost, and wall-clock time per API call |
-| `tokens_B.jsonl` | Same for Prompt B |
 | `sample_ids.json` | Persisted sample selection for reproducibility |
 
 **Estimated cost** (Claude Sonnet 4.6, $3/M input tokens, $15/M output tokens):
