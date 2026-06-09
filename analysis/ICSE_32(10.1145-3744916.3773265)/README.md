@@ -131,14 +131,14 @@ python3 evaluator.py B        # evaluate prompt B only
    - Fallback: when a file yields no signatures (body-only change), checks out the source from `repos/` at the parent commit and maps `@@` hunk line numbers to the enclosing method via brace-walking.
 2. Normalizes LLM predictions: converts `"ClassName,methodName"` → `"ClassName.methodName"` and removes the seed method.
 3. Computes per-instance Precision, Recall, F1.
-4. Aggregates into Table 1 (macro mean P/R/F1 + Hit@5 + Hit@10 + Hit@custom) and Table 5 (stratified by ≤5 vs >5 co-changed impact files, micro + macro).
+4. Aggregates into Table 1 (macro mean P/R/F1 + Hit@5 + Hit@10 + Hit@custom).
 5. Evaluates the original Ripple pipeline (claude/gpt/gemini) on the same instances from `all-outputs.zip` using numeric ID-space ground truth from `impact-set-methods` in `cia-dataset.json`.
 
 **Results** (under `results/`):
 
 | File | Description |
 |---|---|
-| `results_A.jsonl` | Line 1: aggregate `{type, prompt, n_instances, table1, table5, original_pipeline}`. Lines 2+: per-instance details. |
+| `results_A.jsonl` | Line 1: aggregate `{type, prompt, n_instances, table1, original_pipeline}`. Lines 2+: per-instance details. |
 | `results_B.jsonl` | Same for Prompt B |
 
 ---
@@ -153,8 +153,6 @@ Ground truth (AIS) is the set of method names changed in the commit (excluding t
 - **Macro** = mean over all instances
 - **Hit@k** = probability that at least one ground-truth method appears in a random sample of k predicted methods (averaged over 100 random trials, seed=42)
 - **Hit@custom** = same as Hit@k but k = |predicted| per instance
-
-**Table 5 stratification**: instances with ≤5 co-changed impact files (Lite) vs >5 (Complex). Lite instances use micro metrics; Complex instances use macro metrics, as in the paper.
 
 ---
 
@@ -181,8 +179,51 @@ Both tables below cover the same 5 instances that our pipeline has evaluated so 
 
 ---
 
-## Notes
+## Analysis
 
-- **Do not modify `prompts/promptA.py` or `prompts/promptB.py`**. These are loaded via `importlib.util` and contain a top-level `prompt = """..."""` variable. They came from a fixed experimental setup and must not change.
-- The `input/` directory may contain more than 10 prepared subfolders. This is expected: `main.py` prepares and size-checks candidates in random order during pool building, so some folders are created but then not selected into the pool.
-- The `repos/` directory grows as new instances are processed. Each repo is cloned once and reused across runs.
+### Comparison with Paper Results
+
+The table below places our 5-instance results alongside the original Ripple pipeline evaluated on those same 5 instances (ID-space GT) and the paper's full-benchmark Table 1 (100 instances, ID-space GT).
+
+| System | Eval space | n | Macro P | Macro R | Macro F1 | Hit@custom |
+|---|---|---|---|---|---|---|
+| Ripple w/ GPT-4o (paper Table 1) | ID-space | 100 | — | — | 25.0% | — |
+| Ripple w/ GPT-4o (our 5 instances) | ID-space | 5 | 39.9% | 41.7% | 35.6% | 80.0% |
+| Ripple w/ Claude-3.5 Sonnet (our 5 instances) | ID-space | 5 | 35.7% | 47.3% | 37.8% | 80.0% |
+| Ripple w/ Gemini-2.0 Flash (our 5 instances) | ID-space | 5 | 36.3% | 25.2% | 29.6% | 60.0% |
+| **Ours — Prompt A (Black-box)** | name-space | 5 | 20.0% | 22.0% | 20.9% | 40.0% |
+| **Ours — Prompt B (Informed CoT)** | name-space | 5 | 16.7% | 18.0% | 17.3% | 40.0% |
+
+Two evaluation-space caveats apply before reading these numbers:
+
+1. The original pipeline is scored in numeric ID-space (method IDs from `impact-set-methods` matched against predictions in `all-outputs.zip`), while our pipeline is scored in name-space (method names extracted from the commit diff). These are not identical metrics; the name-space extractor can miss body-only changes, and the LLM can use slightly different name formats. The comparison is directional, not exact.
+2. The original pipeline numbers on our 5 instances (35–38% F1) are substantially higher than the paper's full-100 number (25% F1), which suggests our 5-instance sample happens to be easier than average. Our results are therefore evaluated on a relatively favorable subset and still fall far short.
+
+**Per-instance results (Prompt A / Prompt B):**
+
+| Instance | Repo | GT methods | GT files | Prompt A F1 | Prompt B F1 |
+|---|---|---|---|---|---|
+| 00111 | ant-ivy | 2 | 1 | 0.500 | 0.500 |
+| 00632 | commons-net | 10 | 14 | 0.545 | 0.364 |
+| 00270 | commons-math | 6 | 8 | 0.000 | 0.000 |
+| 00717 | giraph | 3 | 2 | 0.000 | 0.000 |
+| 00070 | ant-ivy | 9 | 6 | 0.000 | 0.000 |
+
+Three of five instances score zero under both prompts. Only the two instances where the model happened to correctly name at least one impacted method contribute any score. Hit@custom (40%) means the model includes at least one correct prediction in only 2 of 5 instances.
+
+### Why Our Results Are Poor
+
+**1. No static analysis preprocessing — the fundamental gap.**
+The original Ripple pipeline never asks its LLM to search a raw repository. Phase 1 runs static analysis (evolutionary coupling via git history, call/class-member dependence graphs) to pre-compute a small, structured neighborhood around the seed method. The LLM in Phase 2 reasons over this pre-filtered candidate set, not over thousands of methods. We give Claude the entire repository as a flat XML structure and ask it to identify the right methods cold. This is a fundamentally harder problem: the model must simultaneously perform the static analysis reasoning that Phase 1 handles deterministically and the intent-reasoning that Phase 2 handles with a focused candidate list.
+
+**2. Severe under-prediction.**
+The model consistently predicts far fewer methods than the ground truth contains. Instance 00070 has 9 GT methods but both prompts predict only 3, with zero overlap. Instance 00270 has 6 GT methods but Prompt A predicts 2 (zero overlap) and Prompt B predicts 1 (zero overlap). The original pipeline's recall-focused Phase 1 guarantees broad coverage by construction; without it, the model is conservative and misses the bulk of the impact set.
+
+**3. Long-context degradation.**
+Input sizes for these instances run 200K–900K tokens. At that scale, LLMs suffer well-documented quality degradation: relevant methods scattered across a multi-thousand-line XML are easily overlooked, and the model's attention over the middle of the context is weakest. The original pipeline sidesteps this by feeding the LLM only a pre-filtered, compact candidate set per dependence cluster.
+
+**4. Correct class, wrong method.**
+Instance 00717 illustrates a failure mode where the model correctly identifies the affected classes (`EdgeReaderWrapper`, `VertexReaderWrapper`) but predicts the wrong methods within them (`initialize` for both), while the GT is `getCurrentSourceId`, `nextEdge`, and `nextVertex`. The model appears to use a coarse heuristic — "which class is most likely involved?" — but cannot pinpoint *which specific method* inside that class was co-modified without the fine-grained dependency graph that Ripple's Phase 1 provides. Correct class attribution yields no partial credit under exact-match F1, so the result is a hard zero despite the model reasoning in the right direction at the class level.
+
+**5. Prompt B underperforms Prompt A.**
+The informed Chain-of-Thought prompt (Prompt B) was designed to replicate Ripple's reasoning structure in 10 explicit steps — commit history mining, dependency expansion, three-pass slicing, intersection-based aggregation. Instead of helping, it slightly worsens F1 (17.3% vs 20.9%). Committing the model to intermediate reasoning steps that require precise symbol-level tracking (e.g., "enumerate all direct call-graph neighbors of the seed method") over thousands of methods in a 900K-token context leads to cascading errors: wrong intermediate sets propagate into the final prediction. The black-box prompt at least lets the model use its own implicit reasoning strategy without being forced into steps it cannot execute reliably at this scale.
