@@ -1,0 +1,7 @@
+# python caches / venvs
+__pycache__/
+*.pyc
+.venv/
+
+# regenerated each run
+outputs/tokens_*.txt

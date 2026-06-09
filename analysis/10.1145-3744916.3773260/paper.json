@@ -1,0 +1,28 @@
+{
+  "title": "IntentFix: Automated Logic Vulnerability Repair via LLM-Driven Intent Modeling",
+  "doi": "10.1145/3744916.3773260",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original IntentFix framework repairs logic vulnerabilities with a multi-phase, intent-centric pipeline: it extracts an explicit model of developer intent, detects the semantic gap and attack vector, then generates and verifies a patch. RQ1 compares it against zero-shot and Chain-of-Thought (CoT) LLM baselines on 1,107 real-world logic-vulnerability CVEs.",
+    "This reproduction focuses on RQ1's baselines: it generates patches with a single Claude call under the zero-shot and CoT prompts, then scores patch correctness with an AI oracle that is given the vulnerable code, the generated patch, the ground-truth fix, and the CWE (paper section 4.4.1)."
+  ],
+  "dataset": {
+    "name": "IntentFix Logic-Vulnerability Pairs (CWE-840 family)",
+    "full_size": 1107,
+    "sample_size": 200,
+    "note": "Bundled at dataset/intentfix_pairs.jsonl (one record per before/after CVE pair). main.py draws a CWE-stratified sample; dataset is heavily skewed (CWE-770 = 72.6%)."
+  },
+  "metric": [
+    "Patch Accuracy (AI oracle)"
+  ],
+  "original_result": {
+    "note": "From Table 2 / section 5.1.1. Paper reports both AI-oracle and manual-validation accuracy.",
+    "intentfix": {"ai_oracle": 0.774, "manual": 0.645},
+    "cot_baseline": {"manual": 0.327}
+  },
+  "our_result": {
+    "zero_shot": {"accuracy": null, "result_file": "results/results_zero_shot.jsonl"},
+    "cot": {"accuracy": null, "result_file": "results/results_cot.jsonl"}
+  },
+  "total_cost": null
+}

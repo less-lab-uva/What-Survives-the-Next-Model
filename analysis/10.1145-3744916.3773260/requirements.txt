@@ -1,0 +1,4 @@
+anthropic==0.105.2
+psycopg2-binary==2.9.12
+mysql-connector-python==9.7.0
+duckdb==1.5.3
