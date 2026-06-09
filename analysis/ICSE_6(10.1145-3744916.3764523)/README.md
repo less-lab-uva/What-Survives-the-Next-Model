@@ -114,22 +114,6 @@ Example:
 python3 main.py 16.0 HPC
 ```
 
-**Behavior:**
-- Loads all 2000 log entries from `data/HPC_2k.log_structured_corrected.csv`.
-- Runs Prompt A and Prompt B on each log using Claude Sonnet 4.6.
-- Checks the budget before every API call and stops when exhausted.
-- Resumable: re-running skips already-completed log IDs. Partially completed logs (one prompt done, other not) are finished before new logs are started.
-- Applies `correct_single_template()` to every response before saving.
-
-**Cost estimate (Sonnet 4.6: $3/M input tokens, $15/M output tokens):**
-
-| Prompt | System tokens | Input/call | Cost/call | 2000 logs |
-|---|---|---|---|---|
-| Prompt A | ~667 | ~681 | $0.00249 | ~$4.99 |
-| Prompt B | ~1429 | ~1443 | $0.00478 | ~$9.56 |
-| **Both** | | | | **~$14.54** |
-
-Recommended budget: `$16` (leaves margin for token variance and retries).
 
 **Outputs** (under `outputs/`):
 
@@ -137,8 +121,6 @@ Recommended budget: `$16` (leaves margin for token variance and retries).
 |---|---|
 | `outputs_A.jsonl` | One JSON line per log: `line_id`, `log_message`, `log_template`, `dataset`, `timestamp` |
 | `outputs_B.jsonl` | Same for Prompt B |
-| `tokens_A.jsonl` | Token counts, cost, and `duration_seconds` per API call for Prompt A |
-| `tokens_B.jsonl` | Same for Prompt B |
 
 ---
 
@@ -203,7 +185,7 @@ All numbers below are for the **HPC dataset, n=2000 logs (full run)**.
 
 **Primary comparison target:** "w/o InferLog" (no PAIR reordering) is the most comparable to our pipeline, since our pipeline also applies no prefix-aware reordering.
 
-**PA gap (~8%):** Our PA is 90.5% vs 98.4%. The main causes are: (1) our model (Sonnet 4.6) vs paper's (Qwen2.5-14B-Instruct locally fine-tuned to log parsing context); (2) our 3 static examples vs paper's 5 dynamically selected DPP+kNN examples tailored per query; (3) no iterative refinement.
+**PA gap (~8%):** Our PA is 90.5% vs 98.4%. The main causes are: (1) our model (Sonnet 4.6) vs paper's (Qwen2.5-14B-Instruct locally fine-tuned to log parsing context); (2) no iterative refinement.
 
 **PTA/RTA gap:** Our PTA (73–78%) is close to the paper's (75%), suggesting our template grouping is competitive. Our RTA (76–78%) trails the paper (85%), indicating we miss some rare templates.
 
