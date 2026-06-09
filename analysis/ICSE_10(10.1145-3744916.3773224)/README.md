@@ -206,11 +206,8 @@ where $n = 5$ (predictions per task) and $c$ is the number of passing prediction
 | System | Pass@1 | Pass@3 | Pass@5 |
 |---|---|---|---|
 | AllianceCoderGPT (230 tasks) | 36.52% | 40.0% | 41.30% |
-|---|---|---|---|
-| AllianceCoderGemini (230 tasks) | 24.78% | 46.52% | 27.82% |
-|---|---|---|---|
+| AllianceCoderGemini (230 tasks) | 24.78% | 26.52% | 27.82% |
 | Ours PromptA (23 tasks) | 60.0% | 60.87% | 60.87% |
-|---|---|---|---|
 | Ours PromptB (23 tasks) | 60.87% | 60.87% | 60.87% |
 
 > Our evaluation covers a 10% random sample (23 tasks). Results are computed with the correct denominator (23), reflecting the same metric definition.
