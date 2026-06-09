@@ -1,0 +1,80 @@
+{
+  "title": "Testora: Regression Testing with a Natural Language Oracle",
+  "doi": "10.1145/3744916.3764527",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original Testora pipeline detects behavioral regressions introduced by pull requests through a three-stage process: (1) test generation — an LLM generates Python test cases that exercise the changed code, (2) test execution — generated tests are run against the pre-PR and post-PR commits inside isolated Docker containers, and (3) classification — a second LLM call compares the actual execution outputs and classifies the behavioral difference as intended or unintended. The pipeline uses GPT-4o-mini in a multi-question prompting strategy and evaluates on 46 manually labeled PRs (RQ3) and 30 real-world problems detected in the wild (RQ1).",
+    "This reproduction replaces the full three-stage pipeline with a single Claude Sonnet 4.6 call. Given the PR metadata (title, description, diff, commit messages, discussion comments), the model is asked in one shot to: generate a test case, predict its output before and after the PR, and classify the behavioral change as intended or unintended. Two prompt strategies are compared: Prompt A (black-box, no methodology guidance) and Prompt B (step-by-step, with 7 explicit reasoning steps from diff parsing to verdict)."
+  ],
+  "dataset": {
+    "rq3": {
+      "description": "46 PRs with human-verified differentiating-test labels (classification accuracy)",
+      "projects": ["keras", "marshmallow", "pandas", "scipy"],
+      "pr_counts": {"keras": 1, "marshmallow": 12, "pandas": 12, "scipy": 21},
+      "total_prs": 46,
+      "label_split": {"unintended": 23, "intended": 23},
+      "note": "12 PRs labeled 'coincidental fix' are treated as unintended (positive class)"
+    },
+    "rq1": {
+      "description": "30 real-world unintended behavioral changes found by Testora in the wild",
+      "total_paper": 30,
+      "available": 20,
+      "note": "20 of 30 are a subset of the 46 RQ3 PRs; 10 RQ1-only PRs require GitHub token to pull"
+    }
+  },
+  "metric": {
+    "rq3": ["Precision", "Recall", "F1 (unintended as positive class)"],
+    "rq1": ["Detection Recall (detected / total available)"]
+  },
+  "original_result": {
+    "rq3_gpt4o_mini_multi_question": {
+      "precision": 0.55,
+      "recall": 0.67,
+      "f1": 0.60,
+      "tasks": 46,
+      "note": "Table 1, GPT-4o-mini multi-question prompting strategy"
+    },
+    "rq1_original_pipeline": {
+      "total_prs": 30,
+      "detected": 30,
+      "recall": 1.00,
+      "reported_to_developers": 13,
+      "confirmed": 12,
+      "fixed": 11,
+      "note": "Table 2; all 30 detected, 13 reported, 12 confirmed, 11 fixed"
+    }
+  },
+  "our_result": {
+    "rq3_prompt_A": {
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tasks": 46,
+      "result_file": "results/results_A.jsonl"
+    },
+    "rq3_prompt_B": {
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "tasks": 46,
+      "result_file": "results/results_B.jsonl"
+    },
+    "rq1_prompt_A": {
+      "detected": null,
+      "available": 20,
+      "recall": null,
+      "result_file": "results/results_A.jsonl"
+    },
+    "rq1_prompt_B": {
+      "detected": null,
+      "available": 20,
+      "recall": null,
+      "result_file": "results/results_B.jsonl"
+    }
+  },
+  "estimated_cost_usd": {
+    "rq3_only_both_prompts": 2.71,
+    "rq1_complement_10_prs_both_prompts": 0.48,
+    "total_56_prs_both_prompts": 3.19
+  }
+}
