@@ -16,7 +16,7 @@ import anthropic
 MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 64000
 
-PDF = "202500b992.pdf"
+PDF = "paper.pdf"
 META_PROMPT = "prompts/meta_prompt.txt"
 PROMPT_A = "prompts/prompt_A.txt"
 PROMPT_B = "prompts/prompt_B.txt"

@@ -1,7 +1,7 @@
 {
   "title": "Beyond Correctness: Exposing LLM-generated Logical Flaws in Reasoning via Multi-step Automated Theorem Proving",
   "doi": "10.1145/3744916.3787820",
-  "pdf": "202500d014.pdf",
+  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
   "dataset": "PrOntoQA-OOD/ProofWriter/FOLIO",
   "metric": "Average Macro F1",

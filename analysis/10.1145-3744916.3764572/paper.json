@@ -1,7 +1,7 @@
 {
   "title": "Aligning Requirement for Large Language Model's Code Generation (Specine)",
   "doi": "10.1145/3744916.3764572",
-  "pdf": "202500c964.pdf",
+  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
   "metric": [
     "Pass@1",

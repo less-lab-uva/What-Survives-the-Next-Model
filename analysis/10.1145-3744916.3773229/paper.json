@@ -1,7 +1,7 @@
 {
   "title": "ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale",
   "doi": "10.1145/3744916.3773229",
-  "pdf": "202500b992.pdf",
+  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
   "dataset": "ConfuDB + NeupaneDB, down-sampled to ~$15 (inputs/*.down_sampled_15usd.csv)",
   "metric": "Table 5 (EQ5): per dataset x {active,stealthy,benign,overall} -> tp/fp/tn/fn + precision/recall/f1/accuracy. Positive class = threat; benign has no positives so P/R/F1 are null ('-' in the paper).",
