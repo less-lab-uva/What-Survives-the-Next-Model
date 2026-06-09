@@ -93,3 +93,6 @@ results/
 - **PB**: both functions predicted benign.
 - **PR**: predictions are reversed: the vulnerable function is predicted benign, and the benign function is predicted vulnerable.
 - **total_llm_time**: total LLM API response time in seconds, summed across all processed examples.
+  
+Note that the pair-level metrics are also reported as percentages in `paper.json`. For each pair-level metric, the percentage is computed by dividing the corresponding count by the sample size (pairs). For example, the percentage for PC is calculated as `PC / sample_size`.
+
