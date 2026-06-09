@@ -1,0 +1,23 @@
+{
+  "title": "RISE: Rule-Driven SQL Dialect Translation via Query Reduction",
+  "doi": "10.1145/3744916.3773257",
+  "pdf": "202500a980.pdf",
+  "venue": "ICSE 2026",
+  "metric": "Translation Accuracy",
+  "dataset": {
+    "name": "TPC-DS",
+    "sample_size": 99
+  },
+  "original_result": {
+    "Translation Accuracy": "0.9798%"
+  },
+  "our_result": {
+    "prompt_A": {
+      "Translation Accuracy": "0.6061"
+    },
+    "prompt_B": {
+      "Translation Accuracy": "0.6162"
+    }
+  },
+  "total cost": "$3.53"
+}

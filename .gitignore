@@ -1,5 +1,12 @@
 # Python virtual environments
 .venv/
 
+# Python bytecode caches
+__pycache__/
+*.pyc
+
 # Per-paper recreation checklists (working notes, not committed)
 analysis/**/CHECKLIST.md
+
+# Per-paper run artifacts (cost/usage estimates, backups) — not committed
+analysis/**/logs/
