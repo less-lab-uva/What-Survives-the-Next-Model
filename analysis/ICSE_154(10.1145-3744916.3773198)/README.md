@@ -70,7 +70,7 @@ The `Dataset/` folder is not included in the repository. It contains the labeled
 
 ### 1a — Labels (CSV)
 
-The labeled data CSVs (`Dataset/RQ2/Labeled_Data.csv`, etc.) and the DB1 chain CSVs are part of the paper's artifact, available from the [ACM Digital Library](https://doi.org/10.1145/3744916.3773198) supplemental materials or the authors' repository.
+The labeled data CSVs (`Dataset/RQ2/Labeled_Data.csv`, etc.) and the DB2 chain CSVs are part of the paper's artifact, available from the [ACM Digital Library](https://doi.org/10.1145/3744916.3773198) supplemental materials or the authors' repository.
 
 Place the extracted artifact under the project root so the directory structure is:
 
@@ -79,7 +79,7 @@ LASIR/
 ├── Dataset/
 │   ├── RQ2/Labeled_Data.csv
 │   └── RQ1/DB1/Ethereum.csv   (needed for fetch_contracts.py)
-└── with_sonnet/
+└── src/
     └── ...
 ```
 
