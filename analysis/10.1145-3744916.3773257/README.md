@@ -49,7 +49,8 @@ ANTHROPIC_API_KEY=<your key> python3 main.py
 `evaluator.py` is self-contained: it launches PostgreSQL 15 + MySQL 8 (Docker), generates
 TPC-DS with DuckDB and loads identical data into both engines, runs the source query on
 PostgreSQL and the translated query on MySQL, compares result sets, and tears the containers
-down. Scored at **scale factor 0.1** — sf=1 is the faithful size but is not computationally
+down. Scored at **scale factor 0.1** — the paper does not specify the scale factor 
+for the data generator but sf=1 was not computationally
 feasible here (heavy MySQL queries do not complete; see the note in `evaluator.py`).
 
 ```bash
