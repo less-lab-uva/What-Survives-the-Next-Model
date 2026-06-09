@@ -107,8 +107,6 @@ python3 main.py 5.0
 | `outputs_B.jsonl` | Same for Prompt B |
 | `Spotify_getAlbumTracks_promptB.json` | Separate file for outputs > 50 KB |
 | `Spotify_getArtistAlbums_promptA.json` | Separate file for outputs > 50 KB |
-| `tokens_A.jsonl` | Per-call token counts, cost, and wall-clock time for Prompt A |
-| `tokens_B.jsonl` | Same for Prompt B |
 
 **Estimated cost** (Claude Sonnet 4.6, $3/MTok input, $15/MTok output):
 - All 9 services × 2 prompts: ~$2.34 total
