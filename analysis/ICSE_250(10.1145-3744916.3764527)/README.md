@@ -131,8 +131,6 @@ python3 main.py 5.0
 |---|---|
 | `outputs_A.jsonl` | One JSON line per PR: `project`, `pr_number`, `datasets`, `verdict`, `test_case`, `predicted_output_before_pr`, `predicted_output_after_pr`, `explanation` |
 | `outputs_B.jsonl` | Same for Prompt B |
-| `tokens_A.jsonl` | Token counts, cost, and wall-clock time per API call for Prompt A |
-| `tokens_B.jsonl` | Same for Prompt B |
 
 Records that exceeded the 50 KB threshold are saved as individual files: `{project}_{pr_number}_promptA.json`.
 
