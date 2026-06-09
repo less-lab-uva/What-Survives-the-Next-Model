@@ -11,10 +11,10 @@
     "sample_size": 300
   },
   "metric": [
+    "Precision",
+    "Recall",
+    "F1",
     "Accuracy",
-    "Precision Macro",
-    "Recall Macro",
-    "F1 Macro",
     "BLEU-4",
     "SecureBLEU"
   ],
