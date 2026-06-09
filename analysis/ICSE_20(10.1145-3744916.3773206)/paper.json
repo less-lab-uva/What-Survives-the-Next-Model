@@ -11,13 +11,11 @@
     "sample_size": 623
   },
   "metric": [
-    "Accuracy",
+    "MCC",
     "Balanced Accuracy",
     "True Positive Rate",
-    "True Negative Rate",
     "False Negative Rate",
-    "False Positive Rate",
-    "MCC"
+    "False Positive Rate"
   ],
   "original_result": {
     "mcc": 0.259,
