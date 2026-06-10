@@ -288,6 +288,38 @@ def check_paper_json(d: Path) -> Result:
     return ok("valid JSON")
 
 
+@analysis("paper_json_schema",
+          "paper.json has exactly the expected top-level keys, and our_result "
+          "contains prompt_A and prompt_B.")
+def check_paper_json_schema(d: Path) -> Result:
+    """Simple schema check: top-level key set + our_result subkeys."""
+    TOP_LEVEL = {"title", "doi", "venue", "summary", "dataset", "metric",
+                 "original_result", "our_result", "total_cost"}
+    OUR_RESULT = {"prompt_A", "prompt_B"}
+    try:
+        doc = json.loads((d / "paper.json").read_text())
+    except Exception as e:
+        return fail("could not read paper.json", [repr(e)])
+
+    problems = []
+    missing = TOP_LEVEL - doc.keys()
+    extra = doc.keys() - TOP_LEVEL
+    if missing:
+        problems.append(f"missing top-level keys: {sorted(missing)}")
+    if extra:
+        problems.append(f"unexpected top-level keys: {sorted(extra)}")
+
+    our = doc.get("our_result")
+    if not isinstance(our, dict):
+        problems.append("our_result is missing or not an object")
+    elif OUR_RESULT - our.keys():
+        problems.append(f"our_result missing: {sorted(OUR_RESULT - our.keys())}")
+
+    if problems:
+        return fail(f"{len(problems)} schema problem(s)", problems)
+    return ok("schema matches")
+
+
 @analysis("pdf_title_matches",
           "The title in paper.json appears in the text of paper.pdf's first "
           "pages — i.e. the JSON describes the PDF that ships with it.")
