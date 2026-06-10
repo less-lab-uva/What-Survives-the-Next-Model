@@ -198,6 +198,49 @@ def check_dir_name(d: Path) -> Result:
     return fail("does not match ICSE_<num>(<doi>)", [f"name: {d.name}"])
 
 
+@analysis("doi_consistent",
+          "The canonical DOI (the 10.1145/... slash form) is consistent across "
+          "the directory name (dashes->slashes), the paper.json doi field, and "
+          "the PDF text. A https://doi.org/... URL form in paper.json is flagged.")
+def check_doi_consistent(d: Path) -> Result:
+    """Check the directory name, paper.json, and paper.pdf agree on the DOI.
+
+    The directory name carries the DOI in dash form; turning its dashes into
+    slashes yields the canonical form. paper.json's doi field must equal that
+    canonical form exactly (so a URL-wrapped DOI is flagged), and the canonical
+    DOI must appear in the PDF text.
+    """
+    import re
+
+    m = re.search(r"10\.1145-[0-9.]+", d.name)
+    if not m:
+        return fail("no DOI in directory name", [f"name: {d.name}"])
+    canonical = m.group().replace("-", "/")   # dir DOI -> canonical slash form
+
+    problems = []
+    try:
+        json_doi = json.loads((d / "paper.json").read_text())["doi"].strip()
+    except Exception as e:
+        problems.append(f"paper.json doi unreadable: {e!r}")
+    else:
+        if json_doi != canonical:
+            problems.append(f"paper.json doi: {json_doi}")
+    try:
+        import pypdf
+        pages = pypdf.PdfReader(str(d / "paper.pdf")).pages[:2]
+        text = " ".join(p.extract_text() or "" for p in pages)
+    except Exception as e:
+        problems.append(f"PDF unreadable: {e!r}")
+    else:
+        if canonical not in text:
+            problems.append("canonical DOI not found in PDF text")
+
+    if problems:
+        return fail("DOI not consistently canonical",
+                    [f"canonical: {canonical}", *problems])
+    return ok("DOI canonical & consistent across dir/json/pdf")
+
+
 @analysis("in_readme_table",
           "The directory is listed (backtick-quoted) in analysis/README.md.")
 def check_in_readme(d: Path) -> Result:
