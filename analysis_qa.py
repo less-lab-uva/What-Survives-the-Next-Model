@@ -74,6 +74,21 @@ def analysis(name: str, description: str):
     return wrap
 
 
+# Global checks run ONCE over the whole set of paper dirs (not per paper), for
+# table-level assertions like "no orphan rows". Same auto-register pattern: a
+# @global_analysis-decorated function takes the set of paper-dir names and
+# returns one Result.
+GLOBAL_ANALYSES: list = []    # list of (name, description, func)
+
+
+def global_analysis(name: str, description: str):
+    """Decorator: register a whole-corpus check (runs once, gets all dir names)."""
+    def wrap(func):
+        GLOBAL_ANALYSES.append((name, description, func))
+        return func
+    return wrap
+
+
 # Sanctioned exceptions: papers allowed to fail a given analysis, with a reason.
 # An excluded failure is reported as passing (so it does not fail the run), but
 # the reason is recorded in the report. Keep this list short and justified.
@@ -196,6 +211,26 @@ def check_in_readme(d: Path) -> Result:
     return fail("not found in README table", [f"name: {d.name}"])
 
 
+@global_analysis("readme_no_orphan_entries",
+                 "Every paper-dir listed in analysis/README.md's table exists "
+                 "as a directory (no orphan / mistyped rows).")
+def check_readme_orphans(names: set[str]) -> Result:
+    """Reverse of in_readme_table: each backtick-quoted DOI entry has a dir."""
+    import re
+    readme = ANALYSIS_DIR / "README.md"
+    if not readme.is_file():
+        return fail("analysis/README.md not found")
+    # Every paper dir is listed backtick-quoted; keep only the DOI-bearing ones
+    # so prose code spans (e.g. `utils/build_inputs.py`) aren't mistaken for rows.
+    listed = {m for m in re.findall(r"`([^`]+)`", readme.read_text())
+              if "10.1145-" in m}
+    orphans = sorted(listed - names)
+    if orphans:
+        return fail(f"{len(orphans)} table entr(y/ies) with no dir",
+                    [f"orphan: {o}" for o in orphans])
+    return ok("every table entry has a dir")
+
+
 @analysis("paper_json_valid",
           "paper.json exists and is parseable JSON.")
 def check_paper_json(d: Path) -> Result:
@@ -266,24 +301,39 @@ def run(dirs: list[Path]) -> dict[str, dict[str, Result]]:
     return report
 
 
+def run_global(names: set[str]) -> dict[str, Result]:
+    """Run every whole-corpus check once. Returns analysis name -> Result."""
+    out = {}
+    for name, _desc, func in GLOBAL_ANALYSES:
+        try:
+            out[name] = func(names)
+        except Exception as e:
+            out[name] = fail("analysis error", [repr(e)])
+    return out
+
+
 def paper_path(name: str) -> str:
     """Absolute path to a paper dir, so the report links straight to it."""
     return str(ANALYSIS_DIR / name)
 
 
-def to_json(report: dict[str, dict[str, Result]]) -> dict:
+def to_json(report: dict[str, dict[str, Result]],
+            global_results: dict[str, Result]) -> dict:
     """Serialize the report, prefixed with each analysis's description."""
     return {
         "analyses": {name: desc for name, desc, _ in ANALYSES},
+        "global_analyses": {name: desc for name, desc, _ in GLOBAL_ANALYSES},
         "papers": {
             paper: {"path": paper_path(paper),
                     "checks": {name: r.to_dict() for name, r in results.items()}}
             for paper, results in report.items()
         },
+        "global": {name: r.to_dict() for name, r in global_results.items()},
     }
 
 
-def failures_only(report: dict[str, dict[str, Result]]) -> dict:
+def failures_only(report: dict[str, dict[str, Result]],
+                  global_results: dict[str, Result]) -> dict:
     """Same shape as the full report, but only failing analyses / papers."""
     out = {}
     for paper, results in report.items():
@@ -291,6 +341,10 @@ def failures_only(report: dict[str, dict[str, Result]]) -> dict:
                  if not r.passed}
         if fails:
             out[paper] = {"path": paper_path(paper), "checks": fails}
+    global_fails = {name: r.to_dict() for name, r in global_results.items()
+                    if not r.passed}
+    if global_fails:
+        out["__global__"] = {"checks": global_fails}
     return out
 
 
@@ -312,7 +366,8 @@ def matrix_text(report: dict[str, dict[str, Result]]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def print_summary(report, out_dir: Path, failures: dict) -> int:
+def print_summary(report, out_dir: Path,
+                  global_results: dict[str, Result]) -> int:
     """Print the stdout summary; return an exit code (1 if any check failed)."""
     n_papers = len(report)
     n_analyses = len(ANALYSES)
@@ -320,16 +375,19 @@ def print_summary(report, out_dir: Path, failures: dict) -> int:
     n_pass = sum(r.passed for r in all_results)
     n_fail = n_papers * n_analyses - n_pass
     n_excluded = sum(r.excluded is not None for r in all_results)
+    n_global_fail = sum(not r.passed for r in global_results.values())
+    n_papers_failing = sum(any(not r.passed for r in results.values())
+                           for results in report.values())
 
     print("ANALYSIS QA SUMMARY")
     print(f"  papers:    {n_papers}")
     print(f"  analyses:  {n_analyses}")
     print(f"  checks:    {n_papers * n_analyses}  "
           f"(PASS={n_pass}  FAIL={n_fail}  EXCLUDED={n_excluded})")
-    print(f"  papers with failures: {len(failures)}")
+    print(f"  papers with failures: {n_papers_failing}")
 
     print("  by analysis:")
-    namew = max((len(n) for n, _, _ in ANALYSES), default=0)
+    namew = max((len(n) for n, _, _ in ANALYSES + GLOBAL_ANALYSES), default=0)
     for name, _desc, _ in ANALYSES:
         p = sum(report[paper][name].passed for paper in report)
         e = sum(report[paper][name].excluded is not None for paper in report)
@@ -337,10 +395,16 @@ def print_summary(report, out_dir: Path, failures: dict) -> int:
         enote = f"  ({e} excluded)" if e else ""
         print(f"    {name:<{namew}}  {p}/{n_papers}{flag}{enote}")
 
+    if global_results:
+        print("  global checks:")
+        for name, r in global_results.items():
+            status = "ok" if r.passed else "FAIL"
+            print(f"    {name:<{namew}}  {status}  {r.summary}")
+
     print(f"\n  results -> {out_dir}/")
     for f in ("report.json", "failures.json", "matrix.txt"):
         print(f"    {f}")
-    return 1 if n_fail else 0
+    return 1 if (n_fail or n_global_fail) else 0
 
 
 def main():
@@ -351,14 +415,16 @@ def main():
         return 2
 
     report = run(dirs)
-    failures = failures_only(report)
+    global_results = run_global({d.name for d in dirs})
+    failures = failures_only(report, global_results)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / "report.json").write_text(json.dumps(to_json(report), indent=2) + "\n")
+    (OUT_DIR / "report.json").write_text(
+        json.dumps(to_json(report, global_results), indent=2) + "\n")
     (OUT_DIR / "failures.json").write_text(json.dumps(failures, indent=2) + "\n")
     (OUT_DIR / "matrix.txt").write_text(matrix_text(report))
 
-    return print_summary(report, OUT_DIR, failures)
+    return print_summary(report, OUT_DIR, global_results)
 
 
 if __name__ == "__main__":
