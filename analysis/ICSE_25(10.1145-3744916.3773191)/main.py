@@ -2,12 +2,6 @@
 SecureReviewer inference script.
 Calls the LLM for each patch and writes per-example records to outputs/.
 
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {patch, predicted, reference, prompt_sent, raw_response}
 """
 
 import argparse
@@ -28,7 +22,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -78,7 +71,6 @@ def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
 
 LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
 
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 DATASET_FILE = Path(__file__).parent / "dataset" / "test.jsonl"
 
@@ -105,12 +97,10 @@ def load_dataset(n: int):
                 break
     return examples
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, example: dict) -> str:
     return f"{system_prompt}\n\n---\n\npatch:\n{example['patch']}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_review(raw: str) -> Optional[dict]:
     text = raw.strip()
@@ -129,7 +119,6 @@ def parse_review(raw: str) -> Optional[dict]:
                 pass
     return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -185,7 +174,6 @@ def process_example(orig_i: int, ex: dict, prompt_label: str, system_prompt: str
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
