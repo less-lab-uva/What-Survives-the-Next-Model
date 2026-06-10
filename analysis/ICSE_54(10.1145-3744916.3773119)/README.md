@@ -145,8 +145,6 @@ python3 main.py 6.0 stattype
 |---|---|
 | `outputs_A.jsonl` | One JSON line per entry: `entry_name`, `variant`, `partial_code`, `approximated_code`, `type_information`, `dataset`, `timestamp` |
 | `outputs_B.jsonl` | Same for Prompt B |
-| `tokens_A.jsonl` | Token counts, cost, and `duration_seconds` per API call for Prompt A |
-| `tokens_B.jsonl` | Same for Prompt B |
 
 ---
 
@@ -194,7 +192,7 @@ All numbers below are for the **"Data" (DDG-only) column**, evaluated on **n=109
 |---|---|---|---|---|
 | **Ours — Prompt A** (Sonnet 4.6, single call) | 78.7% | 85.4% | 81.9% | 109 |
 | **Ours — Prompt B** (Sonnet 4.6, single call) | 75.4% | 85.2% | 80.0% | 109 |
-| **Original PrePA** (paper, pre-stored PDGs) | 95.9% | 92.0% | 93.9% | 109 |
+| **Original PrePA** (paper, pre-stored PDGs, compatible to Data column) | 95.9% | 92.0% | 93.9% | 109 |
 
 **Total cost:** $3.28 (Sonnet 4.6, 169 entries × 2 prompts)
 
@@ -209,6 +207,5 @@ All numbers below are for the **"Data" (DDG-only) column**, evaluated on **n=109
 **Why our n=109 differs from the paper's n=164:**
 The paper reports results over 164 of 172 entries (8 excluded: 3 no-GT + 1 Joern-fail + 4 empty PDGs). Our evaluation skips 60 additional entries where the GT PDG has no DDG edges whose both endpoints are inside `partial_code`. These entries would produce undefined precision/recall (0/0) and are excluded to avoid distorting the aggregate. The paper likely includes them differently or uses a different pruning definition.
 
-**Metric column mismatch:** The paper's headline Table 1 numbers use "Data+Control" (both DDG and CDG edges). Our evaluator and the paper's `RQ3_eval.py` only score DDG edges ("Data" column). To compare fairly, use the "Data" column values from Table 1, not the headline.
 
 **Joern cache is prompt-specific:** `joern_cache_A.json` and `joern_cache_B.json` are separate so that re-running one prompt never reuses the other's cached Joern results.

@@ -14,17 +14,14 @@
     "Pass@1"
   ],
   "original_result": {
-    "overall": 0.459,
-    "percentage": "45.90%"
+    "Pass@1": 0.459
   },
   "our_result": {
     "prompt_A": {
-      "overall": 0.68,
-      "percentage": "68.00%"
+      "Pass@1": 0.68
     },
     "prompt_B": {
-      "overall": 0.72,
-      "percentage": "72.00%"
+      "Pass@1": 0.72
     }
   },
   "total_cost": "$14.93"

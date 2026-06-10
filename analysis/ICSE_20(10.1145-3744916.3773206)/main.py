@@ -1,13 +1,6 @@
 """
 HoarePrompt inference script.
 Calls the LLM for each example and writes per-example records to outputs/.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {id, source_file, ground_truth, predicted, match, prompt_sent, raw_response}
 """
 
 import argparse
@@ -29,7 +22,7 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
+
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -79,7 +72,6 @@ def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
 
 LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
 
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 DATA_DIR = Path(__file__).parent / "dataset"
 
@@ -114,7 +106,6 @@ def load_dataset(n: int, dataset_file: Optional[Path] = None):
                 return examples
     return examples
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, example: dict) -> str:
     user_block = (
@@ -123,7 +114,6 @@ def build_prompt(system_prompt: str, example: dict) -> str:
     )
     return f"{system_prompt}\n\n---\n\n{user_block}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_verdict(raw: str) -> Optional[str]:
     text = raw.strip()
@@ -147,7 +137,6 @@ def parse_verdict(raw: str) -> Optional[str]:
             return word
     return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -201,7 +190,6 @@ def process_example(ex: dict, system_prompt: str, call_fn, model_arg: Optional[s
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
