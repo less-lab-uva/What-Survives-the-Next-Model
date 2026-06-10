@@ -201,7 +201,7 @@ def compute_dataset_result(entries, groundtruth, dataset_name):
             if n == total_rows else
             f"Partial evaluation ({n}/{total_rows} rows). "
             "PA is reliable on partial data. "
-            "PTA/RTA/GA require full dataset for comparison with paper."
+            "PTA/RTA/GA require full dataset for reliable comparison with paper."
         ),
         "metrics": {
             "PA":  round(pa,  6),
