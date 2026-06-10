@@ -461,14 +461,15 @@ def print_summary(report, out_dir: Path,
           f"(PASS={n_pass}  FAIL={n_fail}  EXCLUDED={n_excluded})")
     print(f"  papers with failures: {n_papers_failing}")
 
-    print("  by analysis:")
+    print("  by analysis (pass / fail of {} papers):".format(n_papers))
     namew = max((len(n) for n, _, _ in ANALYSES + GLOBAL_ANALYSES), default=0)
     for name, _desc, _ in ANALYSES:
         p = sum(report[paper][name].passed for paper in report)
         e = sum(report[paper][name].excluded is not None for paper in report)
-        flag = "" if p == n_papers else "  <-- failing"
+        flag = "  <-- has failures" if p < n_papers else ""
         enote = f"  ({e} excluded)" if e else ""
-        print(f"    {name:<{namew}}  {p}/{n_papers}{flag}{enote}")
+        print(f"    {name:<{namew}}  pass {p:>2}  fail {n_papers - p:>2}"
+              f"{enote}{flag}")
 
     if global_results:
         print("  global checks:")
