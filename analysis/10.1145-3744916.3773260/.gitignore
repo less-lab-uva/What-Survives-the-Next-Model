@@ -3,5 +3,5 @@ __pycache__/
 *.pyc
 .venv/
 
-# regenerated each run
-outputs/tokens_*.txt
+# per-call logs, usage summaries, failures (regenerated each run)
+/logs/
