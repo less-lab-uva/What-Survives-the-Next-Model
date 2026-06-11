@@ -19,7 +19,7 @@
 | [`ICSE_38(10.1145-3744916.3787821)`](./ICSE_38(10.1145-3744916.3787821)) | ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction |
 | [`ICSE_42(10.1145-3744916.3773144)`](./ICSE_42(10.1145-3744916.3773144)) | AdapTrack: Constrained Decoding without Distorting LLM's Output Intent |
 | [`ICSE_52(10.1145-3744916.3764553)`](./ICSE_52(10.1145-3744916.3764553)) | LLM Test Generation via Iterative Hybrid Program Analysis |
-| [`ICSE_56(10.1145-3744916.3773229)`](./ICSE_56(10.1145-3744916.3773229)) | ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale |
+| [`ICSE_156(10.1145-3744916.3773229)`](./ICSE_156(10.1145-3744916.3773229)) | ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale |
 | [`ICSE_66(10.1145-3744916.3773227)`](./ICSE_66(10.1145-3744916.3773227)) | Unlocking LLM Repair Capabilities Through Cross-Language Translation and Multi-Agent Refinement |
 | [`ICSE_70(10.1145-3744916.3773158)`](./ICSE_70(10.1145-3744916.3773158)/) | LLM-based API Argument Completion with Knowledge-Augmented Prompts |
 | [`ICSE_73(10.1145-3744916.3773255)`](./ICSE_73(10.1145-3744916.3773255)/) | From Code to Correctness: Closing the Last Mile of Code Generation with Hierarchical Debugging |
