@@ -104,10 +104,15 @@ python3 main.py B us
 `main.py` reads:
 
 ```text
-prompts/prompt_A.txt
-prompts/prompt_B.txt
+prompts/prompt_A_<dataset>.txt
+prompts/prompt_B_<dataset>.txt
 dataset/<dataset>.jsonl
 ```
+
+For example, `python3 main.py B rac` reads `prompts/prompt_B_rac.txt`.
+The generic `prompt_A.txt` and `prompt_B.txt` files are kept only as base
+templates; the actual runs use the dataset-specific prompt files.
+Dataset-specific prompts are used because the six datasets follow different requirement and annotation styles, so each run needs examples from the same dataset family.
 
 It runs the full selected dataset with seed 42. Cached rows are loaded from the existing output file by `task_id`, so rerunning the same prompt and dataset does not call the LLM again for already generated rows.
 

@@ -1,0 +1,122 @@
+{
+  "bp": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "1.\tCreating Master Data Directly in the System0.\tLoad the data. Creating Master Data Directly in the System1.\tLoading Master Data for Characteristic \"Product\"2.\tLoading Transaction Data3.\tDene a query that is used as the basis for a Web application and allows for an ad-hoc analysis of the data in the Web.4.\tYou create the query in the following step:5.\tDening Queries6.\tCreate a Web application with navigation options and functions, such as printing based on the query.7.\tYou create the Web application in the following step:8.\tCreating Web Applications9.\tAnalyze the data in the Web application, add comments to it, and broadcast it by E-mail to other employees.10.\tYou analyze and broadcast the data in the following steps:11.\tAnalyzing Data in the Web Application12.\tBroadcasting Web Applications by E-Mail"
+        },
+        "outputs": {
+          "plantuml": "start\n\n:Load Master Data;\n:Load Transaction Data;\n\n:Dene a query;\n\nnote right\n  Basis for a Web application\n  Allow ad-hoc analysis of Web data\nend note\n\n:Create Web Applications;\n:Analyze data;\n:Add comments to data;\n:Broadcast the data by E-mail to other employees;\n\nstop"
+        }
+      },
+      {
+        "inputs": {
+          "content": "2.\tLog onto the BI system1.\tLog onto the BI system with a user that has sufficient authorizations for executing the scenario.2.\tStart the Data Warehousing Workbench in the SAP menu by choosing Modeling Data Warehousing Workbench: Modeling.3.\tUnder Modeling, choose Info  Objects. The Info  Object tree is displayed.4.\tFrom the context menu at the root node Info Objects of the Info Object tree, choose Create Info Area.5.\tOn the next screen, enter a technical name and a description for the Info Area. The Info Area is displayed in the Info Object tree.6.\tIt is used to group your Info Objects.7.\tIn the context menu of the Info Area, choose Create Info Object Catalog.8.\tOn the next screen, enter a technical name and description, and select Key Figure as the Info Object Type.9.\tChoose Create9. Activate the Info Object catalog.10.\tThe Info Object catalog is displayed in your Info Area.11.\tIt is used to group your key gures.12.\tPerform the following procedures to create each of the key gures Revenue ,Quantity and Price"
+        },
+        "outputs": {
+          "plantuml": "start\nif (User authorizations are sufficient?) then (no)\n  stop\nelse (yes)\n:Log in;\n:Choose Modeling Data Warehousing Workbench: Modeling;\n:Data Warehousing Workbench is started;\n:Choose \"Info Objects\";\n:Info Object tree is displayed;\n:Open root node context menu;\n:Choose \"Create Info Area\";\n\nfork\n  :Enter a technical name;\nfork again\n  :Enter a description;\nend fork\n\n:Info Area is displayed;\n\nnote right\nGroup Info Objects\nend note\n\n:Open Info Area context menu;\n:Choose \"Create Info Object Catalog\";\n\nfork\n  :Enter a technical name;\nfork again\n  :Enter a description;\nend fork\n\n:Select \"Key Figure\";\n:Choose \"Create\";\n:Activate Info Object Catalog;\n:Info Object catalog is displayed;\n\nnote right\nGroup key figures\nend note\n\nfork\n  :Create Revenue;\nfork again\n  :Create Quantity;\nfork again\n  :Create Price;\nend fork\n\nstop"
+        }
+      }
+    ]
+  },
+  "fsd": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "The thermal management controller executes as a state machine on the RTOS, governing PWM fans and a liquid-cooling loop. A temperature sensor ISR, triggered when the external ambient exceeds a set threshold, initiates a data validation sequence; if the primary sensor reading is deemed erroneous, the system fails over to a redundant sensor path. Upon confirmed over-temperature from either sensor, the controller activates multiple PWM fans, managed by a priority-based task, while a separate periodic task, driven by a timer interrupt, monitors the thermal trajectory. If the temperature fails to descend within a defined window, a higher-priority task initializes the liquid-cooling loop to augment heat dissipation. Throughout this controlled cool-down path, the system continuously polls for temperature fluctuations until values re-enter the safe operating range. All operational data, including fault events managed with a bounded retry and exponential backoff strategy, are logged to a ring buffer for subsequent analysis and service report generation. Concurrently, the telemetry monitor executes in its own timed loop, and sensor fusion and calibration routines run periodically to maintain system integrity."
+        },
+        "outputs": {
+          "plantuml": "@startuml\nstart\n\n:Thermal management controller executes as state machine on RTOS;\nfork\n:Govern PWM fans;\nfork again\n:Govern liquid-cooling loop;\nend fork\n\nif(External ambient exceeds set threshold?) then(yes)\n:Temperature sensor ISR triggered;\n:Initiate data validation sequence;\nelse (no)\nendif\n\nif (Primary sensor reading erroneous?) then(yes)\n:Fail over to redundant sensor path;\nelse (no)\nendif\n\nif(Sensor over-temperature confirmed?) then(yes)\nfork\n:Priority-based task manages;\n:Activate multiple PWM fans;\nfork again\n:Timer interrupt drives periodic task;\n:Monitor thermal trajectory;\nend fork\n  \n  if (Temperature descends?) then(no)\n    :Higher-priority task initializes liquid-cooling loop;\n    :Augment heat dissipation;\n  else (yes)\n  endif\n \nrepeat \n:Poll for temperature fluctuations;\nrepeat while(Values re-enter safe operating range) is(no)\n\nelse (no)\nendif\n\nfork\n\n:Log data to ring buffer;\nfork\n:Operational data;\nfork again\n:Fault events;\nend fork\n\n:Analysis and service report generation;\n\nfork again\n:Telemetry monitor executes in timed loop;\nfork again\n:Sensor fusion and calibration routines run periodically;\nend fork\n\n:Maintain system integrity;\n\nstop\n@enduml"
+        }
+      },
+      {
+        "inputs": {
+          "content": "Operating as a deterministic state machine within the RTOS, the thermal management controller regulates PWM fans and liquid-cooling pumps. Upon an over-temperature event from an external sensor, the system initiates a multi-tiered safety protocol: an ISR first validates the sensor's calibration status and data CRC, immediately dispatching a high-priority alarm via a CAN bus if an anomaly is detected. Concurrently, a lower-priority task manages the buffering of telemetry data into a non-blocking ring buffer, which iterates until all samples are secured, while a separate, real-time task handles uplink transmission. Following this, a sensor fusion algorithm performs multi-parameter environmental analysis; if the results meet predefined fault conditions, the system spawns concurrent tasks for logging—executed in a cyclic fashion to ensure a complete audit trail—and for status updates protected by a mutex. The sequence culminates in a security state evaluation, FADEC-style control command generation, and operational feedback confirmation, ensuring processing integrity. All sensor fusion and calibration routines execute periodically, and persistent out-of-range readings engage hardware redundancy and a controlled cool-down sequence managed by the BMS/PMIC, with a watchdog timer enforcing liveness."
+        },
+        "outputs": {
+          "plantuml": "@startuml\nstart\n\n:Thermal management controller operates as state machine in RTOS;\nfork\n:Regulate PWM fans;\nfork again\n:Regulate liquid-cooling loop;\nend fork\n\nif(External sensor over-temperature?) then(yes)\n  :Initiates multi-tiered safety protocol;\n  fork\n    :ISR validates calibration status and data CRC;\n    if(Detect anomaly?) then(yes)\n      :Dispatch high-priority alarm via CAN bus;\n    else(no)\n    end if\n  fork again\n    repeat\n    :Manage buffering of telemetry data into non-blocking ring buffer;\n    repeat while(All samples secured?) is(no)\n  fork again\n    :Handle uplink transmission;\n  end fork\n\n  :Fusion algorithm performs multi-parameter environmental analysis;\n\n  if(Results meet predefined fault conditions?) then(yes)\n    :Spawn concurrent tasks;\n    fork\n      :Logging—executed in cyclic fashion;\n      :Ensure complete audit trail;\n    fork again\n      :Status updates protected by mutex;\n    end fork\n  else(no)\n  end if\n\n  fork\n    :Security state evaluation;\n  fork again\n    :FADEC-style control command generation;\n  fork again\n    :Operational feedback confirmation;\n  end fork\n\n  :Sequence culminates;\n  :Ensure processing integrity;\n\n  :Sensor fusion and calibration routines execute periodically;\n  if(Persistent out-of-range readings?) then(yes)\n    :Engage;\n    fork\n      :Hardware redundancy;\n    fork again\n      :Controlled cool-down sequence;\n    fork again\n      :Watchdog timer enforce liveness;\n    end fork\n  else(no)\n  end if\n\nelse(no)\nend if\n\nstop\n\n@enduml"
+        }
+      }
+    ]
+  },
+  "lmc": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "[RM-001] In the no-fail state, a mis-compare, which shall be characterized by one branch differing with the other two branches by a unique trip level that lasts for more than the persistence limit, shall be reported to failure management as a failure."
+        },
+        "outputs": {
+          "plantuml": "start\n\n:In no-fail state;\nif(One branch differing with the other two branches by a unique trip level?) then(yes)\n if(Last for more than persistence limit?) then(yes)\n :It is mis-compare;\n :Reported it to failure management as a failure;\n else(no)\n endif\nelse(no)\nendif\n\nstop"
+        }
+      },
+      {
+        "inputs": {
+          "content": "[RM-002] In the no-fail state, the mid-value shall be the selected value.  Note: a first failure in progress will not affect the method for determining the selected value."
+        },
+        "outputs": {
+          "plantuml": "start\n\n:In no-fail state;\n:Mid-value be selected value;\n\nif(A first failure in progress?) then(yes)\n:Not affect method for determining selected value;\nelse(no)\nendif\n\nstop"
+        }
+      }
+    ]
+  },
+  "pure": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "[Grid Planning Steps] Step 1: The CAISO determines the amount and location of Black Start Generation through contingency studies. Step 2: The CAISO annually verifies the number, size, availability, and location of Black Start units.Step 3: The CAISO documents Cranking Paths and provides them to WECC upon request.Step 4: The CAISO evaluates diverse fuel resources, cranking paths, communication, unit capabilities, and coordination with neighboring plans.Step 5: The planning process is coordinated with transmission owners and neighboring Balancing Authorities.Step 6: The CAISO annually enters into RMR and Interim Black Start Contracts with qualified generators."
+        },
+        "outputs": {
+          "plantuml": "start\n\n:Conduct contingency studies;\n:Determine amount and location of Black Start Generation;\n:Verify Black Start units annually;\n\nfork\n:Number;\nfork again\n:Size;\nfork again\n:Availability;\nfork again\n:Location;\nend fork\n\n:Document Cranking Paths;\n:Provide to WECC upon request;\n:Evaluate;\n\nfork\n:Diverse fuel resources;\nfork again\n:Cranking paths;\nfork again\n:Communication;\nfork again\n:Unit capabilities;\nfork again\n:Coordination with neighboring plans;\nend fork\n\n:Coordinate planning process;\nfork\n:With transmission owners;\nfork again\n:With neighboring Balancing Authorities;\nend fork\n\n:Enter into Contracts with qualified generators annually;\nfork\n:RMR;\nfork again\n:Interim Black Start;\nend fork\n\nstop"
+        }
+      },
+      {
+        "inputs": {
+          "content": "Generator Unit Testing Steps (Minimal Requirements)Step 1: Owners of Voluntary Black Start units must demonstrate capability every five years, submit documentation, and notify the CAISO of test results.Step 2: Testing records must include dates, duration, and compliance with requirements.Step 3: Units must maintain voltage within emergency limits.Step 4: Units must have governors capable of isochronous mode.Step 5: Adequate transmission capacity must be available.Step 6: Units must start and energize transmission paths without external assistance.Step 7: Tests should include key operating aids like telephone communications and SCADA.Step 8: Start-up/synchronizing time limits apply based on unit type (e.g., hydro within 30 minutes).Step 9: Minimum run time duration is 10 minutes.Step 10: Submit a CAISO market schedule for test energy."
+        },
+        "outputs": {
+          "plantuml": "start\n\n:Demonstrate capability every five years;\n:Submit documentation;;\n:Notify CAISO of test results;\n\n:Testing records;\nfork\n:Include dates;\nfork again\n:Include duration;\nfork again\n:Compliance with requirements;\nend fork\n\n:Units requirments;\nfork\n:Maintain voltage within emergency limits;\nfork again\n:Have isochronous mode governors;\nfork again\n:Adequate transmission capacity;\nfork again\n:Without external assistance;\n:Start and energize transmission paths;\nend fork\n\n:Tests requirments;\nfork\n:Include key operating aids;\nfork again\n:Start-up/synchronizing time limits apply based on unit type;\nfork again\n:Minimum run time duration 10 minutes;\nend fork\n\n:Submit CAISO test energy market schedule;\n\nstop"
+        }
+      }
+    ]
+  },
+  "rac": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "Once the system starts up, it checks the vehicle's status value first.\n\nIf the status is greater than 9 but less than 28, or greater than 30 but 49 or less, the system sets the instantaneous driving mileage gradient to 0 and ends.\n\nFor a status of 28, 29, or 30, the system transitions to a new state and sets the instantaneous driving mileage to 10. After this state change, it performs additional checks:\n\n*   If the current stays between -Current Threshold A and Current Threshold A, the system sets the instantaneous driving mileage gradient to 0 and ends.\n*   If the vehicle speed exceeds the speed threshold (kph), the system enters a new state and resets the cumulative discharge distance to 0. Should the energy recovery mileage then exceed 1, it transitions to another state, resets the energy recovery mileage to 0, and ends.\n*   When the cumulative discharge distance is less than the energy recovery mileage, the system moves to a new state and sets the instantaneous driving mileage gradient to 0.\n*   If the vehicle speed is below the speed threshold (kph), the system enters a new state and uses call() to get the cumulative discharge distance. If this distance exceeds 0.1, it transitions to another state, calculates the gradient as (cumulative discharge distance × driving error correction coefficient ÷ 2), and ends.\n*   When the vehicle speed exceeds the speed threshold (kph), the system checks if the instantaneous discharge mileage exceeds the instantaneous driving mileage. If true, it transitions to a new state, sets the gradient to (instantaneous discharge mileage × error correction coefficient), and ends. If false, it enters another state, sets the gradient to (instantaneous driving mileage × error correction coefficient), and ends."
+        },
+        "outputs": {
+          "plantuml": "start\nswitch(initial judgement)\ncase (vehicle status > 9 and < 28) or (vehicle status > 30 and <= 49)\n  :set instantaneous driving mileage gradient to 0;\n  stop\ncase (vehicle status == 28 or 29 or 30)\n  :switch to new state;\n  :set instantaneous driving mileage to 10;\n  if (current > -Current Threshold A and < Current Threshold A) then\n    :set instantaneous driving mileage gradient to 0;\n    stop\n  else if (vehicle speed > speed threshold (kph)) then(yes)\n    :switch to new state;\n    :reset cumulative discharge distance to 0;\n    if (energy recovery mileage >1) then\n      :switch to new state;\n      :reset energy recovery mileage to 0;\n      stop\n    else\n      stop\n    end if\n  else if (cumulative discharge distance < energy recovery mileage) then\n    :switch to new state;\n    :set instantaneous driving mileage gradient to 0;\n    stop\n  else if (vehicle speed < speed threshold (kph)) then\n    :enter new state;\n    :query cumulative discharge distance;\n    if (cumulative discharge distance >0.1?) then(yes)\n      :switch to new state;\n      :set instantaneous driving mileage gradient = cumulative discharge distance * driving error correction coefficient /2;\n      stop\n    else \n      stop\n    end if\n  else(vehicle speed > speed threshold (kph))\n    if (instantaneous discharge mileage > instantaneous driving mileage?) then(yes)\n      :switch to new state;\n      :set instantaneous driving mileage gradient = instantaneous discharge mileage * error correction coefficient;\n      stop\n    else(no)\n      :switch to another state;\n      :set instantaneous driving mileage gradient = instantaneous driving mileage * error correction coefficient;\n      stop"
+        }
+      },
+      {
+        "inputs": {
+          "content": "After the system starts up, the process begins by checking the gear position. If the gear is in D or N, the D_S gear mileage parameter is set to 1, and the sequence ends. If the gear is in S, the D_S gear mileage parameter is calculated as S gear nominal mileage divided by D gear nominal mileage, then the process concludes. Additionally, if the vehicle status is 30, switch to driving mode. Next, if the gear is in D or E, set the D_S gear mileage parameter to S gear nominal mileage divided by D gear nominal mileage, and end. Finally, if the gear is in N or R, observe using the D_S gear mileage parameter and terminate the process."
+        },
+        "outputs": {
+          "plantuml": "start\nif (gear is D or N) then\n  :set D_S gear mileage parameter to 1;\n  stop\nelse if (gear is S) then\n  :set D_S gear mileage parameter = S gear nominal mileage / D gear nominal mileage;\n  stop\nelse if (vehicle status is 30) then\n  :switch to driving mode;\n  switch(gear check)\n  case(gear is D or E)\n    :set D_S gear mileage parameter = S gear nominal mileage / D gear nominal mileage;\n    stop\n  case(gear is N or R)\n    :observe using D_S gear mileage parameter;\n    stop\n  endswitch\nendif  \nend"
+        }
+      }
+    ]
+  },
+  "us": {
+    "examples": [
+      {
+        "inputs": {
+          "content": "As a broker team member, I want to make some updates to the SQL codes for clarity."
+        },
+        "outputs": {
+          "plantuml": "start\n:Make updates to SQL codes;\nstop"
+        }
+      },
+      {
+        "inputs": {
+          "content": "As a Data user, I want to have the 12-19-2017 deletions processed."
+        },
+        "outputs": {
+          "plantuml": "start\n:Process 12-19-2017 deletions;\nstop"
+        }
+      }
+    ]
+  }
+}

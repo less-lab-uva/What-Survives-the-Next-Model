@@ -3,9 +3,9 @@ Dataset          : lmc
 Model             : claude-sonnet-4-6
 Dataset rows     : 56
 Instances run    : 56
-Cached instances : 6
-New LLM calls    : 50
+Cached instances : 0
+New LLM calls    : 56
 Sampling fraction: 1
 Random seed      : 42
-Total input tok  : 51080
-Total output tok : 5998
+Total input tok  : 55485
+Total output tok : 6129
