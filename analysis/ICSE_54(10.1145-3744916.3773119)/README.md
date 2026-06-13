@@ -112,7 +112,7 @@ The `dataset/` directory is **already included** in this repository. No download
 
 The file `dataset/Stattype_res.json` (169 entries) comes from the original PrePA / ΛMDA paper artefact:
 
-> **PrePA (ΛMDA)** — [https://anonymous.4open.science/r/PrePA-7157/](https://anonymous.4open.science/r/PrePA-7157/) (anonymous review artefact)
+> **PrePA (ΛMDA)** — [https://anonymous.4open.science/r/PrePA-7157/](https://anonymous.4open.science/r/PrePA-7157/) (anonymous review artifact)
 
 It contains 172 Java partial-code snippets from StackOverflow (the StatType-SO benchmark), each with pre-stored ground-truth PDG results and the original pipeline's LLM-generated approximations (`PrePA_code_res`). The 3 entries without a valid ground-truth PDG (`Android14`, `gwt_class_39`, `xstream_class_35`) are excluded by `main.py` at load time, leaving 169 eligible entries.
 
