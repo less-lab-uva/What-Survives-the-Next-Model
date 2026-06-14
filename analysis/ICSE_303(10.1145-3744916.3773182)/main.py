@@ -127,8 +127,8 @@ def _load_from_csvs() -> list:
     return samples
 
 
-def build_prompt(system_prompt: str, commit_message: str, diff: str) -> str:
-    user_block = json.dumps({"commit_message": commit_message, "diff": diff}, indent=2)
+def build_prompt(system_prompt: str, diff: str) -> str:
+    user_block = json.dumps({"diff": diff}, indent=2)
     return f"{system_prompt}\n\n---\n\n{user_block}"
 
 
@@ -195,7 +195,7 @@ def process_example(sample: dict, prompt_label: str, system_prompt: str,
             }
         commit_message, diff = result
 
-    prompt = build_prompt(system_prompt, commit_message, diff)
+    prompt = build_prompt(system_prompt, diff)
     raw = ""
     llm_response_time = 0.0
     predicted = None
