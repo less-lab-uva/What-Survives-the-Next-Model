@@ -41,7 +41,7 @@ DATASET_DIR   = Path(__file__).parent / "dataset"
 BICS_CSV      = DATASET_DIR / "280BICs.csv"
 BFCS_CSV      = DATASET_DIR / "2800BFCs.csv"
 DATASET_JSONL = DATASET_DIR / "dataset.jsonl"
-MAX_DIFF_CHARS = 12000
+MAX_DIFF_CHARS = 15000
 
 
 def fetch_commit_diff(owner_repo: str, sha: str, retries: int = 3) -> Optional[tuple]:
