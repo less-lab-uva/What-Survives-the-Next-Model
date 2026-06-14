@@ -3,7 +3,7 @@
   "doi": "10.1145/3744916.3773143",
   "venue": "ICSE 2026",
   "summary": [
-    "The original EnsLLM pipeline generates multiple code solutions via an ensemble of LLM calls and selects the best candidate using embedding-based similarity scoring, evaluated on HumanEval and LiveCodeBench.",
+    "The original EnsLLM pipeline generates multiple code solutions via an ensemble of LLM calls and selects the best candidate using similarity scoring, evaluated on HumanEval and LiveCodeBench.",
     "This reproduction replaces the ensemble selection pipeline with single-call code generation prompts over sampled problems from both benchmarks."
   ],
   "dataset": {
