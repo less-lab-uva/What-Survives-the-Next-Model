@@ -1,14 +1,3 @@
-"""
-VulTrial evaluator.
-Reads outputs JSONL from main.py and computes individual + pair-level metrics.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import math
@@ -37,10 +26,6 @@ def compute_metrics(records):
     pc = pv = pb = pr = pair_count = 0
     unpaired = 0
     for cid, group in pairs.items():
-        # Records are appended in whatever order worker threads finished (main.py
-        # writes via a thread pool), not in dataset order. Re-sort by each example's
-        # original dataset position so consecutive entries form the true
-        # vulnerable/fixed pairs that primevul_test_paired.jsonl encodes.
         group = sorted(group, key=lambda r: r.get("order", 0))
         for i in range(0, len(group) - 1, 2):
             r1, r2 = group[i], group[i+1]

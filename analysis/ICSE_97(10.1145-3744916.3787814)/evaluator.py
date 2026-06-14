@@ -1,14 +1,3 @@
-"""
-FoundRoot evaluator.
-Reads outputs JSONL from main.py and computes Top-1, Top-3, MRR per dataset and overall.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import re
@@ -18,11 +7,6 @@ DATA_DIR = Path(__file__).parent / "dataset"
 
 
 def _load_ground_truth(datasets: list) -> dict:
-    """Load {(dataset, case_idx): {"ground_truth": [...], "all_components": [...]}}
-    straight from dataset/{ds}/test.jsonl, so scoring is always against the
-    canonical source rather than whatever main.py happened to embed in the
-    output record (which can carry a non-deterministic component order — see
-    the set() round-trip in main.py's process_example)."""
     gt = {}
     for ds in datasets:
         path = DATA_DIR / ds / "test.jsonl"
@@ -48,15 +32,6 @@ def _normalize(name: str) -> str:
 
 
 def _resolve_component(pred_comp: str, all_components: list) -> str:
-    """Resolve a predicted component name to its canonical entry in all_components.
-
-    Tries an exact normalized match first — that's unambiguous and should cover
-    the common case. Only falls back to substring containment when no exact
-    match exists, and among substring matches picks the candidate whose
-    normalized name is closest in length to the prediction (the "tightest" fit).
-    This avoids a short/generic prediction arbitrarily latching onto whichever
-    differently-sized candidate happens to come first in all_components.
-    """
     norm_pred = _normalize(pred_comp)
     if not norm_pred:
         return "Unknown"

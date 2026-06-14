@@ -1,15 +1,3 @@
-"""
-TestWeaver evaluator.
-Reads outputs JSONL from main.py, measures line and branch coverage for each set of generated
-tests, and reports aggregate coverage metrics.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N] [--timeout T]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import os
@@ -21,9 +9,6 @@ from typing import Optional
 
 
 def _count_meaningful_lines(code: str) -> list:
-    """Count physical lines that slipcover would count as executable: every
-    non-blank line except comments, docstrings, decorators, bare `pass`/`return`,
-    bracket-only lines, and continuation lines of a preceding statement."""
     lines = code.split("\n")
     line_numbers = []
     for i, line in enumerate(lines):
@@ -61,11 +46,6 @@ def measure_coverage(tests: list, source_file_abs: Path, package_root: Optional[
     if package_root:
         env["PYTHONPATH"] = str(package_root) + os.pathsep + env.get("PYTHONPATH", "")
 
-    # Line and branch coverage via slipcover, running all generated tests together
-    # so coverage accumulates across the whole suite in a single run. (We can't use
-    # the paper's run_evolution123 harness here: it always invokes a synthetic
-    # `test_{func_name}()`, but our prompts ask the LLM for self-contained pytest
-    # functions with their own arbitrary names, so that call would never resolve.)
     lines_covered = 0
     total_lines = 0
     branches_covered = 0
@@ -93,8 +73,6 @@ def measure_coverage(tests: list, source_file_abs: Path, package_root: Optional[
             if sc_json.exists():
                 data = json.loads(sc_json.read_text())
                 for fname, fdata in data.get("files", {}).items():
-                    # `fname` in slipcover's report is relative to the subprocess's cwd
-                    # (run_cwd), not to this evaluator's cwd — resolve it accordingly.
                     if (run_cwd / fname).resolve() == source_file_abs.resolve():
                         executed_lines = set(fdata.get("executed_lines", []))
                         missing_lines = set(fdata.get("missing_lines", []))
@@ -146,10 +124,6 @@ def evaluate_prompt(prompt_label: str, n: Optional[int], timeout: int):
     for i, rec in enumerate(records):
         print(f"\n[{i+1}/{len(records)}] {rec['id']}")
         source_file_abs = Path(rec["source_file_abs"])
-        # Derive package_root from source_file_abs (not from this script's own
-        # CODAMOSA_BASE): outputs_*.jsonl may have been generated against a
-        # different physical checkout of the dataset than the one bundled here,
-        # and slipcover/pytest must import the exact same file it measures.
         source_file_rel = Path(rec["source_file"])
         repo_dir = source_file_abs.parents[len(source_file_rel.parts) - 1]
         package_root = repo_dir / "codamosa" / "replication" / rec["d"]

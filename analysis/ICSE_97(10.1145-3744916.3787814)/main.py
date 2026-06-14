@@ -1,21 +1,6 @@
-"""
-FoundRoot inference script.
-Calls the LLM for each root-cause analysis case and writes per-example records to outputs/.
-Includes ground_truth in each record for convenience; evaluator.py re-derives ground_truth
-and all_components straight from dataset/ to keep scoring deterministic and authoritative.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--datasets A,B,C,D] [--model MODEL] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {dataset, case_idx, ground_truth, predicted, prompt_sent, raw_response}
-"""
-
 import argparse
 import concurrent.futures
 import json
-import os
 import random
 import re
 import sys
@@ -32,7 +17,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -46,43 +30,8 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
+LLM_DISPATCH = {"claude": call_claude}
 
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 DATA_DIR = Path(__file__).parent / "dataset"
 
@@ -102,12 +51,10 @@ def load_test_cases(datasets: list) -> list:
         print(f"  Dataset {ds}: {len(ds_cases)} test cases loaded")
     return cases
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, case: dict) -> str:
     return f"{system_prompt}\n\n---\n\n{case['problem']}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_answer(raw: str) -> Optional[dict]:
     text = raw.strip()
@@ -115,20 +62,23 @@ def parse_answer(raw: str) -> Optional[dict]:
     if m:
         text = m.group(1).strip()
     text = text.replace("```json", "").replace("```", "").strip()
-    start = text.find("{")
-    end = text.rfind("}") + 1
-    if start != -1 and end > start:
-        text = text[start:end]
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        text_fixed = re.sub(r",\s*([}\]])", r"\1", text)
-        try:
-            return json.loads(text_fixed)
-        except json.JSONDecodeError:
-            return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
+    decoder = json.JSONDecoder()
+    for idx, ch in enumerate(text):
+        if ch != "{":
+            continue
+        try:
+            obj, _ = decoder.raw_decode(text, idx)
+        except json.JSONDecodeError:
+            try:
+                fixed = re.sub(r",\s*([}\]])", r"\1", text[idx:])
+                obj = json.loads(fixed)
+            except json.JSONDecodeError:
+                continue
+        if isinstance(obj, dict) and "rank_list" in obj:
+            return obj
+    return None
+
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -179,11 +129,10 @@ def process_example(case: dict, prompt_label: str, system_prompt: str,
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm",      choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm",      choices=["claude"], default="claude")
     parser.add_argument("--prompt",   choices=["A", "B", "both"], required=True)
     parser.add_argument("--n",        type=int, default=5)
     parser.add_argument("--datasets", type=str, default="A,B,C,D")

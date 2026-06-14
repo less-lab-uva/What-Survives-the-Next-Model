@@ -1,15 +1,3 @@
-"""
-ReduceFix evaluator.
-Reads outputs JSONL from main.py, compiles each fixed_code, runs it against the
-full test suite in lftbench/tests/, and reports pass@1.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import subprocess
@@ -21,15 +9,13 @@ LFTBENCH = Path(__file__).parent / "dataset" / "lftbench"
 
 
 def problem_test_dir(problem_id: str) -> Optional[Path]:
-    """Map e.g. 'abc367d' -> lftbench/tests/abc367/D/"""
-    contest = problem_id[:-1]   # abc367
-    letter  = problem_id[-1].upper()  # D
+    contest = problem_id[:-1]
+    letter  = problem_id[-1].upper()
     d = LFTBENCH / "tests" / contest / letter
     return d if d.is_dir() else None
 
 
 def load_test_suite(problem_id: str) -> list:
-    """Return list of (input_text, expected_output_text) from the full test suite."""
     test_dir = problem_test_dir(problem_id)
     if test_dir is None:
         return []
@@ -93,7 +79,6 @@ def _normalize(output: str) -> str:
 
 
 def evaluate_fixed_code(fixed_code: str, test_cases: list) -> dict:
-    """test_cases: list of (input_text, expected_output_text). Stops on first failure."""
     binary = compile_cpp(fixed_code)
     if binary is None:
         return {"compiled": False, "passed": 0, "total": len(test_cases)}

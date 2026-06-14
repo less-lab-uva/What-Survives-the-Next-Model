@@ -1,14 +1,3 @@
-"""
-HoarePrompt evaluator.
-Reads outputs JSONL produced by main.py and computes classification metrics.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import math
@@ -26,8 +15,8 @@ def compute_metrics(records):
     accuracy = (tp + tn) / n
     tpr = tp / (tp + fn) if (tp + fn) > 0 else 0.0
     tnr = tn / (tn + fp) if (tn + fp) > 0 else 0.0
-    fnr = fn / (fn + tp) if (fn + tp) > 0 else 0.0  # miss rate
-    fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0  # fall-out
+    fnr = fn / (fn + tp) if (fn + tp) > 0 else 0.0
+    fpr = fp / (fp + tn) if (fp + tn) > 0 else 0.0
     balanced_acc = (tpr + tnr) / 2
     denom = math.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
     mcc = ((tp * tn) - (fp * fn)) / denom if denom != 0 else 0.0

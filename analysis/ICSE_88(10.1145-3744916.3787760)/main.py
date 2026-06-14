@@ -1,22 +1,6 @@
-"""
-ReduceFix inference script.
-Calls the LLM for each buggy submission and writes per-example records to outputs/.
-The output includes fixed_code and all_samples so evaluator.py can compile and test without
-re-loading the dataset.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {submission_id, problem_id, failing_input, wa_output, expected_output,
-              all_samples, fixed_code, prompt_sent, raw_response}
-"""
-
 import argparse
 import concurrent.futures
 import json
-import os
 import random
 import re
 import subprocess
@@ -35,7 +19,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -49,43 +32,8 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
+LLM_DISPATCH = {"claude": call_claude}
 
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 MAX_CONTEXT_TOKENS = 200_000
 CHARS_PER_TOKEN    = 3.5
@@ -129,8 +77,6 @@ def run_binary(binary: Path, stdin_text: str, timeout: int = 5) -> Optional[str]
 
 
 def scan_eligible(problems_index: dict) -> list:
-    """Scan all submissions and return metadata for those whose prompt fits in the
-    context window. No compilation — fast metadata-only pass."""
     eligible = []
     with open(SUBS_JSONL) as f:
         for line in f:
@@ -167,7 +113,6 @@ def scan_eligible(problems_index: dict) -> list:
 
 
 def compile_example(item: dict) -> dict:
-    """Compile WA and AC binaries for one eligible item; return the full example dict."""
     wa_code       = Path(item["wa_path"]).read_text(errors="replace")
     ac_code       = Path(item["ac_path"]).read_text(errors="replace")
     failing_input = item["failing_input"]
@@ -198,7 +143,6 @@ def compile_example(item: dict) -> dict:
         "all_samples":         item["all_samples"],
     }
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, ex: dict) -> str:
     user_block = json.dumps({
@@ -208,7 +152,6 @@ def build_prompt(system_prompt: str, ex: dict) -> str:
     }, indent=2)
     return f"{system_prompt}\n\n---\n\n{user_block}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_fixed_code(raw: str) -> Optional[str]:
     text = raw.strip()
@@ -232,7 +175,6 @@ def parse_fixed_code(raw: str) -> Optional[str]:
             return matches[-1].replace("\\n", "\n").replace('\\"', '"')
     return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -285,11 +227,10 @@ def process_example(ex: dict, prompt_label: str, system_prompt: str,
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm",     choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm",     choices=["claude"], default="claude")
     parser.add_argument("--prompt",  choices=["A", "B", "both"], required=True)
     parser.add_argument("--n",       type=int, default=5)
     parser.add_argument("--sleep",   type=float, default=2.0)
@@ -314,7 +255,6 @@ def main():
     out_paths = {pl: outputs_dir / f"outputs_{pl}.jsonl" for pl in prompt_labels}
     call_fn = LLM_DISPATCH[args.llm]
 
-    # ── Read already-completed IDs (per prompt label) ─────────────────────────
     completed = {pl: set() for pl in prompt_labels}
     for pl in prompt_labels:
         if out_paths[pl].exists():
@@ -327,13 +267,11 @@ def main():
             if completed[pl]:
                 print(f"Resuming prompt {pl}: {len(completed[pl])} already done")
 
-    # ── Scan eligible pool (no compilation) ───────────────────────────────────
     problems_index = load_problems_index()
     print("Scanning eligible submissions (context-window check, no compilation)...")
     all_eligible = scan_eligible(problems_index)
     print(f"Eligible pool: {len(all_eligible)} submissions fit within context window")
 
-    # ── Random sample: pick enough new items to reach total of n ─────────────
     all_done_ids = set().union(*completed.values())
     n_needed     = max(0, args.n - len(all_done_ids))
     pool         = [e for e in all_eligible if e["submission_id"] not in all_done_ids]

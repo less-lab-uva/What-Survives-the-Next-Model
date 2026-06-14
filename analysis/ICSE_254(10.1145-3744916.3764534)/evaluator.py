@@ -1,15 +1,3 @@
-"""
-ReInFix evaluator.
-Reads outputs JSONL from main.py, validates Defects4J patches, and reports
-Table 3-style aggregates split by Defects4J v1.2/v2.0 and project.
-
-The paper's "correct fixes" are manually reviewed semantic judgments and
-aren't automatable; this script reports the Defects4J plausible-patch count.
-
-Usage:
-  python evaluator.py --prompt A
-"""
-
 import argparse
 import ast
 import json

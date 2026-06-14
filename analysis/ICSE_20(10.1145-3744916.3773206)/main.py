@@ -1,12 +1,6 @@
-"""
-HoarePrompt inference script.
-Calls the LLM for each example and writes per-example records to outputs/.
-"""
-
 import argparse
 import concurrent.futures
 import json
-import os
 import re
 import sys
 import threading
@@ -36,41 +30,7 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
-
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
+LLM_DISPATCH = {"claude": call_claude}
 
 
 DATA_DIR = Path(__file__).parent / "dataset"
@@ -193,7 +153,7 @@ def process_example(ex: dict, system_prompt: str, call_fn, model_arg: Optional[s
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm", choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm", choices=["claude"], default="claude")
     parser.add_argument("--prompt", choices=["A", "B"], required=True)
     parser.add_argument("--n", type=lambda v: 10**9 if v.lower() == "all" else int(v), default=5)
     parser.add_argument("--dataset", type=str, default="CoCoClaNeL_experiments.json")
@@ -222,7 +182,6 @@ def main():
     outputs_dir.mkdir(parents=True, exist_ok=True)
     n_tag = "all" if args.n >= 10**9 else args.n
     out_path = outputs_dir / f"outputs_{args.prompt}.jsonl"
-    # Resume support: skip already-completed ids
     completed = {}
     if out_path.exists():
         with open(out_path) as f:

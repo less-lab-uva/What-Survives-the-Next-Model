@@ -1,23 +1,7 @@
-"""
-TestWeaver inference script.
-Calls the LLM to generate pytest tests for each Python module and writes per-example records
-to outputs/. Records include the generated tests and source file path so evaluator.py can
-measure coverage without re-loading the dataset.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{P}.jsonl
-  Each line: {id, source_file, source_file_abs, d, tests, n_tests_generated,
-              prompt_sent, raw_response}
-"""
-
 import argparse
 import concurrent.futures
 import csv
 import json
-import os
 import random
 import re
 import sys
@@ -34,7 +18,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -48,43 +31,8 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
+LLM_DISPATCH = {"claude": call_claude}
 
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 REPO_DIR      = Path(__file__).parent / "dataset" / "TestWeaver"
 CODAMOSA_BASE = REPO_DIR / "codamosa" / "replication"
@@ -122,7 +70,6 @@ def load_dataset(suite: str = "codamosa"):
             })
     return examples
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, example: dict) -> str:
     user_block = json.dumps({
@@ -131,7 +78,6 @@ def build_prompt(system_prompt: str, example: dict) -> str:
     }, indent=2)
     return f"{system_prompt}\n\n---\n\n{user_block}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_partial_tests(text: str) -> Optional[list]:
     tests_key = re.search(r'"tests"\s*:', text)
@@ -149,7 +95,6 @@ def parse_partial_tests(text: str) -> Optional[list]:
         while i < len(text) and text[i] in " \t\r\n,":
             i += 1
 
-        # Some malformed responses include escaped newlines between array items.
         if text.startswith("\\n", i):
             i += 2
             continue
@@ -204,7 +149,6 @@ def parse_response(raw: str) -> Optional[dict]:
         return {"tests": tests, "code": "", "task_num": "", "task_title": ""}
     return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -259,11 +203,10 @@ def process_example(ex: dict, prompt_label: str, system_prompt: str,
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm",     choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm",     choices=["claude"], default="claude")
     parser.add_argument("--prompt",  choices=["A", "B", "both"], required=True)
     parser.add_argument("--n",       type=int, default=5)
     parser.add_argument("--sleep",   type=float, default=2.0)
