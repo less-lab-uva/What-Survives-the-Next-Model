@@ -49,7 +49,7 @@ import anthropic
 BASE_DIR      = Path(__file__).parent
 PROMPTS_DIR   = BASE_DIR / "prompts"
 OUTPUT_DIR    = BASE_DIR / "outputs"
-DATASET_DIR   = BASE_DIR / ".." / "Dataset"
+DATASET_DIR   = BASE_DIR / "Dataset"
 CONTRACTS_DIR = DATASET_DIR / "contracts" / "Ethereum"
 
 DATASET_CSVS = {

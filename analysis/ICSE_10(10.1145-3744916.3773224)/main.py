@@ -38,7 +38,7 @@ OUTPUT_PRICE   = 15.0   # USD per 1M output tokens
 
 
 def load_prompt(letter: str) -> str:
-    path = os.path.join(PROJECT_FOLDER, f"prompt{letter}.py")
+    path = os.path.join(PROJECT_FOLDER, "prompts", f"prompt{letter}.py")
     if not os.path.exists(path):
         raise FileNotFoundError(f"Prompt file not found: {path}")
     spec   = importlib.util.spec_from_file_location("prompt_module", path)

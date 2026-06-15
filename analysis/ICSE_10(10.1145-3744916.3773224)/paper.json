@@ -7,10 +7,10 @@
     "This reproduction replaces that multi-stage RAG pipeline with a single Claude Sonnet 4.6 call per task using two prompt strategies: a black-box prompt (Prompt A) that requests 5 distinct implementations with no methodology guidance, and an informed prompt (Prompt B) that provides a 6-step methodology covering symbol cataloguing, spec decomposition, API matching, candidate expansion, implementation, and output formatting."
   ],
   "dataset": {
-    "name": "CoderEval (Python)",
-    "sample_size": 23,
-    "full_size": 230,
-    "sample_fraction": 0.1
+    "codereval_python": {
+      "name": "CoderEval (Python)",
+      "sample_size": 23
+    }
   },
   "metric": [
     "Pass@1",
@@ -19,31 +19,27 @@
   ],
   "original_result": {
     "AllianceCoderGPT": {
-      "pass_at_1": 0.3652,
-      "pass_at_3": 0.4,
-      "pass_at_5": 0.413,
-      "tasks": 230
+      "Pass@1": 0.3652,
+      "Pass@3": 0.4,
+      "Pass@5": 0.413
     },
     "AllianceCoderGemini": {
-      "pass_at_1": 0.2478,
-      "pass_at_3": 0.4652,
-      "pass_at_5": 0.2782,
-      "tasks": 230
+      "Pass@1": 0.2478,
+      "Pass@3": 0.4652,
+      "Pass@5": 0.2782
     }
   },
   "our_result": {
     "prompt_A": {
-      "pass_at_1": 0.6,
-      "pass_at_3": 0.608696,
-      "pass_at_5": 0.608696,
-      "tasks": 23,
+      "Pass@1": 0.6,
+      "Pass@3": 0.608696,
+      "Pass@5": 0.608696,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "pass_at_1": 0.608696,
-      "pass_at_3": 0.608696,
-      "pass_at_5": 0.608696,
-      "tasks": 23,
+      "Pass@1": 0.608696,
+      "Pass@3": 0.608696,
+      "Pass@5": 0.608696,
       "result_file": "results/results_B.jsonl"
     }
   },
