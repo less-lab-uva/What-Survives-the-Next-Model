@@ -52,7 +52,7 @@ def load_prompt_template(prompt_type: str) -> str:
 def build_instance(row: Dict[str, Any]) -> Dict[str, str]:
     return {
         "issue_statement": row["problem_statement"],
-        "suspicious_patch": row["suspicious_patch"],
+        "plausible_patch": row["plausible_patch"],
         "oracle_patch": row["oracle_patch"],
     }
 
@@ -254,7 +254,7 @@ def main():
                 "PASS_TO_PASS": row["PASS_TO_PASS"],
                 "input": {
                     "issue_statement": row["problem_statement"],
-                    "suspicious_patch": row["suspicious_patch"],
+                    "plausible_patch": row["plausible_patch"],
                     "oracle_patch": row["oracle_patch"],
                 },
                 "prediction": {

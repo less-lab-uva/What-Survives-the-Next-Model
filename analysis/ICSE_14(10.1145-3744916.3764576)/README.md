@@ -1,6 +1,6 @@
 # Experiment Setup
 
-This directory evaluates a simplified single-LLM version of the PatchDiff paper. The task is to generate a differentiating Python test that fails on a suspicious patch but passes on the oracle patch.
+This directory evaluates a simplified single-LLM version of the PatchDiff paper. The task is to generate a differentiating Python test that fails on a plausible patch but passes on the oracle patch.
 
 ---
 
@@ -75,14 +75,14 @@ and creates:
 combined_dataset.json
 ```
 
-Each prepared row contains the SWE-bench issue, the suspicious patch from one evaluated tool, and the oracle patch:
+Each prepared row contains the SWE-bench issue, the plausible patch from one evaluated tool, and the oracle patch:
 
 ```json
 {
   "instance_id": "...",
   "tool": "codestory",
   "problem_statement": "...",
-  "suspicious_patch": "...",
+  "plausible_patch": "...",
   "oracle_patch": "...",
   "FAIL_TO_PASS": [...],
   "PASS_TO_PASS": [...],
@@ -181,18 +181,18 @@ The evaluator reads:
 outputs/outputs_<A|B>_<tool>.jsonl
 ```
 
-For each generated test, the evaluator creates temporary SWE-bench prediction files and runs the SWE-bench harness twice:
+For each generated test, the evaluator creates a temporary SWE-bench dataset whose `test_patch` is the generated test. It then creates temporary SWE-bench prediction files and runs the SWE-bench harness twice:
 
-1. suspicious patch + generated test
+1. plausible patch + generated test
 2. oracle patch + generated test
 
-The harness command uses:
+The evaluator prefers the local PatchDiff SWE-bench dataset:
 
 ```text
-princeton-nlp/SWE-bench_Verified
+PatchDiff/data/dataset/swebench_verified/
 ```
 
-through the `swebench` package:
+and writes a temporary JSONL dataset for the harness. If the local dataset is unavailable, it falls back to `princeton-nlp/SWE-bench_Verified`. The harness is invoked through the `swebench` package:
 
 ```bash
 python3 -m swebench.harness.run_evaluation
@@ -209,11 +209,11 @@ The evaluator reports the **differentiating rate**.
 A generated test is counted as differentiating when:
 
 ```text
-suspicious patch + generated test = not resolved
+plausible patch + generated test = not resolved
 oracle patch + generated test     = resolved
 ```
 
-In other words, the generated test exposes the suspicious patch as incorrect while still passing on the oracle patch.
+In other words, the generated test exposes the plausible patch as incorrect while still passing on the oracle patch.
 
 Results are saved to:
 
@@ -227,8 +227,8 @@ results/results_B_openhands.jsonl
 The SWE-bench harness reports for each run are saved under:
 
 ```text
-results/suspicious_<A|B>_<tool>/
-results/oracle_<A|B>_<tool>/
+results/plausible_generated_<A|B>_<tool>/
+results/oracle_generated_<A|B>_<tool>/
 ```
 
 ---

@@ -63,7 +63,7 @@ for tool_name, path in TOOLS.items():
                 "instance_id": instance_id,
                 "tool": tool_name,
                 "problem_statement": swe_instance["problem_statement"],
-                "suspicious_patch": pred["model_patch"],
+                "plausible_patch": pred["model_patch"],
                 "oracle_patch": swe_instance["patch"],
                 "FAIL_TO_PASS": swe_instance["FAIL_TO_PASS"],
                 "PASS_TO_PASS": swe_instance["PASS_TO_PASS"],
