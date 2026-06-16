@@ -1,5 +1,0 @@
-Prompt          : A
-Dataset         : netbeans
-Instances run   : 400 (random sample, seed=42)
-Total input tok : 2272551
-Total output tok: 23878
