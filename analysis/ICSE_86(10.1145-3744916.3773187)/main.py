@@ -160,7 +160,7 @@ def main():
         "--seed",
         type=int,
         default=42,
-        help="Random seed for 10%% sampling. Default: 42.",
+        help="Random seed for sampling. Default: 42.",
     )
     args = parser.parse_args()
 
@@ -178,12 +178,13 @@ def main():
     total_size = len(dataset)
     print(f"Total problems: {total_size}")
 
-    # Random 10% sample
-    sample_size = max(1, int(0.10 * total_size))
+    # Random 10% sample for all datasets.
+    sample_size = max(1, round(total_size * 0.10))
+    sample_label = "10% random sample"
     random.seed(args.seed)
     sampled_indices = sorted(random.sample(range(total_size), sample_size))
     subset = list(dataset.select(sampled_indices))
-    print(f"Sampled {sample_size} problems (10%, seed={args.seed}).\n")
+    print(f"Sampled {sample_size} problems ({sample_label}, seed={args.seed}).\n")
     
 
     outputs_dir = os.path.join(BASE_DIR, "outputs")
@@ -232,7 +233,7 @@ def main():
     with open(token_path, "w") as f:
         f.write(f"Prompt          : {args.prompt_variant.upper()}\n")
         f.write(f"Dataset         : {args.dataset}\n")
-        f.write(f"Instances run   : {total} (10% random sample, seed={args.seed})\n")
+        f.write(f"Instances run   : {total} ({sample_label}, seed={args.seed})\n")
         f.write(f"Total input tok : {total_input_tok}\n")
         f.write(f"Total output tok: {total_output_tok}\n")
 
