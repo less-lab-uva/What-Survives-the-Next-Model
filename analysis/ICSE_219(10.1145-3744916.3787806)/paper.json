@@ -39,9 +39,9 @@
   ],
   "original_result": {
     "lato": {
-      "R-F1": 0.5074,
-      "N-F1": 0.7547,
-      "pass_rate": 0.9708
+      "R-F1": 0.6048,
+      "N-F1": 0.7132,
+      "pass_rate": 0.9778
     }
   },
   "our_result": {
