@@ -1,7 +1,7 @@
 import json
 import tarfile
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -23,10 +23,40 @@ def load_annotations() -> list[dict]:
     return rows
 
 
-def build_license_index(tar_path: Path) -> Dict[str, str]:
+def normalize_name(value: str) -> str:
+    return "".join(ch for ch in value.lower() if ch.isalnum())
+
+
+def license_candidates(license_name: str) -> List[str]:
+    normalized = normalize_name(license_name)
+    candidates = [normalized]
+
+    # SPDX-style names in the annotation can be more specific than filenames in
+    # package archives, e.g. GFDL-1.3-only may appear as LICENSE.FDL.
+    simplified = normalized
+    for suffix in ("only", "orlater"):
+        simplified = simplified.replace(suffix, "")
+    simplified = "".join(ch for ch in simplified if not ch.isdigit())
+    if simplified and simplified not in candidates:
+        candidates.append(simplified)
+
+    aliases = {
+        "gfdl": "fdl",
+        "gnufreedocumentationlicense": "fdl",
+    }
+    for candidate in list(candidates):
+        for source, target in aliases.items():
+            if source in candidate:
+                alias = candidate.replace(source, target)
+                if alias and alias not in candidates:
+                    candidates.append(alias)
+
+    return candidates
+
+
+def build_license_index(tar_path: Path) -> Dict[str, List[str]]:
     """
-    Build project_name -> first license-file path inside pkg_license/TOP.
-    This matches the lookup logic used by main.py.
+    Build project_name -> license-file paths inside pkg_license/TOP.
     """
     index = {}
     with tarfile.open(tar_path, "r:gz") as tar:
@@ -34,18 +64,30 @@ def build_license_index(tar_path: Path) -> Dict[str, str]:
             parts = Path(member.name).parts
             if len(parts) >= 4 and parts[0] == "pkg_license" and parts[1] == "TOP":
                 project = parts[2].lower()
-                if project not in index and member.isfile():
-                    index[project] = member.name
+                if member.isfile():
+                    index.setdefault(project, []).append(member.name)
     return index
 
 
-def find_member(project_name: str, index: Dict[str, str]) -> Optional[str]:
+def find_member(project_name: str, license_name: str, index: Dict[str, List[str]]) -> Optional[str]:
     project = project_name.lower()
-    return (
+    members = (
         index.get(project)
         or index.get(project.replace("-", "_"))
         or index.get(project.replace("_", "-"))
     )
+    if not members:
+        return None
+
+    candidates = license_candidates(license_name)
+    for member_name in members:
+        normalized_member = normalize_name(Path(member_name).name)
+        if any(candidate in normalized_member for candidate in candidates):
+            return member_name
+
+    # Fallback for projects with a single license file, or for archives whose
+    # filenames do not encode the annotated license name.
+    return members[0]
 
 
 def read_tar_member(tar: tarfile.TarFile, member_name: str) -> str:
@@ -76,7 +118,7 @@ def main() -> None:
     with tarfile.open(PKG_LICENSE_TAR, "r:gz") as tar, OUTPUT_FILE.open("w", encoding="utf-8") as out:
         for row in annotations:
             project_name = row["project_name"]
-            member_name = find_member(project_name, license_index)
+            member_name = find_member(project_name, row["license_name"], license_index)
 
             if member_name is None:
                 missing.append(project_name)
