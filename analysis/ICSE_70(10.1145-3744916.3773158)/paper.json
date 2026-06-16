@@ -4,26 +4,58 @@
   "venue": "ICSE 2026",
   "summary": [
     "The original APICopilot pipeline builds an input knowledge graph from preceding code, retrieves similar examples, constructs target/example knowledge graphs, performs graph matching, injects selected subgraphs into the prompt, and then asks the LLM to recommend arguments.",
-    "This reproduction replaces that multi-stage KG-RAG workflow with a simplified single-LLM prompt over sampled PY150 instances."
+    "This reproduction replaces that multi-stage KG-RAG workflow with a simplified single-LLM prompt over sampled PY150 and NetBeans argument-completion instances."
   ],
   "dataset": {
-      "name": "PY150",
-      "sample_size": 400
+    "py150": {
+      "language": "Python",
+      "sample_size": 400,
+      "instances_file": "instances.json"
     },
+    "netbeans": {
+      "language": "Java",
+      "sample_size": 400,
+      "instances_file": "instances_netbeans.json"
+    }
+  },
   "metric": [
-    "precision"
+    "precision",
+    "recall"
   ],
   "original_result": {
-      "precision": 0.731
+    "java": {
+      "precision": 0.7211,
+      "recall": 0.6946
+    },
+    "python": {
+      "precision": 0.731,
+      "recall": 0.681
+    }
   },
   "our_result": {
-    "prompt_A": {
-      "precision": 0.7188,
-      "result_file": "results/results_A.jsonl"
+    "py150": {
+      "prompt_A": {
+        "precision": 0.6612,
+        "recall": 0.6547,
+        "result_file": "results/results_A_py150.jsonl"
+      },
+      "prompt_B": {
+        "precision": 0.7,
+        "recall": 0.6906,
+        "result_file": "results/results_B_py150.jsonl"
+      }
     },
-    "prompt_B": {
-      "precision": 0.7627,
-      "result_file": "results/results_B.jsonl"
+    "netbeans": {
+      "prompt_A": {
+        "precision": 0.727,
+        "recall": 0.7257,
+        "result_file": "results/results_A_netbeans.jsonl"
+      },
+      "prompt_B": {
+        "precision": 0.715,
+        "recall": 0.7138,
+        "result_file": "results/results_B_netbeans.jsonl"
+      }
     }
   },
   "total_cost": 12.59

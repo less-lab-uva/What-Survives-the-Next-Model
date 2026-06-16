@@ -1,0 +1,4 @@
+Prompt          : A
+Instances run   : 400 (10% random sample, seed=42)
+Total input tok : 2080338
+Total output tok: 31064

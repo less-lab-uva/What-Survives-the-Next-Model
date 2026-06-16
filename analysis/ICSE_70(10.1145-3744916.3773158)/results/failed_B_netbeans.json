@@ -1,0 +1,1178 @@
+[
+  {
+    "filepath": "harness/jellytools.platform/test/qa-functional/src/org/netbeans/jellytools/WizardOperatorTest.java",
+    "call_line": "fail(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"checkPanel() should throw exception if check fails.\"",
+    "predicted": "\"checkPanel() method doesn't work properly.\""
+  },
+  {
+    "filepath": "harness/jellytools.platform/src/org/netbeans/jellytools/actions/ActionNoBlock.java",
+    "call_line": "new KeyRobotDriver(null).pushKey(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "JemmyProperties.getCurrentTimeouts().create(\"ComponentOperator.PushKeyTimeout\")",
+    "predicted": "JemmyProperties.getCurrentTimeouts()"
+  },
+  {
+    "filepath": "harness/nbjunit/test/unit/src/org/netbeans/junit/LoggingTest.java",
+    "call_line": "buff.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "'A'",
+    "predicted": "\"x\""
+  },
+  {
+    "filepath": "harness/nbjunit/test/unit/src/org/netbeans/junit/NbModuleSuiteClusterPathFinalTest.java",
+    "call_line": "System.setProperty(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"java.awt.headless\"",
+    "predicted": "\"netbeans.home\""
+  },
+  {
+    "filepath": "harness/nbjunit/test/unit/src/org/netbeans/junit/NbModuleSuiteClusterPathFinalTest.java",
+    "call_line": "System.setProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"true\"",
+    "predicted": "System.getProperty(\"netbeans.home\", \"\")"
+  },
+  {
+    "filepath": "harness/nbjunit/src/org/netbeans/junit/NbModuleSuite.java",
+    "call_line": "if (res.startsWith(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"org.netbeans.junit.ide\"",
+    "predicted": "\"org/netbeans/junit/internal\""
+  },
+  {
+    "filepath": "harness/nbjunit/src/org/netbeans/junit/diff/LineDiff.java",
+    "call_line": "printResults(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "passLines",
+    "predicted": "results"
+  },
+  {
+    "filepath": "harness/nbjunit/src/org/netbeans/junit/diff/LineDiff.java",
+    "call_line": "printResults(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "refLines",
+    "predicted": "passLines"
+  },
+  {
+    "filepath": "harness/nbjunit/src/org/netbeans/junit/diff/LineDiff.java",
+    "call_line": "printResults(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "results",
+    "predicted": "refLines"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/test/unit/src/org/netbeans/modules/j2ee/weblogic9/WLDeploymentFactoryTest.java",
+    "call_line": "props.put(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "WLPluginProperties.SERVER_ROOT_ATTR",
+    "predicted": "InstanceProperties.URL_ATTR"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/test/unit/src/org/netbeans/modules/j2ee/weblogic9/WLDeploymentFactoryTest.java",
+    "call_line": "props.put(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "serverPath",
+    "predicted": "url"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/src/org/netbeans/modules/j2ee/weblogic9/ui/nodes/OpenServerLogAction.java",
+    "call_line": "Object node = activatedNode.getLookup().lookup(/* missing */)",
+    "position": 0,
+    "ground_truth": "WLManagerNode.class",
+    "predicted": "WLDeploymentManager.class"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/src/org/netbeans/modules/j2ee/weblogic9/ui/wizard/ServerLocalPropertiesVisual.java",
+    "call_line": ".addPreferredGap(/* missing */)",
+    "position": 0,
+    "ground_truth": "javax.swing.LayoutStyle.ComponentPlacement.UNRELATED",
+    "predicted": "javax.swing.LayoutStyle.ComponentPlacement.RELATED"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/src/org/netbeans/modules/j2ee/weblogic9/ui/wizard/ServerLocationVisual.java",
+    "call_line": "fileChooser.setCurrentDirectory(/* missing */)",
+    "position": 0,
+    "ground_truth": "currentLocation.getParentFile()",
+    "predicted": "currentLocation"
+  },
+  {
+    "filepath": "contrib/j2ee.weblogic9/src/org/netbeans/modules/j2ee/weblogic9/dd/model/WebApplicationModel.java",
+    "call_line": "builder.setEntityResolver(/* missing */)",
+    "position": 0,
+    "ground_truth": "NullEntityResolver.newInstance()",
+    "predicted": "new NullEntityResolver()"
+  },
+  {
+    "filepath": "contrib/form.j2ee/src/org/netbeans/modules/form/j2ee/J2EEPropertyModifier.java",
+    "call_line": "setShortDescription(/* missing */)",
+    "position": 0,
+    "ground_truth": "NbBundle.getMessage(ModifiableWrapperProperty.class, \"HINT_ModifiableWrapper\")",
+    "predicted": "NbBundle.getMessage(ModifiableWrapperProperty.class, \"HINT_ModifiableWrapperProperty\")"
+  },
+  {
+    "filepath": "contrib/form.j2ee/src/org/netbeans/modules/form/j2ee/wizard/DetailPanel.java",
+    "call_line": "fillLists(/* missing */)",
+    "position": 0,
+    "ground_truth": "key.isValid() ? getForeignKey().getFKTable() : null",
+    "predicted": "key.getFKTableName()"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/test/unit/src/org/netbeans/modules/websvc/wsitconf/wsdlmodelext/RMTest.java",
+    "call_line": "assertNull(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"Inactivity timeout set even when not specified\"",
+    "predicted": "\"RM Order not null\""
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/test/unit/src/org/netbeans/modules/websvc/wsitconf/wsdlmodelext/RMTest.java",
+    "call_line": "assertNull(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "RMModelHelper.getInstance(cfgV).getInactivityTimeout(b)",
+    "predicted": "RMModelHelper.getInstance(cfgV).getOrder(b)"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/util/Util.java",
+    "call_line": "Object button = DialogDisplayer.getDefault().notify(/* missing */)",
+    "position": 0,
+    "ground_truth": "new NotifyDescriptor.Confirmation(\n                                NbBundle.getMessage(Util.class, \"TXT_AddRtLibrary\"), NotifyDescriptor.YES_NO_OPTION)",
+    "predicted": "new NotifyDescriptor.Confirmation(\n                            NbBundle.getMessage(Util.class, \"TXT_AddLibraries\"), NotifyDescriptor.YES_NO_OPTION)"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/BindingPanel.java",
+    "call_line": "addImmediateModifier(/* missing */)",
+    "position": 0,
+    "ground_truth": "securityChBox",
+    "predicted": "orderedChBox"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/BindingPanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "8",
+    "predicted": "11"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/BindingPanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "8",
+    "predicted": "11"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/BindingPanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "8",
+    "predicted": "11"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/STSIssuedCert.java",
+    "call_line": ".addComponent(/* missing */)",
+    "position": 0,
+    "ground_truth": "issuerMetadataLabel",
+    "predicted": "algoSuiteCombo"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/MutualCertificates.java",
+    "call_line": "org.openide.awt.Mnemonics.setLocalizedText(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "encryptSignatureChBox",
+    "predicted": "layoutLabel"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/MutualCertificates.java",
+    "call_line": "org.openide.awt.Mnemonics.setLocalizedText(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "org.openide.util.NbBundle.getMessage(MutualCertificates.class, \"LBL_EncryptSignatureLabel\")",
+    "predicted": "org.openide.util.NbBundle.getMessage(MutualCertificates.class, \"LBL_LayoutLabel\")"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/MessageAuthentication.java",
+    "call_line": "setCombo(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "SecurityPolicyModelHelper.isWss11(p)",
+    "predicted": "PolicyModelHelper.getWSSVersion(secBinding)"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/SAMLHolderOfKeyProfile.java",
+    "call_line": "if ((Util.isEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "PKGNAME + \".\" + cbName",
+    "predicted": "DefaultSettings.getDefaultPassword(p)"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/profiles/SAMLHolderOfKeyProfile.java",
+    "call_line": "if ((Util.isEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "cbHandler",
+    "predicted": "keyPasswd"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/subpanels/AddHeaderPanel.java",
+    "call_line": "headerCombo.addItem(/* missing */)",
+    "position": 0,
+    "ground_truth": "MessageHeader.ADDRESSING_TO",
+    "predicted": "new MessageHeader()"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/subpanels/STSConfigServicePanel.java",
+    "call_line": ".addContainerGap(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "483",
+    "predicted": "493"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/service/subpanels/AdvancedRMPanel.java",
+    "call_line": "deliveryAssuranceLabel.setText(/* missing */)",
+    "position": 0,
+    "ground_truth": "org.openide.util.NbBundle.getMessage(AdvancedRMPanel.class, \"LBL_AdvancedRM_DeliveryAssurance\")",
+    "predicted": "org.openide.util.NbBundle.getMessage(AdvancedRMPanel.class, \"LBL_AdvancedRM_DeliveryAssuranceLabel\")"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/TransportPanelClient.java",
+    "call_line": "addImmediateModifier(/* missing */)",
+    "position": 0,
+    "ground_truth": "optimalTransportChBox",
+    "predicted": "optimalEncChBox"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/TransportPanelClient.java",
+    "call_line": "setChBox(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "TransportModelHelper.isAutoEncodingEnabled(binding)",
+    "predicted": "TransportModelHelper.isOptimalEncoding(binding)"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/CallbackPanel.java",
+    "call_line": "NbBundle.getMessage(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "BindingPanel.class",
+    "predicted": "CallbackPanel.class"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/CallbackPanel.java",
+    "call_line": "NbBundle.getMessage(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"LBL_Truststore_Panel_Title\"",
+    "predicted": "\"LBL_Truststore\""
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/STSClientPanel.java",
+    "call_line": "org.openide.awt.Mnemonics.setLocalizedText(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "trustVersionLabel",
+    "predicted": "metadataLabel"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/ui/client/STSClientPanel.java",
+    "call_line": "org.openide.awt.Mnemonics.setLocalizedText(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "org.openide.util.NbBundle.getMessage(STSClientPanel.class, \"LBL_STSPanel_PolicyVersion\")",
+    "predicted": "org.openide.util.NbBundle.getMessage(STSClientPanel.class, \"LBL_STSPanel_Metadata\")"
+  },
+  {
+    "filepath": "contrib/websvc.wsitconf/src/org/netbeans/modules/websvc/wsitconf/wsdlmodelext/ProfilesModelHelper.java",
+    "call_line": "WSDLComponent tokenKind = SecurityTokensModelHelper.getSupportingToken(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "SecurityTokensModelHelper.ENDORSING",
+    "predicted": "null"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/test/qa-functional/src/org/netbeans/test/j2ee/jboss4/JBossValidation.java",
+    "call_line": "org.netbeans.test.j2ee.lib.ProgressOperator.waitFinished(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"Stopping JBoss Application Server\"",
+    "predicted": "\"JBoss\""
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/test/qa-functional/src/org/netbeans/test/j2ee/jboss4/JBossValidation.java",
+    "call_line": "org.netbeans.test.j2ee.lib.ProgressOperator.waitFinished(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "300000",
+    "predicted": "60000"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/test/qa-functional/src/org/netbeans/modules/j2ee/jboss4/test/JBoss4TestSuite.java",
+    "call_line": "suite.addTest(/* missing */)",
+    "position": 0,
+    "ground_truth": "new JBoss4TestSuite(\"deployWebModule\")",
+    "predicted": "new JBoss4TestSuite(\"stopServer\")"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/nodes/JBEarModulesChildren.java",
+    "call_line": "String descr = (String)Util.getMBeanParameter(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "connection",
+    "predicted": "\"description\""
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/nodes/JBEarModulesChildren.java",
+    "call_line": "String descr = (String)Util.getMBeanParameter(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"jbossWebDeploymentDescriptor\"",
+    "predicted": "elem"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/nodes/JBEarModulesChildren.java",
+    "call_line": "String descr = (String)Util.getMBeanParameter(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "elem.getCanonicalName()",
+    "predicted": "connection"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/nodes/actions/UndeployModuleCookieImpl.java",
+    "call_line": "while(Util.isObjectDeployed(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "dm",
+    "predicted": "lookup"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/ide/JBFindJSPServlet.java",
+    "call_line": "File servletRoot = new File(domainPath, \"work/jboss.web/localhost\".replace(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'/'",
+    "predicted": "\"\\\\\""
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/ide/JBFindJSPServlet.java",
+    "call_line": "File servletRoot = new File(domainPath, \"work/jboss.web/localhost\".replace(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "File.separatorChar",
+    "predicted": "\"/\""
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/ide/ui/AddServerLocationVisualPanel.java",
+    "call_line": "setName(/* missing */)",
+    "position": 0,
+    "ground_truth": "NbBundle.getMessage(AddServerLocationVisualPanel.class, \"TITLE_ServerLocation\")",
+    "predicted": "NbBundle.getMessage(AddServerLocationVisualPanel.class, \"STEP_ServerLocation\")"
+  },
+  {
+    "filepath": "contrib/j2ee.jboss4/src/org/netbeans/modules/j2ee/jboss4/ide/ui/AddServerPropertiesVisualPanel.java",
+    "call_line": "chooser.setApproveButtonMnemonic(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"Choose_Button_Mnemonic\".charAt(0)",
+    "predicted": "NbBundle.getMessage(AddServerPropertiesVisualPanel.class, \"LBL_ChooseButton\").charAt(0)"
+  },
+  {
+    "filepath": "contrib/groovy.grailsproject/src/org/netbeans/modules/groovy/grailsproject/GrailsSources.java",
+    "call_line": "public static final List IGNORED_FOLDERS_IN_GRAILS_APP = Arrays.asList(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"target\"",
+    "predicted": "\"plugins\""
+  },
+  {
+    "filepath": "contrib/groovy.grailsproject/src/org/netbeans/modules/groovy/grailsproject/GrailsSources.java",
+    "call_line": "public static final List IGNORED_FOLDERS_IN_GRAILS_APP = Arrays.asList(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "// NOI18N\n            \"gradle\" // NOI18N",
+    "predicted": "\"tmp\""
+  },
+  {
+    "filepath": "contrib/groovy.grailsproject/src/org/netbeans/modules/groovy/grailsproject/ui/wizards/impl/GrailsTargetChooserPanel.java",
+    "call_line": "} else if (!isValidPackageName(/* missing */)",
+    "position": 0,
+    "ground_truth": "gui.getPackageName()",
+    "predicted": "gui.getTargetFolder()"
+  },
+  {
+    "filepath": "contrib/groovy.grailsproject/src/org/netbeans/modules/groovy/grailsproject/actions/GrailsCommandAction.java",
+    "call_line": "GrailsProject result = lookupGrailsProject(/* missing */)",
+    "position": 0,
+    "ground_truth": "n.getLookup()",
+    "predicted": "n"
+  },
+  {
+    "filepath": "contrib/groovy.grailsproject/src/org/netbeans/modules/groovy/grailsproject/commands/GrailsCommandChooser.java",
+    "call_line": "matchingTaskList.setCellRenderer(/* missing */)",
+    "position": 0,
+    "ground_truth": "new GrailsCommandChooser.GrailsCommandRenderer()",
+    "predicted": "new TaskCellRenderer()"
+  },
+  {
+    "filepath": "contrib/groovy.grails/src/org/netbeans/modules/groovy/grails/api/GrailsPlatform.java",
+    "call_line": "String[] numberParts = stringParts[0].split(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"\\\\.\"",
+    "predicted": "\"\\.\""
+  },
+  {
+    "filepath": "cpplite/cpplite.project/src/org/netbeans/modules/cpplite/project/ui/Build.java",
+    "call_line": ".addComponent(/* missing */)",
+    "position": 0,
+    "ground_truth": "jScrollPane2",
+    "predicted": "jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE"
+  },
+  {
+    "filepath": "cpplite/cpplite.editor/src/org/netbeans/modules/cpplite/editor/lsp/options/CPPLitePanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "18",
+    "predicted": "0"
+  },
+  {
+    "filepath": "cpplite/cpplite.editor/src/org/netbeans/modules/cpplite/editor/lsp/options/CPPLitePanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "18",
+    "predicted": "0"
+  },
+  {
+    "filepath": "cpplite/cpplite.editor/src/org/netbeans/modules/cpplite/editor/lsp/options/CPPLitePanel.java",
+    "call_line": ".addGap(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "18",
+    "predicted": "Short.MAX_VALUE"
+  },
+  {
+    "filepath": "nbi/infra/lib/registries-management/src/org/netbeans/installer/infra/lib/registries/impl/RegistriesManagerImpl.java",
+    "call_line": "FileUtils.copyFile(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "new File(archiveDir, \"products\")",
+    "predicted": "archiveDir"
+  },
+  {
+    "filepath": "nbi/infra/lib/registries-management/src/org/netbeans/installer/infra/lib/registries/impl/RegistriesManagerImpl.java",
+    "call_line": "FileUtils.copyFile(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "// temp hack\n                    productsDir",
+    "predicted": "componentsDir"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/XMLUtils.java",
+    "call_line": "Long.parseLong(/* missing */)",
+    "position": 0,
+    "ground_truth": "element.getAttribute(\"size\")",
+    "predicted": "getChild(element, \"size\").getTextContent()"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/StringUtils.java",
+    "call_line": "builder.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "BASE64_TABLE[byte1 >> 2]",
+    "predicted": "BASE64_TABLE[((byte2 << 2) & BIN_00111100) | 0]"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/FileUtils.java",
+    "call_line": "list.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "mkdirs(target)",
+    "predicted": "target"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/UnixNativeUtils.java",
+    "call_line": "final Launcher launcher = createUninstaller(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "false",
+    "predicted": "true"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/WindowsNativeUtils.java",
+    "call_line": "if(!registry.keyExists(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "clKey +  name",
+    "predicted": "clKey + name"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/WindowsNativeUtils.java",
+    "call_line": "property = getExtProperty(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "EXT_ICON_PROPERTY",
+    "predicted": "EXT_DESCRIPTION_PROPERTY"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/WindowsNativeUtils.java",
+    "call_line": "if(registry.getSubKeys(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "clSection",
+    "predicted": "Looking at the code context, I need to find the appropriate arguments for `registry.getSubKeys(/* missing */, /* missing */)`.\n\nLet me trace through the code:\n\n1. The `registry` is a `WindowsRegistry` instance.\n2. The method `registry.getSubKeys()` is called in several places in the code. Looking at patterns:\n   - `registry.getSubKeys(clSection, clKey + extKey)` - used in `clearExtensionDetails`\n   - `registry.getSubKeys(clSection, clKey + name + SEP + OPEN_WITH_LIST_KEY_NAME)` - used in `removeFromOpenWithList`\n   - `registry.getSubKeys(HKCU, CURRENT_USER_FILE_EXT_KEY + SEP + name)` - used in `clearExtensionDetails`\n\n3. The incomplete call is within `unregisterApplication` method, which has:\n   - `String appKey = app.getKey();`\n   - The preceding line checks: `if(registry.keyExists(clSection, clKey + APPLICATIONS_KEY_NAME, appKey))`\n   - The inner loop is processing `openCommandKey` parts to build sub-keys like `clKey + APPLICATIONS_KEY_NAME + SEP + appKey + str`\n\n4. Looking at the context: the check before is `registry.keyExists(clSection, clKey + APPLICATIONS_KEY_NAME + SEP + appKey + str)`, and when that exists, we'd want to check `getSubKeys` on the same section/key combination. The pattern within `unregisterApplication` uses `clSection` and builds keys from `clKey + APPLICATIONS_KEY_NAME + SEP + appKey + str`.\n\nThe call `registry.getSubKeys(/* missing */, /* missing */)` at that point checks the subkeys to decide whether to delete, consistent with `clSection` and `clKey + APPLICATIONS_KEY_NAME + SEP + appKey + str`.\n\n```json\n{\n  \"arguments\": [\n    {\"position\": 0, \"value\": \"clSection\"},\n    {\"position\": 1, \"value\": \"clKey + APPLICATIONS_KEY_NAME + SEP + appKey"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/WindowsNativeUtils.java",
+    "call_line": "if(registry.getSubKeys(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "clKey + APPLICATIONS_KEY_NAME + SEP + appKey + str",
+    "predicted": null
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/unix/shell/BourneShell.java",
+    "call_line": "File file = getShellScript(/* missing */)",
+    "position": 0,
+    "ground_truth": "scope",
+    "predicted": "name"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/system/launchers/impl/CommonLauncher.java",
+    "call_line": "LogManager.log(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"... total i18n resources: \" + list.size()",
+    "predicted": "\"... total engine resources: \" + resources.length"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/helper/FilesList.java",
+    "call_line": "writer.println(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\"",
+    "predicted": "\"<?xml version=\\\"1.0\\\" encoding=\\\"\" + ENCODING + \"\\\"?>\""
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/helper/Version.java",
+    "call_line": "String[] split = string.split(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"[\\\\._\\\\-]+\"",
+    "predicted": "[\\\\._\\\\-]+"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/helper/swing/NbiDialog.java",
+    "call_line": "graphics2d.drawImage(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "this",
+    "predicted": "null"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/utils/applications/JavaUtils.java",
+    "call_line": "if (!isJavaHome(/* missing */)",
+    "position": 0,
+    "ground_truth": "location",
+    "predicted": "javaHome"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/utils/InstallationDetailsDialog.java",
+    "call_line": "properties.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"Installation location: \" + component.getInstallationLocation()",
+    "predicted": "\"<html><b>Status:</b> Installed successfully\""
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/utils/InstallationDetailsDialog.java",
+    "call_line": "setIcon(/* missing */)",
+    "position": 0,
+    "ground_truth": "component.getIcon()",
+    "predicted": "null"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/SearchForJavaAction.java",
+    "call_line": "progress.setDetail(/* missing */)",
+    "position": 0,
+    "ground_truth": "PREPARE_JAVA_LIST",
+    "predicted": "StringUtils.EMPTY_STRING"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/CreateMacOSAppLauncherAction.java",
+    "call_line": "FileUtils.zip(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "zos",
+    "predicted": "tmpDirectory"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/CreateMacOSAppLauncherAction.java",
+    "call_line": "FileUtils.zip(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "appDirectory.getParentFile()",
+    "predicted": "zos"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/CreateMacOSAppLauncherAction.java",
+    "call_line": "FileUtils.zip(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "new ArrayList <File> ()",
+    "predicted": "new ArrayList()"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/InitializeRegistryAction.java",
+    "call_line": "setProperty(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "DESCRIPTION_PROPERTY",
+    "predicted": "TITLE_PROPERTY"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/actions/InitializeRegistryAction.java",
+    "call_line": "setProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "DEFAULT_DESCRIPTION",
+    "predicted": "DEFAULT_TITLE"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/panels/JdkLocationPanel.java",
+    "call_line": "setProperty(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "ERROR_PATH_NOT_EXISTS_PROPERTY",
+    "predicted": "ERROR_NOT_VALID_PATH_PROPERTY"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/panels/JdkLocationPanel.java",
+    "call_line": "setProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "jreAllowed ? DEFAULT_ERROR_PATH_NOT_EXISTS_JAVA : DEFAULT_ERROR_PATH_NOT_EXISTS",
+    "predicted": "jreAllowed ? DEFAULT_ERROR_NOT_VALID_PATH_JAVA : DEFAULT_ERROR_NOT_VALID_PATH"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/wizard/components/panels/PreInstallSummaryPanel.java",
+    "call_line": "panel.getProperty(/* missing */)",
+    "position": 0,
+    "ground_truth": "ERROR_FSROOTS_PROPERTY",
+    "predicted": "ERROR_LOGIC_ACCESS_PROPERTY"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/downloader/connector/URLConnector.java",
+    "call_line": "addProxyFrom(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "DEPLOYMENT_PROXY_FTP_HOST",
+    "predicted": "DEPLOYMENT_PROXY_HTTP_HOST"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/downloader/connector/URLConnector.java",
+    "call_line": "addProxyFrom(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "DEPLOYMENT_PROXY_FTP_PORT",
+    "predicted": "DEPLOYMENT_PROXY_HTTP_PORT"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/downloader/connector/URLConnector.java",
+    "call_line": "addProxyFrom(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "MyProxyType.FTP",
+    "predicted": "MyProxyType.HTTP"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/product/RegistryNode.java",
+    "call_line": "iconUri.setLocal(/* missing */)",
+    "position": 0,
+    "ground_truth": "iconFile.toURI()",
+    "predicted": "iconFile"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/product/Registry.java",
+    "call_line": "LogManager.log(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "ErrorLevel.ERROR",
+    "predicted": "ErrorLevel.WARNING"
+  },
+  {
+    "filepath": "nbi/engine/src/org/netbeans/installer/product/Registry.java",
+    "call_line": "throw new XMLException(ResourceUtils.getString(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "ERROR_REGISTRY_DOCUMENT_LOADING",
+    "predicted": "ERROR_CANNOT_LOAD_REGISTRY_KEY"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/AdvancedMedia/src/advancedmedia/AdvancedMedia.java",
+    "call_line": "mediaControl.setMinSize(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "280",
+    "predicted": "270"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/StopWatch/src/stopwatch/StopWatch.java",
+    "call_line": "getChildren().addAll(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "createTickMarks()",
+    "predicted": "handEffectGroup"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/StopWatch/src/stopwatch/StopWatch.java",
+    "call_line": "getChildren().addAll(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "handEffectGroup",
+    "predicted": "createNumbers()"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/StopWatch/src/stopwatch/StopWatch.java",
+    "call_line": "rectangleVisual.setLayoutY(/* missing */)",
+    "position": 0,
+    "ground_truth": "0f",
+    "predicted": "0"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/StopWatch/src/stopwatch/StopWatch.java",
+    "call_line": "new Stop(0, Color.web(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"#4e605f\"",
+    "predicted": "\"#535450\""
+  },
+  {
+    "filepath": "javafx/javafx2.samples/ChartAdvancedPie/src/chartadvancedpie/ChartAdvancedPie.java",
+    "call_line": "pc.setId(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"BasicPie\"",
+    "predicted": "\"chart-advanced-pie\""
+  },
+  {
+    "filepath": "javafx/javafx2.samples/AudioVisualizer3D/src/audiovisualizer3d/AudioVisualizer3D.java",
+    "call_line": "cubeXform[i].setTranslateX(/* missing */)",
+    "position": 0,
+    "ground_truth": "(double) 2",
+    "predicted": "(i - 64) * 3"
+  },
+  {
+    "filepath": "javafx/javafx2.samples/ChartAdvancedBar/src/chartadvancedbar/ChartAdvancedBar.java",
+    "call_line": "bc.setTitle(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"Advanced Bar Chart\"",
+    "predicted": "\"Bar Chart\""
+  },
+  {
+    "filepath": "javafx/javafx2.editor/src/org/netbeans/modules/javafx2/editor/sax/XmlLexerParser.java",
+    "call_line": "parseClosingTag(/* missing */)",
+    "position": 0,
+    "ground_truth": "cs.subSequence(2, cs.length()).toString()",
+    "predicted": "t"
+  },
+  {
+    "filepath": "javafx/javafx2.editor/src/org/netbeans/modules/javafx2/editor/parser/FxModelBuilder.java",
+    "call_line": "parent.getSourceName().equals(/* missing */)",
+    "position": 0,
+    "ground_truth": "FxXmlSymbols.FX_DEFINITIONS",
+    "predicted": "FX_DEFINITIONS"
+  },
+  {
+    "filepath": "javafx/javafx2.editor/src/org/netbeans/modules/javafx2/editor/actions/ControllerGenerator.java",
+    "call_line": "defineNewHandler(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "n",
+    "predicted": "h.getHandlerName()"
+  },
+  {
+    "filepath": "javafx/javafx2.editor/src/org/netbeans/modules/javafx2/editor/completion/beans/FxBean.java",
+    "call_line": "FxBean bean = cache.getBeanInfo(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "info.getClasspathInfo()",
+    "predicted": "info"
+  },
+  {
+    "filepath": "javafx/javafx2.editor/src/org/netbeans/modules/javafx2/editor/completion/beans/FxBean.java",
+    "call_line": "sb.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"    \"",
+    "predicted": "\"  \" + o + \": \" + v + \"\\n\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/test/unit/src/org/netbeans/modules/javafx2/project/JFXConfigsTest.java",
+    "call_line": "assertFalse(/* missing */)",
+    "position": 0,
+    "ground_truth": "CONFIGS.hasConfig(NONDEF1)",
+    "predicted": "CONFIGS.isDefaultPropertySet(PROP3)"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/PanelOptionsVisual.java",
+    "call_line": "settings.putProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "NbBundle.getMessage(PanelOptionsVisual.class, \"WARN_PanelOptionsVisual.notFXPlatform\")",
+    "predicted": "NbBundle.getMessage(PanelOptionsVisual.class, \"MSG_MissingJavaFXSDK\")"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/JFXProjectProperties.java",
+    "call_line": "editableProps.setProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"\"",
+    "predicted": "\"all-permissions\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/JFXProjectProperties.java",
+    "call_line": "appClassNames.remove(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"com.javafx.main.NoJavaFXFallback\"",
+    "predicted": "\"com.javafx.main.Main\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/JFXProjectGenerator.java",
+    "call_line": "ep.setProperty(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"dist.jar\"",
+    "predicted": "\"dist.dir\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/JFXProjectGenerator.java",
+    "call_line": "ep.setProperty(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"${dist.dir}/\" + validatePropertyValue(name) + \".jar\"",
+    "predicted": "\"dist\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/fxml/ConfigureFXMLCSSPanelVisual.java",
+    "call_line": "createdLocationComboBox.setEnabled(/* missing */)",
+    "position": 0,
+    "ground_truth": "false",
+    "predicted": "createNewRadioButton.isSelected()"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/fxml/FXMLTemplateWizardIterator.java",
+    "call_line": "!cssFullName.startsWith(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"/\"",
+    "predicted": "\"@\""
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/fxml/FXMLTemplateWizardIterator.java",
+    "call_line": "return NbBundle.getMessage(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"MSG_file_doesnt_exist\"",
+    "predicted": "MSG_ConfigureFXMLPanel_File_Does_Not_Exist"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/ui/RuntimeComboBox.java",
+    "call_line": "combo.setModel(/* missing */)",
+    "position": 0,
+    "ground_truth": "new javax.swing.DefaultComboBoxModel(new String[] { \"Item 1\", \"Item 2\", \"Item 3\", \"Item 4\" })",
+    "predicted": "new RuntimeListModel()"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/ui/JFXDeploymentPanel.java",
+    "call_line": "jfxProps.setLazyJars(/* missing */)",
+    "position": 0,
+    "ground_truth": "rc.getResources()",
+    "predicted": "rc.getLazyJars()"
+  },
+  {
+    "filepath": "javafx/javafx2.project/src/org/netbeans/modules/javafx2/project/ui/JFXRunPanel.java",
+    "call_line": "labelWebBrowser.setEnabled(/* missing */)",
+    "position": 0,
+    "ground_truth": "true",
+    "predicted": "!list.isEmpty()"
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/test/unit/src/org/apache/tools/ant/module/run/StandardLoggerTest.java",
+    "call_line": "sendMessageLogged(/* missing */)",
+    "position": 0,
+    "ground_truth": "makeAntEvent(originalEvent.getSession(), message, level, null, originalEvent.getTargetName(), originalEvent.getTaskName())",
+    "predicted": "makeAntEvent(originalEvent.getSession(), message, level, null, null, null)"
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/test/unit/src/org/apache/tools/ant/module/spi/AutomaticExtraClasspathTest.java",
+    "call_line": "assertEquals(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"One item\"",
+    "predicted": "\"one item\""
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/test/unit/src/org/apache/tools/ant/module/wizards/shortcut/ShortcutWizardTestBase.java",
+    "call_line": "assertNotNull(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"have a scratch dir\"",
+    "predicted": "\"scratch should not be null\""
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/src/org/apache/tools/ant/module/run/StandardLogger.java",
+    "call_line": "cmd.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"-d\"",
+    "predicted": "\"-debug\""
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/src/org/apache/tools/ant/module/run/StandardLogger.java",
+    "call_line": "String msg = Utilities.escapeParameters(/* missing */)",
+    "position": 0,
+    "ground_truth": "cmd.toArray(new String[cmd.size()])",
+    "predicted": "cmd.toArray(new String[0])"
+  },
+  {
+    "filepath": "extide/o.apache.tools.ant.module/src/org/apache/tools/ant/module/wizards/shortcut/SelectFolderPanel.java",
+    "call_line": "getPanel().setFolder(/* missing */)",
+    "position": 0,
+    "ground_truth": "(DataFolder)wiz.getProperty(getPanel().prop)",
+    "predicted": "(DataFolder)wiz.getProperty(propPanel)"
+  },
+  {
+    "filepath": "extide/gradle/test/unit/src/org/netbeans/modules/gradle/ProjectTrustTest.java",
+    "call_line": "int rnd = new Random().nextInt(/* missing */)",
+    "position": 0,
+    "ground_truth": "1000000",
+    "predicted": "100"
+  },
+  {
+    "filepath": "extide/gradle/src/org/netbeans/modules/gradle/newproject/SubProjectPanelVisual.java",
+    "call_line": ".addComponent(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "lbSubProjectHint",
+    "predicted": "jScrollPane1"
+  },
+  {
+    "filepath": "extide/gradle/src/org/netbeans/modules/gradle/newproject/SubProjectPanelVisual.java",
+    "call_line": ".addComponent(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "javax.swing.GroupLayout.DEFAULT_SIZE",
+    "predicted": "javax.swing.GroupLayout.PREFERRED_SIZE"
+  },
+  {
+    "filepath": "extide/gradle/src/org/netbeans/modules/gradle/newproject/SubProjectPanelVisual.java",
+    "call_line": ".addComponent(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "77",
+    "predicted": "248"
+  },
+  {
+    "filepath": "extide/gradle/src/org/netbeans/modules/gradle/newproject/SubProjectPanelVisual.java",
+    "call_line": ".addComponent(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "Short.MAX_VALUE",
+    "predicted": "javax.swing.GroupLayout.PREFERRED_SIZE"
+  },
+  {
+    "filepath": "extide/gradle/src/org/netbeans/modules/gradle/options/SettingsPanel.java",
+    "call_line": ".addComponent(/* missing */)",
+    "position": 0,
+    "ground_truth": "cbOpenLazy",
+    "predicted": "cbEnableCache"
+  },
+  {
+    "filepath": "websvccommon/websvc.saas.codegen/src/org/netbeans/modules/websvc/saas/codegen/util/Util.java",
+    "call_line": "keywords.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"double\"",
+    "predicted": "\"do\""
+  },
+  {
+    "filepath": "websvccommon/websvc.saas.codegen/src/org/netbeans/modules/websvc/saas/codegen/util/Util.java",
+    "call_line": "String[] tokens = id.split(/* missing */)",
+    "position": 0,
+    "ground_truth": "\",\"",
+    "predicted": "\"#\""
+  },
+  {
+    "filepath": "websvccommon/websvc.saas.codegen/src/org/netbeans/modules/websvc/saas/codegen/util/Inflector.java",
+    "call_line": "addPlural(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"(.*)([m|l])ouse$\"",
+    "predicted": "\"(.*)(shoe)$\""
+  },
+  {
+    "filepath": "websvccommon/websvc.saas.codegen/src/org/netbeans/modules/websvc/saas/codegen/util/Inflector.java",
+    "call_line": "addPlural(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"\\\\1\\\\2ice\"",
+    "predicted": "\"\\\\1\\\\2s\""
+  },
+  {
+    "filepath": "java/junit/src/org/netbeans/modules/junit/JUnit3TestGenerator.java",
+    "call_line": "Collections.singletonList(/* missing */)",
+    "position": 0,
+    "ground_truth": "suiteMethodCall",
+    "predicted": "maker.Literal(JUnitTestUtil.getSimpleName(suiteName))"
+  },
+  {
+    "filepath": "java/junit/src/org/netbeans/modules/junit/ClassMap.java",
+    "call_line": "addNoArgMethod(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "size()",
+    "predicted": "index"
+  },
+  {
+    "filepath": "java/junit/src/org/netbeans/modules/junit/DefaultPlugin.java",
+    "call_line": "NbBundle.getMessage(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"LBL_title_cannot_use_junit4\"",
+    "predicted": "\"LBL_create_junit3_tests\""
+  },
+  {
+    "filepath": "java/java.j2seplatform/src/org/netbeans/modules/java/j2seplatform/libraries/VolumeContentModel.java",
+    "call_line": "fireIntervalRemoved(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "indices[0]",
+    "predicted": "indices[indices.length-1]"
+  },
+  {
+    "filepath": "java/java.j2seplatform/src/org/netbeans/modules/java/j2seplatform/libraries/VolumeContentModel.java",
+    "call_line": "fireIntervalRemoved(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "indices[indices.length-1]",
+    "predicted": "indices[0]"
+  },
+  {
+    "filepath": "java/java.j2seplatform/src/org/netbeans/modules/java/j2seplatform/platformdefinition/PlatformConvertor.java",
+    "call_line": "holder.getPrimaryFile().getFileSystem().runAtomicAction(/* missing */)",
+    "position": 0,
+    "ground_truth": "new W(plat, holder, defaultPlatform)",
+    "predicted": "new SaveTask(plat)"
+  },
+  {
+    "filepath": "java/maven.embedder/test/unit/src/org/netbeans/modules/maven/embedder/EmbedderFactoryTest.java",
+    "call_line": "assertEquals(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"great\"",
+    "predicted": "2"
+  },
+  {
+    "filepath": "java/maven.embedder/test/unit/src/org/netbeans/modules/maven/embedder/EmbedderFactoryTest.java",
+    "call_line": "assertEquals(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "props.get(\"milos\")",
+    "predicted": "props.size()"
+  },
+  {
+    "filepath": "java/maven.embedder/src/org/netbeans/modules/maven/embedder/EmbedderFactory.java",
+    "call_line": "forbidden.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"netbeans.home\"",
+    "predicted": "\"netbeans.dirs\""
+  },
+  {
+    "filepath": "java/java.lexer/test/unit/src/org/netbeans/lib/java/lexer/JavaLexerBatchTest.java",
+    "call_line": "LexerTestUtilities.assertNextTokenEquals(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "JavaTokenId.WHITESPACE",
+    "predicted": "JavaTokenId.ASSERT"
+  },
+  {
+    "filepath": "java/java.lexer/test/unit/src/org/netbeans/lib/java/lexer/JavaLexerBatchTest.java",
+    "call_line": "LexerTestUtilities.assertNextTokenEquals(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "\" \"",
+    "predicted": "\"assert\""
+  },
+  {
+    "filepath": "java/java.lexer/test/unit/src/org/netbeans/lib/java/lexer/JavaLexerBatchTest.java",
+    "call_line": "LexerTestUtilities.assertNextTokenEquals(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "JavaTokenId.IDENTIFIER",
+    "predicted": "JavaTokenId.INT_LITERAL"
+  },
+  {
+    "filepath": "java/java.lexer/test/unit/src/org/netbeans/lib/java/lexer/JavaLexerBatchTest.java",
+    "call_line": "LexerTestUtilities.assertNextTokenEquals(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "\"b101\"",
+    "predicted": "\"0\""
+  },
+  {
+    "filepath": "java/java.lexer/src/org/netbeans/lib/java/lexer/JavaLexer.java",
+    "call_line": "return token(/* missing */)",
+    "position": 0,
+    "ground_truth": "inFraction ? JavaTokenId.FLOAT_LITERAL_INVALID\n                                            : JavaTokenId.INT_LITERAL",
+    "predicted": "JavaTokenId.FLOAT_LITERAL_INVALID"
+  },
+  {
+    "filepath": "java/maven/test/unit/src/org/netbeans/modules/maven/classpath/ClassPathProviderImplTest.java",
+    "call_line": "roots.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "FileUtil.isArchiveFile(file) ? FileUtil.getArchiveRoot(file) : file",
+    "predicted": "file"
+  },
+  {
+    "filepath": "java/maven/test/unit/src/org/netbeans/modules/maven/classpath/CPExtenderTest.java",
+    "call_line": "assertFalse(/* missing */)",
+    "position": 0,
+    "ground_truth": "ProjectClassPathModifier.removeLibraries(new Library[] {lib}, java, ClassPath.COMPILE)",
+    "predicted": "ProjectClassPathModifier.removeLibraries(new Library[] {lib2}, java, ClassPath.COMPILE)"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/output/GlobalOutputProcessor.java",
+    "call_line": "LOG.log(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "Level.INFO",
+    "predicted": "Level.WARNING"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/output/GlobalOutputProcessor.java",
+    "call_line": "LOG.log(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "\"Maven Project Reactor summary out of sync for:\" + line",
+    "predicted": "\"lineFailed != projectFailed\""
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/nodes/ProjectFilesNode.java",
+    "call_line": "if (n.startsWith(/* missing */)",
+    "position": 0,
+    "ground_truth": "M2Configuration.FILENAME_PREFIX",
+    "predicted": "\".\""
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/nodes/DependencyNode.java",
+    "call_line": "act.setEnabled(/* missing */)",
+    "position": 0,
+    "ground_truth": "true",
+    "predicted": "false"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/newproject/BasicPanelVisual.java",
+    "call_line": "File destFolder = FileUtil.normalizeFile(/* missing */)",
+    "position": 0,
+    "ground_truth": "new File(new File(projectLocationTextField.getText().trim()), projectNameTextField.getText().trim()).getAbsoluteFile()",
+    "predicted": "new File(projectLocationTextField.getText() + File.separator + projectNameTextField.getText())"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/actions/CreateLibraryAction.java",
+    "call_line": "mavendeps.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "\" \"",
+    "predicted": "\",\""
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/debug/MavenJPDAStart.java",
+    "call_line": "io.getOut().println(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"JPDA Listening Start...\"",
+    "predicted": "\"failed\""
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/runjar/RunJarStartupArgs.java",
+    "call_line": "ic.add(/* missing */)",
+    "position": 0,
+    "ground_truth": "pp.getJavaPlatform()",
+    "predicted": "pp"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/configurations/ConfigurationsPanel.java",
+    "call_line": ".addComponent(/* missing */)",
+    "position": 0,
+    "ground_truth": "btnRemove",
+    "predicted": "btnActivate"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/execute/navigator/TrivialLayout.java",
+    "call_line": "c[ 0 ].setBounds(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "parent.getWidth ()",
+    "predicted": "parent.getWidth()"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/execute/navigator/TrivialLayout.java",
+    "call_line": "c[ 0 ].setBounds(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "parent.getHeight ()",
+    "predicted": "parent.getHeight()"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/api/customizer/support/ComboBoxUpdater.java",
+    "call_line": "component.setToolTipText(/* missing */)",
+    "position": 0,
+    "ground_truth": "null",
+    "predicted": "HINT_inherited()"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/api/customizer/support/ComboBoxUpdater.java",
+    "call_line": "field.setSelectedItem(/* missing */)",
+    "position": 0,
+    "ground_truth": "projectValue != null ? projectValue : field.getModel().getElementAt(0)",
+    "predicted": "value != null ? value : field.getModel().getElementAt(0)"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/options/MavenSettings.java",
+    "call_line": "runtimesPref = runtimesPref.substring(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "runtimesPref.length() - 1",
+    "predicted": "runtimesPref.length() - File.pathSeparator.length()"
+  },
+  {
+    "filepath": "java/maven/src/org/netbeans/modules/maven/cos/CosChecker.java",
+    "call_line": "File jar = InstalledFileLocator.getDefault().locate(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "\"maven-nblib/netbeans-cos.jar\"",
+    "predicted": "\"modules/ext/maven-nbmaven-ext.jar\""
+  },
+  {
+    "filepath": "java/java.platform.ui/src/org/netbeans/modules/java/platform/InstallerRegistry.java",
+    "call_line": "return filter(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "getAllInstallers()",
+    "predicted": "PlatformInstall.class"
+  },
+  {
+    "filepath": "java/java.platform.ui/src/org/netbeans/modules/java/platform/InstallerRegistry.java",
+    "call_line": "return filter(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "PlatformInstall.class",
+    "predicted": "getInstalls()"
+  }
+]

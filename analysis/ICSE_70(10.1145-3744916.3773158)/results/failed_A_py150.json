@@ -1,0 +1,1486 @@
+[
+  {
+    "filepath": "AcademicsToday/py-academicstoday/academicstoday_project/publisher/views/my_publication.py",
+    "call_line": "response_data = json.dumps(/* missing */)",
+    "position": 0,
+    "ground_truth": "form.errors",
+    "predicted": "response_data"
+  },
+  {
+    "filepath": "AppScale/appscale/AppServer/google/appengine/ext/appstats/datamodel_pb.py",
+    "call_line": "out.putVarInt32(/* missing */)",
+    "position": 0,
+    "ground_truth": "50",
+    "predicted": "self.keys_read_[i].ByteSizePartial()"
+  },
+  {
+    "filepath": "AppScale/appscale/AppServer/lib/django-1.3/django/contrib/admin/widgets.py",
+    "call_line": "output = self.widget.render(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "*args",
+    "predicted": "*args, **kwargs"
+  },
+  {
+    "filepath": "Arelle/Arelle/arelle/ViewFileFactTable.py",
+    "call_line": "values.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "XmlUtil.innerText(element)",
+    "predicted": "stripXmlPattern.sub('', XmlUtil.innerText(element))"
+  },
+  {
+    "filepath": "BD2KGenomics/toil/src/toil/batchSystems/parasol.py",
+    "call_line": "logger.debug(/* missing */)",
+    "position": 0,
+    "ground_truth": "'Joining worker thread...'",
+    "predicted": "\"Got the parasol job id: %s from line: %s\" % (jobID, line)"
+  },
+  {
+    "filepath": "BU-NU-CLOUD-SP16/Trusted-Platform-Module-nova/nova/tests/unit/api/openstack/compute/test_hide_server_addresses.py",
+    "call_line": "res = self._make_request(/* missing */)",
+    "position": 0,
+    "ground_truth": "self.base_url + '/' + fakes.get_fake_uuid()",
+    "predicted": "self.base_url + '/%s' % fakes.get_fake_uuid(1)"
+  },
+  {
+    "filepath": "BU-NU-CLOUD-SP16/Trusted-Platform-Module-nova/nova/tests/unit/network/test_network_info.py",
+    "call_line": "[fake_network_cache_model.new_ip(dict(address = fake_network_cache_model.new_ip(/* missing */)",
+    "position": 0,
+    "ground_truth": "dict(address='1.2.3.4')",
+    "predicted": "dict(address='192.168.1.1')"
+  },
+  {
+    "filepath": "CiscoSystems/avos/openstack_dashboard/test/api_tests/fwaas_tests.py",
+    "call_line": "self.assertTrue(/* missing */)",
+    "position": 0,
+    "ground_truth": "ret_val.id",
+    "predicted": "ret_val.name"
+  },
+  {
+    "filepath": "CouchPotato/CouchPotatoServer/libs/gntp/core.py",
+    "call_line": "self.write(/* missing */)",
+    "position": 0,
+    "ground_truth": "GNTP_SEP",
+    "predicted": "gntp.shim.b(key)"
+  },
+  {
+    "filepath": "EricssonResearch/calvin-base/calvin/runtime/north/metering.py",
+    "call_line": "self.actors_aggregated.setdefault(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "{action: 0 for action in self.actors_meta[actor_id]}",
+    "predicted": "{}"
+  },
+  {
+    "filepath": "Exa-Networks/exabgp/lib/exabgp/configuration/static/parser.py",
+    "call_line": "ExtendedCommunity.unpack(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "_HEADER['target4'] + pack('!LH', iga, ila)",
+    "predicted": "_HEADER['target4']+pack('!LH',iga,ila)"
+  },
+  {
+    "filepath": "Futubank/django-futupayments/futupayments/forms.py",
+    "call_line": "data = dict(/* missing */)",
+    "position": 0,
+    "ground_truth": "self.data.items()",
+    "predicted": "self.cleaned_data"
+  },
+  {
+    "filepath": "GeekTrainer/Flask/Work/Trivia - Module 5/env/Lib/site-packages/pip/_vendor/distlib/_backport/sysconfig.py",
+    "call_line": "value = int(/* missing */)",
+    "position": 0,
+    "ground_truth": "value",
+    "predicted": "v"
+  },
+  {
+    "filepath": "GoogleCloudPlatform/gsutil/gslib/tests/test_util.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "util.HumanReadableToBytes('1\\t   PB')",
+    "predicted": "util.HumanReadableToBytes('1\\t   P')"
+  },
+  {
+    "filepath": "GoogleCloudPlatform/python-compat-runtime/appengine-compat/exported_appengine_sdk/google/appengine/tools/devappserver2/endpoints/api_request_test.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "[('CONTENT-TYPE', 'application/json')]",
+    "predicted": "{}"
+  },
+  {
+    "filepath": "GoogleCloudPlatform/python-compat-runtime/appengine-compat/exported_appengine_sdk/google/appengine/tools/devappserver2/endpoints/api_request_test.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "request.headers.items()",
+    "predicted": "request.body_json"
+  },
+  {
+    "filepath": "GoogleCloudPlatform/python-docs-samples/appengine/endpoints/backend/main_test.py",
+    "call_line": "mock.patch(/* missing */)",
+    "position": 0,
+    "ground_truth": "'main.endpoints.get_current_user'",
+    "predicted": "'endpoints.get_current_user'"
+  },
+  {
+    "filepath": "ImageEngine/gaffer/python/GafferSceneTest/SubTreeTest.py",
+    "call_line": "g['in'][2].setInput(/* missing */)",
+    "position": 0,
+    "ground_truth": "lg3['out']",
+    "predicted": "lg3[\"out\"]"
+  },
+  {
+    "filepath": "Kitware/minerva/server/utility/minerva_utility.py",
+    "call_line": "ModelImporter.model('collection').filter(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "c",
+    "predicted": "collection"
+  },
+  {
+    "filepath": "Lawouach/WebSocket-for-Python/ws4py/websocket.py",
+    "call_line": "self.send(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "message.data",
+    "predicted": "message"
+  },
+  {
+    "filepath": "MegaMark16/django-live-support/live_support/tests.py",
+    "call_line": "resp = self.client.get(/* missing */)",
+    "position": 0,
+    "ground_truth": "'%s?bad=good&%s=%s' % (url, chat.id, message1.id)",
+    "predicted": "'%s?%s=%s' % (url, chat.id, message1.id)"
+  },
+  {
+    "filepath": "NVIDIA/DIGITS/digits/config/log_file.py",
+    "call_line": "config_option.BadValue(/* missing */)",
+    "position": 0,
+    "ground_truth": "'\"%s\" is a directory' % value",
+    "predicted": "'Cannot use a directory as a log file'"
+  },
+  {
+    "filepath": "Net-ng/kansha/kansha/card_addons/due_date/tests.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "-5",
+    "predicted": "5"
+  },
+  {
+    "filepath": "NeuralEnsemble/python-neo/neo/test/coretest/test_spiketrain.py",
+    "call_line": "self.assertRaises(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 4,
+    "ground_truth": "[0, 4, 5] * pq.ms",
+    "predicted": "[3, 4, 11] * pq.ms"
+  },
+  {
+    "filepath": "OpenMDAO/OpenMDAO/openmdao/test/simple_comps.py",
+    "call_line": "sub2 = self.add(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "Group()",
+    "predicted": "ParallelGroup()"
+  },
+  {
+    "filepath": "PyTables/PyTables/tables/tests/test_links.py",
+    "call_line": "self.assertTrue(/* missing */)",
+    "position": 0,
+    "ground_truth": "'/lgroup1' not in self.h5file",
+    "predicted": "lgroup2 is not None"
+  },
+  {
+    "filepath": "Rapptz/discord.py/discord/ext/commands/formatter.py",
+    "call_line": "' '.join(/* missing */)",
+    "position": 0,
+    "ground_truth": "result",
+    "predicted": "reversed(entries)"
+  },
+  {
+    "filepath": "SmokinCaterpillar/pypet/pypet/brian/parameter.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "monitor",
+    "predicted": "item"
+  },
+  {
+    "filepath": "SmokinCaterpillar/pypet/pypet/brian/parameter.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "SpikeCounter",
+    "predicted": "(Monitor, MultiStateMonitor)"
+  },
+  {
+    "filepath": "SpockBotMC/SpockBot/spockbot/plugins/helpers/physics.py",
+    "call_line": "self.vec - = Vector3(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "0",
+    "predicted": "Looking at the code, I need to find where `self.vec -= Vector3(/* missing */, /* missing */, /* missing */)` would be used in physics context.\n\nThe code is a Minecraft physics module. The `vec` is `Vector3(0.0, 0.0, 0.0)` representing velocity. The pattern suggests applying drag/friction to the velocity vector.\n\nLooking at the physics pattern in Minecraft, drag is applied by multiplying components. However, the call is a subtraction (`-=`) with a `Vector3`.\n\nIn Minecraft physics, the horizontal drag (friction) is typically applied as `vec * drag_factor`. But here it's a subtraction.\n\nLooking at the context more carefully - `self.vec` is the velocity vector. In physics_tick, after applying acceleration and resolving collisions, drag is typically applied. The Minecraft physics applies a drag that subtracts a fraction of the current velocity.\n\nThe pattern for Minecraft drag on horizontal movement is multiplying by 0.91 (air) or similar values. But since it's subtraction, it might be subtracting a friction component like `vec.x * friction_factor`.\n\nLooking at Minecraft physics constants and the structure, horizontal drag in air would be `vec.x * (1 - 0.91)` effectively. But the Vector3 subtraction pattern suggests something like `Vector3(vec.x * factor, vec.y * factor, vec.z * factor)`.\n\nIn Minecraft physics, the standard drag applied per tick is often expressed as velocity components multiplied by a drag coefficient. The air drag makes velocity = velocity * 0.91, which means subtracting velocity * 0.09.\n\nGiven the constants available in `const` module (PHY_JMP_ABS, PHY_JMP_MUL, PHY_SPR_MUL referenced earlier), there are likely drag constants too. The most natural pattern would reference `self.vec` components multiplied by a drag constant.\n\nA common pattern would be `self.vec.x * drag, self.vec.y * drag, self.vec.z * drag` or using `const` values.\n\nGiven the code style and Minecraft physics, the most likely pattern for drag application:\n\n```python\nself.vec -= Vector"
+  },
+  {
+    "filepath": "SpockBotMC/SpockBot/spockbot/plugins/helpers/physics.py",
+    "call_line": "self.vec - = Vector3(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "const.PHY_GAV_ACC",
+    "predicted": null
+  },
+  {
+    "filepath": "SpockBotMC/SpockBot/spockbot/plugins/helpers/physics.py",
+    "call_line": "self.vec - = Vector3(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "0",
+    "predicted": null
+  },
+  {
+    "filepath": "SpockBotMC/SpockBot/tests/plugins/core/test_taskmanager.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'High level error!'",
+    "predicted": "'Low level error!'"
+  },
+  {
+    "filepath": "StartTheShift/thunderdome/thunderdome/connection.py",
+    "call_line": "_statsd.incr(/* missing */)",
+    "position": 0,
+    "ground_truth": "'{}.error'.format(context)",
+    "predicted": "\"thunderdome.unknown_error\".format(context)"
+  },
+  {
+    "filepath": "YelpArchive/pushmanager/pushmanager/tests/test_core_auth.py",
+    "call_line": "mock.patch.object(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "logging",
+    "predicted": "auth"
+  },
+  {
+    "filepath": "YelpArchive/pushmanager/pushmanager/tests/test_core_auth.py",
+    "call_line": "mock.patch.object(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'exception'",
+    "predicted": "'authenticate'"
+  },
+  {
+    "filepath": "acba/elm/elm/elmk.py",
+    "call_line": "temp = np.dot(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "training_patterns",
+    "predicted": "test_patterns"
+  },
+  {
+    "filepath": "acba/elm/elm/elmk.py",
+    "call_line": "temp = np.dot(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "test_patterns.conj().T",
+    "predicted": "training_patterns.conj().T"
+  },
+  {
+    "filepath": "adamcharnock/dokku-client/dokku_client/client.py",
+    "call_line": "sys.stderr.write(/* missing */)",
+    "position": 0,
+    "ground_truth": "'Could not determine host. Specify --host or set DOKKU_HOST.\\n'",
+    "predicted": "\"No host specified. Use -H <host> or set the DOKKU_HOST environment variable.\\n\""
+  },
+  {
+    "filepath": "agrover/targetcli-fb/targetcli/ui_target.py",
+    "call_line": "ui_lun = UILUN(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "self",
+    "predicted": "ui_tpg.get_node(\"luns\")"
+  },
+  {
+    "filepath": "aigamedev/scikit-neuralnetwork/sknn/tests/test_conv.py",
+    "call_line": "self._run(/* missing */)",
+    "position": 0,
+    "ground_truth": "'Tanh'",
+    "predicted": "\"Tanh\""
+  },
+  {
+    "filepath": "alimanfoo/petl/petl/test/transform/test_intervals.py",
+    "call_line": "actual = lkp['orange'].search(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "19",
+    "predicted": "9"
+  },
+  {
+    "filepath": "alimanfoo/petl/petl/test/transform/test_intervals.py",
+    "call_line": "actual = lkp['orange'].search(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "140",
+    "predicted": "14"
+  },
+  {
+    "filepath": "an0/Letterpress/code/markdown2/lib/markdown2.py",
+    "call_line": "self._encode_email_address(/* missing */)",
+    "position": 0,
+    "ground_truth": "self._unescape_special_chars(match.group(1))",
+    "predicted": "match.group(1)"
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/intangible/pet/shared_huf_dun_hue.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "''",
+    "predicted": "\"pet\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/intangible/pet/shared_huf_dun_hue.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "''",
+    "predicted": "\"huf_dun_hue\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/mobile/shared_dressed_stranded_imperial_officer.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'npc_name'",
+    "predicted": "\"@mob/creature_names\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/mobile/shared_dressed_stranded_imperial_officer.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'human_base_male'",
+    "predicted": "\"imperial_officer\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/ship/shared_lambdashuttle_tier1.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "''",
+    "predicted": "\"ship_name\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/ship/shared_lambdashuttle_tier1.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "''",
+    "predicted": "\"lambdashuttle_tier1\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite_2.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'space/space_item'",
+    "predicted": "\"ship_detail_n\""
+  },
+  {
+    "filepath": "anhstudios/swganh/data/scripts/templates/object/tangible/ship/components/shield_generator/shared_shd_armek_plasma_shell_elite_2.py",
+    "call_line": "result.stfName(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'shd_armek_plasma_shell_elite_2_n'",
+    "predicted": "\"shd_armek_plasma_shell_elite_2\""
+  },
+  {
+    "filepath": "appcelerator-archive/poc-nodejs-desktop/Resources/nodejs/builds/linux/node/lib/node/wafadmin/Tools/python.py",
+    "call_line": "env.append_value(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "python_LDFLAGS.split()",
+    "predicted": "lib"
+  },
+  {
+    "filepath": "appcelerator-archive/poc-nodejs-desktop/Resources/nodejs/builds/linux/node/lib/node/wafadmin/Tools/unittestw.py",
+    "call_line": "unit_test = getattr(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "obj",
+    "predicted": "Looking at the code context, I need to analyze what comes after the `preceding_code` to understand the `getattr` call. The code is about unit tests for build objects, and it's iterating over `Build.bld.all_task_gen` objects.\n\nThe pattern in this code is checking if an object (`obj`) has a `unit_test` attribute. The `getattr` function is commonly used to safely access attributes with a default value. Given:\n\n1. We're iterating over `obj` in `Build.bld.all_task_gen`\n2. The variable being assigned is `unit_test`\n3. The code checks for `unit_test` attribute on task generator objects\n4. `getattr(obj, 'unit_test', None)` or similar pattern would be used to check if the object is a unit test\n\nThe class itself has `obj.unit_test=1` mentioned in the docstring as the marker for unit test objects. So the `getattr` call is checking for the `'unit_test'` attribute on `obj` with a default of `None` or `False`.\n\n```json\n{\n  \"arguments\": [\n    {\"position\": 0, \"value\": \"obj\"},\n    {\"position\": 1, \"value\": \"'unit_test'\"},\n    {\"position\": 2, \"value\": None}\n  ]\n}\n```\n\nWait, `None` needs to be a string value:\n\n```json\n{\n  \"arguments\": [\n    {\"position\": 0, \"value\": \"obj\"},\n    {\"position\": 1, \"value\": \"'unit_test'\"},\n    {\"position\": 2, \"value\": \"None\"}\n  ]\n}\n```"
+  },
+  {
+    "filepath": "appcelerator-archive/poc-nodejs-desktop/Resources/nodejs/builds/linux/node/lib/node/wafadmin/Tools/unittestw.py",
+    "call_line": "unit_test = getattr(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'unit_test'",
+    "predicted": null
+  },
+  {
+    "filepath": "appcelerator-archive/poc-nodejs-desktop/Resources/nodejs/builds/linux/node/lib/node/wafadmin/Tools/unittestw.py",
+    "call_line": "unit_test = getattr(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "''",
+    "predicted": null
+  },
+  {
+    "filepath": "ardekantur/pyglet/tests/graphics/MULTITEXTURE.py",
+    "call_line": "batch.add(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "('v2i', [0, 0, w, 0, w, h, 0, h])",
+    "predicted": "('v2f', (0, 0, w, 0, w, h, 0, h))"
+  },
+  {
+    "filepath": "ardekantur/pyglet/tests/graphics/MULTITEXTURE.py",
+    "call_line": "batch.add(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 4,
+    "ground_truth": "('0t3f', texture1.tex_coords)",
+    "predicted": "('t2f/0', (0, 0, 1, 0, 1, 1, 0, 1))"
+  },
+  {
+    "filepath": "ardekantur/pyglet/tests/graphics/MULTITEXTURE.py",
+    "call_line": "batch.add(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 5,
+    "ground_truth": "('1t3f', texture0.tex_coords)",
+    "predicted": "('t2f/1', (0, 0, 1, 0, 1, 1, 0, 1))"
+  },
+  {
+    "filepath": "babble/babble/include/jython/Lib/test/test_bool.py",
+    "call_line": "self.assertIs(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "cPickle.loads(cPickle.dumps(False))",
+    "predicted": "cPickle.loads(cPickle.dumps(True))"
+  },
+  {
+    "filepath": "babble/babble/include/jython/Lib/test/test_bool.py",
+    "call_line": "self.assertIs(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "False",
+    "predicted": "True"
+  },
+  {
+    "filepath": "benbaptist/minecraft-wrapper/example-plugins/SmallBrother.py",
+    "call_line": "item = json.dumps({'id': payload['block'], 'Damage': 0, 'Count': 1, 'tag': {}}).replace(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'\"'",
+    "predicted": "\"\\\"\""
+  },
+  {
+    "filepath": "benbaptist/minecraft-wrapper/example-plugins/SmallBrother.py",
+    "call_line": "item = json.dumps({'id': payload['block'], 'Damage': 0, 'Count': 1, 'tag': {}}).replace(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "''",
+    "predicted": "\"'\""
+  },
+  {
+    "filepath": "benoitc/dj-webmachine/example/helloworld/hello/resource.py",
+    "call_line": "json.dumps(/* missing */)",
+    "position": 0,
+    "ground_truth": "{'message': 'hello world!', 'ok': True}",
+    "predicted": "{\"message\": \"Hello world!\"}"
+  },
+  {
+    "filepath": "benoitc/gaffer/gaffer/cli/commands/export.py",
+    "call_line": "KeyError(/* missing */)",
+    "position": 0,
+    "ground_truth": "'%r is not found' % args['<name>']",
+    "predicted": "args['<name>']"
+  },
+  {
+    "filepath": "bigjason/datatree/datatree/tests/test_yamlrenderer.py",
+    "call_line": "self.yaml_to_dict(/* missing */)",
+    "position": 0,
+    "ground_truth": "self.get_dirty_tree().render('yaml')",
+    "predicted": "self.get_node().render('yaml')"
+  },
+  {
+    "filepath": "billpmurphy/hask/hask/lang/type_system.py",
+    "call_line": "id(/* missing */)",
+    "position": 0,
+    "ground_truth": "type(item)",
+    "predicted": "item.__type_constructor__"
+  },
+  {
+    "filepath": "blaze/odo/odo/tests/test_utils.py",
+    "call_line": "s = set(/* missing */)",
+    "position": 0,
+    "ground_truth": "[1, 2, 3]",
+    "predicted": "iter_except(lambda: next(it), StopIteration)"
+  },
+  {
+    "filepath": "blockchain/api-v1-client-python/blockchain/wallet.py",
+    "call_line": "response = util.call_api(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'merchant/{0}/new_address'.format(self.identifier)",
+    "predicted": "\"merchant/{0}/new_address\".format(self.identifier)"
+  },
+  {
+    "filepath": "borg-project/borg/borg/unix/proc.py",
+    "call_line": "pid = property(/* missing */)",
+    "position": 0,
+    "ground_truth": "lambda self: int(self.__d['pid'])",
+    "predicted": "lambda self: int(self.__d[\"pid\"])"
+  },
+  {
+    "filepath": "box/ClusterRunner/app/master/build_artifact.py",
+    "call_line": "self._logger.debug(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'Created new timing file in {}'",
+    "predicted": "'Writing timing data to file: %s'"
+  },
+  {
+    "filepath": "brettcannon/caniusepython3/caniusepython3/pypi.py",
+    "call_line": "frozenset(/* missing */)",
+    "position": 0,
+    "ground_truth": "(name.lower() for name in client.list_packages())",
+    "predicted": "client.list_packages()"
+  },
+  {
+    "filepath": "c00w/gevent-dht/gevent_dht/protocol.py",
+    "call_line": "resp = str(/* missing */)",
+    "position": 0,
+    "ground_truth": "self.port",
+    "predicted": "node"
+  },
+  {
+    "filepath": "cd34/apex/apex/models.py",
+    "call_line": "auth_id = Column(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "types.Integer",
+    "predicted": "types.Integer()"
+  },
+  {
+    "filepath": "cd34/apex/apex/models.py",
+    "call_line": "auth_id = Column(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "ForeignKey(AuthID.id)",
+    "predicted": "ForeignKey('auth_id.id', onupdate='CASCADE', ondelete='CASCADE')"
+  },
+  {
+    "filepath": "circus-tent/circus/circus/tests/test_validate_option.py",
+    "call_line": "self.assertRaises(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "'rlimit_foo'",
+    "predicted": "'rlimit_INVALID'"
+  },
+  {
+    "filepath": "cloudaice/simple-data/misc/virtenv/lib/python2.7/site-packages/tornado/test/ioloop_test.py",
+    "call_line": "self.assertIn(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'c1'",
+    "predicted": "'f1'"
+  },
+  {
+    "filepath": "cloudera/hue/desktop/core/ext-py/Django-1.6.10/django/template/loader_tags.py",
+    "call_line": "if len(bits) ! = len(/* missing */)",
+    "position": 0,
+    "ground_truth": "bits",
+    "predicted": "2"
+  },
+  {
+    "filepath": "cloudera/hue/desktop/core/ext-py/Django-1.6.10/tests/generic_inline_admin/tests.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "form._meta.fields",
+    "predicted": "list(form().fields)"
+  },
+  {
+    "filepath": "cloudera/hue/desktop/core/ext-py/Django-1.6.10/tests/generic_inline_admin/tests.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "['url', 'description']",
+    "predicted": "['url', 'description', 'id']"
+  },
+  {
+    "filepath": "cloudera/hue/desktop/core/ext-py/cffi-1.5.2/cffi/backend_ctypes.py",
+    "call_line": "setattr(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "self._blob",
+    "predicted": "CTypesStructOrUnion"
+  },
+  {
+    "filepath": "cloudera/hue/desktop/core/ext-py/cffi-1.5.2/cffi/backend_ctypes.py",
+    "call_line": "setattr(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "BField._to_ctypes(value)",
+    "predicted": "property(getter, setter)"
+  },
+  {
+    "filepath": "cloudify-cosmo/cloudify-manager/rest-service/manager_rest/test/test_storage_manager.py",
+    "call_line": "self.assertEquals(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "dep.id",
+    "predicted": "11"
+  },
+  {
+    "filepath": "cloudify-cosmo/cloudify-manager/rest-service/manager_rest/test/test_storage_manager.py",
+    "call_line": "self.assertEquals(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "serialized_dep['id']",
+    "predicted": "len(serialized_dep)"
+  },
+  {
+    "filepath": "crccheck/django-object-actions/example_project/polls/factories.py",
+    "call_line": "email = factory.LazyAttribute(/* missing */)",
+    "position": 0,
+    "ground_truth": "lambda x: '{0}@{1}.com'.format(x.first_name.lower(), x.last_name.lower())",
+    "predicted": "lambda x: '{0}@example.com'.format(x.username)"
+  },
+  {
+    "filepath": "d11wtq/dockerpty/dockerpty/tty.py",
+    "call_line": "os.isatty(/* missing */)",
+    "position": 0,
+    "ground_truth": "fd.fileno()",
+    "predicted": "fd"
+  },
+  {
+    "filepath": "daler/metaseq/metaseq/plotutils.py",
+    "call_line": "ax5.set_ylabel(/* missing */)",
+    "position": 0,
+    "ground_truth": "'enriched reads per million mapped reads'",
+    "predicted": "'Enrichment (RPMMR)'"
+  },
+  {
+    "filepath": "dcm-oss/blockade/blockade/net.py",
+    "call_line": "lines = iptables_call_output(/* missing */)",
+    "position": 0,
+    "ground_truth": "'-L'",
+    "predicted": "\"-L\""
+  },
+  {
+    "filepath": "dimagi/commcare-hq/corehq/apps/data_interfaces/views.py",
+    "call_line": "return HttpResponseRedirect(reverse(AutomaticUpdateRuleListView.urlname, args = HttpResponseRedirect(/* missing */)",
+    "position": 0,
+    "ground_truth": "reverse(AutomaticUpdateRuleListView.urlname, args=[self.domain])",
+    "predicted": "[self.domain]"
+  },
+  {
+    "filepath": "dimagi/commcare-hq/corehq/apps/hqcase/tests/test_explode_cases.py",
+    "call_line": "submit_case_blocks(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "[caseblock]",
+    "predicted": "caseblock"
+  },
+  {
+    "filepath": "divio/django-cms/cms/tests/test_management.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "text_plugins_report['unsaved_instances']",
+    "predicted": "text_plugins_report[\"instances\"][2]"
+  },
+  {
+    "filepath": "divio/django-cms/cms/tests/test_management.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "[instanceless_plugin]",
+    "predicted": "instanceless_plugin"
+  },
+  {
+    "filepath": "divio/django-cms/cms/tests/test_management.py",
+    "call_line": "Page.objects.on_site(/* missing */)",
+    "position": 0,
+    "ground_truth": "site_1_pk",
+    "predicted": "site_2_pk"
+  },
+  {
+    "filepath": "django/django/tests/forms_tests/field_tests/test_booleanfield.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "f.clean(1)",
+    "predicted": "f.clean(True)"
+  },
+  {
+    "filepath": "django/django/tests/postgres_tests/test_ranges.py",
+    "call_line": "instance = NumericRange(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "None",
+    "predicted": "0"
+  },
+  {
+    "filepath": "djangonauts/django-pgjson/django_pgjson/fields.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "six.string_types",
+    "predicted": "str"
+  },
+  {
+    "filepath": "dnanexus/dx-toolkit/src/python/dxpy/api.py",
+    "call_line": "print(\"dxpy.projectLeave is deprecated; please use project_leave instead.\", file = print(/* missing */)",
+    "position": 0,
+    "ground_truth": "'dxpy.projectLeave is deprecated; please use project_leave instead.'",
+    "predicted": "\"dxpy.projectLeave is deprecated; please use project_leave instead.\""
+  },
+  {
+    "filepath": "dokterbob/satchmo/satchmo/apps/product/views/__init__.py",
+    "call_line": "bad_or_missing(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "_('The category you have requested does not exist.')",
+    "predicted": "_('The category you requested does not exist.')"
+  },
+  {
+    "filepath": "ejeschke/ginga/ginga/mplw/ImageViewMpl.py",
+    "call_line": "self.logger.debug(\"extent = self.logger.debug(/* missing */)",
+    "position": 0,
+    "ground_truth": "'extent=%s' % str(extent)",
+    "predicted": "\"extent = %s\" % str((x0, x1, y1, y0))"
+  },
+  {
+    "filepath": "enthought/traitsui/traitsui/wx/table_editor.py",
+    "call_line": "OK = Button(/* missing */)",
+    "position": 0,
+    "ground_truth": "'Close'",
+    "predicted": "'OK'"
+  },
+  {
+    "filepath": "enthought/traitsui/traitsui/wx/ui_panel.py",
+    "call_line": "((nbuttons ! = self.is_button(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "buttons[0]",
+    "predicted": "button"
+  },
+  {
+    "filepath": "enthought/traitsui/traitsui/wx/ui_panel.py",
+    "call_line": "((nbuttons ! = self.is_button(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "''",
+    "predicted": "'Undo'"
+  },
+  {
+    "filepath": "f4ble/pyarc/ark/rcon.py",
+    "call_line": "Lang = Factory.get(/* missing */)",
+    "position": 0,
+    "ground_truth": "'Translation'",
+    "predicted": "'Lang'"
+  },
+  {
+    "filepath": "fredrik-johansson/mpmath/mpmath/tests/test_functions.py",
+    "call_line": "isnan(/* missing */)",
+    "position": 0,
+    "ground_truth": "log(mpc(nan, 0)).imag",
+    "predicted": "log(mpc(nan,0)).real"
+  },
+  {
+    "filepath": "ga4gh/server/ga4gh/datamodel/variants.py",
+    "call_line": "self._createCsqTranscriptEffect(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "alt",
+    "predicted": "term"
+  },
+  {
+    "filepath": "ga4gh/server/ga4gh/datamodel/variants.py",
+    "call_line": "self._createCsqTranscriptEffect(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "term",
+    "predicted": "alt"
+  },
+  {
+    "filepath": "ga4gh/server/ga4gh/datamodel/variants.py",
+    "call_line": "self._createCsqTranscriptEffect(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "protPos",
+    "predicted": "featureId"
+  },
+  {
+    "filepath": "ga4gh/server/ga4gh/datamodel/variants.py",
+    "call_line": "self._createCsqTranscriptEffect(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "cdnaPos",
+    "predicted": "protPos"
+  },
+  {
+    "filepath": "ga4gh/server/ga4gh/datamodel/variants.py",
+    "call_line": "self._createCsqTranscriptEffect(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 4,
+    "ground_truth": "featureId",
+    "predicted": "cdnaPos"
+  },
+  {
+    "filepath": "ga4gh/server/tests/unit/test_compound_ids.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "cid.readGroupSet",
+    "predicted": "cid.readAlignment"
+  },
+  {
+    "filepath": "ga4gh/server/tests/unit/test_compound_ids.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'b'",
+    "predicted": "\"c\""
+  },
+  {
+    "filepath": "gallantlab/pycortex/cortex/polyutils.py",
+    "call_line": "polys.append(/* missing */)",
+    "position": 0,
+    "ground_truth": "[ptmap[p] for p in self.polys[face]]",
+    "predicted": "[ptmap[pt] for pt in self.polys[face]]"
+  },
+  {
+    "filepath": "gallantlab/pycortex/cortex/utils.py",
+    "call_line": "enumerate(/* missing */)",
+    "position": 0,
+    "ground_truth": "roi_list_L",
+    "predicted": "roi_list"
+  },
+  {
+    "filepath": "ganeti/ganeti/test/py/ganeti.storage.bdev_unittest.py",
+    "call_line": "rnd = random.Random(/* missing */)",
+    "position": 0,
+    "ground_truth": "8067",
+    "predicted": "9517"
+  },
+  {
+    "filepath": "geopy/geopy/geopy/geocoders/osm.py",
+    "call_line": "params.update(/* missing */)",
+    "position": 0,
+    "ground_truth": "{'format': 'json'}",
+    "predicted": "{'format': 'json', 'addressdetails': 1 if addressdetails else 0}"
+  },
+  {
+    "filepath": "godaddy/Thespian/thespian/test/test_ipbase.py",
+    "call_line": "self.assertFalse(/* missing */)",
+    "position": 0,
+    "ground_truth": "cmpTCP(('127.0.0.1', 32), ('0.0.0.0', 23))",
+    "predicted": "cmpTCP( ('127.0.0.1', 32), ('192.168.1.1', 32) )"
+  },
+  {
+    "filepath": "google/anvil-build/anvil/project_test.py",
+    "call_line": "self.assertIs(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "project.get_module('mb')",
+    "predicted": "project.get_module('ma')"
+  },
+  {
+    "filepath": "google/anvil-build/anvil/project_test.py",
+    "call_line": "self.assertIs(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "module_b",
+    "predicted": "module_a"
+  },
+  {
+    "filepath": "google/apis-client-generator/src/googleapis/codegen/template_helpers_test.py",
+    "call_line": "self.assertEquals(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'tag requires a single argument: %s' % tag",
+    "predicted": "True"
+  },
+  {
+    "filepath": "google/apis-client-generator/src/googleapis/codegen/template_helpers_test.py",
+    "call_line": "self.assertEquals(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "str(e)",
+    "predicted": "tag in str(e)"
+  },
+  {
+    "filepath": "impactlab/eemeter/tests/test_models.py",
+    "call_line": "assert_allclose(usages[8:13],[3,2,1,1,1], rtol = assert_allclose(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "usages[8:13]",
+    "predicted": "1e-2"
+  },
+  {
+    "filepath": "impactlab/eemeter/tests/test_models.py",
+    "call_line": "assert_allclose(usages[8:13],[3,2,1,1,1], rtol = assert_allclose(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "[3, 2, 1, 1, 1]",
+    "predicted": "1e-2"
+  },
+  {
+    "filepath": "ioflo/ioflo/ioflo/aio/http/test/test_clienting.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "line",
+    "predicted": "request.head"
+  },
+  {
+    "filepath": "ioflo/ioflo/ioflo/aio/http/test/test_clienting.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "request.lines[i]",
+    "predicted": "b'GET /fancy?idify=true&jsonify=true HTTP/1.1\\r\\nHost: 127.0.0.1:6061\\r\\nAccept-Encoding: identity\\r\\nAccept: application/json\\r\\n\\r\\n'"
+  },
+  {
+    "filepath": "iron-io/iron_worker_python/iron_worker.py",
+    "call_line": "file = open(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'rb'",
+    "predicted": "\"rb\""
+  },
+  {
+    "filepath": "jansel/opentuner/opentuner/search/simplextechniques.py",
+    "call_line": "self.linear_point(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "-self.beta",
+    "predicted": "self.beta"
+  },
+  {
+    "filepath": "kdart/pycopia/storage/pycopia/db/tables.py",
+    "call_line": "components = Table(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 4,
+    "ground_truth": "Column('description', TEXT(length=None, convert_unicode=False), primary_key=False, nullable=False)",
+    "predicted": "Column('description', TEXT(length=None, convert_unicode=False), primary_key=False)"
+  },
+  {
+    "filepath": "kdart/pycopia/storage/pycopia/db/tables.py",
+    "call_line": "components = Table(/* missing */, /* missing */, /* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 5,
+    "ground_truth": "Column('created', TIMESTAMP(timezone=True), primary_key=False, nullable=False, default=time_now)",
+    "predicted": "schema='public'"
+  },
+  {
+    "filepath": "kizza/Table-of-comments/tests/test_large_file.py",
+    "call_line": "self.assert_true(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "timers[key] < 0.9",
+    "predicted": "float(duration) < 1.0"
+  },
+  {
+    "filepath": "kizza/Table-of-comments/tests/test_large_file.py",
+    "call_line": "self.assert_true(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'\"' + key + '\" takes too long (' + duration + ' seconds)'",
+    "predicted": "\"Timer '\" + key + \"' took too long: \" + duration + \" seconds\""
+  },
+  {
+    "filepath": "kwikteam/phy/phy/io/tests/test_datasets.py",
+    "call_line": "op.exists(/* missing */)",
+    "position": 0,
+    "ground_truth": "op.join(chdir_tempdir, 'a/b/c/')",
+    "predicted": "op.join(chdir_tempdir, 'a/b/c')"
+  },
+  {
+    "filepath": "lisa-lab/pylearn2/pylearn2/models/tests/test_s3c_inference.py",
+    "call_line": "print(/* missing */)",
+    "position": 0,
+    "ground_truth": "'failing h passing the range mask'",
+    "predicted": "'after mean field step, gradient of kl divergence wrt mean field parameter should be 0, but there are still failing cases'"
+  },
+  {
+    "filepath": "marineam/nagcat/python/nagcat/unittests/queries/test_subprocess.py",
+    "call_line": "d.addCallback(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "''",
+    "predicted": "\"\""
+  },
+  {
+    "filepath": "markstory/lint-review/tests/tools/test_eslint.py",
+    "call_line": "self.tool.process_files(/* missing */)",
+    "position": 0,
+    "ground_truth": "[FILE_WITH_ERRORS]",
+    "predicted": "FILE_WITH_ERRORS"
+  },
+  {
+    "filepath": "matagus/django-planet/planet/templatetags/planet_tags.py",
+    "call_line": "register.inclusion_tag(/* missing */)",
+    "position": 0,
+    "ground_truth": "'planet/tags/blocks/blogs_cloud.html'",
+    "predicted": "\"planet/tags/blocks/authors_cloud.html\""
+  },
+  {
+    "filepath": "maxtepkeev/python-redmine/tests/test_resources.py",
+    "call_line": "self.assertIn(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'to'",
+    "predicted": "'from'"
+  },
+  {
+    "filepath": "mediawiki-utilities/python-mediawiki-utilities/examples/lib.title.py",
+    "call_line": "parser.parse(/* missing */)",
+    "position": 0,
+    "ground_truth": "'WT:foobar'",
+    "predicted": "\"WP:NPOV\""
+  },
+  {
+    "filepath": "mediawiki-utilities/python-mediawiki-utilities/mw/util/tests/test_ordered.py",
+    "call_line": "eq_(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "None",
+    "predicted": "2"
+  },
+  {
+    "filepath": "mediawiki-utilities/python-mediawiki-utilities/mw/util/tests/test_ordered.py",
+    "call_line": "eq_(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "circle.append(7)",
+    "predicted": "len(circle)"
+  },
+  {
+    "filepath": "mgax/SpaghettiFS/spaghettifs/tests/test_treetree.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "self.tt['22'].data",
+    "predicted": "Looking at the code context, I need to find the `self.assertEqual` call. The preceding code ends with `self.assertRaises` calls, but the `call_line` shows `self.assertEqual(/* missing */, /* missing */)`.\n\nLooking at the test methods in the code, particularly `test_clone`:\n```python\ndef test_clone(self):\n    blobby = self.eg.root.new_blob('blobby')\n    blobby.data = 'blobby data'\n    self.tt.clone(blobby, '1234')\n    blobby.data = 'qwer'\n    self.assertEqual(self.tt['1234'].data, 'blobby data')\n    self.assertEqual(self.eg.root['tt']['tt4']['1']['2']['3']['4'].data,\n                     'blobby data')\n```\n\nThe last `assertEqual` in the file is in `test_clone`, which checks `self.eg.root['tt']['tt4']['1']['2']['3']['4'].data` equals `'blobby data'`.\n\nBut the `call_line` shows a simple single-line `self.assertEqual(/* missing */, /* missing */)`. Looking at the test structure more carefully, the missing call appears to be at the end of `test_remove`, after the `assertRaises` calls. Given the pattern in `test_create_retrieve_blobs` and other tests, and the removal test context verifying data, this would logically follow the last `assertRaises` statements.\n\nHowever, in `test_clone`, the second assertEqual fits: checking `self.eg.root['tt']['tt4']['1']['2']['3']['4'].data` equals `'blobby data'`. The call_line format suggests a single-line call, so looking at the first assertEqual in `test_clone`: `self.tt['1234'].data` equals `'blobby data'`.\n\nGiven the code flow in `test_remove` checking that deleted keys raise `KeyError`, the missing assertEqual likely verifies something about the remaining items. Given `'22'` and `'549'` remain after deletions:\n\n```python\nself.assertEqual(self.tt['22'].data, '"
+  },
+  {
+    "filepath": "mgax/SpaghettiFS/spaghettifs/tests/test_treetree.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'asdf'",
+    "predicted": null
+  },
+  {
+    "filepath": "miguelgrinberg/flask-pycon2014/tests/test_pending_email_model.py",
+    "call_line": "self.assertTrue(/* missing */)",
+    "position": 0,
+    "ground_truth": "PendingEmail.already_in_queue('e2@e2.com', t1) == False",
+    "predicted": "PendingEmail.already_in_queue('e@e.com', t1) == True"
+  },
+  {
+    "filepath": "mikrosimage/OpenRenderManagement/src/pulitools/statsviewer/widget/mainwindow.py",
+    "call_line": "self.cbGraphType.addItem(/* missing */)",
+    "position": 0,
+    "ground_truth": "''",
+    "predicted": "\"\""
+  },
+  {
+    "filepath": "missionpinball/mpf/machine_files/starter_game/modes/bonus/code/bonus.py",
+    "call_line": "self.machine.events.post(/* missing */)",
+    "position": 0,
+    "ground_truth": "'bonus_hits'",
+    "predicted": "'bonus_total_hits'"
+  },
+  {
+    "filepath": "mongodb/motor/synchro/__init__.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "self.delegate",
+    "predicted": "client"
+  },
+  {
+    "filepath": "mongodb/motor/synchro/__init__.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "motor.MotorDatabase",
+    "predicted": "(MongoClient, MongoReplicaSetClient)"
+  },
+  {
+    "filepath": "mopidy/mopidy/tests/local/test_tracklist.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "self.controller.get_version().get()",
+    "predicted": "version"
+  },
+  {
+    "filepath": "mopidy/mopidy/tests/local/test_tracklist.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "version",
+    "predicted": "self.controller.get_version().get()"
+  },
+  {
+    "filepath": "muricoca/crab/scikits/crab/models/tests/test_models.py",
+    "call_line": "model = MatrixPreferenceDataModel(/* missing */)",
+    "position": 0,
+    "ground_truth": "songs.data",
+    "predicted": "songs"
+  },
+  {
+    "filepath": "muricoca/crab/scikits/crab/recommenders/knn/tests/test_classes.py",
+    "call_line": "assert_array_equal(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "np.array([])",
+    "predicted": "Looking at the pattern in the code, after the `#Non-existing` comment for `test_most_similar_users_UserBasedRecommender`, I can see the pattern from `test_most_similar_items_ItemBasedRecommender` where after `#Non-existing` it uses `assert_raises(ItemNotFoundError, recsys.most_similar_items, 'Back to the Future')`. \n\nHowever, the call line is `assert_array_equal(/* missing */, /* missing */)`, not `assert_raises`. Looking at the pattern, after `#all items` in the users test, it tests `recsys.most_similar_users('Leopoldo Pires')` returning all users except themselves. The `#Non-existing` comment typically uses `assert_raises`, but here it's `assert_array_equal`.\n\nWait - looking more carefully, the `#Non-existing` section uses `assert_raises` in the items test. But the call here is `assert_array_equal`. This might actually be the continuation after `#all items` or checking a non-existing user returns empty array.\n\nActually, looking at the items test pattern:\n- `#Non-existing` \u2192 `assert_raises(ItemNotFoundError, recsys.most_similar_items, 'Back to the Future')`\n\nBut here it's `assert_array_equal`. This suggests it might be testing `most_similar_users` with a user that has no neighbors, returning an empty array, or testing with a limit of 0.\n\nLooking at the items test, after `#Non-existing` and `#Exceed the limit` comes `#Empty` with `assert_array_equal(np.array([]), recsys.most_similar_items('Just My Luck', 0))`.\n\nSince the call is `assert_array_equal` right after `#Non-existing` comment, but uses `assert_array_equal` (not `assert_raises`), and looking at similar user patterns - `'Maria Gabriela'` has no ratings so she'd have no similar users. It likely returns `np.array([])`.\n\n```json\n{\n  \"arguments\": [\n    {\"position\": 0, \"value\": \"np.array([])\"},"
+  },
+  {
+    "filepath": "muricoca/crab/scikits/crab/recommenders/knn/tests/test_classes.py",
+    "call_line": "assert_array_equal(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "recsys.most_similar_users('Maria Gabriela')",
+    "predicted": null
+  },
+  {
+    "filepath": "neovim/python-client/test/test_window.py",
+    "call_line": "eq(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "vim.current.buffer[:]",
+    "predicted": "vim.current.window.cursor"
+  },
+  {
+    "filepath": "neovim/python-client/test/test_window.py",
+    "call_line": "eq(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "['typing', '  some text']",
+    "predicted": "[3, 9]"
+  },
+  {
+    "filepath": "nipy/nitime/nitime/algorithms/tests/test_coherence.py",
+    "call_line": "npt.dec.skipif(/* missing */)",
+    "position": 0,
+    "ground_truth": "old_mpl",
+    "predicted": "True"
+  },
+  {
+    "filepath": "noirbizarre/flask-restplus/tests/legacy/test_api.py",
+    "call_line": "print(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"Can't test signals without signal support\"",
+    "predicted": "signals_available"
+  },
+  {
+    "filepath": "numba/numba/numba/tests/test_dispatcher.py",
+    "call_line": "pycache = os.path.join(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'__pycache__'",
+    "predicted": "\"__pycache__\""
+  },
+  {
+    "filepath": "numba/numba/numba/tests/test_random.py",
+    "call_line": "self.assertRaises(/* missing */, /* missing */, /* missing */, /* missing */)",
+    "position": 3,
+    "ground_truth": "-0.5",
+    "predicted": "0.0"
+  },
+  {
+    "filepath": "openstack/compass-core/compass/tests/api/test_api.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "self.SWITCH_IP_ADDRESS",
+    "predicted": "'172.29.8.40'"
+  },
+  {
+    "filepath": "openstack/python-openstacksdk/openstack/tests/unit/test_proxy_base.py",
+    "call_line": "method_kwargs = kwargs.pop(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'method_kwargs'",
+    "predicted": "\"method_kwargs\""
+  },
+  {
+    "filepath": "openstack/python-openstacksdk/openstack/tests/unit/test_proxy_base.py",
+    "call_line": "method_kwargs = kwargs.pop(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "the_kwargs",
+    "predicted": "{}"
+  },
+  {
+    "filepath": "openstack/rally/tests/unit/plugins/openstack/scenarios/ceilometer/test_utils.py",
+    "call_line": "self.admin_clients(/* missing */)",
+    "position": 0,
+    "ground_truth": "'ceilometer'",
+    "predicted": "\"ceilometer\""
+  },
+  {
+    "filepath": "openstack/swift/swift/proxy/controllers/obj.py",
+    "call_line": "queue.resize(/* missing */)",
+    "position": 0,
+    "ground_truth": "2",
+    "predicted": "0"
+  },
+  {
+    "filepath": "oppia/oppia/core/domain/exp_domain_test.py",
+    "call_line": "exploration.delete_state(/* missing */)",
+    "position": 0,
+    "ground_truth": "'second state'",
+    "predicted": "'first state'"
+  },
+  {
+    "filepath": "osrg/ryu/ryu/lib/packet/icmpv6.py",
+    "call_line": "(src, ) = struct.unpack_from(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'16s'",
+    "predicted": "'!16s'"
+  },
+  {
+    "filepath": "osrg/ryu/ryu/lib/packet/icmpv6.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "mldv2_report_group",
+    "predicted": "list"
+  },
+  {
+    "filepath": "packages/psutil/test/test_psutil.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "children[1].ppid",
+    "predicted": "children[0].ppid"
+  },
+  {
+    "filepath": "packages/psutil/test/test_psutil.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "children[0].pid",
+    "predicted": "os.getpid()"
+  },
+  {
+    "filepath": "pantsbuild/pants/tests/python/pants_test/backend/jvm/tasks/test_properties.py",
+    "call_line": "self.assertLoaded(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "' '",
+    "predicted": "''"
+  },
+  {
+    "filepath": "pennersr/django-allauth/allauth/socialaccount/providers/facebook/views.py",
+    "call_line": "provider.get_settings().get(/* missing */)",
+    "position": 0,
+    "ground_truth": "'EXCHANGE_TOKEN'",
+    "predicted": "'VERIFIED_EMAIL'"
+  },
+  {
+    "filepath": "pinax/symposion/symposion/schedule/models.py",
+    "call_line": "return Room.objects.filter(pk__in = self.slotroom_set.values(/* missing */)",
+    "position": 0,
+    "ground_truth": "'room'",
+    "predicted": "\"room\""
+  },
+  {
+    "filepath": "potatolondon/djangae/djangae/contrib/pagination/paginator.py",
+    "call_line": "len(/* missing */)",
+    "position": 0,
+    "ground_truth": "page.object_list",
+    "predicted": "next_page"
+  },
+  {
+    "filepath": "priestc/giotto/giotto/views/__init__.py",
+    "call_line": "renders(/* missing */)",
+    "position": 0,
+    "ground_truth": "'*/*'",
+    "predicted": "'application/json'"
+  },
+  {
+    "filepath": "pvlib/pvlib-python/pvlib/tracking.py",
+    "call_line": "dni_extra = pd.Series(/* missing */)",
+    "position": 0,
+    "ground_truth": "dni_extra",
+    "predicted": "irradiance.extraradiation(solar_zenith.index)"
+  },
+  {
+    "filepath": "pydata/pandas/pandas/computation/pytables.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "dict",
+    "predicted": "string_types"
+  },
+  {
+    "filepath": "pympler/pympler/test/gui/test_garbage.py",
+    "call_line": "self.assert_(/* missing */)",
+    "position": 0,
+    "ground_truth": "isinstance(fbg, GarbageGraph)",
+    "predicted": "subs[0].count >= 4"
+  },
+  {
+    "filepath": "pystruct/pystruct/pystruct/models/latent_node_crf.py",
+    "call_line": "pw = np.outer(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "unary_marginals[edge[0]].T",
+    "predicted": "unary_marginals[edges[:, 0]]"
+  },
+  {
+    "filepath": "pystruct/pystruct/pystruct/models/latent_node_crf.py",
+    "call_line": "pw = np.outer(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "unary_marginals[edge[1]]",
+    "predicted": "unary_marginals[edges[:, 1]]"
+  },
+  {
+    "filepath": "raelgc/scudcloud/scudcloud/notify2.py",
+    "call_line": "TypeError(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "'timeout value was not int'",
+    "predicted": "\"timeout must be an integer\""
+  },
+  {
+    "filepath": "rohe/pyoidc/src/oic/extension/provider.py",
+    "call_line": "isinstance(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "six.string_types",
+    "predicted": "dict"
+  },
+  {
+    "filepath": "rst2pdf/rst2pdf/rst2pdf/basenodehandler.py",
+    "call_line": "info = cln.split(/* missing */)",
+    "position": 0,
+    "ground_truth": "\"'\"",
+    "predicted": "'.'"
+  },
+  {
+    "filepath": "rvanlaar/easy-transifex/src/transifex/transifex/resources/tests/templates.py",
+    "call_line": "resp = self.client['maintainer'].get(/* missing */)",
+    "position": 0,
+    "ground_truth": "self.urls['project']",
+    "predicted": "reverse('resource_list', args=[self.project.slug])"
+  },
+  {
+    "filepath": "saltstack/salt/salt/config/__init__.py",
+    "call_line": "list(/* missing */)",
+    "position": 0,
+    "ground_truth": "required_keys",
+    "predicted": "provider_key"
+  },
+  {
+    "filepath": "saltstack/salt/salt/ext/ipaddress.py",
+    "call_line": "ValueError(/* missing */)",
+    "position": 0,
+    "ground_truth": "'prefix length diff %d is invalid for netblock %s' % (new_prefixlen, self)",
+    "predicted": "'prefix length diff must be > 0'"
+  },
+  {
+    "filepath": "saltstack/salt/salt/states/lvm.py",
+    "call_line": "pvs.get(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "realdev",
+    "predicted": "'Volume Group Name'"
+  },
+  {
+    "filepath": "saltstack/salt/salt/states/lvm.py",
+    "call_line": "pvs.get(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "None",
+    "predicted": "''"
+  },
+  {
+    "filepath": "saltstack/salt/tests/unit/stateconf_test.py",
+    "call_line": "self.cache_dir = os.path.join(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'cachedir'",
+    "predicted": "'cache'"
+  },
+  {
+    "filepath": "saltstack/salt/tests/unit/utils/boto_test.py",
+    "call_line": "skipIf(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "_has_required_boto() is False",
+    "predicted": "HAS_BOTO is False"
+  },
+  {
+    "filepath": "saltstack/salt/tests/unit/utils/boto_test.py",
+    "call_line": "skipIf(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'The boto module must be greater than or equal to version {0}'.format(required_boto_version)",
+    "predicted": "'The boto module must be installed.'"
+  },
+  {
+    "filepath": "satnet-project/server/services/simulation/tests/test_periodictasks.py",
+    "call_line": "self.assertNotEqual(/* missing */, /* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "len(gt_f.timestamp)",
+    "predicted": "len(gt_i.timestamp)"
+  },
+  {
+    "filepath": "satnet-project/server/services/simulation/tests/test_periodictasks.py",
+    "call_line": "self.assertNotEqual(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "'Final GroundTrack should not be empty'",
+    "predicted": "'Initial GroundTrack should not be empty'"
+  },
+  {
+    "filepath": "scikit-learn/scikit-learn/benchmarks/bench_covertype.py",
+    "call_line": "p.endswith(/* missing */)",
+    "position": 0,
+    "ground_truth": "'random_state'",
+    "predicted": "\"random_state\""
+  },
+  {
+    "filepath": "scipy/scipy/scipy/_build_utils/_fortran.py",
+    "call_line": "open(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'rb'",
+    "predicted": "'r'"
+  },
+  {
+    "filepath": "scipy/scipy/scipy/optimize/minpack.py",
+    "call_line": "warnings.warn(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "RuntimeWarning",
+    "predicted": "OptimizeWarning"
+  },
+  {
+    "filepath": "simonw/optfunc/test.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "['-h/--help', '-o/--option-with-hyphens']",
+    "predicted": "['-h/--help', '--option-with-hyphens']"
+  },
+  {
+    "filepath": "simpeg/simpeg/SimPEG/PropMaps.py",
+    "call_line": "linkedMap = getattr(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'%sMap' % linkName",
+    "predicted": "'%sMap'%linkName"
+  },
+  {
+    "filepath": "smart-on-fhir/client-py/fhirclient/models/organization_tests.py",
+    "call_line": "self.assertIsNotNone(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'Must have instantiated a Organization instance'",
+    "predicted": "\"Must have instantiated a Organization instance\""
+  },
+  {
+    "filepath": "statsmodels/statsmodels/statsmodels/genmod/generalized_estimating_equations.py",
+    "call_line": "top_right = sum(/* missing */)",
+    "position": 0,
+    "ground_truth": "NY",
+    "predicted": "Looking at the code context, I need to find the `top_right` assignment that uses `sum(/* missing */)`. This is in the `summary` method of `GEEResults`. Looking at the pattern of `top_left` which is a list of tuples, `top_right` should follow a similar pattern for summary tables in statsmodels. The `sum()` call with a list of lists is a common statsmodels pattern to flatten a list of lists.\n\nLooking at the context:\n- `NY` is defined as `[len(y) for y in self.model.endog_li]` - a list of group sizes\n- `top_right` would typically contain stats like number of observations, number of groups, etc.\n- The `sum(list_of_lists, [])` pattern is used in statsmodels to flatten a list of lists\n\nThe `top_right` in summary methods typically contains information like number of observations, groups, time periods, etc. The `sum(/* missing */)` pattern with a start value of `[]` is used to flatten lists. The argument would be a list of lists (like `top_right_list`) being flattened, or more likely it's `sum([[...], [...]], [])` pattern.\n\nGiven the `NY` variable and common statsmodels GEE summary patterns, `top_right` would be constructed from a list of lists with a starting empty list:\n\n```python\ntop_right = sum([[('No. Observations:', [self.model.nobs]),\n                  ('No. clusters:', [len(self.model.group_labels)]),\n                  ('Min. cluster size:', [min(NY)]),\n                  ('Max. cluster size:', [max(NY)]),\n                  ('Mean cluster size:', ['%.1f' % np.mean(NY)]),\n                  ('Num. iterations:', ['%d' % len(self.fit_history['params'])]),\n                  ('Scale:', ['%.3f' % self.scale]),\n                  ('Covariance type:', [self.cov_type])]], [])\n```\n\nThe `sum(/* missing */)` call flattens a list of lists, so the missing arguments are the list to sum and the initial value `[]`."
+  },
+  {
+    "filepath": "tangentlabs/django-fancypages/fancypages/dashboard/forms.py",
+    "call_line": "_(/* missing */)",
+    "position": 0,
+    "ground_truth": "'A page with this title already exists'",
+    "predicted": "\"A page with this name already exists.\""
+  },
+  {
+    "filepath": "tomchristie/django-rest-framework/tests/test_urlpatterns.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "callback_args",
+    "predicted": "callback_kwargs"
+  },
+  {
+    "filepath": "tomchristie/django-rest-framework/tests/test_urlpatterns.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "test_path.args",
+    "predicted": "test_path.kwargs"
+  },
+  {
+    "filepath": "tzwenn/PyOpenAirMirror/common/AirPlayHandler.py",
+    "call_line": "hash_a2 = self.md5Join(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "auth['uri']",
+    "predicted": "self.path"
+  },
+  {
+    "filepath": "wbond/oscrypto/oscrypto/_win/_secur32_ctypes.py",
+    "call_line": "setattr(/* missing */, /* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'SecBufferDesc'",
+    "predicted": "'SecBuffer'"
+  },
+  {
+    "filepath": "wbond/oscrypto/oscrypto/_win/_secur32_ctypes.py",
+    "call_line": "setattr(/* missing */, /* missing */, /* missing */)",
+    "position": 2,
+    "ground_truth": "SecBufferDesc",
+    "predicted": "SecBuffer"
+  },
+  {
+    "filepath": "wreckage/django-happenings/tests/unit_tests/test_utils/test_get_net.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "-1",
+    "predicted": "1"
+  },
+  {
+    "filepath": "zbyte64/django-hyperadmin/hyperadmin/resources/crud/resources.py",
+    "call_line": "kwargs.setdefault(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "self",
+    "predicted": "self.get_list_endpoint()"
+  },
+  {
+    "filepath": "zunzun/pyeq2/Examples/GUI/guifiles/CustomThreads.py",
+    "call_line": "pyeq2IimportDirectory = os.path.join(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "os.path.join(exampleFileDirectory, '..')",
+    "predicted": "exampleFileDirectory"
+  },
+  {
+    "filepath": "zunzun/pyeq2/Examples/GUI/guifiles/CustomThreads.py",
+    "call_line": "pyeq2IimportDirectory = os.path.join(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "'..'",
+    "predicted": "'pyeq2'"
+  },
+  {
+    "filepath": "zynga/jasy/jasy/core/Project.py",
+    "call_line": "Console.error(/* missing */)",
+    "position": 0,
+    "ground_truth": "result",
+    "predicted": "ex"
+  },
+  {
+    "filepath": "zynga/jasy/jasy/test/project.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 0,
+    "ground_truth": "self.createCaseOne().getClassByName('myproject.Main').getText()",
+    "predicted": "type(self.createCaseOne().getClassByName(\"myproject.Main\")).__name__"
+  },
+  {
+    "filepath": "zynga/jasy/jasy/test/project.py",
+    "call_line": "self.assertEqual(/* missing */, /* missing */)",
+    "position": 1,
+    "ground_truth": "';;'",
+    "predicted": "\"ClassItem\""
+  },
+  {
+    "filepath": "zzzeek/sqlalchemy/lib/sqlalchemy/engine/result.py",
+    "call_line": "repr(/* missing */)",
+    "position": 0,
+    "ground_truth": "sql_util._repr_row(self)",
+    "predicted": "tuple(self)"
+  },
+  {
+    "filepath": "zzzeek/sqlalchemy/test/orm/inheritance/test_single.py",
+    "call_line": "assert len(rq.filter(Report.employee.of_type(Engineer).has()).all()) = len(/* missing */)",
+    "position": 0,
+    "ground_truth": "rq.filter(Report.employee.of_type(Engineer).has()).all()",
+    "predicted": "[]"
+  }
+]
