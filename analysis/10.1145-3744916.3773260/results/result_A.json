@@ -1,0 +1,18 @@
+{
+  "prompt": "A",
+  "accuracy": 0.0,
+  "correct": 0,
+  "total": 5,
+  "by_cwe": {
+    "CWE-283": {
+      "correct": 0,
+      "total": 4,
+      "accuracy": 0.0
+    },
+    "CWE-639": {
+      "correct": 0,
+      "total": 1,
+      "accuracy": 0.0
+    }
+  }
+}

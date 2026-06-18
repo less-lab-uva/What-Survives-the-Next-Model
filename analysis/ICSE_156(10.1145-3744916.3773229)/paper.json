@@ -1,21 +1,16 @@
 {
   "title": "ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale",
   "doi": "10.1145/3744916.3773229",
-  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
-  "dataset": "ConfuDB + NeupaneDB, down-sampled to ~$15 (inputs/*.down_sampled_15usd.csv)",
-  "metric": "Table 5 (EQ5): per dataset x {active,stealthy,benign,overall} -> tp/fp/tn/fn + precision/recall/f1/accuracy. Positive class = threat; benign has no positives so P/R/F1 are null ('-' in the paper).",
-  "table_columns": [
-    "pkgs",
-    "tp",
-    "fp",
-    "tn",
-    "fn",
-    "precision",
-    "recall",
-    "f1",
-    "accuracy"
+  "summary": [
+    "The original ConfuGuard pipeline detects package-confusion/typosquat attacks by combining typosquat candidate generation with registry metadata analysis to classify a suspected package as a threat or benign.",
+    "This reproduction replaces that whole metadata pipeline with a single-LLM prompt that, given a package name + registry, returns a binary is_typosquat judgment."
   ],
+  "dataset": {
+    "name": "ConfuDB + NeupaneDB, down-sampled to ~$15 (inputs/*.down_sampled_15usd.csv)",
+    "sample_size": 1438
+  },
+  "metric": "Table 5 (EQ5): per dataset x {active,stealthy,benign,overall} -> tp/fp/tn/fn + precision/recall/f1/accuracy. Columns per category: pkgs, tp, fp, tn, fn, precision, recall, f1, accuracy. Positive class = threat; benign has no positives so P/R/F1 are null ('-' in the paper).",
   "original_result": {
     "ConfuGuard": {
       "NeupaneDB": {
@@ -396,6 +391,5 @@
       }
     }
   },
-  "sampled_data_size": 1438,
   "total_cost": "14.5749"
 }

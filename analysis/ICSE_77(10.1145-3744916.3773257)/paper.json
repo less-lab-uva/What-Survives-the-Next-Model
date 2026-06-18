@@ -1,13 +1,16 @@
 {
   "title": "RISE: Rule-Driven SQL Dialect Translation via Query Reduction",
   "doi": "10.1145/3744916.3773257",
-  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
-  "metric": "Translation Accuracy",
+  "summary": [
+    "The original RISE pipeline translates SQL across dialects with a rule-driven, query-reduction workflow, and reports a SingleLLM/LLMTranslator baseline alongside it.",
+    "This reproduction is that single-LLM baseline: one prompt translates a source PostgreSQL query to MySQL, scored as the paper scores it by executing both queries and comparing result sets."
+  ],
   "dataset": {
     "name": "TPC-DS",
     "sample_size": 99
   },
+  "metric": "Translation Accuracy",
   "original_result": {
     "Translation Accuracy": "0.9798%"
   },
@@ -19,5 +22,5 @@
       "Translation Accuracy": "0.6162"
     }
   },
-  "total cost": "$3.53"
+  "total_cost": "$3.53"
 }

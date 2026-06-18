@@ -187,6 +187,95 @@ def check_no_forbidden_dirs(d: Path) -> Result:
     return ok("none committed")
 
 
+@analysis("no_leaked_keys",
+          "No git-tracked file in the paper dir contains a hard-coded API key "
+          "or secret (Anthropic/OpenAI/AWS/Google/GitHub/HF/Slack tokens, or a "
+          "secret-named var assigned a string literal). os.environ/getenv "
+          "references are fine — only literal values are flagged.")
+def check_no_leaked_keys(d: Path) -> Result:
+    """Scan git-tracked text files for leaked credentials.
+
+    Like no_forbidden_dirs, we look only at what git tracks (cwd=d): a leak is
+    something that *ships*, so an untracked local scratch file is not our
+    concern. Two tiers of pattern, because the corpus mixes our own code with
+    third-party benchmark code carried as data:
+
+      * PROVIDER patterns match the literal shape of real vendor tokens
+        (sk-ant-..., AKIA..., etc.). These essentially never false-positive, so
+        we run them over *every* tracked file -- a real key is a leak wherever
+        it sits, including inside a dataset row.
+
+      * The GENERIC "secret-named var = quoted literal" heuristic is meaningful
+        only in code/config we author. The dataset/, outputs/, and results/
+        artifacts are benchmark *content* (e.g. Discourse specs with
+        `password: 'test123...'`), so the heuristic is skipped there to avoid
+        flagging incidental fixture strings. Legitimate os.environ[...] /
+        getenv(...) references never match it anyway: what follows '=' is code,
+        not a quoted string.
+
+    Matches are redacted to a short prefix so the report never reproduces a
+    real secret.
+    """
+    import re
+    import subprocess
+
+    PROVIDER_PATTERNS = [
+        ("anthropic key",     re.compile(r"sk-ant-[A-Za-z0-9_-]{20,}")),
+        ("openai key",        re.compile(r"sk-(?:proj-)?[A-Za-z0-9]{20,}")),
+        ("aws access key id", re.compile(r"AKIA[0-9A-Z]{16}")),
+        ("google api key",    re.compile(r"AIza[0-9A-Za-z_-]{35}")),
+        ("github token",      re.compile(r"gh[pousr]_[A-Za-z0-9]{36,}")),
+        ("huggingface token", re.compile(r"hf_[A-Za-z0-9]{34,}")),
+        ("slack token",       re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}")),
+    ]
+    GENERIC_PATTERNS = [
+        ("hard-coded secret",
+         re.compile(r"(?i)(?:api[_-]?key|secret|token|passwd|password)"
+                    r"\s*[:=]\s*[\"'][A-Za-z0-9_./+\-]{16,}[\"']")),
+    ]
+    # Top-level subdirs that hold benchmark content rather than our own code:
+    # run only the high-confidence PROVIDER patterns inside these.
+    DATA_DIRS = {"dataset", "outputs", "results"}
+    # Values the generic pattern would flag but that are obviously not secrets:
+    # placeholders / example fillers committed on purpose.
+    PLACEHOLDER = re.compile(r"(?i)your[_-]|example|dummy|placeholder|redacted|"
+                             r"xxxx|sk-\.\.\.|<[^>]*>|\.\.\.|here$")
+    # Files we never scan: binaries (can't be text) and the gitignored caches.
+    BINARY_SUFFIXES = {".pdf", ".png", ".jpg", ".jpeg", ".gif", ".zip",
+                       ".pyc", ".ico", ".pkl", ".npy", ".parquet"}
+
+    try:
+        out = subprocess.run(["git", "ls-files", "-z"], cwd=d, check=True,
+                             capture_output=True, text=True).stdout
+    except Exception as e:
+        return fail("git ls-files failed", [repr(e)])
+
+    def redact(s: str) -> str:
+        # Never echo a real secret into the report: keep only a short prefix.
+        return f"{s[:8]}…({len(s)} chars)" if len(s) > 12 else s
+
+    hits = []
+    for rel in filter(None, out.split("\0")):
+        f = d / rel
+        if f.suffix.lower() in BINARY_SUFFIXES or not f.is_file():
+            continue
+        try:
+            text = f.read_text(errors="ignore")
+        except Exception:
+            continue
+        is_data = rel.split("/", 1)[0] in DATA_DIRS
+        patterns = PROVIDER_PATTERNS if is_data else PROVIDER_PATTERNS + GENERIC_PATTERNS
+        for lineno, line in enumerate(text.splitlines(), 1):
+            for label, pat in patterns:
+                m = pat.search(line)
+                if m and not PLACEHOLDER.search(m.group()):
+                    hits.append(f"{rel}:{lineno}: {label}: {redact(m.group())}")
+
+    if hits:
+        return fail(f"{len(hits)} possible leaked secret(s)", hits)
+    return ok("no hard-coded keys in tracked files")
+
+
 @analysis("dir_name_convention",
           "The directory name follows the ICSE_<num>(<doi>) convention.")
 def check_dir_name(d: Path) -> Result:

@@ -5,7 +5,7 @@ Computed the way the paper's rq1_2_cale_marco_f1.py does: map each step label
 then macro-averaged F1 against the manual-annotation gold. The F1 is computed directly here
 (identical to sklearn's f1_score average="macro") — no third-party dependency.
 
-Reads the two committed prediction files outputs/oracle-a.jsonl and outputs/oracle-b.jsonl (each
+Reads the two committed prediction files outputs/output_A.jsonl and outputs/output_B.jsonl (each
 line tagged with dataset/model/idx), groups by (variant, dataset, model), and joins to the gold in
 inputs/<ds>/<model>_labels.json by idx. Reports per (variant, dataset, model), aggregated per
 dataset. Writes results/metrics.json.
