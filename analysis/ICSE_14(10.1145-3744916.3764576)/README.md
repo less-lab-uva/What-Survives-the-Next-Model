@@ -8,6 +8,7 @@ This directory evaluates a simplified single-LLM version of the PatchDiff paper.
 
 - Python 3.10+
 - Docker
+- 7-Zip
 - The `anthropic`, `datasets`, and `swebench` Python packages
 - The PatchDiff data package
 
