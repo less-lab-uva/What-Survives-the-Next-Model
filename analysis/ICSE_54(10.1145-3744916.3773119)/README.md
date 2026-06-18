@@ -7,8 +7,7 @@ This directory evaluates a simplified single-LLM version of the paper **"Large L
 ## Prerequisites
 
 - Python 3.10+
-- The `anthropic`, `pydot`, and `beautifulsoup4` Python packages
-- Joern (for Step 3 evaluation only)
+- The `anthropic` Python package
 
 Install Python dependencies:
 
@@ -21,26 +20,6 @@ Set your Anthropic API key:
 ```bash
 export ANTHROPIC_API_KEY=your_key_here
 ```
-
-**For evaluation (Step 3):** `evaluator.py` invokes Joern to extract PDGs from the LLM-generated Java code. Joern is expected at:
-
-```text
-/project/lesslab/nm8tm/joern-cli/joern-cli/bin
-```
-
-If your installation is elsewhere, update `JOERN_PATH` at the top of `evaluator.py`:
-
-```python
-JOERN_PATH = "/path/to/your/joern-cli/bin"
-```
-
-Joern can be downloaded from:
-
-```text
-https://joern.io
-```
-
-The evaluator uses `joern-parse` and `joern-export`, both included in the standard Joern CLI release.
 
 ---
 
@@ -62,10 +41,9 @@ Dataset details:
 
 ```text
 Total entries     172 Java partial-code snippets from StackOverflow (StatType-SO)
-Excluded at load  3 entries with no valid ground-truth PDG
-Eligible          169 entries processed by main.py
-Evaluated         109 entries that contribute to metrics (the remaining 60 have
-                  no DDG edges whose both endpoints appear in partial_code)
+Excluded at load  63 entries: 3 with no valid ground-truth PDG, 60 with no DDG
+                  edges whose both endpoints appear in partial_code
+Eligible          109 entries processed by main.py
 ```
 
 ---
@@ -90,7 +68,7 @@ prompts/promptA.py
 prompts/promptB.py
 ```
 
-It loads the 169 eligible entries, runs Prompt A and Prompt B on each, and checks the budget before every API call. Re-running continues from where it stopped — already completed entries are not re-submitted to the LLM.
+It loads the 109 eligible entries, runs Prompt A and Prompt B on each, and checks the budget before every API call. Re-running continues from where it stopped — already completed entries are not re-submitted to the LLM.
 
 Outputs are saved to:
 
@@ -128,14 +106,7 @@ outputs/outputs_B.jsonl
 dataset/Stattype_res.json
 ```
 
-For each entry it runs Joern on the LLM-generated `approximated_code` to extract a PDG, computes valid DDG edges against the ground truth, and calls `calculate_fp_tp_fn` (reproduced verbatim from the paper's `RQ3_eval.py`). Joern results are cached per prompt in:
-
-```text
-outputs/joern_cache_A.json
-outputs/joern_cache_B.json
-```
-
-so re-running the evaluator is fast. It also computes the same metrics for the original PrePA pipeline using the pre-stored `PrePA_code_res` PDGs in the dataset JSON.
+For each entry it reads the LLM-generated `ddg` field, computes valid DDG edges from the ground truth stored in the dataset JSON, and calls `calculate_fp_tp_fn` (reproduced verbatim from the paper's `RQ3_eval.py`). No Joern or external tools are required.
 
 Results are saved to:
 
@@ -144,7 +115,7 @@ results/results_A.jsonl
 results/results_B.jsonl
 ```
 
-Line 1 of each file contains the aggregate metrics (our pipeline + original PrePA on the same entries). Subsequent lines contain per-entry breakdowns.
+Line 1 of each file contains the aggregate metrics. Subsequent lines contain per-entry breakdowns.
 
 ---
 

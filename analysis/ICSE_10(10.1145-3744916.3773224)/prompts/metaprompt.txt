@@ -101,11 +101,7 @@ The following is a set of concrete input-output pairs representing exactly what 
         },
         "outputs": {
           "predictions": [
-            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    return os.listdir(path)",
-            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    return list(os.listdir(path))",
-            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    return [f for f in os.listdir(path)]",
-            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    files = os.listdir(path)\n    return files",
-            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    return sorted(os.listdir(path))"
+            "def files_list(path):\n    \"\"\"\n    Return the files in `path`\n    \"\"\"\n    return os.listdir(path)"
           ]
         }
       },
@@ -117,10 +113,6 @@ The following is a set of concrete input-output pairs representing exactly what 
         "outputs": {
           "predictions": [
             "def format_dt(dt):\n    \"\"\"\n    Format a datetime in the way that D* nodes expect.\n    \"\"\"\n    return ensure_timezone(dt).astimezone(tzutc()).strftime(\n        '%Y-%m-%dT%H:%M:%SZ'\n    )",
-            "def format_dt(dt):\n    \"\"\"\n    Format a datetime in the way that D* nodes expect.\n    \"\"\"\n    dt_with_tz = ensure_timezone(dt)\n    return dt_with_tz.astimezone(tzutc()).strftime('%Y-%m-%dT%H:%M:%SZ')",
-            "def format_dt(dt):\n    \"\"\"\n    Format a datetime in the way that D* nodes expect.\n    \"\"\"\n    utc_dt = ensure_timezone(dt).astimezone(tzutc())\n    return utc_dt.strftime('%Y-%m-%dT%H:%M:%SZ')",
-            "def format_dt(dt):\n    \"\"\"\n    Format a datetime in the way that D* nodes expect.\n    \"\"\"\n    return ensure_timezone(dt).astimezone(tzutc()).strftime('%Y-%m-%dT%H:%M:%SZ')",
-            "def format_dt(dt):\n    \"\"\"\n    Format a datetime in the way that D* nodes expect.\n    \"\"\"\n    aware_dt = ensure_timezone(dt)\n    utc_dt = aware_dt.astimezone(tzutc())\n    return utc_dt.strftime('%Y-%m-%dT%H:%M:%SZ')"
           ]
         }
       }

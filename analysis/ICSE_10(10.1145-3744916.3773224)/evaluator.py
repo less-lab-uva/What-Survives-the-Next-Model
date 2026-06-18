@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
 """
-CoderEval evaluation script for Prompt A and Prompt B.
-
-Steps run automatically:
-  1. Convert outputs_A.jsonl / outputs_B.jsonl to the format expected by PythonExec.py
-  2. Set up a writable workspace with the scripts CoderEval needs
-  3. Run GroundTruth.py to validate the original test environment
-  4. Execute the CoderEval runner for each prompt
-  5. Compute Pass@1/3/5 and save results to results/results_A.jsonl and results_B.jsonl
-
-Prerequisites:
-  module load apptainer/1.5.0   (run this in the terminal before this script)
-
 Usage:
   python3 evaluator.py
 """
@@ -143,7 +131,7 @@ def run_codereval(letter):
     print(f"\n=== Running CoderEval for Prompt {letter} ===")
     input_path = f"/workspace/outputs/input_{letter}.jsonl"
     apptainer_exec(
-        ["python", "PythonExec.py", input_path, "5"],
+        ["python", "PythonExec.py", input_path, "1"],
         label=f"PythonExec.py Prompt {letter}",
     )
     out_file = os.path.join(OUTPUTS_FOLDER, f"input_{letter}.jsonl_out.jsonl")
@@ -175,14 +163,14 @@ def save_results(letter, aggregate, task_results):
 
 
 def compute_scores():
-    """Read per-task pass/fail results, compute Pass@1/3/5, and save to results/.
+    """Read per-task pass/fail results, compute Pass@1, and save to results/.
 
-    Uses the unbiased estimator: Pass@k = mean over tasks of (1 - C(n-c,k)/C(n,k)).
-    The denominator is the number of evaluated tasks, not the full dataset size.
+    Uses the unbiased estimator: Pass@1 = mean over tasks of (1 - C(n-c,1)/C(n,1)).
+    With n=1 prediction per task this simplifies to whether the single attempt passes.
     """
-    print("\n=== Pass@k Results ===")
-    print(f"  {'Prompt':<10} {'Tasks':<8} {'Pass@1':>8} {'Pass@3':>8} {'Pass@5':>8}")
-    print(f"  {'-'*46}")
+    print("\n=== Pass@1 Results ===")
+    print(f"  {'Prompt':<10} {'Tasks':<8} {'Pass@1':>8}")
+    print(f"  {'-'*30}")
     for letter in PROMPTS:
         out_file = os.path.join(OUTPUTS_FOLDER, f"input_{letter}.jsonl_out.jsonl")
         if not os.path.exists(out_file):
@@ -194,24 +182,20 @@ def compute_scores():
             print(f"  Prompt {letter}: output file is empty, skipping.")
             continue
 
-        n = 5
+        n = 1
         scores = [
             sum(1 for attempt in r.get("generate_results", []) if attempt.get("is_pass"))
             for r in task_results
         ]
         total = len(scores)
         p1 = sum(pass_at_k(n, c, 1) for c in scores) / total * 100
-        p3 = sum(pass_at_k(n, c, 3) for c in scores) / total * 100
-        p5 = sum(pass_at_k(n, c, 5) for c in scores) / total * 100
 
-        print(f"  Prompt {letter:<9} {total:<8} {p1:>7.2f}% {p3:>7.2f}% {p5:>7.2f}%")
+        print(f"  Prompt {letter:<9} {total:<8} {p1:>7.2f}%")
 
         aggregate = {
             "prompt":      letter,
             "total_tasks": total,
             "pass_at_1":   round(p1, 4),
-            "pass_at_3":   round(p3, 4),
-            "pass_at_5":   round(p5, 4),
         }
         save_results(letter, aggregate, task_results)
 

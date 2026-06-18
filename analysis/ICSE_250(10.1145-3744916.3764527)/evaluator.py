@@ -1,56 +1,7 @@
 #!/usr/bin/env python3
 """
-Evaluates Testora single-call LLM pipeline results for Prompt A and Prompt B.
-
 Usage:
     python3 evaluator.py
-
-Reads:
-    outputs/outputs_A.jsonl        — JSONL, one record per PR
-    outputs/outputs_B.jsonl        — same for Prompt B
-    outputs/*_promptA.json         — per-PR files (if result exceeded size threshold)
-    outputs/*_promptB.json         — same for Prompt B
-    ../data/ground_truth/          — human-verified labels (used for RQ3)
-    ../data/real-world_problems.csv — RQ1 PR list (all are "unintended")
-
-Dataset tagging (set by main.py):
-    Records with "dataset": "rq3"  → evaluated under RQ3 rules
-    Records with "dataset": "rq1"  → evaluated under RQ1 rules
-    Records with no "dataset" field → treated as rq3 (backward compatibility)
-
-RQ3 ground truth rules:
-    A PR-level verdict is "unintended" if ANY of its differentiating_test labels
-    is "unintended" OR "coincidental fix". Otherwise "intended".
-    "unintended" is the positive class.
-
-RQ1 ground truth rules:
-    Every PR in real-world_problems.csv is "unintended" by definition
-    (all are either Regression or Coincidental fix). There are no "intended"
-    PRs in RQ1, so only Recall is meaningful; Precision is always 1.0.
-    The paper had all 30 PRs available; we have 20/30 in pulled_prs.
-
-Metrics (RQ3):
-    Precision = TP / (TP + FP)      unintended = positive class
-    Recall    = TP / (TP + FN)
-    F1        = 2 * P * R / (P + R)
-    Accuracy  = (TP + TN) / total
-
-Metrics (RQ1):
-    Detection rate (Recall) = detected_unintended / total_available
-    (Precision is always 1.0 since all RQ1 PRs are unintended)
-
-Writes:
-    results/results_A.jsonl
-    results/results_B.jsonl
-
-    Line 1 (if RQ3 records present): RQ3 aggregate + paper comparison
-    Line 2 (if RQ1 records present): RQ1 aggregate + paper comparison
-    Lines after aggregates:          per-PR results (tagged with "dataset")
-
-Paper reference metrics:
-    RQ3 — Table 1, GPT-4o-mini multi-question: P=0.55, R=0.67, F1=0.60
-    RQ1 — Table 2: 30 PRs found; 13 reported to developers (all 30 detected as
-          unintended by original pipeline, i.e., recall=1.0 on 30 available)
 """
 
 import csv

@@ -1,23 +1,8 @@
 """
-Fetch contract source files from pinned smart-contract-sanctuary GitHub repos.
-
-Paper datasets:
-  DB1 (RQ1 large-scale): 15,383 contracts across 4 chains
-  DB2 (RQ2/RQ3 eval):      500 labeled contracts, 94% from Ethereum
-
-Chain breakdown (per CSV files in Dataset/RQ1/DB1/):
-  Ethereum : 4,514 contracts  ← covers 470/500 DB2 files (RQ2/RQ3)
-  Polygon  : 5,304 contracts  ← largest chain by file count
-  BSC      : 4,337 contracts
-  Arbitrum : 1,228 contracts
-
 Usage:
   python fetch_contracts.py                   # Ethereum only (recommended: covers RQ1+RQ2+RQ3)
   python fetch_contracts.py --chain Polygon   # single chain by name
   python fetch_contracts.py --all             # all 15,383 contracts (~450 MB)
-
-Files are saved to Dataset/contracts/<chain>/<filename>.sol
-The script is resumable: already-downloaded files are skipped.
 """
 
 import argparse

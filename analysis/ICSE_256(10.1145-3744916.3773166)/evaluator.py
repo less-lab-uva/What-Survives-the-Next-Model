@@ -1,36 +1,5 @@
 #!/usr/bin/env python3
 """
-Evaluates the new LLM pipeline (claude-sonnet-4-6) against D2 ground-truth labels.
-Also reports EchoFuzz paper Table 3 D2 detection counts as a reference.
-
-Reads   : outputs/outputs_A.jsonl  (new pipeline, prompt A)
-          outputs/outputs_B.jsonl  (new pipeline, prompt B)
-          dataset/D2/{stem}.sol    (ground-truth labels via <report> annotations)
-
-Writes  : results/results_A.jsonl
-          results/results_B.jsonl
-
-Each result JSONL:
-  line 1  — aggregate: new pipeline metrics + paper Table 3 D2 reference block
-  line 2+ — per-contract breakdown (new pipeline only)
-
-Paper reference (Table 3, D2 EchoFuzz, all 143 D2 contracts, 5 mapped categories):
-  IO=53  RE=20  UC=15  BN=8  TP=7  (total=103)
-
-  GL/DG/UE omitted: D2 has no ground-truth labels for those categories.
-  EchoFuzz uses a runtime oracle → zero false positives by design.
-  Per-contract paper results are not published; only these aggregate totals exist.
-
-D2 label → paper category mapping:
-  REENTRANCY         → RE
-  UNCHECKED_LL_CALLS → UC
-  ARITHMETIC         → IO  (detected if EITHER integer overflow OR underflow > 0)
-  TIME_MANIPULATION  → TP
-  TIME               → TP
-  BAD_RANDOMNESS     → BN
-  ACCESS_CONTROL / FRONT_RUNNING / DENIAL_OF_SERVICE / OTHER / SHORT_ADDRESSES
-                     → unmapped; contracts with only these labels have no expected_cats
-
 Usage:
     python3 evaluator.py
 """

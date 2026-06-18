@@ -1,16 +1,5 @@
 #!/usr/bin/env python3
 """
-Runs the single-LLM regression detection pipeline (Prompt A and Prompt B) on
-PRs from the Testora dataset until the given budget is exhausted.
-
-On startup, automatically pulls any missing PRs from GitHub before running
-inference — if a .github_token file is present and PyGithub is installed.
-If data is only partially available, it proceeds with whatever is on disk.
-
-Each PR is annotated with ALL dataset memberships it belongs to (rq3, rq1, or
-both). A PR in both datasets is processed ONCE; the saved record carries
-"datasets": ["rq3", "rq1"] so the evaluator can count it toward both.
-
 Usage:
     python3 main.py <budget_usd> [dataset]
 
@@ -19,11 +8,6 @@ Usage:
              'rq1' — process all 30 RQ1 PRs; if rq3 was already run, only the
                       10 RQ1-exclusive PRs are new work (the 20 overlap are skipped)
              (omit) — same as 'rq3'
-
-Recommended sequence for full coverage of both RQs at minimum cost:
-    python3 main.py <budget> rq3   # 46 PRs; 20 overlap get tagged [rq3, rq1]
-    python3 main.py <budget> rq1   # only processes the 10 RQ1-exclusive PRs
-    python3 evaluator.py           # computes both RQ3 and RQ1 metrics
 """
 
 import anthropic

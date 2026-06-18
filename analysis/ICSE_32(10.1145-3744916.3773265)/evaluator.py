@@ -1,27 +1,5 @@
 #!/usr/bin/env python3
 """
-evaluator.py — Computes Table 1 and Table 5 metrics for the single-LLM CIA pipeline.
-
-Ground-truth method names are extracted from the commit diff stored in
-cia-dataset.json.  Because the diffs use --unified=0 (no context lines),
-body-only changes do not expose the enclosing method signature.  For those
-cases the evaluator falls back to reading the source file from the cloned
-repo in repos/ (if available) and using the @@ hunk line numbers to identify
-the enclosing method.
-
-Reads:
-  outputs/outputs_A.jsonl   outputs/outputs_B.jsonl
-  assets/cia-dataset.json
-  repos/<project-name>/     (optional — needed for body-only-change GT)
-
-Writes:
-  results/results_A.jsonl
-  results/results_B.jsonl
-
-Each results file:
-  Line 1   : aggregated metrics (Table 1 + Table 5)
-  Lines 2+ : one line per instance
-
 Usage:
     python3 evaluator.py          # evaluate both prompts
     python3 evaluator.py A        # evaluate prompt A only

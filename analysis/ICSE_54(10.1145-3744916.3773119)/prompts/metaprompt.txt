@@ -93,20 +93,27 @@ The following is a set of concrete input-output pairs representing exactly what 
 
 ```json
 {
-  "examples": [
-    {
-      "inputs": {
-        "partial_code": "\t\tDateTime d2 = new DateTime();\n\t\tlong diffInMillis = d2.getMillis() - d1.getMillis();\n"
-      },
-      "outputs": {
-        "approximated_code": "\nimport org.joda.time.DateTime;\npublic class MyClass {\n    void someMethod() {\n        DateTime d1 = new DateTime();\n\t\tDateTime d2 = new DateTime();\n\t\tlong diffInMillis = d2.getMillis() - d1.getMillis();\n    }\n}\n",
-        "type_information": [
-          "d1 => org.joda.time.DateTime;",
-          "d2 => org.joda.time.DateTime;"
-        ]
+    "examples": [
+      {
+        "inputs": {
+          "partial_code": "\t\tDateTime d2 = new DateTime();\n\t\tlong diffInMillis = d2.getMillis() - d1.getMillis();\n"
+        },
+        "outputs": {
+          "approximated_code": "\nimport org.joda.time.DateTime;\npublic class MyClass {\n    void someMethod() {\n        DateTime d1 = new DateTime();\n
+        DateTime d2 = new DateTime();\n        long diffInMillis = d2.getMillis() - d1.getMillis();\n    }\n}\n",
+          "type_information": [
+            "d1 => org.joda.time.DateTime;",
+            "d2 => org.joda.time.DateTime;"
+          ],
+          "ddg": [
+            {"node_out": "DateTime d1 = new DateTime();\n", "node_in": "        long diffInMillis = d2.getMillis() - d1.getMillis();\n",
+  "edge_type": "DDG"},
+            {"node_out": "DateTime d2 = new DateTime();\n", "node_in": "        long diffInMillis = d2.getMillis() - d1.getMillis();\n",
+  "edge_type": "DDG"}
+          ]
+        }
       }
-    }
-  ]
+    ]
 }
 ```
 

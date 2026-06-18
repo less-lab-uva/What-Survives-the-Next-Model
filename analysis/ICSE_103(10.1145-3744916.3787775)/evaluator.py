@@ -2,19 +2,10 @@
 """
 Evaluate Sonnet pipeline outputs against RBCTest paper RQ1 metric.
 
-Reads from both output sources produced by main.py:
-  outputs/outputs_A.jsonl     — services whose output was <= 50 KB
-  outputs/<safe_name>_promptA.json  — services whose output was > 50 KB
-(same for prompt B)
-
 Usage:
     python3 evaluator.py          # RQ1 for all prompts
     python3 evaluator.py [service_name]  # RQ1 for one service only
 
-Results are printed to stdout and saved to:
-    results/rq1_results.json
-    results/results_A.jsonl
-    results/results_B.jsonl
 """
 
 import csv
@@ -43,18 +34,6 @@ FEASIBLE_AGORA_SERVICES = [
     "Youtube GetVideos",
 ]
 
-# 5-seed mean from CompareAGORAData.xlsx (Mining sheet).
-PAPER_BASELINES = {
-    "OMDB bySearch":          {"gt":  6, "tp": 5.2, "fp": 1.8, "fn": 0.8, "P": 74.3, "R": 86.7, "F1": 80.0},
-    "OMDB byIdOrTitle":       {"gt": 15, "tp":11.8, "fp": 0.8, "fn": 3.2, "P": 93.7, "R": 78.7, "F1": 85.5},
-    "Yelp getBusinesses":     {"gt":  4, "tp": 3.2, "fp": 1.8, "fn": 0.8, "P": 64.0, "R": 80.0, "F1": 71.1},
-    "Hotel Search":           {"gt": 59, "tp":43.8, "fp": 4.4, "fn":12.4, "P": 90.9, "R": 77.9, "F1": 83.9},
-    "Spotify createPlaylist": {"gt": 27, "tp":19.8, "fp": 6.4, "fn": 6.8, "P": 75.6, "R": 74.4, "F1": 75.0},
-    "Spotify getAlbumTracks": {"gt": 21, "tp":17.8, "fp": 4.0, "fn": 4.4, "P": 81.7, "R": 80.2, "F1": 80.9},
-    "Spotify getArtistAlbums":{"gt": 16, "tp":15.4, "fp": 3.4, "fn": 1.0, "P": 81.9, "R": 93.9, "F1": 87.5},
-    "Marvel getComicById":    {"gt": 50, "tp":35.4, "fp": 4.0, "fn":12.4, "P": 89.8, "R": 74.1, "F1": 81.2},
-    "Youtube GetVideos":      {"gt":161, "tp":134.2,"fp": 8.4, "fn":24.6, "P": 94.1, "R": 84.5, "F1": 89.1},
-}
 
 csv.field_size_limit(10_000_000)
 
@@ -222,11 +201,9 @@ def compute_rq1(service_filter=None):
 
         for service in services:
             output_data = load_output(letter, service)
-            base        = PAPER_BASELINES.get(service, {})
 
             if output_data is None:
                 p_str = r_str = f1_str = "    —"
-                diff_str = "     —"
                 entry = {}
             else:
                 gt_rp, gt_rr       = load_ground_truth(service)
@@ -251,27 +228,13 @@ def compute_rq1(service_filter=None):
                     "P": op, "R": or_, "F1": of1,
                 }
 
-            if base:
-                bp_str  = f"{base['P']:>6.1f}"
-                br_str  = f"{base['R']:>6.1f}"
-                bf1_str = f"{base['F1']:>6.1f}"
-                if entry:
-                    diff = round(of1 - base["F1"], 1)
-                    sign = "+" if diff >= 0 else ""
-                    diff_str = f"{sign}{diff:.1f}"
-                else:
-                    diff_str = "     —"
-            else:
-                bp_str = br_str = bf1_str = "    —"
-                diff_str = "     —"
+                
 
-            print(f"  {service:<30}  {p_str} {r_str} {f1_str}  {bp_str} {br_str} {bf1_str}  {diff_str:>6}")
+            print(f"  {service:<30}  {p_str} {r_str} {f1_str}")
 
             rows.append({
                 "service": service,
                 "sonnet":  entry if entry else None,
-                "paper":   base  if base  else None,
-                "F1_diff": round(of1 - base["F1"], 1) if (entry and base) else None,
             })
 
         # Aggregate totals row (Sonnet only — paper total spans all 11 services)

@@ -1,34 +1,7 @@
 #!/usr/bin/env python3
 """
-Runs the single-LLM CIA pipeline on 10% of the 100 paper-evaluated instances,
-using both Prompt A and Prompt B, until the given budget is exhausted.
-
-Preprocessing (runs at startup):
-  1. Reads assets/all-outputs.zip to identify the 100 paper instances.
-  2. Selects a pool of 10% (= 10 instances) to work on:
-       - Already-touched instances (from prior runs) are kept in the pool.
-       - Remaining slots are filled randomly from the 100.
-  3. For each pool instance that is missing input files, clones the repo into
-     repos/<project-name>/, checks out the parent commit, then runs
-     extract_methods to produce issue.json, repo_structure.xml, commit_history.json.
-
-Budget loop:
-  - On resume: finishes any partial instance (one prompt done, the other not)
-    before randomly picking a new one.
-  - Total distinct instances across all runs stays at the 10% quota; all are distinct.
-  - Stops when budget is exhausted or all quota instances are fully done.
-
-Outputs (in outputs/):
-  instance-XXXXX_promptA.json   — parsed LLM response for Prompt A
-  instance-XXXXX_promptB.json   — parsed LLM response for Prompt B
-  tokens_A.jsonl                — token / cost / time log (JSONL, one line per run)
-  tokens_B.jsonl                — same for Prompt B
-
 Usage:
     python3 main.py <budget_usd>
-
-Example:
-    python3 main.py 20.0
 """
 
 import importlib.util

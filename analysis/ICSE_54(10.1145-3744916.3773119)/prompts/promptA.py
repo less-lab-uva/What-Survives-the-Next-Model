@@ -1,18 +1,19 @@
 prompt = """
 ### Role
-You are an expert Java software engineer specializing in program analysis, type inference, and code completion for incomplete or partial code snippets.
+You are an expert Java software engineer specializing in static program analysis, type inference, and code completion for incomplete or partial code snippets, with particular expertise in identifying data-dependency relationships between program statements.
 
 ### Task
-You receive a partial Java code snippet that is syntactically incomplete — it may be missing variable declarations, import statements, class or method wrappers, and type information. Your task is to produce a fully compilable, approximately-complete Java program that wraps and preserves the original snippet without modifying it, along with a list of resolved type annotations for all variables used in the snippet.
+You receive a single, incomplete Java code snippet that may reference variables, types, or API elements that are not declared, initialized, or imported anywhere within it. From this snippet alone, you must produce a complete, compilable version of the program that preserves the original snippet exactly while adding any missing context, determine the type of every variable referenced in the original snippet, and identify the data-dependency relationships among the statements that are relevant to the original snippet.
 
 ### Input
-- `partial_code`: A string containing a partial Java code snippet. It may reference undeclared variables, unresolved types, missing imports, and absent method or class enclosures. This is the raw snippet exactly as provided — no preprocessing has been applied.
+You receive a single field:
+- `partial_code`: a string containing an incomplete Java code snippet, exactly as captured from its original source (e.g., extracted from a larger codebase or an online discussion). It may reference variables, types, or API calls that are not declared, initialized, or imported anywhere within the snippet itself, and it may lack an enclosing class or method.
 
 ### Output
-Produce a JSON object with exactly the following two fields:
-
-- `approximated_code`: A string containing a complete, compilable Java program. It must include all necessary import statements, a class declaration, and a method signature that wraps the original partial code. The original code body must appear verbatim and unmodified inside the method. The added context should resolve all unknown identifiers by supplying plausible variable declarations, import statements, method parameters, and class scaffolding.
-- `type_information`: A JSON array of strings. Each string maps one variable name from the partial code to its fully-qualified Java type, using the format `"variableName => fully.qualified.TypeName;"`. Include every variable that appears in the partial code whose type can be inferred or reasonably approximated. Do not include variables introduced solely by the added scaffolding unless they directly appear in the original snippet.
+Produce a single JSON object with exactly three top-level fields:
+- `approximated_code`: a string containing a complete, compilable Java program. It must include any necessary import statements and an enclosing class/method, and must contain the entire original `partial_code` exactly as given, with no part of it altered, reordered, or removed.
+- `type_information`: a JSON array of strings, one for every variable referenced in the original `partial_code`. Each string must use the exact format `"variableName => fully.qualified.TypeName;"`.
+- `ddg`: a JSON array of objects describing the data-dependency relationships among the statements in the program. Each object has three fields: `node_out` (a string containing the text of the statement that defines or produces a value), `node_in` (a string containing the text of the statement that subsequently uses that value), and `edge_type` (a string identifying the kind of dependency; data-dependency edges use the value `"DDG"`).
 
 ### Example
 ```json
@@ -27,6 +28,10 @@ Produce a JSON object with exactly the following two fields:
         "type_information": [
           "d1 => org.joda.time.DateTime;",
           "d2 => org.joda.time.DateTime;"
+        ],
+        "ddg": [
+          {"node_out": "DateTime d1 = new DateTime();\n", "node_in": "long diffInMillis = d2.getMillis() - d1.getMillis();\n", "edge_type": "DDG"},
+          {"node_out": "DateTime d2 = new DateTime();\n", "node_in": "long diffInMillis = d2.getMillis() - d1.getMillis();\n", "edge_type": "DDG"}
         ]
       }
     }
@@ -37,11 +42,11 @@ Produce a JSON object with exactly the following two fields:
 ### Instructions
 - Solve the task using only the provided input.
 - Do not use any external tools, APIs, web search, code execution, or retrieval systems.
-- Do not modify any part of the original `partial_code` — it must appear verbatim inside the output `approximated_code`.
-- The `approximated_code` must be a syntactically and semantically complete Java compilation unit: it must include at least one import block (if needed), one class declaration, and one method that contains the original snippet.
-- Use the most plausible, standard Java library types when resolving unknown identifiers. If a type comes from a well-known third-party library (e.g., Joda-Time, Apache Commons, Android SDK), use its fully-qualified name.
-- Every variable referenced in the original `partial_code` that lacks a declaration must be declared in the added scaffolding (as a method parameter, local variable, or field).
-- In `type_information`, include only variables that appear in the original `partial_code`. Use the exact format `"variableName => fully.qualified.TypeName;"` for every entry.
-- Do not include explanations, comments, or any text outside the JSON output.
-- Output must be a single valid JSON object matching the schema shown in the Output section.
+- Do not modify, reorder, or remove any part of the original `partial_code`; it must appear verbatim inside `approximated_code`.
+- `approximated_code` must be a single, self-contained Java compilation unit (with necessary imports and an enclosing class/method) that would compile without errors, using only the minimal scaffolding required to resolve unknown symbols — do not add logic, hardening, or behavior beyond what is required for compilability.
+- `type_information` must include exactly one entry for every variable referenced anywhere in the original `partial_code`, including variables that are used but never declared within it. Do not include variables that exist only in the added scaffolding and never appear in the original `partial_code`.
+- For every variable included in `type_information`, output exactly one definitive type — never include multiple candidate types, qualifiers of uncertainty, or omit an entry for a variable that appears in `partial_code`.
+- `ddg` must include one entry for every data-dependency relationship in which at least one of the two related statements is part of the original `partial_code`. Omit dependency relationships where both related statements belong only to the added scaffolding.
+- If the original `partial_code` contains no variables requiring resolution, return an empty array for `type_information`; if it has no qualifying data dependencies, return an empty array for `ddg`.
+- Output only a single, valid JSON object matching the schema above — no explanations, comments, or text outside the JSON object.
 """

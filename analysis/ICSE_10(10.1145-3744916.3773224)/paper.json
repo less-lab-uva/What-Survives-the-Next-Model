@@ -9,13 +9,11 @@
   "dataset": {
     "codereval_python": {
       "name": "CoderEval (Python)",
-      "sample_size": 23
+      "sample_size": 230
     }
   },
   "metric": [
-    "Pass@1",
-    "Pass@3",
-    "Pass@5"
+    "Pass@1"
   ],
   "original_result": {
     "AllianceCoderGPT": {
@@ -31,17 +29,13 @@
   },
   "our_result": {
     "prompt_A": {
-      "Pass@1": 0.6,
-      "Pass@3": 0.608696,
-      "Pass@5": 0.608696,
+      "Pass@1": 0.546154,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "Pass@1": 0.608696,
-      "Pass@3": 0.608696,
-      "Pass@5": 0.608696,
+      "Pass@1": 0.545455,
       "result_file": "results/results_B.jsonl"
     }
   },
-  "total_cost": 1.51
+  "total_cost": 5.07
 }

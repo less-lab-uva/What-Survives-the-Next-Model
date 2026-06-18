@@ -4,14 +4,6 @@ EchoFuzz single-call LLM pipeline (claude-sonnet-4-6).
 
 Usage:
     python3 main.py --total_cost <float> [--dataset <name>]
-
-Example:
-    python3 main.py --total_cost 5.0
-    python3 main.py --total_cost 5.0 --dataset D2
-
-Preprocessing extracts ground-truth labels from each .sol file for
-evaluation purposes, then strips those annotations from the source
-before the contract is sent to the LLM.
 """
 
 import argparse

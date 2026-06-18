@@ -1,33 +1,7 @@
 #!/usr/bin/env python3
 """
-LASIR single-call pipeline: detects signature replay vulnerabilities
-in Solidity smart contracts using Claude claude-sonnet-4-6.
-
-Budget loop: on resume, finishes any partial entry (one prompt done,
-other not) before randomly picking a new untouched contract. Stops when
-budget is exhausted or all contracts are fully processed.
-
-Outputs (in outputs/):
-  If serialised output is <= SIZE_THRESHOLD bytes:
-    appended as a single JSONL line to outputs/outputs_A.jsonl (or _B.jsonl)
-  Otherwise:
-    saved as outputs/<safe_contract_id>_prompt<letter>.json
-
-  Token / cost / duration logs:
-    outputs/tokens_A.jsonl   — one JSON line per successful run
-    outputs/tokens_B.jsonl
-
 Usage:
     python3 main.py <budget_usd> [dataset]
-
-Dataset names: RQ2 (default)
-
-Example:
-    python3 main.py 7.0 RQ2
-
-Only 10% of the dataset (50 contracts) is used per run. The sampled
-contract IDs are saved to outputs/sample_ids.json on the first run and
-reused on every subsequent run, so results are reproducible.
 """
 
 import csv

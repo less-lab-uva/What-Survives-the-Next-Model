@@ -2,16 +2,6 @@
 """
 Single-call LLM log parsing pipeline.
 Usage: python3 main.py <budget_usd> [dataset_name]
-Default dataset: HPC
-
-Reads:  data/{dataset}_2k.log_structured_corrected.csv  (LineId + Content only)
-Writes: outputs/outputs_{A|B}.jsonl    — one JSONL line per processed entry
-        outputs/tokens_{A|B}.jsonl     — one JSONL line per API call (cost + duration)
-Loads:  prompts/prompt{A|B}.py         — each must define a `prompt` string variable
-
-Output strategy: if max log message length in the dataset <= 2000 chars, all entries
-for all datasets share a single aggregate file per prompt letter.  Otherwise, separate
-files per dataset are used ({dataset}_outputs_{A|B}.jsonl).
 """
 
 import csv

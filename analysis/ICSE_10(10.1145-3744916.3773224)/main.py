@@ -1,20 +1,7 @@
 #!/usr/bin/env python3
 """
-Randomly samples 10% of CoderEval tasks from input/input_codereval.jsonl
-and runs both Prompt A and Prompt B on each sampled task until the
-budget is exhausted.
-
-Outputs (under outputs/):
-  outputs_A.jsonl      — one JSON line per task: input trace + predictions for Prompt A
-  outputs_B.jsonl      — same for Prompt B
-  tokens_A.jsonl       — token/cost/time log for Prompt A
-  tokens_B.jsonl       — token/cost/time log for Prompt B
-
 Usage:
     python3 main.py <budget_usd>
-
-Example:
-    python3 main.py 5.0
 """
 
 import importlib.util
@@ -80,24 +67,6 @@ def get_touched_ids() -> set:
         touched |= get_completed_ids(letter)
     return touched
 
-
-def build_pool(all_tasks: list, pool_size: int) -> list:
-    """
-    Build the working pool so that total distinct tasks ever run stays at pool_size.
-    Already-touched tasks count toward the quota; remaining slots are filled
-    randomly from completely untouched tasks.
-    """
-    touched_ids   = get_touched_ids()
-    touched_tasks = [t for t in all_tasks if t["metadata"]["_id"] in touched_ids]
-
-    remaining_slots = pool_size - len(touched_tasks)
-    if remaining_slots > 0:
-        untouched      = [t for t in all_tasks if t["metadata"]["_id"] not in touched_ids]
-        newly_sampled  = random.sample(untouched, min(remaining_slots, len(untouched)))
-    else:
-        newly_sampled = []
-
-    return touched_tasks + newly_sampled
 
 
 def get_pending(pool: list) -> tuple:
@@ -191,7 +160,7 @@ def run_prompt(task: dict, letter: str, system_prompt: str, client: anthropic.An
     response_text = ""
     with client.messages.stream(
         model=MODEL,
-        max_tokens=4096,
+        max_tokens=8192,
         system=system_prompt,
         messages=[{"role": "user", "content": user_msg}],
     ) as stream:
@@ -266,16 +235,11 @@ def main():
         sys.exit(1)
 
     all_tasks = load_tasks()
-    total     = len(all_tasks)
-    pool_size = max(1, total // 10)
-    pool      = build_pool(all_tasks, pool_size)
+    pool      = all_tasks
 
     already_done = len(get_touched_ids())
-    print(f"[*] Total tasks in dataset : {total}")
-    print(f"[*] 10% quota              : {pool_size}")
+    print(f"[*] Total tasks in dataset : {len(all_tasks)}")
     print(f"[*] Already touched        : {already_done}")
-    print(f"[*] Newly sampled this run : {len(pool) - already_done}")
-    print(f"[*] Active pool size       : {len(pool)}")
     print(f"[*] Budget                 : ${budget:.4f}")
 
     prompts = {letter: load_prompt(letter) for letter in PROMPTS}

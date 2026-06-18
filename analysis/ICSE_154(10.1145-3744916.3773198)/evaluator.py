@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
 """
-Evaluates LASIR with_sonnet output against ground-truth labels.
-
-RQ2: Binary signature replay vulnerability detection (Exist: True/False).
-     Computes Precision, Recall, F1 from TP/FP/TN/FN.
-     Reads from both outputs/outputs_{A,B}.jsonl and separate
-     outputs/<safe_contract_id>_prompt{letter}.json files.
-
 Usage:
     python3 evaluator.py
 """

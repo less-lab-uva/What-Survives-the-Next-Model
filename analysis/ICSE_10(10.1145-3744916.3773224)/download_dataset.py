@@ -21,15 +21,23 @@ INPUT_FOLDER   = os.path.join(PROJECT_FOLDER, "input")
 RAW_JSON       = os.path.join(INPUT_FOLDER, "CoderEval4Python.json")
 OUTPUT_JSONL   = os.path.join(INPUT_FOLDER, "input_codereval.jsonl")
 
+# Shared raw JSON downloaded for the original with_sonnet run.
+# Use this copy if present so the processed JSONL is byte-for-byte
+# identical to what with_sonnet was evaluated on.
+SHARED_RAW_JSON = os.path.join(PROJECT_FOLDER, "..", "input", "CoderEval4Python.json")
+
 DATASET_URL = (
     "https://raw.githubusercontent.com/CoderEval/CoderEval/main/CoderEval4Python.json"
 )
 
 
 def download():
+    import shutil
     os.makedirs(INPUT_FOLDER, exist_ok=True)
-    if os.path.exists(RAW_JSON):
-        print(f"[*] {RAW_JSON} already exists, skipping download.")
+    shared = os.path.normpath(SHARED_RAW_JSON)
+    if os.path.exists(shared):
+        shutil.copy2(shared, RAW_JSON)
+        print(f"[*] Copied shared CoderEval4Python.json from {shared}")
         return
     print(f"[*] Downloading CoderEval4Python.json from CoderEval/CoderEval ...")
     urllib.request.urlretrieve(DATASET_URL, RAW_JSON)
@@ -48,10 +56,6 @@ def process():
 
     with open(OUTPUT_JSONL, "w", encoding="utf-8") as fout:
         for record in records:
-            # AllianceCoder uses the SoftwareHeritage/swh-lister project subset
-            if record.get("project") != "SoftwareHeritage/swh-lister":
-                continue
-
             code_str = record["code"]
 
             # Extract function signature + docstring (everything up to end of first docstring)
@@ -59,7 +63,7 @@ def process():
             if len(triple_quote_positions) >= 2:
                 prompt = code_str[: triple_quote_positions[1]] + '"""'
             else:
-                prompt = code_str
+                prompt = code_str + '"""'
 
             file_path    = record["file_path"]
             fpath_tuple  = file_path.split("/")

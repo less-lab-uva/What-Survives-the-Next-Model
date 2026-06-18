@@ -2,33 +2,6 @@
 """
 Evaluator for the single-call LLM log parsing pipeline.
 Usage: python3 evaluator.py
-
-Reads:
-  outputs/outputs_{A|B}.jsonl              (aggregate mode, default)
-  OR outputs/{dataset}_outputs_{A|B}.jsonl  (per-dataset mode)
-  data/{dataset}_2k.log_structured_corrected.csv  (ground truth)
-
-Writes:
-  results/results_{A|B}.jsonl
-    Line 1: aggregated metrics across all evaluated datasets
-    Line 2+: one line per dataset, including paper's Table 2 numbers for comparison
-
-Metrics match the paper's Table 2 (InferLog, ICSE 2026):
-  PA  — Parsing Accuracy: fraction of logs whose predicted template exactly matches ground truth
-  PTA — Precision Template Accuracy: correctly identified templates / total predicted templates
-  RTA — Recall Template Accuracy: correctly identified templates / total oracle templates
-  GA  — Grouping Accuracy: logs in correctly grouped clusters / total logs in dataset
-
-GA denominator:
-  When all 2000 logs are evaluated: denominator = 2000 (matches paper's hardcoded /2000 exactly).
-  When partial: denominator = rows_evaluated (gives a meaningful in-subset estimate).
-
-Paper-reported results (Table 2, InferLog ICSE 2026):
-  "w/o_inferlog" = original LLM parser without PAIR acceleration (baseline column)
-  "w_inferlog"   = same parser with InferLog's PAIR optimisation (paper's system)
-
-  Dataset  | w/o InferLog PA / PTA / RTA / GA  | w/ InferLog PA / PTA / RTA / GA
-  HPC      | 98.4 / 75.0 / 84.8 / 94.9        | 99.3 / 71.7 / 82.6 / 93.4
 """
 
 import csv

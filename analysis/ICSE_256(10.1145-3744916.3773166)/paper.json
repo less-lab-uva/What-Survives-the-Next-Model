@@ -13,24 +13,29 @@
     }
   },
   "metric": [
-    "Precision",
-    "Recall"
+    "total_detected"
   ],
   "original_result": {
     "EchoFuzz": {
-      "Precision": 1.0,
-      "Recall": 0.9279
+      "total_detected": 103,
+      "True positive": 103, 
+      "False Positive": 0, 
+      "False Negative": 8
     }
   },
   "our_result": {
     "prompt_A": {
-      "Precision": 0.3866,
-      "Recall": 1.0,
+      "total_detected": 287,
+      "True positive": 111, 
+      "False Positive": 176, 
+      "False Negative": 0,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "Precision": 0.3737,
-      "Recall": 1.0,
+      "total_detected": 297,
+      "True positive": 111, 
+      "False Positive": 186, 
+      "False Negative": 0,
       "result_file": "results/results_B.jsonl"
     }
   },

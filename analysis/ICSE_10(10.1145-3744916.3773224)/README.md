@@ -69,8 +69,7 @@ metadata      -> ground truth, function name, task ID, line number
 Dataset details:
 
 ```text
-Full dataset   230 Python tasks (SoftwareHeritage/swh-lister project subset)
-Sample (10%)   23 tasks
+Full dataset   230 Python tasks
 ```
 
 The paper states that its source code and dataset are available at:
@@ -107,7 +106,7 @@ prompts/promptA.py
 prompts/promptB.py
 ```
 
-It samples 23 tasks (10% of 230), runs Prompt A and Prompt B on each task, and generates 5 predictions per prompt per task. The run checks the budget before every API call and stops when the budget is exhausted. Re-running continues from where it stopped — already completed tasks are not re-submitted to the LLM.
+It runs Prompt A and Prompt B on all tasks in the dataset, generating 1 prediction per prompt per task. The run checks the budget before every API call and stops when the budget is exhausted. Re-running continues from where it stopped — already completed tasks are not re-submitted to the LLM.
 
 Outputs are saved to:
 
@@ -150,7 +149,7 @@ results/results_A.jsonl
 results/results_B.jsonl
 ```
 
-Line 1 of each file contains the aggregate summary (`pass_at_1`, `pass_at_3`, `pass_at_5`, `total_tasks`). Subsequent lines contain per-task pass/fail details.
+Line 1 of each file contains the aggregate summary (`pass_at_1`, `total_tasks`). Subsequent lines contain per-task pass/fail details.
 
 ---
 
@@ -159,11 +158,9 @@ Line 1 of each file contains the aggregate summary (`pass_at_1`, `pass_at_3`, `p
 The main metrics are:
 
 ```text
-Pass@1  -> probability that at least 1 of 5 predictions passes all tests
-Pass@3  -> probability that at least 1 of the 3 sampled predictions passes
-Pass@5  -> probability that at least 1 of all 5 predictions passes
+Pass@1  -> probability that the single prediction passes all tests
 ```
 
-Pass@k is computed using the unbiased estimator from the original CoderEval paper. The evaluator records per-task pass counts and aggregate Pass@1, Pass@3, and Pass@5 in each result file.
+Pass@1 is computed using the unbiased estimator from the original CoderEval paper. The evaluator records per-task pass counts and aggregate Pass@1 in each result file.
 
 ---

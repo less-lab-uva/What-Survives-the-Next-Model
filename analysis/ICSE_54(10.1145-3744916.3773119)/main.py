@@ -5,26 +5,6 @@ Single-call LLM pipeline for partial Java program approximation.
 Usage:
     python3 main.py <budget_usd> [dataset_name]
 
-Dataset names: stattype  (default: stattype)
-
-Preprocessing (runs at startup):
-  Loads dataset/Stattype_res.json, extracts all entries that have a valid
-  ground_truth_res (the set the paper evaluated on). These are the only entries
-  eligible for selection.
-
-Budget loop:
-  - On resume: finishes any partial entry (one prompt done, the other not)
-    before randomly picking a new untouched entry.
-  - Checks combined token cost of both prompts before starting any new entry.
-  - Stops when budget is exhausted or all eligible entries are fully done.
-
-Outputs (in outputs/):
-  outputs_A.jsonl       — one JSON line per entry processed with Prompt A
-  outputs_B.jsonl       — one JSON line per entry processed with Prompt B
-  tokens_A.jsonl        — cost + token + duration log per API call (Prompt A)
-  tokens_B.jsonl        — same for Prompt B
-  (if any partial_code exceeds 2000 chars, per-entry files are used instead:
-   {entry_name}_{variant}_A.jsonl and {entry_name}_{variant}_B.jsonl)
 """
 
 import importlib.util
@@ -55,7 +35,7 @@ MODEL        = "claude-sonnet-4-6"
 INPUT_PRICE  = 3.0    # USD per 1M input tokens
 OUTPUT_PRICE = 15.0   # USD per 1M output tokens
 CONTEXT_LIMIT = 190_000  # safe threshold below Sonnet 4.6's 200K context window
-MAX_TOKENS   = 4096
+MAX_TOKENS   = 8192
 PROMPTS      = ["A", "B"]
 
 
@@ -103,11 +83,21 @@ def load_dataset(dataset_name: str) -> list:
         if not gt_res or isinstance(gt_res, str):
             excluded += 1
             continue
+        gt_pdg = gt_res.get("pdg_in_code", [])
         for variant, variant_data in entry_data.items():
             if variant == "ground_truth" or not isinstance(variant_data, dict):
                 continue
             pc = variant_data.get("partial_code", "")
             if not pc:
+                excluded += 1
+                continue
+            valid_edges = [
+                e for e in gt_pdg
+                if e["node_out"].strip() in pc.strip()
+                and e["node_in"].strip() in pc.strip()
+                and e["edge_type"] == "DDG"
+            ]
+            if not valid_edges:
                 excluded += 1
                 continue
             entries.append({
@@ -118,7 +108,7 @@ def load_dataset(dataset_name: str) -> list:
             })
 
     print(f"[*] Preprocessed {dataset_name}: {len(entries)} eligible entries "
-          f"({excluded} excluded — no valid ground truth)")
+          f"({excluded} excluded — no valid ground truth or no valid DDG edges)")
     return entries
 
 
@@ -309,6 +299,7 @@ def run_entry(entry: dict, letter: str, system_prompt: str,
     result            = parse_response(response_text)
     approximated_code = result.get("approximated_code")
     type_information  = result.get("type_information", [])
+    ddg               = result.get("ddg", [])
     parse_failed      = not bool(approximated_code)
 
     out = {
@@ -318,6 +309,7 @@ def run_entry(entry: dict, letter: str, system_prompt: str,
         "partial_code":      entry["partial_code"],
         "approximated_code": approximated_code,
         "type_information":  type_information,
+        "ddg":               ddg,
         "timestamp":         timestamp,
         "parse_failed":      parse_failed,
     }

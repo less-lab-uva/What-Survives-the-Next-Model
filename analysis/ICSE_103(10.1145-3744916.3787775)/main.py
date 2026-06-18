@@ -1,35 +1,7 @@
 #!/usr/bin/env python3
 """
-Runs the single-LLM constraint-mining pipeline on the AGORA services
-evaluated in the paper, using both Prompt A and Prompt B, until the
-given budget is exhausted.
-
-Preprocessing (runs at startup):
-  Loads every feasible AGORA service (OpenAPI spec + 2xx CSV rows).
-  The two GitHub services (~400K tokens each) are excluded.
-
-Budget loop:
-  On resume: finishes any partial service (one prompt done, other not)
-  before randomly picking a new untouched service.
-  Stops when budget is exhausted or all services are fully processed.
-
-Outputs (in outputs/):
-  If a serialised output is <= SIZE_THRESHOLD bytes:
-    appended as a single JSONL line to outputs/outputs_A.jsonl (or _B.jsonl)
-  Otherwise:
-    saved as outputs/<safe_service_name>_prompt<letter>.json
-
-  Token / cost / duration logs:
-    outputs/tokens_A.jsonl   — one JSON line per successful run
-    outputs/tokens_B.jsonl
-
 Usage:
     python3 main.py <budget_usd> [dataset]
-
-Dataset names: agora (default, only option currently)
-
-Example:
-    python3 main.py 10.0 agora
 """
 
 import csv
