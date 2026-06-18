@@ -1,11 +1,10 @@
 {
   "title": "Aligning Requirement for Large Language Model's Code Generation (Specine)",
   "doi": "10.1145/3744916.3764572",
-  "pdf": "paper.pdf",
   "venue": "ICSE 2026",
-  "metric": [
-    "Pass@1",
-    "AvgPassRatio"
+  "summary": [
+    "The original Specine pipeline improves LLM code generation by first aligning/refining the problem's requirement specification and then generating code from the aligned spec.",
+    "This reproduction replaces that specification-alignment pipeline with a single-LLM prompt that generates a full stdin->stdout program directly from the problem statement."
   ],
   "dataset": [
     {
@@ -20,6 +19,10 @@
       "name": "xCodeEval",
       "sample": "129"
     }
+  ],
+  "metric": [
+    "Pass@1",
+    "AvgPassRatio"
   ],
   "original_result": [
     {
