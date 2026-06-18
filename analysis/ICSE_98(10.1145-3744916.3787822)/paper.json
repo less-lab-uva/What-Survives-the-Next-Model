@@ -1,0 +1,34 @@
+{
+  "title": "Improving Code Generation via Small Language Model-as-a-judge",
+  "doi": "10.1145/3744916.3787822",
+  "venue": "ICSE 2026",
+  "summary": [
+    "The original pipeline generates multiple Java candidate implementations with small code generators, uses one or more small language models as correctness judges, ranks candidates by judge confidence, and returns the highest-ranked implementation.",
+    "This reproduction replaces the multi-candidate SLM-as-a-judge ranking workflow with a simplified single-LLM prompt that directly generates one Java solution."
+  ],
+  "dataset": {
+    "name": "MultiPL-E Java test subset",
+    "sample_size": 104,
+    "composition": {
+      "humaneval": 40,
+      "mbpp": 64
+    }
+  },
+  "metric": [
+    "Pass@1"
+  ],
+  "original_result": {
+    "pass_at_1": 0.619
+  },
+  "our_result": {
+    "prompt_A": {
+      "pass_at_1": 0.7885,
+      "result_file": "results/results_A.json"
+    },
+    "prompt_B": {
+      "pass_at_1": 0.7788,
+      "result_file": "results/results_B.json"
+    }
+  },
+  "total_cost": 14.12
+}
