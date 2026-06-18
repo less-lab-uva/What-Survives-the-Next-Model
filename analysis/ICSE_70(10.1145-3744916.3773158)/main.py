@@ -12,7 +12,16 @@ if not api_key:
 client = anthropic.Anthropic(api_key=api_key)
 
 BASE_DIR       = os.path.dirname(os.path.abspath(__file__))
-INSTANCES_FILE = os.path.join(BASE_DIR, "instances.json")
+
+
+def instances_path(dataset_key: str) -> str:
+    if dataset_key == "py150":
+        return os.path.join(BASE_DIR, "instances.json")
+    return os.path.join(BASE_DIR, f"instances_{dataset_key}.json")
+
+
+def output_suffix(dataset_key: str) -> str:
+    return f"_{dataset_key}"
 
 
 def load_prompt_template(template_path):
@@ -135,24 +144,45 @@ def _normalise_args(args: list) -> list[dict] | None:
     return sorted(result, key=lambda x: x["position"])
 
 
+def normalise_by_position(predictions: list[dict], num_expected: int) -> list[dict]:
+    by_pos = {}
+    for pred in predictions:
+        try:
+            pos = int(pred["position"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        if 0 <= pos < num_expected and pos not in by_pos:
+            by_pos[pos] = {"position": pos, "value": str(pred.get("value", ""))}
+    return [by_pos[pos] for pos in sorted(by_pos)]
+
+
 
 def main():
-    if len(sys.argv) != 2 or sys.argv[1].upper() not in ("A", "B"):
-        print("Usage: python main.py <A|B>")
+    if len(sys.argv) not in (2, 3) or sys.argv[1].upper() not in ("A", "B"):
+        print("Usage: python main.py <A|B> [dataset]")
+        print("Available datasets: py150, netbeans")
         sys.exit(1)
 
     prompt_label = sys.argv[1].upper()
+    dataset_key  = sys.argv[2].lower() if len(sys.argv) == 3 else "py150"
+    inst_path    = instances_path(dataset_key)
+    suffix       = output_suffix(dataset_key)
+
     prompt_file  = os.path.join(BASE_DIR, "prompts", f"prompt_{prompt_label}.txt")
     template     = load_prompt_template(prompt_file)
     print(f"Prompt template loaded from: {prompt_file}")
+    print(f"Dataset: {dataset_key}")
 
-    with open(INSTANCES_FILE) as f:
+    if not os.path.exists(inst_path):
+        raise FileNotFoundError(f"Instances file not found: {inst_path}")
+
+    with open(inst_path) as f:
         instances = json.load(f)
     total_instances = len(instances)
-    print(f"Loaded {total_instances} instances from {INSTANCES_FILE}.")
+    print(f"Loaded {total_instances} instances from {inst_path}.")
 
     SEED        = 42
-    sample_size = 400
+    sample_size = min(400, total_instances)
     random.seed(SEED)
     sampled_indices = sorted(random.sample(range(total_instances), sample_size))
     subset = [instances[i] for i in sampled_indices]
@@ -162,9 +192,13 @@ def main():
     
     cache_lookup = {}
     candidate_cache_files = [
-        os.path.join(BASE_DIR, "outputs", f"outputs_{prompt_label}.jsonl"),
-        os.path.join(BASE_DIR, f"outputs_prompt_{prompt_label.lower()}.jsonl"),
+        os.path.join(BASE_DIR, "outputs", f"outputs_{prompt_label}{suffix}.jsonl"),
     ]
+    if dataset_key == "py150":
+        candidate_cache_files.append(
+            os.path.join(BASE_DIR, f"outputs_prompt_{prompt_label.lower()}.jsonl")
+        )
+
     for cache_file in candidate_cache_files:
         if os.path.exists(cache_file):
             with open(cache_file) as f:
@@ -203,7 +237,7 @@ def main():
         try:
             response   = client.messages.create(
                 model      = "claude-sonnet-4-6",
-                max_tokens = 512,
+                max_tokens = 1024,
                 messages   = [{"role": "user", "content": filled_prompt}]
             )
 
@@ -213,7 +247,7 @@ def main():
             total_output_tok += response.usage.output_tokens
 
             num_expected = len(ground_truth)
-            predictions  = predictions[:num_expected]
+            predictions  = normalise_by_position(predictions, num_expected)
 
             if (
                 len(predictions) == 1
@@ -241,14 +275,15 @@ def main():
 
     outputs_dir = os.path.join(BASE_DIR, "outputs")
     os.makedirs(outputs_dir, exist_ok=True)
-    output_path = os.path.join(outputs_dir, f"outputs_{prompt_label}.jsonl")
+    output_path = os.path.join(outputs_dir, f"outputs_{prompt_label}{suffix}.jsonl")
     with open(output_path, "w") as f:
         for r in results:
             f.write(json.dumps(r) + "\n")
 
-    token_path = os.path.join(outputs_dir, f"tokens_{prompt_label}.txt")
+    token_path = os.path.join(outputs_dir, f"tokens_{prompt_label}{suffix}.txt")
     with open(token_path, "w") as f:
         f.write(f"Prompt          : {prompt_label}\n")
+        f.write(f"Dataset         : {dataset_key}\n")
         f.write(f"Instances run   : {sample_size} (random sample, seed={SEED})\n")
         f.write(f"Total input tok : {total_input_tok}\n")
         f.write(f"Total output tok: {total_output_tok}\n")
@@ -258,6 +293,7 @@ def main():
     print(f"  DONE")
     print(f"{'='*60}")
     print(f"  Prompt          : {prompt_label}")
+    print(f"  Dataset         : {dataset_key}")
     print(f"  Instances run   : {sample_size} (random sample, seed={SEED})")
     print(f"  From cache      : {cached_count}")
     print(f"  New LLM calls   : {sample_size - cached_count}")

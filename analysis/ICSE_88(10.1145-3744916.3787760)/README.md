@@ -29,7 +29,7 @@ export ANTHROPIC_API_KEY=your_key_here
 The LFTBench dataset (~1.8 GB) is hosted on Zenodo. Download and extract it with:
 
 ```bash
-python download_dataset.py <zenodo_url>
+python3 download_dataset.py <zenodo_url>
 ```
 
 `<zenodo_url>` can be any of:

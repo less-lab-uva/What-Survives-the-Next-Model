@@ -3,9 +3,9 @@ Dataset          : pure
 Model             : claude-sonnet-4-6
 Dataset rows     : 100
 Instances run    : 100
-Cached instances : 10
-New LLM calls    : 90
+Cached instances : 0
+New LLM calls    : 100
 Sampling fraction: 1
 Random seed      : 42
-Total input tok  : 98538
-Total output tok : 15400
+Total input tok  : 163955
+Total output tok : 18458

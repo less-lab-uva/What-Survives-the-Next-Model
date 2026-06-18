@@ -1,1 +1,2 @@
 anthropic==0.105.2
+pypdf==6.10.2

@@ -96,11 +96,9 @@ The following is a set of concrete input-output pairs representing exactly what 
   "examples": [
     {
       "inputs": {
-        "content": "1.\tCreating Master Data Directly in the System0.\tLoad the data. Creating Master Data Directly in the System1.\tLoading Master Data for Characteristic \"Product\"2.\tLoading Transaction Data3.\tDene a query that is used as the basis for a Web application and allows for an ad-hoc analysis of the data in the Web.4.\tYou create the query in the following step:5.\tDening Queries6.\tCreate a Web application with navigation options and functions, such as printing based on the query.7.\tYou create the Web application in the following step:8.\tCreating Web Applications9.\tAnalyze the data in the Web application, add comments to it, and broadcast it by E-mail to other employees.10.\tYou analyze and broadcast the data in the following steps:11.\tAnalyzing Data in the Web Application12.\tBroadcasting Web Applications by E-Mail"
-      },
+        "content":       },
       "outputs": {
-        "plantuml": "start\n\n:Load Master Data;\n:Load Transaction Data;\n\n:Dene a query;\n\nnote right\n  Basis for a Web application\n  Allow ad-hoc analysis of Web data\nend note\n\n:Create Web Applications;\n:Analyze data;\n:Add comments to data;\n:Broadcast the data by E-mail to other employees;\n\nstop"
-      }
+        "plantuml":       }
     }
   ]
 }

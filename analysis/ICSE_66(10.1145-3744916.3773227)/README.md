@@ -116,4 +116,4 @@ The paper being replicated (LANTERN) reports **Pass@10 with n=20**, where 20 pat
 Pass@10 = 1 - C(n-c, k) / C(n, k)    where n=20, k=10, c=correct patches
 ```
 
-Our Pass@1 results are therefore a conservative lower bound relative to the paper's Pass@10 numbers. Our approach uses a single API call per bug compared to the paper's multi-agent pipeline with 20 samples and multiple translation iterations.
+Our Pass@1 results are therefore a conservative lower bound relative to the paper's Pass@10 numbers.

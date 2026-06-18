@@ -1,69 +1,46 @@
 {
   "title": "One Signature, Multiple Payments: Demystifying and Detecting Signature Replay Vulnerabilities in Smart Contracts",
-  "doi": "https://doi.org/10.1145/3744916.3773198", 
+  "doi": "10.1145/3744916.3773198",
   "venue": "ICSE 2026",
-  "authors": [
-    "Zexu Wang", "Jiachi Chen", "Zewei Lin", "Wenqing Chen",
-    "Kaiwen Ning", "Jianxing Yu", "Yuming Feng", "Yu Zhang",
-    "Weizhe Zhang", "Zibin Zheng"
-  ],
   "summary": [
     "The original LASiR pipeline detects Signature Replay Vulnerabilities (SRVs) in Solidity smart contracts through three LLM-assisted phases: (1) Slicing — compiles the contract to AST, builds an Interprocedural Program Dependence Graph (I-PDG) via Slither, then uses an LLM to identify key signature-related variables and perform function-level slicing; (2) Inspection — a second LLM call identifies sanitized variables (e.g. nonces, chain IDs, contract addresses) against domain-specific SRV patterns and generates warnings; (3) Path Reachability — a third LLM call generates vulnerable function call sequences, which are verified via symbolic execution (Z3). The pipeline classifies five SRV types: Cross-chain Replay Attack (X-CRA), Cross-project Replay Attack (X-PRA), Contract Account Signature Replay (CASR), Signature State Management Issue (SSMI), and Signature Malleability Attack (SMA).",
     "This reproduction replaces the full three-phase, three-LLM-call pipeline with a single Claude Sonnet 4.6 call. Given only the raw Solidity source code, the model is asked to classify whether an SRV exists and identify the vulnerability types. Two prompt strategies are compared: Prompt A (black-box, no methodology guidance) and Prompt B (step-by-step, following the five SRV type definitions). A 10% stratified sample (50 of 500 contracts) from DB2 is used."
   ],
   "dataset": {
-    "name": "DB2 (RQ2 labeled set)",
-    "description": "500 manually labeled Solidity smart contracts: 72 positive (contain SRV), 428 negative",
-    "source": "Ethereum blockchain; filtered from 918,964 contracts via ecrecover() presence in AST",
-    "sample_size": 50,
-    "full_size": 500,
-    "sample_fraction": 0.1,
-    "sample_strategy": "stratified (7 positive + 43 negative)",
-    "label_file": "../Dataset/RQ2/Labeled_Data.csv",
-    "contracts_dir": "../Dataset/contracts/Ethereum/"
+    "db2_rq2": {
+      "name": "DB2 (RQ2 labeled set)",
+      "sample_size": 50
+    }
   },
-  "metric": ["Precision", "Recall", "F1", "Accuracy"],
+  "metric": [
+    "Precision",
+    "Recall",
+    "F1",
+    "Accuracy"
+  ],
   "original_result": {
     "LASiR_full_pipeline": {
-      "TP": 69,
-      "FP": 15,
-      "TN": 413,
-      "FN": 3,
       "Precision": 0.8214,
       "Recall": 0.9583,
       "F1": 0.8846,
-      "tasks": 500,
-      "note": "Table 3 RQ2; full 3-phase pipeline on 500 labeled contracts"
+      "Accuracy": 0.964
     }
   },
   "our_result": {
     "prompt_A": {
-      "TP": 7,
-      "FP": 21,
-      "TN": 22,
-      "FN": 0,
       "Precision": 0.25,
       "Recall": 1.0,
       "F1": 0.4,
       "Accuracy": 0.58,
-      "tasks": 50,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "TP": 7,
-      "FP": 36,
-      "TN": 7,
-      "FN": 0,
       "Precision": 0.1628,
       "Recall": 1.0,
       "F1": 0.28,
       "Accuracy": 0.28,
-      "tasks": 50,
       "result_file": "results/results_B.jsonl"
     }
   },
-  "estimated_cost_usd": {
-    "10pct_sample_50_contracts_both_prompts": 5.62,
-    "full_500_contracts_both_prompts": 56.20
-  }
+  "total_cost": 5.62
 }

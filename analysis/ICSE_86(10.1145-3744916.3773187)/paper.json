@@ -21,7 +21,7 @@
     },
     "classeval": {
       "name": "ClassEval",
-      "sample_size": 10
+      "sample_size": 100
     }
   },
   "metric": [
@@ -52,11 +52,11 @@
         "result_file": "results/results_A_humanevalplus.jsonl"
       },
       "bigcodebench": {
-        "pass_at_1": 0.0702,
+        "pass_at_1": 0.8772,
         "result_file": "results/results_A_bigcodebench.jsonl"
       },
       "classeval": {
-        "pass_at_1": 0.7,
+        "pass_at_1": 0.71,
         "result_file": "results/results_A_classeval.jsonl"
       }
     },
@@ -70,11 +70,11 @@
         "result_file": "results/results_B_humanevalplus.jsonl"
       },
       "bigcodebench": {
-        "pass_at_1": 0.0789,
+        "pass_at_1": 0.8684,
         "result_file": "results/results_B_bigcodebench.jsonl"
       },
       "classeval": {
-        "pass_at_1": 0.6,
+        "pass_at_1": 0.74,
         "result_file": "results/results_B_classeval.jsonl"
       }
     }

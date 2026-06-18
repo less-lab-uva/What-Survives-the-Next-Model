@@ -1,6 +1,8 @@
 # Experiment Setup
 
-This directory evaluates argument completion from Python call sites. The pipeline downloads the ETH PY150 source files, preprocesses them into masked call instances, runs one LLM call per sampled instance, and evaluates the predicted arguments against the extracted ground truth.
+This directory evaluates API argument completion. The pipeline preprocesses source code into masked call-site instances, runs one LLM call per sampled instance, and evaluates predicted arguments against the extracted ground truth.
+
+The paper uses Eclipse/NetBeans as the Java dataset for comparison with ARist, and PY150 as the Python dataset for cross-language evaluation. This reproduction currently supports PY150 and NetBeans.
 
 ---
 
@@ -8,7 +10,9 @@ This directory evaluates argument completion from Python call sites. The pipelin
 
 - Python 3.10+
 - `wget`
+- `git`
 - `anthropic`
+- `javalang`
 
 Install `wget` if it is not already available:
 
@@ -17,10 +21,10 @@ sudo apt-get update
 sudo apt-get install wget
 ```
 
-Install the Python dependency:
+Install the Python dependencies:
 
 ```bash
-pip install anthropic
+pip install anthropic javalang
 ```
 
 Before running `main.py`, set your Anthropic API key:
@@ -31,7 +35,9 @@ export ANTHROPIC_API_KEY=your_key_here
 
 ---
 
-## Step 1 — Download the Dataset
+## Step 1 — Download Datasets
+
+### PY150
 
 First download the ETH PY150 repository:
 
@@ -54,9 +60,26 @@ eth_py150_open/eval__manifest.json
 dataset/py150/py150_files/data/
 ```
 
+### NetBeans
+
+Create the Java dataset directory and clone NetBeans:
+
+```bash
+mkdir -p dataset-java
+git clone https://github.com/apache/netbeans.git dataset-java/netbeans
+```
+
+The expected local input path is:
+
+```text
+dataset-java/netbeans/
+```
+
 ---
 
 ## Step 2 — Prepare Input Instances
+
+### PY150
 
 Run:
 
@@ -82,6 +105,32 @@ The output is:
 instances.json
 ```
 
+### NetBeans
+
+Run:
+
+```bash
+python3 prepare_input_java.py netbeans
+```
+
+This reads Java source files from:
+
+```text
+dataset-java/netbeans/
+```
+
+The output is:
+
+```text
+instances_netbeans.json
+```
+
+For a smaller preprocessing test run, use:
+
+```bash
+python3 prepare_input_java.py netbeans --max-files 100 --max-instances 500
+```
+
 Each instance contains:
 
 ```json
@@ -94,23 +143,34 @@ Each instance contains:
 }
 ```
 
-The `ground_truth` field is produced during preprocessing by parsing the original Python source code and extracting the actual call arguments before masking them.
+The `ground_truth` field is produced during preprocessing by parsing the original source code and extracting the actual call arguments before masking them.
 
 ---
 
 ## Step 3 — Run the LLM
 
-Run either Prompt A or Prompt B:
+Run either Prompt A or Prompt B with the dataset name.
+
+For PY150:
 
 ```bash
-python3 main.py A
-python3 main.py B
+python3 main.py A py150
+python3 main.py B py150
 ```
+
+For NetBeans:
+
+```bash
+python3 main.py A netbeans
+python3 main.py B netbeans
+```
+
 
 `main.py` reads:
 
 ```text
 instances.json
+instances_netbeans.json
 prompts/prompt_A.txt
 prompts/prompt_B.txt
 ```
@@ -120,8 +180,10 @@ The current script randomly samples 400 instances using seed 42. It also checks 
 Outputs are saved to:
 
 ```text
-outputs/outputs_A.jsonl
-outputs/outputs_B.jsonl
+outputs/outputs_A_py150.jsonl
+outputs/outputs_B_py150.jsonl
+outputs/outputs_A_netbeans.jsonl
+outputs/outputs_B_netbeans.jsonl
 ```
 
 Each output row includes both the model prediction and the ground truth:
@@ -136,33 +198,44 @@ Each output row includes both the model prediction and the ground truth:
 }
 ```
 
-Because the output file already contains `ground_truth`, the evaluator does not need to reload `instances.json`.
+Because the output file already contains `ground_truth`, the evaluator does not need to reload the instance file.
 
 ---
 
 ## Step 4 — Evaluate
 
-Run:
+For PY150:
 
 ```bash
-python3 evaluator.py A
-python3 evaluator.py B
+python3 evaluator.py A py150
+python3 evaluator.py B py150
 ```
+
+For NetBeans:
+
+```bash
+python3 evaluator.py A netbeans
+python3 evaluator.py B netbeans
+```
+
 
 The evaluator reads:
 
 ```text
-outputs/outputs_A.jsonl
-outputs/outputs_B.jsonl
+outputs/outputs_A_py150.jsonl
+outputs/outputs_B_py150.jsonl
+outputs/outputs_A_netbeans.jsonl
+outputs/outputs_B_netbeans.jsonl
 ```
 
-It compares each predicted argument in `arguments` against the corresponding value in `ground_truth`.
 
 Results are written to:
 
 ```text
-results/results_A.jsonl
-results/results_B.jsonl
+results/results_A_py150.jsonl
+results/results_B_py150.jsonl
+results/results_A_netbeans.jsonl
+results/results_B_netbeans.jsonl
 ```
 
 ---
@@ -173,8 +246,6 @@ The evaluator reports:
 
 - **Precision**: correct predicted arguments divided by total predicted arguments.
 - **Recall**: correct predicted arguments divided by total ground-truth arguments.
-- **MRR**: currently computed as the average of per-prediction correctness scores, where correct predictions receive `1.0` and incorrect predictions receive `0.0`.
 
-The first line of each `results/results_<A|B>.jsonl` file contains the aggregate metrics. The remaining lines contain per-instance evaluation details.
+The first line of each `results/results_<A|B>_<dataset>.jsonl` file contains the aggregate metrics. The remaining lines contain per-instance evaluation details.
 
----

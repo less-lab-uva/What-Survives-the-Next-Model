@@ -1,0 +1,140 @@
+### Role
+You are an expert AI Engineer specializing in Prompt Engineering and Technical Synthesis.
+
+### Task
+Analyze the provided research paper and generate two self-contained replacement prompts, Prompt A and Prompt B, that each replace the paper's entire multi-step pipeline with a single LLM call. These prompts will be used by other LLMs that have no access to this paper. Each prompt receives one benchmark instance as input and must produce output in the exact format and schema that the paper's pipeline produces at the very end.
+
+### Rules that Apply to Both Prompts
+- Be fully self-contained. Do not reference the paper, its authors, its system name, or any dataset names from the paper.
+- Write in second person, addressed to the LLM that will run on the benchmark.
+- All fields must be populated with concrete content — no placeholder text of any kind.
+- Do not ask the LLM for justification or explanation unless the task itself requires it as output.
+- After drafting both prompts, verify self-containment: confirm that neither prompt contains the paper's system name, author names, dataset names, or any phrasing that presupposes knowledge of the paper.
+- The prompts must replace the paper's entire multi-step pipeline with a single LLM call. Do not scope the prompt to any sub-component of the pipeline.
+- The only inputs available to the LLM are raw, unprocessed fields taken directly from the dataset at the very start of the pipeline. Do not assume any intermediate data that the paper's methodology generated will be provided as inputs. If the paper's methodology produces intermediate artifacts, the prompt must instruct the LLM to produce them internally as part of its own reasoning, not receive them as inputs.
+- The Input section and Output section of both prompts must be grounded in the concrete reference examples provided at the bottom of this meta prompt. The field names, content types, and structure of the input and output must exactly match what is shown in the reference examples.
+- Embed the reference examples as a few-shot demonstration inside both Prompt A and Prompt B. Each prompt must include an Example section placed after the Output section and before the Instructions section. This Example section must reproduce the reference examples exactly as provided at the bottom of this meta prompt in the same JSON format, without modification or summarization.
+
+### Steps vs Instructions Boundary
+This distinction applies to Prompt B and must be kept clean:
+- **Steps**: The methodology — what to reason about and in what order. Heuristics, weights, decision rules, tie-breaking logic, and edge case handling all go here, embedded within the relevant step.
+- **Instructions**: Hard behavioural constraints — what the LLM must and must not do, and how to format output. Keep these brief and rule-like.
+- Do not duplicate content across Steps and Instructions.
+
+### Output Format
+Provide both prompts as separate fenced Markdown code blocks. Place the label (`## PROMPT A` or `## PROMPT B`) outside and immediately above the code block.
+
+---
+
+## PROMPT A — The Black-Box Task Prompt
+Write a prompt that describes WHAT needs to be done without revealing or explaining the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Assign a role reflecting the domain expertise needed. Be specific to the task — e.g., "You are an expert software security engineer specializing in fuzzing and crash analysis", not "You are a helpful assistant".]
+
+### Task
+[One or two sentences describing the task. State what input the LLM receives and what output it must produce, in plain terms, with no reference to methodology.]
+
+### Input
+[Describe the data that the LLM will receive: field name, content type, and structure. Use a list if there are multiple fields. Ground this strictly in the reference examples. Only include fields that are present in the raw dataset, not intermediate data produced by the pipeline.]
+
+### Output
+[Describe the exact output the LLM must produce: format, fields, and structure. Be precise. Ground this strictly in what the reference examples show as the final output of the pipeline. This determines how results will be evaluated.]
+
+### Example
+[Reproduce the reference examples verbatim from the bottom of this meta prompt in the same JSON format. Do not modify, summarize, or paraphrase any part of the examples.]
+
+### Instructions
+[State the rules the LLM must follow. Always include:
+- "Solve the task using only the provided input."
+- "Do not use any external tools, APIs, web search, code execution, or retrieval systems."
+Then add task-specific constraints derived from the paper, such as coverage requirements, tie-breaking rules, and handling of missing or empty data. Do not include methodology or reasoning guidance here — those belong in Prompt B's Steps.]
+
+---
+
+## PROMPT B — The Informed-Technique Prompt
+Write a prompt that describes WHAT needs to be done and HOW to do it using the paper's specific methodology.
+
+Use exactly the following structure:
+
+### Role
+[Copy verbatim from Prompt A.]
+
+### Task
+[Copy verbatim from Prompt A.]
+
+### Input
+[Copy verbatim from Prompt A.]
+
+### Output
+[Copy verbatim from Prompt A.]
+
+### Example
+[Copy verbatim from Prompt A's Example section.]
+
+### Steps
+[Adapt the paper's methodology into a numbered sequence of internal reasoning steps. Follow these guidelines:
+- Each step should be one clear action or decision.
+- If a step in the paper relied on an external component (e.g., an embedding model, parser, or clustering algorithm), rewrite it as a reasoning or comparison step the LLM can perform directly on the text.
+- If a step in the paper produced intermediate data via a separate process or LLM call, rewrite it as an internal reasoning step the LLM performs on its own, instead of receiving that data as input.
+- Embed heuristics, weights, thresholds, tie-breaking rules, and edge case handling as sub-bullets within the relevant step.
+- The final step must always be: compile and format the output according to the schema defined in the Output section.]
+
+### Instructions
+[Copy verbatim from Prompt A's Instructions, then add:
+- "Follow the Steps above in order as your internal reasoning process."]
+
+---
+
+### Reference Examples
+The following is a set of concrete input-output pairs representing exactly what the pipeline receives at the very start and produces at the very end. Use this to correctly define the Input and Output sections in both prompts, and embed it verbatim as the Example section inside both Prompt A and Prompt B. Each object represents one complete input-output pair.
+
+```
+{
+  "examples": [
+    {
+      "inputs": {
+        "instance_id": "instance-00050",
+        "repo": "apache/ant-ivy",
+        "commit": "2c932d1af2182f60a8629fc8059c3681e9ede9ac",
+        "parent_commit": "89574baa05c3fde6bcda2ffb6b5dfeba080db0c6",
+        "seed_file": "src/java/org/apache/ivy/core/resolve/IvyNode.java",
+        "seed_method": "getConflictManager",
+        "focal_method_id": "1331",
+        "issue_summary": "Conflict managers ignored, when assigned to modules in Ivy configuration (setting, ivyconf.xml)",
+        "issue_description": "Only conflict managers assigned in the module description (ivy.xml) are used.\nConflict managers assigned in the ivy configuration (setting, ivyconf.xml) are ignored.\nSee\nhttps://svn.apache.org/repos/asf/incubator/ivy/core/trunk/src/java/org/apache/ivy/core/resolve/IvyNode.java\npublic ConflictManager getConflictManager(ModuleId mid) {\nif (_md == null)\n{\n            throw new IllegalStateException(\"impossible to get conflict manager when data has not been loaded\");\n        }\nConflictManager cm = _md.getConflictManager(mid);\nreturn cm == null ? _settings.getDefaultConflictManager() : cm;\n}\nIf no matching conflict manager is found in the module description then the default conflict manager is returned.\nI suppose the last line should be:\nreturn cm == null ? _data.getIvy().getConflictManager(mid) : cm;\nThis will also return the default conflict manager if no matching conflict managers are found in the ivy configuration.\nPlease note (for source base 1.4.1):\nIvy.getConflictManager(ModuleId) is the only method to call\nIvy.getConflictManager(String) which is the only method to access _conflictsManager.\nAnd Ivy.getConflictManager(ModuleId) is not called from anywhere.\nThus conflict managers assigned in ivyconf.xml cannot be accessed in source base 1.4.1.\nThe Ivy configuration (setting) is as follows (parts are removed)\n<ivyconf>\n<typedef name=\"my-latest-strategy\" classname=\"...\"/>\n<latest-strategies>\n<my-latest-strategy/>\n</latest-strategies>\n<conflict-managers>\n<latest-cm name=\"my-latest-strategy\" latest=\"my-latest-strategy\"/>\n</conflict-managers>\n<modules>\n<module organisation=\"my-org\" name=\".*\" resolver=\"...\" conflict-manager=\"my-latest-strategy\"/>\n</modules>\n</ivyconf>\nAlso:\nhttps://svn.apache.org/repos/asf/incubator/ivy/core/trunk/src/java/org/apache/ivy/plugins/conflict/LatestConflictManager.java\nThe method toString() can return null. This is seen when the conflict manager is assigned as the default conflict manager in the debug output.\nI suppose the method should be:\npublic String toString()\n{\n        return String.valueOf(getStrategy());\n    }",
+        "seed_method_source": "public ConflictManager getConflictManager(ModuleId mid) {\n        if (_md == null) {\n            throw new IllegalStateException(\"impossible to get conflict manager when data has not been loaded\");\n        }\n        ConflictManager cm = _md.getConflictManager(mid);\n        return cm == null ? _settings.getDefaultConflictManager() : cm;\n    }",
+        "repository": "<repository>\n  <package name=\"src.java.org.apache.ivy.core.resolve\">\n    <class name=\"IvyNode\" file=\"src/java/org/apache/ivy/core/resolve/IvyNode.java\">\n      <method name=\"getId\">\n        <summary>Return the module revision id for this node.</summary>\n        <source><![CDATA[\n    public ModuleRevisionId getId() {\n    \treturn _id;\n    }\n        ]]></source>\n      </method>\n      <method name=\"isLoaded\">\n        <summary>Return true if the module descriptor has been loaded for this node.</summary>\n        <source><![CDATA[\n    public boolean isLoaded() {\n        return _md != null;\n    }\n        ]]></source>\n      </method>\n      <method name=\"getConflictManager\">\n        <summary>Return the conflict manager applicable to the given ModuleId, falling back to the default if none is set in the module descriptor.</summary>\n        <source><![CDATA[\n    public ConflictManager getConflictManager(ModuleId mid) {\n        if (_md == null) {\n            throw new IllegalStateException(\"impossible to get conflict manager when data has not been loaded\");\n        }\n        ConflictManager cm = _md.getConflictManager(mid);\n        return cm == null ? _settings.getDefaultConflictManager() : cm;\n    }\n        ]]></source>\n      </method>\n      <!-- ... (47 additional methods omitted) -->\n    </class>\n    <!-- ... (3 additional classes omitted: CallerNode, ResolveData, VisitNode) -->\n  </package>\n  <package name=\"src.java.org.apache.ivy.plugins.conflict\">\n    <class name=\"LatestConflictManager\" file=\"src/java/org/apache/ivy/plugins/conflict/LatestConflictManager.java\">\n      <method name=\"toString\">\n        <summary>Return a string representation; uses the strategy object if available.</summary>\n        <source><![CDATA[\n    public String toString() {\n        return String.valueOf(_strategy);\n    }\n        ]]></source>\n      </method>\n      <method name=\"setStrategy\">\n        <summary>Set the latest strategy instance to use for conflict resolution.</summary>\n        <source><![CDATA[\n    public void setStrategy(LatestStrategy strategy) {\n        _strategy = strategy;\n    }\n        ]]></source>\n      </method>\n      <method name=\"getStrategy\">\n        <summary>Return the latest strategy, lazily resolving it by name from settings if not already set.</summary>\n        <source><![CDATA[\n    public LatestStrategy getStrategy() {\n        if (_strategy == null) {\n            if (_strategyName != null) {\n                _strategy = getSettings().getLatestStrategy(_strategyName);\n                if (_strategy == null) {\n                    Message.error(\"unknown latest strategy: \"+_strategyName);\n                    _strategy = getSettings().getDefaultLatestStrategy();\n                }\n            } else {\n                _strategy = getSettings().getDefaultLatestStrategy();\n            }\n        }\n        return _strategy;\n    }\n        ]]></source>\n      </method>\n      <!-- ... (5 additional methods omitted) -->\n    </class>\n    <!-- ... (4 additional classes omitted: AbstractConflictManager, NoConflictManager, RegexpConflictManager, StrictConflictManager) -->\n  </package>\n  <!-- ... (12 additional packages omitted) -->\n</repository>",
+        "commit_history": {
+          "2c932d1af2182f60a8629fc8059c3681e9ede9ac<sep>89574baa05c3fde6bcda2ffb6b5dfeba080db0c6": {
+            "89574baa05c3fde6bcda2ffb6b5dfeba080db0c6": [
+              "src/java/org/apache/ivy/ant/IvyPostResolveTask.java",
+              "src/java/org/apache/ivy/ant/IvyTask.java"
+            ],
+            "4a1334ac9c56bb94dda004f623f66603a1bf0271": [
+              "src/java/org/apache/ivy/ant/IvyTask.java"
+            ],
+            "413accec848b1ad7b6de3b6c95c63dd751b847ac": [
+              "src/java/org/apache/ivy/ant/IvyPostResolveTask.java",
+              "src/java/org/apache/ivy/ant/IvyTask.java"
+            ],
+            "d8f288a35e63d1e9682c7e188b37c0d7e8e537a7": [
+              "src/java/org/apache/ivy/core/module/descriptor/DefaultModuleDescriptor.java"
+            ],
+            "feb0d2f4d8fd3a5e50bb1769c14fc6034aefcdc0": [
+              "src/java/org/apache/ivy/core/module/descriptor/DefaultDependencyDescriptor.java"
+            ]
+          }
+        }
+      },
+      "outputs": {
+        "impacted_methods": [
+          "LatestConflictManager,toString"
+        ]
+      }
+    }
+  ]
+}
+```

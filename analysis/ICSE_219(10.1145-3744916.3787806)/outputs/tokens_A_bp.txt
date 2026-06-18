@@ -3,9 +3,9 @@ Dataset          : bp
 Model             : claude-sonnet-4-6
 Dataset rows     : 30
 Instances run    : 30
-Cached instances : 3
-New LLM calls    : 27
+Cached instances : 0
+New LLM calls    : 30
 Sampling fraction: 1
 Random seed      : 42
-Total input tok  : 31925
-Total output tok : 7134
+Total input tok  : 53194
+Total output tok : 7924

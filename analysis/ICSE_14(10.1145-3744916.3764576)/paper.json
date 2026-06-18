@@ -3,8 +3,8 @@
   "doi": "10.1145/3744916.3764576",
   "venue": "ICSE 2026",
   "summary": [
-    "The original PatchDiff pipeline compares a suspicious patch against the developer/oracle patch by generating differential tests, filtering flaky tests, and checking whether the generated tests expose behavioral differences between the two patches.",
-    "This reproduction replaces PatchDiff's full differential-testing workflow with a simplified single-LLM prompt that directly generates one differentiating Python test from the issue statement, suspicious patch, and oracle patch."
+    "The original PatchDiff pipeline compares a plausible patch against the developer/oracle patch by generating differential tests, filtering flaky tests, and checking whether the generated tests expose behavioral differences between the two patches.",
+    "This reproduction replaces PatchDiff's full differential-testing workflow with a simplified single-LLM prompt that directly generates one differentiating Python test from the issue statement, plausible patch, and oracle patch."
   ],
   "dataset": {
     "name": "SWE-bench Verified with PatchDiff tool results",
@@ -33,21 +33,29 @@
   "our_result": {
     "prompt_A": {
       "codestory": {
-        "differentiating_rate": 0.3111,
+        "differentiating_rate": 0.1556,
+        "differentiating": 7,
+        "total": 45,
         "result_file": "results/results_A_codestory.jsonl"
       },
       "openhands": {
-        "differentiating_rate": 0.551,
+        "differentiating_rate": 0.3673,
+        "differentiating": 18,
+        "total": 49,
         "result_file": "results/results_A_openhands.jsonl"
       }
     },
     "prompt_B": {
       "codestory": {
-        "differentiating_rate": 0.3111,
+        "differentiating_rate": 0.1111,
+        "differentiating": 5,
+        "total": 45,
         "result_file": "results/results_B_codestory.jsonl"
       },
       "openhands": {
-        "differentiating_rate": 0.551,
+        "differentiating_rate": 0.2449,
+        "differentiating": 12,
+        "total": 49,
         "result_file": "results/results_B_openhands.jsonl"
       }
     }

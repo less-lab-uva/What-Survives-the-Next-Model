@@ -1,19 +1,6 @@
-"""
-SecureReviewer inference script.
-Calls the LLM for each patch and writes per-example records to outputs/.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {patch, predicted, reference, prompt_sent, raw_response}
-"""
-
 import argparse
 import concurrent.futures
 import json
-import os
 import sys
 import threading
 import time
@@ -28,7 +15,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -42,43 +28,8 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
+LLM_DISPATCH = {"claude": call_claude}
 
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 DATASET_FILE = Path(__file__).parent / "dataset" / "test.jsonl"
 
@@ -105,12 +56,10 @@ def load_dataset(n: int):
                 break
     return examples
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
 def build_prompt(system_prompt: str, example: dict) -> str:
     return f"{system_prompt}\n\n---\n\npatch:\n{example['patch']}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_review(raw: str) -> Optional[dict]:
     text = raw.strip()
@@ -129,7 +78,6 @@ def parse_review(raw: str) -> Optional[dict]:
                 pass
     return None
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -185,11 +133,10 @@ def process_example(orig_i: int, ex: dict, prompt_label: str, system_prompt: str
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm",     choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm",     choices=["claude"], default="claude")
     parser.add_argument("--prompt",  choices=["A", "B", "both"], required=True)
     parser.add_argument("--n",       type=int, default=5)
     parser.add_argument("--sleep",   type=float, default=2.0)
@@ -230,7 +177,6 @@ def main():
             if completed[pl]:
                 print(f"Resuming prompt {pl}: {len(completed[pl])} already done")
 
-    # interleaved: for each example, queue all prompts not yet done
     pending = [
         (i, ex, pl)
         for i, ex in enumerate(examples)

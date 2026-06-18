@@ -41,53 +41,20 @@
     "lato": {
       "R-F1": 0.6048,
       "N-F1": 0.7132,
-      "pass_rate": 0.9778,
-      "averaging": "macro_average_over_datasets",
-      "per_dataset": {
-        "bp": {
-          "R-F1": 0.4043,
-          "N-F1": 0.5772,
-          "pass_rate": 0.9667
-        },
-        "fsd": {
-          "R-F1": 0.6071,
-          "N-F1": 0.8484,
-          "pass_rate": 0.9679
-        },
-        "lmc": {
-          "R-F1": 0.7892,
-          "N-F1": 0.5931,
-          "pass_rate": 0.9936
-        },
-        "pure": {
-          "R-F1": 0.5931,
-          "N-F1": 0.8742,
-          "pass_rate": 0.9764
-        },
-        "rac": {
-          "R-F1": 0.5074,
-          "N-F1": 0.7547,
-          "pass_rate": 0.9708
-        },
-        "us": {
-          "R-F1": 0.728,
-          "N-F1": 0.6317,
-          "pass_rate": 0.9914
-        }
-      }
+      "pass_rate": 0.9778
     }
   },
   "our_result": {
     "prompt_A": {
-      "R-F1": 0.3498,
-      "N-F1": 0.3532,
-      "pass_rate": 0.882,
+      "R-F1": 0.4999,
+      "N-F1": 0.4853,
+      "pass_rate": 0.9634,
       "result_file": "results/aggregated_results_A.json"
     },
     "prompt_B": {
-      "R-F1": 0.3728,
-      "N-F1": 0.3821,
-      "pass_rate": 0.9393,
+      "R-F1": 0.5071,
+      "N-F1": 0.4965,
+      "pass_rate": 0.9838,
       "result_file": "results/aggregated_results_B.json"
     }
   },

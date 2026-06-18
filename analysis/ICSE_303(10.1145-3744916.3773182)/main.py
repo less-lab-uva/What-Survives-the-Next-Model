@@ -1,16 +1,3 @@
-"""
-Regression bug detection inference script.
-Calls the LLM for each commit and writes per-example records to outputs/.
-
-Usage:
-  python main.py --llm claude|kimi --prompt A|B|both --n N [--model MODEL] [--sleep S] [--threads T]
-
-Output:
-  outputs/outputs_{llm}_prompt{P}_n{N}.jsonl
-  Each line: {owner_repo, sha, split, true_label, pred_label, skipped,
-              commit_message, diff_chars, raw_response, predicted}
-"""
-
 import argparse
 import concurrent.futures
 import csv
@@ -34,7 +21,6 @@ except ImportError:
 
 _cost_tracker = None
 
-# ── LLM clients ───────────────────────────────────────────────────────────────
 
 def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     import anthropic
@@ -48,49 +34,14 @@ def call_claude(prompt: str, model: str = "claude-sonnet-4-6") -> str:
     return msg.content[0].text
 
 
-def call_kimi(prompt: str, model: str = "Kimi K2.5") -> str:
-    import requests
-    api_key = os.environ.get("UVARC_GenAI_API")
-    if not api_key:
-        raise EnvironmentError("UVARC_GenAI_API is not set.")
-    url = "https://open-webui.rc.virginia.edu/api/chat/completions"
-    headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-    payload = {
-        "model": model,
-        "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0.0, "top_p": 0.9, "stream": True,
-    }
-    resp = requests.post(url, headers=headers, json=payload, timeout=300, stream=True)
-    resp.raise_for_status()
-    parts = []
-    for raw_line in resp.iter_lines():
-        if not raw_line:
-            continue
-        line = raw_line.decode("utf-8") if isinstance(raw_line, bytes) else raw_line
-        if not line.startswith("data:"):
-            continue
-        data_str = line[len("data:"):].strip()
-        if data_str == "[DONE]":
-            break
-        try:
-            chunk = json.loads(data_str)
-            text = chunk["choices"][0]["delta"].get("content", "")
-            if text:
-                parts.append(text)
-        except (json.JSONDecodeError, KeyError, IndexError):
-            continue
-    return "".join(parts)
+LLM_DISPATCH = {"claude": call_claude}
 
-
-LLM_DISPATCH = {"claude": call_claude, "kimi": call_kimi}
-
-# ── Dataset ───────────────────────────────────────────────────────────────────
 
 DATASET_DIR   = Path(__file__).parent / "dataset"
 BICS_CSV      = DATASET_DIR / "280BICs.csv"
 BFCS_CSV      = DATASET_DIR / "2800BFCs.csv"
 DATASET_JSONL = DATASET_DIR / "dataset.jsonl"
-MAX_DIFF_CHARS = 12000
+MAX_DIFF_CHARS = 15000
 
 
 def fetch_commit_diff(owner_repo: str, sha: str, retries: int = 3) -> Optional[tuple]:
@@ -175,18 +126,14 @@ def _load_from_csvs() -> list:
                              "label": 0, "split": "BFC", "_prefetched": False})
     return samples
 
-# ── Prompt builder ────────────────────────────────────────────────────────────
 
-def build_prompt(system_prompt: str, commit_message: str, diff: str) -> str:
-    user_block = json.dumps({"commit_message": commit_message, "diff": diff}, indent=2)
+def build_prompt(system_prompt: str, diff: str) -> str:
+    user_block = json.dumps({"diff": diff}, indent=2)
     return f"{system_prompt}\n\n---\n\n{user_block}"
 
-# ── Output parser ─────────────────────────────────────────────────────────────
 
 def parse_prediction(raw: str) -> Optional[dict]:
     text = raw.strip().replace("```json", "").replace("```", "").strip()
-    # Scan flat (non-nested) {...} blocks from last to first, since the final
-    # answer comes after any reasoning/code snippets that may also contain braces.
     for candidate in reversed(re.findall(r'\{[^{}]*\}', text)):
         try:
             obj = json.loads(candidate)
@@ -205,9 +152,6 @@ def parse_prediction(raw: str) -> Optional[dict]:
 
 
 def label_to_pred(label) -> int:
-    """Normalize a parsed `label` value (int per the prompt spec, or the
-    "Yes"/"No" strings produced by parse_prediction's regex fallback) to
-    0/1, or -1 if it can't be interpreted as a binary label."""
     if isinstance(label, bool):
         return int(label)
     if isinstance(label, (int, float)):
@@ -220,7 +164,6 @@ def label_to_pred(label) -> int:
             return 0
     return -1
 
-# ── Per-example worker ────────────────────────────────────────────────────────
 
 _RETRY_DELAYS = [5, 15, 30, 60]
 
@@ -252,7 +195,7 @@ def process_example(sample: dict, prompt_label: str, system_prompt: str,
             }
         commit_message, diff = result
 
-    prompt = build_prompt(system_prompt, commit_message, diff)
+    prompt = build_prompt(system_prompt, diff)
     raw = ""
     llm_response_time = 0.0
     predicted = None
@@ -305,11 +248,10 @@ def process_example(sample: dict, prompt_label: str, system_prompt: str,
         "llm_response_time": llm_response_time,
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--llm",     choices=["claude", "kimi"], default="claude")
+    parser.add_argument("--llm",     choices=["claude"], default="claude")
     parser.add_argument("--prompt",  choices=["A", "B", "both"], required=True)
     parser.add_argument("--n",       type=int, default=5)
     parser.add_argument("--sleep",   type=float, default=2.0)

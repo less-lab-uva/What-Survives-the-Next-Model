@@ -1,14 +1,3 @@
-"""
-SecureReviewer evaluator.
-Reads outputs JSONL from main.py and computes SecureBLEU, BLEU-4, and issue-detection metrics.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 import math
@@ -17,8 +6,6 @@ import sys
 import xml.sax.saxutils
 from pathlib import Path
 from typing import Optional
-
-# ── BLEU utilities ────────────────────────────────────────────────────────────
 
 _preserve_case = False
 _normalize1 = [
@@ -99,9 +86,6 @@ def _splitpuncts(line):
 
 
 def _bleu_fromstr(predictions: list, references: list) -> float:
-    """Mirrors the original SecureReviewer bleu_fromstr/bleuFromMaps: tokenize with
-    wordpunct_tokenize, re-split on word/punct boundaries and lowercase, then compute
-    BLEU per sample and average the per-sample scores (not a corpus-level BLEU)."""
     import nltk
     preds_tok = [" ".join(nltk.wordpunct_tokenize(p)) for p in predictions]
     refs_tok  = [" ".join(nltk.wordpunct_tokenize(r)) for r in references]
@@ -126,7 +110,6 @@ def _bleu_single(ref_text: str, hyp_text: str) -> float:
         return 0.0
     return _bleu_fromstr([hyp_text], [ref_text])
 
-# ── Security keyword dictionary ───────────────────────────────────────────────
 
 _SECURITY_KEYWORDS: dict = {
     "Input Validation": [
@@ -364,7 +347,6 @@ def compute_issue_detection(records: list) -> dict:
         "f1_macro":        round(float(f1)  * 100, 2),
     }
 
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def evaluate_prompt(prompt_label: str, n: int):
     outputs_path = Path(__file__).parent / "outputs" / f"outputs_{prompt_label}.jsonl"

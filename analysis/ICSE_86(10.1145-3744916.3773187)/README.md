@@ -9,12 +9,15 @@ This directory evaluates a simplified single-LLM version of the TraceCoder paper
 - Python 3.10+
 - The `anthropic` Python package
 - The Hugging Face `datasets` package
+- Runtime libraries used by the BigCodeBench and ClassEval official tests
 
 Install dependencies:
 
 ```bash
-pip install anthropic datasets
+pip install -r requirements.txt
 ```
+
+BigCodeBench and ClassEval include tests that import external libraries. If these packages are missing, `evaluator.py` may count a generated solution as failed because the local test environment cannot import the required module.
 
 Before running `main.py`, set your Anthropic API key:
 

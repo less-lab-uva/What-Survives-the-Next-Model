@@ -3,9 +3,9 @@ Dataset          : rac
 Model             : claude-sonnet-4-6
 Dataset rows     : 20
 Instances run    : 20
-Cached instances : 2
-New LLM calls    : 18
+Cached instances : 0
+New LLM calls    : 20
 Sampling fraction: 1
 Random seed      : 42
-Total input tok  : 23498
-Total output tok : 11010
+Total input tok  : 45660
+Total output tok : 10108

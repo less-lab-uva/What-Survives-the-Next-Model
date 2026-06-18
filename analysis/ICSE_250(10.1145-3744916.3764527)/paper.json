@@ -8,73 +8,45 @@
   ],
   "dataset": {
     "rq3": {
-      "description": "46 PRs with human-verified differentiating-test labels (classification accuracy)",
-      "projects": ["keras", "marshmallow", "pandas", "scipy"],
-      "pr_counts": {"keras": 1, "marshmallow": 12, "pandas": 12, "scipy": 21},
-      "total_prs": 46,
-      "label_split": {"unintended": 23, "intended": 23},
-      "note": "12 PRs labeled 'coincidental fix' are treated as unintended (positive class)"
+      "name": "Testora RQ3 PRs",
+      "sample_size": 46
     },
     "rq1": {
-      "description": "30 real-world unintended behavioral changes found by Testora in the wild",
-      "total_paper": 30,
-      "available": 20,
-      "note": "20 of 30 are a subset of the 46 RQ3 PRs; 10 RQ1-only PRs require GitHub token to pull"
+      "name": "Testora RQ1 PRs",
+      "sample_size": 20
     }
   },
-  "metric": {
-    "rq3": ["Precision", "Recall", "F1 (unintended as positive class)"],
-    "rq1": ["Detection Recall (detected / total available)"]
-  },
+  "metric": [
+    "Precision",
+    "Recall",
+    "F1",
+    "Detection Recall"
+  ],
   "original_result": {
-    "rq3_gpt4o_mini_multi_question": {
-      "precision": 0.55,
-      "recall": 0.67,
-      "f1": 0.60,
-      "tasks": 46,
-      "note": "Table 1, GPT-4o-mini multi-question prompting strategy"
+    "Testora_RQ3": {
+      "Precision": 0.55,
+      "Recall": 0.67,
+      "F1": 0.60
     },
-    "rq1_original_pipeline": {
-      "total_prs": 30,
-      "detected": 30,
-      "recall": 1.00,
-      "reported_to_developers": 13,
-      "confirmed": 12,
-      "fixed": 11,
-      "note": "Table 2; all 30 detected, 13 reported, 12 confirmed, 11 fixed"
+    "Testora_RQ1": {
+      "Detection Recall": 1.0
     }
   },
   "our_result": {
-    "rq3_prompt_A": {
-      "precision": null,
-      "recall": null,
-      "f1": null,
-      "tasks": 46,
+    "prompt_A": {
+      "Precision": null,
+      "Recall": null,
+      "F1": null,
+      "Detection Recall": null,
       "result_file": "results/results_A.jsonl"
     },
-    "rq3_prompt_B": {
-      "precision": null,
-      "recall": null,
-      "f1": null,
-      "tasks": 46,
-      "result_file": "results/results_B.jsonl"
-    },
-    "rq1_prompt_A": {
-      "detected": null,
-      "available": 20,
-      "recall": null,
-      "result_file": "results/results_A.jsonl"
-    },
-    "rq1_prompt_B": {
-      "detected": null,
-      "available": 20,
-      "recall": null,
+    "prompt_B": {
+      "Precision": null,
+      "Recall": null,
+      "F1": null,
+      "Detection Recall": null,
       "result_file": "results/results_B.jsonl"
     }
   },
-  "estimated_cost_usd": {
-    "rq3_only_both_prompts": 2.71,
-    "rq1_complement_10_prs_both_prompts": 0.48,
-    "total_56_prs_both_prompts": 3.19
-  }
+  "total_cost": 3.19
 }

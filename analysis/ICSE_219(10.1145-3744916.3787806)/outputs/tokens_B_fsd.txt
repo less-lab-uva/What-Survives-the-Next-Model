@@ -3,9 +3,9 @@ Dataset          : fsd
 Model             : claude-sonnet-4-6
 Dataset rows     : 116
 Instances run    : 116
-Cached instances : 12
-New LLM calls    : 104
+Cached instances : 0
+New LLM calls    : 116
 Sampling fraction: 1
 Random seed      : 42
-Total input tok  : 234919
-Total output tok : 47528
+Total input tok  : 392425
+Total output tok : 56512

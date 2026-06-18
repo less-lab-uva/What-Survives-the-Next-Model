@@ -8,7 +8,8 @@
   ],
   "dataset": {
       "name": "xCodeEval Compact Set",
-      "sample_size": 200
+      "sample_size_A": 248,
+      "sample_size_B": 503
     },
   "metric": [
     "Pass@1"

@@ -7,10 +7,10 @@
     "This reproduction replaces the full 4-phase pipeline with a single Claude Sonnet 4.6 call per contract using two prompt strategies: a black-box prompt (Prompt A) that instructs the model to analyse the Solidity source and report vulnerabilities across six fields with concrete test cases, and an informed prompt (Prompt B) that provides the paper's VFCS methodology as numbered reasoning steps — chain analysis, state-transition mapping, VFCS generation, branch targeting, and oracle simulation."
   ],
   "dataset": {
-    "name": "EchoFuzz D2 (SmartBugs Wild subset)",
-    "sample_size": 143,
-    "full_size": 143,
-    "sample_fraction": 1.0
+    "echofuzz_d2": {
+      "name": "EchoFuzz D2 (SmartBugs Wild subset)",
+      "sample_size": 143
+    }
   },
   "metric": [
     "Precision",
@@ -18,33 +18,19 @@
   ],
   "original_result": {
     "EchoFuzz": {
-      "note": "Runtime oracle — all detections are true positives, no false positives possible. Counts are over all 143 D2 contracts. GL/DG/UE excluded because D2 has no ground-truth labels for those categories.",
-      "detections": {
-        "IO": 53,
-        "RE": 20,
-        "UC": 15,
-        "BN": 8,
-        "TP": 7
-      },
-      "total_detections": 103,
-      "contracts": 143
+      "Precision": 1.0,
+      "Recall": 0.9279
     }
   },
   "our_result": {
     "prompt_A": {
-      "total_TP": 111,
-      "total_FP": 176,
-      "total_FN": 0,
-      "total_ground_truth": 111,
-      "contracts": 143,
+      "Precision": 0.3866,
+      "Recall": 1.0,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "total_TP": 111,
-      "total_FP": 186,
-      "total_FN": 0,
-      "total_ground_truth": 111,
-      "contracts": 143,
+      "Precision": 0.3737,
+      "Recall": 1.0,
       "result_file": "results/results_B.jsonl"
     }
   },

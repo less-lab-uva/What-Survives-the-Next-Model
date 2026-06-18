@@ -1,14 +1,3 @@
-"""
-Regression bug detection evaluator.
-Reads outputs JSONL from main.py and computes Precision, Recall, F1.
-
-Usage:
-  python evaluator.py [--prompt A|B|both] [--n N]
-
-Input:  outputs/outputs_{P}.jsonl
-Output: results/results_{P}.jsonl
-"""
-
 import argparse
 import json
 from pathlib import Path

@@ -129,11 +129,22 @@ def tokenize_plantuml(code: str) -> List[Token]:
         m = re.match(r"^if\s*\((.*?)\)\s*then(?:\s*\((.*?)\))?", line, re.I)
         if m:
             tokens.append(Token("IF", normalize_space(m.group(1)), normalize_space(m.group(2) or "yes"))); continue
+        m = re.match(r"^(?:else\s+if|elseif)\s*\((.*?)\)\s*then(?:\s*\((.*?)\))?", line, re.I)
+        if m:
+            tokens.append(Token("ELSEIF", normalize_space(m.group(1)), normalize_space(m.group(2) or "yes"))); continue
         m = re.match(r"^else(?:\s*\((.*?)\))?", line, re.I)
         if m:
             tokens.append(Token("ELSE", "", normalize_space(m.group(1) or "no"))); continue
         if re.fullmatch(r"endif|end\s+if", lower):
             tokens.append(Token("ENDIF")); continue
+        m = re.match(r"^switch\s*\((.*?)\)", line, re.I)
+        if m:
+            tokens.append(Token("SWITCH", normalize_space(m.group(1)))); continue
+        m = re.match(r"^case\s*\((.*?)\)", line, re.I)
+        if m:
+            tokens.append(Token("CASE", normalize_space(m.group(1)))); continue
+        if re.fullmatch(r"endswitch|end\s+switch", lower):
+            tokens.append(Token("ENDSWITCH")); continue
         m = re.match(r"^while\s*\((.*?)\)", line, re.I)
         if m:
             tokens.append(Token("WHILE", normalize_space(m.group(1)))); continue
@@ -216,6 +227,8 @@ class CFGParser:
             t = self.take(); n = self.new_node("activity", t.text); return Fragment([n], [n])
         if kind == "IF":
             return self.parse_if()
+        if kind == "SWITCH":
+            return self.parse_switch()
         if kind == "FORK":
             return self.parse_fork()
         if kind == "WHILE":
@@ -229,28 +242,72 @@ class CFGParser:
     def parse_if(self) -> Fragment:
         t = self.take()
         decision = self.new_node("control", f"condition {t.text}")
-        merge = self.new_node("control", f"merge condition {t.text}")
-        then_branch = self.parse_sequence({"ELSE", "ENDIF"})
+        merge: Optional[str] = None
+
+        def ensure_merge() -> str:
+            nonlocal merge
+            if merge is None:
+                merge = self.new_node("control", f"merge condition {t.text}")
+            return merge
+
+        then_branch = self.parse_sequence({"ELSEIF", "ELSE", "ENDIF"})
         if then_branch.entries:
             for n in then_branch.entries: self.add_edge(decision, n, f"condition {t.branch}")
-            for n in then_branch.exits: self.add_edge(n, merge, "merge")
+            for n in then_branch.exits: self.add_edge(n, ensure_merge(), "merge")
         else:
-            self.add_edge(decision, merge, f"condition {t.branch}")
+            self.add_edge(decision, ensure_merge(), f"condition {t.branch}")
+        while self.current() == "ELSEIF":
+            e = self.take()
+            branch = self.parse_sequence({"ELSEIF", "ELSE", "ENDIF"})
+            if branch.entries:
+                for n in branch.entries: self.add_edge(decision, n, f"condition {e.text}")
+                for n in branch.exits: self.add_edge(n, ensure_merge(), "merge")
+            else:
+                self.add_edge(decision, ensure_merge(), f"condition {e.text}")
         if self.current() == "ELSE":
             e = self.take()
             else_branch = self.parse_sequence({"ENDIF"})
             if else_branch.entries:
                 for n in else_branch.entries: self.add_edge(decision, n, f"condition {e.branch}")
-                for n in else_branch.exits: self.add_edge(n, merge, "merge")
+                for n in else_branch.exits: self.add_edge(n, ensure_merge(), "merge")
             else:
-                self.add_edge(decision, merge, f"condition {e.branch}")
+                self.add_edge(decision, ensure_merge(), f"condition {e.branch}")
         else:
-            self.add_edge(decision, merge, "condition no")
+            self.add_edge(decision, ensure_merge(), "condition no")
         if self.current() == "ENDIF":
             self.take()
         else:
             self.errors.append(f"missing endif for {t.text}")
-        return Fragment([decision], [merge])
+        return Fragment([decision], [merge] if merge else [])
+
+    def parse_switch(self) -> Fragment:
+        t = self.take()
+        decision = self.new_node("control", f"switch {t.text}")
+        merge: Optional[str] = None
+        case_count = 0
+
+        def ensure_merge() -> str:
+            nonlocal merge
+            if merge is None:
+                merge = self.new_node("control", f"merge switch {t.text}")
+            return merge
+
+        while self.current() == "CASE":
+            case = self.take()
+            case_count += 1
+            branch = self.parse_sequence({"CASE", "ENDSWITCH"})
+            if branch.entries:
+                for n in branch.entries: self.add_edge(decision, n, f"case {case.text}")
+                for n in branch.exits: self.add_edge(n, ensure_merge(), "merge")
+            else:
+                self.add_edge(decision, ensure_merge(), f"case {case.text}")
+        if self.current() == "ENDSWITCH":
+            self.take()
+        else:
+            self.errors.append(f"missing endswitch for {t.text}")
+        if case_count == 0:
+            self.errors.append(f"switch has no cases for {t.text}")
+        return Fragment([decision], [merge] if merge else [])
 
     def parse_fork(self) -> Fragment:
         self.take()
@@ -327,7 +384,7 @@ class CFGParser:
                 n = stack.pop()
                 if n in seen: continue
                 seen.add(n); stack.extend(adjacency[n])
-            missing = [self.nodes[n].label for n in self.nodes if n not in seen]
+            missing = [self.nodes[n].label for n in self.nodes if n not in seen and self.nodes[n].kind != "stop"]
             if missing: errors.append("unreachable nodes: " + " | ".join(missing))
             if not any(s in seen for s in stops): errors.append("no reachable stop node")
         return not errors, errors
@@ -390,7 +447,7 @@ def syntax_check(code: str) -> Tuple[bool, str, str]:
         lower = wrapped.lower()
         if not re.search(r"(?m)^\s*start\s*$", lower): errors.append("missing start")
         if not re.search(r"(?m)^\s*stop\s*$", lower): errors.append("missing stop")
-        for name, opening, closing in [("if", r"(?m)^\s*if\s*\(", r"(?m)^\s*(?:endif|end\s+if)\s*$"), ("fork", r"(?m)^\s*fork\s*$", r"(?m)^\s*end\s+fork\s*$"), ("while", r"(?m)^\s*while\s*\(", r"(?m)^\s*endwhile\b"), ("repeat", r"(?m)^\s*repeat\s*$", r"(?m)^\s*repeat\s+while\s*\(")]:
+        for name, opening, closing in [("if", r"(?m)^\s*if\s*\(", r"(?m)^\s*(?:endif|end\s+if)\s*$"), ("switch", r"(?m)^\s*switch\s*\(", r"(?m)^\s*(?:endswitch|end\s+switch)\s*$"), ("fork", r"(?m)^\s*fork\s*$", r"(?m)^\s*end\s+fork\s*$"), ("while", r"(?m)^\s*while\s*\(", r"(?m)^\s*endwhile\b"), ("repeat", r"(?m)^\s*repeat\s*$", r"(?m)^\s*repeat\s+while\s*\(")]:
             a, b = len(re.findall(opening, lower)), len(re.findall(closing, lower))
             if a != b: errors.append(f"unbalanced {name}: {a}/{b}")
         return not errors, "; ".join(errors), "simple"

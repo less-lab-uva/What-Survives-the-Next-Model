@@ -7,7 +7,7 @@ Cached instances     : 0
 New LLM calls        : 49
 Requested sample size: 49
 Random seed          : 42
-Total input tokens   : 780355
-Total output tokens  : 45569
-Total LLM time (s)   : 815.264
-Avg LLM time/call (s): 16.638
+Total input tokens   : 782021
+Total output tokens  : 46177
+Total LLM time (s)   : 949.794
+Avg LLM time/call (s): 19.384

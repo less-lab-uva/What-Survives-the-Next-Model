@@ -18,11 +18,11 @@
   },
   "our_result": {
     "prompt_A": {
-      "overall_mean": 0.8262,
+      "overall_mean": 0.8288,
       "result_file": "results/results_A.jsonl"
     },
     "prompt_B": {
-      "overall_mean": 0.8658,
+      "overall_mean": 0.8683,
       "result_file": "results/results_B.jsonl"
     }
   },

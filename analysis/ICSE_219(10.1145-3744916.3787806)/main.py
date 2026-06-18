@@ -63,18 +63,20 @@ def load_jsonl_dataset(dataset_name: str) -> List[Dict[str, Any]]:
 
 
 
-def load_prompt_template(prompt_type: str) -> str:
+def load_prompt_template(prompt_type: str, dataset_name: str) -> str:
 
     prompt_type = prompt_type.upper()
-    prompt_path = PROMPTS_DIR / f"prompt_{prompt_type}.txt"
+    prompt_path = PROMPTS_DIR / f"prompt_{prompt_type}_{dataset_name}.txt"
 
     if not prompt_path.exists():
         raise FileNotFoundError(
             f"Prompt template not found: {prompt_path}. "
-            "Create ICSE_R219/prompts/prompt_A.txt and "
-            "ICSE_R219/prompts/prompt_B.txt first."
+            "Create dataset-specific prompt files such as "
+            "ICSE_R219/prompts/prompt_A_bp.txt and "
+            "ICSE_R219/prompts/prompt_B_bp.txt first."
         )
 
+    print(f"Loaded prompt file: {prompt_path}")
     return prompt_path.read_text(encoding="utf-8").strip()
 
 
@@ -191,8 +193,9 @@ def main():
         print("ERROR: dataset must be one of: bp, fsd, lmc, pure, rac, us")
         sys.exit(1)
 
-    # Load prompt template.
-    template = load_prompt_template(prompt_type)
+    # Load the dataset-specific prompt template.
+    prompt_path = PROMPTS_DIR / f"prompt_{prompt_type}_{dataset_name}.txt"
+    template = load_prompt_template(prompt_type, dataset_name)
     print(f"Loaded prompt type: {prompt_type}")
 
     # Load dataset and choose evaluation subset.
@@ -331,6 +334,7 @@ def main():
         file.write(f"Prompt type      : {prompt_type}\n")
         file.write(f"Dataset          : {dataset_name}\n")
         file.write("Model             : claude-sonnet-4-6\n")
+        file.write(f"Prompt file      : {prompt_path}\n")
         file.write(f"Dataset rows     : {len(rows)}\n")
         file.write(f"Instances run    : {len(subset)}\n")
         file.write(f"Cached instances : {cached_count}\n")
