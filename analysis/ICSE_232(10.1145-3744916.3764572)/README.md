@@ -28,15 +28,15 @@ files (329 problems). Each record keeps `all_test_cases` — the gold for scorin
 to the model.
 
 **Reassemble the inputs first.** The `apps` and `code_contests` downsampled files are too large
-for GitHub, so they're committed as split `*.part-*` chunks. Stitch them back into whole files
-once after cloning:
+for GitHub, so they're committed as split `*.part-*` chunks. Concatenate the chunks (in lexical
+order) back into whole files once after cloning:
 
 ```bash
-python3 utils/assemble_inputs.py
+cat inputs/apps.down_sampled_15usd.jsonl.part-* > inputs/apps.down_sampled_15usd.jsonl
+cat inputs/code_contests.down_sampled_15usd.jsonl.part-* > inputs/code_contests.down_sampled_15usd.jsonl
 ```
 
-(The full, non-downsampled benchmarks aren't committed; regenerate them with
-`utils/build_inputs.py` + `utils/sample_to_budget.py` only if you need to re-sample.)
+(The full, non-downsampled benchmarks aren't committed.)
 
 ## Run
 
@@ -63,15 +63,4 @@ container/sandbox.
 
 ```bash
 python3 evaluator.py        # results/results_{A,B}.json — Pass@1 / AvgPassRatio (A vs B)
-python3 utils/usage.py      # logs/usage.json            — seconds elapsed + cost (A vs B)
 ```
-
-## `utils/` (run from this directory)
-
-Helper scripts kept separate from the core pipeline (`main.py`, `evaluator.py`). Paths are
-fixed relative to this directory, so invoke them as `python3 utils/<script>.py`:
-
-- `utils/sample_to_budget.py` — down-sample the benchmarks to a ~`$15` run → `*.down_sampled_15usd.jsonl`.
-- `utils/estimate_cost.py` — project the run cost via the free `count_tokens` endpoint (no spend).
-- `utils/prompt_generator.py` — regenerate `prompts/prompt_A.txt` + `prompt_B.txt` from the paper PDF + `prompts/meta_prompt.txt`.
-- `utils/usage.py` — after a run, derive seconds + cost from the per-call logs → `logs/usage.json`.

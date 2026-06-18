@@ -55,14 +55,4 @@ feasible here (heavy MySQL queries do not complete; see the note in `evaluator.p
 
 ```bash
 python3 evaluator.py        # results/results_{A,B}.json — accuracy + per-query pass/fail (A vs B)
-python3 utils/usage.py      # logs/usage.json            — seconds elapsed + cost (A vs B)
 ```
-
-## `utils/` (run from this directory)
-
-Helper scripts kept separate from the core pipeline (`main.py`, `evaluator.py`). Paths are
-fixed relative to this directory, so invoke them as `python3 utils/<script>.py`:
-
-- `utils/prompt_generator.py` — regenerate `prompts/prompt_A.txt` + `prompt_B.txt` from the paper PDF + `prompts/meta_prompt.txt`.
-- `utils/estimate_cost.py` — project the run cost via the free `count_tokens` endpoint (no spend).
-- `utils/usage.py` — after a run, derive seconds + cost from the per-call logs → `logs/usage.json`.

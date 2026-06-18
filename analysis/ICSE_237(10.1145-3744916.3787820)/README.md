@@ -25,8 +25,8 @@ pip install -r requirements.txt
 ## Data
 
 `inputs/<dataset>/<model>.json` — 30 input files (10 reasoning models × 3 datasets
-{prontoqa_ood, proofwriter, folio}, 596 chains total), built by `utils/build_inputs.py` from the
-MATP artifact's RQ1_2 baseline files. Each record keeps `{idx, premises, question,
+{prontoqa_ood, proofwriter, folio}, 596 chains total), derived from the MATP artifact's RQ1_2
+baseline files. Each record keeps `{idx, premises, question,
 reasoning_steps}`; only those last three fields are sent to the model. The gold lives alongside in
 `inputs/<dataset>/<model>_labels.json` and is never sent — the evaluator recovers it by
 (dataset, model, idx).
@@ -48,22 +48,11 @@ ANTHROPIC_API_KEY=<your key> python3 main.py
 
 ## Evaluation
 
-After a run, two processors read the outputs/logs:
+After a run, the evaluator reads the outputs/logs:
 
 ```bash
 python3 evaluator.py        # results/results_{A,B}.json — macro-F1 per (dataset, model) + mean per dataset (one file per prompt)
-python3 utils/usage.py      # logs/usage.json            — seconds elapsed + cost (A vs B)
 ```
 
 An instance whose predicted step count differs from the gold (or whose prediction is missing) can't
 be aligned, so it is counted as `unaligned` and reported rather than silently dropped.
-
-## `utils/` (run from this directory)
-
-Helper scripts kept separate from the core pipeline (`main.py`, `evaluator.py`). Paths are
-fixed relative to this directory, so invoke them as `python3 utils/<script>.py`:
-
-- `utils/build_inputs.py` — build the `inputs/<dataset>/<model>.json` + `*_labels.json` pairs from the MATP artifact's RQ1_2 baseline + manual-annotation files.
-- `utils/prompt_generator.py` — regenerate `prompts/prompt_A.txt` + `prompt_B.txt` from the paper PDF + `prompts/meta_prompt.txt`.
-- `utils/estimate_cost.py` — project the run cost via the free `count_tokens` endpoint (no spend).
-- `utils/usage.py` — after a run, derive seconds + cost from the per-call logs → `logs/usage.json`.

@@ -40,18 +40,8 @@ ANTHROPIC_API_KEY=<your key> python3 main.py
 
 ## Evaluation
 
-After a run, two processors read the outputs/logs (both fail-fast, won't overwrite):
+After a run, the evaluator reads the outputs/logs (fail-fast, won't overwrite):
 
 ```bash
 python3 evaluator.py        # results/results_{A,B}.json — P/R/F1 at all thresholds (one file per prompt)
-python3 utils/usage.py      # logs/usage.json            — seconds elapsed + cost (A vs B)
 ```
-
-## `utils/` (run from this directory)
-
-Helper scripts kept separate from the core pipeline (`main.py`, `evaluator.py`). Paths are
-fixed relative to this directory, so invoke them as `python3 utils/<script>.py`:
-
-- `utils/prompt_generator.py` — regenerate `prompts/prompt_A.txt` + `prompt_B.txt` from the paper PDF + `prompts/meta_prompt.txt`.
-- `utils/estimate_cost.py` — project the run cost via the free `count_tokens` endpoint (no spend) → `logs/cost_estimate.json`.
-- `utils/usage.py` — after a run, derive seconds + cost from the per-call logs → `logs/usage.json`.
