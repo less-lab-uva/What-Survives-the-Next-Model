@@ -1,5 +1,0 @@
-Prompt          : B
-Instances run   : 386 (full dataset, seed=42)
-Cached results  : 100
-Total input tok : 472597
-Total output tok: 51917
