@@ -3,7 +3,6 @@
 | Directory (DOI) | Paper |
 |-----------------|-------|
 | [`ICSE_6(10.1145-3744916.3764523)`](./ICSE_6(10.1145-3744916.3764523)) | InferLog: Accelerating LLM Inference for Online Log Parsing via ICL-oriented Prefix Caching |
-| [`ICSE_250(10.1145-3744916.3764527)`](./ICSE_250(10.1145-3744916.3764527)) | Testora: Using Natural Language Intent to Detect Behavioral Regressions |
 | [`ICSE_54(10.1145-3744916.3773119)`](./ICSE_54(10.1145-3744916.3773119)) | Large Language Model-Aided Partial Program Dependence Analysis |
 | [`ICSE_256(10.1145-3744916.3773166)`](./ICSE_256(10.1145-3744916.3773166)) | EchoFuzz: Empowering Smart Contract Fuzzing with Large Language Models |
 | [`ICSE_154(10.1145-3744916.3773198)`](./ICSE_154(10.1145-3744916.3773198)) | One Signature, Multiple Payments: Demystifying and Detecting Signature Replay Vulnerabilities in Smart Contracts |
@@ -19,7 +18,6 @@
 | [`ICSE_38(10.1145-3744916.3787821)`](./ICSE_38(10.1145-3744916.3787821)) | ADARULE: LLM-Driven Natural Language to LTL Conversion via Pattern-Adaptive Rule Induction |
 | [`ICSE_42(10.1145-3744916.3773144)`](./ICSE_42(10.1145-3744916.3773144)) | AdapTrack: Constrained Decoding without Distorting LLM's Output Intent |
 | [`ICSE_52(10.1145-3744916.3764553)`](./ICSE_52(10.1145-3744916.3764553)) | LLM Test Generation via Iterative Hybrid Program Analysis |
-| [`ICSE_156(10.1145-3744916.3773229)`](./ICSE_156(10.1145-3744916.3773229)) | ConfuGuard: Using Metadata to Detect Active and Stealthy Package Confusion Attacks Accurately and at Scale |
 | [`ICSE_66(10.1145-3744916.3773227)`](./ICSE_66(10.1145-3744916.3773227)) | Unlocking LLM Repair Capabilities Through Cross-Language Translation and Multi-Agent Refinement |
 | [`ICSE_70(10.1145-3744916.3773158)`](./ICSE_70(10.1145-3744916.3773158)/) | LLM-based API Argument Completion with Knowledge-Augmented Prompts |
 | [`ICSE_73(10.1145-3744916.3773255)`](./ICSE_73(10.1145-3744916.3773255)/) | From Code to Correctness: Closing the Last Mile of Code Generation with Hierarchical Debugging |
