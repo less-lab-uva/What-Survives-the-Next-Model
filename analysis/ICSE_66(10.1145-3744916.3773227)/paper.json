@@ -7,59 +7,86 @@
     "This reproduction replaces that multi-agent cross-language translation and refinement workflow with a simplified single-LLM repair prompt over sampled xCodeEval instances."
   ],
   "dataset": {
-      "name": "xCodeEval Compact Set",
-      "sample_size_A": 248,
-      "sample_size_B": 503
-    },
+    "name": "xCodeEval Compact Set"
+  },
   "metric": [
-    "Pass@1"
+    "Pass@1",
+    "Pass@5"
   ],
   "original_result": {
-    "C": 0.8609,
-    "C#": 0.7992,
-    "C++": 0.7526,
-    "Go": 0.8511,
-    "Java": 0.7689,
-    "Javascript": 0.883,
-    "Kotlin": 0.8821,
-    "PHP": 0.9322,
-    "Python": 0.8837,
-    "Ruby": 0.8669,
-    "Rust": 0.72
+    "metric": "Pass@10",
+    "per_language_pass_at_10": {
+      "C": 0.8609,
+      "C#": 0.7992,
+      "C++": 0.7526,
+      "Go": 0.8511,
+      "Java": 0.7689,
+      "Javascript": 0.883,
+      "Kotlin": 0.8821,
+      "PHP": 0.9322,
+      "Python": 0.8837,
+      "Ruby": 0.8669,
+      "Rust": 0.72
+    }
   },
   "our_result": {
     "prompt_A": {
-      "per_language_pass_at_1": {
-        "C": 0.8056,
-        "C#": 0.6944,
-        "C++": 0.625,
-        "Go": 0.9286,
-        "Java": 0.4857,
-        "Javascript": 1.0,
-        "Kotlin": 0.7333,
-        "PHP": 1.0,
-        "Python": 0.7143,
-        "Ruby": 0.8824,
-        "Rust": 1.0
+      "pass_at_1": {
+        "per_language": {
+          "C": 0.8056,
+          "C#": 0.6944,
+          "C++": 0.625,
+          "Go": 0.9286,
+          "Java": 0.4857,
+          "Javascript": 1.0,
+          "Kotlin": 0.7333,
+          "PHP": 1.0,
+          "Python": 0.7143,
+          "Ruby": 0.8824,
+          "Rust": 1.0
+        },
+        "result_file": "results/results_A.jsonl"
       },
-      "result_file": "results/results_A.jsonl"
+      "pass_at_5": {
+        "per_language": {
+          "C": 0.9315,
+          "Kotlin": 0.9677,
+          "Python": 0.9286
+        },
+        "result_file": "results/results_A_pass5.jsonl"
+      }
     },
     "prompt_B": {
-      "per_language_pass_at_1": {
-        "C": 0.8356,
-        "C#": 0.726,
-        "C++": 0.6562,
-        "Go": 0.8276,
-        "Java": 0.4789,
-        "Javascript": 0.7778,
-        "Kotlin": 0.8387,
-        "PHP": 0.6842,
-        "Python": 0.662,
-        "Ruby": 0.7941,
-        "Rust": 0.75
+      "pass_at_1": {
+        "per_language": {
+          "C": 0.8356,
+          "C#": 0.726,
+          "C++": 0.6562,
+          "Go": 0.8276,
+          "Java": 0.4789,
+          "Javascript": 0.7778,
+          "Kotlin": 0.8387,
+          "PHP": 0.6842,
+          "Python": 0.662,
+          "Ruby": 0.7941,
+          "Rust": 0.75
+        },
+        "result_file": "results/results_B.jsonl"
       },
-      "result_file": "results/results_B.jsonl"
+      "pass_at_5": {
+        "per_language": {
+          "C": 0.863,
+          "Go": 0.9655,
+          "Javascript": 1.0,
+          "Kotlin": 0.9032,
+          "PHP": 0.8947,
+          "Python": 0.8592,
+          "Ruby": 1.0,
+          "Rust": 0.9
+        },
+        "result_file": "results/results_B_pass5.jsonl"
+      }
     }
   },
-  "total_cost": 17.05
+  "total_cost": 37.05
 }

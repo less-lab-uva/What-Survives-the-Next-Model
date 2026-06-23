@@ -167,7 +167,7 @@ def main():
     SEED = 42
     random.seed(SEED)
     subset = []
-    
+    print("Stratified 5% sampling per language:")
     for lang in sorted(lang_groups):
         group = lang_groups[lang]
         n = max(1, int(0.05 * len(group)))
