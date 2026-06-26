@@ -7,7 +7,7 @@
     "This reproduction replaces the distance-guided synthesis loop with a direct functional program generation prompt, evaluating correctness via Trio on the full benchmark set."
   ],
   "dataset": {
-    "name": "80 .mls benchmark files",
+    "name": "GuideSyn .mls benchmark",
     "sample_size": 80
   },
   "metric": [
