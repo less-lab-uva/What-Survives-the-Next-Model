@@ -37,4 +37,3 @@
 | [`ICSE_237(10.1145-3744916.3787820)`](./ICSE_237(10.1145-3744916.3787820)) | Beyond Correctness: Exposing LLM-generated Logical Flaws in Reasoning via Multi-step Automated Theorem Proving |
 | [`ICSE_254(10.1145-3744916.3764534)`](../../254/ICSE_254(10.1145-3744916.3764534)/) | Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search |
 | [`ICSE_303(10.1145-3744916.3773182)`](./ICSE_303(10.1145-3744916.3773182)) | Characterizing Regression Bug-Inducing Changes and Improving LLM-Based Regression Bug Detection |
-| [`10.1145-3744916.3773260`](./10.1145-3744916.3773260) | IntentFix: Automated Logic Vulnerability Repair via LLM-Driven Intent Modeling |
