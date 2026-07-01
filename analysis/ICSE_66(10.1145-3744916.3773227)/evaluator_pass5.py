@@ -76,10 +76,10 @@ if len(sys.argv) != 2 or sys.argv[1].upper() not in ("A", "B"):
     sys.exit(1)
 
 variant     = sys.argv[1].upper()
-inputs_path = os.path.join(BASE_DIR, "outputs", f"outputs_{variant}_pass5_kotlin.jsonl")
+inputs_path = os.path.join(BASE_DIR, "outputs", f"outputs_{variant}_pass5.jsonl")
 results_dir = os.path.join(BASE_DIR, "results")
-output_path = os.path.join(results_dir, f"results_{variant}_pass5_kotlin.jsonl")
-failed_path = os.path.join(results_dir, f"failed_{variant}_pass5_kotlin.json")
+output_path = os.path.join(results_dir, f"results_{variant}_pass5.jsonl")
+failed_path = os.path.join(results_dir, f"failed_{variant}_pass5.json")
 os.makedirs(results_dir, exist_ok=True)
 
 

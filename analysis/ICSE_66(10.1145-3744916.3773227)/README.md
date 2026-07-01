@@ -68,14 +68,16 @@ python3 main_pass5.py A
 python3 main_pass5.py B
 ```
 
+Note: the checked-in `main_pass5.py` and `evaluator_pass5.py` are currently configured with `RUN_SUFFIX = "csharp_cpp_java"` and `LANGUAGES = ["C#", "C++", "Java"]` for the final follow-up run. The canonical checked-in `outputs_*_pass5.jsonl` and `results_*_pass5.jsonl` files already include the merged follow-up results.
+
 The Pass@5 runs were selected as follows:
 
 - First, we ran Pass@1 for all languages and both prompt variants.
 - For languages where Pass@1 already outperformed the paper baseline, we did not prioritize additional Pass@5 runs. These were Go, Javascript, PHP, Ruby, and Rust.
-- For Prompt A, we randomly selected three languages for Pass@5: C, Kotlin, and Python. All three improved under Pass@5.
-- For Prompt B, no language outperformed the paper baseline under Pass@1. Therefore, we evaluated Prompt B with Pass@5 on the same overall sampled subset, covering eight languages: C, Go, Javascript, Kotlin, PHP, Python, Ruby, and Rust.
+- For Prompt A, then we ran pass@5 on the rest of the languages.
+- For Prompt B, no language outperformed the paper baseline under Pass@1. Therefore, we evaluated Prompt B with Pass@5 on all 11 languages.
 
-Pass@5 outputs are saved under:
+The Pass@5 outputs are saved under:
 
 ```
 outputs/
@@ -83,7 +85,6 @@ outputs/
 └── outputs_B_pass5.jsonl
 ```
 
-The Prompt B Pass@5 file includes the merged Kotlin-only rerun.
 
 ---
 
@@ -94,6 +95,7 @@ The evaluator uses ExecEval as the code execution engine to run generated patche
 Build the ExecEval Docker image. This only needs to be done once.
 
 ```bash
+git clone https://github.com/ntunlp/ExecEval.git ExecEval
 cd ExecEval
 docker build . -t exec-eval:1.0
 ```
@@ -147,13 +149,14 @@ python3 evaluator_pass5.py B
 
 The Pass@5 evaluator groups five candidate repairs by bug. A bug is counted as fixed if at least one of its five candidates passes all hidden unit tests.
 
-Results are saved to:
+The Pass@5 results are saved to:
 
 ```
 results/
 ├── results_A_pass5.jsonl
 └── results_B_pass5.jsonl
 ```
+
 
 ---
 
@@ -181,10 +184,10 @@ The current repository contains:
 
 ```
 results/
-├── results_A.jsonl          # Prompt A Pass@1
-├── results_B.jsonl          # Prompt B Pass@1
-├── results_A_pass5.jsonl    # Prompt A Pass@5
-└── results_B_pass5.jsonl    # Prompt B Pass@5, including merged Kotlin results
+├── results_A.jsonl                         # Prompt A Pass@1
+├── results_B.jsonl                         # Prompt B Pass@1
+├── results_A_pass5.jsonl                   # Prompt A Pass@5
+├── results_B_pass5.jsonl                   # Prompt B Pass@5
 ```
 
 The corresponding outputs are:
@@ -194,5 +197,5 @@ outputs/
 ├── outputs_A.jsonl
 ├── outputs_B.jsonl
 ├── outputs_A_pass5.jsonl
-└── outputs_B_pass5.jsonl
+├── outputs_B_pass5.jsonl
 ```

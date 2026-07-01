@@ -24,13 +24,14 @@ UNITTEST_FILE  = XCODEEVAL_DIR / "unittest_db.json"
 OUTPUTS_DIR    = Path(BASE_DIR) / "outputs"
 
 LANGUAGES = [
-    "Kotlin"
+    "C", "C#", "C++", "Go", "Java", "Javascript",
+    "Kotlin", "PHP", "Python", "Ruby", "Rust"
 ]
 
 # Randomly choose this many languages from LANGUAGES, then sample the
 # configured fraction of bugs independently within each selected language.
 SEED = 42
-NUM_LANGUAGES = 1
+NUM_LANGUAGES = 3
 SAMPLE_FRACTION = 0.10
 PASS_K = 5
 MODEL = "claude-sonnet-4-6"
@@ -239,8 +240,8 @@ def main():
     print(f"Generating {PASS_K} candidates per bug: {total_candidate_slots} candidate slots.\n")
 
     OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
-    output_path = OUTPUTS_DIR / f"outputs_{variant}_pass5_kotlin.jsonl"
-    token_path  = OUTPUTS_DIR / f"tokens_{variant}_pass5_kotlin.txt"
+    output_path = OUTPUTS_DIR / f"outputs_{variant}_pass5.jsonl"
+    token_path  = OUTPUTS_DIR / f"tokens_{variant}_pass5.txt"
 
     cache_lookup: Dict[str, Dict[str, Any]] = {}
     if output_path.exists():
