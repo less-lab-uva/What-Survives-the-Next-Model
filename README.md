@@ -1,4 +1,4 @@
-# Ephemeral-SE
+# What-Survives-the-Next-Model
 
 This repository contains the replication artifacts for a study of whether a
 single prompt to a newer large language model can replace recent LLM-based
