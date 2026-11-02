@@ -1,0 +1,78 @@
+{
+  "response_property_constraints": [
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Response",
+      "description": "The Response field must be one of the enumerated string values 'True' or 'False'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        val = latest_response.get('Response')\n        if val is None:\n            return 0\n        return 1 if val in ['True', 'False'] else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Poster",
+      "description": "The Poster field, when not 'N/A', must be a valid URI starting with http:// or https://.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            poster = item.get('Poster')\n            if poster is None:\n                continue\n            checked = True\n            if poster == 'N/A':\n                continue\n            if not re.match(r'^https?://', str(poster)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Type",
+      "description": "Each Search item's Type must be one of the values 'movie', 'series' or 'episode'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            t = item.get('Type')\n            if t is None:\n                continue\n            checked = True\n            if t not in ['movie', 'series', 'episode']:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "imdbID",
+      "description": "Each Search item's imdbID must follow the IMDb identifier format: 'tt' followed by digits.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('imdbID')\n            if v is None:\n                continue\n            checked = True\n            if not re.match(r'^tt\\d+$', str(v)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "Year",
+      "description": "Each Search item's Year must be a four-digit year, optionally followed by a dash and an optional four-digit end year (for series ranges).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('Year')\n            if v is None:\n                continue\n            checked = True\n            if not re.match(r'^\\d{4}([\\u2013\\-]\\d{0,4})?$', str(v)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/",
+      "response_resource": "Response",
+      "attribute": "totalResults",
+      "description": "totalResults must be a string representing a non-negative integer.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        v = latest_response.get('totalResults')\n        if v is None:\n            return 0\n        s = str(v)\n        return 1 if s.isdigit() else -1\n    except:\n        return 0"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "Response",
+      "attribute": "Title",
+      "description": "Since the request parameter 's' is a title search term, each Search item's Title is expected to match the search term (case-insensitive containment).",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "s",
+      "corresponding_attribute_description": "Title of movie or series",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        s = request_info.get('s')\n        if s is None:\n            return 0\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            title = item.get('Title')\n            if title is None:\n                continue\n            checked = True\n            if str(s).lower() not in str(title).lower():\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Type",
+      "description": "When the request parameter 'type' is provided, every item in the Search array must have a Type equal to that value.",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "type",
+      "corresponding_attribute_description": "Return movie or series",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        type_param = request_info.get('type')\n        if type_param is None:\n            return 0\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        for item in items:\n            if item.get('Type') != type_param:\n                return -1\n        return 1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "Response",
+      "attribute": "Year",
+      "description": "When the request parameter 'y' is provided, every item in the Search array must have a Year matching that release year (for series ranges, the year is contained in the range string).",
+      "attribute_inferred_from_operation": "get-/",
+      "part": "parameters",
+      "corresponding_attribute": "y",
+      "corresponding_attribute_description": "Year of release",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        y_param = request_info.get('y')\n        if y_param is None:\n            return 0\n        items = latest_response.get('Search', [])\n        if not items:\n            return 0\n        for item in items:\n            year = item.get('Year')\n            if year is None:\n                return 0\n            if str(y_param) not in str(year):\n                return -1\n        return 1\n    except:\n        return 0"
+    }
+  ]
+}

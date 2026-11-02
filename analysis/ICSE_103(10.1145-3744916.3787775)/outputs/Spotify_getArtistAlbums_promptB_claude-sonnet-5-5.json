@@ -1,0 +1,1505 @@
+{
+  "service_name": "Spotify getArtistAlbums",
+  "prompt": "B",
+  "request_info": {
+    "market": "NE",
+    "limit": "29"
+  },
+  "response_body": {
+    "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50/albums?offset=0&limit=29&include_groups=album,single,compilation,appears_on&market=NE",
+    "items": [
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3rMqrzAwB0tLlsA9Zrd46L"
+        },
+        "href": "https://api.spotify.com/v1/albums/3rMqrzAwB0tLlsA9Zrd46L",
+        "id": "3rMqrzAwB0tLlsA9Zrd46L",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2730842847622aa84da7dd6bea7",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e020842847622aa84da7dd6bea7",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048510842847622aa84da7dd6bea7",
+            "width": 64
+          }
+        ],
+        "name": "V\u00e9rtigo",
+        "release_date": "2020-12-11",
+        "release_date_precision": "day",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:3rMqrzAwB0tLlsA9Zrd46L"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1jLNPWcykNvUNoWBWBPjep"
+        },
+        "href": "https://api.spotify.com/v1/albums/1jLNPWcykNvUNoWBWBPjep",
+        "id": "1jLNPWcykNvUNoWBWBPjep",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273200959ca96f26bec2ebf4a8b",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02200959ca96f26bec2ebf4a8b",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851200959ca96f26bec2ebf4a8b",
+            "width": 64
+          }
+        ],
+        "name": "Prometo (Edici\u00f3n especial)",
+        "release_date": "2018-11-30",
+        "release_date_precision": "day",
+        "total_tracks": 26,
+        "type": "album",
+        "uri": "spotify:album:1jLNPWcykNvUNoWBWBPjep"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/07c88Esc2q8pUl0tXADs3D"
+        },
+        "href": "https://api.spotify.com/v1/albums/07c88Esc2q8pUl0tXADs3D",
+        "id": "07c88Esc2q8pUl0tXADs3D",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273eb6bd8cffe1dc24cf3a4e44e",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02eb6bd8cffe1dc24cf3a4e44e",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851eb6bd8cffe1dc24cf3a4e44e",
+            "width": 64
+          }
+        ],
+        "name": "Prometo",
+        "release_date": "2017-11-17",
+        "release_date_precision": "day",
+        "total_tracks": 16,
+        "type": "album",
+        "uri": "spotify:album:07c88Esc2q8pUl0tXADs3D"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4qtl6sl6iwC37wRM9lbssD"
+        },
+        "href": "https://api.spotify.com/v1/albums/4qtl6sl6iwC37wRM9lbssD",
+        "id": "4qtl6sl6iwC37wRM9lbssD",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27395d478cd83459546759f7293",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0295d478cd83459546759f7293",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485195d478cd83459546759f7293",
+            "width": 64
+          }
+        ],
+        "name": "Prometo",
+        "release_date": "2017-06-01",
+        "release_date_precision": "day",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:4qtl6sl6iwC37wRM9lbssD"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7kWpZgYbdNyQYpZEXSMW14"
+        },
+        "href": "https://api.spotify.com/v1/albums/7kWpZgYbdNyQYpZEXSMW14",
+        "id": "7kWpZgYbdNyQYpZEXSMW14",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273322a82c23100440d53ae8536",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02322a82c23100440d53ae8536",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851322a82c23100440d53ae8536",
+            "width": 64
+          }
+        ],
+        "name": "Terral",
+        "release_date": "2015-01-05",
+        "release_date_precision": "day",
+        "total_tracks": 12,
+        "type": "album",
+        "uri": "spotify:album:7kWpZgYbdNyQYpZEXSMW14"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1cWvezm4YsxlvvOSRUXLmS"
+        },
+        "href": "https://api.spotify.com/v1/albums/1cWvezm4YsxlvvOSRUXLmS",
+        "id": "1cWvezm4YsxlvvOSRUXLmS",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2734a247de304646e93bc3b0bee",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e024a247de304646e93bc3b0bee",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048514a247de304646e93bc3b0bee",
+            "width": 64
+          }
+        ],
+        "name": "Terral",
+        "release_date": "2014-11-10",
+        "release_date_precision": "day",
+        "total_tracks": 16,
+        "type": "album",
+        "uri": "spotify:album:1cWvezm4YsxlvvOSRUXLmS"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/451ZWaGuvUKBVI3E77b7yM"
+        },
+        "href": "https://api.spotify.com/v1/albums/451ZWaGuvUKBVI3E77b7yM",
+        "id": "451ZWaGuvUKBVI3E77b7yM",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273c3c7a5f5ca5654c62b37bbc5",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02c3c7a5f5ca5654c62b37bbc5",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851c3c7a5f5ca5654c62b37bbc5",
+            "width": 64
+          }
+        ],
+        "name": "Tanto",
+        "release_date": "2012-11-06",
+        "release_date_precision": "day",
+        "total_tracks": 11,
+        "type": "album",
+        "uri": "spotify:album:451ZWaGuvUKBVI3E77b7yM"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/7kA3hvV7UjgnA5uiUBxwlN"
+        },
+        "href": "https://api.spotify.com/v1/albums/7kA3hvV7UjgnA5uiUBxwlN",
+        "id": "7kA3hvV7UjgnA5uiUBxwlN",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2739f0d1497af09b32913ecee93",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e029f0d1497af09b32913ecee93",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048519f0d1497af09b32913ecee93",
+            "width": 64
+          }
+        ],
+        "name": "Tanto (Edici\u00f3n Premium)",
+        "release_date": "2012",
+        "release_date_precision": "year",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:7kA3hvV7UjgnA5uiUBxwlN"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1BZTSNDLBWs35BNWjkfrDg"
+        },
+        "href": "https://api.spotify.com/v1/albums/1BZTSNDLBWs35BNWjkfrDg",
+        "id": "1BZTSNDLBWs35BNWjkfrDg",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2739c92c787e2bdc57d3efc634b",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e029c92c787e2bdc57d3efc634b",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048519c92c787e2bdc57d3efc634b",
+            "width": 64
+          }
+        ],
+        "name": "En Ac\u00fastico (En directo)",
+        "release_date": "2011-11-15",
+        "release_date_precision": "day",
+        "total_tracks": 17,
+        "type": "album",
+        "uri": "spotify:album:1BZTSNDLBWs35BNWjkfrDg"
+      },
+      {
+        "album_group": "album",
+        "album_type": "album",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1PfEXmG8ioEwsj7qDaCQXc"
+        },
+        "href": "https://api.spotify.com/v1/albums/1PfEXmG8ioEwsj7qDaCQXc",
+        "id": "1PfEXmG8ioEwsj7qDaCQXc",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2735e0bea685c0274982730765f",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e025e0bea685c0274982730765f",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048515e0bea685c0274982730765f",
+            "width": 64
+          }
+        ],
+        "name": "Pablo Alboran (Deluxe)",
+        "release_date": "2011-02-01",
+        "release_date_precision": "day",
+        "total_tracks": 15,
+        "type": "album",
+        "uri": "spotify:album:1PfEXmG8ioEwsj7qDaCQXc"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/07YUOmWljBTXwIseAUd9TW"
+            },
+            "href": "https://api.spotify.com/v1/artists/07YUOmWljBTXwIseAUd9TW",
+            "id": "07YUOmWljBTXwIseAUd9TW",
+            "name": "Sebastian Yatra",
+            "type": "artist",
+            "uri": "spotify:artist:07YUOmWljBTXwIseAUd9TW"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6fv6tD2JlEMZaFf6tF0GcH"
+        },
+        "href": "https://api.spotify.com/v1/albums/6fv6tD2JlEMZaFf6tF0GcH",
+        "id": "6fv6tD2JlEMZaFf6tF0GcH",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273c5cd783fe813f242b903b179",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02c5cd783fe813f242b903b179",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851c5cd783fe813f242b903b179",
+            "width": 64
+          }
+        ],
+        "name": "Contigo",
+        "release_date": "2022-07-21",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:6fv6tD2JlEMZaFf6tF0GcH"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3DlIRvWPWudQaYZOclzabT"
+        },
+        "href": "https://api.spotify.com/v1/albums/3DlIRvWPWudQaYZOclzabT",
+        "id": "3DlIRvWPWudQaYZOclzabT",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273b7e03df753419d30f74ac31d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02b7e03df753419d30f74ac31d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851b7e03df753419d30f74ac31d",
+            "width": 64
+          }
+        ],
+        "name": "Carretera y manta",
+        "release_date": "2022-07-15",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:3DlIRvWPWudQaYZOclzabT"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7dp8dR96gWncIypef8kTnS"
+            },
+            "href": "https://api.spotify.com/v1/artists/7dp8dR96gWncIypef8kTnS",
+            "id": "7dp8dR96gWncIypef8kTnS",
+            "name": "Najwa",
+            "type": "artist",
+            "uri": "spotify:artist:7dp8dR96gWncIypef8kTnS"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4g5NG0Yw1gcW0MKYC3s46O"
+        },
+        "href": "https://api.spotify.com/v1/albums/4g5NG0Yw1gcW0MKYC3s46O",
+        "id": "4g5NG0Yw1gcW0MKYC3s46O",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273ac0448f413aae84c412592e6",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02ac0448f413aae84c412592e6",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851ac0448f413aae84c412592e6",
+            "width": 64
+          }
+        ],
+        "name": "Historia de Un Amor",
+        "release_date": "2022-02-25",
+        "release_date_precision": "day",
+        "total_tracks": 2,
+        "type": "album",
+        "uri": "spotify:album:4g5NG0Yw1gcW0MKYC3s46O"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0iNZh2qDkWIwcIikCMAeMq"
+        },
+        "href": "https://api.spotify.com/v1/albums/0iNZh2qDkWIwcIikCMAeMq",
+        "id": "0iNZh2qDkWIwcIikCMAeMq",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2737e11fe694c07bc6e83e664c2",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e027e11fe694c07bc6e83e664c2",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048517e11fe694c07bc6e83e664c2",
+            "width": 64
+          }
+        ],
+        "name": "Castillos de arena",
+        "release_date": "2022-01-14",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:0iNZh2qDkWIwcIikCMAeMq"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0iRDEkUzhawgH0wKfIW5iT"
+        },
+        "href": "https://api.spotify.com/v1/albums/0iRDEkUzhawgH0wKfIW5iT",
+        "id": "0iRDEkUzhawgH0wKfIW5iT",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273c7a42f9170a10b3433918b9f",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02c7a42f9170a10b3433918b9f",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851c7a42f9170a10b3433918b9f",
+            "width": 64
+          }
+        ],
+        "name": "Soy capaz",
+        "release_date": "2021-11-12",
+        "release_date_precision": "day",
+        "total_tracks": 2,
+        "type": "album",
+        "uri": "spotify:album:0iRDEkUzhawgH0wKfIW5iT"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/1aWJsBQa67l72j1VT3D6Ow"
+            },
+            "href": "https://api.spotify.com/v1/artists/1aWJsBQa67l72j1VT3D6Ow",
+            "id": "1aWJsBQa67l72j1VT3D6Ow",
+            "name": "Micro TDH",
+            "type": "artist",
+            "uri": "spotify:artist:1aWJsBQa67l72j1VT3D6Ow"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0ihbQj0DqoCTxtuAc4ggJS"
+        },
+        "href": "https://api.spotify.com/v1/albums/0ihbQj0DqoCTxtuAc4ggJS",
+        "id": "0ihbQj0DqoCTxtuAc4ggJS",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273f5ca65f83dd9d1048796daf6",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02f5ca65f83dd9d1048796daf6",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851f5ca65f83dd9d1048796daf6",
+            "width": 64
+          }
+        ],
+        "name": "EL LOBBY",
+        "release_date": "2021-11-02",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:0ihbQj0DqoCTxtuAc4ggJS"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7eLcDZDYHXZCebtQmVFL25"
+            },
+            "href": "https://api.spotify.com/v1/artists/7eLcDZDYHXZCebtQmVFL25",
+            "id": "7eLcDZDYHXZCebtQmVFL25",
+            "name": "Aitana",
+            "type": "artist",
+            "uri": "spotify:artist:7eLcDZDYHXZCebtQmVFL25"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5N3YDBGT2gUzXgLDTwPRi5"
+            },
+            "href": "https://api.spotify.com/v1/artists/5N3YDBGT2gUzXgLDTwPRi5",
+            "id": "5N3YDBGT2gUzXgLDTwPRi5",
+            "name": "\u00c1lvaro De Luna",
+            "type": "artist",
+            "uri": "spotify:artist:5N3YDBGT2gUzXgLDTwPRi5"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/16KVHgtlAeiAiav4Yko9KB"
+        },
+        "href": "https://api.spotify.com/v1/albums/16KVHgtlAeiAiav4Yko9KB",
+        "id": "16KVHgtlAeiAiav4Yko9KB",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273bec35e2ae8cba871d5c9fcdf",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02bec35e2ae8cba871d5c9fcdf",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851bec35e2ae8cba871d5c9fcdf",
+            "width": 64
+          }
+        ],
+        "name": "Llueve sobre mojado",
+        "release_date": "2021-10-15",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:16KVHgtlAeiAiav4Yko9KB"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/4SLEmV2rAQ71Ts0qyDGhE8"
+            },
+            "href": "https://api.spotify.com/v1/artists/4SLEmV2rAQ71Ts0qyDGhE8",
+            "id": "4SLEmV2rAQ71Ts0qyDGhE8",
+            "name": "Cecilia Krull",
+            "type": "artist",
+            "uri": "spotify:artist:4SLEmV2rAQ71Ts0qyDGhE8"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6V3hqLyce7LAlM7hNCOOKr"
+        },
+        "href": "https://api.spotify.com/v1/albums/6V3hqLyce7LAlM7hNCOOKr",
+        "id": "6V3hqLyce7LAlM7hNCOOKr",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2738b427d93413cbdb226bc9158",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e028b427d93413cbdb226bc9158",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048518b427d93413cbdb226bc9158",
+            "width": 64
+          }
+        ],
+        "name": "Gr\u00e2ndola Vila Morena (Music from The Netflix Series \"La Casa de Papel\")",
+        "release_date": "2021-09-03",
+        "release_date_precision": "day",
+        "total_tracks": 2,
+        "type": "album",
+        "uri": "spotify:album:6V3hqLyce7LAlM7hNCOOKr"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/45VGByxe5GLUyX1XQlcC8I"
+            },
+            "href": "https://api.spotify.com/v1/artists/45VGByxe5GLUyX1XQlcC8I",
+            "id": "45VGByxe5GLUyX1XQlcC8I",
+            "name": "Sofi de la Torre",
+            "type": "artist",
+            "uri": "spotify:artist:45VGByxe5GLUyX1XQlcC8I"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6jNg9aoFBKGeDExlYzbXlv"
+        },
+        "href": "https://api.spotify.com/v1/albums/6jNg9aoFBKGeDExlYzbXlv",
+        "id": "6jNg9aoFBKGeDExlYzbXlv",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273ff4217cfeb0f0d7b574db6b1",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02ff4217cfeb0f0d7b574db6b1",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851ff4217cfeb0f0d7b574db6b1",
+            "width": 64
+          }
+        ],
+        "name": "Y Duele (feat. Pablo Albor\u00e1n)",
+        "release_date": "2021-04-08",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:6jNg9aoFBKGeDExlYzbXlv"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/2oeYX230n70YtQDkmbeRPp"
+        },
+        "href": "https://api.spotify.com/v1/albums/2oeYX230n70YtQDkmbeRPp",
+        "id": "2oeYX230n70YtQDkmbeRPp",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27351aeca50be50a0c37d1fc556",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0251aeca50be50a0c37d1fc556",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485151aeca50be50a0c37d1fc556",
+            "width": 64
+          }
+        ],
+        "name": "La fiesta",
+        "release_date": "2020-12-09",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:2oeYX230n70YtQDkmbeRPp"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/6rPDQxBOhdM6PMJhicMIWj"
+        },
+        "href": "https://api.spotify.com/v1/albums/6rPDQxBOhdM6PMJhicMIWj",
+        "id": "6rPDQxBOhdM6PMJhicMIWj",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273af307adde265069a5be14dca",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02af307adde265069a5be14dca",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851af307adde265069a5be14dca",
+            "width": 64
+          }
+        ],
+        "name": "Coraz\u00f3n descalzo",
+        "release_date": "2020-11-02",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:6rPDQxBOhdM6PMJhicMIWj"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4GveOgtl1Oxe5AuFT82Tjv"
+        },
+        "href": "https://api.spotify.com/v1/albums/4GveOgtl1Oxe5AuFT82Tjv",
+        "id": "4GveOgtl1Oxe5AuFT82Tjv",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2730602891e765e78a7ed811701",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e020602891e765e78a7ed811701",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048510602891e765e78a7ed811701",
+            "width": 64
+          }
+        ],
+        "name": "Hablemos de amor",
+        "release_date": "2020-10-15",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:4GveOgtl1Oxe5AuFT82Tjv"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0mag3mrok9LV07L6nnACOt"
+        },
+        "href": "https://api.spotify.com/v1/albums/0mag3mrok9LV07L6nnACOt",
+        "id": "0mag3mrok9LV07L6nnACOt",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273a19ce3bcef944bcc362bf17d",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02a19ce3bcef944bcc362bf17d",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851a19ce3bcef944bcc362bf17d",
+            "width": 64
+          }
+        ],
+        "name": "Si hubieras querido",
+        "release_date": "2020-09-24",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:0mag3mrok9LV07L6nnACOt"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/28gNT5KBp7IjEOQoevXf9N"
+            },
+            "href": "https://api.spotify.com/v1/artists/28gNT5KBp7IjEOQoevXf9N",
+            "id": "28gNT5KBp7IjEOQoevXf9N",
+            "name": "Camilo",
+            "type": "artist",
+            "uri": "spotify:artist:28gNT5KBp7IjEOQoevXf9N"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/3E3coJkwv6rbqUTiw1qLZ6"
+        },
+        "href": "https://api.spotify.com/v1/albums/3E3coJkwv6rbqUTiw1qLZ6",
+        "id": "3E3coJkwv6rbqUTiw1qLZ6",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b27320d0a6e2ca32d7efd7d0a655",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e0220d0a6e2ca32d7efd7d0a655",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d0000485120d0a6e2ca32d7efd7d0a655",
+            "width": 64
+          }
+        ],
+        "name": "El Mismo Aire (con Pablo Albor\u00e1n)",
+        "release_date": "2020-06-10",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:3E3coJkwv6rbqUTiw1qLZ6"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/0fh7t3VFRXAnS2d61Zv3da"
+        },
+        "href": "https://api.spotify.com/v1/albums/0fh7t3VFRXAnS2d61Zv3da",
+        "id": "0fh7t3VFRXAnS2d61Zv3da",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273d11f3d712ee0a96ac69dd846",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02d11f3d712ee0a96ac69dd846",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851d11f3d712ee0a96ac69dd846",
+            "width": 64
+          }
+        ],
+        "name": "Cuando est\u00e9s aqu\u00ed EP",
+        "release_date": "2020-06-01",
+        "release_date_precision": "day",
+        "total_tracks": 4,
+        "type": "album",
+        "uri": "spotify:album:0fh7t3VFRXAnS2d61Zv3da"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/34gcIlhIwf5ErP6Hg6wpGv"
+        },
+        "href": "https://api.spotify.com/v1/albums/34gcIlhIwf5ErP6Hg6wpGv",
+        "id": "34gcIlhIwf5ErP6Hg6wpGv",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273107c009e83846c7e94df1987",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02107c009e83846c7e94df1987",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851107c009e83846c7e94df1987",
+            "width": 64
+          }
+        ],
+        "name": "Cuando est\u00e9s aqu\u00ed",
+        "release_date": "2020-04-13",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:34gcIlhIwf5ErP6Hg6wpGv"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/48UEbtZjlgzvOukZcHwKrl"
+        },
+        "href": "https://api.spotify.com/v1/albums/48UEbtZjlgzvOukZcHwKrl",
+        "id": "48UEbtZjlgzvOukZcHwKrl",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273d7971c60892a460979441c2c",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02d7971c60892a460979441c2c",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851d7971c60892a460979441c2c",
+            "width": 64
+          }
+        ],
+        "name": "Tab\u00fa EP",
+        "release_date": "2020-01-24",
+        "release_date_precision": "day",
+        "total_tracks": 4,
+        "type": "album",
+        "uri": "spotify:album:48UEbtZjlgzvOukZcHwKrl"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/4bQW2nHqWV2NGiNeQCUOpx"
+        },
+        "href": "https://api.spotify.com/v1/albums/4bQW2nHqWV2NGiNeQCUOpx",
+        "id": "4bQW2nHqWV2NGiNeQCUOpx",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b273112ea9bc4dcb99dd406514d5",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e02112ea9bc4dcb99dd406514d5",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d00004851112ea9bc4dcb99dd406514d5",
+            "width": 64
+          }
+        ],
+        "name": "Tab\u00fa (Versi\u00f3n piano y voz)",
+        "release_date": "2020-01-22",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:4bQW2nHqWV2NGiNeQCUOpx"
+      },
+      {
+        "album_group": "single",
+        "album_type": "single",
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5M9Bb4adKAgrOFOhc05Y50"
+            },
+            "href": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50",
+            "id": "5M9Bb4adKAgrOFOhc05Y50",
+            "name": "Pablo Albor\u00e1n",
+            "type": "artist",
+            "uri": "spotify:artist:5M9Bb4adKAgrOFOhc05Y50"
+          }
+        ],
+        "external_urls": {
+          "spotify": "https://open.spotify.com/album/1z62EMbonbN8m5fjpzT9cn"
+        },
+        "href": "https://api.spotify.com/v1/albums/1z62EMbonbN8m5fjpzT9cn",
+        "id": "1z62EMbonbN8m5fjpzT9cn",
+        "images": [
+          {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab67616d0000b2732460ea1644a09ce460fc19e0",
+            "width": 640
+          },
+          {
+            "height": 300,
+            "url": "https://i.scdn.co/image/ab67616d00001e022460ea1644a09ce460fc19e0",
+            "width": 300
+          },
+          {
+            "height": 64,
+            "url": "https://i.scdn.co/image/ab67616d000048512460ea1644a09ce460fc19e0",
+            "width": 64
+          }
+        ],
+        "name": "Peces de Ciudad (feat. Pablo L\u00f3pez)",
+        "release_date": "2019-11-07",
+        "release_date_precision": "day",
+        "total_tracks": 1,
+        "type": "album",
+        "uri": "spotify:album:1z62EMbonbN8m5fjpzT9cn"
+      }
+    ],
+    "limit": 29,
+    "next": "https://api.spotify.com/v1/artists/5M9Bb4adKAgrOFOhc05Y50/albums?offset=29&limit=29&include_groups=album,single,compilation,appears_on&market=NE",
+    "offset": 0,
+    "previous": null,
+    "total": 104
+  },
+  "response_property_constraints": [
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.album_type",
+      "description": "The album_type of each returned album must be one of 'album', 'single', or 'compilation'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('album_type')\n            if v is None:\n                continue\n            checked = True\n            if v not in ['album', 'single', 'compilation']:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.type",
+      "description": "The object type of each returned item must be the string 'album'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('type')\n            if v is None:\n                continue\n            checked = True\n            if v != 'album':\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.artists.type",
+      "description": "The object type of every artist object nested in each album must be the string 'artist'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            artists = item.get('artists')\n            if not artists:\n                continue\n            for a in artists:\n                v = a.get('type')\n                if v is None:\n                    continue\n                checked = True\n                if v != 'artist':\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.release_date_precision",
+      "description": "The release_date_precision of each album must be one of 'year', 'month', or 'day'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            v = item.get('release_date_precision')\n            if v is None:\n                continue\n            checked = True\n            if v not in ['year', 'month', 'day']:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.release_date",
+      "description": "The release_date of each album must have the form 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD', and its form must match release_date_precision ('year', 'month' or 'day') when that is present.",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        patterns = {\n            'year': r'^\\d{4}$',\n            'month': r'^\\d{4}-(0[1-9]|1[0-2])$',\n            'day': r'^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])$'\n        }\n        checked = False\n        for item in items:\n            rd = item.get('release_date')\n            if rd is None:\n                continue\n            checked = True\n            prec = item.get('release_date_precision')\n            if prec in patterns:\n                if not re.match(patterns[prec], str(rd)):\n                    return -1\n            else:\n                if not any(re.match(p, str(rd)) for p in patterns.values()):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.images",
+      "description": "The cover art images of each album are listed in various sizes, widest first, so image widths must be in non-increasing order.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            images = item.get('images')\n            if not images:\n                continue\n            widths = [img.get('width') for img in images if img.get('width') is not None]\n            if len(widths) < 2:\n                continue\n            checked = True\n            for i in range(len(widths) - 1):\n                if widths[i] < widths[i + 1]:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items.available_markets",
+      "description": "When present, available_markets of each album must be a list of ISO 3166-1 alpha-2 country codes (two uppercase letters).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            markets = item.get('available_markets')\n            if markets is None:\n                continue\n            for m in markets:\n                checked = True\n                if not isinstance(m, str) or not re.match(r'^[A-Z]{2}$', m):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "limit",
+      "description": "The limit is the maximum number of items in the response, so the number of returned items must not exceed limit.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        limit = latest_response.get('limit')\n        items = latest_response.get('items')\n        if limit is None or items is None:\n            return 0\n        return 1 if len(items) <= int(limit) else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "total",
+      "description": "The total number of items available to return must be at least offset plus the number of items returned in this page.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        total = latest_response.get('total')\n        offset = latest_response.get('offset')\n        items = latest_response.get('items')\n        if total is None or offset is None or items is None:\n            return 0\n        return 1 if int(total) >= int(offset) + len(items) else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "next",
+      "description": "next is a URL to the next page of items and is null if there is none: it must be null exactly when offset plus the number of returned items reaches total, and otherwise must be an http(s) URL.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if 'next' not in latest_response:\n            return 0\n        nxt = latest_response.get('next')\n        total = latest_response.get('total')\n        offset = latest_response.get('offset')\n        items = latest_response.get('items')\n        if total is None or offset is None or items is None:\n            return 0\n        has_more = int(offset) + len(items) < int(total)\n        if nxt is None:\n            return -1 if has_more else 1\n        if not has_more:\n            return -1\n        return 1 if str(nxt).startswith(('http://', 'https://')) else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "previous",
+      "description": "previous is a URL to the previous page of items and is null if there is none: it must be null when offset is 0 and an http(s) URL when offset is greater than 0.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if 'previous' not in latest_response:\n            return 0\n        prev = latest_response.get('previous')\n        offset = latest_response.get('offset')\n        if offset is None:\n            return 0\n        if int(offset) == 0:\n            return 1 if prev is None else -1\n        if prev is None:\n            return -1\n        return 1 if str(prev).startswith(('http://', 'https://')) else -1\n    except:\n        return 0"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "limit",
+      "description": "The limit in the response echoes the maximum number of items set in the query, so it must equal the request parameter 'limit' when provided. The number of returned items must also not exceed it.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "limit",
+      "corresponding_attribute_description": "The maximum number of items to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        req = request_info.get('limit')\n        if req is None:\n            return 0\n        resp = latest_response.get('limit')\n        if resp is None:\n            return 0\n        if int(resp) != int(req):\n            return -1\n        items = latest_response.get('items')\n        if items is not None and len(items) > int(req):\n            return -1\n        return 1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "offset",
+      "description": "The offset in the response echoes the offset set in the query, so it must equal the request parameter 'offset' when provided.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "offset",
+      "corresponding_attribute_description": "The index of the first item to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        req = request_info.get('offset')\n        if req is None:\n            return 0\n        resp = latest_response.get('offset')\n        if resp is None:\n            return 0\n        return 1 if int(resp) == int(req) else -1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "items.album_group",
+      "description": "When include_groups is provided (list or comma-separated string), the album_group of every returned album must be one of the requested groups.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "include_groups",
+      "corresponding_attribute_description": "Filter by album types",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        req = request_info.get('include_groups')\n        if req is None:\n            return 0\n        if isinstance(req, str):\n            groups = [g.strip() for g in req.split(',') if g.strip()]\n        else:\n            groups = [str(g).strip() for g in req]\n        if not groups:\n            return 0\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            g = item.get('album_group')\n            if g is None:\n                continue\n            checked = True\n            if g not in groups:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "items.artists.id",
+      "description": "The albums returned are the albums of the artist identified by the path parameter 'id', so every returned album must list that artist among its artists.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "id",
+      "corresponding_attribute_description": "The Spotify ID for the artist",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        req = request_info.get('id')\n        if req is None:\n            return 0\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            artists = item.get('artists')\n            if not artists:\n                continue\n            checked = True\n            ids = [a.get('id') for a in artists]\n            if str(req) not in ids:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "items.available_markets",
+      "description": "When the market parameter is provided and an album lists available_markets, the requested market (ISO 3166-1 alpha-2 code) must be among them.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "market",
+      "corresponding_attribute_description": "The market (an ISO 3166-1 alpha-2 country code)",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        req = request_info.get('market')\n        if req is None:\n            return 0\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            markets = item.get('available_markets')\n            if markets is None:\n                continue\n            checked = True\n            if str(req) not in markets:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    }
+  ]
+}

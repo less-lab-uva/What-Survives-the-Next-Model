@@ -1,0 +1,114 @@
+{
+  "response_property_constraints": [
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "MultiResponse",
+      "attribute": "hotelId",
+      "description": "Each hotel's hotelId (Amadeus Property Code) must be exactly 8 characters consisting of uppercase letters and digits (pattern ^[A-Z0-9]{8}$).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            hotel = item.get('hotel')\n            if not hotel:\n                continue\n            val = hotel.get('hotelId')\n            if val is None:\n                continue\n            checked = True\n            if not re.match(r'^[A-Z0-9]{8}$', str(val)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "MultiResponse",
+      "attribute": "chainCode",
+      "description": "Each hotel's chainCode must be an Amadeus 2-character code of uppercase letters (pattern ^[A-Z]{2}$).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            hotel = item.get('hotel')\n            if not hotel:\n                continue\n            val = hotel.get('chainCode')\n            if val is None:\n                continue\n            checked = True\n            if not re.match(r'^[A-Z]{2}$', str(val)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "MultiResponse",
+      "attribute": "cityCode",
+      "description": "Each hotel's cityCode must be a 3-letter uppercase IATA city code (pattern ^[A-Z]{3}$).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            hotel = item.get('hotel')\n            if not hotel:\n                continue\n            val = hotel.get('cityCode')\n            if val is None:\n                continue\n            checked = True\n            if not re.match(r'^[A-Z]{3}$', str(val)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/shopping/hotel-offers",
+      "response_resource": "MultiResponse",
+      "attribute": "brandCode",
+      "description": "When present, each hotel's brandCode must be an Amadeus 2-character code of uppercase letters (pattern ^[A-Z]{2}$).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            hotel = item.get('hotel')\n            if not hotel:\n                continue\n            val = hotel.get('brandCode')\n            if val is None:\n                continue\n            checked = True\n            if not re.match(r'^[A-Z]{2}$', str(val)):\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "hotelId",
+      "description": "When hotelIds is provided in the request (comma-separated list of Amadeus property codes), every hotel returned must have a hotelId contained in that list.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "hotelIds",
+      "corresponding_attribute_description": "Amadeus property codes on 8 chars. Mandatory parameter for a search by predefined list of hotels.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('hotelIds')\n        if param is None:\n            return 0\n        if isinstance(param, (list, tuple)):\n            ids = [str(x).strip() for x in param]\n        else:\n            ids = [x.strip() for x in str(param).split(',') if x.strip()]\n        if not ids:\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            hotel = item.get('hotel')\n            if not hotel:\n                continue\n            hid = hotel.get('hotelId')\n            if hid is None:\n                continue\n            checked = True\n            if hid not in ids:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "checkInDate",
+      "description": "When checkInDate is provided in the request, every returned offer must have a checkInDate equal to the requested value.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "checkInDate",
+      "corresponding_attribute_description": "Check-in date of the stay (hotel local date). Format YYYY-MM-DD. The lowest accepted value is the present date (no dates in the past). If not present, the default value will be today's date in the GMT time zone.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('checkInDate')\n        if param is None:\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                val = offer.get('checkInDate')\n                if val is None:\n                    continue\n                checked = True\n                if str(val) != str(param):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "checkOutDate",
+      "description": "When checkOutDate is provided in the request, every returned offer must have a checkOutDate equal to the requested value.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "checkOutDate",
+      "corresponding_attribute_description": "Check-out date of the stay (hotel local date). Format YYYY-MM-DD. The lowest accepted value is checkInDate+1. If not present, it will default to checkInDate +1.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('checkOutDate')\n        if param is None:\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                val = offer.get('checkOutDate')\n                if val is None:\n                    continue\n                checked = True\n                if str(val) != str(param):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "adults",
+      "description": "When adults is provided in the request, every returned offer's guests.adults must equal the requested number of adults per room.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "adults",
+      "corresponding_attribute_description": "Number of adult guests (1-9) per room.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('adults')\n        if param is None:\n            return 0\n        param = int(param)\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                guests = offer.get('guests')\n                if not guests or guests.get('adults') is None:\n                    continue\n                checked = True\n                if int(guests.get('adults')) != param:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "roomQuantity",
+      "description": "When roomQuantity is provided in the request, every returned offer's roomQuantity (if present) must equal the requested number of rooms.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "roomQuantity",
+      "corresponding_attribute_description": "Number of rooms requested (1-9).",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('roomQuantity')\n        if param is None:\n            return 0\n        param = int(param)\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                val = offer.get('roomQuantity')\n                if val is None:\n                    continue\n                checked = True\n                if int(val) != param:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "currency",
+      "description": "When currency is requested, offer prices are returned in that currency (unless the hotel does not support it, in which case the local currency is used). Any offer price currency that differs from the requested one is flagged as violation only when it is present; absent prices are indeterminate.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "currency",
+      "corresponding_attribute_description": "Use this parameter to request a specific currency. ISO currency code (http://www.iso.org/iso/home/standards/currency_codes.htm).\nIf a hotel does not support the requested currency, the prices for the hotel will be returned in the local currency of the hotel.",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('currency')\n        if param is None:\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                price = offer.get('price')\n                if not price or price.get('currency') is None:\n                    continue\n                checked = True\n                if price.get('currency') != param:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "boardType",
+      "description": "When boardType is provided in the request, every returned offer's boardType (if present) must equal the requested board type.",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "boardType",
+      "corresponding_attribute_description": "Filter response based on available meals:\n        * ROOM_ONLY = Room Only\n        * BREAKFAST = Breakfast\n        * HALF_BOARD = Diner & Breakfast (only for Aggregators)\n        * FULL_BOARD = Full Board (only for Aggregators)\n        * ALL_INCLUSIVE = All Inclusive (only for Aggregators)",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('boardType')\n        if param is None:\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                val = offer.get('boardType')\n                if val is None:\n                    continue\n                checked = True\n                if val != param:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "MultiResponse",
+      "attribute": "paymentType",
+      "description": "When paymentPolicy is provided and is not NONE (NONE means all types), every returned offer's policies.paymentType must equal the requested payment policy (case-insensitive).",
+      "attribute_inferred_from_operation": "get-/shopping/hotel-offers",
+      "part": "parameters",
+      "corresponding_attribute": "paymentPolicy",
+      "corresponding_attribute_description": "Filter the response based on a specific payment type. NONE means all types (default).",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        param = request_info.get('paymentPolicy')\n        if param is None or str(param).upper() == 'NONE':\n            return 0\n        data = latest_response.get('data')\n        if not data:\n            return 0\n        checked = False\n        for item in data:\n            offers = item.get('offers')\n            if not offers:\n                continue\n            for offer in offers:\n                policies = offer.get('policies')\n                if not policies or policies.get('paymentType') is None:\n                    continue\n                checked = True\n                if str(policies.get('paymentType')).upper() != str(param).upper():\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    }
+  ]
+}

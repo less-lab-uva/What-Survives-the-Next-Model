@@ -1,0 +1,274 @@
+{
+  "prompt_A": [
+    {
+      "service": "OMDB bySearch",
+      "sonnet": {
+        "gt": 6,
+        "mined": 6,
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "P": 100.0,
+        "R": 100.0,
+        "F1": 100.0
+      }
+    },
+    {
+      "service": "OMDB byIdOrTitle",
+      "sonnet": {
+        "gt": 15,
+        "mined": 9,
+        "tp": 7,
+        "fp": 2,
+        "fn": 8,
+        "P": 77.8,
+        "R": 46.7,
+        "F1": 58.3
+      }
+    },
+    {
+      "service": "Yelp getBusinesses",
+      "sonnet": {
+        "gt": 4,
+        "mined": 14,
+        "tp": 0,
+        "fp": 14,
+        "fn": 4,
+        "P": 0.0,
+        "R": 0.0,
+        "F1": 0.0
+      }
+    },
+    {
+      "service": "Hotel Search",
+      "sonnet": {
+        "gt": 46,
+        "mined": 26,
+        "tp": 20,
+        "fp": 6,
+        "fn": 26,
+        "P": 76.9,
+        "R": 43.5,
+        "F1": 55.6
+      }
+    },
+    {
+      "service": "Spotify createPlaylist",
+      "sonnet": {
+        "gt": 21,
+        "mined": 19,
+        "tp": 7,
+        "fp": 12,
+        "fn": 14,
+        "P": 36.8,
+        "R": 33.3,
+        "F1": 35.0
+      }
+    },
+    {
+      "service": "Spotify getAlbumTracks",
+      "sonnet": {
+        "gt": 17,
+        "mined": 16,
+        "tp": 11,
+        "fp": 5,
+        "fn": 6,
+        "P": 68.8,
+        "R": 64.7,
+        "F1": 66.7
+      }
+    },
+    {
+      "service": "Spotify getArtistAlbums",
+      "sonnet": {
+        "gt": 15,
+        "mined": 19,
+        "tp": 10,
+        "fp": 9,
+        "fn": 5,
+        "P": 52.6,
+        "R": 66.7,
+        "F1": 58.8
+      }
+    },
+    {
+      "service": "Marvel getComicById",
+      "sonnet": {
+        "gt": 46,
+        "mined": 20,
+        "tp": 8,
+        "fp": 12,
+        "fn": 38,
+        "P": 40.0,
+        "R": 17.4,
+        "F1": 24.2
+      }
+    },
+    {
+      "service": "Youtube GetVideos",
+      "sonnet": {
+        "gt": 148,
+        "mined": 10,
+        "tp": 3,
+        "fp": 7,
+        "fn": 145,
+        "P": 30.0,
+        "R": 2.0,
+        "F1": 3.8
+      }
+    },
+    {
+      "service": "TOTAL (9 services)",
+      "sonnet": {
+        "gt": 318,
+        "mined": 139,
+        "tp": 72,
+        "fp": 67,
+        "fn": 246,
+        "P": 51.8,
+        "R": 22.6,
+        "F1": 31.5
+      },
+      "paper": {
+        "note": "Paper total covers all 11 services incl. 2 GitHub"
+      },
+      "F1_diff": null
+    }
+  ],
+  "prompt_B": [
+    {
+      "service": "OMDB bySearch",
+      "sonnet": {
+        "gt": 6,
+        "mined": 6,
+        "tp": 6,
+        "fp": 0,
+        "fn": 0,
+        "P": 100.0,
+        "R": 100.0,
+        "F1": 100.0
+      }
+    },
+    {
+      "service": "OMDB byIdOrTitle",
+      "sonnet": {
+        "gt": 15,
+        "mined": 12,
+        "tp": 11,
+        "fp": 1,
+        "fn": 4,
+        "P": 91.7,
+        "R": 73.3,
+        "F1": 81.5
+      }
+    },
+    {
+      "service": "Yelp getBusinesses",
+      "sonnet": {
+        "gt": 4,
+        "mined": 4,
+        "tp": 2,
+        "fp": 2,
+        "fn": 2,
+        "P": 50.0,
+        "R": 50.0,
+        "F1": 50.0
+      }
+    },
+    {
+      "service": "Hotel Search",
+      "sonnet": {
+        "gt": 46,
+        "mined": 22,
+        "tp": 19,
+        "fp": 3,
+        "fn": 27,
+        "P": 86.4,
+        "R": 41.3,
+        "F1": 55.9
+      }
+    },
+    {
+      "service": "Spotify createPlaylist",
+      "sonnet": {
+        "gt": 21,
+        "mined": 12,
+        "tp": 3,
+        "fp": 9,
+        "fn": 18,
+        "P": 25.0,
+        "R": 14.3,
+        "F1": 18.2
+      }
+    },
+    {
+      "service": "Spotify getAlbumTracks",
+      "sonnet": {
+        "gt": 17,
+        "mined": 14,
+        "tp": 4,
+        "fp": 10,
+        "fn": 13,
+        "P": 28.6,
+        "R": 23.5,
+        "F1": 25.8
+      }
+    },
+    {
+      "service": "Spotify getArtistAlbums",
+      "sonnet": {
+        "gt": 15,
+        "mined": 14,
+        "tp": 4,
+        "fp": 10,
+        "fn": 11,
+        "P": 28.6,
+        "R": 26.7,
+        "F1": 27.6
+      }
+    },
+    {
+      "service": "Marvel getComicById",
+      "sonnet": {
+        "gt": 46,
+        "mined": 12,
+        "tp": 5,
+        "fp": 7,
+        "fn": 41,
+        "P": 41.7,
+        "R": 10.9,
+        "F1": 17.2
+      }
+    },
+    {
+      "service": "Youtube GetVideos",
+      "sonnet": {
+        "gt": 148,
+        "mined": 8,
+        "tp": 5,
+        "fp": 3,
+        "fn": 143,
+        "P": 62.5,
+        "R": 3.4,
+        "F1": 6.4
+      }
+    },
+    {
+      "service": "TOTAL (9 services)",
+      "sonnet": {
+        "gt": 318,
+        "mined": 104,
+        "tp": 59,
+        "fp": 45,
+        "fn": 259,
+        "P": 56.7,
+        "R": 18.6,
+        "F1": 28.0
+      },
+      "paper": {
+        "note": "Paper total covers all 11 services incl. 2 GitHub"
+      },
+      "F1_diff": null
+    }
+  ]
+}

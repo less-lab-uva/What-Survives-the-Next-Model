@@ -1,0 +1,140 @@
+{
+  "response_property_constraints": [
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "album_type",
+      "description": "The album_type of each album item must be one of 'album', 'single', or 'compilation'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            val = item.get('album_type')\n            if val is None:\n                continue\n            checked = True\n            if val not in ['album', 'single', 'compilation']:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "type",
+      "description": "The object type of each album item must be 'album'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            val = item.get('type')\n            if val is None:\n                continue\n            checked = True\n            if val != 'album':\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "artists.type",
+      "description": "The object type of each artist within each album must be 'artist'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            artists = item.get('artists')\n            if not artists:\n                continue\n            for a in artists:\n                val = a.get('type')\n                if val is None:\n                    continue\n                checked = True\n                if val != 'artist':\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "release_date_precision",
+      "description": "The release_date_precision of each album must be one of 'year', 'month', or 'day'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            val = item.get('release_date_precision')\n            if val is None:\n                continue\n            checked = True\n            if val not in ['year', 'month', 'day']:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "release_date",
+      "description": "The release_date of each album must be formatted as 'YYYY', 'YYYY-MM' or 'YYYY-MM-DD', consistent with its release_date_precision (year, month, day respectively).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        patterns = {'year': r'^\\d{4}$', 'month': r'^\\d{4}-\\d{2}$', 'day': r'^\\d{4}-\\d{2}-\\d{2}$'}\n        for item in items:\n            rd = item.get('release_date')\n            if rd is None:\n                continue\n            checked = True\n            prec = item.get('release_date_precision')\n            if prec in patterns:\n                if not re.match(patterns[prec], str(rd)):\n                    return -1\n            else:\n                if not any(re.match(p, str(rd)) for p in patterns.values()):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "items",
+      "description": "The number of items returned must not exceed the page limit reported in the response.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        limit = latest_response.get('limit')\n        if items is None or limit is None:\n            return 0\n        return 1 if len(items) <= limit else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "limit",
+      "description": "The limit must be an integer between 0 and 50, the allowed range for the limit parameter.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        limit = latest_response.get('limit')\n        if limit is None:\n            return 0\n        if isinstance(limit, bool) or not isinstance(limit, int):\n            return -1\n        return 1 if 0 <= limit <= 50 else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "total",
+      "description": "The total number of items available must be a non-negative integer and at least offset plus the number of items returned in this page.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        total = latest_response.get('total')\n        if total is None:\n            return 0\n        if isinstance(total, bool) or not isinstance(total, int) or total < 0:\n            return -1\n        items = latest_response.get('items')\n        offset = latest_response.get('offset')\n        if items is None or offset is None:\n            return 1\n        return 1 if total >= offset + len(items) else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "next",
+      "description": "The next field must be null when there are no further items (offset + number of items >= total), and a non-null URL string otherwise.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if 'next' not in latest_response:\n            return 0\n        nxt = latest_response.get('next')\n        total = latest_response.get('total')\n        offset = latest_response.get('offset')\n        items = latest_response.get('items')\n        if total is None or offset is None or items is None:\n            return 0\n        has_more = offset + len(items) < total\n        if has_more:\n            return 1 if isinstance(nxt, str) and nxt.startswith('http') else -1\n        return 1 if nxt is None else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "previous",
+      "description": "The previous field must be null when offset is 0 (no previous page), and a non-null URL string otherwise.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        if 'previous' not in latest_response:\n            return 0\n        prev = latest_response.get('previous')\n        offset = latest_response.get('offset')\n        if offset is None:\n            return 0\n        if offset > 0:\n            return 1 if isinstance(prev, str) and prev.startswith('http') else -1\n        return 1 if prev is None else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "images",
+      "description": "The images (cover art) of each album must be listed widest first, i.e. widths must be in non-increasing order.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            imgs = item.get('images')\n            if not imgs:\n                continue\n            widths = [i.get('width') for i in imgs if i.get('width') is not None]\n            if len(widths) < 2:\n                continue\n            checked = True\n            for a, b in zip(widths, widths[1:]):\n                if a < b:\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "operation": "get-/artists/{id}/albums",
+      "response_resource": "album-simple-page",
+      "attribute": "available_markets",
+      "description": "Each entry in available_markets must be an ISO 3166-1 alpha-2 country code (two uppercase letters).",
+      "verification_script": "def verify_latest_response(latest_response):\n    import re\n    try:\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            markets = item.get('available_markets')\n            if not markets:\n                continue\n            for m in markets:\n                checked = True\n                if not isinstance(m, str) or not re.match(r'^[A-Z]{2}$', m):\n                    return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    }
+  ],
+  "request_response_constraints": [
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "offset",
+      "description": "The offset in the response must equal the offset parameter from the request (or 0 by default when omitted).",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "offset",
+      "corresponding_attribute_description": "The index of the first item to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        p = request_info.get('offset')\n        if p is None:\n            return 0\n        val = latest_response.get('offset')\n        if val is None:\n            return 0\n        return 1 if int(val) == int(p) else -1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "limit",
+      "description": "The limit in the response must equal the limit parameter from the request when provided.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "limit",
+      "corresponding_attribute_description": "The maximum number of items to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        p = request_info.get('limit')\n        if p is None:\n            return 0\n        val = latest_response.get('limit')\n        if val is None:\n            return 0\n        return 1 if int(val) == int(p) else -1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "items",
+      "description": "The number of returned items must not exceed the limit parameter from the request when provided.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "limit",
+      "corresponding_attribute_description": "The maximum number of items to return",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        p = request_info.get('limit')\n        if p is None:\n            return 0\n        items = latest_response.get('items')\n        if items is None:\n            return 0\n        return 1 if len(items) <= int(p) else -1\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "album_group",
+      "description": "When include_groups is provided (comma-separated list of album groups), every returned album's album_group must be one of the requested groups.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "include_groups",
+      "corresponding_attribute_description": "Filter by album types",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        p = request_info.get('include_groups')\n        if p is None:\n            return 0\n        if isinstance(p, (list, tuple)):\n            groups = [str(g).strip() for g in p]\n        else:\n            groups = [g.strip() for g in str(p).split(',') if g.strip()]\n        if not groups:\n            return 0\n        items = latest_response.get('items')\n        if not items:\n            return 0\n        checked = False\n        for item in items:\n            g = item.get('album_group')\n            if g is None:\n                continue\n            checked = True\n            if g not in groups:\n                return -1\n        return 1 if checked else 0\n    except:\n        return 0"
+    },
+    {
+      "response_resource": "album-simple-page",
+      "attribute": "href",
+      "description": "The href link to the full result of the request should reflect the request's offset, include_groups and market parameters when they are provided.",
+      "attribute_inferred_from_operation": "get-/artists/{id}/albums",
+      "part": "parameters",
+      "corresponding_attribute": "market",
+      "corresponding_attribute_description": "The market (an ISO 3166-1 alpha-2 country code)",
+      "verification_script": "def verify_latest_response(latest_response, request_info):\n    try:\n        p = request_info.get('market')\n        if p is None:\n            return 0\n        href = latest_response.get('href')\n        if not href:\n            return 0\n        return 1 if ('market=' + str(p)) in href else -1\n    except:\n        return 0"
+    }
+  ]
+}

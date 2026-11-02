@@ -1,0 +1,33 @@
+{
+  "response_property_constraints": [
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "type",
+      "description": "The object type must be the string 'playlist'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        val = latest_response.get('type')\n        if val is None:\n            return 0\n        return 1 if val == 'playlist' else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "owner.type",
+      "description": "The owner's object type must be the string 'user'.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        owner = latest_response.get('owner')\n        if not isinstance(owner, dict):\n            return 0\n        val = owner.get('type')\n        if val is None:\n            return 0\n        return 1 if val == 'user' else -1\n    except:\n        return 0"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "uri",
+      "description": "The Spotify URI of the playlist must have the form 'spotify:playlist:<id>', where <id> matches the playlist id.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        uri = latest_response.get('uri')\n        if uri is None:\n            return 0\n        if not isinstance(uri, str) or not uri.startswith('spotify:playlist:'):\n            return -1\n        pid = latest_response.get('id')\n        if pid is not None and uri != 'spotify:playlist:' + str(pid):\n            return -1\n        return 1\n    except:\n        return 0"
+    },
+    {
+      "operation": "post-/users/{user_id}/playlists",
+      "response_resource": "playlist",
+      "attribute": "owner.uri",
+      "description": "The owner's Spotify URI must have the form 'spotify:user:<id>', where <id> matches the owner id.",
+      "verification_script": "def verify_latest_response(latest_response):\n    try:\n        owner = latest_response.get('owner')\n        if not isinstance(owner, dict):\n            return 0\n        uri = owner.get('uri')\n        if uri is None:\n            return 0\n        if not isinstance(uri, str) or not uri.startswith('spotify:user:'):\n            return -1\n        oid = owner.get('id')\n        if oid is not None and uri != 'spotify:user:' + str(oid):\n            return -1\n        return 1\n    except:\n        return 0"
+    }
+  ],
+  "request_response_constraints": []
+}
