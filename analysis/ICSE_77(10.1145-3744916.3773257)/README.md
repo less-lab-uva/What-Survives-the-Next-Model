@@ -56,3 +56,23 @@ feasible here (heavy MySQL queries do not complete; see the note in `evaluator.p
 ```bash
 python3 evaluator.py        # results/results_{A,B}.json — accuracy + per-query pass/fail (A vs B)
 ```
+
+## TSE rerun: Sonnet 5.5, prompt B only
+
+`main.py` is now configured for the TSE generality rerun: prompt B on `claude-sonnet-5-5`, over the
+same 99 TPC-DS queries. The Sonnet 4.6 files described above are the paper's run and are unchanged.
+
+| Step | Command | Writes |
+|---|---|---|
+| 1. Paid run (~$1.77, stops at `BUDGET_USD`) | `python3 main.py` | `outputs/output_B_claude-sonnet-5-5.jsonl` (committed); `logs/{log,tokens}_B_claude-sonnet-5-5.jsonl`, `logs/usage_B_claude-sonnet-5-5.json` (gitignored) |
+| 2. Score (Docker, no API calls) | `python3 evaluator.py` | `results/results_<variant>.json` for every `outputs/output_<variant>.jsonl` that has no results file yet; already-scored variants are skipped, never overwritten. Here: `results_B_claude-sonnet-5-5.json` (committed) |
+
+Differences from the Sonnet 4.6 run:
+- Sonnet 5.5 rejects `temperature`, so none is sent (API default; 4.6 used 0.0).
+- It sometimes thinks before answering (25/99 calls), so only text blocks are read.
+
+Control: `results_B.json` was removed and re-scored in the same evaluator session as the Sonnet 5.5
+output. It came out byte-identical to the committed file (61/99).
+
+TPC-DS accuracy, prompt B: Sonnet 4.6 61/99 = 61.62%, Sonnet 5.5 63/99 = 63.64% (gains query40 and
+query87, loses none). Same upper-bound caveat as above.

@@ -24,8 +24,8 @@ Caveats (all faithful to the paper's verify, reported as an upper bound):
   - MySQL's default collation is case/accent-insensitive; PostgreSQL's is not. That is what
     "running on MySQL" means, so we keep engine defaults.
 
-Reproducibility: hard-aborts unless Docker, the two outputs, and the Python deps are present,
-and refuses to overwrite results/results_A.json or results/results_B.json.
+Reproducibility: hard-aborts unless Docker, at least one unscored output, and the Python deps are
+present; already-scored variants (results/results_<tag>.json exists) are skipped, never overwritten.
 
     python3 evaluator.py
 """
@@ -42,6 +42,13 @@ OUTPUT_A = os.path.join("outputs", "output_A.jsonl")
 OUTPUT_B = os.path.join("outputs", "output_B.jsonl")
 RESULTS_A = os.path.join("results", "results_A.json")
 RESULTS_B = os.path.join("results", "results_B.json")
+TAG_S55 = "B_claude-sonnet-5-5"    # TSE rerun (main.py writes outputs/output_<tag>.jsonl)
+
+# Score every variant whose output is present and whose results file does NOT exist yet. Already
+# scored variants are skipped (never overwritten), so the Sonnet 5.5 rerun can be scored on its own.
+VARIANTS = {"A": (OUTPUT_A, RESULTS_A), "B": (OUTPUT_B, RESULTS_B),
+            TAG_S55: (os.path.join("outputs", f"output_{TAG_S55}.jsonl"),
+                      os.path.join("results", f"results_{TAG_S55}.json"))}
 
 SCALE_FACTOR = 0.1         # run of record. sf=1 was attempted but is NOT feasible on this
                            # hardware: heavy MySQL queries (e.g. query5) run >1.5h and MySQL's
@@ -59,20 +66,19 @@ MY = {"image": "mysql:8", "name": "rise_eval_mysql", "host": "127.0.0.1", "port"
 # ---------------------------------------------------------------- preconditions (fail fast)
 if shutil.which("docker") is None:
     sys.exit("ABORT: docker not found on PATH.")
-if not os.path.isfile(OUTPUT_A):
-    sys.exit(f"ABORT: missing {OUTPUT_A} (run main.py first)")
-if not os.path.isfile(OUTPUT_B):
-    sys.exit(f"ABORT: missing {OUTPUT_B} (run main.py first)")
+TO_SCORE = {tag: (out, res) for tag, (out, res) in VARIANTS.items()
+            if os.path.isfile(out) and not os.path.exists(res)}
+for tag, (out, res) in VARIANTS.items():
+    if os.path.isfile(out) and tag not in TO_SCORE:
+        print(f"skip {tag}: already scored ({res})")
+if not TO_SCORE:
+    sys.exit("ABORT: nothing to score (no outputs/output_*.jsonl without a results file)")
 try:
     import duckdb
     import psycopg2
     import mysql.connector
 except ModuleNotFoundError as e:
     sys.exit(f"ABORT: missing Python dep ({e.name}); pip install -r requirements.txt")
-if os.path.exists(RESULTS_A):
-    sys.exit(f"ABORT: output already exists (refusing to overwrite): {RESULTS_A}")
-if os.path.exists(RESULTS_B):
-    sys.exit(f"ABORT: output already exists (refusing to overwrite): {RESULTS_B}")
 
 
 # ---------------------------------------------------------------- docker
@@ -333,21 +339,18 @@ def main() -> None:
         create_indexes(pg_conn, "pg")
         create_indexes(my_conn, "my")
         analyze(pg_conn, my_conn)
-        report_a = score("A", OUTPUT_A, pg_conn, my_conn)
-        report_b = score("B", OUTPUT_B, pg_conn, my_conn)
+        reports = {tag: score(tag, out, pg_conn, my_conn) for tag, (out, _res) in TO_SCORE.items()}
         pg_conn.close()
         my_conn.close()
 
         os.makedirs("results", exist_ok=True)
-        with open(RESULTS_A, "w", encoding="utf-8") as f:
-            json.dump(report_a, f, indent=2)
-        with open(RESULTS_B, "w", encoding="utf-8") as f:
-            json.dump(report_b, f, indent=2)
-        print(f"\nSaved {RESULTS_A} and {RESULTS_B}")
-        print(f"  prompt A: {report_a['n_correct']}/{report_a['n_queries']} = "
-              f"{report_a['accuracy'] * 100:.2f}%   {report_a['categories']}")
-        print(f"  prompt B: {report_b['n_correct']}/{report_b['n_queries']} = "
-              f"{report_b['accuracy'] * 100:.2f}%   {report_b['categories']}")
+        for tag, (_out, res) in TO_SCORE.items():
+            with open(res, "w", encoding="utf-8") as f:
+                json.dump(reports[tag], f, indent=2)
+            rep = reports[tag]
+            print(f"\nSaved {res}")
+            print(f"  prompt {tag}: {rep['n_correct']}/{rep['n_queries']} = "
+                  f"{rep['accuracy'] * 100:.2f}%   {rep['categories']}")
     finally:
         if os.environ.get("RISE_KEEP_DB"):
             print(f"\nRISE_KEEP_DB set -> leaving {PG['name']} / {MY['name']} up "

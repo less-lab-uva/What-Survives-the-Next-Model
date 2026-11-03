@@ -7,12 +7,16 @@ into a SINGLE LLM call per query. This is deliberately the paper's own SingleLLM
 LLMTranslator baseline (Table 1/2), reframed as the oracle: how far does one direct
 Claude call get on TPC-DS when scored the same way the paper scores (execution).
 
-Runs BOTH prompt variants over all 99 TPC-DS queries:
-  - prompt A (black-box)  -> outputs/output_A.jsonl
-  - prompt B (informed)   -> outputs/output_B.jsonl
-Each line is one query's translation. A raw per-call log (timings + token counts +
-the verbatim model response) is written alongside (outputs/log_{A,B}.jsonl), and
-wall-time + cost are aggregated into logs/usage.json.
+TSE RERUN CONFIG: prompt B (informed) only, on claude-sonnet-5-5, over all 99 TPC-DS
+queries (same sample as the Sonnet 4.6 run). Files carry the LLM id as a suffix so they
+sit beside the Sonnet 4.6 originals (output_A.jsonl / output_B.jsonl).
+THE ONE COMMITTED OUTPUT:
+  - outputs/output_B_claude-sonnet-5-5.jsonl  -- one translation per line
+Everything else goes to logs/ (gitignored):
+  - logs/log_B_claude-sonnet-5-5.jsonl     -- raw per-call log (timings, tokens, verbatim response)
+  - logs/tokens_B_claude-sonnet-5-5.jsonl  -- per-call tokens + cost
+  - logs/usage_B_claude-sonnet-5-5.json    -- wall-time + cost totals
+The run stops before any call that would start once spend has reached BUDGET_USD.
 
 This script ONLY produces translations + usage; it needs no database. Scoring is
 separate and execution-based (evaluator.py).
@@ -31,25 +35,27 @@ import time
 import anthropic
 
 # ---------------------------------------------------------------- hardcoded config
-MODEL = "claude-sonnet-4-6"
-TEMPERATURE = 0.0
+MODEL = "claude-sonnet-5-5"     # rejects the `temperature` param (400: deprecated), so we don't send one
 MAX_TOKENS = 8192               # a translated TPC-DS query is long; headroom vs truncation
 SOURCE_DIALECT = "PostgreSQL"  # TPC-DS source dialect (RQ3: PostgreSQL -> MySQL)
 TARGET_DIALECT = "MySQL"
 N_EXPECTED_INPUTS = 99         # TPC-DS has exactly 99 queries; a different count == bad inputs
 
-# claude-sonnet-4-6 published pricing, USD per 1M tokens (claude-sonnet-4-6 published rates).
-PRICE_IN_PER_M = 3.0
-PRICE_OUT_PER_M = 15.0
+# USD per 1M tokens. ASSUMED: Sonnet 4.6's $3/$15 / 1.5 (team email: "1.5x cheaper") -- confirm rate.
+PRICE_IN_PER_M = 2.0
+PRICE_OUT_PER_M = 10.0
+BUDGET_USD = 6.0               # hard stop; ~3x the estimate (Opus run: 430K in / 83K out tokens)
 
+# Quick smoke test: set to a positive N to translate ONLY the first N queries. 0 = the full run.
+SMOKE = 0
+
+TAG = f"B_{MODEL}"
 INPUT_DIR = os.path.join("inputs", "tpcds")
-PROMPTS = {"A": os.path.join("prompts", "prompt_A.txt"),
-           "B": os.path.join("prompts", "prompt_B.txt")}
-OUTPUTS = {"A": os.path.join("outputs", "output_A.jsonl"),
-           "B": os.path.join("outputs", "output_B.jsonl")}
-LOGS = {"A": os.path.join("outputs", "log_A.jsonl"),
-        "B": os.path.join("outputs", "log_B.jsonl")}
-USAGE = os.path.join("logs", "usage.json")
+PROMPTS = {TAG: os.path.join("prompts", "prompt_B.txt")}    # TSE rerun: prompt B only
+OUTPUTS = {TAG: os.path.join("outputs", f"output_{TAG}.jsonl")}
+TOKENS = {TAG: os.path.join("logs", f"tokens_{TAG}.jsonl")}
+LOGS = {TAG: os.path.join("logs", f"log_{TAG}.jsonl")}
+USAGE = os.path.join("logs", f"usage_{TAG}.json")
 
 # ---------------------------------------------------------------- preconditions (fail fast)
 if not os.environ.get("ANTHROPIC_API_KEY"):
@@ -67,7 +73,7 @@ assert len(INPUT_PATHS) == N_EXPECTED_INPUTS, (
     f"ABORT: expected {N_EXPECTED_INPUTS} .sql files in {INPUT_DIR}, "
     f"found {len(INPUT_PATHS)} (inputs incomplete?)")
 
-for path in list(OUTPUTS.values()) + list(LOGS.values()) + [USAGE]:
+for path in list(OUTPUTS.values()) + list(TOKENS.values()) + list(LOGS.values()) + [USAGE]:
     if os.path.exists(path):
         sys.exit(f"ABORT: output already exists (refusing to overwrite): {path}")
 
@@ -120,31 +126,41 @@ def call_oracle(prompt: str, record: dict) -> dict:
                + " -- no preamble, no explanation, no alternative candidates.")
     start = time.time()
     resp = client.messages.create(
-        model=MODEL, max_tokens=MAX_TOKENS, temperature=TEMPERATURE,
+        model=MODEL, max_tokens=MAX_TOKENS,
         messages=[{"role": "user", "content": content}],
     )
     end = time.time()
-    raw = resp.content[0].text
+    # Sonnet 5.5 may think before answering, so content[0] can be a ThinkingBlock: keep text blocks only.
+    # (output_tokens already includes any thinking tokens, so cost stays exact.)
+    raw = "".join(b.text for b in resp.content if b.type == "text")
     return {
         "translated_query": extract_translation(raw),
         "start_time": start,
         "end_time": end,
         "input_tokens": resp.usage.input_tokens,
         "output_tokens": resp.usage.output_tokens,
+        "stop_reason": resp.stop_reason,
+        "thinking": any(b.type == "thinking" for b in resp.content),
         "raw": raw,
     }
 
 
 def run_variant(tag: str) -> dict:
-    """Translate all 99 queries under one prompt variant; write output + log JSONL."""
+    """Translate all 99 queries under one prompt variant; write output + tokens + log JSONL."""
     prompt = open(PROMPTS[tag], encoding="utf-8").read()
-    out_path, log_path = OUTPUTS[tag], LOGS[tag]
+    out_path, tok_path, log_path = OUTPUTS[tag], TOKENS[tag], LOGS[tag]
     print(f"\n=== prompt {tag}: {PROMPTS[tag]} -> {out_path} ===")
 
     seconds, in_tok, out_tok, failures = [], 0, 0, 0
     with open(out_path, "w", encoding="utf-8") as fout, \
+         open(tok_path, "w", encoding="utf-8") as ftok, \
          open(log_path, "w", encoding="utf-8") as flog:
-        for path in INPUT_PATHS:
+        for path in INPUT_PATHS[:SMOKE] if SMOKE else INPUT_PATHS:
+            spent = (in_tok * PRICE_IN_PER_M + out_tok * PRICE_OUT_PER_M) / 1e6
+            if spent >= BUDGET_USD:
+                print(f"BUDGET: stopping at ${spent:.4f} >= ${BUDGET_USD} "
+                      f"({len(seconds)} calls)", file=sys.stderr)
+                break
             name = os.path.basename(path)
             source_query = open(path, encoding="utf-8").read()
             record = {"source_dialect": SOURCE_DIALECT,
@@ -166,9 +182,20 @@ def run_variant(tag: str) -> dict:
                 "input_tokens": call["input_tokens"],
                 "output_tokens": call["output_tokens"],
                 "model": MODEL,
+                "stop_reason": call["stop_reason"],
+                "thinking": call["thinking"],
                 "raw": call["raw"],
             }, ensure_ascii=False) + "\n")
-            fout.flush(); flog.flush()
+            in_cost = call["input_tokens"] * PRICE_IN_PER_M / 1e6
+            out_cost = call["output_tokens"] * PRICE_OUT_PER_M / 1e6
+            ftok.write(json.dumps({
+                "llm": MODEL, "prompt": "B", "name": name,
+                "duration_seconds": round(call["end_time"] - call["start_time"], 3),
+                "tokens": {"input_tokens": call["input_tokens"], "output_tokens": call["output_tokens"]},
+                "cost_usd": {"input_cost": round(in_cost, 6), "output_cost": round(out_cost, 6),
+                             "total_cost": round(in_cost + out_cost, 6)},
+            }) + "\n")
+            fout.flush(); ftok.flush(); flog.flush()
 
             dt = call["end_time"] - call["start_time"]
             seconds.append(dt)
@@ -180,7 +207,8 @@ def run_variant(tag: str) -> dict:
                 print(f"  {name}: WARN unparseable response (no JSON 'query') "
                       f"-> recorded translated_query=null ({dt:.2f}s)")
             else:
-                print(f"  {name}: ok ({dt:.2f}s, in={call['input_tokens']} out={call['output_tokens']})")
+                print(f"  {name}: ok ({dt:.2f}s, in={call['input_tokens']} out={call['output_tokens']}"
+                      f" spent=${(in_tok * PRICE_IN_PER_M + out_tok * PRICE_OUT_PER_M) / 1e6:.4f})")
 
     cost = (in_tok * PRICE_IN_PER_M + out_tok * PRICE_OUT_PER_M) / 1e6
     summary = {
@@ -201,7 +229,7 @@ def run_variant(tag: str) -> dict:
 
 
 def main() -> None:
-    summaries = {tag: run_variant(tag) for tag in ("A", "B")}
+    summaries = {tag: run_variant(tag) for tag in PROMPTS}
     grand = {
         "n_calls": sum(s["n_calls"] for s in summaries.values()),
         "total_seconds": round(sum(s["total_seconds"] for s in summaries.values()), 3),
@@ -214,8 +242,7 @@ def main() -> None:
         "model": MODEL,
         "price_in_per_mtok": PRICE_IN_PER_M,
         "price_out_per_mtok": PRICE_OUT_PER_M,
-        "A": summaries["A"],
-        "B": summaries["B"],
+        **summaries,
         "grand_total": grand,
     }
     with open(USAGE, "w", encoding="utf-8") as f:
