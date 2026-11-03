@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ## Step 1 — Download the Datasets
 
 
-Download the datasets from [Zenodo](https://doi.org/10.5281/zenodo.XXXXXXX) *(placeholder — link to be updated)* and place them under `data/` with the following structure:
+Download the datasets from [OSF](https://osf.io/w8sf2/overview?view_only=7a7b5d9dfc3748d6848875d757c1cae8). The CSVs are under `dataset/preprocessed/` in the download; place them under `data/` with the following structure:
 
 ```
 data/

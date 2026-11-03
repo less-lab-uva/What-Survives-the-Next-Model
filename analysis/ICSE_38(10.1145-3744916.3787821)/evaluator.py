@@ -63,9 +63,16 @@ def run_variant(variant):
     print(f"Passed  : {passed} ({100*accuracy:.1f}%)")
     print(f"Accuracy: {accuracy}")
 
+    by_dataset = {}
+    for ds in sorted({r["dataset"] for r in records}):
+        scores = [p["score"] for p, r in zip(per_instance, records) if r["dataset"] == ds]
+        by_dataset[ds] = {"passed": sum(scores), "failed": len(scores) - sum(scores), "total": len(scores),
+                          "accuracy": round(sum(scores) / len(scores), 4)}
+
     with open(out_path, "w") as f:
         f.write(json.dumps({"aggregate": {"accuracy": accuracy, "passed": passed,
-                                          "failed": total - passed, "total": total}}) + "\n")
+                                          "failed": total - passed, "total": total,
+                                          "by_dataset": by_dataset}}) + "\n")
         for r in per_instance:
             f.write(json.dumps(r) + "\n")
 
