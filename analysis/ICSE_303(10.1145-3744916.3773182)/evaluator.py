@@ -21,8 +21,11 @@ def compute_metrics(records: list) -> dict:
     }
 
 
-def evaluate_prompt(prompt_label: str, n):
-    outputs_path = Path(__file__).parent / "outputs" / f"outputs_{prompt_label}.jsonl"
+def evaluate_prompt(prompt_label: str, n, model: str = None):
+    # --model scores a model-tagged re-run (output_B_<model>.jsonl -> results_B_<model>.jsonl)
+    outputs_name = f"output_{prompt_label}_{model}.jsonl" if model else f"outputs_{prompt_label}.jsonl"
+    results_name = f"results_{prompt_label}_{model}.jsonl" if model else f"results_{prompt_label}.jsonl"
+    outputs_path = Path(__file__).parent / "outputs" / outputs_name
     if not outputs_path.exists():
         print(f"ERROR: outputs file not found: {outputs_path}")
         return
@@ -53,7 +56,7 @@ def evaluate_prompt(prompt_label: str, n):
 
     results_dir = Path(__file__).parent / "results"
     results_dir.mkdir(parents=True, exist_ok=True)
-    out_path = results_dir / f"results_{prompt_label}.jsonl"
+    out_path = results_dir / results_name
     aggregate = {**metrics, "total": len(records), "total_llm_time": round(sum(r.get("llm_response_time", 0.0) for r in records), 3)}
     with open(out_path, "w") as f:
         f.write(json.dumps({"aggregate": aggregate}) + "\n")
@@ -66,11 +69,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--prompt", choices=["A", "B", "both"], default="both")
     parser.add_argument("--n", type=lambda v: "all" if str(v).lower() == "all" else int(v), default="all")
+    parser.add_argument("--model", type=str, default=None)
     args = parser.parse_args()
 
     prompt_labels = ["A", "B"] if args.prompt == "both" else [args.prompt]
     for pl in prompt_labels:
-        evaluate_prompt(pl, args.n)
+        evaluate_prompt(pl, args.n, args.model)
 
 
 if __name__ == "__main__":
