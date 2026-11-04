@@ -1,10 +1,10 @@
-{"prompt": "A", "rq": "rq1", "dataset": "AGORA+ (9 of 11 services)", "P": 51.8, "R": 22.6, "F1": 31.5, "tp": 72, "fp": 67, "fn": 246, "gt": 318}
-{"service": "OMDB bySearch", "sonnet": {"gt": 6, "mined": 6, "tp": 6, "fp": 0, "fn": 0, "P": 100.0, "R": 100.0, "F1": 100.0}
-{"service": "OMDB byIdOrTitle", "sonnet": {"gt": 15, "mined": 9, "tp": 7, "fp": 2, "fn": 8, "P": 77.8, "R": 46.7, "F1": 58.3}
-{"service": "Yelp getBusinesses", "sonnet": {"gt": 4, "mined": 14, "tp": 0, "fp": 14, "fn": 4, "P": 0.0, "R": 0.0, "F1": 0.0}
-{"service": "Hotel Search", "sonnet": {"gt": 46, "mined": 26, "tp": 20, "fp": 6, "fn": 26, "P": 76.9, "R": 43.5, "F1": 55.6}
-{"service": "Spotify createPlaylist", "sonnet": {"gt": 21, "mined": 19, "tp": 7, "fp": 12, "fn": 14, "P": 36.8, "R": 33.3, "F1": 35.0}
-{"service": "Spotify getAlbumTracks", "sonnet": {"gt": 17, "mined": 16, "tp": 11, "fp": 5, "fn": 6, "P": 68.8, "R": 64.7, "F1": 66.7}
-{"service": "Spotify getArtistAlbums", "sonnet": {"gt": 15, "mined": 19, "tp": 10, "fp": 9, "fn": 5, "P": 52.6, "R": 66.7, "F1": 58.8}
-{"service": "Marvel getComicById", "sonnet": {"gt": 46, "mined": 20, "tp": 8, "fp": 12, "fn": 38, "P": 40.0, "R": 17.4, "F1": 24.2}
-{"service": "Youtube GetVideos", "sonnet": {"gt": 148, "mined": 10, "tp": 3, "fp": 7, "fn": 145, "P": 30.0, "R": 2.0, "F1": 3.8}
+{"prompt": "A", "rq": "rq1", "dataset": "AGORA+ (9 of 11 services)", "normalized": true, "P": 59.1, "R": 25.5, "F1": 35.6, "tp": 81, "fp": 56, "fn": 237, "gt": 318}
+{"service": "OMDB bySearch", "sonnet": {"gt": 6, "mined": 6, "tp": 6, "fp": 0, "fn": 0, "P": 100.0, "R": 100.0, "F1": 100.0}}
+{"service": "OMDB byIdOrTitle", "sonnet": {"gt": 15, "mined": 9, "tp": 7, "fp": 2, "fn": 8, "P": 77.8, "R": 46.7, "F1": 58.3}}
+{"service": "Yelp getBusinesses", "sonnet": {"gt": 4, "mined": 14, "tp": 0, "fp": 14, "fn": 4, "P": 0.0, "R": 0.0, "F1": 0.0}}
+{"service": "Hotel Search", "sonnet": {"gt": 46, "mined": 24, "tp": 20, "fp": 4, "fn": 26, "P": 83.3, "R": 43.5, "F1": 57.1}}
+{"service": "Spotify createPlaylist", "sonnet": {"gt": 21, "mined": 19, "tp": 14, "fp": 5, "fn": 7, "P": 73.7, "R": 66.7, "F1": 70.0}}
+{"service": "Spotify getAlbumTracks", "sonnet": {"gt": 17, "mined": 16, "tp": 11, "fp": 5, "fn": 6, "P": 68.8, "R": 64.7, "F1": 66.7}}
+{"service": "Spotify getArtistAlbums", "sonnet": {"gt": 15, "mined": 19, "tp": 10, "fp": 9, "fn": 5, "P": 52.6, "R": 66.7, "F1": 58.8}}
+{"service": "Marvel getComicById", "sonnet": {"gt": 46, "mined": 20, "tp": 8, "fp": 12, "fn": 38, "P": 40.0, "R": 17.4, "F1": 24.2}}
+{"service": "Youtube GetVideos", "sonnet": {"gt": 148, "mined": 10, "tp": 5, "fp": 5, "fn": 143, "P": 50.0, "R": 3.4, "F1": 6.3}}

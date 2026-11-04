@@ -21,6 +21,7 @@ RESULTS_DIR  = BASE_DIR / "results"
 GT_DIR       = BASE_DIR / ".." / "approaches" / "agora_data" / "our_ground_truth"
 
 PROMPTS = ["A", "B"]
+MODEL   = "claude-sonnet-5-5"  # must match MODEL in main.py — tags prompt-B files
 
 FEASIBLE_AGORA_SERVICES = [
     "OMDB bySearch",
@@ -46,11 +47,13 @@ def safe_name(name: str) -> str:
 
 
 def sep_output_path(letter: str, service_name: str) -> Path:
-    return OUTPUT_DIR / f"{safe_name(service_name)}_prompt{letter}.json"
+    suffix = f"_{MODEL}" if letter == "B" else ""
+    return OUTPUT_DIR / f"{safe_name(service_name)}_prompt{letter}{suffix}.json"
 
 
 def jsonl_output_path(letter: str) -> Path:
-    return OUTPUT_DIR / f"outputs_{letter}.jsonl"
+    suffix = f"_{MODEL}" if letter == "B" else ""
+    return OUTPUT_DIR / f"outputs_{letter}{suffix}.jsonl"
 
 
 # ---------------------------------------------------------------------------
@@ -261,7 +264,7 @@ def compute_rq1(service_filter=None):
 
     # Save JSON results
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    rq1_path = RESULTS_DIR / "rq1_results.json"
+    rq1_path = RESULTS_DIR / f"rq1_results_{MODEL}.json"
     rq1_path.write_text(json.dumps(all_results, indent=2), encoding="utf-8")
     print(f"[+] RQ1 results saved to {rq1_path.relative_to(BASE_DIR)}")
 
@@ -283,12 +286,13 @@ def compute_rq1(service_filter=None):
             "fn": sonnet_tot.get("fn"),
             "gt": sonnet_tot.get("gt"),
         }
-        jpath = RESULTS_DIR / f"results_{letter}.jsonl"
+        suffix = f"_{MODEL}" if letter == "B" else ""
+        jpath = RESULTS_DIR / f"results_{letter}{suffix}.jsonl"
         with open(jpath, "w", encoding="utf-8") as f:
             f.write(json.dumps(aggregate) + "\n")
             for r in svc_rows:
                 f.write(json.dumps(r) + "\n")
-        print(f"[+] results_{letter}.jsonl saved to {jpath.relative_to(BASE_DIR)}")
+        print(f"[+] {jpath.name} saved to {jpath.relative_to(BASE_DIR)}")
 
     return all_results
 
