@@ -1,0 +1,9 @@
+Model           : claude-sonnet-5-5
+Thinking        : on (adaptive, default)
+Prompt variant  : B
+Instances run   : 74
+From cache      : 0
+New LLM calls   : 74
+Refusals        : 0
+Total input tok : 2179797
+Total output tok: 14018
