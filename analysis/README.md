@@ -35,5 +35,5 @@
 | [`ICSE_219(10.1145-3744916.3787806)`](./ICSE_219(10.1145-3744916.3787806)/) | Modeling Like Peeling an Onion: Layerwise Analysis-Driven Automatic Behavioral Model Generation |
 | [`ICSE_232(10.1145-3744916.3764572)`](./ICSE_232(10.1145-3744916.3764572)) | Aligning Requirement for Large Language Model's Code Generation (Specine) |
 | [`ICSE_237(10.1145-3744916.3787820)`](./ICSE_237(10.1145-3744916.3787820)) | Beyond Correctness: Exposing LLM-generated Logical Flaws in Reasoning via Multi-step Automated Theorem Proving |
-| [`ICSE_254(10.1145-3744916.3764534)`](../../254/ICSE_254(10.1145-3744916.3764534)/) | Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search |
+| [`ICSE_254(10.1145-3744916.3764534)`](./ICSE_254(10.1145-3744916.3764534)/) | Repair Ingredients Are All You Need: Improving Large Language Model-Based Program Repair via Repair Ingredients Search |
 | [`ICSE_303(10.1145-3744916.3773182)`](./ICSE_303(10.1145-3744916.3773182)) | Characterizing Regression Bug-Inducing Changes and Improving LLM-Based Regression Bug Detection |
