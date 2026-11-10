@@ -41,7 +41,7 @@ idea or pipeline contribution the paper uses to solve that problem.
   processing, or model adaptation.
 
 A paper may receive multiple task or strategy labels when appropriate. The
-category table is available in [`categorized_analysis.md`](categorized_analysis.md).
+category table is available in [`categorized_analysis.md`](dataFromPaper/categorized_analysis.md).
 
 Outcome symbols:
 
