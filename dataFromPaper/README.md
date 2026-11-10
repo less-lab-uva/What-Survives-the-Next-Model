@@ -14,6 +14,9 @@ artifacts under `analysis/`, not raw paper data.
   replacements to the paper's technique. See the root
   [`README.md`](../README.md#categories-and-outcomes) for how these categories
   and outcomes are defined.
+- [`original_with_sonnet46_results.md`](original_with_sonnet46_results.md):
+  for six papers, compares the original technique, the single-prompt variants,
+  and the original technique with its LLM replaced by Claude Sonnet 4.6.
 
-The `ID` column in both tables identifies the paper and corresponds to the
+The `ID` column in these tables identifies the paper and corresponds to the
 paper directories under `analysis/ICSE_<id>(<doi>)/`.

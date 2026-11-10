@@ -12,6 +12,10 @@ The repository is organized as a collection of paper-specific artifacts. Each
 paper directory contains the local metadata, prompts, executor, evaluator,
 outputs, results, and a paper-specific README when available.
 
+**Main results:** the comparison of paper-reported results against both
+single-prompt variants for all 35 papers is in
+[`results_summary.md`](dataFromPaper/results_summary.md).
+
 ## Research Questions
 
 The artifacts support three main analyses:
@@ -54,11 +58,11 @@ Outcome symbols:
 
 Each paper is evaluated with two prompt variants:
 
-- **Black-box prompt(`P_w`).** Describes the task, input fields, output
+- **Black-box prompt (`P_b`).** Describes the task, input fields, output
   format, constraints, and at least one input-output example from the selected
   dataset.
-- **White-box prompt(`P_b`).** Includes the same task specification as
-  Prompt A, plus methodology-inspired guidance derived from the original
+- **White-box prompt (`P_w`).** Includes the same task specification as
+  the black-box prompt, plus methodology-inspired guidance derived from the original
   paper's technique.
 
 Both prompts are single-call replacements. They do not call external tools,
@@ -97,16 +101,12 @@ defines its own output format, metric, and evaluation protocol.
 │       ├── evaluator.py
 │       ├── outputs/
 │       └── results/
-├── categorized_analysis.md
+├── dataFromPaper/
+│   ├── results_summary.md
+│   ├── categorized_analysis.md
+│   └── original_with_sonnet46_results.md
 └── prompt_generator.py
 ```
-
-Important files:
-
-- [`analysis/README.md`](analysis/README.md): index of the 35 paper
-  directories and paper titles.
-- [`categorized_analysis.md`](categorized_analysis.md): task category,
-  strategy category, and outcome for each paper.
 
 Most paper directories follow this pattern:
 
@@ -162,5 +162,9 @@ database containers, or external execution services.
   directory.
 - Read the paper-specific `README.md` before running `main.py` or
   `evaluator.py`.
-- Use [`categorized_analysis.md`](categorized_analysis.md) for the final
-  task/strategy/outcome table.
+- See [`results_summary.md`](dataFromPaper/results_summary.md) for the main
+  results table.
+- Use [`categorized_analysis.md`](dataFromPaper/categorized_analysis.md) for
+  the final task/strategy/outcome table.
+- See [`original_with_sonnet46_results.md`](dataFromPaper/original_with_sonnet46_results.md)
+  for six papers rerun with their original technique on Claude Sonnet 4.6.
