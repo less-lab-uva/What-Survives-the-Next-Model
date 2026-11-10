@@ -14,7 +14,7 @@ outputs, results, and a paper-specific README when available.
 
 **Main results:** the comparison of paper-reported results against both
 single-prompt variants for all 35 papers is in
-[`results_summary.md`](dataFromPaper/results_summary.md).
+[`single_prompt_sonnet46_results.md`](dataFromPaper/single_prompt_sonnet46_results.md).
 
 ## Research Questions
 
@@ -102,9 +102,10 @@ defines its own output format, metric, and evaluation protocol.
 │       ├── outputs/
 │       └── results/
 ├── dataFromPaper/
-│   ├── results_summary.md
+│   ├── single_prompt_sonnet46_results.md
 │   ├── categorized_analysis.md
-│   └── original_with_sonnet46_results.md
+│   ├── original_with_sonnet46_results.md
+│   └── single_prompt_sonnet55_results.md
 └── prompt_generator.py
 ```
 
@@ -162,9 +163,11 @@ database containers, or external execution services.
   directory.
 - Read the paper-specific `README.md` before running `main.py` or
   `evaluator.py`.
-- See [`results_summary.md`](dataFromPaper/results_summary.md) for the main
+- See [`single_prompt_sonnet46_results.md`](dataFromPaper/single_prompt_sonnet46_results.md) for the main
   results table.
 - Use [`categorized_analysis.md`](dataFromPaper/categorized_analysis.md) for
   the final task/strategy/outcome table.
 - See [`original_with_sonnet46_results.md`](dataFromPaper/original_with_sonnet46_results.md)
   for six papers rerun with their original technique on Claude Sonnet 4.6.
+- See [`single_prompt_sonnet55_results.md`](dataFromPaper/single_prompt_sonnet55_results.md) for
+  single-prompt results on Claude Sonnet 4.6 vs. Claude Sonnet 5.5.
