@@ -10,7 +10,7 @@ All values are percentages. Values for different metrics are separated by /, and
 | 25 | EP16 | Custom security code review dataset | F1 | **71.98** | 36.62 | 44.19 |
 | 32 | EP32 | Alexandria | F1 | 25 | 20.9 | **28.90** |
 | 38 | EP8 | SynthNL, LangNL, SpecNL, ConfoNL | Accuracy | **82** | 59.12 | 62.58 |
-| 42 | EP15 | Tfv1 Real, Tfv1 Synthetic | Exact Match@1 | 60.86 (v2) | 36.5 (v2) | **66.83** (v2) |
+| 42 | EP15 | Tfv1 Real, Tfv1 Synthetic | Exact Match@1 | **83.53** (v1), 60.86 (v2) | 71.4 (v1), 36.5 (v2) | 67.30 (v1), **66.83** (v2) |
 | 54 | EP20 | StatType-SO | F1 | **90.80** | 42.9 | 42.80 |
 | 77 | EP29 | TPC-DS, SQLProcBench | Translation accuracy | **97.98** | 61.62 | 63.64 |
 | 102 | EP13 | CodaMosa | Line + Branch Coverage | **62** | 46.17 | 56.02 |
